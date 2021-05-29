@@ -1,0 +1,30 @@
+{
+    "header" : "let's talk",
+    "items" : [
+        {
+            "href" : "https://calendly.com/teacodema/30min",
+            "icon" : "./../img/social/gcalendar.png"
+        },
+        {
+            "href" : "https://github.com/drissboumlik",
+            "icon" : "../../img/social/github.png"
+        },
+        {
+            "href" : "https://linkedin.com/in/drissboumlik",
+            "icon" : "../../img/social/linkedin.png"
+        },
+        {
+            "href" : "https://twitter.com/drissboumlik",
+            "icon" : "../../img/social/twitter.png"
+        },
+        {
+            "href" : "mailto:boumlik.t@gmail.com?subject=Note about the resume",
+            "icon" : "../../img/social/mail.png"
+        },
+        {
+            "lang": true,
+            "href" : "/cv",
+            "icon" : "../../img/social/pdf.png"
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "header" : "other experiences",
+    "items" : [
+        {
+            "icon" : "../../img/icons/headphone.png",
+            "title" : "call centers",
+            "content" : "I worked in a few call centers only to pay bills and support myself a little."
+        },
+        {
+            "icon" : "../../img/icons/remedial-teaching.png",
+            "title" : "remedial teaching",
+            "content" : "Just like call centers, support classes had the same goal."
+        },
+        {
+            "icon" : "../../img/icons/soup.png",
+            "title" : "snack",
+            "content" : "I worked (helped in fact) my brother to sell sandwiches, snacks, soup, 'الحرشة' pronounced 'Harsha' sorry <i class='far fa-frown'></i>, no english word for that but here is the pictures : <a target='_blank' href='https://www.google.com/search?q=%D8%A7%D9%84%D8%AD%D8%B1%D8%B4%D8%A9&sxsrf=ACYBGNSZ4JgdHVAntIFLoLaVS0fxQP-Ixw:1571180865299&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiOlOrqsJ_lAhVC5uAKHXYwD8AQ_AUIEigB&cshid=1571180889250992&biw=1600&bih=757'><span class='bg-dark funny-font'>Link</span></a>."
+        }
+    ]
+}

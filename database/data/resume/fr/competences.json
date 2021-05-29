@@ -1,0 +1,35 @@
+{
+    "techs" : [
+        {"id" : "js", "name" : "javascript", "value" : 70},
+        {"id" : "php", "name" : "php", "value" : 70},
+        {"id" : "angular", "name" : "angular", "value" : 45},
+        {"id" : "laravel", "name" : "laravel", "value" : 70},
+        {"id" : "jquery", "name" : "jquery", "value" : 65},
+        {"id" : "html-css", "name" : "html / css", "value" : 85},
+        {"id" : "sass", "name" : "sass", "value" : 60},
+        {"id" : "wordpress", "name" : "wordpress", "value" : 75},
+        {"id" : "bootstrap", "name" : "bootstrap", "value" : 70},
+        {"id" : "mysql", "name" : "mysql", "value" : 70},
+        {"id" : "git", "name" : "git", "value" : 55},
+        {"id" : "ps", "name" : "photoshop", "value" : 50},
+        {"id" : "c-net", "name" : "c# .net", "value" : 50},
+        {"id" : "asp", "name" : "asp.net", "value" : 30},
+        {"id" : "mssql", "name" : "mssql server", "value" : 40}
+    ],
+    "langs" : [
+        {"id" : "arabic", "name" : "arabe", "value" : 90},
+        {"id" : "french", "name" : "français", "value" : 70},
+        {"id" : "english", "name" : "anglais", "value" : 70},
+        {"id" : "german", "name" : "allemand", "value" : 5},
+        {"id" : "berber", "name" : "berbère", "value" : 95}
+    ],
+    "addSkills" : [
+        {"id" : "com", "name" : "communication", "value" : 70},
+        {"id" : "adapt", "name" : "adaptabilité", "value" : 80},
+        {"id" : "time-mng", "name" : "gestion du temps", "value" : 65},
+        {"id" : "tw", "name" : "travail en équipe", "value" : 75},
+        {"id" : "prs", "name" : "problem solving", "value" : 65},
+        {"id" : "autn", "name" : "Autonomie", "value" : 80},
+        {"id" : "prl", "name" : " public speaking", "value" : 70}
+    ]
+}

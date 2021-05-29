@@ -1,0 +1,50 @@
+{
+    "header" : "j'aime faire",
+    "items" : [
+        {
+            "icon" : "../../img/icons/logo.png",
+            "title" : "le blog",
+            "content" : "J'ai créé ce blog afin d'aider les développeurs débutants à améliorer non seulement leurs compétences, mais également à acquérir les meilleures pratiques dans leurs tâches."
+        },
+        {
+            "icon" : "../../img/icons/microphone.png",
+            "title" : "les talks",
+            "content" : "Je fais beaucoup de 'Talks' dans mon ancienne école, pour motiver les étudiants, répondre à leurs questions (sur le travail de développeur, à la pige) et leur donner des conseils.."
+        },
+        {
+            "icon" : "../../img/icons/board.png",
+            "title" : "enseignement",
+            "content" : "J'ai beaucoup enseigné, en particulier, apprendre aux enfants à coder en créant des jeux, des constructions avec des outils tels que  <a class='nowrap bg-dark' target='_blank' href='https://scratch.mit.edu'>scratch</a>, <a class='nowrap bg-dark' target='_blank' href='https://code.org'>code.org</a> et legos <a class='nowrap bg-dark' target='_blank' href='https://www.lego.com/en-us/mindstorms/about-ev3'>ev3 mindstorms</a>."
+        },
+        {
+            "icon" : "../../img/icons/help.png",
+            "title" : "l'aide",
+            "content" : "J'aime aider les autres développeurs (pas seulement les développeurs) à résoudre leurs problèmes, car cela me permet d'<span class='bg-dark funny-font'>apprendre</span> de plus en plus, ce qui me pousse à <span class='bg-dark funny-font'>aider</span> de plus en plus."
+        },
+        {
+            "icon" : "../../img/icons/contest.png",
+            "title" : "Concours",
+            "content" : "Je ne suis pas un génie mais j'adore participer aux concours et hackathons en ligne, voici quelques références: <a target='_blank' class='bg-dark nowrap' href='https://hackerrank.com'>hackerrank</a> | <a target='_blank' class='nowrap bg-dark' href='http://codeforces.com'>codeforces</a> | <a target='_blank' class='nowrap bg-dark' href='https://www.codechef.com/'>codechef</a>."
+        },
+        {
+            "icon" : "../../img/icons/sports.png",
+            "title" : "Sports",
+            "content" : "Mes sports préférés sont le football, les jeux d'esprit (échecs, sudoku), les arts martiaux (kung-fu et taekwondo). Malheureusement, le dernier n'a pas été pratiqué depuis longtemps.."
+        },
+        {
+            "icon" : "../../img/icons/books.png",
+            "title" : "lecture",
+            "content" : "La lecture est l’un de mes moments préférés; c’est là que j’ai l’impression de me trouver en compagnie d’un expert (quel que soit le sujet du livre). Voici donc quelques recommandations: <a target='_blank' class='nowrap bg-dark' href='https://www.amazon.com/Art-Thinking-Clearly-Rolf-Dobelli/dp/0062219693'>The Art of Thinking Clearly</a> | <a target='_blank' class='nowrap bg-dark' href='https://www.amazon.com/Richest-Man-Babylon-George-Clason/dp/1505339111'>The Richest Man in Babylon</a> | <a target='_blank' class='nowrap bg-dark' href='https://www.amazon.com/Goals-Everything-Faster-Thought-Possible/dp/1605094110'>Goals!</a> | <a target='_blank' class='nowrap bg-dark' href='https://www.amazon.com/Eat-That-Frog-Second-Procrastinating/dp/0792754840'>Eat That Frog!</a>."
+        },
+        {
+            "icon" : "../../img/icons/Git_icon.png",
+            "title" : "Contribution",
+            "content" : "J'aime contribuer à des projets / idées qui pourraient résoudre un problème, aider les gens, en d'autres termes, apporter ou conduire à un changement."
+        },
+        {
+            "icon" : "../../img/icons/maps-and-flags.png",
+            "title" : "Online",
+            "content" : "Apart les formations / tutoriels, on peut apprendre énormement de choses just en regardant un webinaire (semiaire web) ou un podcast, voici quelque liens: <br/> <span class='underline'>Podcasts: </span><a target='_blank' class='nowrap bg-dark' href='https://castbox.fm/channel/The-PHP-Roundtable-id1375'> The PHP Roundtable</a> | <a target='_blank' class='nowrap bg-dark' href='https://castbox.fm/channel/The-freeCodeCamp-Podcast-id1093310'> The freeCodeCamp Podcast</a> | <a target='_blank' class='nowrap bg-dark' href='https://castbox.fm/channel/Modern-Web-id1354107'>Modern Web</a> | <a target='_blank' class='nowrap bg-dark' href='https://castbox.fm/channel/Tech-Jr-id2140793'>Tech Jr</a>.<br/> <span class='underline'>Conférences: </span><a target='_blank' class='nowrap bg-dark' href='https://www.youtube.com/channel/UCSD0dLRGQk_T-D3RvpM5aFQ'> WeAreDevelopers</a> | <a target='_blank' class='nowrap bg-dark' href='https://www.youtube.com/user/ChromeDevelopers'> Google Chrome Developers</a> | <a target='_blank' class='nowrap bg-dark' href='https://www.youtube.com/user/jsconfeu'> JSConf</a> | <a target='_blank' class='nowrap bg-dark' href='https://goto.docker.com/emea-virtual-event-docker-enterprise-3.0-on-demand.html'> Docker Webnaires</a> | "
+        }
+    ]
+}

@@ -1,0 +1,41 @@
+{
+    "header" : "éducation",
+    "items" : [
+        {
+            "school" : "auto formation",
+            "grade" : "Pas de diplôme",
+            "time" : "Actuellement",
+            "field" : "Les coding challenges, les hackathons, les tutos enligne m'ons permis d'apprendre et créer beaucous de choses."
+        },
+        {
+            "school" : "Ofppt",
+            "grade" : "Technicien Specialisé",
+            "time" : "2014 - 2016",
+            "field" : "Diplôme Technicien Spécialisé en Développement Informatique à ISTA Hay Salam Salé."
+        },
+        {
+            "school" : "chômage",
+            "grade" : "Pas de diplôme",
+            "time" : "2012 - 2014",
+            "field" : "Basculer entre surfer sur internet et faire des coures de soutien, j'ai passé un bon moment, pas d'objectif ni plan de vie / carrière, ça ma permis de me reconstruire à zéro, et d'être la personne d'aujourd'hui."
+        },
+        {
+            "school" : "FST Mohammedia",
+            "grade" : "Licence LST EI",
+            "time" : "2010 - 2012",
+            "field" : "Licence Sciences et Techniques en Electronique et Informatique (LST EI) à la faculté des sciences et techniques Mohammedia."
+        },
+        {
+            "school" : "FST Mohammedia",
+            "grade" : "DEUST",
+            "time" : "2008 - 2010",
+            "field" : "Diplôme d’étude universitaire science et technique (DEUST) à la faculté des sciences et techniques Mohammedia option Mathématique Informatique Physique (MIP)."
+        },
+        {
+            "school" : "Lycée Moulay Taib El Alaoui",
+            "grade" : "Baccalauréat Sciences Expérimentales",
+            "time" : "2008",
+            "field" : "Baccalauréat Série Sciences Expérimentales (option : Science physique)."
+        }
+    ]
+}

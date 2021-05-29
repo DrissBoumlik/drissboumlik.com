@@ -1,0 +1,41 @@
+{
+    "header" : "sections",
+    "items" : [
+        {
+            "href" : "#competences",
+            "content" : "competences"
+        },
+        {
+            "href" : "#experiences",
+            "content" : "experiences"
+        },
+        {
+            "href" : "#education",
+            "content" : "education"
+        },
+        {
+            "href" : "#portfolio",
+            "content" : "portfolio"
+        },
+        {
+            "href" : "#certificates",
+            "content" : "certificates"
+        },
+        {
+            "href" : "#passion",
+            "content" : "passion"
+        },
+        {
+            "href" : "#other-experiences",
+            "content" : "other experiences"
+        },
+        {
+            "href" : "#recommandations",
+            "content" : "people say ..."
+        },
+        {
+            "href" : "#contact-me",
+            "content" : "contact"
+        }
+    ]
+}

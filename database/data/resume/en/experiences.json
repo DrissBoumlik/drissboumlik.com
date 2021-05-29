@@ -1,0 +1,105 @@
+{
+    "header" : "experiences",
+    "items" : [
+        {
+            "classList" : "php branch work",
+            "company" : "rc2k",
+            "job" : "Full Stack Developer",
+            "period" : "Nov 2019",
+            "start_date" : "2019-11",
+            "end_date" : null,
+            "content" : "<ul><li>Development of an HR Management System</li><li>Development of the production statistics system for call center agents</li><li>Technical support for developers.</li></ul>",
+            "techs" : "<p><span class='underline'>Technical environment :</span><br>Angular 8, Bootstrap, jQuery, Laravel, Php, Git, Svn, WebStorm, PhpStorm, DataGrip, Xampp, Vscode, Trello, Slack, GitLab</p>"
+        },
+        {
+            "classList" : "teaching udemy",
+            "company" : "udemy",
+            "job" : "Teacher",
+            "period" : "Jun 2018",
+            "start_date" : "2018-06",
+            "end_date" : null,
+            "content" : "<p>My first online course : <a href='https://www.udemy.com/css-mastering-animations/' target='blank'>Mastering CSS animations</a>.</p>",
+            "techs" : ""
+        },
+        {
+            "classList" : "angular grintaaa",
+            "company" : "Grintaaa - Freelance",
+            "job" : "Full Stack Developer - Angular / Laravel",
+            "period" : "Oct 2019",
+            "start_date" : "2019-06",
+            "end_date" : null,
+            "content" : "<p>Development of a social network dedicated to athletes.</p><ul><li>Network registration.</li><li>Add / Follow another contact.</li><li>Create pages / groups for a specific sport.</li><li>Create events for the organization of the parties.</li><li>Create daily stories.</li><li>Create / Share posts on the profile or on a page / group.</li><li>Invitation of contacts to participate in a game.</li><li>Request to participate in a game.</li><li>Review the players.</li><li>Get notified during a game on the same region.</li></ul>",
+            "techs" : "<p><span class='underline'>Technical environment :</span><br>Angular 8, Bootstrap, jQuery, Laravel 6, Rest Api, Git, WebStorm, PhpStorm, DataGrip, Xampp</p>"
+        },
+        {
+            "classList" : "laravel ehm",
+            "company" : "Freelance",
+            "job" : "Full Stack Developer - Laravel",
+            "period" : "June 2019 – Sep 2019",
+            "start_date" : "2019-06",
+            "end_date" : "2019-09",
+            "content" : "<p>Development of a showcase site for :</p><ul><li>Production / Distribution of fresh fruit.</li><li>Consultation in the field of agricultural development, agricultural management ...</li></ul>",
+            "techs" : " <p><span class='underline'>Technical environment :</span><br>Laravel, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp, Gulp</p>"
+        },
+        {
+            "classList" : "wordpress mediating",
+            "company" : "Mediating - Freelance Mission",
+            "job" : "Full Stack Developer - Laravel / Wordpress",
+            "period" : "Jan 2019 - May 2019",
+            "start_date" : "2019-01",
+            "end_date" : "2019-05",
+            "content" : "<ul><li>Development of a ticket management system.</li><li>Development of the AMDL site (Moroccan Logistics Development Agency)</li><li>Corrections and evolution of existing websites.</li><li>Supervision of new recruits.</li></ul>",
+            "techs" : "<p><span class='underline'>Technical environment :</span><br>Laravel, Wordpress, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp</p>"
+        },
+        {
+            "classList" : "wordpress rae",
+            "company" : "Freelance",
+            "job" : "Full Stack Developer - Wordpress",
+            "period" : "Jan 2019 – Feb 2019",
+            "start_date" : "2019-01",
+            "end_date" : "2019-02",
+            "content" : "<p>Development of a portal site for the study in Ukraine / Russia.</p><p>Deployment of the site on the client's server.</p>",
+            "techs" : "<p><span class='underline'>Technical environment :</span><br>Wordpress, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp</p>"
+        },
+        {
+            "classList" : "laravel graviton",
+            "company" : "Graviton - Freelance Mission",
+            "job" : "Full Stack Developer - Laravel",
+            "period" : "Jun 2018 - Sep 2018",
+            "start_date" : "2018-06",
+            "end_date" : "2018-09",
+            "content" : "<p>Development of an agricultural upstream management information system for the COSUMAR group.</p><p>The digitalization of the aggregate-aggregate relationship and the automation of agricultural processes.</p><ul><li>Participation in the analysis and design phase.</li><li>Implementation of REST APIs in BackEnd.</li><li>Technical support for developers.</li><li>Improvement of the development environment (Scripting, alias…).</li></ul>",
+            "techs" : "<p><span class='underline'>Technical environment :</span><br>Php, Laravel, Git, PostgreSQL, Rest Api, PhpStorm, DataGrip, Phabricator, Cloud 9, pgModeler, Postman</p>"
+        },
+        {
+            "classList" : "innoved robot",
+            "company" : "Innov'ed",
+            "job" : "Trainer",
+            "period" : "Nov 2016 - Jan 2018",
+            "start_date" : "2016-11",
+            "end_date" : "2016-01",
+            "content" : "<p>Teach children between 5-16 years old the basics of programming using:</p><ul><li><a href='https://scratch.mit.edu/' target='blank'>Scratch</a> to learn the basics of programming</li><li><a href='https://education.lego.com/en-us' target='blank'>Ev3 Lego Mindstorms</a> for problem solving</li></ul>",
+            "techs" : ""
+        },
+        {
+            "classList" : "bootstrap dirham",
+            "company" : "Dirham Express - Internship",
+            "job" : "Frontend Developer",
+            "period" : "Jul 2016 - Sep 2016",
+            "start_date" : "2016-07",
+            "end_date" : "2016-09",
+            "content" : "<p>Redesign / Development of the DirhamExpress website.</p>",
+            "techs" : "<p><span class='underline'>Technical environment :</span><br>HTML, CSS, Javascript, jQuery, Bootstrap, Visual Studio Code</p>"
+        },
+        {
+            "classList" : "csharp association",
+            "company" : "Association of Protection and Assistance - Internship",
+            "job" : "C# Developer",
+            "period" : "Apr 2016 - Jun 2016",
+            "start_date" : "2016-04",
+            "end_date" : "2016-06",
+            "content" : "<p>Development of a management system for a covered room (Check-in, Reservation, Stock Management, Equipment, etc.).</p><ul><li>Manage members check-in.</li><li>Management of reservations for the covered room.</li><li>Stock management.</li><li>Management of the association's internal equipment.</li></ul>",
+            "techs" : "<p><span class='underline'>Technical environment :</span><br>C#, .NET, DevExpress, Sql Server, Crystal Report, Visual Studio 2010</p>"
+        }
+    ]
+}
