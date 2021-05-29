@@ -1,4 +1,4 @@
-<div class="py-5 tc-grey-light-bg" id="competences">
+<div class="py-5" id="competences">
     <div class="section competences">
         <div class="container">
             <div class="row mb-4">
