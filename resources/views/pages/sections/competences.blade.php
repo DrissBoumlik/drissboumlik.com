@@ -2,14 +2,14 @@
     <div class="section competences">
         <div class="container">
             <div class="row mb-4">
-                <div class="col-12 d-flex flex-column align-items-center justify-content-center">
+                <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
                     <hr class="section-title-line">
                     <h1 class="section-title text-uppercase">competences</h1>
                 </div>
             </div>
             <div class="row">
-                @foreach ($competences->techs as $techIndex => $tech)
-                    <div class="col-md-6 col-12">
+                @foreach ($competences->techs as $key => $tech)
+                    <div class="col-md-5 col-12 {{ $key % 2 == 0 ? 'offset-md-1' : '' }}">
                         <div class="progress mb-3">
                             <div id="{{ $tech->id }}" class="progress-bar delay padding-left"
                                 style="width: {{ $tech->value }}%"
@@ -30,14 +30,14 @@
     <div class="section languages mt-5">
         <div class="container">
             <div class="row mb-4">
-                <div class="col-12 d-flex flex-column align-items-center justify-content-center">
+                <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
                     <hr class="section-title-line">
                     <h1 class="section-title text-uppercase">languages</h1>
                 </div>
             </div>
             <div class="row">
-                @foreach ($competences->langs as $langIndex => $lang)
-                    <div class="col-md-6 col-12">
+                @foreach ($competences->langs as $key => $lang)
+                    <div class="col-md-5 col-12 {{ $key % 2 == 0 ? 'offset-md-1' : '' }}">
                         <div class="progress mb-3">
                             <div id="{{ $lang->id }}" class="progress-bar delay padding-left"
                                 style="width: {{ $lang->value }}%"
@@ -58,14 +58,14 @@
     <div class="section add-skills mt-5">
         <div class="container">
             <div class="row mb-4">
-                <div class="col-12 d-flex flex-column align-items-center justify-content-center">
+                <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
                     <hr class="section-title-line">
                     <h1 class="section-title text-uppercase">additionnel skills</h1>
                 </div>
             </div>
             <div class="row">
-                @foreach ($competences->addSkills as $addSkillIndex => $addSkill)
-                    <div class="col-md-6 col-12">
+                @foreach ($competences->addSkills as $key => $addSkill)
+                    <div class="col-md-5 col-12 {{ $key % 2 == 0 ? 'offset-md-1' : '' }}">
                         <div class="progress mb-3">
                             <div id="{{ $addSkill->id }}" class="progress-bar delay padding-left"
                                 style="width: {{ $addSkill->value }}%"
