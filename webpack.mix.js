@@ -1,4 +1,6 @@
 const mix = require('laravel-mix');
+require('laravel-mix-purgecss');
+path = require('path');
 
 /*
  |--------------------------------------------------------------------------
@@ -12,6 +14,26 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+    .sass('resources/sass/externals.sass', 'public/css')
+    .sass('resources/sass/app.sass', 'public/css')
+    .purgeCss({
+        extend: {
+            content: [path.join(__dirname, 'database/data/**/*.json')],
+        },
+    })
+    
+    // .postCss('resources/css/app.css', 'public/css', [
+    //     //
+    // ])
+    
+    /* Tools */
+    .browserSync('localhost:8000')
+    .disableNotifications()
+    /* Options */
+    .options({
+        processCssUrls: false
+    });
+
+if (mix.inProduction()) {
+    mix.version();
+}
