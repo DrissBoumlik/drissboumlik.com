@@ -1,0 +1,336 @@
+
+.timeline .section
+    perspective: 1000px
+    z-index: 1
+
+
+.timeline .section .content, .timeline .section:before
+    opacity: 1
+    transform: rotateY(0deg)
+    transition: transform 1s ease, opacity 2s ease
+
+
+.timeline .section:before
+    transition: transform .4s ease, opacity 2s ease
+
+
+.timeline .section:nth-child(even) .content, .timeline .section:nth-child(odd):before
+    transform-origin: left
+
+
+.timeline .section:nth-child(odd) .content, .timeline .section:nth-child(even):before
+    transform-origin: right
+
+
+.timeline .section.rotated:nth-child(odd) .content, .timeline .section.rotated:nth-child(odd):before
+    opacity: 0
+    transform: rotateY(-100deg)
+
+
+.timeline .section.rotated:nth-child(even) .content, .timeline .section.rotated:nth-child(even):before
+    opacity: 0
+    transform: rotateY(100deg)
+
+
+.timeline .section ul
+    padding: 0 0 0 20px
+
+
+/* The actual timeline (the vertical ruler) */
+.timeline
+    position: relative
+    max-width: 1200px
+    margin: 0 auto
+/* Container around content */
+/* Place the section to the left */
+/* Place the section to the right */
+/* The actual content */
+
+
+.timeline:after
+    content: ''
+    position: absolute
+    width: 6px
+    background-color: $tc-blue
+    top: 0
+    bottom: 1%
+    border-radius: 5px
+    left: 50%
+    margin-left: -3px
+    z-index: 0
+
+
+.timeline .section
+    // padding: 10px 40px
+    padding: 10px 20px
+    position: relative
+    background-color: inherit
+    width: 50%
+    display: inline-block
+
+
+.timeline .section::after
+    content: ''
+    position: absolute
+    width: 40px
+    height: 40px
+    right: -20px
+    top: 13px
+    // background-color: $tc-white
+    border: 4px solid $tc-blue
+    border-radius: 50%
+    z-index: 1
+    line-height: 32px
+    color: $tc-white
+    font-weight: bolder
+    font-size: 1.2rem
+    text-align: center
+
+
+.timeline .section:nth-child(odd)
+    padding-right: 30px
+//     left: -25%
+
+
+.timeline .section:nth-child(odd):before
+    content: " "
+    height: 0
+    position: absolute
+    top: 22px
+    width: 0
+    z-index: 1
+    right: 20px
+    border: medium solid $tc-white
+    border-width: 10px 0 10px 10px
+    border-color: transparent transparent transparent $tc-grey
+
+
+.timeline .section:nth-child(even)
+    padding-left: 30px
+    left: 50%
+
+
+.timeline .section:nth-child(even):before
+    content: " "
+    height: 0
+    position: absolute
+    top: 22px
+    width: 0
+    z-index: 1
+    left: 20px
+    border: medium solid $tc-white
+    border-width: 10px 10px 10px 0
+    border-color: transparent $tc-grey transparent transparent
+
+
+.timeline .section:nth-child(even):after
+    left: -20px
+
+
+.timeline .content
+    text-align: left
+    padding: 20px
+    background-color: $tc-grey-light
+    position: relative
+    border-radius: 6px
+
+
+.timeline .content h2
+    font-size: 1rem
+    margin-bottom: 5px
+    font-weight: 600
+
+
+.timeline .content .function
+    color: $tc-blue-dark-1
+
+
+.timeline .php:after
+    content: ""
+    font-family: "Font Awesome 5 Brands"
+    background-color: #8892BF
+    font-weight: 900
+
+
+.timeline .code:after
+    content: ""
+    font-family: "Font Awesome 5 Free"
+    background-color: #2F4F4F
+    font-weight: 900
+
+
+.timeline .teaching:after
+    content: ""
+    font-family: "Font Awesome 5 Free"
+    background-color: #EA5252
+    font-weight: 900
+
+
+.timeline .angular:after
+    content: ""
+    font-family: "Font Awesome 5 Brands"
+    background-color: #DD0031
+    font-weight: 100
+
+
+.timeline .wordpress:after
+    content: ""
+    font-family: "Font Awesome 5 Brands"
+    background-color: #454442
+    font-weight: 100
+
+
+.timeline .laravel:after
+    content: ""
+    font-family: "Font Awesome 5 Brands"
+    background-color: #FF5050
+    font-weight: 100
+
+
+.timeline .robot:after
+    content: ""
+    font-family: "Font Awesome 5 Free"
+    background-color: #97C024
+    font-weight: 900
+
+
+.timeline .bootstrap:after
+    content: ""
+    font-family: "Font Awesome 5 Brands"
+    background-color: #CD6799
+    font-weight: 100
+
+
+.timeline .csharp:after
+    content: ""
+    font-family: "Font Awesome 5 Free"
+    background-color: #2F4F4F
+    font-weight: 900
+
+
+.timeline .laptop:after
+    content: ""
+    font-family: "Font Awesome 5 Free"
+    background-color: #FF5050
+    font-weight: 900
+
+
+.timeline .briefcase:after
+    content: ""
+    font-family: "Font Awesome 5 Free"
+    background-color: #21caeb
+    font-weight: 900
+
+
+.timeline.reversed:after
+    background-color: $tc-blue-dark-1
+
+
+.timeline.reversed .section:nth-child(odd):before
+    border-color: transparent transparent transparent $tc-blue-dark-1
+
+
+.timeline.reversed .section:nth-child(even):before
+    border-color: transparent $tc-blue-dark-1 transparent transparent
+
+
+.timeline.reversed .content
+    background-color: $tc-blue-dark-1
+    color: $tc-white
+
+
+.timeline.reversed .function
+    color: $tc-white
+
+
+.timeline.reversed .section:after
+    content: "\f19d"
+    font-family: "Font Awesome 5 Free"
+    line-height: 32px
+    background-color: $tc-white
+    border: 4px solid $tc-blue-dark-1
+    color: #222
+    font-weight: bolder
+
+.section .content
+    border: 2px solid $tc-grey
+
+.work.section
+    &:nth-child(even) .content
+        border-right: 5px solid #dc3545
+    &:nth-child(odd) .content
+        border-left: 5px solid #dc3545
+
+.freelance.section
+    &:nth-child(even) .content
+        border-right: 5px solid #9a9a9a
+    &:nth-child(odd) .content
+        border-left: 5px solid #9a9a9a
+
+.teacode.section
+    &:nth-child(even) .content
+        border-right: 5px solid #1DA1F2
+    &:nth-child(odd) .content
+        border-left: 5px solid #1DA1F2
+
+.udemy.section
+    &:nth-child(even) .content
+        border-right: 5px solid #EA5252
+    &:nth-child(odd) .content
+        border-left: 5px solid #EA5252
+
+.grintaaa.section
+    &:nth-child(even) .content
+        border-right: 5px solid #7FCD17
+    &:nth-child(odd) .content
+        border-left: 5px solid #7FCD17
+
+.mediating.section
+    &:nth-child(even) .content
+        border-right: 5px solid #FF9300
+    &:nth-child(odd) .content
+        border-left: 5px solid #FF9300
+
+.ehm.section
+    &:nth-child(even) .content
+        border-right: 5px solid #009921
+    &:nth-child(odd) .content
+        border-left: 5px solid #009921
+
+.rae.section
+    &:nth-child(even) .content
+        border-right: 5px solid #c5c800
+    &:nth-child(odd) .content
+        border-left: 5px solid #c5c800
+
+.freelance.section
+    &:nth-child(even) .content
+        border-right: 5px solid #9a9a9a
+    &:nth-child(odd) .content
+        border-left: 5px solid #9a9a9a
+
+.graviton.section
+    &:nth-child(even) .content
+        border-right: 5px solid #DB5844
+    &:nth-child(odd) .content
+        border-left: 5px solid #DB5844
+
+
+.innoved.section
+    &:nth-child(even) .content
+        border-right: 5px solid #F76B67
+    &:nth-child(odd) .content
+        border-left: 5px solid #F76B67
+
+.dirham.section
+    &:nth-child(even) .content
+        border-right: 5px solid #164395
+    &:nth-child(odd) .content
+        border-left: 5px solid #164395
+
+.association.section
+    &:nth-child(even) .content
+        border-right: 5px solid #71335A
+    &:nth-child(odd) .content
+        border-left: 5px solid #71335A
+
