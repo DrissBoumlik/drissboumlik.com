@@ -23,6 +23,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('*', function ($view) {
+            $mode = \Cookie::get('mode');
+            if ($mode != 'dark' && $mode != 'light') {
+                $mode = 'light';
+            }
+            $view->with('mode', $mode);
+        });
     }
 }
