@@ -2,49 +2,49 @@
     "header" : "passion",
     "items" : [
         {
-            "icon" : "../../img/icons/logo.png",
+            "icon" : "logo.png",
             "title" : "the site",
             "content" : "I created this website to help novice developers not only improve their skills, but also learn best practices in their tasks."
         },
         {
-            "icon" : "../../img/icons/microphone.png",
+            "icon" : "microphone.png",
             "title" : "the Talks",
             "content" : "I do a lot of 'Talks' in my old school, to motivate students, answer their questions (about the work of developer, freelance) and give them advice .."
         },
         {
-            "icon" : "../../img/icons/board.png",
+            "icon" : "board.png",
             "title" : "teaching",
-            "content" : "I have taught a lot, especially teaching kids to code by creating games, building with tools like <a class='nowrap bg-dark' target='_blank' href='https://scratch.mit.edu'>scratch</a>, <a target='_blank' class='nowrap bg-dark' href='https://code.org'>code.org</a> & legos <a target='_blank' class='nowrap bg-dark' href='https://www.lego.com/en-us/mindstorms/about-ev3'>ev3 mindstorms</a>."
+            "content" : "I have taught a lot, especially teaching kids to code by creating games, building with tools like <a class='key-word white-space-nowrap' target='_blank' href='https://scratch.mit.edu'>scratch</a>, <a target='_blank' class='key-word white-space-nowrap' href='https://code.org'>code.org</a> & legos <a target='_blank' class='key-word white-space-nowrap' href='https://www.lego.com/en-us/mindstorms/about-ev3'>ev3 mindstorms</a>."
         },
         {
-            "icon" : "../../img/icons/help.png",
+            "icon" : "help.png",
             "title" : "helping",
-            "content" : "I like to help other developers (not just developers) to solve their problems because it allows me to <span class='bg-dark funny-font'>learn</span> more and more, which drives me to <span class='bg-dark funny-font'>help</span> more and more."
+            "content" : "I like to help other developers (not just developers) to solve their problems because it allows me to <span class='key-word white-space-nowrap'>learn</span> more and more, which drives me to <span class='key-word white-space-nowrap'>help</span> more and more."
         },
         {
-            "icon" : "../../img/icons/contest.png",
+            "icon" : "contest.png",
             "title" : "contests",
-            "content" : " I'm not a genius but I love to participate in online contests and hackathons, here are some references: <a target='_blank' class='nowrap bg-dark' href='https://hackerrank.com'>hackerrank</a> | <a target='_blank' class='nowrap bg-dark' href='http://codeforces.com'>codeforces</a> | <a target='_blank' class='nowrap bg-dark' href='https://www.codechef.com/'>codechef</a>."
+            "content" : " I'm not a genius but I love to participate in online contests and hackathons, here are some references: <a target='_blank' class='key-word white-space-nowrap' href='https://hackerrank.com'>hackerrank</a> | <a target='_blank' class='key-word white-space-nowrap' href='http://codeforces.com'>codeforces</a> | <a target='_blank' class='key-word white-space-nowrap' href='https://www.codechef.com/'>codechef</a>."
         },
         {
-            "icon" : "../../img/icons/sports.png",
+            "icon" : "sports.png",
             "title" : "Sports",
             "content" : "My favorite sports are football, mind games (chess, sudoku), martial arts (kung fu and taekwondo). Unfortunately, the last has not been practiced for a long time .."
         },
         {
-            "icon" : "../../img/icons/books.png",
+            "icon" : "books.png",
             "title" : "reading",
-            "content" : "Reading is one of my favorite moments; it is there that I feel like I am in the company of an expert (whatever the subject of the book). Here are some recommendations: <a target='_blank' class='nowrap bg-dark' href='https://www.amazon.com/Art-Thinking-Clearly-Rolf-Dobelli/dp/0062219693'>The Art of Thinking Clearly</a> | <a target='_blank' class='nowrap bg-dark' href='https://www.amazon.com/Richest-Man-Babylon-George-Clason/dp/1505339111'>The Richest Man in Babylon</a> | <a target='_blank' class='nowrap bg-dark' href='https://www.amazon.com/Goals-Everything-Faster-Thought-Possible/dp/1605094110'>Goals!</a> | <a target='_blank' class='nowrap bg-dark' href='https://www.amazon.com/Eat-That-Frog-Second-Procrastinating/dp/0792754840'>Eat That Frog!</a>."
+            "content" : "Reading is one of my favorite moments; it is there that I feel like I am in the company of an expert (whatever the subject of the book). Here are some recommendations: <a target='_blank' class='key-word white-space-nowrap' href='https://www.amazon.com/Art-Thinking-Clearly-Rolf-Dobelli/dp/0062219693'>The Art of Thinking Clearly</a> | <a target='_blank' class='key-word white-space-nowrap' href='https://www.amazon.com/Richest-Man-Babylon-George-Clason/dp/1505339111'>The Richest Man in Babylon</a> | <a target='_blank' class='key-word white-space-nowrap' href='https://www.amazon.com/Goals-Everything-Faster-Thought-Possible/dp/1605094110'>Goals!</a> | <a target='_blank' class='key-word white-space-nowrap' href='https://www.amazon.com/Eat-That-Frog-Second-Procrastinating/dp/0792754840'>Eat That Frog!</a>."
         },
         {
-            "icon" : "../../img/icons/Git_icon.png",
+            "icon" : "Git_icon.png",
             "title" : "Contribution",
             "content" : "I like to contribute to projects / ideas that could solve a problem, help people, in other words, bring or lead to a change."
         },
         {
-            "icon" : "../../img/icons/maps-and-flags.png",
+            "icon" : "maps-and-flags.png",
             "title" : "Online",
-            "content" : "Apart from the training / tutorials, we can learn a lot of things just by watching a webinar (semiaire web) or a podcast, here are some links: <br/> <span class='underline'>Podcasts: </span><a target='_blank' class='nowrap bg-dark' href='https://castbox.fm/channel/The-PHP-Roundtable-id1375'> The PHP Roundtable</a> | <a target='_blank' class='nowrap bg-dark' href='https://castbox.fm/channel/The-freeCodeCamp-Podcast-id1093310'> The freeCodeCamp Podcast</a> | <a target='_blank' class='nowrap bg-dark' href='https://castbox.fm/channel/Modern-Web-id1354107'>Modern Web</a> | <a target='_blank' class='nowrap bg-dark' href='https://castbox.fm/channel/Tech-Jr-id2140793'>Tech Jr</a>.<br/> <span class='underline'>Conferences: </span><a target='_blank' class='nowrap bg-dark' href='https://www.youtube.com/channel/UCSD0dLRGQk_T-D3RvpM5aFQ'> WeAreDevelopers</a> | <a target='_blank' class='nowrap bg-dark' href='https://www.youtube.com/user/ChromeDevelopers'> Google Chrome Developers</a> | <a target='_blank' class='nowrap bg-dark' href='https://www.youtube.com/user/jsconfeu'> JSConf</a> | <a target='_blank' class='nowrap bg-dark' href='https://goto.docker.com/emea-virtual-event-docker-enterprise-3.0-on-demand.html'> Docker Webnaires</a>"
+            "content" : "Apart from the training / tutorials, we can learn a lot of things just by watching a webinar (semiaire web) or a podcast, here are some links: <br/> <span class='underline'>Podcasts: </span><a target='_blank' class='key-word white-space-nowrap' href='https://castbox.fm/channel/The-PHP-Roundtable-id1375'> The PHP Roundtable</a> | <a target='_blank' class='key-word white-space-nowrap' href='https://castbox.fm/channel/The-freeCodeCamp-Podcast-id1093310'> The freeCodeCamp Podcast</a> | <a target='_blank' class='key-word white-space-nowrap' href='https://castbox.fm/channel/Modern-Web-id1354107'>Modern Web</a> | <a target='_blank' class='key-word white-space-nowrap' href='https://castbox.fm/channel/Tech-Jr-id2140793'>Tech Jr</a>.<br/> <span class='underline'>Conferences: </span><a target='_blank' class='key-word white-space-nowrap' href='https://www.youtube.com/channel/UCSD0dLRGQk_T-D3RvpM5aFQ'> WeAreDevelopers</a> | <a target='_blank' class='key-word white-space-nowrap' href='https://www.youtube.com/user/ChromeDevelopers'> Google Chrome Developers</a> | <a target='_blank' class='key-word white-space-nowrap' href='https://www.youtube.com/user/jsconfeu'> JSConf</a> | <a target='_blank' class='key-word white-space-nowrap' href='https://goto.docker.com/emea-virtual-event-docker-enterprise-3.0-on-demand.html'> Docker Webnaires</a>"
         }
     ]
 }

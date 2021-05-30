@@ -22,7 +22,7 @@ class PageController extends Controller
         $data->sections['education'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/education.json"));
         // $data->sections['portfolio'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/portfolio.json"));
         // $data->sections['certificates'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/certificates.json"));
-        // $data->sections['passion'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/passion.json"));
+        $data->sections['passion'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/passion.json"));
         // $data->sections['other_exp'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/other_exp.json"));
         // $data->sections['recommandations'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/recommandations.json"));
         // $data->sections['lets_talk'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/lets_talk.json"));
