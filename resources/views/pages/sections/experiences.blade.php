@@ -12,7 +12,7 @@
                     <div class="timeline">
                         @foreach ($experiences->items as $experience)
                             <div class="section {{ $experience->classList }}">
-                                <div class="content">
+                                <div class="content tc-grey-light-bg">
                                     <h2 class="where text-uppercase">{{ $experience->company }}</h2>
                                     <h2 class="function">{{ $experience->job }}</h2>
                                     <span><i class="far fa-calendar-alt"></i> {{ $experience->period }} |
