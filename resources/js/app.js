@@ -1,3 +1,4 @@
+require('bootstrap');
 require('particles.js');
 window.$ = require( 'jquery' );
 
