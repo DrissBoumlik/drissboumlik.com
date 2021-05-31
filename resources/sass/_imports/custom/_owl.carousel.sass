@@ -1,0 +1,57 @@
+.owl-carousel
+    cursor: grab
+    padding-top: 30px
+    // .owl-carousel-indicators
+    //     top: -10px
+    //     bottom: unset
+    //     margin-bottom: 0
+        // .btn-indicator
+        //     background-color: $tc-grey
+        //     width: 10px
+        //     height: 9px
+        //     border-radius: 50%
+    .owl-stage
+        margin-bottom: 1rem
+        display: flex
+    .owl-item
+        float: unset
+        padding: 0 10px
+        &.active:nth-child(2)::before
+            content: ''
+            position: absolute
+            top: 20%
+            height: 60%
+            left: 2px
+            width: 2px
+            background-color: $tc-grey
+            border-left: 1px solid $tc-grey
+            @media(max-width: 576px)
+                content: none
+        // &:not(:last-child)
+        //     background: white
+    .owl-carousel-item
+        .owl-carousel-item-wrapper
+            display: flex
+            justify-content: center
+            // align-items: center
+            // .owl-carousel-img
+                // margin-right: 0.5rem
+            // .owl-carousel-txt
+            //     text-align: center
+            .owl-carousel-img, .owl-carousel-txt
+                display: flex
+                justify-content: center
+            .owl-carousel-txt
+                margin-top: 1.5rem
+                width: 100%
+                text-align: center
+                // @media(max-width: 1200px)
+                //     width: 90%
+                @media(max-width: 576px)
+                    text-align: left
+                // align-items: center
+                flex-direction: column
+                small
+                    margin-top: 7px
+                    &:before
+                        content: '\2014 \00A0'

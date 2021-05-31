@@ -25,7 +25,8 @@ mix.js('resources/js/app.js', 'public/js')
     // .postCss('resources/css/app.css', 'public/css', [
     //     //
     // ])
-    
+
+    .autoload({ jquery: ['$', 'window.jQuery', 'jQuery'] })
     /* Tools */
     .browserSync('localhost:8000')
     .disableNotifications()
