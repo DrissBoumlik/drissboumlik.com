@@ -11,7 +11,7 @@
                 <div class="row">
                     @foreach ($other_exp->items as $index => $other_expItem)
                         <div class="col-md-6 col-12 mb-3">
-                            <div class="list-group-item box-item py-3 tc-grey-light-bg">
+                            <div class="list-group-item box-item py-3 tc-white-bg">
                                 <!-- .lits-group-item-figure -->
                                 <div class="list-group-item-figure box-header mb-3">
                                     <div class="has-badge d-flex align-items-center">
