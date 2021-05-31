@@ -2,35 +2,35 @@
     "header" : "What people say",
     "items" : [
         {
-            "icon" : "../../img/people/mohammed.jpg",
+            "icon" : "mohammed.jpg",
             "content" : "<p>One of the best collaborators, he understands very well client requirements, very patient and professional. Highly appreciate his communication skills, team working and also a very good listener. Keep up the good work Driss.</p><small>Mohammed Jaouad | Founder & CEO at Essorline</small>"
         },
         {
-            "icon" : "../../img/people/nassim.jpg",
+            "icon" : "nassim.jpg",
             "content" : "<p>Jovial and serious make Driss the person everyone wants to work with. Our collaboration has been successful. I strongly recommend.</p><small>Nassim Mouline | Full Stack Developer</small>"
         },
         {
-            "icon" : "../../img/people/karim.jpg",
+            "icon" : "karim.jpg",
             "content" : "<p>Driss Boumlik proved to be a great person to work with. His skills in analyzing & coding makes him to view solutions instead of problems. Loyal, insightful and independent. He is not only a reliable and forward thinking PHP Developer but also an inspiring team player. The success achieved in his job required extensive knowledge and dedication. Experiencing his quick and sharp mind at the workplace is most outstanding.</p><small>Karim Oulad Chalha | Full Stack Developer</small>"
         },
         {
-            "icon" : "../../img/people/hamza.jpg",
+            "icon" : "hamza.jpg",
             "content" : "<p>Je n'ai pas rencontré beaucoup de personnes comme boumlik dans ma carrière.</p><small>Hamza Hmidani | Full Stack Developer</small>"
         },
         {
-            "icon" : "../../img/people/achraf.jpg",
+            "icon" : "achraf.jpg",
             "content" : "<p>full of energy, honestly my example in programming, so ambitious.</p><small>Achraf | Student</small>"
         },
         {
-            "icon" : "../../img/people/youssef.jpg",
+            "icon" : "youssef.jpg",
             "content" : "<p>Proud of you my brother, very creative, I wish you the best.</p><small>Youssef | Student</small>"
         },
         {
-            "icon" : "../../img/people/female.jpg",
+            "icon" : "female.jpg",
             "content" : "<p>Excellent teacher, I love his way of explaining programming concepts by simplifying them.</p><small>Laila | Student</small>"
         },
         {
-            "icon" : "../../img/people/female.jpg",
+            "icon" : "female.jpg",
             "content" : "<p>Very ambitious, he was an excellent teacher and I learned a lot from him.</p><small>Marwa | Student</small>"
         }
     ]
