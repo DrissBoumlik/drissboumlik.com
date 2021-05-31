@@ -25,6 +25,7 @@
         "@popperjs/core": "^2.9.2",
         "bootstrap": "^5.0.1",
         "jquery": "^3.6.0",
+        "owl.carousel": "^2.3.4",
         "particles.js": "^2.0.0"
     }
 }
