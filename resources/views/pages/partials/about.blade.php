@@ -20,7 +20,7 @@
             <div class="row mt-4">
                 <div class="col-11 col-md-8 offset-md-2">
                     <div class="welcome-message">
-                        <div class="welcome-message-wrapper tc-black-almost fs-4">
+                        <div class="welcome-message-wrapper text-center tc-black-almost fs-4">
                             <div class="welcome text-capitalize">welcome</div>
                             <div class="txt">
                                 <div class="">
