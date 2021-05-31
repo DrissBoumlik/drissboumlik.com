@@ -8,7 +8,7 @@ class PageController extends Controller
 {
     public function resume(Request $request, $lang = null)
     {
-        $lang = $lang ?? 'fr';
+        $lang = $lang ?? 'en';
         if (!inLanguages($lang)) {
             return redirect('/');
         }
