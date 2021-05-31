@@ -193,33 +193,37 @@
             transform-origin: right
         &:nth-child(odd)
             padding-right: 30px
+            .content
+                border-left: 5px solid $tc-blue-dark-2
+            &:before
+                content: " "
+                height: 0
+                position: absolute
+                top: 22px
+                width: 0
+                z-index: 1
+                right: 20px
+                border: medium solid $tc-white
+                border-width: 10px 0 10px 10px
+                border-color: transparent transparent transparent $tc-grey
         &:nth-child(even)
             padding-left: 30px
             left: 50%
-        &:nth-child(even):after
-            left: -20px
-        &:nth-child(odd):before
-            content: " "
-            height: 0
-            position: absolute
-            top: 22px
-            width: 0
-            z-index: 1
-            right: 20px
-            border: medium solid $tc-white
-            border-width: 10px 0 10px 10px
-            border-color: transparent transparent transparent $tc-grey
-        &:nth-child(even):before
-            content: " "
-            height: 0
-            position: absolute
-            top: 22px
-            width: 0
-            z-index: 1
-            left: 20px
-            border: medium solid $tc-white
-            border-width: 10px 10px 10px 0
-            border-color: transparent $tc-grey transparent transparent
+            .content
+                border-right: 5px solid $tc-blue-dark-2
+            &:after
+                left: -20px
+            &:before
+                content: " "
+                height: 0
+                position: absolute
+                top: 22px
+                width: 0
+                z-index: 1
+                left: 20px
+                border: medium solid $tc-white
+                border-width: 10px 10px 10px 0
+                border-color: transparent $tc-grey transparent transparent
         ul
             padding: 0 0 0 20px
 
@@ -332,5 +336,6 @@
                 // border-left: none
 
             .content
+                border-right: 5px solid $tc-blue-dark-2
                 border-left: 2px solid $tc-grey!important
                 transform-origin: center !important
