@@ -25,7 +25,7 @@
                             <div class="txt">
                                 <div class="">
                                     <p class="capitalize-first-letter">here is where you get to know</p>
-                                    <p class="capitalize-first-letter">who is <span class="text-capitalize text-decoration-underline">driss boumlik</span></p>
+                                    <p class="capitalize-first-letter">who is <span class="text-capitalize text-decoration-underline funny-font">driss boumlik</span></p>
                                 </div>
                             </div>
                         </div>
