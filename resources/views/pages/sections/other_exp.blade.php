@@ -1,7 +1,7 @@
 <div class="py-5" id="other-experiences">
     <div class="section other-experiences block-inverse">
         <div class="container">
-            <div class="row mb-4">
+            <div class="row section-header">
                 <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
                     <hr class="section-title-line">
                     <h1 class="section-title text-uppercase">{{ $other_exp->header }}</h1>
