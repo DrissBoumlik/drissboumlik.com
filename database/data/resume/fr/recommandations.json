@@ -19,19 +19,23 @@
         },
         {
             "icon" : "achraf.jpg",
-            "content" : "<p>plein d’énergie, honnêtement mon exemple en programmation, si ambitieux.</p> <small>Achraf | Etudiant</small>"
+            "content" : "<p>plein d’énergie, honnêtement mon exemple en programmation, si ambitieux.</p> <small>Achraf | Etudiant</small>",
+            "hidden": true
         },
         {
             "icon" : "youssef.jpg",
-            "content" : "<p>Fier de toi mon frère, très créatif, je te souhaite le meilleur.</p><small>Youssef | Etudiant</small>"
+            "content" : "<p>Fier de toi mon frère, très créatif, je te souhaite le meilleur.</p><small>Youssef | Etudiant</small>",
+            "hidden": true
         },
         {
             "icon" : "female.jpg",
-            "content" : "<p>Excellent professeur, J'adore sa façon d'expliquer les concepts de programmation en les simplifiant.</p><small>Laila | Etudiante</small>"
+            "content" : "<p>Excellent professeur, J'adore sa façon d'expliquer les concepts de programmation en les simplifiant.</p><small>Laila | Etudiante</small>",
+            "hidden": true
         },
         {
             "icon" : "female.jpg",
-            "content" : "<p>Très ambitieux, il a été un excellent professeur et J'ai beaucoup appris de lui.</p><small>Marwa | Etudiante</small>"
+            "content" : "<p>Très ambitieux, il a été un excellent professeur et J'ai beaucoup appris de lui.</p><small>Marwa | Etudiante</small>",
+            "hidden": true
         }
     ]
 }
