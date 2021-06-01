@@ -21,7 +21,7 @@ $(function () {
             // nav: true,
             // freeDrag: true,
             autoplay: true,
-            smartSpeed: 2000,
+            smartSpeed: 500,
             autoplayTimeout: 3000,
             // autoplaySpeed: 3000,
             autoplayHoverPause: true,
