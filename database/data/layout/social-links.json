@@ -2,14 +2,14 @@
     {
         "img": "assets/img/social/facebook.png",
         "icon": "<i class='fab fa-facebook-f'></i>",
-        "link": "facebook",
+        "link": "social/facebook",
         "title": "facebook",
         "color": "#D32322"
     },
     {
         "img": "assets/img/social/Youtube.png",
         "icon": "<i class='fab fa-youtube'></i>",
-        "link": "youtube",
+        "link": "social/youtube",
         "title": "youtube",
         "color": "#4867AA",
         "hidden": true
@@ -17,28 +17,36 @@
     {
         "img": "assets/img/social/instagram.png",
         "icon": "<i class='fab fa-instagram'></i>",
-        "link": "instagram",
+        "link": "social/instagram",
         "title": "instagram",
         "color": "#B03699"
     },
     {
         "img": "assets/img/social/twitter.png",
         "icon": "<i class='fab fa-twitter'></i>",
-        "link": "twitter",
+        "link": "social/twitter",
         "title": "twitter",
         "color": "#50ABF1"
     },
     {
         "img": "assets/img/social/linkedin.png",
         "icon": "<i class='fab fa-linkedin'></i>",
-        "link": "linkedin",
+        "link": "social/linkedin",
         "title": "linkedin",
         "color": "#6E85D3"
     },
     {
+        "img": "assets/img/social/pdf.png",
+        "icon": "<i class='far fa-file-pdf'></i>",
+        "link": "cv",
+        "title": "cv",
+        "color": "#EE6551",
+        "local": true
+    },
+    {
         "img": "assets/img/social/patreon.png",
         "icon": "<i class='fab fa-patreon'></i>",
-        "link": "patreon",
+        "link": "social/patreon",
         "title": "patreon",
         "color": "#EE6551",
         "hidden": true
