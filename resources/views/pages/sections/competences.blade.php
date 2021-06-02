@@ -37,7 +37,7 @@
             </div>
             <div class="row">
                 @foreach ($competences->langs as $key => $lang)
-                    <div class="col-lg-5 col-md-6 col-12 {{ $key % 2 == 0 ? 'offset-lg-1' : '' }}">
+                    <div class="col-md-6 col-12 mb-3">
                         <div class="progress mb-3">
                             <div id="{{ $lang->id }}" class="progress-bar delay padding-left"
                                 style="width: {{ $lang->value }}%"
@@ -65,7 +65,7 @@
             </div>
             <div class="row">
                 @foreach ($competences->addSkills as $key => $addSkill)
-                    <div class="col-lg-5 col-md-6 col-12 {{ $key % 2 == 0 ? 'offset-lg-1' : '' }}">
+                    <div class="col-md-6 col-12 mb-3">
                         <div class="progress mb-3">
                             <div id="{{ $addSkill->id }}" class="progress-bar delay padding-left"
                                 style="width: {{ $addSkill->value }}%"
