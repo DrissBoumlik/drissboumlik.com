@@ -1,10 +1,25 @@
 [
     {
+        "img": "assets/img/social/linkedin.png",
+        "icon": "<i class='fab fa-linkedin'></i>",
+        "link": "social/linkedin",
+        "title": "linkedin",
+        "color": "#6E85D3"
+    },
+    {
+        "img": "assets/img/social/github.png",
+        "icon": "<i class='fab fa-github'></i>",
+        "link": "social/github",
+        "title": "github",
+        "color": "#6E85D3"
+    },
+    {
         "img": "assets/img/social/facebook.png",
         "icon": "<i class='fab fa-facebook-f'></i>",
         "link": "social/facebook",
         "title": "facebook",
-        "color": "#D32322"
+        "color": "#D32322",
+        "hidden": true
     },
     {
         "img": "assets/img/social/Youtube.png",
@@ -19,21 +34,16 @@
         "icon": "<i class='fab fa-instagram'></i>",
         "link": "social/instagram",
         "title": "instagram",
-        "color": "#B03699"
+        "color": "#B03699",
+        "hidden": true
     },
     {
         "img": "assets/img/social/twitter.png",
         "icon": "<i class='fab fa-twitter'></i>",
         "link": "social/twitter",
         "title": "twitter",
-        "color": "#50ABF1"
-    },
-    {
-        "img": "assets/img/social/linkedin.png",
-        "icon": "<i class='fab fa-linkedin'></i>",
-        "link": "social/linkedin",
-        "title": "linkedin",
-        "color": "#6E85D3"
+        "color": "#50ABF1",
+        "hidden": true
     },
     {
         "img": "assets/img/social/pdf.png",
