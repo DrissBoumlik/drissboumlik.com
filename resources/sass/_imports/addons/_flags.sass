@@ -1,10 +1,15 @@
 .flags
-    z-index: 1
-    max-width: 50px
+    z-index: 999
+    max-width: 35px
     position: fixed
-    left: 1%
+    left: 2%
     top: 5%
     .flag
         // margin-bottom: .7rem
-        border-radius: 5px
+        // border-radius: 5px
         overflow: hidden
+        svg
+            border-radius: 50%
+            border: 2px solid $tc-blue
+        &.flag-fr
+            margin-bottom: .5rem
