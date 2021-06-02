@@ -16,8 +16,7 @@
                                 <div class="list-group-item-figure box-header mb-3">
                                     <div class="has-badge d-flex align-items-center">
                                         <div class="box-icon me-2">
-                                           {{-- <img src="{{ $certificate->icon }}" alt=""> --}}
-                                            <img src="{{ asset('/assets/img/icons/maps-and-flags.png') }}" />
+                                            <img src="{{ asset('/assets/img/icons/' . $certificate->icon) }}" alt="{{ $certificate->title }}">
                                         </div>
                                         <div class="box-header-txt">
                                             <h4 class="text-capitalize">{{ $certificate->title }}</h4>
