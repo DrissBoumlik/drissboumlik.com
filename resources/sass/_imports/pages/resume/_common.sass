@@ -1,3 +1,18 @@
+.sections
+    > .section
+        &:nth-child(odd)
+            background-color: $tc-grey-light
+            .box-item
+                background-color: $tc-white
+            .timeline .content
+                background-color: $tc-white
+        &:nth-child(even)
+            background-color: $tc-white
+            .box-item
+                background-color: $tc-grey-light
+            .timeline .content
+                background-color: $tc-grey-light
+
 .section-header
     margin-bottom: 3rem !important
 .section-title-line
@@ -7,6 +22,7 @@
     height: 2px!important
     margin-bottom: 10px
 .section-title
+    text-transform: uppercase
     color: $tc-blue-dark-1
     font-weight: bold
     // margin-bottom: 20px

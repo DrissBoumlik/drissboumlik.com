@@ -4,7 +4,7 @@
             <div class="row section-header">
                 <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
                     <hr class="section-title-line">
-                    <h1 class="section-title text-uppercase">experiences</h1>
+                    <h1 class="section-title">experiences</h1>
                 </div>
             </div>
             <div class="row">
@@ -12,7 +12,7 @@
                     <div class="timeline">
                         @foreach ($experiences->items as $experience)
                             <div class="section {{ $experience->classList }}">
-                                <div class="content tc-grey-light-bg">
+                                <div class="content">
                                     <h2 class="where text-uppercase">{{ $experience->company }}</h2>
                                     <h2 class="function">{{ $experience->job }}</h2>
                                     <span><i class="far fa-calendar-alt"></i> {{ $experience->period }} |

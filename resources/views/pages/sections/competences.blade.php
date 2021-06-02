@@ -4,13 +4,13 @@
             <div class="row section-header">
                 <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
                     <hr class="section-title-line">
-                    <h1 class="section-title text-uppercase">competences</h1>
+                    <h1 class="section-title">competences</h1>
                 </div>
             </div>
             <div class="row">
                 @foreach ($competences->techs as $key => $tech)
-                    <div class="col-lg-5 col-md-6 col-12 {{ $key % 2 == 0 ? 'offset-lg-1' : '' }}">
-                        <div class="progress mb-3">
+                    <div class="col-md-6 col-12 mb-3">
+                        <div class="progress">
                             <div id="{{ $tech->id }}" class="progress-bar delay padding-left"
                                 style="width: {{ $tech->value }}%"
                                 role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100">
@@ -32,7 +32,7 @@
             <div class="row section-header">
                 <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
                     <hr class="section-title-line">
-                    <h1 class="section-title text-uppercase">languages</h1>
+                    <h1 class="section-title">languages</h1>
                 </div>
             </div>
             <div class="row">
@@ -60,7 +60,7 @@
             <div class="row section-header">
                 <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
                     <hr class="section-title-line">
-                    <h1 class="section-title text-uppercase">additionnel skills</h1>
+                    <h1 class="section-title">additionnel skills</h1>
                 </div>
             </div>
             <div class="row">
