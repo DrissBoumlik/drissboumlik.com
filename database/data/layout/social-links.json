@@ -19,7 +19,7 @@
         "link": "social/facebook",
         "title": "facebook",
         "color": "#D32322",
-        "hidden": true
+        "hidden": false
     },
     {
         "img": "assets/img/social/Youtube.png",
@@ -35,7 +35,7 @@
         "link": "social/instagram",
         "title": "instagram",
         "color": "#B03699",
-        "hidden": true
+        "hidden": false
     },
     {
         "img": "assets/img/social/twitter.png",
@@ -43,7 +43,7 @@
         "link": "social/twitter",
         "title": "twitter",
         "color": "#50ABF1",
-        "hidden": true
+        "hidden": false
     },
     {
         "img": "assets/img/social/pdf.png",
