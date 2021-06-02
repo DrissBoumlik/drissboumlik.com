@@ -36,6 +36,6 @@
         </div>
         {{-- @include('addons.loader') --}}
         {{-- @include('addons.fb-btn') --}}
-        {{-- @include('addons.toggle-darkmode') --}}
+        @include('addons.toggle-darkmode')
     </body>
 </html>

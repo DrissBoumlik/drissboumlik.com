@@ -1,0 +1,46 @@
+body.dark-mode // background-color: $tc-blue-dark-3
+    background-color: rgba($tc-blue-dark-3, 1)
+    *
+        color: $tc-white
+
+    .page
+        background-color: $tc-blue-dark-3
+    .particles-js
+        background-image: linear-gradient(rgba($tc-blue-dark-3, 1), rgba($tc-white, 0.2))
+    .brand-slogan
+        color: $tc-white
+    .key-word
+        color: $tc-blue
+        // text-decoration: underline $tc-blue
+        // background-color: $tc-blue
+    .social-icons-wrapper
+        .social-icon i
+            color: $tc-white
+    .timeline
+        &:after
+            background-color: $tc-blue
+        .section
+            &:nth-child(odd):before
+                border-color: transparent transparent transparent $tc-blue
+            &:nth-child(even):before
+                border-color: transparent $tc-blue transparent transparent
+            &:after
+                border-color: $tc-blue
+            .content
+                border-color: $tc-blue
+                border-left: 2px solid $tc-blue!important
+
+    .sections
+        > .section
+            &:nth-child(odd)
+                background-color: $tc-blue-dark-4
+                .box-item
+                    background-color: $tc-blue-dark-3
+                .timeline .content
+                    background-color: $tc-blue-dark-3
+            &:nth-child(even)
+                background-color: $tc-blue-dark-3
+                .box-item
+                    background-color: $tc-blue-dark-4
+                .timeline .content
+                    background-color: $tc-blue-dark-4
