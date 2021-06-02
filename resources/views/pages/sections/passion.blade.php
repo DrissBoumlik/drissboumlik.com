@@ -4,14 +4,14 @@
             <div class="row section-header">
                 <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
                     <hr class="section-title-line">
-                    <h1 class="section-title text-uppercase">{{ $passion->header }}</h1>
+                    <h1 class="section-title">{{ $passion->header }}</h1>
                 </div>
             </div>
             <div class="container">
                 <div class="row">
                     @foreach ($passion->items as $index => $passionItem)
                         <div class="col-md-6 col-12 mb-3">
-                            <div class="list-group-item box-item py-3 tc-grey-light-bg">
+                            <div class="list-group-item box-item py-3">
                                 <!-- .lits-group-item-figure -->
                                 <div class="list-group-item-figure box-header mb-3">
                                     <div class="has-badge d-flex align-items-center">

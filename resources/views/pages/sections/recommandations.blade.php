@@ -4,7 +4,7 @@
             <div class="row section-header">
                 <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
                     <hr class="section-title-line">
-                    <h1 class="section-title text-uppercase">{{ $recommandations->header }}</h1>
+                    <h1 class="section-title">{{ $recommandations->header }}</h1>
                 </div>
             </div>
 
