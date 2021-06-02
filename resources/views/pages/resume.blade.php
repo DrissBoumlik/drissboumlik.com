@@ -3,6 +3,7 @@
 @section('content')
 
     {{-- @include('layouts.menu') --}}
+    @include('addons.flags')
     <div class="container-fluid p-0">
         @include('pages.partials.about')
         {{-- @include('pages.index-parts.activities') --}}
