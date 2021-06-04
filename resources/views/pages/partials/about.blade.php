@@ -27,7 +27,7 @@
                                     <p class="capitalize-first-letter">here is where you get to know</p>
                                     <p class="capitalize-first-letter">
                                         <span>who is </span>
-                                        <span class="text-capitalize text-decoration-underline funny-font">driss boumlik</span>
+                                        <span class="text-capitalize funny-font">driss boumlik</span>
                                     </p>
                                 </div>
                             </div>
