@@ -10,7 +10,7 @@
             <div class="container">
                 <div class="row">
                     @foreach ($certificates->items as $index => $certificate)
-                        <div class="col-md-6 col-12 mb-3">
+                        <div class="col-md-6 col-12">
                             <div class="list-group-item box-item">
                                 <!-- .lits-group-item-figure -->
                                 <div class="list-group-item-figure box-header">

@@ -9,8 +9,8 @@
             </div>
             <div class="row">
                 @foreach ($competences->techs as $key => $tech)
-                    <div class="col-md-6 col-12 mb-3">
-                        <div class="progress">
+                    <div class="col-md-6 col-12">
+                        <div class="progress mb-4">
                             <div id="{{ $tech->id }}" class="progress-bar delay padding-left"
                                 style="width: {{ $tech->value }}%"
                                 role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100">
@@ -37,8 +37,8 @@
             </div>
             <div class="row">
                 @foreach ($competences->langs as $key => $lang)
-                    <div class="col-md-6 col-12 mb-3">
-                        <div class="progress mb-3">
+                    <div class="col-md-6 col-12">
+                        <div class="progress mb-4">
                             <div id="{{ $lang->id }}" class="progress-bar delay padding-left"
                                 style="width: {{ $lang->value }}%"
                                 role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100">
@@ -65,8 +65,8 @@
             </div>
             <div class="row">
                 @foreach ($competences->addSkills as $key => $addSkill)
-                    <div class="col-md-6 col-12 mb-3">
-                        <div class="progress mb-3">
+                    <div class="col-md-6 col-12">
+                        <div class="progress mb-4">
                             <div id="{{ $addSkill->id }}" class="progress-bar delay padding-left"
                                 style="width: {{ $addSkill->value }}%"
                                 role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100">
