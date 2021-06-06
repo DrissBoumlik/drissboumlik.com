@@ -4,7 +4,7 @@
         {
             "icon" : "teacode.png",
             "title" : "le blog",
-            "content" : "J'ai créé ce <a rel='noopener' href='https://teacode.ma' target='_blank' class='key-word word-break-break-word'>site/communauté</a> où les développeurs marocains peuvent s'entraider/se soutenir dans leur parcours d'apprentissage 🚀."
+            "content" : "J'ai créé ce <a rel='noopener' href='https://teacode.ma' target='_blank' class='key-word'>site/communauté</a> où les développeurs marocains peuvent s'entraider/se soutenir dans leur parcours d'apprentissage 🚀."
         },
         {
             "icon" : "microphone.png",
@@ -14,22 +14,22 @@
         {
             "icon" : "board.png",
             "title" : "enseignement",
-            "content" : "J'ai beaucoup enseigné, en particulier, apprendre aux enfants à coder en créant des jeux, des constructions avec des outils tels que  <a class='key-word word-break-break-word' target='_blank' href='https://scratch.mit.edu'>scratch</a>, <a rel='noopener' class='key-word word-break-break-word' target='_blank' href='https://code.org'>code.org</a> et legos <a rel='noopener' class='key-word word-break-break-word' target='_blank' href='https://www.lego.com/en-us/mindstorms/about-ev3'>ev3 mindstorms</a>."
+            "content" : "J'ai beaucoup enseigné, en particulier, apprendre aux enfants à coder en créant des jeux, des constructions avec des outils tels que  <a class='key-word' target='_blank' href='https://scratch.mit.edu'>scratch</a>, <a rel='noopener' class='key-word' target='_blank' href='https://code.org'>code.org</a> et legos <a rel='noopener' class='key-word' target='_blank' href='https://www.lego.com/en-us/mindstorms/about-ev3'>ev3 mindstorms</a>."
         },
         {
             "icon" : "help.png",
             "title" : "l'aide",
-            "content" : "J'aime aider les autres développeurs (pas seulement les développeurs) à résoudre leurs problèmes, car cela me permet d'<span class='key-word'>apprendre</span> de plus en plus, ce qui me pousse à <span class='key-word word-break-break-word'>aider</span> de plus en plus."
+            "content" : "J'aime aider les autres développeurs (pas seulement les développeurs) à résoudre leurs problèmes, car cela me permet d'<span class='key-word'>apprendre</span> de plus en plus, ce qui me pousse à <span class='key-word'>aider</span> de plus en plus."
         },
         {
             "icon" : "books.png",
             "title" : "lecture",
-            "content" : "La lecture est l’un de mes moments préférés; c’est là que j’ai l’impression de me trouver en compagnie d’un expert (quel que soit le sujet du livre). Voici donc quelques recommandations: <a rel='noopener' target='_blank' class='key-word word-break-break-word' href='https://www.amazon.com/Art-Thinking-Clearly-Rolf-Dobelli/dp/0062219693'>The Art of Thinking Clearly</a> | <a rel='noopener' target='_blank' class='key-word word-break-break-word' href='https://www.amazon.com/Richest-Man-Babylon-George-Clason/dp/1505339111'>The Richest Man in Babylon</a> | <a rel='noopener' target='_blank' class='key-word word-break-break-word' href='https://www.amazon.com/Goals-Everything-Faster-Thought-Possible/dp/1605094110'>Goals!</a> | <a rel='noopener' target='_blank' class='key-word word-break-break-word' href='https://www.amazon.com/Eat-That-Frog-Second-Procrastinating/dp/0792754840'>Eat That Frog!</a> | <a rel='noopener' target='_blank' class='key-word word-break-break-word' href='https://www.amazon.com/Things-Every-Programmer-Should-Know/dp/0596809484'>97 Things Every Programmer Should Know</a>."
+            "content" : "La lecture est l’un de mes moments préférés; c’est là que j’ai l’impression de me trouver en compagnie d’un expert (quel que soit le sujet du livre). Voici donc quelques recommandations: <a rel='noopener' target='_blank' class='key-word' href='https://www.amazon.com/Art-Thinking-Clearly-Rolf-Dobelli/dp/0062219693'>The Art of Thinking Clearly</a> | <a rel='noopener' target='_blank' class='key-word' href='https://www.amazon.com/Richest-Man-Babylon-George-Clason/dp/1505339111'>The Richest Man in Babylon</a> | <a rel='noopener' target='_blank' class='key-word' href='https://www.amazon.com/Goals-Everything-Faster-Thought-Possible/dp/1605094110'>Goals!</a> | <a rel='noopener' target='_blank' class='key-word' href='https://www.amazon.com/Eat-That-Frog-Second-Procrastinating/dp/0792754840'>Eat That Frog!</a> | <a rel='noopener' target='_blank' class='key-word' href='https://www.amazon.com/Things-Every-Programmer-Should-Know/dp/0596809484'>97 Things Every Programmer Should Know</a>."
         },
         {
             "icon" : "maps-and-flags.png",
             "title" : "Online",
-            "content" : "Apart les formations / tutoriels, on peut apprendre énormement de choses just en regardant un webinaire (semiaire web) ou un podcast, voici quelque liens: <br/> <span class='underline'>Podcasts: </span><a rel='noopener' target='_blank' class='key-word word-break-break-word' href='https://castbox.fm/channel/The-PHP-Roundtable-id1375'> The PHP Roundtable</a> | <a rel='noopener' target='_blank' class='key-word word-break-break-word' href='https://castbox.fm/channel/The-freeCodeCamp-Podcast-id1093310'> The freeCodeCamp Podcast</a> | <a rel='noopener' target='_blank' class='key-word word-break-break-word' href='https://castbox.fm/channel/Modern-Web-id1354107'>Modern Web</a> | <a rel='noopener' target='_blank' class='key-word word-break-break-word' href='https://castbox.fm/channel/Tech-Jr-id2140793'>Tech Jr</a>.<br/> <span class='underline'>Conférences: </span><a rel='noopener' target='_blank' class='key-word word-break-break-word' href='https://www.youtube.com/channel/UCSD0dLRGQk_T-D3RvpM5aFQ'> WeAreDevelopers</a> | <a rel='noopener' target='_blank' class='key-word word-break-break-word' href='https://www.youtube.com/user/ChromeDevelopers'> Google Chrome Developers</a> | <a rel='noopener' target='_blank' class='key-word word-break-break-word' href='https://www.youtube.com/user/jsconfeu'> JSConf</a> | <a rel='noopener' target='_blank' class='key-word word-break-break-word' href='https://goto.docker.com/emea-virtual-event-docker-enterprise-3.0-on-demand.html'> Docker Webnaires</a> | "
+            "content" : "Apart les formations / tutoriels, on peut apprendre énormement de choses just en regardant un webinaire (semiaire web) ou un podcast, voici quelque liens: <br/> <span class='underline'>Podcasts: </span><a rel='noopener' target='_blank' class='key-word' href='https://castbox.fm/channel/The-PHP-Roundtable-id1375'> The PHP Roundtable</a> | <a rel='noopener' target='_blank' class='key-word' href='https://castbox.fm/channel/The-freeCodeCamp-Podcast-id1093310'> The freeCodeCamp Podcast</a> | <a rel='noopener' target='_blank' class='key-word' href='https://castbox.fm/channel/Modern-Web-id1354107'>Modern Web</a> | <a rel='noopener' target='_blank' class='key-word' href='https://castbox.fm/channel/Tech-Jr-id2140793'>Tech Jr</a>.<br/> <span class='underline'>Conférences: </span><a rel='noopener' target='_blank' class='key-word' href='https://www.youtube.com/channel/UCSD0dLRGQk_T-D3RvpM5aFQ'> WeAreDevelopers</a> | <a rel='noopener' target='_blank' class='key-word' href='https://www.youtube.com/user/ChromeDevelopers'> Google Chrome Developers</a> | <a rel='noopener' target='_blank' class='key-word' href='https://www.youtube.com/user/jsconfeu'> JSConf</a> | <a rel='noopener' target='_blank' class='key-word' href='https://goto.docker.com/emea-virtual-event-docker-enterprise-3.0-on-demand.html'> Docker Webnaires</a> | "
         },
         {
             "icon" : "Git_icon.png",
@@ -39,7 +39,7 @@
         {
             "icon" : "contest.png",
             "title" : "Concours",
-            "content" : "Je ne suis pas un génie mais j'adore participer aux concours et hackathons en ligne, voici quelques références: <a rel='noopener' target='_blank' class='key-word word-break-break-word' href='https://hackerrank.com'>hackerrank</a> | <a rel='noopener' target='_blank' class='key-word word-break-break-word' href='http://codeforces.com'>codeforces</a> | <a rel='noopener' target='_blank' class='key-word word-break-break-word' href='https://www.codechef.com/'>codechef</a>."
+            "content" : "Je ne suis pas un génie mais j'adore participer aux concours et hackathons en ligne, voici quelques références: <a rel='noopener' target='_blank' class='key-word' href='https://hackerrank.com'>hackerrank</a> | <a rel='noopener' target='_blank' class='key-word' href='http://codeforces.com'>codeforces</a> | <a rel='noopener' target='_blank' class='key-word' href='https://www.codechef.com/'>codechef</a>."
         },
         {
             "icon" : "sports.png",
