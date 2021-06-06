@@ -1,5 +1,12 @@
 [
     {
+        "img": "assets/img/social/patreon.png",
+        "icon": "<i class='fas fa-globe'></i>",
+        "link": "social/site",
+        "title": "website",
+        "color": "#EE6551"
+    },
+    {
         "img": "assets/img/social/linkedin.png",
         "icon": "<i class='fab fa-linkedin'></i>",
         "link": "social/linkedin",
@@ -44,6 +51,20 @@
         "title": "twitter",
         "color": "#50ABF1",
         "hidden": false
+    },
+    {
+        "img": "assets/img/social/patreon.png",
+        "icon": "<i class='fas fa-calendar-alt'></i>",
+        "link": "social/meet",
+        "title": "meet",
+        "color": "#EE6551"
+    },
+    {
+        "img": "assets/img/social/patreon.png",
+        "icon": "<i class='fas fa-envelope-open-text'></i>",
+        "link": "social/email",
+        "title": "email",
+        "color": "#EE6551"
     },
     {
         "img": "assets/img/social/pdf.png",
