@@ -9,7 +9,7 @@ return [
         'linkedin' => 'https://www.linkedin.com/in/drissboumlik',
         'github' => 'https://www.github.com/drissboumlik',
         'meet' => 'https://calendly.com/drissboumlik/30min',
-        'email' => 'mailto:boumlik.t@gmail.com?subject=Note about the resume',
+        'email' => 'mailto:idrissboumlik@gmail.com?subject=Resume : ',
         'site' => 'https://teacode.ma'
     ]
 ];
