@@ -25,7 +25,6 @@ class PageController extends Controller
         $data->sections['passion'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/passion.json"));
         $data->sections['other_exp'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/other_exp.json"));
         $data->sections['recommandations'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/recommandations.json"));
-        // $data->sections['lets_talk'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/lets_talk.json"));
 
         $data->socialLinks = getSocialLinks();
         $data->menuFooter = getFooterMenu();
