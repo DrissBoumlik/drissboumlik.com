@@ -18,7 +18,7 @@
             "period" : "Jun 2018",
             "start_date" : "2018-06",
             "end_date" : null,
-            "content" : "<p>My first online course : <a href='https://www.udemy.com/css-mastering-animations/' target='blank' class='key-word white-space-nowrap'>Mastering CSS animations</a>.</p>",
+            "content" : "<p>My first online course : <a href='https://www.udemy.com/css-mastering-animations/' target='blank' class='key-word white-space-nowrap' rel='noopener'>Mastering CSS animations</a>.</p>",
             "techs" : ""
         },
         {
@@ -78,7 +78,7 @@
             "period" : "Nov 2016 - Jan 2018",
             "start_date" : "2016-11",
             "end_date" : "2016-01",
-            "content" : "<p>Teach children between 5-16 years old the basics of programming using:</p><ul><li><a href='https://scratch.mit.edu/' target='blank' class='key-word white-space-nowrap'>Scratch</a> to learn the basics of programming</li><li><a href='https://education.lego.com/en-us' target='blank' class='key-word white-space-nowrap'>Ev3 Lego Mindstorms</a> for problem solving</li></ul>",
+            "content" : "<p>Teach children between 5-16 years old the basics of programming using:</p><ul><li><a href='https://scratch.mit.edu/' target='blank' class='key-word white-space-nowrap' rel='noopener'>Scratch</a> to learn the basics of programming</li><li><a href='https://education.lego.com/en-us' target='blank' class='key-word white-space-nowrap' rel='noopener'>Ev3 Lego Mindstorms</a> for problem solving</li></ul>",
             "techs" : ""
         },
         {

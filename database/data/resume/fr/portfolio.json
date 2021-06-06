@@ -3,43 +3,43 @@
     "items" : [
         {
             "image": "../../img/portfolio/appDesk.png",
-            "content": "<p><span class=\"underline\">Desktop App</span><br>C#.Net | DevExpress | Sql Server</p>"
+            "content": "<p><span class='underline'>Desktop App</span><br>C#.Net | DevExpress | Sql Server</p>"
         },
         {
             "image": "../../img/portfolio/dirEx.png",
-            "content": "<p><span class=\"underline\">Front End</span><br>Bootstrap | jQuery</p>"
+            "content": "<p><span class='underline'>Front End</span><br>Bootstrap | jQuery</p>"
         },
         {
             "image": "../../img/portfolio/sdgs.png",
-            "content": "<p><span class=\"underline\">Contribution</span><br>Laravel</p>"
+            "content": "<p><span class='underline'>Contribution</span><br>Laravel</p>"
         },
         {
             "image": "../../img/portfolio/webapp.jpg",
-            "content": "<p><span class=\"underline\">Back End</span><br>Laravel</p>"
+            "content": "<p><span class='underline'>Back End</span><br>Laravel</p>"
         },
         {
             "image": "../../img/portfolio/ehm.png",
-            "content": "<p><span class=\"underline\">Full Stack</span><br>Laravel</p>"
+            "content": "<p><span class='underline'>Full Stack</span><br>Laravel</p>"
         },
         {
             "image": "../../img/portfolio/amdl.png",
-            "content": "<p><span class=\"underline\">CMS</span><br>Wordpress | Bootstrap | jQuery </p>"
+            "content": "<p><span class='underline'>CMS</span><br>Wordpress | Bootstrap | jQuery </p>"
         },
         {
             "image": "../../img/portfolio/grinta.png",
-            "content": "<p><span class=\"underline\">Full Stack</span><br>Laravel | Angular</p>"
+            "content": "<p><span class='underline'>Full Stack</span><br>Laravel | Angular</p>"
         },
         {
             "image": "../../img/portfolio/rae.ma.png",
-            "content": "<p><span class=\"underline\">CMS</span><br>Wordpress | Bootstrap | jQuery </p>"
+            "content": "<p><span class='underline'>CMS</span><br>Wordpress | Bootstrap | jQuery </p>"
         },
         {
             "image": "../../img/portfolio/circet.png",
-            "content": "<p><span class=\"underline\">Full Stack</span><br>Laravel | Ajax | Sass | Bootstrap</p>"
+            "content": "<p><span class='underline'>Full Stack</span><br>Laravel | Ajax | Sass | Bootstrap</p>"
         },
         {
             "image": "../../img/portfolio/blog.png",
-            "content": "<p><span class=\"underline\">CMS</span><br>Sass | Bootstrap | Wordpress</p>"
+            "content": "<p><span class='underline'>CMS</span><br>Sass | Bootstrap | Wordpress</p>"
         },
         {
             "image": "../../img/portfolio/ticket.png",
@@ -47,7 +47,7 @@
         },
         {
             "image": "../../img/portfolio/css.png",
-            "content": "<p><a target=\"blank\" href=\"https://udemy.com/css-mastering-animations\"><span class=\"underline\">Formation</span><br>Master CSS Animations</a></p>"
+            "content": "<p><a rel='noopener' target='blank' href='https://udemy.com/css-mastering-animations'><span class='underline'>Formation</span><br>Master CSS Animations</a></p>"
         }
     ]
 }
