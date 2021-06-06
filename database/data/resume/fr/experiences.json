@@ -18,7 +18,7 @@
             "period" : "Juin 2018",
             "start_date" : "2018-06",
             "end_date" : null,
-            "content" : "<p>Ma première formation en ligne : <a rel='noopener' href='https://www.udemy.com/css-mastering-animations/' target='blank' class='key-word white-space-nowrap'>Maîtriser les animations CSS</a>.</p>",
+            "content" : "<p>Ma première formation en ligne : <a rel='noopener' href='https://www.udemy.com/css-mastering-animations/' target='blank' class='key-word'>Maîtriser les animations CSS</a>.</p>",
             "techs" : ""
         },
         {
@@ -78,7 +78,7 @@
             "period" : "Nov 2016 - Jan 2018",
             "start_date" : "2016-11",
             "end_date" : "2016-01",
-            "content" : "<p>Enseigner les enfants entre 5-16 ans les bases de la programmation en utilisant :</p><ul><li><a rel='noopener' href='https://scratch.mit.edu/' target='blank' class='key-word white-space-nowrap'>Scratch</a> pour apprendre les base de la programmation</li><li><a rel='noopener' href='https://education.lego.com/en-us' target='blank' class='key-word white-space-nowrap'>Ev3 Lego Mindstorms</a> pour le problem solving</li></ul>",
+            "content" : "<p>Enseigner les enfants entre 5-16 ans les bases de la programmation en utilisant :</p><ul><li><a rel='noopener' href='https://scratch.mit.edu/' target='blank' class='key-word'>Scratch</a> pour apprendre les base de la programmation</li><li><a rel='noopener' href='https://education.lego.com/en-us' target='blank' class='key-word'>Ev3 Lego Mindstorms</a> pour le problem solving</li></ul>",
             "techs" : ""
         },
         {
