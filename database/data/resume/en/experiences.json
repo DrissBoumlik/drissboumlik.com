@@ -38,7 +38,7 @@
             "period" : "June 2019 – Sep 2019",
             "start_date" : "2019-06",
             "end_date" : "2019-09",
-            "content" : "<p>Development of a showcase site for :</p><ul><li>Production / Distribution of fresh fruit.</li><li>Consultation in the field of agricultural development, agricultural management ...</li></ul>",
+            "content" : "<p>Development of a showcase site for :</p><ul><li>Production / Distribution of fresh fruit.</li><li>Consultation in the field of agricultural development, agricultural management...</li></ul>",
             "techs" : " <p><span class='underline'>Technical environment :</span><br>Laravel, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp, Gulp</p>"
         },
         {
