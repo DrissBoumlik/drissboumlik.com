@@ -13,8 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/cv/{lang?}', 'PageController@getCV');
-Route::get('/{lang?}', 'PageController@resume');
+Route::middleware('cache.headers:public;max_age=15811200;etag')->group(function () {
 
-// External
-Route::get('/social/{link}', 'GotoController@gotoExternalLink');
+    Route::get('/{lang?}', 'PageController@resume');
+    Route::get('/cv/{lang?}', 'PageController@getCV');
+
+    // External
+    Route::get('/social/{link}', 'GotoController@gotoExternalLink');
+});
