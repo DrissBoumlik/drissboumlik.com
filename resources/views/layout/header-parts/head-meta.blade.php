@@ -18,5 +18,5 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image:alt" content="Main picture">
 
-<link rel="icon" type="image/x-icon" href="{{ asset('/assets/img/me/square-256.ico') }}">
-<link rel="apple-touch-icon" href="{{ asset('/assets/img/me/square-256.ico') }}">
+<link rel="icon" type="image/x-icon" href="{{ asset('/assets/img/me/circle-256.ico') }}">
+<link rel="apple-touch-icon" href="{{ asset('/assets/img/me/circle-256.ico') }}">
