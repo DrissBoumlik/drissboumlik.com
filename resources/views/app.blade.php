@@ -2,8 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         @include('addons.brand-text')
-        @include('pages.partials.head-meta')
-        @include('pages.partials.assets')
+        @include('layout.header-parts.head-meta')
+        @include('layout.header-parts.assets')
         <title>{{ $title ?? 'Driss Boumlik' }}</title>
     </head>
     <body class="antialiased {{ $mode . '-mode' }}">
