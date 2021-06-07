@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-8 offset-2">
                     <div class="img-wrapper d-flex justify-content-center">
-                        <img src="{{ asset('/assets/img/drissboumlik/me.png') }}"
+                        <img src="{{ asset('/assets/img/me/circle-256.png') }}"
                         class="img-fluid rounded-circle mb-4" alt="">
                     </div>
                 </div>
