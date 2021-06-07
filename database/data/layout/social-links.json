@@ -61,7 +61,7 @@
     },
     {
         "img": "assets/img/social/patreon.png",
-        "icon": "<i class='fas fa-envelope-open-text'></i>",
+        "icon": "<i class='fas fa-at'></i>",
         "link": "social/email",
         "title": "email",
         "color": "#EE6551"
