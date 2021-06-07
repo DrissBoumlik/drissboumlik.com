@@ -26,6 +26,8 @@ mix.js('resources/js/app.js', 'public/js')
     //     //
     // ])
 
+    .sourceMaps(true, 'source-map')
+
     .autoload({ jquery: ['$', 'window.jQuery', 'jQuery'] })
     /* Tools */
     .browserSync('localhost:8000')
