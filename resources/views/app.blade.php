@@ -5,7 +5,7 @@
         @include('addons.brand-text')
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="This is my resume.">
+        <meta name="description" content="Here is where you get to know who is Driss Boumlik.">
         <meta name="keywords" content="teacode, teacodema, javascript, php, laravel, discord, html, css, learn, programming, nodejs, web, development, programmers, developers, bugs, debug, debugging, programmer, coding, developer, bug, code, webdesign, software">
         <meta name="author" content="Driss Boumlik">
         {{-- <meta http-equiv="refresh" content="60"> --}}
