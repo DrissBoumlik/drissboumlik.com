@@ -3,6 +3,9 @@
     <head>
         @include('addons.brand-text')
         @include('layout.header-parts.head-meta')
+
+        @include('addons.google-analytics')
+
         @include('layout.header-parts.assets')
         <title>{{ $title ?? 'Driss Boumlik' }}</title>
     </head>
