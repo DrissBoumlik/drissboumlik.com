@@ -9,8 +9,8 @@
 {{-- @include('addons.google-tag-manager-head') --}}
 
 <link rel="canonical" href="https://www.drissboumlik.com/">
-<meta name="og:image" content="{{ asset('/assets/img/me/face-518x594.jpg') }}">
-<meta name="twitter:image" content="{{ asset('/assets/img/me/face-518x594.jpg') }}">
+<meta name="og:image" content="{{ asset('/assets/img/me/face-square-518.jpg') }}">
+<meta name="twitter:image" content="{{ asset('/assets/img/me/face-square-518.jpg') }}">
 <meta name="og:image:width" content="1200">
 <meta name="twitter:image:width" content="1200">
 <meta name="og:image:height" content="1200">
