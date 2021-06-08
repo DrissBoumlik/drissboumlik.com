@@ -15,9 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('cache.headers:public;max_age=15811200;etag')->group(function () {
 
-    Route::get('/{lang?}', 'PageController@resume');
-    Route::get('/cv/{lang?}', 'PageController@getCV');
+     // SiteMap
+    Route::get('/sitemap', 'SitemapController@sitemap');
+    Route::get('/generateSitemap', 'SitemapController@generateSitemap');
 
     // External
     Route::get('/social/{link}', 'GotoController@gotoExternalLink');
+
+    // Resume
+    Route::get('/cv/{lang?}', 'PageController@getCV');
+    Route::get('/{lang?}', 'PageController@resume');
+
+
 });
