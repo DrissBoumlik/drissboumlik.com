@@ -22,9 +22,12 @@ Route::middleware('cache.headers:public;max_age=15811200;etag')->group(function 
     // External
     Route::get('/social/{link}', 'GotoController@gotoExternalLink');
 
+    Route::redirect('/', '/resume');
     // Resume
-    Route::get('/cv/{lang?}', 'PageController@getCV');
-    Route::get('/{lang?}', 'PageController@resume');
+    Route::prefix('resume')->group(function (){
+        Route::get('/cv/{lang?}', 'PageController@getCV');
+        Route::get('/{lang?}', 'PageController@resume');
+    });
 
 
 });

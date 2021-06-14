@@ -10,7 +10,7 @@ class PageController extends Controller
     {
         $lang = $lang ?? 'en';
         if (!inLanguages($lang)) {
-            return redirect('/');
+            return redirect('/resume');
         }
         \App::setLocale($lang);
         $data = new \stdClass();
@@ -37,7 +37,7 @@ class PageController extends Controller
         // $lang = app()->getLocale();
         $lang = $lang ?? 'fr';
         if (!inLanguages($lang)) {
-            return redirect('/cv');
+            return redirect('/resume/cv');
         }
         \App::setLocale($lang);
         $filePath = base_path('public') . '/storage/cv/DrissBoumlik-' . $lang . '.pdf';
