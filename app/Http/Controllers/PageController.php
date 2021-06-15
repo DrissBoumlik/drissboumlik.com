@@ -8,15 +8,17 @@ class PageController extends Controller
 {
     public function resume(Request $request, $lang = null)
     {
-        $lang = $lang ?? 'en';
+        $lang = $lang ?? 'fr';
         if (!inLanguages($lang)) {
             return redirect('/resume');
         }
         \App::setLocale($lang);
         $data = new \stdClass();
+
+        $data->general = getGeneralText($lang);
+
         $data->sections = [];
-       //  json_decode(\File::get(base_path() . "/database/data/resume/contributors.json"));
-        $data->summary = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/summary.json"));
+        // $data->summary = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/summary.json"));
         $data->sections['competences'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/competences.json"));
         $data->sections['experiences'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/experiences.json"));
         $data->sections['education'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/education.json"));
@@ -32,21 +34,21 @@ class PageController extends Controller
         return view('pages.resume', ['data' => $data]);
     }
 
-    public function getCV(Request $request, $lang = null)
-    {
-        // $lang = app()->getLocale();
-        $lang = $lang ?? 'fr';
-        if (!inLanguages($lang)) {
-            return redirect('/resume/cv');
-        }
-        \App::setLocale($lang);
-        $filePath = base_path('public') . '/storage/cv/DrissBoumlik-' . $lang . '.pdf';
-        $filename = 'DrissBoumlik-' . $lang . '.pdf';
-        return \Response::make(file_get_contents($filePath), 200, [
-            'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'inline; filename="'.$filename.'"',
-            'Content-Transfer-Encoding'=> 'binary',
-            'Accept-Ranges'=> 'bytes'
-        ]);
-    }
+    // public function getCV(Request $request, $lang = null)
+    // {
+    //     // $lang = app()->getLocale();
+    //     $lang = $lang ?? 'fr';
+    //     if (!inLanguages($lang)) {
+    //         return redirect('/resume/cv');
+    //     }
+    //     \App::setLocale($lang);
+    //     $filePath = base_path('public') . '/storage/cv/DrissBoumlik-' . $lang . '.pdf';
+    //     $filename = 'DrissBoumlik-' . $lang . '.pdf';
+    //     return \Response::make(file_get_contents($filePath), 200, [
+    //         'Content-Type' => 'application/pdf',
+    //         'Content-Disposition' => 'inline; filename="'.$filename.'"',
+    //         'Content-Transfer-Encoding'=> 'binary',
+    //         'Accept-Ranges'=> 'bytes'
+    //     ]);
+    // }
 }

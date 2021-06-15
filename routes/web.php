@@ -20,14 +20,12 @@ Route::middleware('cache.headers:public;max_age=15811200;etag')->group(function 
     Route::get('/generateSitemap', 'SitemapController@generateSitemap');
 
     // External
-    Route::get('/social/{link}', 'GotoController@gotoExternalLink');
+    Route::get('/social/{link}/{lang?}', 'GotoController@gotoExternalLink');
 
     Route::redirect('/', '/resume');
     // Resume
-    Route::prefix('resume')->group(function (){
-        Route::get('/cv/{lang?}', 'PageController@getCV');
-        Route::get('/{lang?}', 'PageController@resume');
-    });
+    Route::get('resume/{lang?}', 'PageController@resume');
+    // Route::get('/cv/{lang?}', 'PageController@getCV');
 
 
 });

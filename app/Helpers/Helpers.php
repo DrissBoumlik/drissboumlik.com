@@ -1,5 +1,45 @@
 <?php
 
+if (!function_exists('getGeneralText')) {
+    function getGeneralText($lang = 'fr'){
+        $lang = $lang ?? 'fr';
+        $text = [
+            'en' => [
+                'welcome' => 'welcome',
+                'intro' => 'this is my resume ... ish',
+                'whois' => 'who is'
+            ],
+            'fr' => [
+                'welcome' => 'Bienvenue',
+                'intro' => 'ceci est mon curriculum',
+                'whois' => 'qui est'
+            ]
+        ];
+        return $text[$lang];
+    }
+}
+
+if (!function_exists('getLinks')) {
+    function getLinks(){
+        $links = [
+            // Social links
+            'facebook' => 'https://facebook.com/drissboumlik/',
+            'instagram' => 'https://instagram.com/drissboumlik/',
+            'twitter' => 'https://twitter.com/drissboumlik/',
+            'linkedin' => 'https://www.linkedin.com/in/drissboumlik/',
+            'github' => 'https://www.github.com/drissboumlik/',
+            'cv' => '/storage/cv/DrissBoumlik-' . \App::getLocale() . '.pdf',
+
+            // Contact
+            'meet' => 'https://calendly.com/drissboumlik/30min/',
+            'email' => 'mailto:idrissboumlik@gmail.com?subject=Resume : /',
+
+            // Brand
+            'site' => 'https://teacode.ma/'
+        ];
+        return $links;
+    }
+}
 
 if (!function_exists('getSocialLinks')) {
     function getSocialLinks()

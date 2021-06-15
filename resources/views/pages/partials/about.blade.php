@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="social-icons">
-                        @include('layout.footer-parts.social-links')
+                        @include('addons.social-links')
                     </div>
                 </div>
             </div>
@@ -21,12 +21,12 @@
                 <div class="col-10 offset-1 col-md-8 offset-md-2">
                     <div class="welcome-message">
                         <div class="welcome-message-wrapper text-center tc-black-almost fs-4">
-                            <div class="welcome text-capitalize">welcome</div>
+                            <div class="welcome text-capitalize">{{ $data->general['welcome']}}</div>
                             <div class="txt">
                                 <div class="">
-                                    <p class="capitalize-first-letter">here is where you get to know</p>
+                                    <p class="capitalize-first-letter">{{ $data->general['intro']}}</p>
                                     <p class="capitalize-first-letter">
-                                        <span>who is </span>
+                                        {{-- <span>{{ $data->general['whois']}} </span> --}}
                                         <span class="text-capitalize funny-font">driss boumlik</span>
                                     </p>
                                 </div>

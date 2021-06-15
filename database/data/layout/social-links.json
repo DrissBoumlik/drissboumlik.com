@@ -69,10 +69,9 @@
     {
         "img": "assets/img/social/pdf.png",
         "icon": "<i class='far fa-file-pdf'></i>",
-        "link": "resume/cv",
-        "title": "resume/cv",
-        "color": "#EE6551",
-        "local": true
+        "link": "social/cv",
+        "title": "cv",
+        "color": "#EE6551"
     },
     {
         "img": "assets/img/social/patreon.png",
