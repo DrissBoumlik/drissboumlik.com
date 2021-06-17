@@ -18,10 +18,14 @@
                                     <span><i class="far fa-calendar-alt"></i> {{ $experience->period }} |
                                         {!! calculateDate($experience->start_date, $experience->end_date) !!}
                                     </span>
-                                    <hr class="my-2">
-                                    {!! $experience->content !!}
-                                    <hr class="my-2">
-                                    {!! $experience->techs !!}
+                                    @if ($experience->content)
+                                        <hr class="my-2">
+                                        {!! $experience->content !!}
+                                    @endif
+                                    @if ($experience->techs)
+                                        <hr class="my-2">
+                                        {!! $experience->techs !!}
+                                    @endif
                                 </div>
                             </div>
                         @endforeach

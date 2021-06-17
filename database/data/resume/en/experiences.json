@@ -12,14 +12,14 @@
             "techs" : "<p><span class='underline'>Technical environment :</span><br>Angular 8, Bootstrap, jQuery, Laravel, Php, Git, Svn, WebStorm, PhpStorm, DataGrip, Xampp, Vscode, Trello, Slack, GitLab</p>"
         },
         {
-            "classList" : "teaching udemy",
-            "company" : "udemy",
-            "job" : "Teacher",
-            "period" : "Jun 2018",
-            "start_date" : "2018-06",
+            "classList" : "globe teacode",
+            "company" : "teacode",
+            "job" : "Founder",
+            "period" : "jan 2019",
+            "start_date" : "2019-01",
             "end_date" : null,
-            "content" : "<p>My first online course : <a href='https://www.udemy.com/css-mastering-animations/' target='blank' class='key-word' rel='noopener'>Mastering CSS animations</a>.</p>",
-            "techs" : ""
+            "content" : "<p>I created this community where Moroccan developers can help each other / support each other in their learning journey.</p>",
+            "techs" : null
         },
         {
             "classList" : "angular grintaaa",
@@ -32,6 +32,16 @@
             "techs" : "<p><span class='underline'>Technical environment :</span><br>Angular 8, Bootstrap, jQuery, Laravel 6, Rest Api, Git, WebStorm, PhpStorm, DataGrip, Xampp</p>"
         },
         {
+            "classList" : "teaching udemy",
+            "company" : "udemy",
+            "job" : "Teacher",
+            "period" : "Jun 2018",
+            "start_date" : "2018-06",
+            "end_date" : null,
+            "content" : "<p>My first online course : <a href='https://www.udemy.com/css-mastering-animations/' target='blank' class='key-word' rel='noopener'>Mastering CSS animations</a>.</p>",
+            "techs" : null
+        },
+        {
             "classList" : "laravel ehm",
             "company" : "Freelance",
             "job" : "Full Stack Developer - Laravel",
@@ -39,7 +49,7 @@
             "start_date" : "2019-06",
             "end_date" : "2019-09",
             "content" : "<p>Development of a showcase site for :</p><ul><li>Production / Distribution of fresh fruit.</li><li>Consultation in the field of agricultural development, agricultural management...</li></ul>",
-            "techs" : " <p><span class='underline'>Technical environment :</span><br>Laravel, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp, Gulp</p>"
+            "techs" : "<p><span class='underline'>Technical environment :</span><br>Laravel, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp, Gulp</p>"
         },
         {
             "classList" : "wordpress mediating",
@@ -79,7 +89,7 @@
             "start_date" : "2016-11",
             "end_date" : "2016-01",
             "content" : "<p>Teach children between 5-16 years old the basics of programming using:</p><ul><li><a href='https://scratch.mit.edu/' target='blank' class='key-word' rel='noopener'>Scratch</a> to learn the basics of programming</li><li><a href='https://education.lego.com/en-us' target='blank' class='key-word' rel='noopener'>Ev3 Lego Mindstorms</a> for problem solving</li></ul>",
-            "techs" : ""
+            "techs" : null
         },
         {
             "classList" : "bootstrap dirham",

@@ -12,13 +12,13 @@
             "techs" : "<p><span class='underline'>Environnement technique :</span><br>Angular 8, Bootstrap, jQuery, Laravel, Php, Git, Svn, WebStorm, PhpStorm, DataGrip, Xampp, Vscode, Trello, Slack, GitLab</p>"
         },
         {
-            "classList" : "teaching udemy",
-            "company" : "udemy",
-            "job" : "Formateur",
-            "period" : "Juin 2018",
-            "start_date" : "2018-06",
+            "classList" : "globe teacode",
+            "company" : "teacode",
+            "job" : "Founder",
+            "period" : "jan 2019",
+            "start_date" : "2019-01",
             "end_date" : null,
-            "content" : "<p>Ma première formation en ligne : <a rel='noopener' href='https://www.udemy.com/css-mastering-animations/' target='blank' class='key-word'>Maîtriser les animations CSS</a>.</p>",
+            "content" : "<p>J'ai créé cette communauté où les développeurs marocains peuvent s'entraider/se soutenir dans leur parcours d'apprentissage.</p>",
             "techs" : ""
         },
         {
@@ -30,6 +30,16 @@
             "end_date" : null,
             "content" : "<p>Développement d'un réseaux social dédié aux sportifs.</p><ul><li>Inscription au réseaux.</li><li>Ajouter / Suivre un autre contact.</li><li>Créer des pages / groupes pour un sport specific.</li><li>Créer des événements pour l'organisation des parties.</li><li>Créer des stories quotidiennes.</li><li>Créer / Partager des posts sur le profile ou sur une page / groupe.</li><li>Invitation des contacts à participer à une partie.</li><li>Demande de participation à une partie.</li><li>Noter les joueurs.</li><li>Etre notifier lors d'une partie sur la même région.</li></ul>",
             "techs" : "<p><span class='underline'>Environnement technique :</span><br>Angular 8, Bootstrap, jQuery, Laravel 6, Rest Api, Git, WebStorm, PhpStorm, DataGrip, Xampp</p>"
+        },
+        {
+            "classList" : "teaching udemy",
+            "company" : "udemy",
+            "job" : "Formateur",
+            "period" : "Juin 2018",
+            "start_date" : "2018-06",
+            "end_date" : null,
+            "content" : "<p>Ma première formation en ligne : <a rel='noopener' href='https://www.udemy.com/css-mastering-animations/' target='blank' class='key-word'>Maîtriser les animations CSS</a>.</p>",
+            "techs" : ""
         },
         {
             "classList" : "laravel ehm",
