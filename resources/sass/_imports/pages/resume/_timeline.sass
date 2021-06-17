@@ -44,6 +44,11 @@
             font-family: "Font Awesome 5 Free"
             background-color: #EA5252
             font-weight: 900
+        &.globe:after
+            content: "\f0ac"
+            font-family: "Font Awesome 5 Free"
+            background-color: $tc-blue-dark-2
+            font-weight: 900
         &.angular:after
             content: "\f420"
             font-family: "Font Awesome 5 Brands"
@@ -94,11 +99,6 @@
                 border-right: 3px solid #9a9a9a
             &:nth-child(odd) .content
                 border-left: 3px solid #9a9a9a
-        &.teacode
-            &:nth-child(even) .content
-                border-right: 3px solid #1DA1F2
-            &:nth-child(odd) .content
-                border-left: 3px solid #1DA1F2
         &.udemy
             &:nth-child(even) .content
                 border-right: 3px solid #EA5252
@@ -110,6 +110,12 @@
                 border-right: 3px solid #7FCD17
             &:nth-child(odd) .content
                 border-left: 3px solid #7FCD17
+
+        &.teacode
+            &:nth-child(even) .content
+                border-right: 3px solid $tc-blue-dark-2
+            &:nth-child(odd) .content
+                border-left: 3px solid $tc-blue-dark-2
 
         &.mediating
             &:nth-child(even) .content
@@ -165,6 +171,8 @@
                 font-size: 1rem
                 margin-bottom: 5px
                 font-weight: 600
+            ul
+                margin: 0
         .content, &:before
             opacity: 1
             transform: rotateY(0deg)
@@ -304,6 +312,8 @@
             &.udemy .content
                 border-right: 3px solid #EA5252!important
                 // border-left: none
+            &.teacode .content
+                border-right: 3px solid $tc-blue!important
             &.grintaaa .content
                 border-right: 3px solid #7FCD17!important
                 // border-left: none
