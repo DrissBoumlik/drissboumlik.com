@@ -32,7 +32,7 @@ if (!function_exists('getLinks')) {
 
             // Contact
             'meet' => 'https://calendly.com/drissboumlik/30min/',
-            'email' => 'mailto:idrissboumlik@gmail.com?subject=Resume : /',
+            'email' => 'mailto:idrissboumlik@gmail.com?subject=Resume : ',
 
             // Brand
             'site' => 'https://teacode.ma/'
