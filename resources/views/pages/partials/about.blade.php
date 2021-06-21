@@ -17,6 +17,7 @@
                     </div>
                 </div>
             </div>
+            @if (isset($data->general))
             <div class="row mt-4">
                 <div class="col-10 offset-1 col-md-8 offset-md-2">
                     <div class="welcome-message">
@@ -51,6 +52,7 @@
                     </div> --}}
                 </div>
             </div>
+            @endif
         </div>
     </div>
     {{-- <div class="mouse-icon-wrapper">

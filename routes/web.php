@@ -15,9 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 // Route::middleware('cache.headers:public;max_age=15811200;etag')->group(function () {
 
+
+    Route::group(['prefix' => 'admin'], function () {
+        Voyager::routes();
+    });
+
     Route::get('/tags/{tag}', 'TagController@getPostsByTag');
-    Route::get('/posts', 'PostController@index');
-    Route::resource('posts', 'PostController');
+    Route::get('posts', 'PostController@index');
+    Route::get('posts/{post:slug}', 'PostController@show');
 
 
      // SiteMap

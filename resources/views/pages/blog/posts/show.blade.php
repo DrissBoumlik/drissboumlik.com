@@ -1,0 +1,59 @@
+@extends('app')
+
+@section('header-assets')
+    <script src="https://unpkg.com/react@16.8.6/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.production.min.js"></script>
+
+    <link rel="stylesheet" href="{{asset('vendor/laraberg/css/laraberg.css')}}">
+    <script src="{{ asset('vendor/laraberg/js/laraberg.js') }}"></script>
+@endsection
+
+@section('content')
+    <div class="container-fluid p-0">
+        @include('pages.partials.about')
+        <div class="posts">
+            <div class="section py-5">
+                <div class="container">
+                    <div class="row section-header">
+                        <div class="col-md-10 offset-md-1 col-12
+                                d-flex flex-column align-items-center justify-content-center">
+                            <hr class="section-title-line">
+                            <h1 class="section-title">Post</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-8 offset-md-2
+                                        col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mb-4 post">
+                            <div class="post-title mb-3">
+                                <h2 class="font-weight-bolder">{{ $data->post->title }}</h2>
+                            </div>
+                            <div class="post-meta-data">
+                                <div class="post-date">
+                                    <i class="far fa-clock"></i>
+                                    {{ $data->post->updated_at->format('j F Y') }}
+                                </div>
+                                @if (is_array($data->post->tags) && count($data->post->tags))
+                                    <div class="post-tags mb-3">
+                                        @foreach ($data->post->tags as $tag)
+                                            <a href="/tags/{{ $tag }}">#{{ $tag }}</a>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="post-image mt-3">
+                                <img src="/storage/{{ $data->post->image }}" alt=""
+                                        class="w-100">
+                            </div>
+                            <div class="post-content mt-3">
+                                {!! $data->post->body !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @include('layout.footer')
+@endsection

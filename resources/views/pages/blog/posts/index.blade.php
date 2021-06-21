@@ -10,7 +10,7 @@
 
 @section('content')
     <div class="container-fluid p-0">
-        {{-- @include('pages.partials.about') --}}
+        @include('pages.partials.about')
         <div class="posts">
             <div class="section py-5">
                 <div class="container">
@@ -23,10 +23,10 @@
                     </div>
                     <div class="row">
                         @foreach ($data->posts as $post)
-                            <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2
-                                            col-lg-6 offset-lg-3 mb-4 post">
+                            <div class="col-12 col-md-8 offset-md-2
+                                            col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mb-5 post">
                                 <div class="post-title mb-3">
-                                    <h3>{{ $post->title }}</h3>
+                                    <h2 class="font-weight-bolder">{{ $post->title }}</h2>
                                 </div>
                                 @if (is_array($post->tags) && count($post->tags))
                                     <div class="post-tags mb-3">
@@ -38,7 +38,9 @@
                                 <div class="post-content">
                                     {!! $post->excerpt !!}
                                 </div>
-                                <hr>
+                                <div class="btn-actions mt-3">
+                                    <a href="/posts/{{ $post->slug }}" class="text-dark">Continue...</a>
+                                </div>
                             </div>
                         @endforeach
                         @if (!count($data->posts))
@@ -49,6 +51,12 @@
                                 </div>
                             </div>
                         @endif
+                        <div class="col-12 col-md-8 offset-md-2
+                                    col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+                            <div class="pagination justify-content-center">
+                                {{ $data->posts->onEachSide(5)->links() }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
