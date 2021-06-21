@@ -13,7 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('cache.headers:public;max_age=15811200;etag')->group(function () {
+// Route::middleware('cache.headers:public;max_age=15811200;etag')->group(function () {
+
+    Route::get('/tags/{tag}', 'TagController@getPostsByTag');
+    Route::get('/posts', 'PostController@index');
+    Route::resource('posts', 'PostController');
+
 
      // SiteMap
     Route::get('/sitemap', 'SitemapController@sitemap');
@@ -28,4 +33,4 @@ Route::middleware('cache.headers:public;max_age=15811200;etag')->group(function 
     // Route::get('/cv/{lang?}', 'PageController@getCV');
 
     Route::any('/{var}', 'HomeController@home')->where('var', '.*');
-});
+// });

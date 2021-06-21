@@ -8,7 +8,10 @@
 
 
         @include('layout.header-parts.assets')
-        <title>{{ $title ?? 'Driss Boumlik' }}</title>
+
+        @yield('header-assets')
+
+        <title>{{ $data->title ?? 'Driss Boumlik' }}</title>
     </head>
     <body class="antialiased {{ $mode . '-mode' }}">
         {{-- @include('addons.google-tag-manager-body') --}}

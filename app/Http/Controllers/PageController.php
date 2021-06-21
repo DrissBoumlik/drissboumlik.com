@@ -31,6 +31,8 @@ class PageController extends Controller
         $data->socialLinks = getSocialLinks();
         $data->menuFooter = getFooterMenu();
 
+        $data->title = 'Driss Boumlik | Resume';
+
         return view('pages.resume', ['data' => $data]);
     }
 
