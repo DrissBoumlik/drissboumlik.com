@@ -48,6 +48,13 @@ if (!function_exists('getSocialLinks')) {
     }
 }
 
+if (!function_exists('getHeaderMenu')) {
+    function getHeaderMenu()
+    {
+        return json_decode(\File::get(base_path() . '/database/data/layout/header-menu.json'));
+    }
+}
+
 if (!function_exists('getFooterMenu')) {
     function getFooterMenu()
     {
