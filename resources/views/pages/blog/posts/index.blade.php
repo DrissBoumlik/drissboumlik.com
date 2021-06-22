@@ -14,7 +14,7 @@
         <div class="posts">
             <div class="section py-5">
                 <div class="container">
-                    <div class="row section-header">
+                    <div class="row section-header d-none">
                         <div class="col-md-10 offset-md-1 col-12
                                 d-flex flex-column align-items-center justify-content-center">
                             <hr class="section-title-line">
@@ -26,7 +26,9 @@
                             <div class="col-12 col-md-8 offset-md-2
                                             col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mb-5 post">
                                 <div class="post-title mb-3">
-                                    <h2 class="font-weight-bolder">{{ $post->title }}</h2>
+                                    <a href="/posts/{{ $post->slug }}" class="text-dark text-decoration-none">
+                                        <h2 class="font-weight-bolder">{{ $post->title }}</h2>
+                                    </a>
                                 </div>
                                 @if (is_array($post->tags) && count($post->tags))
                                     <div class="post-tags mb-3">
@@ -39,7 +41,9 @@
                                     {!! $post->excerpt !!}
                                 </div>
                                 <div class="btn-actions mt-3">
-                                    <a href="/posts/{{ $post->slug }}" class="text-dark">Continue...</a>
+                                    <div class="btn-read-more">
+                                        <a href="/posts/{{ $post->slug }}">Continue...</a>
+                                    </div>
                                 </div>
                             </div>
                         @endforeach
@@ -53,7 +57,7 @@
                         @endif
                         <div class="col-12 col-md-8 offset-md-2
                                     col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
-                            <div class="pagination justify-content-center">
+                            <div class="pagination-wrapper justify-content-center">
                                 {{ $data->posts->onEachSide(5)->links() }}
                             </div>
                         </div>

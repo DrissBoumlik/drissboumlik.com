@@ -21,8 +21,8 @@ use Illuminate\Support\Facades\Route;
     });
 
     Route::get('/tags/{tag}', 'TagController@getPostsByTag');
-    Route::get('posts', 'PostController@index');
-    Route::get('posts/{post:slug}', 'PostController@show');
+    Route::get('blog', 'PostController@index');
+    Route::get('blog/{post:slug}', 'PostController@show');
 
 
      // SiteMap
