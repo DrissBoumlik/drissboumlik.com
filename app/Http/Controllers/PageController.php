@@ -29,11 +29,12 @@ class PageController extends Controller
         $data->sections['recommandations'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/recommandations.json"));
 
         $data->socialLinks = getSocialLinks();
-        $data->menuFooter = getFooterMenu();
+        $data->headerMenu = getHeaderMenu();
+        $data->footerMenu = getFooterMenu();
 
         $data->title = 'Driss Boumlik | Resume';
 
-        return view('pages.resume', ['data' => $data]);
+        return view('pages.resume.index', ['data' => $data]);
     }
 
     // public function getCV(Request $request, $lang = null)

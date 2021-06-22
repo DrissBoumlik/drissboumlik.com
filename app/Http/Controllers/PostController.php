@@ -15,7 +15,7 @@ class PostController extends Controller
         $data->posts = Post::orderBy('updated_at', 'desc')->paginate($this->perPage);
 
         $data->socialLinks = getSocialLinks();
-        $data->menuFooter = getFooterMenu();
+        $data->headerMenu = getHeaderMenu();
 
         return view('pages.blog.posts.index', ['data' => $data]);
     }
@@ -26,7 +26,7 @@ class PostController extends Controller
         $data->post = $post;
 
         $data->socialLinks = getSocialLinks();
-        $data->menuFooter = getFooterMenu();
+        $data->headerMenu = getHeaderMenu();
 
         return view('pages.blog.posts.show', ['data' => $data]);
     }

@@ -13,7 +13,7 @@ class TagController extends Controller
         $data->posts = Post::where('tags', 'like', '%' . $tag . '%')->get();
 
         $data->socialLinks = getSocialLinks();
-        $data->menuFooter = getFooterMenu();
+        $data->footerMenu = getFooterMenu();
 
         return view('pages.blog.posts.index', ['data' => $data]);
     }
