@@ -32,7 +32,7 @@ use Illuminate\Support\Facades\Route;
     // External
     Route::get('/social/{link}/{lang?}', 'GotoController@gotoExternalLink');
 
-    Route::redirect('/', '/resume');
+    Route::redirect('/', '/blog');
     // Resume
     Route::get('resume/{lang?}', 'PageController@resume');
     // Route::get('/cv/{lang?}', 'PageController@getCV');
