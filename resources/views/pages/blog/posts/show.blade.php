@@ -39,7 +39,6 @@
                                 @if ($data->post->meta_keywords)
                                 @php $tags = explode(' ', $data->post->meta_keywords) @endphp
                                     <div class="post-tags mb-3">
-                                        tags :
                                         @foreach ($tags as $tag)
                                             <a href="/tags/{{ $tag }}">#{{ $tag }}</a>
                                         @endforeach
