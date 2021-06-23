@@ -1,11 +1,5 @@
 [
     {
-        "title": "patreon",
-        "slug": "patreon",
-        "target": "_blank",
-        "hidden": true
-    },
-    {
         "title": "home",
         "slug": "",
         "target": "_self"
