@@ -23,9 +23,11 @@
                                         <h2 class="font-weight-bolder">{{ $post->title }}</h2>
                                     </a>
                                 </div>
-                                @if (is_array($post->tags) && count($post->tags))
+                                @if ($post->meta_keywords)
+                                @php $tags = explode(' ', $post->meta_keywords) @endphp
                                     <div class="post-tags mb-3">
-                                        @foreach ($post->tags as $tag)
+                                        tags :
+                                        @foreach ($tags as $tag)
                                             <a href="/tags/{{ $tag }}">#{{ $tag }}</a>
                                         @endforeach
                                     </div>
