@@ -17,6 +17,8 @@ class PostController extends Controller
         $data->socialLinks = getSocialLinks();
         $data->headerMenu = getHeaderMenu();
 
+        $data->title = 'Driss Boumlik | Blog';
+
         return view('pages.blog.posts.index', ['data' => $data]);
     }
 
@@ -28,6 +30,8 @@ class PostController extends Controller
         $data->socialLinks = getSocialLinks();
         $data->headerMenu = getHeaderMenu();
 
+        $data->title = 'Blog | ' . $post->title;
+        
         return view('pages.blog.posts.show', ['data' => $data]);
     }
 }
