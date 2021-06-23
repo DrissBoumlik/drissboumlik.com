@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function resume(Request $request, $lang = null)
+    public function resume(Request $request)
     {
-        $lang = $lang ?? 'fr';
+        $lang = $request->input('lang');
+        $lang = $lang ?? \App::getLocale();
         if (!inLanguages($lang)) {
             return redirect('/resume');
         }

@@ -34,7 +34,7 @@ use Illuminate\Support\Facades\Route;
 
     Route::redirect('/', '/blog');
     // Resume
-    Route::get('resume/{lang?}', 'PageController@resume');
+    Route::get('resume', 'PageController@resume');
     // Route::get('/cv/{lang?}', 'PageController@getCV');
 
     Route::any('/{var}', 'HomeController@home')->where('var', '.*');
