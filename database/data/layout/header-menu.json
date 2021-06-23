@@ -11,6 +11,11 @@
         "target": "_self"
     },
     {
+        "title": "blog",
+        "slug": "blog",
+        "target": "_self"
+    },
+    {
         "title": "resume",
         "slug": "resume",
         "target": "_self"
