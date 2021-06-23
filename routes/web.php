@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
         Voyager::routes();
     });
 
-    Route::get('/tags/{tag}', 'TagController@getPostsByTag');
+    Route::get('/tags/{tag}', 'PostController@getPostsByTag');
     Route::get('blog', 'PostController@index');
     Route::get('blog/{post:slug}', 'PostController@show');
 

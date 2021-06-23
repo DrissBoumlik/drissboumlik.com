@@ -31,7 +31,22 @@ class PostController extends Controller
         $data->headerMenu = getHeaderMenu();
 
         $data->title = 'Blog | ' . $post->title;
-        
+
         return view('pages.blog.posts.show', ['data' => $data]);
+    }
+
+    public function getPostsByTag(Request $request, $tag = null)
+    {
+        if ($tag) {
+            $data = new \stdClass();
+            $data->posts = Post::where('meta_keywords', 'like', '%' . $tag . '%')->paginate(5);
+
+            $data->socialLinks = getSocialLinks();
+            $data->headerMenu = getHeaderMenu();
+
+            return view('pages.blog.posts.index', ['data' => $data]);
+        } else {
+            return redirect('/blog');
+        }
     }
 }
