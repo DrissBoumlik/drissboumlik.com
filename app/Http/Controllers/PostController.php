@@ -50,4 +50,15 @@ class PostController extends Controller
             return redirect('/blog');
         }
     }
+
+    public function create(Request $request)
+    {
+        $data = new \stdClass();
+
+        $data->socialLinks = getSocialLinks();
+        $data->headerMenu = getHeaderMenu();
+
+        $data->title = 'Blog | Create Post';
+        return view('pages.blog.posts.create', ['data' => $data]);
+    }
 }
