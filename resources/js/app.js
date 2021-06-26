@@ -92,13 +92,6 @@ $(function () {
             $('#post-slug').val(postSlug);
         });
 
-        if ($('#post-body').length) {
-            const options = {
-                sidebar: true,
-            };
-            Laraberg.init('post-body', options);
-        }
-
         $(document).on('click', '.alert-close', function (){
             $('.alert-box').remove();
         });
