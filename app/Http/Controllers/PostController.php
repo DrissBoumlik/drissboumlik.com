@@ -12,7 +12,7 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $data = new \stdClass();
-        $data->posts = Post::orderBy('updated_at', 'desc')->paginate($this->perPage);
+        $data->posts = Post::orderBy('created_at', 'desc')->paginate($this->perPage);
 
         $data->socialLinks = getSocialLinks();
         $data->headerMenu = getHeaderMenu();
@@ -22,8 +22,9 @@ class PostController extends Controller
         return view('pages.blog.posts.index', ['data' => $data]);
     }
 
-    public function show(Request $request, Post $post)
+    public function show(Request $request, $slug)
     {
+        $post = Post::where('slug', $slug)->first();
         $data = new \stdClass();
         $data->post = $post;
 

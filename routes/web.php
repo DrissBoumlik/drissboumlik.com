@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('cache.headers:public;max_age=15811200;etag')->group(function () {
+Route::middleware('cache.headers:public;max_age=15811200;etag')->group(function () {
 
 
     Route::group(['prefix' => 'admin'], function () {
@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
     Route::get('/tags/{tag}', 'PostController@getPostsByTag');
     Route::get('blog', 'PostController@index');
-    Route::get('blog/{post:slug}', 'PostController@show');
+    Route::get('posts/{slug}', 'PostController@show');
 
 
      // SiteMap
@@ -34,8 +34,8 @@ use Illuminate\Support\Facades\Route;
 
     Route::redirect('/', '/blog');
     // Resume
-    Route::get('resume', 'PageController@resume');
+    Route::get('resume/{lang?}', 'PageController@resume');
     // Route::get('/cv/{lang?}', 'PageController@getCV');
 
     Route::any('/{var}', 'HomeController@home')->where('var', '.*');
-// });
+});

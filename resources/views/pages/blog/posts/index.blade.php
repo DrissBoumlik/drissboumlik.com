@@ -19,7 +19,7 @@
                             <div class="col-12 col-md-8 offset-md-2
                                             col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mb-5 post">
                                 <div class="post-title mb-3">
-                                    <a href="/blog/{{ $post->slug }}" class="text-dark text-decoration-none">
+                                    <a href="/posts/{{ $post->slug }}" class="text-dark text-decoration-none">
                                         <h2 class="font-weight-bolder">{{ $post->title }}</h2>
                                     </a>
                                 </div>
@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="btn-actions mt-3">
                                     <div class="btn-read-more">
-                                        <a href="/blog/{{ $post->slug }}">Continue...</a>
+                                        <a href="/posts/{{ $post->slug }}">Continue...</a>
                                     </div>
                                 </div>
                             </div>

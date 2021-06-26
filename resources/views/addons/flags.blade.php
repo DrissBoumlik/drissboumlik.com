@@ -1,8 +1,12 @@
 <div class="flags">
-    <div class="flag flag-fr {{ \App::getLocale() == 'fr' ? 'd-none' : 'd-block' }}">
-        <a href="/resume?lang=fr">fr</a>
-    </div>
-    <div class="flag flag-en {{ \App::getLocale() == 'en' ? 'd-none' : 'd-block' }}">
-        <a href="/resume?lang=en">en</a>
-    </div>
+    @if (\App::getLocale() != 'fr')
+        <a href="/resume/fr" class="flag-link">
+            <div class="flag flag-fr d-block">fr</div>
+        </a>
+    @endif
+    @if (\App::getLocale() != 'en')
+        <a href="/resume/en" class="flag-link">
+            <div class="flag flag-en d-block">en</div>
+        </a>
+    @endif
 </div>
