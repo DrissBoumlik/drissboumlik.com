@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function resume(Request $request, $lang = null)
+    public function resume(Request $request)
     {
-        $lang = $lang ?? 'fr';
+        $lang = $request->input('lang');
+        $lang = $lang ?? \App::getLocale();
         if (!inLanguages($lang)) {
             return redirect('/resume');
         }
@@ -34,7 +35,7 @@ class PageController extends Controller
 
         $data->title = 'Driss Boumlik | Resume';
 
-        return view('pages.resume.index', ['data' => $data]);
+        return view('pages.resume.resume-index', ['data' => $data]);
     }
 
     // public function getCV(Request $request, $lang = null)

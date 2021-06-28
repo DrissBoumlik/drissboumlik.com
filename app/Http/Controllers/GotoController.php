@@ -8,9 +8,10 @@ class GotoController extends Controller
 {
     private $home = '/';
     
-    public function gotoExternalLink(Request $request, $link, $lang = null)
+    public function gotoExternalLink(Request $request, $link)
     {
-        $lang = $lang ?? 'fr';
+        $lang = $request->input('lang');
+        $lang = $lang ?? \App::getLocale();
         if (!inLanguages($lang)) {
             return redirect('/resume');
         }
