@@ -6,13 +6,13 @@
         <div class="posts">
             <div class="section py-5">
                 <div class="container">
-                    <div class="row section-header d-none">
-                        <div class="col-md-10 offset-md-1 col-12
-                                d-flex flex-column align-items-center justify-content-center">
-                            <hr class="section-title-line">
-                            <h1 class="section-title">Post</h1>
-                        </div>
-                    </div>
+{{--                    <div class="row section-header d-none">--}}
+{{--                        <div class="col-md-10 offset-md-1 col-12--}}
+{{--                                d-flex flex-column align-items-center justify-content-center">--}}
+{{--                            <hr class="section-title-line">--}}
+{{--                            <h1 class="section-title">Post</h1>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                     <div class="row">
                         <div class="col-12 col-md-8 offset-md-2
                                         col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mb-4 post">

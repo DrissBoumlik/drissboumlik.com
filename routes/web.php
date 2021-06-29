@@ -22,7 +22,7 @@ Route::middleware('cache.headers:public;max_age=15811200;etag')->group(function 
 
     Route::get('/tags/{tag}', 'PostController@getPostsByTag');
     Route::get('blog', 'PostController@index');
-    Route::get('posts/{slug}', 'PostController@show');
+    Route::get('blog/{slug}', 'PostController@show');
 
 
      // SiteMap
