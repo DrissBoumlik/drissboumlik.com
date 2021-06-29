@@ -45,7 +45,7 @@ class PostController extends Controller
             $data->socialLinks = getSocialLinks();
             $data->headerMenu = getHeaderMenu();
 
-            $data->title = 'Blog | ' . $tag;
+            $data->title = 'Blog | Tags - ' . $tag;
 
             return view('pages.blog.posts.index', ['data' => $data]);
         } else {
