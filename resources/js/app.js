@@ -3,7 +3,6 @@ import 'bootstrap';
 require('particles.js');
 var slugify = require('slugify')
 import 'owl.carousel';
-import 'tinymce';
 
 let _body = $(document.body);
 
@@ -93,25 +92,6 @@ $(function () {
             $('#post-slug').val(postSlug);
         });
 
-        $(document).on('click', '.alert-close', function (){
-            $('.alert-box').remove();
-        });
-
-        tinymce.init({
-            selector: 'textarea.tinymce-editor',
-            height: 100,
-            menubar: false,
-            plugins: [
-                'advlist autolink lists link image charmap print preview anchor',
-                'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table paste code help wordcount'
-            ],
-            toolbar: 'undo redo | formatselect | ' +
-                'bold italic backcolor | alignleft aligncenter ' +
-                'alignright alignjustify | bullist numlist outdent indent | ' +
-                'removeformat | help',
-            content_css: '//www.tiny.cloud/css/codepen.min.css'
-        });
 
         if($('#particles-js').length) {
             // setTimeout(() => {
