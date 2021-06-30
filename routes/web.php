@@ -36,7 +36,6 @@ Route::middleware('cache.headers:public;max_age=15811200;etag')->group(function 
     Route::redirect('/', '/resume');
     // Resume
     Route::get('resume', 'PageController@resume');
-    // Route::get('/cv/{lang?}', 'PageController@getCV');
 
     Route::any('/{var}', 'HomeController@home')->where('var', '.*');
 });
