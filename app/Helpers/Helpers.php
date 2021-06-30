@@ -11,7 +11,7 @@ if (!function_exists('getGeneralText')) {
             ],
             'fr' => [
                 'welcome' => 'Bienvenue',
-                'intro' => 'ceci est mon curriculum',
+                'intro' => 'ceci est mon curriculum vitae',
                 'whois' => 'qui est'
             ]
         ];
