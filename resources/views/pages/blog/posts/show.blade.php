@@ -32,7 +32,12 @@
                                 @php $tags = explode(' ', $data->post->meta_keywords) @endphp
                                     <div class="post-tags mb-3">
                                         @foreach ($tags as $tag)
-                                            <a href="/tags/{{ $tag }}">#{{ $tag }}</a>
+                                            <div class="post-tag d-inline-block me-2">
+                                                <i class="fas fa-tag fs-small"></i>
+                                                <a href="/tags/{{ $tag }}">
+                                                    <span>{{ $tag }}</span>
+                                                </a>
+                                            </div>
                                         @endforeach
                                     </div>
                                 @endif
