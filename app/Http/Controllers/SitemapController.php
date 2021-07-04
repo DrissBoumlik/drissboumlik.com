@@ -8,7 +8,7 @@ class SitemapController extends Controller
 {
     public function sitemap(Request $request)
     {
-        $filePath = public_path() . '/storage/sitemap.xml';
+        $filePath = \Storage::disk('public')->path('sitemap.xml') ;
         $filename = 'sitemap.xml';
         return \Response::make(file_get_contents($filePath), 200, [
             'Content-Type' => 'application/xml',
@@ -20,8 +20,8 @@ class SitemapController extends Controller
 
     public function generateSitemap(Request $request)
     {
-        $path = public_path() . '/storage/sitemap.xml';
-        \Spatie\Sitemap\SitemapGenerator::create('https://resume.drissboumlik.com')->getSitemap()->writeToFile($path);
+        $path = \Storage::disk('public')->path('sitemap.xml');
+        \Spatie\Sitemap\SitemapGenerator::create('https://drissboumlik.com')->getSitemap()->writeToFile($path);
         return redirect('/sitemap');
     }
 }
