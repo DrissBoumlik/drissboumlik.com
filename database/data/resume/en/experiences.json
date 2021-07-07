@@ -2,7 +2,7 @@
     "header" : "experiences",
     "items" : [
         {
-            "classList" : "php branch work",
+            "classList" : "laravel branch work",
             "company" : "rc2k",
             "job" : "Full Stack Developer",
             "period" : "Nov 2019",
