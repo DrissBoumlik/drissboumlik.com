@@ -1,6 +1,10 @@
 
 .pagination-wrapper
     display: flex
+    *
+        transition: unset
+        &:focus
+            box-shadow: unset
     .page-item
         &.active .page-link
             border: none
