@@ -3,6 +3,42 @@ body.dark-mode // background-color: $tc-blue-dark-3
     *
         color: $tc-white
 
+    .posts
+        border-top: 1px solid $tc-blue
+        background-color: $tc-blue-dark-4
+
+    .pagination-wrapper
+        display: flex
+        .page-item
+            &.disabled .page-link
+                color: $tc-grey
+            &.active .page-link
+                color: $tc-white
+                // border-color: $tc-white
+                // background-color: $tc-blue
+            .page-link
+                background-color: $tc-blue-dark-4
+            &:not(.active) .page-link:hover
+                color: $tc-blue
+
+
+    .post
+        .post-title h2, .btn-read-more a
+            color: $tc-grey-light
+    .post-form
+        background-color: $tc-blue-dark-3
+        .post-body-wrapper
+            svg
+                color: $tc-white
+            *
+                color: $tc-black-almost
+
+    .header-menu-wrapper .header-menu .header-menu-item
+        &:after
+            background-color: $tc-white
+        a
+            color: $tc-white
+
     .page
         background-color: $tc-blue-dark-3
     .particles-js

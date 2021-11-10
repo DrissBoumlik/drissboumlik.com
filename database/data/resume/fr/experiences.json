@@ -2,7 +2,7 @@
     "header" : "experiences",
     "items" : [
         {
-            "classList" : "php branch work",
+            "classList" : "laravel branch work",
             "company" : "rc2k",
             "job" : "Développeur Full Stack",
             "period" : "Nov 2019",
@@ -18,7 +18,7 @@
             "period" : "jan 2019",
             "start_date" : "2019-01",
             "end_date" : null,
-            "content" : "<p>J'ai créé cette communauté où les développeurs marocains peuvent s'entraider/se soutenir dans leur parcours d'apprentissage.</p>",
+            "content" : "<p>J'ai créé cette communauté afin que les développeurs marocains peuvent s'entraider et évoluer dans un environnement propice à l'apprentissage.</p>",
             "techs" : ""
         },
         {
@@ -28,7 +28,7 @@
             "period" : "Oct 2019",
             "start_date" : "2019-06",
             "end_date" : null,
-            "content" : "<p>Développement d'un réseaux social dédié aux sportifs.</p><ul><li>Inscription au réseaux.</li><li>Ajouter / Suivre un autre contact.</li><li>Créer des pages / groupes pour un sport specific.</li><li>Créer des événements pour l'organisation des parties.</li><li>Créer des stories quotidiennes.</li><li>Créer / Partager des posts sur le profile ou sur une page / groupe.</li><li>Invitation des contacts à participer à une partie.</li><li>Demande de participation à une partie.</li><li>Noter les joueurs.</li><li>Etre notifier lors d'une partie sur la même région.</li></ul>",
+            "content" : "<p>Développement d'un réseau social destiné aux sportifs.</p><ul><li>Inscription au réseaux.</li><li>Ajouter / Suivre un autre contact.</li><li>Créer des pages / groupes pour un sport spécifique.</li><li>Créer des événements.</li><li>Créer des stories quotidiennes.</li><li>Créer / Partager des publications sur le profile ou sur une page / groupe.</li><li>Invitation des contacts à participer à une partie.</li><li>Demande de participation à une partie.</li><li>Noter les joueurs.</li><li>Etre notifier lors d'une partie sur la même région.</li></ul>",
             "techs" : "<p><span class='underline'>Environnement technique :</span><br>Angular 8, Bootstrap, jQuery, Laravel 6, Rest Api, Git, WebStorm, PhpStorm, DataGrip, Xampp</p>"
         },
         {
@@ -38,7 +38,7 @@
             "period" : "Juin 2018",
             "start_date" : "2018-06",
             "end_date" : null,
-            "content" : "<p>Ma première formation en ligne : <a rel='noopener' href='https://www.udemy.com/css-mastering-animations/' target='blank' class='key-word'>Maîtriser les animations CSS</a>.</p>",
+            "content" : "<p>La création de ma première formation en ligne : <a rel='noopener' href='https://www.udemy.com/css-mastering-animations/' target='blank' class='key-word'>Maîtriser les animations CSS</a>.</p>",
             "techs" : ""
         },
         {
@@ -48,7 +48,7 @@
             "period" : "Juin 2019 – Sep 2019",
             "start_date" : "2019-06",
             "end_date" : "2019-09",
-            "content" : "<p>Développement d'un site vitrine pour :</p><ul><li>Production / Distribution des fruits frais</li><li>Consultation dans les domaine du développement agricole, gestion agricole...</li></ul>",
+            "content" : "<p>Développement d'un site vitrine pour :</p><ul><li>Production / Distribution des fruits frais</li><li>Consultation dans les domaines du développement agricole, gestion agricole...</li></ul>",
             "techs" : " <p><span class='underline'>Environnement technique :</span><br>Laravel, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp, Gulp</p>"
         },
         {
@@ -58,7 +58,7 @@
             "period" : "Jan 2019 - Mai 2019",
             "start_date" : "2019-01",
             "end_date" : "2019-05",
-            "content" : "<ul><li>Développement d'un système de gestion des tickets.</li><li>Développement du site de l'AMDL (Agence Marocaine de Développement de la Logistique).</li><li>Corrections et évolution de sites web existants.</li><li>Encadrement des nouveaux recrus.</li></ul>",
+            "content" : "<ul><li>Développement d'un système de gestion des tickets.</li><li>Développement du site de l'AMDL (Agence Marocaine de Développement de la Logistique).</li><li>Correction et évolution de sites web existants.</li><li>Encadrement des nouveaux recrus.</li></ul>",
             "techs" : "<p><span class='underline'>Environnement technique :</span><br>Laravel, Wordpress, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp</p>"
         },
         {
@@ -68,7 +68,7 @@
             "period" : "Jan 2019 – Fév 2019",
             "start_date" : "2019-01",
             "end_date" : "2019-02",
-            "content" : "<p>Développement d'un site portail pour l'etude en Ukraine / Russie.</p><p>Déploiement du site sur le serveur du client.</p>",
+            "content" : "<p>Développement d'un site portail concernant les modalités des études en Ukraine / Russie.</p><p>Déploiement du site sur le serveur du client.</p>",
             "techs" : "<p><span class='underline'>Environnement technique :</span><br>Wordpress, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp</p>"
         },
         {
@@ -108,7 +108,7 @@
             "period" : "Avr 2016 - Juin 2016",
             "start_date" : "2016-04",
             "end_date" : "2016-06",
-            "content" : "<p>Développement d'un système de gestion d'une salle couverte (Pointage, Réservation, Gestion de Stock, Matériels….).</p><ul><li>Gestion le pointage des adherents.</li><li>Gestion des Réservation de la salle couverte.</li><li>Gestion du stock.</li><li>Gestion du materiel interne de l'association.</li></ul>",
+            "content" : "<p>Développement d'un système de gestion d'une salle couverte (Pointage, Réservation, Gestion de Stock, Matériels….).</p><ul><li>Gestion de pointage des adhérents.</li><li>Gestion des Réservation de la salle couverte.</li><li>Gestion du stock.</li><li>Gestion du materiel interne de l'association.</li></ul>",
             "techs" : "<p><span class='underline'>Environnement technique :</span><br>C#, .NET, DevExpress, Sql Server, Crystal Report, Visual Studio 2010</p>"
         }
     ]

@@ -1,6 +1,7 @@
 // require('bootstrap');
 import 'bootstrap';
 require('particles.js');
+var slugify = require('slugify')
 import 'owl.carousel';
 
 let _body = $(document.body);
@@ -50,11 +51,47 @@ function drawText() {
     console.log(text);
 }
 
+function string_to_slug (str) {
+    str = str.replace(/^\s+|\s+$/g, ''); // trim
+    str = str.toLowerCase();
+
+    // remove accents, swap ñ for n, etc
+    var from = "åàáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
+    var to = "aaaaaaeeeeiiiioooouuuunc------";
+
+    for (var i=0, l=from.length ; i<l ; i++) {
+        str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+    }
+
+    str = str
+        .replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+        .replace(/\s+/g, '-') // collapse whitespace and replace by -
+        .replace(/-+/g, '-') // collapse dashes
+        .replace(/^-+/g, '') // trim - from start of text
+        .replace(/-+$/g, ''); // trim - from end of text
+
+    return str;
+}
+
 $(function () {
 
     try {
 
         drawText();
+
+        $(document).on('focusout', '#post-title', function (){
+            let postTitle = $(this).val();
+            let postSlug = string_to_slug(postTitle);
+            // slugify(postTitle, {
+            //     replacement: '-',  // replace spaces with replacement character, defaults to `-`
+            //     remove: undefined, // remove characters that match regex, defaults to `undefined`
+            //     lower: true,      // convert to lower case, defaults to `false`
+            //     strict: true,     // strip special characters except replacement, defaults to `false`
+            //     locale: 'vi'       // language code of the locale to use
+            // });
+            $('#post-slug').val(postSlug);
+        });
+
 
         if($('#particles-js').length) {
             // setTimeout(() => {
@@ -100,6 +137,7 @@ $(function () {
         });
 
     } catch (error) {
+        console.log(error);
 
     }
 });

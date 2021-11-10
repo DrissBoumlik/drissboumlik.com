@@ -2,7 +2,7 @@
     "header" : "experiences",
     "items" : [
         {
-            "classList" : "php branch work",
+            "classList" : "laravel branch work",
             "company" : "rc2k",
             "job" : "Full Stack Developer",
             "period" : "Nov 2019",
@@ -18,7 +18,7 @@
             "period" : "jan 2019",
             "start_date" : "2019-01",
             "end_date" : null,
-            "content" : "<p>I created this community where Moroccan developers can help each other / support each other in their learning journey.</p>",
+            "content" : "<p>I created this community so that Moroccan developers can help each other and evolve in an environment conducive to learning.</p>",
             "techs" : null
         },
         {
@@ -28,7 +28,7 @@
             "period" : "Oct 2019",
             "start_date" : "2019-06",
             "end_date" : null,
-            "content" : "<p>Development of a social network dedicated to athletes.</p><ul><li>Network registration.</li><li>Add / Follow another contact.</li><li>Create pages / groups for a specific sport.</li><li>Create events for the organization of the parties.</li><li>Create daily stories.</li><li>Create / Share posts on the profile or on a page / group.</li><li>Invitation of contacts to participate in a game.</li><li>Request to participate in a game.</li><li>Review the players.</li><li>Get notified during a game on the same region.</li></ul>",
+            "content" : "<p>Development of a social network for athletes.</p><ul><li>Network registration.</li><li>Add / Follow another contact.</li><li>Create pages / groups for a specific sport.</li><li>Create events.</li><li>Create daily stories.</li><li>Create / Share posts on the profile or on a page / group.</li><li>Invitation of contacts to participate in a game.</li><li>Request to participate in a game.</li><li>Review the players.</li><li>Get notified during a game on the same region.</li></ul>",
             "techs" : "<p><span class='underline'>Technical environment :</span><br>Angular 8, Bootstrap, jQuery, Laravel 6, Rest Api, Git, WebStorm, PhpStorm, DataGrip, Xampp</p>"
         },
         {
@@ -48,7 +48,7 @@
             "period" : "June 2019 – Sep 2019",
             "start_date" : "2019-06",
             "end_date" : "2019-09",
-            "content" : "<p>Development of a showcase site for :</p><ul><li>Production / Distribution of fresh fruit.</li><li>Consultation in the field of agricultural development, agricultural management...</li></ul>",
+            "content" : "<p>Development of a showcase site for :</p><ul><li>Production / Distribution of fresh fruit.</li><li>Consulting in the fields of agricultural development, agricultural management...</li></ul>",
             "techs" : "<p><span class='underline'>Technical environment :</span><br>Laravel, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp, Gulp</p>"
         },
         {
@@ -58,7 +58,7 @@
             "period" : "Jan 2019 - May 2019",
             "start_date" : "2019-01",
             "end_date" : "2019-05",
-            "content" : "<ul><li>Development of a ticket management system.</li><li>Development of the AMDL site (Moroccan Logistics Development Agency)</li><li>Corrections and evolution of existing websites.</li><li>Supervision of new recruits.</li></ul>",
+            "content" : "<ul><li>Development of a ticket management system.</li><li>Development of the AMDL site (Moroccan Logistics Development Agency)</li><li>Correction and evolution of existing websites.</li><li>Supervision of new recruits.</li></ul>",
             "techs" : "<p><span class='underline'>Technical environment :</span><br>Laravel, Wordpress, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp</p>"
         },
         {
@@ -68,7 +68,7 @@
             "period" : "Jan 2019 – Feb 2019",
             "start_date" : "2019-01",
             "end_date" : "2019-02",
-            "content" : "<p>Development of a portal site for the study in Ukraine / Russia.</p><p>Deployment of the site on the client's server.</p>",
+            "content" : "<p>Development of a portal site concerning the modalities of studies in Ukraine / Russia.</p><p>Deployment of the site on the client's server.</p>",
             "techs" : "<p><span class='underline'>Technical environment :</span><br>Wordpress, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp</p>"
         },
         {

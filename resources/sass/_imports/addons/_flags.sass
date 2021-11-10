@@ -1,15 +1,26 @@
 .flags
     z-index: 999
-    max-width: 35px
+    width: 40px
     position: fixed
-    left: 2%
-    top: 5%
-    .flag
-        // margin-bottom: .7rem
-        // border-radius: 5px
-        overflow: hidden
-        svg
+    right: 20px
+    top: 20px
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    .flag-link
+        color: $tc-white
+        text-decoration: none
+        font-weight: bold
+        .flag
+            // margin-bottom: .7rem
+            // border-radius: 5px
+            text-transform: uppercase
+            overflow: hidden
+            height: 40px
+            width: 40px
+            color: $tc-white
+            background-color: $tc-blue-dark-2
             border-radius: 50%
-            border: 2px solid $tc-blue
-        &.flag-fr
-            margin-bottom: .5rem
+            text-align: center
+            line-height: 42px

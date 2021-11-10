@@ -11,7 +11,7 @@ if (!function_exists('getGeneralText')) {
             ],
             'fr' => [
                 'welcome' => 'Bienvenue',
-                'intro' => 'ceci est mon curriculum',
+                'intro' => 'ceci est mon curriculum vitae',
                 'whois' => 'qui est'
             ]
         ];
@@ -32,7 +32,7 @@ if (!function_exists('getLinks')) {
 
             // Contact
             'meet' => 'https://calendly.com/drissboumlik/30min/',
-            'email' => 'mailto:idrissboumlik@gmail.com?subject=Resume : ',
+            'email' => 'mailto:contact@teacode.ma?subject=Resume : ',
 
             // Brand
             'site' => 'https://teacode.ma/'
@@ -45,6 +45,13 @@ if (!function_exists('getSocialLinks')) {
     function getSocialLinks()
     {
         return json_decode(\File::get(base_path() . '/database/data/layout/social-links.json'));
+    }
+}
+
+if (!function_exists('getHeaderMenu')) {
+    function getHeaderMenu()
+    {
+        return json_decode(\File::get(base_path() . '/database/data/layout/header-menu.json'));
     }
 }
 
