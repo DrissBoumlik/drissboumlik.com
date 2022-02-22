@@ -6,7 +6,7 @@
                 <div class="col-8 offset-2">
                     <div class="img-wrapper d-flex justify-content-center">
                         <img src="{{ asset('/assets/img/me/circle-256.png') }}"
-                        class="img-fluid rounded-circle mb-4" alt="">
+                        class="img-fluid rounded-circle mb-4" alt="" height="130" width="130">
                     </div>
                 </div>
             </div>

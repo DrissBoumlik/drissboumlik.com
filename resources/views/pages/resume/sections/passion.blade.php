@@ -16,7 +16,7 @@
                                 <div class="has-badge d-flex align-items-center">
                                     <div class="box-icon me-2">
                                         <img src="{{ asset('/assets/img/icons/' . $passionItem->icon) }}"
-                                        alt="{{ $passionItem->title }}">
+                                        alt="{{ $passionItem->title }}" width="25" height="25">
                                     </div>
                                     <div class="box-header-txt">
                                         <h4 class="text-capitalize">{{ $passionItem->title }}</h4>

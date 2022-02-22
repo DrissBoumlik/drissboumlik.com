@@ -12,8 +12,8 @@
                     <div class="col-md-6 col-12">
                         <div class="progress mb-4">
                             <div id="{{ $tech->id }}" class="progress-bar delay padding-left"
-                                style="width: {{ $tech->value }}%"
-                                role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100">
+                                style="width: {{ $tech->value }}%" aria-label="{{ $tech->name }}"
+                                role="progressbar" aria-valuenow="{{ $tech->value }}" aria-valuemin="0" aria-valuemax="100">
                                 <div class="progress-bar-text">
                                     <span>{{ $tech->name }}</span>
                                     <span class="mx-1">-</span>
