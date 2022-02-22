@@ -19,7 +19,7 @@
                                         alt="{{ $other_expItem->title }}" height="25" width="25">
                                     </div>
                                     <div class="box-header-txt">
-                                        <h4 class="text-capitalize">{{ $other_expItem->title }}</h4>
+                                        <h1 class="text-capitalize">{{ $other_expItem->title }}</h1>
                                     </div>
                                 </div>
                             </div><!-- .lits-group-item-figure -->
