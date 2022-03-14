@@ -71,8 +71,7 @@
         "icon": "<i class='far fa-file-pdf'></i>",
         "link": "social/cv",
         "title": "cv",
-        "color": "#EE6551",
-        "hidden": true
+        "color": "#EE6551"
     },
     {
         "img": "assets/img/social/patreon.png",
