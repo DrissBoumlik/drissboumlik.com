@@ -8,7 +8,7 @@ class GotoController extends Controller
 {
     private $home = '/';
     
-    public function gotoExternalLink(Request $request, $link)
+    public function goto(Request $request, $link)
     {
         $lang = $request->input('lang');
         $lang = $lang ?? \App::getLocale();

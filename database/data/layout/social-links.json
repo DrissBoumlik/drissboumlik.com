@@ -2,28 +2,28 @@
     {
         "img": "assets/img/social/patreon.png",
         "icon": "<i class='fas fa-globe'></i>",
-        "link": "social/site",
+        "link": "site",
         "title": "website",
         "color": "#EE6551"
     },
     {
         "img": "assets/img/social/linkedin.png",
         "icon": "<i class='fab fa-linkedin'></i>",
-        "link": "social/linkedin",
+        "link": "linkedin",
         "title": "linkedin",
         "color": "#6E85D3"
     },
     {
         "img": "assets/img/social/github.png",
         "icon": "<i class='fab fa-github'></i>",
-        "link": "social/github",
+        "link": "github",
         "title": "github",
         "color": "#6E85D3"
     },
     {
         "img": "assets/img/social/facebook.png",
         "icon": "<i class='fab fa-facebook-f'></i>",
-        "link": "social/facebook",
+        "link": "facebook",
         "title": "facebook",
         "color": "#D32322",
         "hidden": false
@@ -31,7 +31,7 @@
     {
         "img": "assets/img/social/Youtube.png",
         "icon": "<i class='fab fa-youtube'></i>",
-        "link": "social/youtube",
+        "link": "youtube",
         "title": "youtube",
         "color": "#4867AA",
         "hidden": true
@@ -39,7 +39,7 @@
     {
         "img": "assets/img/social/instagram.png",
         "icon": "<i class='fab fa-instagram'></i>",
-        "link": "social/instagram",
+        "link": "instagram",
         "title": "instagram",
         "color": "#B03699",
         "hidden": false
@@ -47,7 +47,7 @@
     {
         "img": "assets/img/social/twitter.png",
         "icon": "<i class='fab fa-twitter'></i>",
-        "link": "social/twitter",
+        "link": "twitter",
         "title": "twitter",
         "color": "#50ABF1",
         "hidden": false
@@ -55,28 +55,28 @@
     {
         "img": "assets/img/social/patreon.png",
         "icon": "<i class='fas fa-calendar-alt'></i>",
-        "link": "social/meet",
+        "link": "meet",
         "title": "meet",
         "color": "#EE6551"
     },
     {
         "img": "assets/img/social/patreon.png",
         "icon": "<i class='fas fa-at'></i>",
-        "link": "social/email",
+        "link": "email",
         "title": "email",
         "color": "#EE6551"
     },
     {
         "img": "assets/img/social/pdf.png",
         "icon": "<i class='far fa-file-pdf'></i>",
-        "link": "social/cv",
+        "link": "cv",
         "title": "cv",
         "color": "#EE6551"
     },
     {
         "img": "assets/img/social/patreon.png",
         "icon": "<i class='fab fa-patreon'></i>",
-        "link": "social/patreon",
+        "link": "patreon",
         "title": "patreon",
         "color": "#EE6551",
         "hidden": true
