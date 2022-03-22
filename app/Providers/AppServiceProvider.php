@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function ($view) {
             $mode = \Cookie::get('mode');
             if ($mode != 'dark' && $mode != 'light') {
-                $mode = 'light';
+                $mode = 'dark';
             }
             $view->with('mode', $mode);
         });
