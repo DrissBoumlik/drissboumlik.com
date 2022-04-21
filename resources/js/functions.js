@@ -49,6 +49,7 @@ function string_to_slug(str) {
 }
 
 function toggleDarkMode(button, isActive) {
+    let _body = $(document.body);
     if (isActive) {
         _body.addClass('dark-mode').removeClass('light-mode');
         button.addClass('dark-mode').removeClass('light-mode');
