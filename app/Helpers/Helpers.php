@@ -28,6 +28,8 @@ if (!function_exists('getLinks')) {
             'twitter' => 'https://twitter.com/drissboumlik/',
             'linkedin' => 'https://www.linkedin.com/in/drissboumlik/',
             'github' => 'https://www.github.com/drissboumlik/',
+            'youtube' => 'https://youtube.com/channel/UCss61diIS1kW_TRsHMMwtwQ',
+            'community' => 'https://teacode.ma',
             'cv' => '/storage/cv/DrissBoumlik-' . \App::getLocale() . '.pdf',
 
             // Contact
