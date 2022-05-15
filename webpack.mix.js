@@ -16,9 +16,11 @@ path = require('path');
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/externals.sass', 'public/css')
     .sass('resources/sass/app.sass', 'public/css')
+    .copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts')
     .purgeCss({
         extend: {
             content: [path.join(__dirname, 'database/data/**/*.json'),
+                        path.join(__dirname, 'resources/js/**/*.js'),
                         path.join(__dirname, 'node_modules/owl.carousel/dist/owl.carousel.min.js'),
                         ],
         },

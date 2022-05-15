@@ -15,7 +15,7 @@
                                 <div class="content">
                                     <h2 class="where text-uppercase">{{ $experience->company }}</h2>
                                     <h2 class="function">{{ $experience->job }}</h2>
-                                    <span><i class="far fa-calendar-alt"></i> {{ $experience->period }} |
+                                    <span><i class="fa-solid fa-calendar-days"></i> {{ $experience->period }} |
                                         {!! calculateDate($experience->start_date, $experience->end_date) !!}
                                     </span>
                                     @if ($experience->content)

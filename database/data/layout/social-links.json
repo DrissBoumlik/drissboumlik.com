@@ -1,28 +1,28 @@
 [
     {
         "img": "assets/img/social/patreon.png",
-        "icon": "<i class='fas fa-globe'></i>",
+        "icon": "<i class='fa-solid fa-globe'></i>",
         "link": "site",
         "title": "website",
         "color": "#EE6551"
     },
     {
         "img": "assets/img/social/linkedin.png",
-        "icon": "<i class='fab fa-linkedin'></i>",
+        "icon": "<i class='fa-brands fa-linkedin'></i>",
         "link": "linkedin",
         "title": "linkedin",
         "color": "#6E85D3"
     },
     {
         "img": "assets/img/social/github.png",
-        "icon": "<i class='fab fa-github'></i>",
+        "icon": "<i class='fa-brands fa-github'></i>",
         "link": "github",
         "title": "github",
         "color": "#6E85D3"
     },
     {
         "img": "assets/img/social/facebook.png",
-        "icon": "<i class='fab fa-facebook-f'></i>",
+        "icon": "<i class='fa-brands fa-facebook-f'></i>",
         "link": "facebook",
         "title": "facebook",
         "color": "#D32322",
@@ -30,7 +30,7 @@
     },
     {
         "img": "assets/img/social/Youtube.png",
-        "icon": "<i class='fab fa-youtube'></i>",
+        "icon": "<i class='fa-brands fa-youtube'></i>",
         "link": "youtube",
         "title": "youtube",
         "color": "#4867AA",
@@ -38,7 +38,7 @@
     },
     {
         "img": "assets/img/social/instagram.png",
-        "icon": "<i class='fab fa-instagram'></i>",
+        "icon": "<i class='fa-brands fa-instagram'></i>",
         "link": "instagram",
         "title": "instagram",
         "color": "#B03699",
@@ -46,7 +46,7 @@
     },
     {
         "img": "assets/img/social/twitter.png",
-        "icon": "<i class='fab fa-twitter'></i>",
+        "icon": "<i class='fa-brands fa-twitter'></i>",
         "link": "twitter",
         "title": "twitter",
         "color": "#50ABF1",
@@ -54,28 +54,28 @@
     },
     {
         "img": "assets/img/social/patreon.png",
-        "icon": "<i class='fas fa-calendar-alt'></i>",
+        "icon": "<i class='fa-solid fa-calendar-check'></i>",
         "link": "meet",
         "title": "meet",
         "color": "#EE6551"
     },
     {
         "img": "assets/img/social/patreon.png",
-        "icon": "<i class='fas fa-at'></i>",
+        "icon": "<i class='fa-solid fa-at'></i>",
         "link": "email",
         "title": "email",
         "color": "#EE6551"
     },
     {
         "img": "assets/img/social/pdf.png",
-        "icon": "<i class='far fa-file-pdf'></i>",
+        "icon": "<i class='fa-solid fa-file-pdf'></i>",
         "link": "cv",
         "title": "cv",
         "color": "#EE6551"
     },
     {
         "img": "assets/img/social/patreon.png",
-        "icon": "<i class='fab fa-patreon'></i>",
+        "icon": "<i class='fa-brands fa-patreon'></i>",
         "link": "patreon",
         "title": "patreon",
         "color": "#EE6551",

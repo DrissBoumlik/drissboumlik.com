@@ -28,7 +28,7 @@
                                     <div class="post-tags mb-3">
                                         @foreach ($tags as $tag)
                                             <div class="post-tag d-inline-block me-2">
-                                                <i class="fas fa-tag fs-small"></i>
+                                                <i class="fa-solid fa-tag fs-small"></i>
                                                 <a href="/tags/{{ $tag }}">
                                                     <span>{{ $tag }}</span>
                                                 </a>
@@ -50,7 +50,7 @@
                             <div class="col-12">
                                 <div class="message-wrapper d-flex justify-content-center align-items-center"
                                         style="min-height: 300px">
-                                    <h3 class="text-uppercase">No posts found <i class="fas fa-sad-cry"></i>!</h3>
+                                    <h3 class="text-uppercase">No posts found <i class="fa-solid fa-sad-cry"></i>!</h3>
                                 </div>
                             </div>
                         @endif

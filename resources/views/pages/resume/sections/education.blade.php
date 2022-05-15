@@ -15,7 +15,7 @@
                                 <div class="content">
                                     <h2 class="where text-uppercase">{{  $educationItem->school }}</h2>
                                     <h2 class="function">{{  $educationItem->grade }}</h2>
-                                    <span><i class="far fa-calendar-alt"></i> {{  $educationItem->time }}</span>
+                                    <span><i class="fa-solid fa-calendar-days"></i> {{  $educationItem->time }}</span>
                                     <hr class="my-2">
                                     <p>{{  $educationItem->field }}</p>
                                 </div>

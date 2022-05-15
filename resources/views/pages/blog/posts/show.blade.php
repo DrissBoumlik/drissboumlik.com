@@ -25,7 +25,7 @@
                             </div>
                             <div class="post-meta-data">
                                 <div class="post-date">
-                                    <i class="far fa-clock"></i>
+                                    <i class="fa-solid fa-clock"></i>
                                     {{ $data->post->updated_at->format('j F Y') }}
                                 </div>
                                 @if ($data->post->meta_keywords)
@@ -33,7 +33,7 @@
                                     <div class="post-tags mb-3">
                                         @foreach ($tags as $tag)
                                             <div class="post-tag d-inline-block me-2">
-                                                <i class="fas fa-tag fs-small"></i>
+                                                <i class="fa-solid fa-tag fs-small"></i>
                                                 <a href="/tags/{{ $tag }}">
                                                     <span>{{ $tag }}</span>
                                                 </a>
