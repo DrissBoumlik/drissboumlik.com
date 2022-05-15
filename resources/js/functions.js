@@ -48,17 +48,12 @@ function string_to_slug(str) {
     return str;
 }
 
-function toggleDarkMode(button, isActive) {
-    let _body = $(document.body);
+function toggleDarkMode(_body, isActive) {
     if (isActive) {
         _body.addClass('dark-mode').removeClass('light-mode');
-        button.addClass('dark-mode').removeClass('light-mode');
-        $('.icon-mode').addClass('dark-mode').removeClass('light-mode');
         setCookie('mode', 'dark');
     } else {
         _body.removeClass('dark-mode').addClass('light-mode');
-        button.removeClass('dark-mode').addClass('light-mode');
-        $('.icon-mode').removeClass('dark-mode').addClass('light-mode');
         setCookie('mode', 'light');
     }
 }
@@ -117,7 +112,7 @@ function initDarkMode() {
         setTimeout(() => {
             _this.removeClass('pushed');
         }, 300);
-        toggleDarkMode(_this, _isActive);
+        toggleDarkMode(_body, _isActive);
     });
 }
 
