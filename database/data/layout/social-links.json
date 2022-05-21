@@ -26,15 +26,14 @@
         "link": "facebook",
         "title": "facebook",
         "color": "#D32322",
-        "hidden": false
+        "hidden": true
     },
     {
         "img": "assets/img/social/Youtube.png",
         "icon": "<i class='fa-brands fa-youtube'></i>",
         "link": "youtube",
         "title": "youtube",
-        "color": "#4867AA",
-        "hidden": true
+        "color": "#4867AA"
     },
     {
         "img": "assets/img/social/instagram.png",
@@ -42,7 +41,7 @@
         "link": "instagram",
         "title": "instagram",
         "color": "#B03699",
-        "hidden": false
+        "hidden": true
     },
     {
         "img": "assets/img/social/twitter.png",
@@ -50,14 +49,15 @@
         "link": "twitter",
         "title": "twitter",
         "color": "#50ABF1",
-        "hidden": false
+        "hidden": true
     },
     {
         "img": "assets/img/social/patreon.png",
         "icon": "<i class='fa-solid fa-calendar-check'></i>",
         "link": "meet",
         "title": "meet",
-        "color": "#EE6551"
+        "color": "#EE6551",
+        "hidden": true
     },
     {
         "img": "assets/img/social/patreon.png",
