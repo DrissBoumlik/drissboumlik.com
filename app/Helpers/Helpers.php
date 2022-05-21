@@ -34,7 +34,7 @@ if (!function_exists('getLinks')) {
 
             // Contact
             'meet' => 'https://calendly.com/drissboumlik/30min/',
-            'email' => 'mailto:contact@teacode.ma?subject=Resume : ',
+            'email' => 'mailto:contact@drissboumlik.com?subject=Resume : ',
 
             // Brand
             'site' => 'https://teacode.ma/'
