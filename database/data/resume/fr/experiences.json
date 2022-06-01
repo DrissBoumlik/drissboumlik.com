@@ -3,13 +3,13 @@
     "items" : [
         {
             "classList" : "laravel branch work",
-            "company" : "rc2k",
+            "company" : "rc2k ingenierie",
             "job" : "Développeur Full Stack",
             "period" : "Nov 2019",
             "start_date" : "2019-11",
             "end_date" : null,
-            "content" : "<ul><li>Développement de Système de gestion RH</li><li>Développement de Système des statistiques de production des téléconseillers</li><li>Accompagnement technique des développeurs.</li></ul>",
-            "techs" : "<p><span class='underline'>Environnement technique :</span><br>Angular 8, Bootstrap, jQuery, Laravel, Php, Git, Svn, WebStorm, PhpStorm, DataGrip, Xampp, Vscode, Trello, Slack, GitLab</p>"
+            "content" : "<ul><li>Développement d'un Système de gestion RH</li><li>Développement d'un système de statistiques de production pour les téléconseillers.</li><li>Développement d'un système pour :<ul><li>Gérer les tickets de connexion des clients.</li><li>Gérer les rendez-vous et les interventions des techniciens.</li></ul><li>Accompagnement technique des nouveaux recrus.</li><li>Amélioration de l’environnement de développement (Scripting, alias…).</li></ul>",
+            "techs" : "<p><span class='underline'>Environnement technique :</span><br>Bootstrap, jQuery, Laravel, Php, Git, Svn, PhpStorm, DataGrip, Xampp, Visual Studio Code, Trello, Slack, GitLab.</p>"
         },
         {
             "classList" : "globe teacode",
@@ -38,7 +38,7 @@
             "period" : "Juin 2018",
             "start_date" : "2018-06",
             "end_date" : null,
-            "content" : "<p>La création de ma première formation en ligne : <a rel='noopener' href='https://www.udemy.com/css-mastering-animations/' target='blank' class='key-word'>Maîtriser les animations CSS</a>.</p>",
+            "content" : "<p>Ma première formation en ligne : <a rel='noopener' href='https://www.udemy.com/css-mastering-animations/' target='blank' class='key-word'>CSS - Mastering animations</a>.</p>",
             "techs" : ""
         },
         {
@@ -49,7 +49,7 @@
             "start_date" : "2019-06",
             "end_date" : "2019-09",
             "content" : "<p>Développement d'un site vitrine pour :</p><ul><li>Production / Distribution des fruits frais</li><li>Consultation dans les domaines du développement agricole, gestion agricole...</li></ul>",
-            "techs" : " <p><span class='underline'>Environnement technique :</span><br>Laravel, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp, Gulp</p>"
+            "techs" : " <p><span class='underline'>Environnement technique :</span><br>Laravel, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp, Gulp.</p>"
         },
         {
             "classList" : "wordpress mediating",
@@ -58,8 +58,8 @@
             "period" : "Jan 2019 - Mai 2019",
             "start_date" : "2019-01",
             "end_date" : "2019-05",
-            "content" : "<ul><li>Développement d'un système de gestion des tickets.</li><li>Développement du site de l'AMDL (Agence Marocaine de Développement de la Logistique).</li><li>Correction et évolution de sites web existants.</li><li>Encadrement des nouveaux recrus.</li></ul>",
-            "techs" : "<p><span class='underline'>Environnement technique :</span><br>Laravel, Wordpress, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp</p>"
+            "content" : "<ul><li>Développement d'un Système de Gestion des Tickets.</li><li>Développement du site de l'AMDL (Agence Marocaine de Développement de la Logistique).</li><li>Correction et évolution de sites web existants.</li><li>Accompagnement technique des nouveaux recrus.</li></ul>",
+            "techs" : "<p><span class='underline'>Environnement technique :</span><br>Laravel, Wordpress, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp.</p>"
         },
         {
             "classList" : "wordpress rae",
@@ -68,8 +68,8 @@
             "period" : "Jan 2019 – Fév 2019",
             "start_date" : "2019-01",
             "end_date" : "2019-02",
-            "content" : "<p>Développement d'un site portail concernant les modalités des études en Ukraine / Russie.</p><p>Déploiement du site sur le serveur du client.</p>",
-            "techs" : "<p><span class='underline'>Environnement technique :</span><br>Wordpress, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp</p>"
+            "content" : "<ul><li>Développement d'un site portail concernant les modalités des études en Ukraine / Russie.</li><li>Déploiement du site sur le serveur du client.</li></ul>",
+            "techs" : "<p><span class='underline'>Environnement technique :</span><br>Wordpress, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp.</p>"
         },
         {
             "classList" : "laravel graviton",
@@ -78,7 +78,7 @@
             "period" : "Juin 2018 - Sep 2018",
             "start_date" : "2018-06",
             "end_date" : "2018-09",
-            "content" : "<p>Développement de système d’information de gestion d’amont agricole du groupe COSUMAR.</p><p>La digitalisation de la relation agrégat-agrégés et l’automatisation des processus agricoles</p><ul><li>Participation à la partie d’analyse et de conception.</li><li>Mise en place des API REST en BackEnd.</li><li>Accompagnement technique des développeurs.</li><li>Amélioration de l’environnement de développement (Scripting, alias…).</li></ul>",
+            "content" : "<p>Développement de système d’information de gestion d’amont agricole du groupe COSUMAR.</p><p>La digitalisation de la relation agrégat-agrégés et l’automatisation des processus agricoles</p><ul><li>Participation à la partie d’analyse et de conception.</li><li>Mise en place des API REST en BackEnd.</li><li>Accompagnement technique des nouveaux recrus.</li><li>Amélioration de l’environnement de développement (Scripting, alias…).</li></ul>",
             "techs" : "<p><span class='underline'>Environnement technique :</span><br>Php, Laravel, Git, PostgreSQL, Rest Api, PhpStorm, DataGrip, Phabricator, Cloud 9, pgModeler, Postman</p>"
         },
         {
@@ -99,7 +99,7 @@
             "start_date" : "2016-07",
             "end_date" : "2016-09",
             "content" : "<p>Refonte / Développement du site Dirham Express.</p>",
-            "techs" : "<p><span class='underline'>Environnement technique :</span><br>HTML, CSS, Javascript, jQuery, Bootstrap, Visual Studio Code</p>"
+            "techs" : "<p><span class='underline'>Environnement technique :</span><br>HTML, CSS, Javascript, jQuery, Bootstrap, Visual Studio Code.</p>"
         },
         {
             "classList" : "csharp association",
@@ -109,7 +109,7 @@
             "start_date" : "2016-04",
             "end_date" : "2016-06",
             "content" : "<p>Développement d'un système de gestion d'une salle couverte (Pointage, Réservation, Gestion de Stock, Matériels….).</p><ul><li>Gestion de pointage des adhérents.</li><li>Gestion des Réservation de la salle couverte.</li><li>Gestion du stock.</li><li>Gestion du materiel interne de l'association.</li></ul>",
-            "techs" : "<p><span class='underline'>Environnement technique :</span><br>C#, .NET, DevExpress, Sql Server, Crystal Report, Visual Studio 2010</p>"
+            "techs" : "<p><span class='underline'>Environnement technique :</span><br>C#, .NET, DevExpress, Sql Server, Crystal Report, Visual Studio.</p>"
         }
     ]
 }

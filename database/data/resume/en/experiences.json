@@ -3,13 +3,13 @@
     "items" : [
         {
             "classList" : "laravel branch work",
-            "company" : "rc2k",
+            "company" : "rc2k ingenierie",
             "job" : "Full Stack Developer",
             "period" : "Nov 2019",
             "start_date" : "2019-11",
             "end_date" : null,
-            "content" : "<ul><li>Development of an HR Management System</li><li>Development of the production statistics system for call center agents</li><li>Technical support for developers.</li></ul>",
-            "techs" : "<p><span class='underline'>Technical environment :</span><br>Angular 8, Bootstrap, jQuery, Laravel, Php, Git, Svn, WebStorm, PhpStorm, DataGrip, Xampp, Vscode, Trello, Slack, GitLab</p>"
+            "content" : "<ul><li>Development of an HR Management System.</li><li>Development of a Production Statistics System for call center agents.</li><li>Development of a System to :<ul><li>Manage customer connection tickets.</li><li>Manage appointments and technicians interventions.</li></ul><li>Technical support for new recruits.</li><li>Improvement of the development environment (Scripting, alias…).</li></ul>",
+            "techs" : "<p><span class='underline'>Technical environment :</span><br>Bootstrap, jQuery, Laravel, Php, Git, Svn, PhpStorm, DataGrip, Xampp, Visual Studio Code, Trello, Slack, GitLab.</p>"
         },
         {
             "classList" : "globe teacode",
@@ -38,18 +38,18 @@
             "period" : "Jun 2018",
             "start_date" : "2018-06",
             "end_date" : null,
-            "content" : "<p>My first online course : <a href='https://www.udemy.com/css-mastering-animations/' target='blank' class='key-word' rel='noopener'>Mastering CSS animations</a>.</p>",
+            "content" : "<p>My first online course : <a href='https://www.udemy.com/css-mastering-animations/' target='blank' class='key-word' rel='noopener'>CSS - Mastering animations</a>.</p>",
             "techs" : null
         },
         {
             "classList" : "laravel ehm",
             "company" : "Freelance",
             "job" : "Full Stack Developer - Laravel",
-            "period" : "June 2019 – Sep 2019",
+            "period" : "June 2019 - Sep 2019",
             "start_date" : "2019-06",
             "end_date" : "2019-09",
             "content" : "<p>Development of a showcase site for :</p><ul><li>Production / Distribution of fresh fruit.</li><li>Consulting in the fields of agricultural development, agricultural management...</li></ul>",
-            "techs" : "<p><span class='underline'>Technical environment :</span><br>Laravel, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp, Gulp</p>"
+            "techs" : "<p><span class='underline'>Technical environment :</span><br>Laravel, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp, Gulp.</p>"
         },
         {
             "classList" : "wordpress mediating",
@@ -58,18 +58,18 @@
             "period" : "Jan 2019 - May 2019",
             "start_date" : "2019-01",
             "end_date" : "2019-05",
-            "content" : "<ul><li>Development of a ticket management system.</li><li>Development of the AMDL site (Moroccan Logistics Development Agency)</li><li>Correction and evolution of existing websites.</li><li>Supervision of new recruits.</li></ul>",
-            "techs" : "<p><span class='underline'>Technical environment :</span><br>Laravel, Wordpress, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp</p>"
+            "content" : "<ul><li>Development of a Ticket Management System.</li><li>Development of the AMDL website (Moroccan Logistics Development Agency)</li><li>Correction and evolution of existing websites.</li><li>Technical support for new recruits.</li></ul>",
+            "techs" : "<p><span class='underline'>Technical environment :</span><br>Laravel, Wordpress, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp.</p>"
         },
         {
             "classList" : "wordpress rae",
             "company" : "Freelance",
             "job" : "Full Stack Developer - Wordpress",
-            "period" : "Jan 2019 – Feb 2019",
+            "period" : "Jan 2019 - Feb 2019",
             "start_date" : "2019-01",
             "end_date" : "2019-02",
-            "content" : "<p>Development of a portal site concerning the modalities of studies in Ukraine / Russia.</p><p>Deployment of the site on the client's server.</p>",
-            "techs" : "<p><span class='underline'>Technical environment :</span><br>Wordpress, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp</p>"
+            "content" : "<ul><li>Development of a Portal site concerning the modalities of studies in Ukraine / Russia.</li><li>Deployment of the site on the client's server.</li></ul>",
+            "techs" : "<p><span class='underline'>Technical environment :</span><br>Wordpress, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp.</p>"
         },
         {
             "classList" : "laravel graviton",
@@ -99,7 +99,7 @@
             "start_date" : "2016-07",
             "end_date" : "2016-09",
             "content" : "<p>Redesign / Development of the DirhamExpress website.</p>",
-            "techs" : "<p><span class='underline'>Technical environment :</span><br>HTML, CSS, Javascript, jQuery, Bootstrap, Visual Studio Code</p>"
+            "techs" : "<p><span class='underline'>Technical environment :</span><br>HTML, CSS, Javascript, jQuery, Bootstrap, Visual Studio Code.</p>"
         },
         {
             "classList" : "csharp association",
@@ -109,7 +109,7 @@
             "start_date" : "2016-04",
             "end_date" : "2016-06",
             "content" : "<p>Development of a management system for a covered room (Check-in, Reservation, Stock Management, Equipment, etc.).</p><ul><li>Manage members check-in.</li><li>Management of reservations for the covered room.</li><li>Stock management.</li><li>Management of the association's internal equipment.</li></ul>",
-            "techs" : "<p><span class='underline'>Technical environment :</span><br>C#, .NET, DevExpress, Sql Server, Crystal Report, Visual Studio 2010</p>"
+            "techs" : "<p><span class='underline'>Technical environment :</span><br>C#, .NET, DevExpress, Sql Server, Crystal Report, Visual Studio.</p>"
         }
     ]
 }
