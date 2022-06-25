@@ -3,7 +3,8 @@
     "items" : [
         {
             "classList" : "laravel branch work",
-            "company" : "rc2k ingenierie",
+            "company" : "iliad free",
+            "location": "Casablanca, Morocco",
             "job" : "Full Stack Developer",
             "period" : "Nov 2019",
             "start_date" : "2019-11",
@@ -24,11 +25,12 @@
         {
             "classList" : "angular grintaaa",
             "company" : "Grintaaa - Freelance",
+            "location": "Remote, France",
             "job" : "Full Stack Developer - Angular / Laravel",
             "period" : "Oct 2019",
             "start_date" : "2019-06",
             "end_date" : null,
-            "content" : "<p>Development of a social network for athletes.</p><ul><li>Network registration.</li><li>Add / Follow another contact.</li><li>Create pages / groups for a specific sport.</li><li>Create events.</li><li>Create daily stories.</li><li>Create / Share posts on the profile or on a page / group.</li><li>Invitation of contacts to participate in a game.</li><li>Request to participate in a game.</li><li>Review the players.</li><li>Get notified during a game on the same region.</li></ul>",
+            "content" : "<p>Development of a social network for athletes.</p><ul><li>Add / Follow another contact.</li><li>Create events.</li><li>Create / Share posts.</li><li>Send invitation to participate in a game.</li><li>Request to participate in a game.</li><li>Review the members.</li></ul>",
             "techs" : "<p><span class='underline'>Technical environment :</span><br>Angular 8, Bootstrap, jQuery, Laravel 6, Rest Api, Git, WebStorm, PhpStorm, DataGrip, Xampp</p>"
         },
         {
@@ -44,16 +46,18 @@
         {
             "classList" : "laravel ehm",
             "company" : "Freelance",
+            "location": "Rabat, Morocco",
             "job" : "Full Stack Developer - Laravel",
             "period" : "June 2019 - Sep 2019",
             "start_date" : "2019-06",
             "end_date" : "2019-09",
-            "content" : "<p>Development of a showcase site for :</p><ul><li>Production / Distribution of fresh fruit.</li><li>Consulting in the fields of agricultural development, agricultural management...</li></ul>",
+            "content" : "<p>Development of a showcase site for :</p><ul><li>Production / Distribution of fresh fruit.</li><li>Services (Consulting, Farm management, agricultural development ...)</li></ul>",
             "techs" : "<p><span class='underline'>Technical environment :</span><br>Laravel, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp, Gulp.</p>"
         },
         {
             "classList" : "wordpress mediating",
             "company" : "Mediating - Freelance Mission",
+            "location": "Rabat, Morocco",
             "job" : "Full Stack Developer - Laravel / Wordpress",
             "period" : "Jan 2019 - May 2019",
             "start_date" : "2019-01",
@@ -64,16 +68,18 @@
         {
             "classList" : "wordpress rae",
             "company" : "Freelance",
+            "location": "Rabat, Morocco",
             "job" : "Full Stack Developer - Wordpress",
             "period" : "Jan 2019 - Feb 2019",
             "start_date" : "2019-01",
             "end_date" : "2019-02",
-            "content" : "<ul><li>Development of a Portal site concerning the modalities of studies in Ukraine / Russia.</li><li>Deployment of the site on the client's server.</li></ul>",
+            "content" : "<ul><li>Development of a portal site for studies in Ukraine / Russia.</li><li>Deployment of the site on the client's server.</li></ul>",
             "techs" : "<p><span class='underline'>Technical environment :</span><br>Wordpress, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp.</p>"
         },
         {
             "classList" : "laravel graviton",
             "company" : "Graviton - Freelance Mission",
+            "location": "Rabat, Morocco",
             "job" : "Full Stack Developer - Laravel",
             "period" : "Jun 2018 - Sep 2018",
             "start_date" : "2018-06",
@@ -84,16 +90,18 @@
         {
             "classList" : "innoved robot",
             "company" : "Innov'ed",
+            "location": "Rabat, Morocco",
             "job" : "Trainer",
             "period" : "Nov 2016 - Jan 2018",
             "start_date" : "2016-11",
             "end_date" : "2016-01",
-            "content" : "<p>Teach children between 5-16 years old the basics of programming using:</p><ul><li><a href='https://scratch.mit.edu/' target='blank' class='key-word' rel='noopener'>Scratch</a> to learn the basics of programming</li><li><a href='https://education.lego.com/en-us' target='blank' class='key-word' rel='noopener'>Ev3 Lego Mindstorms</a> for problem solving</li></ul>",
+            "content" : "<p>Teach children between 5-16 years old the basics of programming using <a href='https://scratch.mit.edu/' target='blank' class='key-word' rel='noopener'>Scratch</a> & <a href='https://education.lego.com/en-us' target='blank' class='key-word' rel='noopener'>Ev3 Mindstorms</a></p>",
             "techs" : null
         },
         {
             "classList" : "bootstrap dirham",
             "company" : "Dirham Express - Internship",
+            "location": "Rabat, Morocco",
             "job" : "Frontend Developer",
             "period" : "Jul 2016 - Sep 2016",
             "start_date" : "2016-07",
@@ -104,6 +112,7 @@
         {
             "classList" : "csharp association",
             "company" : "Association of Protection and Assistance - Internship",
+            "location": "Rabat, Morocco",
             "job" : "C# Developer",
             "period" : "Apr 2016 - Jun 2016",
             "start_date" : "2016-04",

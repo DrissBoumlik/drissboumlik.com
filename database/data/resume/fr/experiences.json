@@ -3,12 +3,13 @@
     "items" : [
         {
             "classList" : "laravel branch work",
-            "company" : "rc2k ingenierie",
+            "company" : "iliad free",
+            "location": "Casablanca, Maroc",
             "job" : "Développeur Full Stack",
             "period" : "Nov 2019",
             "start_date" : "2019-11",
             "end_date" : null,
-            "content" : "<ul><li>Développement d'un Système de gestion RH</li><li>Développement d'un système de statistiques de production pour les téléconseillers.</li><li>Développement d'un système pour :<ul><li>Gérer les tickets de connexion des clients.</li><li>Gérer les rendez-vous et les interventions des techniciens.</li></ul><li>Accompagnement technique des nouveaux recrus.</li><li>Amélioration de l’environnement de développement (Scripting, alias…).</li></ul>",
+            "content" : "<ul><li>Développement d'un Système de gestion RH.</li><li>Développement d'un système de statistiques de production pour les téléconseillers.</li><li>Développement d'un système pour :<ul><li>Gérer les tickets de connexion des clients.</li><li>Gérer les rendez-vous et les interventions des techniciens.</li></ul><li>Accompagnement technique des nouveaux recrus.</li><li>Amélioration de l’environnement de développement (Scripting, alias…).</li></ul>",
             "techs" : "<p><span class='underline'>Environnement technique :</span><br>Bootstrap, jQuery, Laravel, Php, Git, Svn, PhpStorm, DataGrip, Xampp, Visual Studio Code, Trello, Slack, GitLab.</p>"
         },
         {
@@ -24,11 +25,12 @@
         {
             "classList" : "angular grintaaa",
             "company" : "Grintaaa - Freelance",
+            "location": "Remote, France",
             "job" : "Développeur Full Stack - Angular / Laravel",
             "period" : "Oct 2019",
             "start_date" : "2019-06",
             "end_date" : null,
-            "content" : "<p>Développement d'un réseau social destiné aux sportifs.</p><ul><li>Inscription au réseaux.</li><li>Ajouter / Suivre un autre contact.</li><li>Créer des pages / groupes pour un sport spécifique.</li><li>Créer des événements.</li><li>Créer des stories quotidiennes.</li><li>Créer / Partager des publications sur le profile ou sur une page / groupe.</li><li>Invitation des contacts à participer à une partie.</li><li>Demande de participation à une partie.</li><li>Noter les joueurs.</li><li>Etre notifier lors d'une partie sur la même région.</li></ul>",
+            "content" : "<p>Développement d'un réseau social destiné aux sportifs.</p><ul><li>Ajouter / Suivre un autre contact.</li><li>Créer des événements.</li><li>Créer / Partager des publications.</li><li>Inviter les membres pour participer à une partie.</li><li>Demander la participation à une partie.</li><li>Noter les membres.</li></ul>",
             "techs" : "<p><span class='underline'>Environnement technique :</span><br>Angular 8, Bootstrap, jQuery, Laravel 6, Rest Api, Git, WebStorm, PhpStorm, DataGrip, Xampp</p>"
         },
         {
@@ -44,16 +46,18 @@
         {
             "classList" : "laravel ehm",
             "company" : "Freelance",
+            "location": "Rabat, Maroc",
             "job" : "Développeur Full Stack - Laravel",
             "period" : "Juin 2019 – Sep 2019",
             "start_date" : "2019-06",
             "end_date" : "2019-09",
-            "content" : "<p>Développement d'un site vitrine pour :</p><ul><li>Production / Distribution des fruits frais</li><li>Consultation dans les domaines du développement agricole, gestion agricole...</li></ul>",
+            "content" : "<p>Développement d'un site vitrine pour :</p><ul><li>Production / Distribution des fruits frais.</li><li>Services (Consulting, Développement agricole, de la Gestion agricole ...).</li></ul>",
             "techs" : " <p><span class='underline'>Environnement technique :</span><br>Laravel, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp, Gulp.</p>"
         },
         {
             "classList" : "wordpress mediating",
             "company" : "Mediating - Freelance Mission",
+            "location": "Rabat, Maroc",
             "job" : "Full Stack Developer - Laravel / Wordpress",
             "period" : "Jan 2019 - Mai 2019",
             "start_date" : "2019-01",
@@ -64,16 +68,18 @@
         {
             "classList" : "wordpress rae",
             "company" : "Freelance",
+            "location": "Rabat, Maroc",
             "job" : "Développeur Full Stack - Wordpress",
             "period" : "Jan 2019 – Fév 2019",
             "start_date" : "2019-01",
             "end_date" : "2019-02",
-            "content" : "<ul><li>Développement d'un site portail concernant les modalités des études en Ukraine / Russie.</li><li>Déploiement du site sur le serveur du client.</li></ul>",
+            "content" : "<ul><li>Développement d'un site portail pour les études en Ukraine / Russie.</li><li>Déploiement du site sur le serveur du client.</li></ul>",
             "techs" : "<p><span class='underline'>Environnement technique :</span><br>Wordpress, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp.</p>"
         },
         {
             "classList" : "laravel graviton",
             "company" : "Graviton - Freelance Mission",
+            "location": "Rabat, Maroc",
             "job" : "Développeur Full Stack - Laravel",
             "period" : "Juin 2018 - Sep 2018",
             "start_date" : "2018-06",
@@ -84,16 +90,18 @@
         {
             "classList" : "innoved robot",
             "company" : "Innov'ed",
+            "location": "Rabat, Maroc",
             "job" : "Formateur",
             "period" : "Nov 2016 - Jan 2018",
             "start_date" : "2016-11",
             "end_date" : "2016-01",
-            "content" : "<p>Enseigner les enfants entre 5-16 ans les bases de la programmation en utilisant :</p><ul><li><a rel='noopener' href='https://scratch.mit.edu/' target='blank' class='key-word'>Scratch</a> pour apprendre les base de la programmation</li><li><a rel='noopener' href='https://education.lego.com/en-us' target='blank' class='key-word'>Ev3 Lego Mindstorms</a> pour le problem solving</li></ul>",
+            "content" : "<p>Enseigner les enfants entre 5-16 ans les bases de la programmation en utilisant <a rel='noopener' href='https://scratch.mit.edu/' target='blank' class='key-word'>Scratch</a> & <a rel='noopener' href='https://education.lego.com/en-us' target='blank' class='key-word'>Ev3 Mindstorms</a>.</p>",
             "techs" : ""
         },
         {
             "classList" : "bootstrap dirham",
             "company" : "Dirham Express - Stage",
+            "location": "Rabat, Maroc",
             "job" : "Développeur Frontend",
             "period" : "Juil 2016 - Sep 2016",
             "start_date" : "2016-07",
@@ -104,6 +112,7 @@
         {
             "classList" : "csharp association",
             "company" : "Association de protection et d’assistance - Stage",
+            "location": "Rabat, Maroc",
             "job" : "Développeur C#",
             "period" : "Avr 2016 - Juin 2016",
             "start_date" : "2016-04",
