@@ -2,6 +2,10 @@
     "header" : "ce que les gens disent",
     "items" : [
         {
+            "icon": "khallouk.jpg",
+            "content": "<p>Driss is wonderful to work with, and has great expertise in Laravel, problem solving, helping other developers. His knowledge is vast. He is not only a reliable and forward thinking software engineer but also an inspiring team player. Ambitious and independent expert. He denotes a lot of analytical capability and willingness for both his personal & professional development. I definitely would recommend him as software engineer.</p><small class='funny-font'>Abdelkarim Khallouk | Software Engineer</small>"
+        },
+        {
             "icon" : "arfa.jpg",
             "content" : "<p>Driss is one of the creative developpers and he is among the top-notch coworker I ever had, I learned from him how to be ponctuel and patient to achieve goals, but what is fascinating about Driss his loving to share knowledge and helping his teammates to finish their tasks. He could be the alone wolf or the Alfa that inspire the group depending on the circumstances.</p><small class='funny-font'>Arfa Abderrahmane | Software Engineer</small>"
         },
