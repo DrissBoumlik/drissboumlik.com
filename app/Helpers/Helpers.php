@@ -84,17 +84,23 @@ if (!function_exists('inLanguages')) {
 if (!function_exists('calculateDate')) {
     function calculateDate($start, $end = null)
     {
-        $lang = (isset($_GET['lang']) && $_GET['lang'] == 'en') ? 'en' : 'fr';
+        $lang = \App::getLocale();
         $yearText = $lang == 'fr' ? 'ans' : 'years';
         $monthText = $lang == 'fr' ? 'mois' :'months';
         $date1 = strtotime($start);
         $date2 = $end != null ? strtotime($end) : time();
         $diff = abs($date2 - $date1) + 1;
         $years = floor($diff / (365*60*60*24));
-        $m_diff = floor(($diff - $years * 365*60*60*24)/(30*60*60*24));
-        $months = $m_diff < 12 ? $m_diff + 1 : 1;
+        $m_diff = floor(($diff - ($years * 365*60*60*24))/(30*60*60*24));
         $years = $m_diff < 12 ? $years : $years + 1;
-        return '<span>(<span>' . ($years > 0 ? $years . ' ' . $yearText . ', ' : '') . '</span>' .
-            '<span>' . ($months > 0 ? $months . ' ' . $monthText : '') . '</span>)</span>';
+        $months = $m_diff < 12 ? $m_diff + 1 : 1;
+        if ($months >= 12) {
+            $years++;
+            $months = 0;
+        }
+        return '<span>' .
+                    ($years > 0 ? $years . ' ' . $yearText : '') .
+                    ($years && $months ? ', ' : '') .
+                    ($months > 0 ? $months . ' ' . $monthText . '</span>' : '') . '</span>';
     }
 }
