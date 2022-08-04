@@ -34,6 +34,17 @@
             "techs" : ""
         },
         {
+            "classList" : "laravel ehm",
+            "company" : "Freelance",
+            "location": "Rabat, Maroc",
+            "job" : "Développeur Full Stack - Laravel",
+            "period" : "Juin 2019 – Sep 2019",
+            "start_date" : "2019-06",
+            "end_date" : "2019-09",
+            "content" : "<p>Développement d'un site vitrine pour :</p><ul><li>Production / Distribution des fruits frais.</li><li>Services (Consulting, Développement agricole, de la Gestion agricole ...).</li></ul>",
+            "techs" : " <p><span class='underline'>Environnement technique :</span><br>Laravel, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp, Gulp.</p>"
+        },
+        {
             "classList" : "wordpress mediating",
             "company" : "Mediating - Freelance",
             "location": "Rabat, Maroc",

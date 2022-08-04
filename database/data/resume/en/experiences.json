@@ -34,6 +34,17 @@
             "techs" : null
         },
         {
+          "classList" : "laravel ehm",
+          "company" : "Freelance",
+          "location": "Rabat, Morocco",
+          "job" : "Full Stack Developer - Laravel",
+          "period" : "June 2019 - Sep 2019",
+          "start_date" : "2019-06",
+          "end_date" : "2019-09",
+          "content" : "<p>Development of a showcase site for :</p><ul><li>Production / Distribution of fresh fruit.</li><li>Services (Consulting, Farm management, agricultural development ...)</li></ul>",
+          "techs" : "<p><span class='underline'>Technical environment :</span><br>Laravel, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp, Gulp.</p>"
+        },
+        {
             "classList" : "wordpress mediating",
             "company" : "Mediating - Freelance",
             "location": "Rabat, Morocco",
