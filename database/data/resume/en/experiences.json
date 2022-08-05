@@ -59,12 +59,12 @@
             "classList" : "wordpress rae",
             "company" : "Royal Alliance Educative - Freelance",
             "location": "Rabat, Morocco",
-            "job" : "Full Stack Developer - Wordpress",
+            "job" : "Full Stack Developer - Php",
             "period" : "Jan 2019 - Apr 2019",
             "start_date" : "2019-01",
             "end_date" : "2019-04",
             "content" : "<ul><li>Development of a portal site for studies in Ukraine / Russia.</li><li>Deployment of the site on the client's server.</li></ul>",
-            "techs" : "<p><span class='underline'>Technical environment :</span><br>Wordpress, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp.</p>"
+            "techs" : "<p><span class='underline'>Technical environment :</span><br>Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp.</p>"
         },
         {
             "classList" : "laravel graviton",
