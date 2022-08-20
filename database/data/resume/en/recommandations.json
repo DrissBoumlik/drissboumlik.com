@@ -2,6 +2,14 @@
     "header" : "What people say",
     "items" : [
         {
+            "icon": "hilali.jpg",
+            "content": "<p>Driss is an IT programer genius. He has an outstanding network. He is a professional, helpful, and positive person. It is a pleasure and honor to recommend to anyone who wants to hire him. He is truly a gem.</p><small class='funny-font'>Hamza Hilali | Software Engineer</small>"
+        },
+        {
+            "icon": "kabbaj.jpg",
+            "content": "<p>Driss was essential to the team, and contributed significantly to the success of the company. Working at Rc2k is most challenging, and he thrived. Driss will find a way to weather any storm with a smile. He most definitely shines in a a busy environment. Definitely worth recommending.</p><small class='funny-font'>Kaoutar Kabbaj | Software Engineer</small>"
+        },
+        {
             "icon": "khallouk.jpg",
             "content": "<p>Driss is wonderful to work with, and has great expertise in Laravel, problem solving, helping other developers. His knowledge is vast. He is not only a reliable and forward thinking software engineer but also an inspiring team player. Ambitious and independent expert. He denotes a lot of analytical capability and willingness for both his personal & professional development. I definitely would recommend him as software engineer.</p><small class='funny-font'>Abdelkarim Khallouk | Software Engineer</small>"
         },
