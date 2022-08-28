@@ -2,6 +2,17 @@
     "header" : "experiences",
     "items" : [
         {
+            "classList" : "microsoft abl",
+            "company" : "ABL Capital Africa",
+            "location": "Casablanca, Morocco",
+            "job" : "Tech lead Developer",
+            "period" : "Aug 2022",
+            "start_date" : "2022-8",
+            "end_date" : null,
+            "content" : null,
+            "techs" : "<p><span class='underline'>Technical environment :</span><br>Bootstrap, jQuery, Laravel, Php, Git, PhpStorm, DataGrip, Xampp, Visual Studio Code, Trello, Sql Server, C# .Net, Azure.</p>"
+        },
+        {
             "classList" : "laravel branch work",
             "company" : "RC2K Engineering",
             "location": "Casablanca, Morocco",
