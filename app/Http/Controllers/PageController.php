@@ -27,7 +27,7 @@ class PageController extends Controller
 
         $data->title = 'Driss Boumlik | Resume';
 
-        return view('pages.resume.resume-index', ['data' => $data]);
+        return view('pages.resume.index', ['data' => $data]);
     }
 
 }
