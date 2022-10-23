@@ -21,6 +21,11 @@ class PageController extends Controller
         $data->sections['other_exp'] = json_decode(\File::get(base_path() . "/database/data/resume/other_exp.json"));
         $data->sections['recommandations'] = json_decode(\File::get(base_path() . "/database/data/resume/recommandations.json"));
 
+        $data->sections['experiences']->items = array_map(function($item) {
+            $item->duration = calculateDate($item->start_date, $item->end_date);
+            return $item;
+        }, $data->sections['experiences']->items);
+
         $data->socialLinks = getSocialLinks();
         $data->headerMenu = getHeaderMenu();
         $data->footerMenu = getFooterMenu();

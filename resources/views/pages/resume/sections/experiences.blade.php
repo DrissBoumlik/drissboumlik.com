@@ -16,7 +16,7 @@
                                     <h2 class="function text-capitalize">{{ $experience->job }}</h2>
                                     <h2 class="where text-uppercase">{{ $experience->company }}</h2>
                                     <span><i class="fa-solid fa-calendar-days"></i> {{ $experience->period }} |
-                                        {!! calculateDate($experience->start_date, $experience->end_date) !!}
+                                        {!! $experience->duration !!}
                                     </span>
                                     @if ($experience->content)
                                         <hr class="my-2">

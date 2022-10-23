@@ -28,9 +28,9 @@
             "company" : "Grintaaa - Freelance",
             "location": "Remote, France",
             "job" : "Full Stack Developer - Angular / Laravel",
-            "period" : "Sep 2019",
+            "period" : "Sep 2019 - Sep 2021",
             "start_date" : "2019-09",
-            "end_date" : null,
+            "end_date" : "2021-09",
             "content" : "<p>Development of a social network for athletes.</p><ul><li>Add / Follow another contact.</li><li>Create events.</li><li>Create / Share posts.</li><li>Send invitation to participate in a game.</li><li>Request to participate in a game.</li><li>Review the members.</li></ul>",
             "techs" : "<p><span class='underline'>Technical environment :</span><br>Angular 8, Bootstrap, jQuery, Laravel 6, Rest Api, Git, WebStorm, PhpStorm, DataGrip, Xampp</p>"
         },

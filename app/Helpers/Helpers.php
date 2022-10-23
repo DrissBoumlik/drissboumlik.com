@@ -64,6 +64,6 @@ if (!function_exists('calculateDate')) {
         return '<span>' .
                     ($years > 0 ? $years . ' ' . 'years' : '') .
                     ($years && $months ? ', ' : '') .
-                    ($months > 0 ? $months . ' ' . 'months' . '</span>' : '') . '</span>';
+                    ($months > 0 ? $months . ' ' . 'months' : '') . '</span>';
     }
 }
