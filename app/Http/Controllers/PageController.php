@@ -20,7 +20,7 @@ class PageController extends Controller
         $data->sections['passion'] = json_decode(\File::get(base_path() . "/database/data/resume/passion.json"));
         $data->sections['other_exp'] = json_decode(\File::get(base_path() . "/database/data/resume/other_exp.json"));
         $data->sections['recommandations'] = json_decode(\File::get(base_path() . "/database/data/resume/recommandations.json"));
-
+		$data->sections['recommandations']->items = collect($data->sections['recommandations']->items)->shuffle()->all();
         $data->sections['experiences']->items = array_map(function($item) {
             $item->duration = calculateDate($item->start_date, $item->end_date);
             return $item;
