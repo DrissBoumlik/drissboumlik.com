@@ -44,6 +44,11 @@
             font-family: "Font Awesome 5 Free"
             background-color: #EA5252
             font-weight: 900
+        &.community:after
+            content: "\e533"
+            font-family: "Font Awesome 5 Free"
+            background-color: $tc-blue
+            font-weight: 900
         &.globe:after
             content: "\f0ac"
             font-family: "Font Awesome 5 Free"
@@ -125,9 +130,9 @@
 
         &.teacode
             &:nth-child(even) .content
-                border-right: 3px solid $tc-blue-dark-2
+                border-right: 3px solid $tc-blue
             &:nth-child(odd) .content
-                border-left: 3px solid $tc-blue-dark-2
+                border-left: 3px solid $tc-blue
 
         &.mediating
             &:nth-child(even) .content
