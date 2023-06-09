@@ -523,17 +523,14 @@
     padding-top: 4rem;
     padding-bottom: 4rem;
   }
-
   .py-md-80px {
     padding-top: 80px;
     padding-bottom: 80px;
   }
-
   .py-md-100px {
     padding-top: 100px;
     padding-bottom: 100px;
   }
-
   .py-md-150px {
     padding-top: 150px;
     padding-bottom: 150px;
@@ -656,7 +653,7 @@
   line-height: 1;
 }
 .wrapper-dark-mode .toggle-dark-mode i.icon-mode:before {
-  content: "";
+  content: "\f0eb";
 }
 
 .toggle-dark-mode.pushed {
@@ -1197,85 +1194,85 @@ body.dark-mode .progress-bar {
   display: inline-block;
 }
 .timeline .section.php:after {
-  content: "";
+  content: "\f457";
   font-family: "Font Awesome 5 Brands";
   background-color: #8892BF;
   font-weight: 900;
 }
 .timeline .section.code:after {
-  content: "";
+  content: "\f126";
   font-family: "Font Awesome 5 Free";
   background-color: #2F4F4F;
   font-weight: 900;
 }
 .timeline .section.teaching:after {
-  content: "";
+  content: "\f51c";
   font-family: "Font Awesome 5 Free";
   background-color: #EA5252;
   font-weight: 900;
 }
 .timeline .section.community:after {
-  content: "";
+  content: "\e533";
   font-family: "Font Awesome 5 Free";
   background-color: #1DA1F2;
   font-weight: 900;
 }
 .timeline .section.globe:after {
-  content: "";
+  content: "\f0ac";
   font-family: "Font Awesome 5 Free";
   background-color: #00437D;
   font-weight: 900;
 }
 .timeline .section.angular:after {
-  content: "";
+  content: "\f420";
   font-family: "Font Awesome 5 Brands";
   background-color: #DD0031;
   font-weight: 100;
 }
 .timeline .section.wordpress:after {
-  content: "";
+  content: "\f411";
   font-family: "Font Awesome 5 Brands";
   background-color: #454442;
   font-weight: 100;
 }
 .timeline .section.laravel:after {
-  content: "";
+  content: "\f3bd";
   font-family: "Font Awesome 5 Brands";
   background-color: #FF5050;
   font-weight: 100;
 }
 .timeline .section.robot:after {
-  content: "";
+  content: "\f544";
   font-family: "Font Awesome 5 Free";
   background-color: #97C024;
   font-weight: 900;
 }
 .timeline .section.bootstrap:after {
-  content: "";
+  content: "\f41e";
   font-family: "Font Awesome 5 Brands";
   background-color: #CD6799;
   font-weight: 100;
 }
 .timeline .section.csharp:after {
-  content: "";
+  content: "\f121";
   font-family: "Font Awesome 5 Free";
   background-color: #2F4F4F;
   font-weight: 900;
 }
 .timeline .section.laptop:after {
-  content: "";
+  content: "\f109";
   font-family: "Font Awesome 5 Free";
   background-color: #FF5050;
   font-weight: 900;
 }
 .timeline .section.briefcase:after {
-  content: "";
+  content: "\f0b1";
   font-family: "Font Awesome 5 Free";
   background-color: #21caeb;
   font-weight: 900;
 }
 .timeline .section.microsoft::after {
-  content: "";
+  content: "\f3ca";
   font-family: "Font Awesome 6 Brands";
   background-color: #071D49;
   font-weight: 400;
@@ -1397,7 +1394,7 @@ body.dark-mode .progress-bar {
   transition: transform 0.4s ease, opacity 2s ease;
 }
 .timeline .section:after {
-  content: "";
+  content: "\f19d";
   position: absolute;
   width: 40px;
   height: 40px;

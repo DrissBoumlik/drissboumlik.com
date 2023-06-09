@@ -14,6 +14,7 @@
         "htmlmin/htmlmin": "^9.0",
         "laravel/framework": "^9.0",
         "laravel/tinker": "^2.5",
+        "laravel/ui": "^4.2",
         "spatie/db-dumper": "^3.3",
         "spatie/laravel-sitemap": "^6.2",
         "van-ons/laraberg": "^2.0"

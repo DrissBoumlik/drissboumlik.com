@@ -2,7 +2,9 @@ import { drawText, initParticlesJS, initSlider, initDarkMode } from "./functions
 
 $(function () {
     try {
-        Laraberg.init('laraberg_editor')
+
+        One.helpersOnLoad(['jq-select2']);
+        Laraberg.init('post_body')
         drawText();
         initParticlesJS();
         initSlider();
@@ -11,5 +13,6 @@ $(function () {
         // initEvents();
     } catch (error) {
         console.log(error);
+        throw error
     }
 });

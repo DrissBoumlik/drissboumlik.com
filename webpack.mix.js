@@ -27,7 +27,8 @@ mix
     .sass('resources/sass/externals.sass', 'public/css')
     .sass('resources/sass/app.sass', 'public/css')
     .copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts')
-    .copy('resources/assets', 'public/assets')
+    .copy('resources/assets/**/*.js', 'public/assets')
+    .copy('resources/assets/**/*.css', 'public/assets')
     .copy('resources/plugins', 'public/plugins')
     .copy('resources/fonts', 'public/fonts')
     .purgeCss({

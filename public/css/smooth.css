@@ -1146,10 +1146,9 @@ a.block.block-link-shadow:active {
   .nav-main-horizontal .nav-main-submenu {
     background-color: #f0f1f2;
   }
-
   .nav-main-dark.nav-main-horizontal .nav-main-submenu,
-.sidebar-dark #sidebar .nav-main-horizontal .nav-main-submenu,
-.page-header-dark #page-header .nav-main-horizontal .nav-main-submenu {
+  .sidebar-dark #sidebar .nav-main-horizontal .nav-main-submenu,
+  .page-header-dark #page-header .nav-main-horizontal .nav-main-submenu {
     background-color: #242932 !important;
   }
 }
