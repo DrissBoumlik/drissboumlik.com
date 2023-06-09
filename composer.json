@@ -16,7 +16,7 @@
         "laravel/tinker": "^2.5",
         "spatie/db-dumper": "^3.3",
         "spatie/laravel-sitemap": "^6.2",
-        "tcg/voyager": "^1.6"
+        "van-ons/laraberg": "^2.0"
     },
     "require-dev": {
         "spatie/laravel-ignition": "^1.0",
@@ -64,11 +64,5 @@
         "sort-packages": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "repositories": {
-        "hooks": {
-            "type": "composer",
-            "url": "https://larapack.io"
-        }
-    }
+    "prefer-stable": true
 }
