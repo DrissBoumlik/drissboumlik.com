@@ -14,23 +14,26 @@ path = require('path');
  */
 
 mix
-    .js('resources/js/oneui/app.js', 'public/js/oneui')
-    .js('resources/js/pages/datatables.js', 'public/js/pages')
-    .js('resources/js/pages/slick.js', 'public/js/pages')
+    .js('resources/template/js/oneui/app.js', 'public/template/js/oneui')
+    .js('resources/template/js/pages/datatables.js', 'public/template/js/pages')
+    .js('resources/template/js/pages/slick.js', 'public/template/js/pages')
     .js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/_template/main.scss', 'public/css')
-    .sass('resources/sass/_template/oneui/themes/amethyst.scss', 'public/css')
-    .sass('resources/sass/_template/oneui/themes/city.scss', 'public/css')
-    .sass('resources/sass/_template/oneui/themes/flat.scss', 'public/css')
-    .sass('resources/sass/_template/oneui/themes/modern.scss', 'public/css')
-    .sass('resources/sass/_template/oneui/themes/smooth.scss', 'public/css')
+    .sass('resources/template/sass/main.scss', 'public/template/css')
+    .sass('resources/template/sass/oneui/themes/amethyst.scss', 'public/template/css/themes')
+    .sass('resources/template/sass/oneui/themes/city.scss', 'public/template/css/themes')
+    .sass('resources/template/sass/oneui/themes/flat.scss', 'public/template/css/themes')
+    .sass('resources/template/sass/oneui/themes/modern.scss', 'public/template/css/themes')
+    .sass('resources/template/sass/oneui/themes/smooth.scss', 'public/template/css/themes')
+    
     .sass('resources/sass/externals.sass', 'public/css')
     .sass('resources/sass/app.sass', 'public/css')
     // .copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts')
-    // .copy('resources/assets/**/*.js', 'public/assets')
-    // .copy('resources/assets/**/*.css', 'public/assets')
-    // .copy('resources/plugins', 'public/plugins')
-    // .copy('resources/fonts', 'public/fonts')
+    .copy('resources/plugins', 'public/plugins')
+    .copy('resources/template/assets/fonts', 'public/template/assets/fonts')
+    .copy('resources/template/assets/fonts', 'public/template/fonts')
+    .copy('resources/template/assets/js', 'public/template/assets/js')
+    .copy('resources/template/assets/media', 'public/template/assets/media')
+    .copy('resources/template/assets/css', 'public/template/assets/css')
     .purgeCss({
         extend: {
             content: [path.join(__dirname, 'database/data/**/*.json'),

@@ -47,11 +47,11 @@ class UserSeeder extends Seeder
         for($i = 1; $i <= 10; $i++) {
             $posts[] = [
                 'author_id' => 1,
-                'title' => $faker->text(100),
+                'title' => $faker->text(30),
                 'slug' => $faker->slug,
                 'content' => $faker->text(1500),
-                'excerpt' => $faker->text(350),
-                'image' => $faker->imageUrl($width = 1920, $height = 1080) ,
+                'excerpt' => $faker->text(200),
+                'image' => $faker->imageUrl(1920, 1080) ,
                 'description' =>  $faker->text(350),
                 'status' => $faker->randomElement(['published', 'draft', 'pending']),
                 'featured' => $faker->boolean,
@@ -61,5 +61,20 @@ class UserSeeder extends Seeder
         }
         Post::insert($posts);
         
+        $post_tag = [];
+        for($i = 1; $i <= 30; $i++) {
+            $tag_id = Tag::inRandomOrder()->first()->id;
+            $post_id = Post::inRandomOrder()->first()->id;
+            if (\DB::table('post_tag')->where([
+                ['tag_id', '=', $tag_id],
+                ['post_id', '=', $post_id],
+            ])->doesntExist()) {
+                $post_tag[] = [
+                    'tag_id' => $tag_id,
+                    'post_id' => $post_id
+                ];
+            }
+        }
+        \DB::table('post_tag')->insert($post_tag);
     }
 }

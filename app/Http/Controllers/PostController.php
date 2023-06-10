@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    private $perPage = 5;
+    private $perPage = 10;
 
     public function index(Request $request)
     {
         $data = new \stdClass();
-        $data->posts = Post::orderBy('created_at', 'desc')->paginate($this->perPage);
+        $data->posts = Post::with('tags')->orderBy('created_at', 'desc')->paginate($this->perPage);
 
         $data->socialLinks = getSocialLinks();
         $data->headerMenu = getHeaderMenu();

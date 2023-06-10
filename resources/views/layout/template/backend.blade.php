@@ -18,15 +18,16 @@
 
   <!-- Modules -->
   @yield('css')
-  <link href="{{ asset('/css/main.css') }}" rel="stylesheet">
+  <link href="{{ asset('/template/css/main.css') }}" rel="stylesheet">
   @yield('css-after')
 
   <!-- Alternatively, you can also include a specific color theme after the main stylesheet to alter the default color theme of the template -->
   {{-- @vite(['resources/sass/main.scss', 'resources/sass/oneui/themes/amethyst.scss', 'resources/js/oneui/app.js']) --}}
   
   {{-- <script src="{{ asset('/js/oneui/app.js') }}"></script> --}}
-  <script src="{{ asset('/js/oneui/oneui.app.min.js') }}"></script>
-  <script src={{ asset("/assets/js/lib/jquery.min.js") }}></script>
+
+  <script src="{{ asset('/template/assets/js/oneui.app.min.js') }}"></script>
+  <script src={{ asset("/template/assets/js/lib/jquery.min.js") }}></script>
   @yield('js')
   <script src="{{ asset('/js/app.js') }}"></script>
 </head>
@@ -85,7 +86,7 @@
       <div class="content-header border-bottom">
         <!-- User Avatar -->
         <a class="img-link me-1" href="javascript:void(0)">
-          <img class="img-avatar img-avatar32" src="{{ asset('/assets/media/avatars/avatar10.jpg') }}" alt="">
+          <img class="img-avatar img-avatar32" src="{{ asset('/template/assets/media/avatars/avatar10.jpg') }}" alt="">
         </a>
         <!-- END User Avatar -->
 
@@ -285,13 +286,13 @@
           <!-- User Dropdown -->
           <div class="dropdown d-inline-block ms-2">
             <button type="button" class="btn btn-sm btn-alt-secondary d-flex align-items-center" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img class="rounded-circle" src="{{ asset('/assets/media/avatars/avatar10.jpg') }}" alt="Header Avatar" style="width: 21px;">
+              <img class="rounded-circle" src="{{ asset('/template/assets/media/avatars/avatar10.jpg') }}" alt="Header Avatar" style="width: 21px;">
               <span class="d-none d-sm-inline-block ms-2">John</span>
               <i class="fa fa-fw fa-angle-down d-none d-sm-inline-block ms-1 mt-1"></i>
             </button>
             <div class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0 border-0" aria-labelledby="page-header-user-dropdown">
               <div class="p-3 text-center bg-body-light border-bottom rounded-top">
-                <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ asset('/assets/media/avatars/avatar10.jpg') }}" alt="">
+                <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ asset('/template/assets/media/avatars/avatar10.jpg') }}" alt="">
                 <p class="mt-2 mb-0 fw-medium">John Smith</p>
                 <p class="mb-0 text-muted fs-sm fw-medium">Web Developer</p>
               </div>

@@ -30,7 +30,8 @@
 
     <!-- Stylesheets -->
     <!-- OneUI framework -->
-    <link rel="stylesheet" id="css-main" href="/assets/css/oneui.min.css">
+    <link href="{{ asset('/template/css/main.css') }}" rel="stylesheet">
+    {{-- <link rel="stylesheet" id="css-main" href="/template/assets/css/oneui.min.css"> --}}
 
     <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
     <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/amethyst.min.css"> -->
@@ -114,51 +115,6 @@
 
                 <!-- Extra -->
                 <div>
-                    <!-- Options -->
-                    <div class="dropdown d-inline-block ms-1">
-                        <button type="button" class="btn btn-sm btn-alt-secondary" id="sidebar-themes-dropdown"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-brush"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-end fs-sm smini-hide border-0"
-                            aria-labelledby="sidebar-themes-dropdown">
-                            <!-- Color Themes -->
-                            <!-- Layout API, functionality initialized in Template._uiHandleTheme() -->
-                            <a class="dropdown-item d-flex align-items-center justify-content-between fw-medium"
-                                data-toggle="theme" data-theme="default" href="#">
-                                <span>Default</span>
-                                <i class="fa fa-circle text-default"></i>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between fw-medium"
-                                data-toggle="theme" data-theme="/assets/css/themes/amethyst.min.css" href="#">
-                                <span>Amethyst</span>
-                                <i class="fa fa-circle text-amethyst"></i>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between fw-medium"
-                                data-toggle="theme" data-theme="/assets/css/themes/city.min.css" href="#">
-                                <span>City</span>
-                                <i class="fa fa-circle text-city"></i>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between fw-medium"
-                                data-toggle="theme" data-theme="/assets/css/themes/flat.min.css" href="#">
-                                <span>Flat</span>
-                                <i class="fa fa-circle text-flat"></i>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between fw-medium"
-                                data-toggle="theme" data-theme="/assets/css/themes/modern.min.css" href="#">
-                                <span>Modern</span>
-                                <i class="fa fa-circle text-modern"></i>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between fw-medium"
-                                data-toggle="theme" data-theme="/assets/css/themes/smooth.min.css" href="#">
-                                <span>Smooth</span>
-                                <i class="fa fa-circle text-smooth"></i>
-                            </a>
-                            <!-- END Color Themes -->
-                        </div>
-                    </div>
-                    <!-- END Options -->
-
                     <!-- Close Sidebar, Visible only on mobile screens -->
                     <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
                     <a class="d-lg-none btn btn-sm btn-alt-secondary ms-1" data-toggle="layout"
@@ -252,56 +208,6 @@
                                 </a>
                             </li>
                             <li class="nav-main-heading">Extra</li>
-                            <li class="nav-main-item">
-                                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu"
-                                    aria-haspopup="true" aria-expanded="false" href="#">
-                                    <i class="nav-main-link-icon fa fa-brush"></i>
-                                </a>
-                                <ul class="nav-main-submenu nav-main-submenu-right">
-                                    <li class="nav-main-item">
-                                        <a class="nav-main-link" data-toggle="theme" data-theme="default"
-                                            href="#">
-                                            <i class="nav-main-link-icon fa fa-square text-default"></i>
-                                            <span class="nav-main-link-name">Default</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-main-item">
-                                        <a class="nav-main-link" data-toggle="theme"
-                                            data-theme="/assets/css/themes/amethyst.min.css" href="#">
-                                            <i class="nav-main-link-icon fa fa-square text-amethyst"></i>
-                                            <span class="nav-main-link-name">Amethyst</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-main-item">
-                                        <a class="nav-main-link" data-toggle="theme"
-                                            data-theme="/assets/css/themes/city.min.css" href="#">
-                                            <i class="nav-main-link-icon fa fa-square text-city"></i>
-                                            <span class="nav-main-link-name">City</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-main-item">
-                                        <a class="nav-main-link" data-toggle="theme"
-                                            data-theme="/assets/css/themes/flat.min.css" href="#">
-                                            <i class="nav-main-link-icon fa fa-square text-flat"></i>
-                                            <span class="nav-main-link-name">Flat</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-main-item">
-                                        <a class="nav-main-link" data-toggle="theme"
-                                            data-theme="/assets/css/themes/modern.min.css" href="#">
-                                            <i class="nav-main-link-icon fa fa-square text-modern"></i>
-                                            <span class="nav-main-link-name">Modern</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-main-item">
-                                        <a class="nav-main-link" data-toggle="theme"
-                                            data-theme="/assets/css/themes/smooth.min.css" href="#">
-                                            <i class="nav-main-link-icon fa fa-square text-smooth"></i>
-                                            <span class="nav-main-link-name">Smooth</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
                         </ul>
                     </div>
                     <!-- END Menu -->
@@ -474,7 +380,7 @@
         Core libraries and functionality
         webpack is putting everything together at assets/_js/main/app.js
     -->
-    <script src="/assets/js/oneui.app.min.js"></script>
+    <script src="/template/assets/js/oneui.app.min.js"></script>
 </body>
 
 </html>
