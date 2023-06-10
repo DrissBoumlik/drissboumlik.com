@@ -16,14 +16,13 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('author_id');
-            $table->unsignedBigInteger('category_id')->nullable();
             $table->string('title');
             // $table->string('seo_title')->nullable();
             $table->string('slug')->unique();
-            $table->text('excerpt')->nullable();
             $table->text('content');
+            $table->text('excerpt')->nullable();
             $table->string('image')->nullable();
-            $table->text('meta_description')->nullable();
+            $table->text('description')->nullable();
             $table->text('tags')->nullable();
             $table->enum('status', ['published', 'draft', 'pending'])->default('draft');
             $table->boolean('featured')->default(0);
@@ -32,7 +31,6 @@ class CreatePostsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('author_id')->references('id')->on('users');
-            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 

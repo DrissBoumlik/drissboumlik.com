@@ -2,6 +2,7 @@
 require('particles.js');
 // var slugify = require('slugify')
 import 'owl.carousel';
+var slugify = require('slugify')
 
 function drawText() {
     let text = `
@@ -119,16 +120,17 @@ function initDarkMode() {
 function initEvents() {
     $(document).on('focusout', '#post-title', function () {
         let postTitle = $(this).val();
-        let postSlug = string_to_slug(postTitle);
-        // slugify(postTitle, {
-        //     replacement: '-',  // replace spaces with replacement character, defaults to `-`
-        //     remove: undefined, // remove characters that match regex, defaults to `undefined`
+        let postSlug = string_to_slug(postTitle)
+        // let postSlug = slugify(postTitle, {
+        //     // replacement: '-',  // replace spaces with replacement character, defaults to `-`
+        //     // remove: undefined, // remove characters that match regex, defaults to `undefined`
         //     lower: true,      // convert to lower case, defaults to `false`
         //     strict: true,     // strip special characters except replacement, defaults to `false`
-        //     locale: 'vi'       // language code of the locale to use
+        //     // locale: 'vi',      // language code of the locale to use
+        //     trim: true         // trim leading and trailing replacement chars, defaults to `true`
         // });
         $('#post-slug').val(postSlug);
     });
 }
 
-export { drawText, initParticlesJS, initSlider, initDarkMode };
+export { drawText, initParticlesJS, initSlider, initDarkMode, initEvents };

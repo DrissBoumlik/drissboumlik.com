@@ -2,6 +2,7 @@
 
 @section('css')
     <!-- Page JS Plugins CSS -->
+    <link rel="stylesheet" href="/assets/js/plugins/cropperjs/cropper.min.css">
     <link rel="stylesheet" href={{ asset("/assets/js/plugins/select2/css/select2.min.css") }}>
     <link rel="stylesheet" href="{{ asset('/vendor/laraberg/css/laraberg.css') }}">
 @endsection
@@ -9,6 +10,7 @@
     <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
     <script src="{{ asset('/vendor/laraberg/js/laraberg.js') }}"></script>
+    <script src="/assets/js/plugins/cropperjs/cropper.min.js"></script>
     <script src={{ asset("/assets/js/plugins/select2/js/select2.full.min.js") }}></script>
 @endsection
 
@@ -43,28 +45,39 @@
     <!-- Page Content -->
     <div class="content">
         <div class="row items-push">
-            <div class="col-12">
-                <div class="block-content">
-                    <form action="/posts" method="POST" class="">
-                        @csrf
-                        <div class="mb-4">
+            <div class="block-content">
+                <form action="/posts" method="POST" class="">
+                    @csrf
+                    <div class="row items-push">
+                        <div class="col-xxl-8">
                             <div class="mb-4">
-                                <label class="form-label" for="example-text-input">Post Title</label>
-                                <input type="text" class="form-control" id="example-text-input" name="title"
+                                <label class="form-label" for="post-title">Title</label>
+                                <input type="text" class="form-control" id="post-title" name="title"
                                     placeholder="Post Title">
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="post_body">Post Content</label>
+                                <label class="form-label" for="post-slug">Slug</label>
+                                <input type="text" class="form-control" id="post-slug" name="slug"
+                                    placeholder="Post slug">
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="post_body">Content</label>
                                 <!-- SimpleMDE Container -->
                                 {{-- <textarea class="js-simplemde" id="simplemde" name="post_body">{{ old('post_body') }}</textarea> --}}
                                 <textarea id="post_body" name="post_body" placeholder="Textarea content.." hidden></textarea>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="excerpt">Post excerpt</label>
+                                <label class="form-label" for="excerpt">Excerpt</label>
                                 <textarea class="form-control" id="excerpt" name="excerpt" rows="4" placeholder="Post excerpt.."></textarea>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="tags">Post tags</label>
+                                <label class="form-label" for="image">Image</label>
+                                <input type="file" id="image" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-xxl-4">
+                            <div class="mb-4">
+                                <label class="form-label" for="tags">Tags</label>
                                 <select class="js-select2 form-select" id="tags"
                                     name="tags" style="width: 100%;" data-placeholder="Choose many.."
                                     multiple>
@@ -82,18 +95,41 @@
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="description">Post description</label>
+                                <label class="form-label" for="description">Description</label>
                                 <textarea class="form-control" id="description" name="description" rows="4" placeholder="Post description.."></textarea>
                             </div>
-                            
                             <div class="mb-4">
-                                <label class="form-label" for="image">Post image</label>
-                                <input type="file" id="image" class="form-control" />
+                                <label class="form-label" for="status">Status</label>
+                                <select class="js-select2 form-select" id="status"
+                                    name="status" style="width: 100%;" data-placeholder="Choose many..">
+                                    <option></option>
+                                    <!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                    <option value="1">published</option>
+                                    <option value="2">draft</option>
+                                    <option value="3">pending</option>
+                                </select>
                             </div>
-                            <input type="submit" class="btn btn-secondary" value="Validate">
+                            <div class="mb-4">
+                                <label class="form-label" for="category">Category</label>
+                                <select class="js-select2 form-select" id="category"
+                                    name="status" style="width: 100%;" data-placeholder="Choose">
+                                    <option></option>
+                                    <!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                    <option value="1">published</option>
+                                    <option value="2">draft</option>
+                                    <option value="3">pending</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <div class="form-check form-switch form-check-inline">
+                                    <input class="form-check-input" type="checkbox" value="" id="example-switch-inline1" name="example-switch-inline1" checked>
+                                    <label class="form-check-label" for="example-switch-inline1">Featured</label>
+                                </div>
+                            </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                    <input type="submit" class="btn btn-secondary" value="Validate">
+                </form>
             </div>
         </div>
     </div>
