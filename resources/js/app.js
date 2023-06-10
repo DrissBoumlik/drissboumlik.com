@@ -3,8 +3,8 @@ import { drawText, initParticlesJS, initSlider, initDarkMode } from "./functions
 $(function () {
     try {
 
-        One.helpersOnLoad(['jq-select2']);
         Laraberg.init('post_body')
+        One.helpersOnLoad(['jq-select2']);
         drawText();
         initParticlesJS();
         initSlider();
@@ -12,7 +12,7 @@ $(function () {
 
         // initEvents();
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         throw error
     }
 });

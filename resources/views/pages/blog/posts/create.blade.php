@@ -1,19 +1,14 @@
 @extends('layout.template.backend')
 
 @section('css')
-    <link rel="stylesheet" href={{ asset("/assets/js/plugins/select2/css/select2.min.css") }}>
     <!-- Page JS Plugins CSS -->
-    {{-- <link rel="stylesheet" href="/js/plugins/simplemde/simplemde.min.css"> --}}
+    <link rel="stylesheet" href={{ asset("/assets/js/plugins/select2/css/select2.min.css") }}>
     <link rel="stylesheet" href="{{ asset('/vendor/laraberg/css/laraberg.css') }}">
 @endsection
 @section('js')
     <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
-    {{-- <script src="/js/plugins/simplemde/simplemde.min.js"></script> --}}
     <script src="{{ asset('/vendor/laraberg/js/laraberg.js') }}"></script>
-@endsection
-@section('js-after')
-    <script src={{ asset("/assets/js/lib/jquery.min.js") }}></script>
     <script src={{ asset("/assets/js/plugins/select2/js/select2.full.min.js") }}></script>
 @endsection
 
@@ -69,12 +64,9 @@
                                 <textarea class="form-control" id="excerpt" name="excerpt" rows="4" placeholder="Post excerpt.."></textarea>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="excerpt">Post image</label>
-                                <input type="file" class="form-control" />
-                            </div>
-                            <div class="mb-4">
-                                <select class="js-select2 form-select" id="example-select2-multiple"
-                                    name="example-select2-multiple" style="width: 100%;" data-placeholder="Choose many.."
+                                <label class="form-label" for="tags">Post tags</label>
+                                <select class="js-select2 form-select" id="tags"
+                                    name="tags" style="width: 100%;" data-placeholder="Choose many.."
                                     multiple>
                                     <option></option>
                                     <!-- Required for data-placeholder attribute to work with Select2 plugin -->
@@ -88,6 +80,15 @@
                                     <option value="8">React</option>
                                     <option value="9">Vue.js</option>
                                 </select>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="description">Post description</label>
+                                <textarea class="form-control" id="description" name="description" rows="4" placeholder="Post description.."></textarea>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="form-label" for="image">Post image</label>
+                                <input type="file" id="image" class="form-control" />
                             </div>
                             <input type="submit" class="btn btn-secondary" value="Validate">
                         </div>

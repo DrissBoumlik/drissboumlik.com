@@ -15930,20 +15930,19 @@ __webpack_require__.r(__webpack_exports__);
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
 $(function () {
-  // try {
+  try {
+    Laraberg.init('post_body');
+    One.helpersOnLoad(['jq-select2']);
+    (0,_functions__WEBPACK_IMPORTED_MODULE_0__.drawText)();
+    (0,_functions__WEBPACK_IMPORTED_MODULE_0__.initParticlesJS)();
+    (0,_functions__WEBPACK_IMPORTED_MODULE_0__.initSlider)();
+    (0,_functions__WEBPACK_IMPORTED_MODULE_0__.initDarkMode)();
 
-  One.helpersOnLoad(['jq-select2']);
-  Laraberg.init('post_body');
-  (0,_functions__WEBPACK_IMPORTED_MODULE_0__.drawText)();
-  (0,_functions__WEBPACK_IMPORTED_MODULE_0__.initParticlesJS)();
-  (0,_functions__WEBPACK_IMPORTED_MODULE_0__.initSlider)();
-  (0,_functions__WEBPACK_IMPORTED_MODULE_0__.initDarkMode)();
-
-  // initEvents();
-  // } catch (error) {
-  //     throw error
-  //     console.log(error);
-  // }
+    // initEvents();
+  } catch (error) {
+    // console.log(error);
+    throw error;
+  }
 });
 })();
 

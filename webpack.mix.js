@@ -26,11 +26,11 @@ mix
     .sass('resources/sass/_template/oneui/themes/smooth.scss', 'public/css')
     .sass('resources/sass/externals.sass', 'public/css')
     .sass('resources/sass/app.sass', 'public/css')
-    .copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts')
-    .copy('resources/assets/**/*.js', 'public/assets')
-    .copy('resources/assets/**/*.css', 'public/assets')
-    .copy('resources/plugins', 'public/plugins')
-    .copy('resources/fonts', 'public/fonts')
+    // .copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts')
+    // .copy('resources/assets/**/*.js', 'public/assets')
+    // .copy('resources/assets/**/*.css', 'public/assets')
+    // .copy('resources/plugins', 'public/plugins')
+    // .copy('resources/fonts', 'public/fonts')
     .purgeCss({
         extend: {
             content: [path.join(__dirname, 'database/data/**/*.json'),
