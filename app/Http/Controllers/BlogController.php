@@ -37,6 +37,7 @@ class BlogController extends Controller
     public function show(Request $request, $slug)
     {
         $post = Post::where('slug', $slug)->first();
+        $post->increment('views');
         $data = new \stdClass();
         $data->post = (object)(new PostResource($post))->resolve();
 //        $data->socialLinks = getSocialLinks();

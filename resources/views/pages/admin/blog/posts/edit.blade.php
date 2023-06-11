@@ -46,7 +46,8 @@
     <div class="content">
         <div class="row items-push">
             <div class="block-content">
-                <form action="/admin/posts" method="POST" class="" enctype="multipart/form-data">
+                <form action="/admin/posts/{{ $data->post->slug }}" method="POST" class="" enctype="multipart/form-data">
+                    @method('put')
                     @csrf
                     <div class="row items-push">
                         <div class="col-xxl-8">
@@ -75,6 +76,7 @@
                                 <input type="file" id="image" name="image" class="form-control" />
                             </div>
                         </div>
+
                         <div class="col-xxl-4">
                             <div class="mb-4">
                                 <label class="form-label" for="tags">Tags</label>
@@ -84,7 +86,7 @@
                                     <option></option>
                                     <!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                     @foreach ($data->tags as $tag)
-                                        <option value="{{ $tag->id }}" {{ in_array($tag->name, $data->post->tags) ? 'selected' : '' }}>{{ $tag->name }}</option>
+                                        <option value="{{ $tag->id }}" {{ $tag->linked ? 'selected' : '' }}>{{ $tag->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -106,13 +108,18 @@
                             </div>
                             <div class="mb-4">
                                 <div class="form-check form-switch form-check-inline">
-                                    <input class="form-check-input" type="checkbox" value="" id="featured" name="featured" {{ $data->post->featured == 0 ? '' : 'checked' }} >
+                                    <input class="form-check-input" type="checkbox" id="featured" name="featured" {{ $data->post->featured == 0 ? '' : 'checked' }} >
                                     <label class="form-check-label" for="featured">Featured</label>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <input type="submit" class="btn btn-secondary" value="Validate">
+                    <button type="submit" class="btn btn-success me-1 mb-3">
+                        <i class="fa fa-fw fa-plus me-1"></i> Submit
+                    </button>
+                    <a href="/blog/{{ $data->post->slug }}" class="btn btn-dark me-1 mb-3">
+                        <i class="fa fa-fw fa-eye me-1"></i> View
+                    </a>
                 </form>
             </div>
         </div>

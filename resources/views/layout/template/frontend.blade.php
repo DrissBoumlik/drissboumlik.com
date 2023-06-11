@@ -119,7 +119,7 @@
                         <i class="fa fa-circle-notch text-primary"></i>
                     </span>
                     <span class="smini-hide fs-5 tracking-wider">
-                        One<span class="fw-normal">UI</span>
+                        <span class="fw-normal">Driss Boumlik</span>
                     </span>
                 </a>
                 <!-- END Logo -->
@@ -144,27 +144,23 @@
                 <div class="content-side">
                     <ul class="nav-main">
                         <li class="nav-main-item">
-                            <a class="nav-main-link active" href="gs_landing.html">
-                                <i class="nav-main-link-icon si si-home"></i>
+                            <a class="nav-main-link active" href="/">
                                 <span class="nav-main-link-name">Home</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="javascript:void(0)">
-                                <i class="nav-main-link-icon si si-rocket"></i>
-                                <span class="nav-main-link-name">Features</span>
+                            <a class="nav-main-link" href="/blog">
+                                <span class="nav-main-link-name">Blog</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="javascript:void(0)">
-                                <i class="nav-main-link-icon si si-wallet"></i>
-                                <span class="nav-main-link-name">Pricing</span>
+                            <a class="nav-main-link" href="/about">
+                                <span class="nav-main-link-name">About</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="javascript:void(0)">
-                                <i class="nav-main-link-icon si si-envelope"></i>
-                                <span class="nav-main-link-name">Contact</span>
+                            <a class="nav-main-link" href="/resume">
+                                <span class="nav-main-link-name">Resume</span>
                             </a>
                         </li>
                     </ul>
@@ -183,7 +179,7 @@
                 <div class="d-flex align-items-center">
                     <!-- Logo -->
                     <a class="fw-semibold fs-5 tracking-wider text-dual me-3" href="index.html">
-                        One<span class="fw-normal">UI</span>
+                        <span class="fw-normal">Driss Boumlik</span>
                     </a>
                     <!-- END Logo -->
                 </div>
@@ -195,27 +191,23 @@
                     <div class="d-none d-lg-block">
                         <ul class="nav-main nav-main-horizontal nav-main-hover">
                             <li class="nav-main-item">
-                                <a class="nav-main-link active" href="gs_landing.html">
-                                    <i class="nav-main-link-icon si si-home"></i>
+                                <a class="nav-main-link active" href="/">
                                     <span class="nav-main-link-name">Home</span>
                                 </a>
                             </li>
                             <li class="nav-main-item">
-                                <a class="nav-main-link" href="javascript:void(0)">
-                                    <i class="nav-main-link-icon si si-rocket"></i>
-                                    <span class="nav-main-link-name">Features</span>
+                                <a class="nav-main-link" href="/blog">
+                                    <span class="nav-main-link-name">Blog</span>
                                 </a>
                             </li>
                             <li class="nav-main-item">
-                                <a class="nav-main-link" href="javascript:void(0)">
-                                    <i class="nav-main-link-icon si si-wallet"></i>
-                                    <span class="nav-main-link-name">Pricing</span>
+                                <a class="nav-main-link" href="/about">
+                                    <span class="nav-main-link-name">About</span>
                                 </a>
                             </li>
                             <li class="nav-main-item">
-                                <a class="nav-main-link" href="javascript:void(0)">
-                                    <i class="nav-main-link-icon si si-envelope"></i>
-                                    <span class="nav-main-link-name">Contact</span>
+                                <a class="nav-main-link" href="/resume">
+                                    <span class="nav-main-link-name">Resume</span>
                                 </a>
                             </li>
                             <li class="nav-main-heading">Extra</li>

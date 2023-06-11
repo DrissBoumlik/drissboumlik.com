@@ -10,7 +10,7 @@
 @section('content')
 
     <!-- Hero Content -->
-    <div class="bg-image" style="background-image: url('/template/assets/media/photos/photo10@2x.jpg');">
+    <div class="bg-image" style="background-image: url('{{ $data->post->image }}');">
         <div class="bg-primary-dark-op">
             <div class="content content-full text-center pt-9 pb-8">
                 <h1 class="text-white mb-2">{{ $data->post->title }}</h1>

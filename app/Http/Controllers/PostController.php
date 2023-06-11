@@ -84,7 +84,7 @@ class PostController extends Controller
     public function edit(Request $request, $slug)
     {
         $data = new \stdClass();
-        $data->post = (object)(new PostResource(Post::with('tags', 'author')->whereSlug($slug)->first()))->resolve();
+        $data->post = Post::with(['tags', 'author'])->whereSlug($slug)->first();
 
 //        dd($data->post);
 
@@ -92,8 +92,49 @@ class PostController extends Controller
 //        $data->headerMenu = getHeaderMenu();
 
         $data->tags = Tag::select("name", "id")->get();
+        $post_tag_ids = $data->post->tags->pluck('id');
+
+        $data->post->status = $data->post->getDomClass();
+
+        $data->tags = $data->tags->map(function ($tag) use ($post_tag_ids) {
+            $tag->linked = $post_tag_ids->contains($tag->id);
+            return $tag;
+        });
 
         $data->title = 'Blog | Create Post';
         return view('pages.admin.blog.posts.edit', ['data' => $data]);
+    }
+
+    public function update(Request $request, $slug)
+    {
+//         dd($request->all());
+        $data = [
+            "title" => $request->title,
+            "slug" => $request->slug,
+            "content" => $request->post_body,
+            "excerpt" => $request->excerpt,
+            "description" => $request->description,
+            "status" => $request->status,
+            "featured" => $request->has('featured'),
+            'author_id' => \Auth::user()->id,
+            'published_at' => $request->status == 1 ? now() : null,
+//            'image',
+        ];
+        $post = Post::whereSlug($slug)->first();
+        $post->update($data);
+
+        if ($request->has('tags')) {
+            $post_tag = [];
+            foreach ($request->tags as $tag_id) {
+                $post_tag[] = [
+                    'tag_id' => $tag_id,
+                    'post_id' => $post->id,
+                    "created_at" => now(), "updated_at" => now()
+                ];
+            }
+            \DB::table('post_tag')->where('post_id', $post->id)->delete();
+            \DB::table('post_tag')->insert($post_tag);
+        }
+        return redirect("/admin/posts/edit/$post->slug");
     }
 }

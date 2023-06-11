@@ -55,12 +55,19 @@
 
     <!-- Page Content -->
     <div class="content">
+
+
         <!-- Dynamic Table Responsive -->
         <div class="block block-rounded">
             <div class="block-header block-header-default">
                 <h3 class="block-title">
                     Dynamic Table <small>DataTables Responsive Mode</small>
                 </h3>
+            </div>
+            <div class="block-content d-flex justify-content-end">
+                <button type="button" class="btn btn-success">
+                    <i class="fa fa-fw fa-plus me-1"></i> New Post
+                </button>
             </div>
             <div class="block-content block-content-full">
                 <!-- DataTables init on table by adding .js-dataTable-responsive class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
@@ -72,8 +79,8 @@
                         <th>Slug</th>
                         <th>Status</th>
                         <th>Featured</th>
-                        <th><i class="fa-solid fa-eye"></i></th>
-                        <th><i class="fa-solid fa-thumbs-up"></i></th>
+                        <th>Views <i class="fa-solid fa-eye"></i></th>
+                        <th>Likes <i class="fa-solid fa-thumbs-up"></i></th>
                         <th>Published @</th>
                         <th>Written @</th>
                         <th class="text-center" style="width: 100px;">Actions</th>
@@ -93,7 +100,7 @@
                             </td>
                             <td class="fs-sm">{{ $post->views }}</td>
                             <td class="fs-sm">{{ $post->likes }}</td>
-                            <td class="fs-sm">{{ $post->published_at }}</td>
+                            <td class="fs-sm">{{ $post->published_at ?? '---' }}</td>
                             <td class="fs-sm">{{ $post->created_at }}</td>
                             <td class="text-center">
                                 <div class="btn-group">
