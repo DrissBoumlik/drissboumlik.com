@@ -1,57 +1,159 @@
-@extends('app')
+@extends('layout.template.frontend')
+
+@section('css')
+    <link rel="stylesheet" href="/template/assets/js/plugins/magnific-popup/magnific-popup.css">
+@endsection
+@section('js')
+    <script src="/template/assets/js/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+@endsection
 
 @section('content')
-    <div class="container-fluid p-0">
-        @include('pages.partials.about')
-        <div class="posts">
-            <div class="section py-5">
-                <div class="container">
-{{--                    <div class="row section-header d-none">--}}
-{{--                        <div class="col-md-10 offset-md-1 col-12--}}
-{{--                                d-flex flex-column align-items-center justify-content-center">--}}
-{{--                            <hr class="section-title-line">--}}
-{{--                            <h1 class="section-title">Post</h1>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-                    <div class="row">
-                        <div class="col-12 col-md-8 offset-md-2 col-sm-10 offset-sm-1
-                                        col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mb-4 post">
-                            <div class="post-image mb-3">
-                                <img src="/storage/{{ $data->post->image }}" alt=""
-                                        class="w-100">
-                            </div>
-                            <div class="post-title mb-3">
-                                <h2 class="font-weight-bolder">{{ $data->post->title }}</h2>
-                            </div>
-                            <div class="post-meta-data">
-                                <div class="post-date">
-                                    <i class="fa-solid fa-clock"></i>
-                                    {{ $data->post->updated_at->format('j F Y') }}
-                                </div>
-                                @if ($data->post->meta_keywords)
-                                @php $tags = explode(' ', $data->post->meta_keywords) @endphp
-                                    <div class="post-tags mb-3">
-                                        @foreach ($tags as $tag)
-                                            <div class="post-tag d-inline-block me-2">
-                                                <i class="fa-solid fa-tag fs-small"></i>
-                                                <a href="/tags/{{ $tag }}">
-                                                    <span>{{ $tag }}</span>
-                                                </a>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                @endif
-                            </div>
-                            <div class="post-content mt-3">
-                                {!! $data->post->body !!}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+    <!-- Hero Content -->
+    <div class="bg-image" style="background-image: url('/template/assets/media/photos/photo10@2x.jpg');">
+        <div class="bg-primary-dark-op">
+        <div class="content content-full text-center pt-9 pb-8">
+            <h1 class="text-white mb-2">{{ $data->post->title }}</h1>
+            <h2 class="h4 fw-normal text-white-75 mb-0">
+            Experience life to its fullest.
+            </h2>
+        </div>
         </div>
     </div>
+    <!-- END Hero Content -->
 
+    <!-- Page Content -->
+    <div class="bg-body-extra-light">
+        <div class="content content-boxed">
+        <div class="text-center fs-sm push">
+            <span class="d-inline-block py-2 px-4 bg-body fw-medium rounded">
+            <a class="link-effect" href="be_pages_generic_profile.html">John Doe</a> on July 16, 2019 &bull; <span>5 min</span>
+            </span>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-8">
+            <!-- Story -->
+            <article class="story">
+                {!! $data->post->content !!}
+            </article>
+            <!-- END Story -->
 
-    @include('layout.footer')
-@endsection
+            <!-- Actions -->
+            <div class="mt-5 d-flex justify-content-between push">
+                <a class="btn btn-alt-primary" href="javascript:void(0)">
+                <i class="fa fa-heart me-1"></i> Recommend
+                </a>
+                <div class="btn-group" role="group">
+                <button type="button" class="btn btn-alt-secondary" data-bs-toggle="tooltip" title="Like Story">
+                    <i class="fa fa-thumbs-up"></i>
+                </button>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-alt-secondary dropdown-toggle" id="dropdown-blog-story" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-share-alt me-1"></i> Share
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end fs-sm" aria-labelledby="dropdown-blog-story">
+                    <a class="dropdown-item" href="javascript:void(0)">
+                        <i class="fab fa-fw fa-facebook me-1"></i> Facebook
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0)">
+                        <i class="fab fa-fw fa-twitter me-1"></i> Twitter
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0)">
+                        <i class="fab fa-fw fa-google-plus me-1"></i> Google+
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0)">
+                        <i class="fab fa-fw fa-linkedin me-1"></i> LinkedIn
+                    </a>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- END Actions -->
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- END Page Content -->
+
+    <!-- More Stories -->
+    <div class="content content-boxed">
+        <!-- Section Content -->
+        <div class="row py-5">
+        <div class="col-md-4">
+            <a class="block block-rounded block-link-pop overflow-hidden" href="javascript:void(0)">
+            <div class="bg-image" style="background-image: url('/template/assets/media/photos/photo2.jpg');">
+                <div class="block-content bg-primary-dark-op">
+                <h4 class="text-white mt-5 push">10 Productivity Tips</h4>
+                </div>
+            </div>
+            <div class="block-content block-content-full fs-sm fw-medium">
+                <span class="text-primary">Danielle Jones</span> on July 2, 2019 · <span>12 min</span>
+            </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a class="block block-rounded block-link-pop overflow-hidden" href="javascript:void(0)">
+            <div class="bg-image" style="background-image: url('/template/assets/media/photos/photo10.jpg');">
+                <div class="block-content bg-primary-dark-op">
+                <h4 class="text-white mt-5 push">Travel &amp; Work</h4>
+                </div>
+            </div>
+            <div class="block-content block-content-full fs-sm fw-medium">
+                <span class="text-primary">Susan Day</span> on July 6, 2019 · <span>15 min</span>
+            </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a class="block block-rounded block-link-pop overflow-hidden" href="javascript:void(0)">
+            <div class="bg-image" style="background-image: url('/template/assets/media/photos/photo3.jpg');">
+                <div class="block-content bg-primary-dark-op">
+                <h4 class="text-white mt-5 push">New Image Gallery</h4>
+                </div>
+            </div>
+            <div class="block-content block-content-full fs-sm fw-medium">
+                <span class="text-primary">David Fuller</span> on June 29, 2019 · <span>10 min</span>
+            </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a class="block block-rounded block-link-pop overflow-hidden" href="javascript:void(0)">
+            <div class="bg-image" style="background-image: url('/template/assets/media/photos/photo23.jpg');">
+                <div class="block-content bg-primary-dark-op">
+                <h4 class="text-white mt-5 push">Explore the World</h4>
+                </div>
+            </div>
+            <div class="block-content block-content-full fs-sm fw-medium">
+                <span class="text-primary">Jack Estrada</span> on June 16, 2019 · <span>13 min</span>
+            </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a class="block block-rounded block-link-pop overflow-hidden" href="javascript:void(0)">
+            <div class="bg-image" style="background-image: url('/template/assets/media/photos/photo22.jpg');">
+                <div class="block-content bg-primary-dark-op">
+                <h4 class="text-white mt-5 push">Follow Your Dreams</h4>
+                </div>
+            </div>
+            <div class="block-content block-content-full fs-sm fw-medium">
+                <span class="text-primary">Sara Fields</span> on May 23, 2019 · <span>10 min</span>
+            </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a class="block block-rounded block-link-pop overflow-hidden" href="javascript:void(0)">
+            <div class="bg-image" style="background-image: url('/template/assets/media/photos/photo24.jpg');">
+                <div class="block-content bg-primary-dark-op">
+                <h4 class="text-white mt-5 push">Top 10 Destinations</h4>
+                </div>
+            </div>
+            <div class="block-content block-content-full fs-sm fw-medium">
+                <span class="text-primary">Carl Wells</span> on May 15, 2019 · <span>7 min</span>
+            </div>
+            </a>
+        </div>
+        </div>
+        <!-- END Section Content -->
+    </div>
+    <!-- END More Stories -->
+
+    @endsection

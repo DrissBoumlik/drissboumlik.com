@@ -24,18 +24,18 @@
                     <a class="block block-rounded block-link-pop overflow-hidden" href="/posts/{{ $post->slug }}">
                         <img class="img-fluid" src="/template/assets/media/photos/photo8@2x.jpg" alt="">
                         <div class="block-content">
-                            <h4 class="mb-1">{{ $post->title }}</h4>
+                            <h4 class="mb-1">{{ $post->title }} - {{ $post->id }}</h4>
                             <p class="fs-sm fw-medium mb-2">
-                                <span class="text-primary">Albert Ray</span> on July 16, 2021 · <span class="text-muted">10 min</span>
+                                <span class="text-primary">Albert Ray</span> · {{ $post->created_at->diffForHumans() }} · <span class="text-muted">10 min</span>
                             </p>
                             <p class="fs-sm text-muted">
                                 {!! $post->excerpt !!}...
                             </p>
                             <div class="tags mb-4">
                                 @foreach ($post->tags as $tag)
-                                <span style="background-color: {{ $tag->color }}"
-                                    class="fs-sm fw-semibold d-inline-block py-1 px-3 
-                                    rounded-pill text-white">{{ $tag->name }}</span>
+                                    <span style="background-color: {{ $tag->color }}"
+                                        class="fs-sm fw-semibold d-inline-block py-1 px-3 mx-1 mb-1
+                                        rounded-pill text-white">{{ $tag->name }}</span>
                                 @endforeach
                             </div>
                         </div>

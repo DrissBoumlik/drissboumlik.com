@@ -137,6 +137,7 @@ function initEvents() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   initGallery: () => (/* binding */ initGallery),
 /* harmony export */   initImageCropper: () => (/* binding */ initImageCropper),
 /* harmony export */   initLaraberg: () => (/* binding */ initLaraberg),
 /* harmony export */   initSelect2: () => (/* binding */ initSelect2)
@@ -148,11 +149,13 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function initGallery() {
+  if ($('.js-gallery').length == 0) return;
+  One.helpersOnLoad(['jq-magnific-popup']);
+}
 function initLaraberg() {
   if ($('#post_body').length == 0) return;
-  var options = {
-    height: "200px"
-  };
+  var options = {};
   console.log(options);
   Laraberg.init('post_body', options);
 }
@@ -16113,6 +16116,7 @@ $(function () {
     (0,_functions__WEBPACK_IMPORTED_MODULE_0__.initDarkMode)();
     (0,_plugins_use__WEBPACK_IMPORTED_MODULE_1__.initLaraberg)();
     (0,_plugins_use__WEBPACK_IMPORTED_MODULE_1__.initSelect2)();
+    (0,_plugins_use__WEBPACK_IMPORTED_MODULE_1__.initGallery)();
     // initImageCropper();
     (0,_functions__WEBPACK_IMPORTED_MODULE_0__.initEvents)();
   } catch (error) {

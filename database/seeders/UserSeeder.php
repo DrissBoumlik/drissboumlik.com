@@ -33,12 +33,12 @@ class UserSeeder extends Seeder
         
         // Tags 
         $tags = [
-            ["name" => 'php', "color" => $this->generateRandomColor()], 
-            ["name" => 'laravel', "color" => $this->generateRandomColor()], 
-            ["name" => 'html', "color" => $this->generateRandomColor()],
-            ["name" =>  'angular', "color" => $this->generateRandomColor()], 
-            ["name" => 'react', "color" => $this->generateRandomColor()], 
-            ["name" => 'cypress', "color" => $this->generateRandomColor()]
+            ["name" => 'php', "color" => $this->generateRandomColor(), "created_at" => now(), "updated_at" => now()], 
+            ["name" => 'laravel', "color" => $this->generateRandomColor(), "created_at" => now(), "updated_at" => now()], 
+            ["name" => 'html', "color" => $this->generateRandomColor(), "created_at" => now(), "updated_at" => now()],
+            ["name" =>  'angular', "color" => $this->generateRandomColor(), "created_at" => now(), "updated_at" => now()], 
+            ["name" => 'react', "color" => $this->generateRandomColor(), "created_at" => now(), "updated_at" => now()], 
+            ["name" => 'cypress', "color" => $this->generateRandomColor(), "created_at" => now(), "updated_at" => now()]
         ];
         Tag::insert($tags);
         
@@ -57,22 +57,24 @@ class UserSeeder extends Seeder
                 'featured' => $faker->boolean,
                 'likes' => $faker->randomNumber(2),
                 'views' => $faker->randomNumber(2),
+                "created_at" => now(), "updated_at" => now()
             ];
         }
         Post::insert($posts);
         
         $post_tag = [];
         for($i = 1; $i <= 30; $i++) {
-            $tag_id = Tag::inRandomOrder()->first()->id;
             $post_id = Post::inRandomOrder()->first()->id;
-            if (\DB::table('post_tag')->where([
-                ['tag_id', '=', $tag_id],
-                ['post_id', '=', $post_id],
-            ])->doesntExist()) {
-                $post_tag[] = [
-                    'tag_id' => $tag_id,
-                    'post_id' => $post_id
-                ];
+            $tag_count = random_int(2, 6);
+            if (!isset(collect($post_tag)->groupBy('post_id')[$post_id])) {
+                $tags = Tag::inRandomOrder()->take($tag_count)->pluck('id');
+                foreach ($tags as $tag_id) {
+                    $post_tag[] = [
+                        'tag_id' => $tag_id,
+                        'post_id' => $post_id,
+                        "created_at" => now(), "updated_at" => now()
+                    ];
+                }
             }
         }
         \DB::table('post_tag')->insert($post_tag);

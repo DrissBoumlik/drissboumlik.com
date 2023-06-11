@@ -1,9 +1,13 @@
 
+function initGallery(){
+    if ($('.js-gallery').length == 0) return;
+    One.helpersOnLoad(['jq-magnific-popup']);
+}
 
 function initLaraberg() {
     if ($('#post_body').length == 0) return;
     let options = {
-        height: "200px",
+        
     };
     console.log(options);
     Laraberg.init('post_body', options)
@@ -37,4 +41,4 @@ function initImageCropper() {
     }.init()));
 }
 
-export { initLaraberg, initSelect2, initImageCropper };
+export { initLaraberg, initSelect2, initGallery, initImageCropper };

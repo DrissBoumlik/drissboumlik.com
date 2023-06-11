@@ -46,7 +46,7 @@
     <div class="content">
         <div class="row items-push">
             <div class="block-content">
-                <form action="/posts" method="POST" class="">
+                <form action="/posts" method="POST" class="" enctype="multipart/form-data">
                     @csrf
                     <div class="row items-push">
                         <div class="col-xxl-8">
@@ -72,26 +72,20 @@
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="image">Image</label>
-                                <input type="file" id="image" class="form-control" />
+                                <input type="file" id="image" name="image" class="form-control" />
                             </div>
                         </div>
                         <div class="col-xxl-4">
                             <div class="mb-4">
                                 <label class="form-label" for="tags">Tags</label>
                                 <select class="js-select2 form-select" id="tags"
-                                    name="tags" style="width: 100%;" data-placeholder="Choose many.."
+                                    name="tags[]" style="width: 100%;" data-placeholder="Choose many.."
                                     multiple>
                                     <option></option>
                                     <!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                    <option value="1" selected>HTML</option>
-                                    <option value="2" selected>CSS</option>
-                                    <option value="3">JavaScript</option>
-                                    <option value="4">PHP</option>
-                                    <option value="5">MySQL</option>
-                                    <option value="6">Ruby</option>
-                                    <option value="7">Angular</option>
-                                    <option value="8">React</option>
-                                    <option value="9">Vue.js</option>
+                                    @foreach ($data->tags as $tag)
+                                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="mb-4">
@@ -110,20 +104,9 @@
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="category">Category</label>
-                                <select class="js-select2 form-select" id="category"
-                                    name="status" style="width: 100%;" data-placeholder="Choose">
-                                    <option></option>
-                                    <!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                    <option value="1">published</option>
-                                    <option value="2">draft</option>
-                                    <option value="3">pending</option>
-                                </select>
-                            </div>
-                            <div class="mb-4">
                                 <div class="form-check form-switch form-check-inline">
-                                    <input class="form-check-input" type="checkbox" value="" id="example-switch-inline1" name="example-switch-inline1" checked>
-                                    <label class="form-check-label" for="example-switch-inline1">Featured</label>
+                                    <input class="form-check-input" type="checkbox" value="" id="featured" name="featured" checked>
+                                    <label class="form-check-label" for="featured">Featured</label>
                                 </div>
                             </div>
                         </div>

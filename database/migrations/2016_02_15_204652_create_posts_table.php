@@ -24,9 +24,9 @@ class CreatePostsTable extends Migration
             $table->string('image')->nullable();
             $table->text('description')->nullable();
             $table->enum('status', ['published', 'draft', 'pending'])->default('draft');
-            $table->boolean('featured')->default(0);
-            $table->unsignedInteger('likes');
-            $table->unsignedInteger('views');
+            $table->boolean('featured')->default(false)->nullable();
+            $table->unsignedInteger('likes')->default(0)->nullable();
+            $table->unsignedInteger('views')->default(0)->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('author_id')->references('id')->on('users');
