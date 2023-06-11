@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 Route::group([], function () {
 
     Route::group(['prefix' => 'admin'], function () {
-        
+
         Route::redirect('/', 'admin/posts');
         Route::get('/login', [LoginController::class , 'showLoginForm'])->name('login');
         Route::post('/login', [LoginController::class , 'login']);
@@ -37,7 +37,7 @@ Route::group([], function () {
         Route::get('/password/reset/{token}', [ResetPasswordController::class , 'showResetForm'])->name('password.reset');
         Route::post('/password/reset', [ResetPasswordController::class , 'reset'])->name('password.update');
 
-        
+
         Route::group(['middleware' => 'auth'], function() {
             // Profile
             // Route::get('profile', [AdminController::class, 'profile'])->name('profile');
@@ -48,19 +48,19 @@ Route::group([], function () {
             Route::post('/logout', [LoginController::class , 'logout'])->name('logout');
             // Tools
             // Route::get('/export-db', [ToolController::class , 'export_db']);
-            
+
             Route::get('/posts', 'PostController@index');
             Route::get('/posts/create', 'PostController@create');
             Route::post('/posts', 'PostController@store');
-            Route::get('/posts/edit/{post}', 'PostController@edit');
-            Route::put('/posts/{post}', 'PostController@update');
+            Route::get('/posts/edit/{slug}', 'PostController@edit');
+            Route::put('/posts/{slug}', 'PostController@update');
         });
     });
-    
+
     Route::get('/blog', 'BlogController@index');
-    Route::get('/blog/{post}', 'BlogController@show');
+    Route::get('/blog/{slug}', 'BlogController@show');
     // Route::get('blog/{slug}', [PostController::class, 'show']);
-    
+
     // Route::get('/tags/{tag}', [PostController::class, 'getPostsByTag']);
 
 

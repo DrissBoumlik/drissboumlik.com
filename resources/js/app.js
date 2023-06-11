@@ -1,10 +1,11 @@
 import { drawText, initParticlesJS, initSlider, initDarkMode, initEvents } from "./functions";
-import { initLaraberg, initSelect2, initGallery, initImageCropper } from "./plugins-use";
+import { initLaraberg, initSelect2, initGallery, initDataTable, initImageCropper } from "./plugins-use";
 
 
 $(function () {
     try {
-        drawText();
+
+        // drawText();
         initParticlesJS();
         initSlider();
         initDarkMode();
@@ -12,6 +13,7 @@ $(function () {
         initLaraberg();
         initSelect2();
         initGallery();
+        initDataTable();
         // initImageCropper();
         initEvents();
     } catch (error) {

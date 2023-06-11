@@ -98,9 +98,9 @@
                                     name="status" style="width: 100%;" data-placeholder="Choose many..">
                                     <option></option>
                                     <!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                    <option value="1">published</option>
-                                    <option value="2">draft</option>
-                                    <option value="3">pending</option>
+                                    @foreach(getPostStatus() as $key => $status)
+                                        <option value="{{ $key }}">{{ ucfirst($status) }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="mb-4">

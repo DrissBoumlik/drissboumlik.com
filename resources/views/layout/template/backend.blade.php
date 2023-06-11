@@ -23,13 +23,13 @@
 
   <!-- Alternatively, you can also include a specific color theme after the main stylesheet to alter the default color theme of the template -->
   {{-- @vite(['resources/sass/main.scss', 'resources/sass/oneui/themes/amethyst.scss', 'resources/js/oneui/app.js']) --}}
-  
+
   {{-- <script src="{{ asset('/js/oneui/app.js') }}"></script> --}}
 
   <script src="{{ asset('/template/assets/js/oneui.app.min.js') }}"></script>
   <script src={{ asset("/template/assets/js/lib/jquery.min.js") }}></script>
   @yield('js')
-  <script src="{{ asset('/js/app.js') }}"></script>
+  <script defer src="{{ asset('/js/app.js') }}"></script>
 </head>
 
 <body>

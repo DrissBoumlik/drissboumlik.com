@@ -16,7 +16,7 @@ class Post extends Model
         'content','image','description','status',
         'featured','likes','views', 'published_at',
     ];
-    
+
     protected $casts = [
         'published_at' => 'datetime',
     ];
@@ -25,9 +25,19 @@ class Post extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
-    
+
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getDomClass()
+    {
+        $classes = [
+            0 => (object) ['value' => 0, 'class' => 'bg-gray text-gray-dark', 'text' => 'Draft'],
+            1 => (object) ['value' => 1, 'class' => 'bg-warning-light text-warning', 'text' => 'Pending'],
+            2 => (object) ['value' => 2, 'class' => 'bg-success-light text-success', 'text' => 'Published'],
+        ];
+        return $classes[$this->status];
     }
 }

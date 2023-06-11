@@ -137,6 +137,7 @@ function initEvents() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   initDataTable: () => (/* binding */ initDataTable),
 /* harmony export */   initGallery: () => (/* binding */ initGallery),
 /* harmony export */   initImageCropper: () => (/* binding */ initImageCropper),
 /* harmony export */   initLaraberg: () => (/* binding */ initLaraberg),
@@ -224,6 +225,7 @@ function initImageCropper() {
     }().init();
   });
 }
+function initDataTable() {}
 
 
 /***/ }),
@@ -16110,13 +16112,14 @@ __webpack_require__.r(__webpack_exports__);
 
 $(function () {
   try {
-    (0,_functions__WEBPACK_IMPORTED_MODULE_0__.drawText)();
+    // drawText();
     (0,_functions__WEBPACK_IMPORTED_MODULE_0__.initParticlesJS)();
     (0,_functions__WEBPACK_IMPORTED_MODULE_0__.initSlider)();
     (0,_functions__WEBPACK_IMPORTED_MODULE_0__.initDarkMode)();
     (0,_plugins_use__WEBPACK_IMPORTED_MODULE_1__.initLaraberg)();
     (0,_plugins_use__WEBPACK_IMPORTED_MODULE_1__.initSelect2)();
     (0,_plugins_use__WEBPACK_IMPORTED_MODULE_1__.initGallery)();
+    (0,_plugins_use__WEBPACK_IMPORTED_MODULE_1__.initDataTable)();
     // initImageCropper();
     (0,_functions__WEBPACK_IMPORTED_MODULE_0__.initEvents)();
   } catch (error) {

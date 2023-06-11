@@ -23,7 +23,7 @@ class CreatePostsTable extends Migration
             $table->text('excerpt')->nullable();
             $table->string('image')->nullable();
             $table->text('description')->nullable();
-            $table->enum('status', ['published', 'draft', 'pending'])->default('draft');
+            $table->unsignedTinyInteger('status')->default(0);
             $table->boolean('featured')->default(false)->nullable();
             $table->unsignedInteger('likes')->default(0)->nullable();
             $table->unsignedInteger('views')->default(0)->nullable();

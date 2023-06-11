@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Admin;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -14,22 +14,24 @@ class PostResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
+        return (object) [
+            'id' => $this->id,
             'author_id' => $this->author_id,
             'title' => strlen($this->title) < 25 ? $this->title : \Str::words($this->title, 2),
             // Str::limit($this->body, Post::EXCERPT_LENGTH)
             'slug' => $this->slug,
             'excerpt' => $this->excerpt ?? \Str::words($this->content, 20),
             'content' => $this->content,
-            'image' => $this->image,
+//            'image' => $this->image,
             'description' => $this->description,
-            'status' => $this->status,
+            'status' => $this->getDomClass(),
             'featured' => $this->featured,
             'likes' => $this->likes,
             'views' => $this->views,
-            'published_at' => $this->published_at ? $this->published_at->diffForHumans() : '',
-            'tags' => $this->tags,
-            'author' => $this->author,
+            'published_at' => $this->published_at,
+            'created_at' => $this->created_at,
+            'tags' => $this->tags->pluck('name')->toArray(), // $this->tags,
+//            'author' => $this->author,
         ];
     }
 }

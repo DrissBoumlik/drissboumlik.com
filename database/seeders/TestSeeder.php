@@ -8,7 +8,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use App\Models\User;
 
-class UserSeeder extends Seeder
+class TestSeeder extends Seeder
 {
     /**
      * Auto generated seed file.
@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
         $color = '#'.str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
         return $color;
     }
-    
+
     public function run()
     {
         if (User::count() == 0) {
@@ -30,30 +30,31 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(60),
             ]);
         }
-        
-        // Tags 
-        $tags = [
-            ["name" => 'php', "color" => $this->generateRandomColor(), "created_at" => now(), "updated_at" => now()], 
-            ["name" => 'laravel', "color" => $this->generateRandomColor(), "created_at" => now(), "updated_at" => now()], 
-            ["name" => 'html', "color" => $this->generateRandomColor(), "created_at" => now(), "updated_at" => now()],
-            ["name" =>  'angular', "color" => $this->generateRandomColor(), "created_at" => now(), "updated_at" => now()], 
-            ["name" => 'react', "color" => $this->generateRandomColor(), "created_at" => now(), "updated_at" => now()], 
-            ["name" => 'cypress', "color" => $this->generateRandomColor(), "created_at" => now(), "updated_at" => now()]
-        ];
-        Tag::insert($tags);
-        
         $faker = \Faker\Factory::create();
+
+        // Tags
+        $tags = [];
+        for($i = 1; $i <= 10; $i++) {
+            $name = $faker->word();
+            $tags[] = ["name" => $name, "slug" => \Str::slug($name), "color" => $this->generateRandomColor(), "created_at" => now(), "updated_at" => now()];
+        }
+        Tag::insert($tags);
+
+        return
+
         $posts = [];
         for($i = 1; $i <= 10; $i++) {
+            $title = $faker->text(30);
+            $content = $faker->text(1500);
             $posts[] = [
                 'author_id' => 1,
-                'title' => $faker->text(30),
-                'slug' => $faker->slug,
-                'content' => $faker->text(1500),
-                'excerpt' => $faker->randomElement([null, $faker->text(200)]),
-                'image' => $faker->imageUrl(1920, 1080) ,
+                'title' => $title,
+                'slug' => \Str::slug($title),
+                'content' => $content,
+                'excerpt' => \Str::words($content, 20),  // $faker->randomElement([null, $faker->text(200)]),
+                'image' => $faker->imageUrl(1920, 1080),
                 'description' =>  $faker->text(350),
-                'status' => $faker->randomElement(['published', 'draft', 'pending']),
+                'status' => $faker->numberBetween(0, count(getPostStatus()) - 1),
                 'featured' => $faker->boolean,
                 'likes' => $faker->randomNumber(2),
                 'views' => $faker->randomNumber(2),
@@ -62,7 +63,7 @@ class UserSeeder extends Seeder
             ];
         }
         Post::insert($posts);
-        
+
         $post_tag = [];
         for($i = 1; $i <= 30; $i++) {
             $post_id = Post::inRandomOrder()->first()->id;

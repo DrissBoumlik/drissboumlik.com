@@ -33,6 +33,15 @@
             <!-- Story -->
             <article class="story">
                 {!! $data->post->content !!}
+                <div class="tags my-4">
+                    @foreach ($data->post->tags as $tag)
+                        <a href="/tags/{{ $tag->slug }}">
+                        <span style="background-color: {{ $tag->color }}"
+                              class="fs-sm fw-semibold d-inline-block py-1 px-3 mb-2
+                                        rounded-pill text-white">{{ $tag->name }}</span>
+                        </a>
+                    @endforeach
+                </div>
             </article>
             <!-- END Story -->
 

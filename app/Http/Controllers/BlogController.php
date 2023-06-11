@@ -26,8 +26,8 @@ class BlogController extends Controller
         // dd($data->posts_data);
 
 
-        $data->socialLinks = getSocialLinks();
-        $data->headerMenu = getHeaderMenu();
+//        $data->socialLinks = getSocialLinks();
+//        $data->headerMenu = getHeaderMenu();
 
         $data->title = 'Driss Boumlik | Blog';
 
@@ -39,8 +39,8 @@ class BlogController extends Controller
         $post = Post::where('slug', $slug)->first();
         $data = new \stdClass();
         $data->post = (object)(new PostResource($post))->resolve();
-        $data->socialLinks = getSocialLinks();
-        $data->headerMenu = getHeaderMenu();
+//        $data->socialLinks = getSocialLinks();
+//        $data->headerMenu = getHeaderMenu();
 
         $data->title = 'Blog | ' . $post->title;
 
