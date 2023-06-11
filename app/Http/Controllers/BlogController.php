@@ -39,7 +39,9 @@ class BlogController extends Controller
         $post = Post::where('slug', $slug)->first();
         $post->increment('views');
         $data = new \stdClass();
-        $data->post = (object)(new PostResource($post))->resolve();
+
+        $data->post = $post;
+//        $data->post = (object)(new PostResource($post))->resolve();
 //        $data->socialLinks = getSocialLinks();
 //        $data->headerMenu = getHeaderMenu();
 

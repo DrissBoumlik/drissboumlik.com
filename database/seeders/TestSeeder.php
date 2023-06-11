@@ -33,10 +33,29 @@ class TestSeeder extends Seeder
         $faker = \Faker\Factory::create();
 
         // Tags
+        $tags_data = [
+            '.net',
+            'basics',
+            'c-langage',
+            'c-sharp',
+            'debug',
+            'editors',
+            'ide',
+            'issues',
+            'oop',
+            'programming',
+            'tricks',
+        ];
         $tags = [];
-        for($i = 1; $i <= 10; $i++) {
-            $name = $faker->word();
-            $tags[] = ["name" => $name, "slug" => \Str::slug($name), "color" => $this->generateRandomColor(), "created_at" => now(), "updated_at" => now()];
+        for($i = 0; $i < count($tags_data); $i++) {
+            $name = $tags_data[$i];
+            $tags[] = [
+                "name" => $name,
+                "slug" => \Str::slug($name),
+                "color" => $this->generateRandomColor(),
+                'description' =>  $faker->text(350),
+                "created_at" => now(), "updated_at" => now()
+            ];
         }
         Tag::insert($tags);
 

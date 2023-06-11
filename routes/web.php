@@ -11,6 +11,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SitemapController;
 // use App\Http\Controllers\ToolController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,6 +56,12 @@ Route::group([], function () {
             Route::post('/posts', [PostController::class, 'store']);
             Route::get('/posts/edit/{slug}', [PostController::class, 'edit']);
             Route::put('/posts/{slug}', [PostController::class, 'update']);
+
+            Route::get('/tags', [TagController::class, 'index']);
+            Route::get('/tags/create', [TagController::class, 'create']);
+            Route::get('/tags/edit/{slug}', [TagController::class, 'edit']);
+            Route::put('/tags/{slug}', [TagController::class, 'update']);
+            Route::post('/tags', [TagController::class, 'store']);
         });
     });
 

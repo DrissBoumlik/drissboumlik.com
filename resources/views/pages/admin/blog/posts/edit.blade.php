@@ -53,12 +53,12 @@
                         <div class="col-xxl-8">
                             <div class="mb-4">
                                 <label class="form-label" for="post-title">Title</label>
-                                <input type="text" class="form-control" id="post-title" name="title"
+                                <input type="text" class="form-control input-to-slugify" id="post-title" name="title"
                                     placeholder="Post Title" value="{{ $data->post->title }}">
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="post-slug">Slug</label>
-                                <input type="text" class="form-control" id="post-slug" name="slug"
+                                <input type="text" class="form-control input-slug" id="post-slug" name="slug"
                                     placeholder="Post slug" value="{{ $data->post->slug }}">
                             </div>
                             <div class="mb-4">

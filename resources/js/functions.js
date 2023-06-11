@@ -118,7 +118,7 @@ function initDarkMode() {
 }
 
 function initEvents() {
-    $(document).on('focusout', '#post-title', function () {
+    $(document).on('focusout', '.input-to-slugify', function () {
         let postTitle = $(this).val();
         let postSlug = string_to_slug(postTitle)
         // let postSlug = slugify(postTitle, {
@@ -129,7 +129,7 @@ function initEvents() {
         //     // locale: 'vi',      // language code of the locale to use
         //     trim: true         // trim leading and trailing replacement chars, defaults to `true`
         // });
-        $('#post-slug').val(postSlug);
+        $('.input-slug').val(postSlug);
     });
 }
 

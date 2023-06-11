@@ -14,10 +14,12 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
+        $data = new \stdClass();
+        $data->title = 'Blog | Posts';
         $posts = Post::orderBy('created_at', 'desc')->get();
         $posts = (new PostCollection($posts))->resolve();
 
-        return view('pages.admin.blog.posts.index', ['posts' => $posts]);
+        return view('pages.admin.blog.posts.index', ['data' => $data, 'posts' => $posts]);
     }
 
     public function getPostsByTag(Request $request, $tag = null)
@@ -101,7 +103,7 @@ class PostController extends Controller
             return $tag;
         });
 
-        $data->title = 'Blog | Create Post';
+        $data->title = 'Blog | Update Post';
         return view('pages.admin.blog.posts.edit', ['data' => $data]);
     }
 
