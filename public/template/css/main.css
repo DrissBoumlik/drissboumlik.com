@@ -33140,4 +33140,8 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
   fill: #4c78dd;
 }
 
+.image-content-item img {
+  width: 100%;
+}
+
 /*# sourceMappingURL=main.css.map*/

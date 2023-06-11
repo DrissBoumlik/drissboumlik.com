@@ -115,7 +115,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-success me-1 mb-3">
-                        <i class="fa fa-fw fa-plus me-1"></i> Submit
+                        <i class="fa fa-fw fa-edit me-1"></i> Update
                     </button>
                     <a href="/blog/{{ $data->post->slug }}" class="btn btn-dark me-1 mb-3">
                         <i class="fa fa-fw fa-eye me-1"></i> View

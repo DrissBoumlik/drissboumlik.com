@@ -4,6 +4,7 @@
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\GotoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
@@ -49,16 +50,16 @@ Route::group([], function () {
             // Tools
             // Route::get('/export-db', [ToolController::class , 'export_db']);
 
-            Route::get('/posts', 'PostController@index');
-            Route::get('/posts/create', 'PostController@create');
-            Route::post('/posts', 'PostController@store');
-            Route::get('/posts/edit/{slug}', 'PostController@edit');
-            Route::put('/posts/{slug}', 'PostController@update');
+            Route::get('/posts', [PostController::class, 'index']);
+            Route::get('/posts/create', [PostController::class, 'create']);
+            Route::post('/posts', [PostController::class, 'store']);
+            Route::get('/posts/edit/{slug}', [PostController::class, 'edit']);
+            Route::put('/posts/{slug}', [PostController::class, 'update']);
         });
     });
 
-    Route::get('/blog', 'BlogController@index');
-    Route::get('/blog/{slug}', 'BlogController@show');
+    Route::get('/blog', [BlogController::class, 'index']);
+    Route::get('/blog/{slug}', [BlogController::class, 'show']);
     // Route::get('blog/{slug}', [PostController::class, 'show']);
 
     // Route::get('/tags/{tag}', [PostController::class, 'getPostsByTag']);
@@ -68,7 +69,7 @@ Route::group([], function () {
     Route::get('/sitemap', [SitemapController::class, 'sitemap']);
     Route::get('/generateSitemap', [SitemapController::class, 'generateSitemap']);
 
-    Route::redirect('/', '/resume');
+    Route::redirect('/', '/admin/posts');
     // Resume
     Route::get('resume', [PageController::class, 'resume']);
 

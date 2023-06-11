@@ -65,9 +65,9 @@
                 </h3>
             </div>
             <div class="block-content d-flex justify-content-end">
-                <button type="button" class="btn btn-success">
+                <a href="/admin/posts/create" class="btn btn-success">
                     <i class="fa fa-fw fa-plus me-1"></i> New Post
-                </button>
+                </a>
             </div>
             <div class="block-content block-content-full">
                 <!-- DataTables init on table by adding .js-dataTable-responsive class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
