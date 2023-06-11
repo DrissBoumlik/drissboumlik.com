@@ -27,6 +27,7 @@ class CreatePostsTable extends Migration
             $table->boolean('featured')->default(false)->nullable();
             $table->unsignedInteger('likes')->default(0)->nullable();
             $table->unsignedInteger('views')->default(0)->nullable();
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('author_id')->references('id')->on('users');

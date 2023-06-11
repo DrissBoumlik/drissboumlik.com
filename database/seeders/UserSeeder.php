@@ -50,13 +50,14 @@ class UserSeeder extends Seeder
                 'title' => $faker->text(30),
                 'slug' => $faker->slug,
                 'content' => $faker->text(1500),
-                'excerpt' => $faker->text(200),
+                'excerpt' => $faker->randomElement([null, $faker->text(200)]),
                 'image' => $faker->imageUrl(1920, 1080) ,
                 'description' =>  $faker->text(350),
                 'status' => $faker->randomElement(['published', 'draft', 'pending']),
                 'featured' => $faker->boolean,
                 'likes' => $faker->randomNumber(2),
                 'views' => $faker->randomNumber(2),
+                'published_at' => now(),
                 "created_at" => now(), "updated_at" => now()
             ];
         }

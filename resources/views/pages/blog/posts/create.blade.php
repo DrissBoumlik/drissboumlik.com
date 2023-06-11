@@ -46,7 +46,7 @@
     <div class="content">
         <div class="row items-push">
             <div class="block-content">
-                <form action="/posts" method="POST" class="" enctype="multipart/form-data">
+                <form action="/admin/posts" method="POST" class="" enctype="multipart/form-data">
                     @csrf
                     <div class="row items-push">
                         <div class="col-xxl-8">

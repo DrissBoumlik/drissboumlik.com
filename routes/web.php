@@ -26,37 +26,42 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('cache.headers:public;max_age=15811200;etag')->group(function () {
 Route::group([], function () {
 
-    // Route::get('/category/{category}', [PostController::class, 'getPostsByCategory']);
-    // Route::get('/tags/{tag}', [PostController::class, 'getPostsByTag']);
-    // Route::get('blog', [PostController::class, 'index']);
+    Route::group(['prefix' => 'admin'], function () {
+        
+        Route::redirect('/', 'admin/posts');
+        Route::get('/login', [LoginController::class , 'showLoginForm'])->name('login');
+        Route::post('/login', [LoginController::class , 'login']);
+
+        Route::get('/password/reset', [ForgotPasswordController::class , 'showLinkRequestForm'])->name('password.request');
+        Route::post('/password/email', [ForgotPasswordController::class , 'sendResetLinkEmail'])->name('password.email');
+        Route::get('/password/reset/{token}', [ResetPasswordController::class , 'showResetForm'])->name('password.reset');
+        Route::post('/password/reset', [ResetPasswordController::class , 'reset'])->name('password.update');
+
+        
+        Route::group(['middleware' => 'auth'], function() {
+            // Profile
+            // Route::get('profile', [AdminController::class, 'profile'])->name('profile');
+            // Route::post('profile', [AdminController::class, 'updateProfile'])->name('profile.update');
+            // Blog
+            Route::get('blog/create', [PostController::class, 'create']);
+            // Auth
+            Route::post('/logout', [LoginController::class , 'logout'])->name('logout');
+            // Tools
+            // Route::get('/export-db', [ToolController::class , 'export_db']);
+            
+            Route::get('/posts', 'PostController@index');
+            Route::get('/posts/create', 'PostController@create');
+            Route::post('/posts', 'PostController@store');
+            Route::get('/posts/edit/{post}', 'PostController@edit');
+            Route::put('/posts/{post}', 'PostController@update');
+        });
+    });
+    
+    Route::get('/blog', 'BlogController@index');
+    Route::get('/blog/{post}', 'BlogController@show');
     // Route::get('blog/{slug}', [PostController::class, 'show']);
     
-    Route::get('/posts', 'PostController@index');
-    Route::get('/posts/create', 'PostController@create');
-    Route::post('/posts', 'PostController@store');
-    Route::get('/posts/{post}', 'PostController@show');
-    Route::get('/posts/edit/{post}', 'PostController@edit');
-    Route::put('/posts/{post}', 'PostController@update');
-
-    Route::get('/login', [LoginController::class , 'showLoginForm'])->name('login');
-    Route::post('/login', [LoginController::class , 'login']);
-
-    Route::get('/password/reset', [ForgotPasswordController::class , 'showLinkRequestForm'])->name('password.request');
-    Route::post('/password/email', [ForgotPasswordController::class , 'sendResetLinkEmail'])->name('password.email');
-    Route::get('/password/reset/{token}', [ResetPasswordController::class , 'showResetForm'])->name('password.reset');
-    Route::post('/password/reset', [ResetPasswordController::class , 'reset'])->name('password.update');
-
-    Route::group(['middleware' => 'auth'], function() {
-        // Profile
-        // Route::get('profile', [AdminController::class, 'profile'])->name('profile');
-        // Route::post('profile', [AdminController::class, 'updateProfile'])->name('profile.update');
-        // Blog
-        Route::get('blog/create', [PostController::class, 'create']);
-        // Auth
-        Route::post('/logout', [LoginController::class , 'logout'])->name('logout');
-        // Tools
-        // Route::get('/export-db', [ToolController::class , 'export_db']);
-    });
+    // Route::get('/tags/{tag}', [PostController::class, 'getPostsByTag']);
 
 
      // SiteMap

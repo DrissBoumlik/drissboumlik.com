@@ -12,29 +12,7 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
-        $data = new \stdClass();
-        $data->posts = Post::with('tags')->orderBy('created_at', 'desc')->paginate($this->perPage);
 
-        $data->socialLinks = getSocialLinks();
-        $data->headerMenu = getHeaderMenu();
-
-        $data->title = 'Driss Boumlik | Blog';
-
-        return view('pages.blog.posts.index', ['data' => $data]);
-    }
-
-    public function show(Request $request, $slug)
-    {
-        $post = Post::where('slug', $slug)->first();
-        $data = new \stdClass();
-        $data->post = $post;
-
-        $data->socialLinks = getSocialLinks();
-        $data->headerMenu = getHeaderMenu();
-
-        $data->title = 'Blog | ' . $post->title;
-
-        return view('pages.blog.posts.show', ['data' => $data]);
     }
 
     public function getPostsByTag(Request $request, $tag = null)
@@ -60,16 +38,16 @@ class PostController extends Controller
 
         $data->socialLinks = getSocialLinks();
         $data->headerMenu = getHeaderMenu();
-        
+
         $data->tags = Tag::select("name", "id")->get();
 
         $data->title = 'Blog | Create Post';
         return view('pages.blog.posts.create', ['data' => $data]);
     }
-    
+
     public function store(Request $request)
     {
-        // dd($request->all());
+//         dd($request->all());
         $data = [
             "title" => $request->title,
             "slug" => $request->slug,
@@ -78,10 +56,12 @@ class PostController extends Controller
             "description" => $request->description,
             "status" => $request->status,
             "featured" => $request->featured,
-            'author_id' => 1,
+            'author_id' => \Auth::user()->id,
+            'published_at' => $request->status == 1 ? now() : null,
+//            'image',
         ];
         $post = Post::create($data);
-        
+
         $post_tag = [];
         foreach ($request->tags as $tag_id) {
             $post_tag[] = [

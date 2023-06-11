@@ -992,6 +992,69 @@ body.dark-mode .progress-bar {
   color: #ffffff !important;
   background-color: #337AB7;
 }
+body.dark-mode .auth-box .login-form {
+  background-color: #0e2547;
+}
+body.dark-mode input.form-control, body.dark-mode input.form-control:focus {
+  color: #ffffff;
+  background-color: #0e2547;
+}
+
+.list-group .list-group-item {
+  border-radius: 0 !important;
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+ol, ul {
+  padding-left: 1rem;
+}
+
+code {
+  font-size: 1.1rem;
+}
+
+.youtube-container, .iframe-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.fc-icon {
+  color: #ffffff;
+}
+
+.modal {
+  z-index: 9999;
+}
+
+.form-control:focus, .btn:focus {
+  box-shadow: unset !important;
+}
+
+.actions .accordion-button {
+  background-color: #00437D;
+  color: #ffffff;
+}
+.actions .accordion-button:not(.collapsed) {
+  color: #ffffff;
+}
+
+.navbar-toggler:focus {
+  box-shadow: unset;
+}
 
 @media (min-width: 1400px) {
   .container {
@@ -1058,6 +1121,63 @@ body.dark-mode .progress-bar {
 }
 .post-form .post-body-wrapper * {
   color: unset;
+}
+
+@media (max-width: 768px) {
+  .auth-box {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+.auth-box .login-form {
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: 1px solid #1DA1F2;
+  padding: 1rem;
+}
+.auth-box .form-group {
+  margin-bottom: 1rem;
+}
+@media (max-width: 768px) {
+  .auth-box .img-block {
+    width: 80%;
+    opacity: 0.5;
+    z-index: -1;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(20%, -20%);
+  }
+}
+.auth-box .auth-img {
+  width: 100%;
+}
+
+.password-form-input {
+  position: relative;
+}
+
+.show-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.turn-trigger {
+  cursor: pointer;
+}
+.turn-trigger:hover .turn {
+  animation: spinClockWise 0.3s linear forwards;
+}
+.turn-trigger .turn {
+  transition: transform 0.7s ease;
+}
+
+.brand-txt {
+  font-size: 1.1rem;
+  font-family: IstokWeb, Untitled-Sans;
 }
 
 .about {

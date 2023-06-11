@@ -27,13 +27,13 @@ mix
     
     .sass('resources/sass/externals.sass', 'public/css')
     .sass('resources/sass/app.sass', 'public/css')
-    // .copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts')
-    .copy('resources/plugins', 'public/plugins')
-    .copy('resources/template/assets/fonts', 'public/template/assets/fonts')
-    .copy('resources/template/assets/fonts', 'public/template/fonts')
-    .copy('resources/template/assets/js', 'public/template/assets/js')
-    .copy('resources/template/assets/media', 'public/template/assets/media')
-    .copy('resources/template/assets/css', 'public/template/assets/css')
+    //// .copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts')
+    // .copy('resources/plugins', 'public/plugins')
+    // .copy('resources/template/assets/fonts', 'public/template/assets/fonts')
+    // .copy('resources/template/assets/fonts', 'public/template/fonts')
+    // .copy('resources/template/assets/js', 'public/template/assets/js')
+    // .copy('resources/template/assets/media', 'public/template/assets/media')
+    // .copy('resources/template/assets/css', 'public/template/assets/css')
     .purgeCss({
         extend: {
             content: [path.join(__dirname, 'database/data/**/*.json'),

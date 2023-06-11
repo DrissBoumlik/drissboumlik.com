@@ -12,12 +12,10 @@
     <!-- Hero Content -->
     <div class="bg-image" style="background-image: url('/template/assets/media/photos/photo10@2x.jpg');">
         <div class="bg-primary-dark-op">
-        <div class="content content-full text-center pt-9 pb-8">
-            <h1 class="text-white mb-2">{{ $data->post->title }}</h1>
-            <h2 class="h4 fw-normal text-white-75 mb-0">
-            Experience life to its fullest.
-            </h2>
-        </div>
+            <div class="content content-full text-center pt-9 pb-8">
+                <h1 class="text-white mb-2">{{ $data->post->title }}</h1>
+                <h2 class="h4 fw-normal text-white-75 mb-0">Experience life to its fullest.</h2>
+            </div>
         </div>
     </div>
     <!-- END Hero Content -->
@@ -27,7 +25,7 @@
         <div class="content content-boxed">
         <div class="text-center fs-sm push">
             <span class="d-inline-block py-2 px-4 bg-body fw-medium rounded">
-            <a class="link-effect" href="be_pages_generic_profile.html">John Doe</a> on July 16, 2019 &bull; <span>5 min</span>
+            <a class="link-effect" href="be_pages_generic_profile.html">{{ $data->post->author->name }}</a> · {{ $data->post->published_at }} · <span>5 min</span>
             </span>
         </div>
         <div class="row justify-content-center">
