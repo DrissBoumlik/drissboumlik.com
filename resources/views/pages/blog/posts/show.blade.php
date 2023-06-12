@@ -1,4 +1,4 @@
-@extends('layout.template.frontend')
+@extends('admin.template.frontend')
 
 @section('css')
     <link rel="stylesheet" href="/template/assets/js/plugins/magnific-popup/magnific-popup.css">
@@ -10,10 +10,10 @@
 @section('content')
 
     <!-- Hero Content -->
-    <div class="bg-image" style="background-image: url('{{ $data->post->image }}');">
+    <div class="bg-image" style="background-image: url('{{ $post->image }}');">
         <div class="bg-primary-dark-op">
             <div class="content content-full text-center pt-9 pb-8">
-                <h1 class="text-white mb-2">{{ $data->post->title }}</h1>
+                <h1 class="text-white mb-2">{{ $post->title }}</h1>
                 <h2 class="h4 fw-normal text-white-75 mb-0">Experience life to its fullest.</h2>
             </div>
         </div>
@@ -25,16 +25,16 @@
         <div class="content content-boxed">
         <div class="text-center fs-sm push">
             <span class="d-inline-block py-2 px-4 bg-body fw-medium rounded">
-            <a class="link-effect" href="be_pages_generic_profile.html">{{ $data->post->author->name }}</a> · {{ $data->post->published_at }} · <span>5 min</span>
+            <a class="link-effect" href="be_pages_generic_profile.html">{{ $post->author->name }}</a> · {{ $post->published_at }} · <span>{{ $post->read_duration }} min read</span>
             </span>
         </div>
         <div class="row justify-content-center">
             <div class="col-sm-8">
             <!-- Story -->
             <article class="story">
-                {!! $data->post->content !!}
+                {!! $post->content !!}
                 <div class="tags my-4">
-                    @foreach ($data->post->tags as $tag)
+                    @foreach ($post->tags as $tag)
                         <a href="/tags/{{ $tag->slug }}">
                         <span style="background-color: {{ $tag->color }}"
                               class="fs-sm fw-semibold d-inline-block py-1 px-3 mb-2
@@ -47,32 +47,15 @@
 
             <!-- Actions -->
             <div class="mt-5 d-flex justify-content-between push">
-                <a class="btn btn-alt-primary" href="javascript:void(0)">
-                <i class="fa fa-heart me-1"></i> Recommend
-                </a>
-                <div class="btn-group" role="group">
-                <button type="button" class="btn btn-alt-secondary" data-bs-toggle="tooltip" title="Like Story">
-                    <i class="fa fa-thumbs-up"></i>
-                </button>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-alt-secondary dropdown-toggle" id="dropdown-blog-story" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-share-alt me-1"></i> Share
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end fs-sm" aria-labelledby="dropdown-blog-story">
-                    <a class="dropdown-item" href="javascript:void(0)">
-                        <i class="fab fa-fw fa-facebook me-1"></i> Facebook
+                    <a class="btn btn-alt-primary" href="javascript:void(0)">
+                        <i class="fa fa-heart me-1"></i> Like
                     </a>
-                    <a class="dropdown-item" href="javascript:void(0)">
-                        <i class="fab fa-fw fa-twitter me-1"></i> Twitter
-                    </a>
-                    <a class="dropdown-item" href="javascript:void(0)">
-                        <i class="fab fa-fw fa-google-plus me-1"></i> Google+
-                    </a>
-                    <a class="dropdown-item" href="javascript:void(0)">
-                        <i class="fab fa-fw fa-linkedin me-1"></i> LinkedIn
-                    </a>
-                    </div>
                 </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-alt-secondary" id="dropdown-blog-story" data-bs-toggle="dropdown">
+                        {{ $post->views }} Views <i class="fa fa-eye ms-1"></i>
+                    </button>
                 </div>
             </div>
             <!-- END Actions -->

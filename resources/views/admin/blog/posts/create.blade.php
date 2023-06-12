@@ -1,4 +1,4 @@
-@extends('layout.template.backend')
+@extends('admin.template.backend')
 
 @section('css')
     <!-- Page JS Plugins CSS -->
@@ -49,7 +49,7 @@
                 <form action="/admin/posts" method="POST" class="" enctype="multipart/form-data">
                     @csrf
                     <div class="row items-push">
-                        <div class="col-xxl-8">
+                        <div class="col-md-8">
                             <div class="mb-4">
                                 <label class="form-label" for="post-title">Title</label>
                                 <input type="text" class="form-control input-to-slugify" id="post-title" name="title"
@@ -75,7 +75,7 @@
                                 <input type="file" id="image" name="image" class="form-control" />
                             </div>
                         </div>
-                        <div class="col-xxl-4">
+                        <div class="col-md-4">
                             <div class="mb-4">
                                 <label class="form-label" for="tags">Tags</label>
                                 <select class="js-select2 form-select" id="tags"
@@ -96,7 +96,6 @@
                                 <label class="form-label" for="status">Status</label>
                                 <select class="js-select2 form-select" id="status"
                                     name="status" style="width: 100%;" data-placeholder="Choose many..">
-                                    <option></option>
                                     <!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                     @foreach(getPostStatus() as $key => $status)
                                         <option value="{{ $key }}">{{ ucfirst($status) }}</option>

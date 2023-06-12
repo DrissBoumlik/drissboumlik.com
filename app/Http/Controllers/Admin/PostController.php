@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Admin\PostCollection;
+use App\Http\Resources\Admin\PostResource;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\Tag;
@@ -15,11 +16,11 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $data = new \stdClass();
-        $data->title = 'Blog | Posts';
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $data->title = 'Posts | Admin Panel';
+        $posts = Post::withTrashed()->orderBy('created_at', 'desc')->get();
         $posts = (new PostCollection($posts))->resolve();
 
-        return view('pages.admin.blog.posts.index', ['data' => $data, 'posts' => $posts]);
+        return view('admin.blog.posts.index', ['data' => $data, 'posts' => $posts]);
     }
 
     public function create(Request $request)
@@ -27,8 +28,8 @@ class PostController extends Controller
         $data = new \stdClass();
         $data->tags = Tag::select("name", "id")->get();
 
-        $data->title = 'Blog | Create Post';
-        return view('pages.admin.blog.posts.create', ['data' => $data]);
+        $data->title = 'Create Post | Admin Panel';
+        return view('admin.blog.posts.create', ['data' => $data]);
     }
 
     public function store(Request $request)
@@ -43,7 +44,7 @@ class PostController extends Controller
                 "status" => $request->status,
                 "featured" => $request->featured,
                 'author_id' => \Auth::user()->id,
-                'published_at' => $request->status == 1 ? now() : null,
+                'published_at' => $request->status == 2 ? now() : null,
                 //            'image',
             ];
             $post = Post::create($data);
@@ -67,29 +68,27 @@ class PostController extends Controller
     public function edit(Request $request, $slug)
     {
         $data = new \stdClass();
-        $data->post = Post::with(['tags', 'author'])->whereSlug($slug)->first();
+        $post = Post::withTrashed()->with(['tags', 'author'])->whereSlug($slug)->first();
+        $post = (object) (new PostResource($post))->resolve();
 
         $data->tags = Tag::select("name", "id")->get();
-        $post_tag_ids = $data->post->tags->pluck('id');
+        $post_tag_ids = $post->tags->pluck('id');
 
-        $data->post->status = $data->post->getDomClass();
+//        $post->status = $post->getDomClass();
 
         $data->tags = $data->tags->map(function ($tag) use ($post_tag_ids) {
             $tag->linked = $post_tag_ids->contains($tag->id);
             return $tag;
         });
 
-        $data->title = 'Blog | Update Post';
-        return view('pages.admin.blog.posts.edit', ['data' => $data]);
+        $data->title = 'Update Post | Admin Panel';
+        return view('admin.blog.posts.edit', ['data' => $data, 'post' => $post]);
     }
 
     public function update(Request $request, $slug)
     {
-
         try {
-            if ($request->has('delete')) {
-                return $this->destroy($slug);
-            }
+            $post = Post::withTrashed()->whereSlug($slug)->first();
             $data = [
                 "title" => $request->title,
                 "slug" => $request->slug,
@@ -99,11 +98,16 @@ class PostController extends Controller
                 "status" => $request->status,
                 "featured" => $request->has('featured'),
                 'author_id' => \Auth::user()->id,
-                'published_at' => $request->status == 1 ? now() : null,
+                'published_at' => $post->published_at ?? ($request->status == 2 ? now() : null),
                 //            'image',
             ];
-            $post = Post::whereSlug($slug)->first();
             $post->update($data);
+
+            if ($request->has('active')) {
+                $post->restore();
+            } else {
+                $post->delete();
+            }
             if ($request->has('tags')) {
                 $post_tag = [];
                 foreach ($request->tags as $tag_id) {
@@ -127,8 +131,8 @@ class PostController extends Controller
         try {
             $post = Post::whereSlug($slug)->first();
             if ($post) {
-                //            \DB::table('post_tag')->where('post_id', $post->id)->delete();
-                //            $post->delete();
+                \DB::table('post_tag')->where('post_id', $post->id)->delete();
+                $post->delete();
                 return redirect("/admin/posts")->with(['response' => ['message' => 'Post deleted successfully', 'class' => 'alert-info']]);
             }
             return redirect("/admin/posts")->with(['response' => ['message' => 'Post not found', 'class' => 'alert-warning']]);

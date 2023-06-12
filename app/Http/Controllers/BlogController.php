@@ -19,29 +19,23 @@ class BlogController extends Controller
                                                 ->orderBy('created_at', 'desc')
                                                 ->paginate($this->perPage)))->resolve();
 
-
-        $data->posts = $data->posts_data['data'];
+        $posts = $data->posts_data['data'];
         unset($data->posts_data['data']);
 
         $data->title = 'Driss Boumlik | Blog';
 
-        return view('pages.blog.posts.index', ['data' => $data]);
+        return view('pages.blog.posts.index', ['data' => $data, 'posts' => $posts]);
     }
 
     public function show(Request $request, $slug)
     {
         $post = Post::where('slug', $slug)->first();
-        $post->increment('views');
+        $post->increment('views', 1);
         $data = new \stdClass();
 
-        $data->post = $post;
-//        $data->post = (object)(new PostResource($post))->resolve();
-//        $data->socialLinks = getSocialLinks();
-//        $data->headerMenu = getHeaderMenu();
-
+        $post = (object)(new PostResource($post))->resolve();
         $data->title = 'Blog | ' . $post->title;
-
-        return view('pages.blog.posts.show', ['data' => $data]);
+        return view('pages.blog.posts.show', ['data' => $data, 'post' => $post]);
     }
 
     public function getPostsByTag(Request $request, $tag = null)

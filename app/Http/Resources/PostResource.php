@@ -14,7 +14,7 @@ class PostResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
+        return (object) [
             'author_id' => $this->author_id,
             'title' => strlen($this->title) < 25 ? $this->title : \Str::words($this->title, 2),
             // Str::limit($this->body, Post::EXCERPT_LENGTH)
@@ -30,6 +30,7 @@ class PostResource extends JsonResource
             'published_at' => $this->published_at ? $this->published_at->diffForHumans() : '',
             'tags' => $this->tags,
             'author' => $this->author,
+            'read_duration' => \Str::readDuration($this->content),
         ];
     }
 }

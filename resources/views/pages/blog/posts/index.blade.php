@@ -18,7 +18,7 @@
     <!-- Page Content -->
     <div class="content content-boxed">
         <div class="row">
-            @foreach ($data->posts as $post)
+            @foreach ($posts as $post)
                 <!-- Story -->
                 <div class="col-lg-4">
                     <a class="block block-rounded block-link-pop overflow-hidden" href="/blog/{{ $post['slug'] }}">

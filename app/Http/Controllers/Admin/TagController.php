@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Admin\TagCollection;
+use App\Http\Resources\Admin\TagResource;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
@@ -11,24 +13,26 @@ class TagController extends Controller
     public function index(Request $request)
     {
         $data = new \stdClass();
-        $data->title = 'Blog | Tags';
-        $tags = Tag::withCount('posts')->orderBy('created_at', 'desc')->get();
-        return view('pages.admin.blog.tags.index', ['data' => $data, 'tags' => $tags]);
+        $data->title = 'Tags | Admin Panel';
+        $tags = Tag::withTrashed()->withCount('posts')->orderBy('created_at', 'desc')->get();
+        $tags = (new TagCollection($tags))->resolve();
+        return view('admin.blog.tags.index', ['data' => $data, 'tags' => $tags]);
     }
 
     public function create(Request $request)
     {
         $data = new \stdClass();
-        $data->title = 'Blog | Create Tag';
-        return view('pages.admin.blog.tags.create', ['data' => $data]);
+        $data->title = 'Create Tag | Admin Panel';
+        return view('admin.blog.tags.create', ['data' => $data]);
     }
 
     public function edit(Request $request, $slug)
     {
         $data = new \stdClass();
-        $data->tag = Tag::whereSlug($slug)->first();
-        $data->title = 'Blog | Edit Tag';
-        return view('pages.admin.blog.tags.edit', ['data' => $data]);
+        $tag = Tag::withTrashed()->whereSlug($slug)->first();
+        $data->title = 'Edit Tag | Admin Panel';
+        $tag = (object) (new TagResource($tag))->resolve();
+        return view('admin.blog.tags.edit', ['data' => $data, 'tag' => $tag]);
     }
 
     public function store(Request $request)
@@ -51,36 +55,23 @@ class TagController extends Controller
     public function update(Request $request, $slug)
     {
         try {
-            if ($request->has('delete')) {
-                return $this->destroy($slug);
-            }
             $data = [
                 "name" => $request->name,
                 "slug" => $request->slug,
                 "description" => $request->description,
                 "color" => $request->color,
             ];
-            $tag = Tag::whereSlug($slug)->first();
+            $tag = Tag::withTrashed()->whereSlug($slug)->first();
             $tag->update($data);
+            if ($request->has('active')) {
+                $tag->restore();
+            } else {
+                $tag->delete();
+            }
             return redirect("/admin/tags/edit/$tag->slug")->with(['response' => ['message' => 'Tag updated successfully', 'class' => 'alert-info']]);
         } catch (\Throwable $e) {
             return redirect("/admin/tags/edit/$tag->slug")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger']]);
         }
     }
 
-    public function destroy($slug)
-    {
-        try {
-            $tag = Tag::whereSlug($slug)->first();
-            if ($tag) {
-                //            \DB::table('post_tag')->where('tag_id', $tag->id)->delete();
-                //            $tag->delete();
-                return redirect("/admin/tags")->with(['message' => 'Tag deleted successfully']);
-            }
-            return redirect("/admin/tags")->with(['response' => ['message' => 'Tag not found', 'class' => 'alert-warning']]);
-
-        } catch (\Throwable $e) {
-            return redirect("/admin/tags")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger']]);
-        }
-    }
 }

@@ -1,4 +1,4 @@
-@extends('layout.template.backend')
+@extends('admin.template.backend')
 
 @section('css')
     <!-- Page JS Plugins CSS -->
@@ -32,19 +32,16 @@
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
                 <div class="flex-grow-1">
                     <h1 class="h3 fw-bold mb-2">
-                        DataTables
+                        Posts list
                     </h1>
-                    <h2 class="fs-base lh-base fw-medium text-muted mb-0">
-                        Tables transformed with dynamic features.
-                    </h2>
                 </div>
                 <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
                         <li class="breadcrumb-item">
-                            <a class="link-fx" href="javascript:void(0)">Tables</a>
+                            <a class="link-fx" href="javascript:void(0)">Posts</a>
                         </li>
                         <li class="breadcrumb-item" aria-current="page">
-                            DataTables
+                            List
                         </li>
                     </ol>
                 </nav>
@@ -58,58 +55,46 @@
         <!-- Dynamic Table Responsive -->
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <h3 class="block-title">
-                    Dynamic Table <small>DataTables Responsive Mode</small>
-                </h3>
-            </div>
-            <div class="block-content d-flex justify-content-end">
-                <a href="/admin/posts/create" class="btn btn-success">
-                    <i class="fa fa-fw fa-plus me-1"></i> New Post
-                </a>
+                <div class="block-content p-0 d-flex justify-content-end">
+                    <a href="/admin/posts/create" class="btn btn-success">
+                        <i class="fa fa-fw fa-plus me-1"></i> New Post
+                    </a>
+                </div>
             </div>
             <div class="block-content block-content-full">
                 <!-- DataTables init on table by adding .js-dataTable-responsive class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
                 <table class="table table-bordered table-striped table-vcenter js-dataTable-responsive">
                     <thead>
                     <tr>
-                        <th class="text-center"></th>
+                        <th class="text-center">Actions</th>
+                        <th class="text-center">ID</th>
                         <th>Title</th>
-                        <th>Slug</th>
                         <th>Status</th>
                         <th>Featured</th>
-                        <th>Views <i class="fa-solid fa-eye"></i></th>
-                        <th>Likes <i class="fa-solid fa-thumbs-up"></i></th>
-                        <th>Published @</th>
-                        <th>Written @</th>
-                        <th class="text-center" style="width: 100px;">Actions</th>
+                        <th class="text-center"><i class="fa-solid fa-eye"></i></th>
+                        <th class="text-center"><i class="fa-solid fa-thumbs-up"></i></th>
+                        <th><i class="fa-solid fa-upload"></i></th>
+                        <th class="text-center"><i class="fa-solid fa-pen"></i></th>
+                        <th>Active</th>
                     </tr>
                     </thead>
                     <tbody>
                         @foreach($posts as $post)
                         <tr>
+                            <td class="text-center fs-sm">
+                                <a href="/admin/posts/edit/{{ $post->slug }}" target="_blank" class="link-dark" data-bs-toggle="tooltip" title="View">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </td>
                             <td class="text-center fs-sm">{{ $post->id }}</td>
                             <td class="fw-semibold fs-sm">{{ $post->title }}</td>
-                            <td class="fw-semibold fs-sm">{{ $post->slug }}</td>
-                            <td>
-                                <span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill {{ $post->status->class }}">{{ $post->status->text }}</span>
-                            </td>
-                            <td>
-                                <span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill {{ $post->featured ? 'bg-success-light text-success' : 'bg-danger-light text-danger' }}">{{ $post->featured ? 'Yes' : 'No' }}</span>
-                            </td>
+                            <td><span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill {{ $post->status->class }}">{{ $post->status->text }}</span></td>
+                            <td><span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill {{ $post->featured ? 'bg-success-light text-success' : 'bg-danger-light text-danger' }}">{{ $post->featured ? 'Yes' : 'No' }}</span></td>
                             <td class="fs-sm">{{ $post->views }}</td>
                             <td class="fs-sm">{{ $post->likes }}</td>
                             <td class="fs-sm">{{ $post->published_at ?? '---' }}</td>
                             <td class="fs-sm">{{ $post->created_at }}</td>
-                            <td class="text-center">
-                                <div class="btn-group">
-                                    <a href="/admin/posts/edit/{{ $post->slug }}" class="btn btn-sm btn-alt-secondary" data-bs-toggle="tooltip" title="Edit">
-                                        <i class="fa fa-fw fa-pencil-alt"></i>
-                                    </a>
-                                    <a href="/admin/posts/edit/{{ $post->slug }}" class="btn btn-sm btn-alt-secondary" data-bs-toggle="tooltip" title="Delete">
-                                        <i class="fa fa-fw fa-times"></i>
-                                    </a>
-                                </div>
-                            </td>
+                            <td class="fs-sm"><div class="item item-tiny item-circle mx-auto mb-3 {{ $post->active ? 'bg-success' : 'bg-danger' }}"></div></td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -120,22 +105,5 @@
     </div>
     <!-- END Page Content -->
 
-    @php $response = session()->get('response') @endphp
-    @if ($response)
-    <!-- END Page Content -->
-    <div data-notify="container" class="col-11 col-sm-4 alert {{ $response['class'] }} alert-dismissible animated fadeIn" role="alert" data-notify-position="bottom-right" style="display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 1033; bottom: 20px; right: 20px; animation-iteration-count: 1;">
-        <p class="mb-0">
-            <span data-notify="icon"></span>
-            <span data-notify="title"></span>
-            <span data-notify="message">{{ $response['message'] }}</span>
-        </p>
-        <a class="p-2 m-1 text-dark" href="javascript:void(0)" aria-label="Close" data-notify="dismiss" style="position: absolute; right: 10px; top: 5px; z-index: 1035;">
-            <i class="fa fa-times"></i>
-        </a>
-    </div>
-    <script>
-        $('.alert-info').on('click', function() { $(this).remove() });
-    </script>
-    @endif
-
+    @include('admin.addons.alert-box')
 @endsection

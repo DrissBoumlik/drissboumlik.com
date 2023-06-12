@@ -53,10 +53,10 @@
     <!-- Page Container -->
     <div id="page-container" class="sidebar-dark side-scroll page-header-fixed page-header-dark main-content-boxed">
 
-       @include('layout.template.frontend-sections.nav')
+       @include('admin.template.frontend-sections.nav')
 
 
-        @include('layout.template.frontend-sections.header')
+        @include('admin.template.frontend-sections.header')
 
         <!-- Main Container -->
         <main id="main-container">
@@ -64,7 +64,7 @@
         </main>
         <!-- END Main Container -->
 
-        @include('layout.template.frontend-sections.footer')
+        @include('admin.template.frontend-sections.footer')
     </div>
     <!-- END Page Container -->
 

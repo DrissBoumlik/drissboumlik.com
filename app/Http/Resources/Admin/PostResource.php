@@ -17,10 +17,10 @@ class PostResource extends JsonResource
         return (object) [
             'id' => $this->id,
             'author_id' => $this->author_id,
-            'title' => strlen($this->title) < 25 ? $this->title : \Str::words($this->title, 2),
+            'title' => $this->title,
             // Str::limit($this->body, Post::EXCERPT_LENGTH)
             'slug' => $this->slug,
-            'excerpt' => $this->excerpt ?? \Str::words($this->content, 20),
+            'excerpt' => $this->excerpt,
             'content' => $this->content,
 //            'image' => $this->image,
             'description' => $this->description,
@@ -30,8 +30,9 @@ class PostResource extends JsonResource
             'views' => $this->views,
             'published_at' => $this->published_at,
             'created_at' => $this->created_at,
-            'tags' => $this->tags->pluck('name')->toArray(), // $this->tags,
+            'tags' => $this->tags,
 //            'author' => $this->author,
+            'active' => $this->deleted_at == null,
         ];
     }
 }
