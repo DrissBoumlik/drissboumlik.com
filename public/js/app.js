@@ -110,6 +110,11 @@ function initDarkMode() {
   });
 }
 function initEvents() {
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
   $(document).on('focusout', '.input-to-slugify', function () {
     var postTitle = $(this).val();
     var postSlug = string_to_slug(postTitle);
@@ -122,6 +127,24 @@ function initEvents() {
     //     trim: true         // trim leading and trailing replacement chars, defaults to `true`
     // });
     $('.input-slug').val(postSlug);
+  });
+  $(document).on('click', '.like-post', function () {
+    var post = $(this).data('post');
+    $.ajax({
+      method: 'POST',
+      url: '/blog/like/' + post.slug,
+      data: {
+        restore: true,
+        event_id: $(this).data('id')
+      },
+      success: function success(response) {
+        console.log(response);
+        $('.post-likes-count').text("".concat(response.post.likes, " Likes"));
+      },
+      error: function error(jqXHR, textStatus, errorThrown) {
+        console.log(jqXHR, textStatus, errorThrown);
+      }
+    });
   });
 }
 

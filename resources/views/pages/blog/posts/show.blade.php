@@ -48,14 +48,14 @@
             <!-- Actions -->
             <div class="mt-5 d-flex justify-content-between push">
                 <div class="btn-group">
-                    <a class="btn btn-alt-primary" href="javascript:void(0)">
-                        <i class="fa fa-heart me-1"></i> Like
-                    </a>
+                    <button class="btn btn-alt-primary like-post" data-post="{{ json_encode($post) }}">
+                        <span class="post-likes-count">{{ $post->likes }} Likes</span><i class="fa fa-heart ms-1"></i>
+                    </button>
                 </div>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-alt-secondary" id="dropdown-blog-story" data-bs-toggle="dropdown">
+                    <label class="btn btn-alt-secondary" id="dropdown-blog-story" data-bs-toggle="dropdown">
                         {{ $post->views }} Views <i class="fa fa-eye ms-1"></i>
-                    </button>
+                    </label>
                 </div>
             </div>
             <!-- END Actions -->

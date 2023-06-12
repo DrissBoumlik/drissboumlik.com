@@ -66,6 +66,7 @@ Route::group([], function () {
 
     Route::get('/blog', [BlogController::class, 'index']);
     Route::get('/blog/{slug}', [BlogController::class, 'show']);
+    Route::post('/blog/like/{slug}', [BlogController::class, 'likePost']);
     // Route::get('blog/{slug}', [PostController::class, 'show']);
 
     // Route::get('/tags/{tag}', [PostController::class, 'getPostsByTag']);

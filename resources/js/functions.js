@@ -118,6 +118,10 @@ function initDarkMode() {
 }
 
 function initEvents() {
+    $.ajaxSetup({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+    });
+
     $(document).on('focusout', '.input-to-slugify', function () {
         let postTitle = $(this).val();
         let postSlug = string_to_slug(postTitle)
@@ -130,6 +134,22 @@ function initEvents() {
         //     trim: true         // trim leading and trailing replacement chars, defaults to `true`
         // });
         $('.input-slug').val(postSlug);
+    });
+
+    $(document).on('click', '.like-post', function () {
+        let post = $(this).data('post');
+        $.ajax({
+            method: 'POST',
+            url: '/blog/like/' + post.slug,
+            data: {restore: true, event_id: $(this).data('id')},
+            success: function (response) {
+                console.log(response);
+                $('.post-likes-count').text(`${response.post.likes} Likes`)
+            },
+            error: function (jqXHR, textStatus, errorThrown){
+                console.log(jqXHR, textStatus, errorThrown);
+            }
+        });
     });
 }
 

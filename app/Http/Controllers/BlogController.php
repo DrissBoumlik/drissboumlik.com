@@ -30,12 +30,19 @@ class BlogController extends Controller
     public function show(Request $request, $slug)
     {
         $post = Post::where('slug', $slug)->first();
-        $post->increment('views', 1);
+//        $post->increment('views', 1);
         $data = new \stdClass();
 
         $post = (object)(new PostResource($post))->resolve();
         $data->title = 'Blog | ' . $post->title;
         return view('pages.blog.posts.show', ['data' => $data, 'post' => $post]);
+    }
+
+    public function likePost(Request $request, $slug)
+    {
+        $post = Post::where('slug', $slug)->first();
+        $post->increment('likes', 1);
+        return ['post' => $post];
     }
 
     public function getPostsByTag(Request $request, $tag = null)
