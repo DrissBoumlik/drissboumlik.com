@@ -1,4 +1,6 @@
 // import 'bootstrap';
+import {initImageCropper} from "./plugins-use";
+
 require('particles.js');
 // var slugify = require('slugify')
 import 'owl.carousel';
@@ -117,6 +119,23 @@ function initDarkMode() {
     });
 }
 
+function get_alert_box(params) {
+    let alert_element = `
+        <div data-notify="container" class="col-11 col-sm-4 alert ${params.class} alert-dismissible animated fadeIn" role="alert" data-notify-position="bottom-right" style="display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 1033; bottom: 20px; right: 20px; animation-iteration-count: 1;">
+            <p class="mb-0">
+                <span data-notify="icon"></span>
+                <span data-notify="title"></span>
+                <span data-notify="message">${params.message}</span>
+            </p>
+            <a class="p-2 m-1 text-dark" href="javascript:void(0)" aria-label="Close" data-notify="dismiss" style="position: absolute; right: 10px; top: 5px; z-index: 1035;">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    `;
+    $(document.body).append(alert_element);
+    $('.alert.alert-dismissible').on('click', function() { $(this).remove() });
+}
+
 function initEvents() {
     $.ajaxSetup({
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
@@ -138,19 +157,38 @@ function initEvents() {
 
     $(document).on('click', '.like-post', function () {
         let post = $(this).data('post');
+
+        let liked_posts = JSON.parse(localStorage.getItem('liked-posts'));
+        if (liked_posts && liked_posts.includes(post.slug)) {
+            get_alert_box({class : 'alert-warning', message : 'Already liked !!'})
+            return
+        }
+
         $.ajax({
             method: 'POST',
             url: '/blog/like/' + post.slug,
-            data: {restore: true, event_id: $(this).data('id')},
             success: function (response) {
-                console.log(response);
-                $('.post-likes-count').text(`${response.post.likes} Likes`)
+                localStorage.setItem('liked-posts', JSON.stringify([response.post.slug]))
+                $('.post-likes-count').text(`${response.post.likes} Likes`);
             },
             error: function (jqXHR, textStatus, errorThrown){
                 console.log(jqXHR, textStatus, errorThrown);
             }
         });
     });
+
+    let imageElement = document.getElementById('image')
+    if (imageElement) {
+        imageElement.onchange = (event) => {
+            if (event.target.files.length > 0) {
+                let src = URL.createObjectURL(event.target.files[0]);
+                let preview = document.getElementById("js-img-cropper");
+                preview.src = src;
+
+                // initImageCropper();
+            }
+        };
+    }
 }
 
 export { drawText, initParticlesJS, initSlider, initDarkMode, initEvents };

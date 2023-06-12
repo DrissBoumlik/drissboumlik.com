@@ -1,4 +1,4 @@
-@extends('layout.template.frontend')
+@extends('admin.template.frontend')
 
 
 @section('content')

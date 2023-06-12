@@ -24,7 +24,7 @@ mix
     .sass('resources/template/sass/oneui/themes/flat.scss', 'public/template/css/themes')
     .sass('resources/template/sass/oneui/themes/modern.scss', 'public/template/css/themes')
     .sass('resources/template/sass/oneui/themes/smooth.scss', 'public/template/css/themes')
-    
+
     .sass('resources/sass/externals.sass', 'public/css')
     .sass('resources/sass/app.sass', 'public/css')
     //// .copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts')

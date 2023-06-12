@@ -33144,4 +33144,8 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
   width: 100%;
 }
 
+.wp-block-image.size-large img {
+  max-width: 100%;
+}
+
 /*# sourceMappingURL=main.css.map*/

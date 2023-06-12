@@ -55,6 +55,7 @@ Route::group([], function () {
             Route::post('/posts', [PostController::class, 'store']);
             Route::get('/posts/edit/{slug}', [PostController::class, 'edit']);
             Route::put('/posts/{slug}', [PostController::class, 'update']);
+            Route::post('/api/posts', [PostController::class, 'api_store']);
 
             Route::get('/tags', [TagController::class, 'index']);
             Route::get('/tags/create', [TagController::class, 'create']);

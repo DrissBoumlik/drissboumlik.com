@@ -10,7 +10,7 @@
 @section('content')
 
     <!-- Hero Content -->
-    <div class="bg-image" style="background-image: url('{{ $post->image }}');">
+    <div class="bg-image" style="background-image: url('/{{ $post->image }}');">
         <div class="bg-primary-dark-op">
             <div class="content content-full text-center pt-9 pb-8">
                 <h1 class="text-white mb-2">{{ $post->title }}</h1>
@@ -53,7 +53,7 @@
                     </button>
                 </div>
                 <div class="btn-group">
-                    <label class="btn btn-alt-secondary" id="dropdown-blog-story" data-bs-toggle="dropdown">
+                    <label class="btn btn-alt-secondary">
                         {{ $post->views }} Views <i class="fa fa-eye ms-1"></i>
                     </label>
                 </div>
@@ -65,85 +65,29 @@
     </div>
     <!-- END Page Content -->
 
+    @if($related_posts && count($related_posts))
     <!-- More Stories -->
     <div class="content content-boxed">
         <!-- Section Content -->
         <div class="row py-5">
-        <div class="col-md-4">
-            <a class="block block-rounded block-link-pop overflow-hidden" href="javascript:void(0)">
-            <div class="bg-image" style="background-image: url('/template/assets/media/photos/photo2.jpg');">
-                <div class="block-content bg-primary-dark-op">
-                <h4 class="text-white mt-5 push">10 Productivity Tips</h4>
+            @foreach($related_posts as $related_post)
+            <div class="col-md-4">
+                <a class="block block-rounded block-link-pop overflow-hidden" href="/blog/{{ $related_post->slug }}">
+                <div class="bg-image" style="background-image: url('/{{ $related_post->image }}');">
+                    <div class="block-content bg-primary-dark-op">
+                    <h4 class="text-white mt-5 push">{{ $related_post->title }}</h4>
+                    </div>
                 </div>
-            </div>
-            <div class="block-content block-content-full fs-sm fw-medium">
-                <span class="text-primary">Danielle Jones</span> on July 2, 2019 · <span>12 min</span>
-            </div>
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a class="block block-rounded block-link-pop overflow-hidden" href="javascript:void(0)">
-            <div class="bg-image" style="background-image: url('/template/assets/media/photos/photo10.jpg');">
-                <div class="block-content bg-primary-dark-op">
-                <h4 class="text-white mt-5 push">Travel &amp; Work</h4>
+                <div class="block-content block-content-full fs-sm fw-medium">
+                    <span class="text-primary">{{ $related_post->author->name }}</span> · {{ $related_post->published_at }} · <span>{{ $post->read_duration }} min</span>
                 </div>
+                </a>
             </div>
-            <div class="block-content block-content-full fs-sm fw-medium">
-                <span class="text-primary">Susan Day</span> on July 6, 2019 · <span>15 min</span>
-            </div>
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a class="block block-rounded block-link-pop overflow-hidden" href="javascript:void(0)">
-            <div class="bg-image" style="background-image: url('/template/assets/media/photos/photo3.jpg');">
-                <div class="block-content bg-primary-dark-op">
-                <h4 class="text-white mt-5 push">New Image Gallery</h4>
-                </div>
-            </div>
-            <div class="block-content block-content-full fs-sm fw-medium">
-                <span class="text-primary">David Fuller</span> on June 29, 2019 · <span>10 min</span>
-            </div>
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a class="block block-rounded block-link-pop overflow-hidden" href="javascript:void(0)">
-            <div class="bg-image" style="background-image: url('/template/assets/media/photos/photo23.jpg');">
-                <div class="block-content bg-primary-dark-op">
-                <h4 class="text-white mt-5 push">Explore the World</h4>
-                </div>
-            </div>
-            <div class="block-content block-content-full fs-sm fw-medium">
-                <span class="text-primary">Jack Estrada</span> on June 16, 2019 · <span>13 min</span>
-            </div>
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a class="block block-rounded block-link-pop overflow-hidden" href="javascript:void(0)">
-            <div class="bg-image" style="background-image: url('/template/assets/media/photos/photo22.jpg');">
-                <div class="block-content bg-primary-dark-op">
-                <h4 class="text-white mt-5 push">Follow Your Dreams</h4>
-                </div>
-            </div>
-            <div class="block-content block-content-full fs-sm fw-medium">
-                <span class="text-primary">Sara Fields</span> on May 23, 2019 · <span>10 min</span>
-            </div>
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a class="block block-rounded block-link-pop overflow-hidden" href="javascript:void(0)">
-            <div class="bg-image" style="background-image: url('/template/assets/media/photos/photo24.jpg');">
-                <div class="block-content bg-primary-dark-op">
-                <h4 class="text-white mt-5 push">Top 10 Destinations</h4>
-                </div>
-            </div>
-            <div class="block-content block-content-full fs-sm fw-medium">
-                <span class="text-primary">Carl Wells</span> on May 15, 2019 · <span>7 min</span>
-            </div>
-            </a>
-        </div>
+            @endforeach
         </div>
         <!-- END Section Content -->
     </div>
     <!-- END More Stories -->
+    @endif
 
     @endsection

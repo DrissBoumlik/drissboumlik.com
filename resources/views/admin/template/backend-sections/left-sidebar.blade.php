@@ -4,9 +4,9 @@
     <div class="content-header">
         <!-- Logo -->
         <a class="font-semibold text-dual" href="/">
-          <span class="smini-visible">
-            <i class="fa fa-circle-notch text-primary"></i>
-          </span>
+            <span class="smini-visible">
+                <img class="img-avatar img-avatar20" src="{{ asset('/assets/img/me/circle-256.ico') }}" alt="">
+            </span>
             <span class="smini-hide fs-5 tracking-wider">Admin<span class="fw-normal">Panel</span></span>
         </a>
         <!-- END Logo -->
@@ -69,11 +69,13 @@
             <ul class="nav-main">
                 <li class="nav-main-item">
                     <a class="nav-main-link{{ request()->is('admin/posts') ? ' active' : '' }}" href="/admin/posts">
+                        <i class="nav-main-link-icon fa fa-fw fa-list"></i>
                         <span class="nav-main-link-name">Posts</span>
                     </a>
                 </li>
                 <li class="nav-main-item">
                     <a class="nav-main-link{{ request()->is('admin/tags') ? ' active' : '' }}" href="/admin/tags">
+                        <i class="nav-main-link-icon si si-tag"></i>
                         <span class="nav-main-link-name">Tags</span>
                     </a>
                 </li>

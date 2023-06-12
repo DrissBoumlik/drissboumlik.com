@@ -73,7 +73,7 @@
                         <th>Featured</th>
                         <th class="text-center"><i class="fa-solid fa-eye"></i></th>
                         <th class="text-center"><i class="fa-solid fa-thumbs-up"></i></th>
-                        <th><i class="fa-solid fa-upload"></i></th>
+                        <th class="text-center"><i class="fa-solid fa-upload"></i></th>
                         <th class="text-center"><i class="fa-solid fa-pen"></i></th>
                         <th>Active</th>
                     </tr>
@@ -82,9 +82,18 @@
                         @foreach($posts as $post)
                         <tr>
                             <td class="text-center fs-sm">
-                                <a href="/admin/posts/edit/{{ $post->slug }}" target="_blank" class="link-dark" data-bs-toggle="tooltip" title="View">
-                                    <i class="fa fa-fw fa-eye"></i>
-                                </a>
+                                <div class="btn-group">
+                                    <a href="/blog/{{ $post->slug }}" target="_blank" class="link-dark" data-bs-toggle="tooltip" title="View">
+                                        <button type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
+                                            <i class="fa fa-fw fa-eye"></i>
+                                        </button>
+                                    </a>
+                                    <a href="/admin/posts/edit/{{ $post->slug }}" target="_blank" class="link-dark" data-bs-toggle="tooltip" title="View">
+                                        <button type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
+                                            <i class="fa fa-fw fa-pencil-alt"></i>
+                                        </button>
+                                    </a>
+                                </div>
                             </td>
                             <td class="text-center fs-sm">{{ $post->id }}</td>
                             <td class="fw-semibold fs-sm">{{ $post->title }}</td>

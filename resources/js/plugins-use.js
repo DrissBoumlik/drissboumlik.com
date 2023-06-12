@@ -7,7 +7,6 @@ function initGallery(){
 function initLaraberg() {
     if ($('#post_body').length == 0) return;
     let options = { };
-    console.log(options);
     Laraberg.init('post_body', options)
 }
 
@@ -15,16 +14,25 @@ function initSelect2() {
     if ($('.js-select2').length == 0) return;
     One.helpersOnLoad(['jq-select2']);
 }
-
+let t = null;
 function initImageCropper() {
+    let e = document.getElementById("js-img-cropper");
+    if (e == null) return;
+
+    if (t) {
+        t.destroy();
+    }
+
     One.onLoad((() => class {
         static initImageCropper() {
-            let e = document.getElementById("js-img-cropper");
-            Cropper.setDefaults({ aspectRatio: 4 / 3, preview: ".js-img-cropper-preview" });
-            let t = new Cropper(e, { crop: function (e) { } });
+            Cropper.setDefaults({ aspectRatio: 16 / 9, preview: ".js-img-cropper-preview" });
+            t = new Cropper(e, { crop: function (e) {
+
+                } });
             document.querySelectorAll('[data-toggle="cropper"]').forEach((e => {
                 e.addEventListener("click", (o => {
                     let a = e.dataset.method || !1, r = e.dataset.option || !1, c = {
+                        // crop: () => { t.getData() },
                         zoom: () => { t.zoom(r) },
                         setDragMode: () => { t.setDragMode(r) },
                         rotate: () => { t.rotate(r) },
@@ -34,15 +42,14 @@ function initImageCropper() {
                         crop: () => { t.crop() },
                         clear: () => { t.clear() }
                     };
-                    c[a] && c[a]() }))
-                }))
+                    c[a] && c[a]()
+                }));
+            }));
         }
         static init() { this.initImageCropper() }
     }.init()));
 }
 
-function initDataTable() {
 
-}
 
-export { initLaraberg, initSelect2, initGallery, initDataTable, initImageCropper };
+export { initLaraberg, initSelect2, initGallery, initImageCropper };

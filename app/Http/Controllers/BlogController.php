@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\PostCollection;
 use App\Http\Resources\PostResource;
+use App\Http\Resources\PostWithPaginationCollection;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -15,7 +17,7 @@ class BlogController extends Controller
     public function index(Request $request)
     {
         $data = new \stdClass();
-        $data->posts_data = (new PostCollection(Post::with('tags', 'author')
+        $data->posts_data = (new PostWithPaginationCollection(Post::with('tags', 'author')
                                                 ->orderBy('created_at', 'desc')
                                                 ->paginate($this->perPage)))->resolve();
 
@@ -33,9 +35,15 @@ class BlogController extends Controller
 //        $post->increment('views', 1);
         $data = new \stdClass();
 
+        $related_posts = Post::whereHas('tags', function ($q) use ($post) {
+            return $q->whereIn('tags.id', $post->tags->pluck('id'));
+        })->where('id', '!=', $post->id)->take(6)->get();
+        $related_posts = (new PostCollection($related_posts))->resolve();
+
         $post = (object)(new PostResource($post))->resolve();
         $data->title = 'Blog | ' . $post->title;
-        return view('pages.blog.posts.show', ['data' => $data, 'post' => $post]);
+
+        return view('pages.blog.posts.show', ['data' => $data, 'post' => $post, 'related_posts' => $related_posts]);
     }
 
     public function likePost(Request $request, $slug)

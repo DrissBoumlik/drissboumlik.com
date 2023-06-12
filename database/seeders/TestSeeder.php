@@ -59,32 +59,53 @@ class TestSeeder extends Seeder
         }
         Tag::insert($tags);
 
-        return
 
+        $response = \Illuminate\Support\Facades\Http::get('http://blog.drissboumlik.com/wp-json/wp/v2/posts');
+        $posts_wp = $response->object();
         $posts = [];
-        for($i = 1; $i <= 10; $i++) {
-            $title = $faker->text(30);
-            $content = $faker->text(1500);
+        foreach ($posts_wp as $post_wp) {
             $posts[] = [
                 'author_id' => 1,
-                'title' => $title,
-                'slug' => \Str::slug($title),
-                'content' => $content,
-                'excerpt' => \Str::words($content, 20),  // $faker->randomElement([null, $faker->text(200)]),
+                'title' => $post_wp->title->rendered,
+                'slug' => $post_wp->slug,
+                'content' => $post_wp->content->rendered,
+                'excerpt' => $post_wp->excerpt->rendered,  // $faker->randomElement([null, $faker->text(200)]),
                 'image' => $faker->imageUrl(1920, 1080),
                 'description' =>  $faker->text(350),
                 'status' => $faker->numberBetween(0, count(getPostStatus()) - 1),
                 'featured' => $faker->boolean,
-                'likes' => $faker->randomNumber(2),
-                'views' => $faker->randomNumber(2),
+                'likes' => $faker->randomDigit(),
+                'views' => $faker->randomDigit(),
                 'published_at' => now(),
                 "created_at" => now(), "updated_at" => now()
             ];
         }
+
+
+//        $posts = [];
+//        for($i = 1; $i <= 10; $i++) {
+//            $title = $faker->text(30);
+//            $content = $faker->text(1500);
+//            $posts[] = [
+//                'author_id' => 1,
+//                'title' => $title,
+//                'slug' => \Str::slug($title),
+//                'content' => $content,
+//                'excerpt' => \Str::words($content, 20),  // $faker->randomElement([null, $faker->text(200)]),
+//                'image' => $faker->imageUrl(1920, 1080),
+//                'description' =>  $faker->text(350),
+//                'status' => $faker->numberBetween(0, count(getPostStatus()) - 1),
+//                'featured' => $faker->boolean,
+//                'likes' => $faker->randomNumber(2),
+//                'views' => $faker->randomNumber(2),
+//                'published_at' => now(),
+//                "created_at" => now(), "updated_at" => now()
+//            ];
+//        }
         Post::insert($posts);
 
         $post_tag = [];
-        for($i = 1; $i <= 30; $i++) {
+        for($i = 1; $i <= 5; $i++) {
             $post_id = Post::inRandomOrder()->first()->id;
             $tag_count = random_int(2, 6);
             if (!isset(collect($post_tag)->groupBy('post_id')[$post_id])) {

@@ -16,10 +16,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   initParticlesJS: () => (/* binding */ initParticlesJS),
 /* harmony export */   initSlider: () => (/* binding */ initSlider)
 /* harmony export */ });
-/* harmony import */ var owl_carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! owl.carousel */ "./node_modules/owl.carousel/dist/owl.carousel.js");
-/* harmony import */ var owl_carousel__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(owl_carousel__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _plugins_use__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./plugins-use */ "./resources/js/plugins-use.js");
+/* harmony import */ var owl_carousel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! owl.carousel */ "./node_modules/owl.carousel/dist/owl.carousel.js");
+/* harmony import */ var owl_carousel__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(owl_carousel__WEBPACK_IMPORTED_MODULE_1__);
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 // import 'bootstrap';
+
 __webpack_require__(/*! particles.js */ "./node_modules/particles.js/particles.js");
 // var slugify = require('slugify')
 
@@ -109,6 +111,13 @@ function initDarkMode() {
     toggleDarkMode(_body, _isActive);
   });
 }
+function get_alert_box(params) {
+  var alert_element = "\n        <div data-notify=\"container\" class=\"col-11 col-sm-4 alert ".concat(params["class"], " alert-dismissible animated fadeIn\" role=\"alert\" data-notify-position=\"bottom-right\" style=\"display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 1033; bottom: 20px; right: 20px; animation-iteration-count: 1;\">\n            <p class=\"mb-0\">\n                <span data-notify=\"icon\"></span>\n                <span data-notify=\"title\"></span>\n                <span data-notify=\"message\">").concat(params.message, "</span>\n            </p>\n            <a class=\"p-2 m-1 text-dark\" href=\"javascript:void(0)\" aria-label=\"Close\" data-notify=\"dismiss\" style=\"position: absolute; right: 10px; top: 5px; z-index: 1035;\">\n                <i class=\"fa fa-times\"></i>\n            </a>\n        </div>\n    ");
+  $(document.body).append(alert_element);
+  $('.alert.alert-dismissible').on('click', function () {
+    $(this).remove();
+  });
+}
 function initEvents() {
   $.ajaxSetup({
     headers: {
@@ -130,15 +139,19 @@ function initEvents() {
   });
   $(document).on('click', '.like-post', function () {
     var post = $(this).data('post');
+    var liked_posts = JSON.parse(localStorage.getItem('liked-posts'));
+    if (liked_posts && liked_posts.includes(post.slug)) {
+      get_alert_box({
+        "class": 'alert-warning',
+        message: 'Already liked !!'
+      });
+      return;
+    }
     $.ajax({
       method: 'POST',
       url: '/blog/like/' + post.slug,
-      data: {
-        restore: true,
-        event_id: $(this).data('id')
-      },
       success: function success(response) {
-        console.log(response);
+        localStorage.setItem('liked-posts', JSON.stringify([response.post.slug]));
         $('.post-likes-count').text("".concat(response.post.likes, " Likes"));
       },
       error: function error(jqXHR, textStatus, errorThrown) {
@@ -146,7 +159,20 @@ function initEvents() {
       }
     });
   });
+  var imageElement = document.getElementById('image');
+  if (imageElement) {
+    imageElement.onchange = function (event) {
+      if (event.target.files.length > 0) {
+        var src = URL.createObjectURL(event.target.files[0]);
+        var preview = document.getElementById("js-img-cropper");
+        preview.src = src;
+
+        // initImageCropper();
+      }
+    };
+  }
 }
+
 
 
 /***/ }),
@@ -160,7 +186,6 @@ function initEvents() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   initDataTable: () => (/* binding */ initDataTable),
 /* harmony export */   initGallery: () => (/* binding */ initGallery),
 /* harmony export */   initImageCropper: () => (/* binding */ initImageCropper),
 /* harmony export */   initLaraberg: () => (/* binding */ initLaraberg),
@@ -180,14 +205,19 @@ function initGallery() {
 function initLaraberg() {
   if ($('#post_body').length == 0) return;
   var options = {};
-  console.log(options);
   Laraberg.init('post_body', options);
 }
 function initSelect2() {
   if ($('.js-select2').length == 0) return;
   One.helpersOnLoad(['jq-select2']);
 }
+var t = null;
 function initImageCropper() {
+  var e = document.getElementById("js-img-cropper");
+  if (e == null) return;
+  if (t) {
+    t.destroy();
+  }
   One.onLoad(function () {
     return /*#__PURE__*/function () {
       function _class() {
@@ -196,12 +226,11 @@ function initImageCropper() {
       _createClass(_class, null, [{
         key: "initImageCropper",
         value: function initImageCropper() {
-          var e = document.getElementById("js-img-cropper");
           Cropper.setDefaults({
-            aspectRatio: 4 / 3,
+            aspectRatio: 16 / 9,
             preview: ".js-img-cropper-preview"
           });
-          var t = new Cropper(e, {
+          t = new Cropper(e, {
             crop: function crop(e) {}
           });
           document.querySelectorAll('[data-toggle="cropper"]').forEach(function (e) {
@@ -209,6 +238,7 @@ function initImageCropper() {
               var a = e.dataset.method || !1,
                 r = e.dataset.option || !1,
                 c = {
+                  // crop: () => { t.getData() },
                   zoom: function zoom() {
                     t.zoom(r);
                   },
@@ -248,7 +278,6 @@ function initImageCropper() {
     }().init();
   });
 }
-function initDataTable() {}
 
 
 /***/ }),
@@ -16142,7 +16171,6 @@ $(function () {
     (0,_plugins_use__WEBPACK_IMPORTED_MODULE_1__.initLaraberg)();
     (0,_plugins_use__WEBPACK_IMPORTED_MODULE_1__.initSelect2)();
     (0,_plugins_use__WEBPACK_IMPORTED_MODULE_1__.initGallery)();
-    (0,_plugins_use__WEBPACK_IMPORTED_MODULE_1__.initDataTable)();
     // initImageCropper();
     (0,_functions__WEBPACK_IMPORTED_MODULE_0__.initEvents)();
   } catch (error) {

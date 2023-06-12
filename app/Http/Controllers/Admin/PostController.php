@@ -45,8 +45,13 @@ class PostController extends Controller
                 "featured" => $request->featured,
                 'author_id' => \Auth::user()->id,
                 'published_at' => $request->status == 2 ? now() : null,
-                //            'image',
             ];
+            $image_file = $request->file('image');
+            if ($image_file) {
+                $file_ext = $image_file->getClientOriginalExtension();
+                $path = \Storage::disk('public')->putFileAs('blog/posts', $image_file, "$request->slug.$file_ext");
+                $data['image'] = "storage/$path";
+            }
             $post = Post::create($data);
             if ($request->has('tags')) {
                 $post_tag = [];
@@ -99,8 +104,13 @@ class PostController extends Controller
                 "featured" => $request->has('featured'),
                 'author_id' => \Auth::user()->id,
                 'published_at' => $post->published_at ?? ($request->status == 2 ? now() : null),
-                //            'image',
             ];
+            $image_file = $request->file('image');
+            if ($image_file) {
+                $file_ext = $image_file->getClientOriginalExtension();
+                $path = \Storage::disk('public')->putFileAs('blog/posts', $image_file, ($request->slug ?? $post->slug) . ".$file_ext");
+                $data['image'] = "storage/$path";
+            }
             $post->update($data);
 
             if ($request->has('active')) {
@@ -108,6 +118,7 @@ class PostController extends Controller
             } else {
                 $post->delete();
             }
+            \DB::table('post_tag')->where('post_id', $post->id)->delete();
             if ($request->has('tags')) {
                 $post_tag = [];
                 foreach ($request->tags as $tag_id) {
@@ -117,7 +128,6 @@ class PostController extends Controller
                         "created_at" => now(), "updated_at" => now()
                     ];
                 }
-                \DB::table('post_tag')->where('post_id', $post->id)->delete();
                 \DB::table('post_tag')->insert($post_tag);
             }
             return redirect("/admin/posts/edit/$post->slug")->with(['response' => ['message' => 'Post updated successfully', 'class' => 'alert-info']]);
@@ -139,5 +149,10 @@ class PostController extends Controller
         } catch (\Throwable $e) {
             return redirect("/admin/posts")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger']]);
         }
+    }
+
+    public function api_store(Request $request)
+    {
+        return ['data' => $request->all()];
     }
 }

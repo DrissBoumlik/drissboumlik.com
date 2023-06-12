@@ -13,6 +13,6 @@
         </a>
     </div>
     <script>
-        $('.alert-info').on('click', function() { $(this).remove() });
+        $('.alert.alert-dismissible').on('click', function() { $(this).remove() });
     </script>
 @endif
