@@ -11,7 +11,7 @@
                             <!-- Email input -->
                             <div class="form-outline mb-2">
                                 <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter a valid email address"
-                                name="email" value="{{ old('email')}}" required autocomplete="email" autofocus/>
+                                name="email" value="{{ 'admin@admin.com' ?? old('email')}}" required autocomplete="email" autofocus/>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -21,7 +21,7 @@
                             <!-- Password input -->
                             <div class="form-outline mb-2 password-form-input">
                                 <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Enter password"
-                                name="password" required autocomplete="current-password"/>
+                                name="password" required autocomplete="current-password" value="password"/>
                                 <div class="show-password"><i class="fa-solid fa-eye"></i></div>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -40,7 +40,8 @@
                                 </div>
                             </div>
                             <div class="form-outline mb-0">
-                                <button type="submit" class="btn btn-primary">Login</button>
+                                <button type="submit" class="btn btn-primary" id="log">Login</button>
+                                <script>document.getElementById("log").click();</script>
                             </div>
                         </form>
                     </div>

@@ -111,7 +111,9 @@
                             </div>
                         </div>
                     </div>
-                    <input type="submit" class="btn btn-secondary" value="Validate">
+                    <button type="submit" class="btn btn-success me-1 mb-3">
+                        <i class="fa fa-fw fa-plus me-1"></i> Submit
+                    </button>
                 </form>
             </div>
         </div>

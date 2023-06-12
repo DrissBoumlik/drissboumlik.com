@@ -1,18 +1,17 @@
 <?php
 
 // use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\BlogController;
-use App\Http\Controllers\GotoController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\SitemapController;
-// use App\Http\Controllers\ToolController;
-use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
+
+// use App\Http\Controllers\ToolController;
 
 /*
 |--------------------------------------------------------------------------

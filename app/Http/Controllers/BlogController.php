@@ -23,12 +23,6 @@ class BlogController extends Controller
         $data->posts = $data->posts_data['data'];
         unset($data->posts_data['data']);
 
-        // dd($data->posts_data);
-
-
-//        $data->socialLinks = getSocialLinks();
-//        $data->headerMenu = getHeaderMenu();
-
         $data->title = 'Driss Boumlik | Blog';
 
         return view('pages.blog.posts.index', ['data' => $data]);
@@ -48,5 +42,19 @@ class BlogController extends Controller
         $data->title = 'Blog | ' . $post->title;
 
         return view('pages.blog.posts.show', ['data' => $data]);
+    }
+
+    public function getPostsByTag(Request $request, $tag = null)
+    {
+        if ($tag) {
+            $data = new \stdClass();
+            $data->posts = Post::where('meta_keywords', 'like', '%' . $tag . '%')->paginate(5);
+
+            $data->title = 'Blog | Tags - ' . $tag;
+
+            return view('pages.blog.posts.index', ['data' => $data]);
+        } else {
+            return redirect('/blog');
+        }
     }
 }
