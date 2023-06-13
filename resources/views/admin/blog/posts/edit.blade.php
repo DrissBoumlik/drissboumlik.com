@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/template/assets/js/plugins/cropperjs/cropper.min.css">
     <link rel="stylesheet" href={{ asset("/template/assets/js/plugins/select2/css/select2.min.css") }}>
     <link rel="stylesheet" href="{{ asset('/vendor/laraberg/css/laraberg.css') }}">
+    <link rel="stylesheet" href="/template/assets/js/plugins/simplemde/simplemde.min.css">
 @endsection
 @section('js')
     <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
@@ -12,6 +13,7 @@
     <script src="{{ asset('/vendor/laraberg/js/laraberg.js') }}"></script>
     <script src="/template/assets/js/plugins/cropperjs/cropper.min.js"></script>
     <script src={{ asset("/template/assets/js/plugins/select2/js/select2.full.min.js") }}></script>
+    <script src="/template/assets/js/plugins/simplemde/simplemde.min.js"></script>
 @endsection
 
 @section('content')
@@ -62,11 +64,11 @@
                                 <label class="form-label" for="post_body">Content</label>
                                 <!-- SimpleMDE Container -->
                                 {{-- <textarea class="js-simplemde" id="simplemde" name="post_body">{{ old('post_body') }}</textarea> --}}
-                                <textarea id="post_body" name="post_body" placeholder="Textarea content.." hidden>{!! $post->content !!}</textarea>
+                                <textarea id="post_body" class="form-control laraberg-textarea" name="post_content" placeholder="Post content.." hidden>{!! $post->content !!}</textarea>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="excerpt">Excerpt</label>
-                                <textarea class="form-control" id="excerpt" name="excerpt" rows="4" placeholder="Post excerpt..">{{ $post->excerpt }}</textarea>
+                                <label class="form-label" for="post_excerpt">Excerpt</label>
+                                <textarea id="post_excerpt" class="form-control laraberg-textarea js-simplemde" name="post_excerpt" placeholder="Post excerpt.." rows="4" >{{ $post->excerpt }}</textarea>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -121,7 +123,7 @@
                             <button type="submit" class="btn btn-success me-1 mb-3">
                                 <i class="fa fa-fw fa-edit me-1"></i> Update
                             </button>
-                            <a href="/blog/{{ $post->slug }}" class="btn btn-dark me-1 mb-3">
+                            <a href="/blog/{{ $post->slug }}" target="_blank" class="btn btn-dark me-1 mb-3">
                                 <i class="fa fa-fw fa-eye me-1"></i> View
                             </a>
                         </div>

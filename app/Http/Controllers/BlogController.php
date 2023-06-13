@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\PostCollection;
 use App\Http\Resources\PostResource;
 use App\Http\Resources\PostWithPaginationCollection;
+use App\Http\Resources\TagWithPaginationCollection;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class BlogController extends Controller
     public function index(Request $request)
     {
         $data = new \stdClass();
-        $data->posts_data = (new PostWithPaginationCollection(Post::with('tags', 'author')
+        $data->posts_data = (new PostWithPaginationCollection(Post::with('author')
                                                 ->orderBy('created_at', 'desc')
                                                 ->paginate($this->perPage)))->resolve();
 
@@ -51,17 +52,35 @@ class BlogController extends Controller
         return ['post' => $post];
     }
 
-    public function getPostsByTag(Request $request, $tag = null)
+    public function getPostsByTag(Request $request, $slug)
     {
-        if ($tag) {
-            $data = new \stdClass();
-            $data->posts = Post::where('meta_keywords', 'like', '%' . $tag . '%')->paginate(5);
+        $tag = Tag::where('slug', $slug)->first();
 
-            $data->title = 'Blog | Tags - ' . $tag;
+        $data = new \stdClass();
+        $data->posts_data = (new PostWithPaginationCollection($tag->posts()->with('author')
+            ->orderBy('created_at', 'desc')
+            ->paginate($this->perPage)))->resolve();
 
-            return view('pages.blog.posts.index', ['data' => $data]);
-        } else {
-            return redirect('/blog');
-        }
+        $posts = $data->posts_data['data'];
+        unset($data->posts_data['data']);
+
+        return view('pages.blog.posts.index', ['data' => $data, 'posts' => $posts]);
+    }
+
+    public function tagsList(Request $request)
+    {
+        $data = new \stdClass();
+
+        $data->tags_data = (new TagWithPaginationCollection(Tag::withCount('posts')
+            ->orderBy('created_at', 'desc')
+            ->paginate($this->perPage)))->resolve();
+
+        $tags = $data->tags_data['data'];
+        unset($data->tags_data['data']);
+
+
+        $data->title = 'Driss Boumlik | Blog | Tags';
+
+        return view('pages.blog.tags.index', ['data' => $data, 'tags' => $tags]);
     }
 }

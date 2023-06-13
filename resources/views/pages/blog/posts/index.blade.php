@@ -20,24 +20,19 @@
         <div class="row">
             @foreach ($posts as $post)
                 <!-- Story -->
-                <div class="col-lg-4">
+                <div class="col-md-4 col-sm-6">
                     <a class="block block-rounded block-link-pop overflow-hidden" href="/blog/{{ $post['slug'] }}">
-                        <img class="img-fluid" src="/template/assets/media/photos/photo8@2x.jpg" alt="">
+                        <div class="post-image">
+                            <img class="img-fluid" src="/{{ $post['image'] }}" alt="">
+                        </div>
                         <div class="block-content">
                             <h4 class="mb-1">{{ $post['title'] }}</h4>
                             <p class="fs-sm fw-medium mb-2">
                                 <span class="text-primary">{{ $post['author']->name }}</span> · {{ $post['published_at'] }} · <span class="text-muted">10 min</span>
                             </p>
                             <p class="fs-sm text-muted">
-                                {!! $post['excerpt'] ?? \Str::words($post['content'], 20); !!}
+                                {!! $post['excerpt'] ?? \Str::limit($post['content'], 20); !!}
                             </p>
-                            <div class="tags mb-4">
-                                @foreach ($post['tags'] as $tag)
-                                    <span style="background-color: {{ $tag->color }}"
-                                        class="fs-sm fw-semibold d-inline-block py-1 px-3 mb-2
-                                        rounded-pill text-white">{{ $tag->name }}</span>
-                                @endforeach
-                            </div>
                         </div>
                     </a>
                 </div>

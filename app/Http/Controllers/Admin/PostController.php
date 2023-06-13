@@ -97,8 +97,8 @@ class PostController extends Controller
             $data = [
                 "title" => $request->title,
                 "slug" => $request->slug,
-                "content" => $request->post_body,
-                "excerpt" => $request->excerpt,
+                "content" => $request->post_content,
+                "excerpt" => $request->post_excerpt,
                 "description" => $request->description,
                 "status" => $request->status,
                 "featured" => $request->has('featured'),

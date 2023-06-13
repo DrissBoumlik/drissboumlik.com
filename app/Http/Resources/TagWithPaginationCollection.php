@@ -2,9 +2,10 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Resources\TagResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class PostWithPaginationCollection extends ResourceCollection
+class TagWithPaginationCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -15,7 +16,7 @@ class PostWithPaginationCollection extends ResourceCollection
     public function toArray($request)
     {
         return [
-            'data' => PostResource::collection($this->resource),
+            'data' => TagResource::collection($this->resource),
             'perPage' => $this->resource->perPage(),
             'currentPage' => $this->resource->currentPage(),
             'path' => $this->resource->path(),

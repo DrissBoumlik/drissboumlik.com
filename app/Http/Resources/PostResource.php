@@ -16,12 +16,14 @@ class PostResource extends JsonResource
     {
         return (object) [
             'author_id' => $this->author_id,
+            'author' => $this->author,
             'title' => $this->title,
             'short_title' => strlen($this->title) < 20 ? $this->title : \Str::limit($this->title, 20),
             // Str::limit($this->body, Post::EXCERPT_LENGTH)
             'slug' => $this->slug,
             'excerpt' => $this->excerpt ?? \Str::words($this->content, 20),
             'content' => $this->content,
+            'read_duration' => \Str::readDuration($this->content),
             'image' => $this->image,
             'description' => $this->description,
             'status' => $this->status,
@@ -30,8 +32,6 @@ class PostResource extends JsonResource
             'views' => $this->views,
             'published_at' => $this->published_at ? $this->published_at->diffForHumans() : '',
             'tags' => $this->tags,
-            'author' => $this->author,
-            'read_duration' => \Str::readDuration($this->content),
         ];
     }
 }

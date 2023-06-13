@@ -189,7 +189,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   initGallery: () => (/* binding */ initGallery),
 /* harmony export */   initImageCropper: () => (/* binding */ initImageCropper),
 /* harmony export */   initLaraberg: () => (/* binding */ initLaraberg),
-/* harmony export */   initSelect2: () => (/* binding */ initSelect2)
+/* harmony export */   initSelect2: () => (/* binding */ initSelect2),
+/* harmony export */   initSimpleMDE: () => (/* binding */ initSimpleMDE)
 /* harmony export */ });
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -206,6 +207,9 @@ function initLaraberg() {
   if ($('#post_body').length == 0) return;
   var options = {};
   Laraberg.init('post_body', options);
+}
+function initSimpleMDE() {
+  One.helpersOnLoad('js-simplemde');
 }
 function initSelect2() {
   if ($('.js-select2').length == 0) return;
@@ -16168,6 +16172,8 @@ $(function () {
     (0,_functions__WEBPACK_IMPORTED_MODULE_0__.initParticlesJS)();
     (0,_functions__WEBPACK_IMPORTED_MODULE_0__.initSlider)();
     (0,_functions__WEBPACK_IMPORTED_MODULE_0__.initDarkMode)();
+
+    // initSimpleMDE();
     (0,_plugins_use__WEBPACK_IMPORTED_MODULE_1__.initLaraberg)();
     (0,_plugins_use__WEBPACK_IMPORTED_MODULE_1__.initSelect2)();
     (0,_plugins_use__WEBPACK_IMPORTED_MODULE_1__.initGallery)();

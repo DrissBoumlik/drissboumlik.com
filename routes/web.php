@@ -55,7 +55,7 @@ Route::group([], function () {
             Route::post('/posts', [PostController::class, 'store']);
             Route::get('/posts/edit/{slug}', [PostController::class, 'edit']);
             Route::put('/posts/{slug}', [PostController::class, 'update']);
-            Route::post('/api/posts', [PostController::class, 'api_store']);
+            Route::post('/api/posts', [PostController::class, 'api_store']); // Testing cropper js
 
             Route::get('/tags', [TagController::class, 'index']);
             Route::get('/tags/create', [TagController::class, 'create']);
@@ -65,6 +65,8 @@ Route::group([], function () {
         });
     });
 
+    Route::get('/blog/tags', [BlogController::class, 'tagsList']);
+    Route::get('/blog/tags/{slug}', [BlogController::class, 'getPostsBytag']);
     Route::get('/blog', [BlogController::class, 'index']);
     Route::get('/blog/{slug}', [BlogController::class, 'show']);
     Route::post('/blog/like/{slug}', [BlogController::class, 'likePost']);

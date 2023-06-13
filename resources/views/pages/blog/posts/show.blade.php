@@ -25,7 +25,17 @@
         <div class="content content-boxed">
         <div class="text-center fs-sm push">
             <span class="d-inline-block py-2 px-4 bg-body fw-medium rounded">
-            <a class="link-effect" href="be_pages_generic_profile.html">{{ $post->author->name }}</a> · {{ $post->published_at }} · <span>{{ $post->read_duration }} min read</span>
+                <a class="link-effect" href="be_pages_generic_profile.html">{{ $post->author->name }}</a>
+                <span> · {{ $post->published_at }} · </span>
+                <span>{{ $post->read_duration }} min read</span>
+                @if (\Auth::check())
+                     ·
+                    <a href="/admin/posts/edit/{{ $post->slug }}" target="_blank" class="text-secondary text-decoration-underline">
+                        <button type="button" class="btn btn-sm btn-secondary py-0">
+                            Edit <i class="fa fa-fw fa-pencil"></i>
+                        </button>
+                    </a>
+                @endif
             </span>
         </div>
         <div class="row justify-content-center">
@@ -35,7 +45,7 @@
                 {!! $post->content !!}
                 <div class="tags my-4">
                     @foreach ($post->tags as $tag)
-                        <a href="/tags/{{ $tag->slug }}">
+                        <a href="/blog/tags/{{ $tag->slug }}">
                         <span style="background-color: {{ $tag->color }}"
                               class="fs-sm fw-semibold d-inline-block py-1 px-3 mb-2
                                         rounded-pill text-white">{{ $tag->name }}</span>
@@ -79,7 +89,10 @@
                     </div>
                 </div>
                 <div class="block-content block-content-full fs-sm fw-medium">
-                    <span class="text-primary">{{ $related_post->author->name }}</span> · {{ $related_post->published_at }} · <span>{{ $post->read_duration }} min</span>
+                    <span class="text-primary">Posted</span> {{ $related_post->published_at }} · <span>{{ $post->read_duration }} min</span>
+                    <p class="fs-sm text-muted">
+                        {!! $related_post->excerpt ?? \Str::limit($related_post->content, 20); !!}
+                    </p>
                 </div>
                 </a>
             </div>
