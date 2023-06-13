@@ -53,7 +53,7 @@
 
 <body>
     <!-- Page Container -->
-    <div id="page-container" class="sidebar-dark side-scroll page-header-fixed page-header-dark main-content-boxed">
+    <div id="page-container" class="sidebar-dark side-scroll page-header-dark main-content-boxed">
 
        @include('admin.template.frontend-sections.nav')
 

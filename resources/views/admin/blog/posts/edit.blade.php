@@ -2,18 +2,18 @@
 
 @section('css')
     <!-- Page JS Plugins CSS -->
-    <link rel="stylesheet" href="/template/assets/js/plugins/cropperjs/cropper.min.css">
+{{--    <link rel="stylesheet" href="/template/assets/js/plugins/cropperjs/cropper.min.css">--}}
     <link rel="stylesheet" href={{ asset("/template/assets/js/plugins/select2/css/select2.min.css") }}>
     <link rel="stylesheet" href="{{ asset('/vendor/laraberg/css/laraberg.css') }}">
-    <link rel="stylesheet" href="/template/assets/js/plugins/simplemde/simplemde.min.css">
+{{--    <link rel="stylesheet" href="/template/assets/js/plugins/simplemde/simplemde.min.css">--}}
 @endsection
 @section('js')
     <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
     <script src="{{ asset('/vendor/laraberg/js/laraberg.js') }}"></script>
-    <script src="/template/assets/js/plugins/cropperjs/cropper.min.js"></script>
+{{--    <script src="/template/assets/js/plugins/cropperjs/cropper.min.js"></script>--}}
     <script src={{ asset("/template/assets/js/plugins/select2/js/select2.full.min.js") }}></script>
-    <script src="/template/assets/js/plugins/simplemde/simplemde.min.js"></script>
+{{--    <script src="/template/assets/js/plugins/simplemde/simplemde.min.js"></script>--}}
 @endsection
 
 @section('content')
@@ -68,7 +68,7 @@
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="post_excerpt">Excerpt</label>
-                                <textarea id="post_excerpt" class="form-control laraberg-textarea js-simplemde" name="post_excerpt" placeholder="Post excerpt.." rows="4" >{{ $post->excerpt }}</textarea>
+                                <textarea id="post_excerpt" class="form-control laraberg-textarea" name="post_excerpt" placeholder="Post excerpt.." rows="4" >{{ $post->excerpt }}</textarea>
                             </div>
                         </div>
                         <div class="col-md-4">

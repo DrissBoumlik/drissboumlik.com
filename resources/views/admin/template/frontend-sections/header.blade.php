@@ -33,7 +33,7 @@
                         </a>
                     </li>
                     <li class="nav-main-item">
-                        <a class="nav-main-link" href="/resume">
+                        <a class="nav-main-link" href="/resume" target="_blank">
                             <span class="nav-main-link-name">Resume</span>
                         </a>
                     </li>
