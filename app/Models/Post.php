@@ -32,6 +32,13 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function relatedPosts($take = 6)
+    {
+        return self::whereHas('tags', function ($q) {
+            return $q->whereIn('tags.id', $this->tags->pluck('id'));
+        })->where('id', '!=', $this->id)->take($take)->get();
+    }
+
     public function getDomClass()
     {
         $classes = [

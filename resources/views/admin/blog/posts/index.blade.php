@@ -88,7 +88,7 @@
                                             <i class="fa fa-fw fa-eye"></i>
                                         </button>
                                     </a>
-                                    <a href="/admin/posts/edit/{{ $post->slug }}" target="_blank" class="link-dark" data-bs-toggle="tooltip" title="View">
+                                    <a href="/admin/posts/edit/{{ $post->slug }}" target="_blank" class="link-dark" data-bs-toggle="tooltip" title="Edit">
                                         <button type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
                                             <i class="fa fa-fw fa-pencil-alt"></i>
                                         </button>
@@ -96,7 +96,7 @@
                                 </div>
                             </td>
                             <td class="text-center fs-sm">{{ $post->id }}</td>
-                            <td class="fw-semibold fs-sm">{{ $post->title }}</td>
+                            <td class="fw-semibold fs-sm"><span data-bs-toggle="tooltip" title="{{ $post->title }}">{{ $post->short_title }}</span></td>
                             <td><span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill {{ $post->status->class }}">{{ $post->status->text }}</span></td>
                             <td><span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill {{ $post->featured ? 'bg-success-light text-success' : 'bg-danger-light text-danger' }}">{{ $post->featured ? 'Yes' : 'No' }}</span></td>
                             <td class="fs-sm">{{ $post->views }}</td>

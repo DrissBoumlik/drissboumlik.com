@@ -68,10 +68,6 @@
                                 <label class="form-label" for="excerpt">Excerpt</label>
                                 <textarea class="form-control" id="excerpt" name="excerpt" rows="4" placeholder="Post excerpt..">{{ $post->excerpt }}</textarea>
                             </div>
-                            <div class="mb-4">
-                                <label class="form-label" for="image">Image</label>
-                                <input type="file" id="image" name="image" class="form-control" />
-                            </div>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-4">
@@ -111,6 +107,13 @@
                                 <div class="form-check form-switch form-check-inline">
                                     <input class="form-check-input" type="checkbox" id="active" name="active" {{ $post->active ? 'checked' : '' }} >
                                     <label class="form-check-label" for="active">Active</label>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="image">Image</label>
+                                <input type="file" id="image" name="image" class="form-control" />
+                                <div class="mt-2">
+                                    <img id="image-preview" class="img-fluid" src="/{{ $post->image }}" alt="photo">
                                 </div>
                             </div>
                         </div>

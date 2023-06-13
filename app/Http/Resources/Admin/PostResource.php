@@ -18,11 +18,12 @@ class PostResource extends JsonResource
             'id' => $this->id,
             'author_id' => $this->author_id,
             'title' => $this->title,
+            'short_title' => strlen($this->title) < 20 ? $this->title : \Str::limit($this->title, 20),
             // Str::limit($this->body, Post::EXCERPT_LENGTH)
             'slug' => $this->slug,
             'excerpt' => $this->excerpt,
             'content' => $this->content,
-//            'image' => $this->image,
+            'image' => $this->image,
             'description' => $this->description,
             'status' => $this->getDomClass(),
             'featured' => $this->featured,

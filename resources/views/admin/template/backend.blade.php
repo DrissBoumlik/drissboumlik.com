@@ -36,7 +36,7 @@
 
 <body>
   <!-- Page Container -->
-  <div id="page-container" class="sidebar-o sidebar-mini enable-page-overlay side-scroll page-header-fixed main-content-narrow">
+  <div id="page-container" class="sidebar-o sidebar-mini enable-page-overlay side-scroll main-content-narrow">
 
 
       @include('admin.template.backend-sections.left-sidebar')

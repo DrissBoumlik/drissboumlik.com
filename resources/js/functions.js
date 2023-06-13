@@ -182,7 +182,7 @@ function initEvents() {
         imageElement.onchange = (event) => {
             if (event.target.files.length > 0) {
                 let src = URL.createObjectURL(event.target.files[0]);
-                let preview = document.getElementById("js-img-cropper");
+                let preview = document.getElementById("image-preview");
                 preview.src = src;
 
                 // initImageCropper();

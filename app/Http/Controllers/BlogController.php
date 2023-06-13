@@ -35,9 +35,7 @@ class BlogController extends Controller
 //        $post->increment('views', 1);
         $data = new \stdClass();
 
-        $related_posts = Post::whereHas('tags', function ($q) use ($post) {
-            return $q->whereIn('tags.id', $post->tags->pluck('id'));
-        })->where('id', '!=', $post->id)->take(6)->get();
+        $related_posts = $post->relatedPosts();
         $related_posts = (new PostCollection($related_posts))->resolve();
 
         $post = (object)(new PostResource($post))->resolve();
