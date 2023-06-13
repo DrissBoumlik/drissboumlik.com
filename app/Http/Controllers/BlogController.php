@@ -25,7 +25,7 @@ class BlogController extends Controller
         $posts = $data->posts_data['data'];
         unset($data->posts_data['data']);
 
-        $data->title = 'Driss Boumlik | Blog';
+        $data->title = 'Blog | Driss Boumlik';
 
         return view('pages.blog.posts.index', ['data' => $data, 'posts' => $posts]);
     }
@@ -57,6 +57,7 @@ class BlogController extends Controller
         $tag = Tag::where('slug', $slug)->first();
 
         $data = new \stdClass();
+        $data->title = 'Blog | Tags | ' . $tag->name;
         $data->posts_data = (new PostWithPaginationCollection($tag->posts()->with('author')
             ->orderBy('created_at', 'desc')
             ->paginate($this->perPage)))->resolve();
@@ -79,7 +80,7 @@ class BlogController extends Controller
         unset($data->tags_data['data']);
 
 
-        $data->title = 'Driss Boumlik | Blog | Tags';
+        $data->title = 'Blog | Tags';
 
         return view('pages.blog.tags.index', ['data' => $data, 'tags' => $tags]);
     }

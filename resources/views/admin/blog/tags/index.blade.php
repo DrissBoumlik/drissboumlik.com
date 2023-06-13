@@ -22,59 +22,7 @@
     <script src="/template/assets/js/plugins/datatables-buttons/buttons.print.min.js"></script>
     <script src="/template/assets/js/plugins/datatables-buttons/buttons.html5.min.js"></script>
     <script>
-        One.onLoad((() => class {
-            static initDataTables() {
-                jQuery.extend(jQuery.fn.DataTable.ext.classes, {
-                    sWrapper: "dataTables_wrapper dt-bootstrap5",
-                    sFilterInput: "form-control form-control-sm",
-                    sLengthSelect: "form-select form-select-sm"
-                }), jQuery.extend(!0, jQuery.fn.DataTable.defaults, {
-                    language: {
-                        lengthMenu: "_MENU_",
-                        search: "_INPUT_",
-                        searchPlaceholder: "Search..",
-                        info: "Page <strong>_PAGE_</strong> of <strong>_PAGES_</strong>",
-                        paginate: {
-                            first: '<i class="fa fa-angle-double-left"></i>',
-                            previous: '<i class="fa fa-angle-left"></i>',
-                            next: '<i class="fa fa-angle-right"></i>',
-                            last: '<i class="fa fa-angle-double-right"></i>'
-                        }
-                    }
-                }), jQuery.extend(!0, jQuery.fn.DataTable.Buttons.defaults, {dom: {button: {className: "btn btn-sm btn-primary"}}}), jQuery(".js-dataTable-full").DataTable({
-                    pageLength: 10,
-                    lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]],
-                    autoWidth: !1
-                }), jQuery(".js-dataTable-full-pagination").DataTable({
-                    pagingType: "full_numbers",
-                    pageLength: 10,
-                    lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]],
-                    autoWidth: !1
-                }), jQuery(".js-dataTable-simple").DataTable({
-                    pageLength: 10,
-                    lengthMenu: !1,
-                    searching: !1,
-                    autoWidth: !1,
-                    dom: "<'row'<'col-sm-12'tr>><'row'<'col-sm-6'i><'col-sm-6'p>>"
-                }), jQuery(".js-dataTable-buttons").DataTable({
-                    pageLength: 10,
-                    lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]],
-                    autoWidth: !1,
-                    buttons: ["copy", "csv", "excel", "pdf", "print"],
-                    dom: "<'row'<'col-sm-12'<'text-center bg-body-light py-2 mb-2'B>>><'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>"
-                }), jQuery(".js-dataTable-responsive").DataTable({
-                    pagingType: "full_numbers",
-                    pageLength: 10,
-                    lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]],
-                    autoWidth: !1,
-                    responsive: !0
-                })
-            }
-
-            static init() {
-                this.initDataTables()
-            }
-        }.init()));
+        One.onLoad((()=>class{static initDataTables(){jQuery.extend(jQuery.fn.DataTable.ext.classes,{sWrapper:"dataTables_wrapper dt-bootstrap5",sFilterInput:"form-control form-control-sm",sLengthSelect:"form-select form-select-sm"}),jQuery.extend(!0,jQuery.fn.DataTable.defaults,{language:{lengthMenu:"_MENU_",search:"_INPUT_",searchPlaceholder:"Search..",info:"Page <strong>_PAGE_</strong> of <strong>_PAGES_</strong>",paginate:{first:'<i class="fa fa-angle-double-left"></i>',previous:'<i class="fa fa-angle-left"></i>',next:'<i class="fa fa-angle-right"></i>',last:'<i class="fa fa-angle-double-right"></i>'}}}),jQuery.extend(!0,jQuery.fn.DataTable.Buttons.defaults,{dom:{button:{className:"btn btn-sm btn-primary"}}}),jQuery(".js-dataTable-full").DataTable({pageLength:10,lengthMenu:[[5,10,15,20],[5,10,15,20]],autoWidth:!1}),jQuery(".js-dataTable-full-pagination").DataTable({pagingType:"full_numbers",pageLength:10,lengthMenu:[[5,10,15,20],[5,10,15,20]],autoWidth:!1}),jQuery(".js-dataTable-simple").DataTable({pageLength:10,lengthMenu:!1,searching:!1,autoWidth:!1,dom:"<'row'<'col-sm-12'tr>><'row'<'col-sm-6'i><'col-sm-6'p>>"}),jQuery(".js-dataTable-buttons").DataTable({pageLength:10,lengthMenu:[[5,10,15,20],[5,10,15,20]],autoWidth:!1,buttons:["copy","csv","excel","pdf","print"],dom:"<'row'<'col-sm-12'<'text-center bg-body-light py-2 mb-2'B>>><'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>"}),jQuery(".js-dataTable-responsive").DataTable({pagingType:"full_numbers",pageLength:10,lengthMenu:[[5,10,15,20],[5,10,15,20]],autoWidth:!1,responsive:!0})}static init(){this.initDataTables()}}.init()));
     </script>
 @endsection
 
@@ -132,9 +80,18 @@
                     @foreach($tags as $tag)
                         <tr>
                             <td class="text-center fs-sm">
-                                <a href="/admin/tags/edit/{{ $tag->slug }}" target="_blank" class="link-dark" data-bs-toggle="tooltip" title="View">
-                                    <i class="fa fa-fw fa-eye"></i>
-                                </a>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
+                                        <a href="/blog/tags/{{ $tag->slug }}" target="_blank" class="link-dark">
+                                            <i class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
+                                        <a href="/admin/tags/edit/{{ $tag->slug }}" target="_blank" class="link-dark">
+                                            <i class="fa fa-fw fa-pencil-alt"></i>
+                                        </a>
+                                    </button>
+                                </div>
                             </td>
                             <td class="text-center fs-sm">{{ $tag->id }}</td>
                             <td class="fw-semibold fs-sm">{{ $tag->name }}</td>

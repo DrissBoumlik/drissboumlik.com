@@ -83,16 +83,16 @@
                         <tr>
                             <td class="text-center fs-sm">
                                 <div class="btn-group">
-                                    <a href="/blog/{{ $post->slug }}" target="_blank" class="link-dark" data-bs-toggle="tooltip" title="View">
-                                        <button type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
+                                        <a href="/blog/{{ $post->slug }}" target="_blank" class="link-dark">
                                             <i class="fa fa-fw fa-eye"></i>
-                                        </button>
-                                    </a>
-                                    <a href="/admin/posts/edit/{{ $post->slug }}" target="_blank" class="link-dark" data-bs-toggle="tooltip" title="Edit">
-                                        <button type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
+                                        </a>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
+                                        <a href="/admin/posts/edit/{{ $post->slug }}" target="_blank" class="link-dark">
                                             <i class="fa fa-fw fa-pencil-alt"></i>
-                                        </button>
-                                    </a>
+                                        </a>
+                                    </button>
                                 </div>
                             </td>
                             <td class="text-center fs-sm">{{ $post->id }}</td>
