@@ -43,9 +43,13 @@
                     </div>
                     <div role="separator" class="dropdown-divider m-0"></div>
                     <div class="p-2">
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{ route('logout') }}"
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <span class="fs-sm fw-medium">Log Out</span>
                         </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     </div>
                 </div>
             </div>
