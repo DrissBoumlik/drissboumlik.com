@@ -12,7 +12,7 @@
     <!-- Hero Content -->
     <div class="bg-image" style="background-image: url('/{{ $post->image }}');">
         <div class="bg-primary-dark-op">
-            <div class="content content-full text-center pt-9 pb-8">
+            <div class="content content-full text-center pt-7 pb-6">
                 <h1 class="text-white mb-2">{{ $post->title }}</h1>
                 <h2 class="h4 fw-normal text-white-75 mb-0">Experience life to its fullest.</h2>
             </div>

@@ -42,7 +42,7 @@
                             </div>
                             <div class="form-outline mb-0">
                                 <button type="submit" class="btn btn-primary" id="log">Login</button>
-                                <script>document.getElementById("log").click();</script>
+{{--                                <script>document.getElementById("log").click();</script>--}}
                             </div>
                         </form>
                         @else
