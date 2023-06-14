@@ -12,7 +12,7 @@
         {{-- @include('addons.google-tag-manager-head') --}}
 
         @include('layout.header-parts.assets')
-        <title>{{ $data->title ?? 'TeaCode | Turning Tea into Code' }}</title>
+        <title>{{ $data->title ?? 'Admin Panel' }}</title>
     </head>
     <body class="antialiased {{ $mode . '-mode' }}">
         {{-- @include('addons.google-tag-manager-body') --}}

@@ -37,7 +37,7 @@
                         <p class="mt-2 mb-0 fw-medium">{{ \Auth::user()->name }}</p>
                     </div>
                     <div class="p-2">
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="/admin/profile">
                             <span class="fs-sm fw-medium">Profile</span>
                         </a>
                     </div>

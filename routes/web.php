@@ -2,6 +2,7 @@
 
 // use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
@@ -43,13 +44,15 @@ Route::group([], function () {
             // Profile
             // Route::get('profile', [AdminController::class, 'profile'])->name('profile');
             // Route::post('profile', [AdminController::class, 'updateProfile'])->name('profile.update');
-            // Blog
-            Route::get('blog/create', [PostController::class, 'create']);
             // Auth
             Route::post('/logout', [LoginController::class , 'logout'])->name('logout');
+            // Profile
+            Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
+            Route::post('profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
             // Tools
             // Route::get('/export-db', [ToolController::class , 'export_db']);
 
+            // Blog
             Route::get('/posts', [PostController::class, 'index']);
             Route::get('/posts/create', [PostController::class, 'create']);
             Route::post('/posts', [PostController::class, 'store']);
