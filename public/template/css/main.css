@@ -33144,6 +33144,14 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
   box-shadow: none;
 }
 
+.table .btn-group > .btn {
+  padding: 0;
+}
+.table .btn-group > .btn a {
+  display: block;
+  padding: 0.25rem 0.5rem;
+}
+
 .image-content-item img {
   width: 100%;
 }
