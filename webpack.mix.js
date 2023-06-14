@@ -14,9 +14,9 @@ path = require('path');
  */
 
 mix
-    .js('resources/template/js/oneui/app.js', 'public/template/js/oneui')
-    .js('resources/template/js/pages/datatables.js', 'public/template/js/pages')
-    .js('resources/template/js/pages/slick.js', 'public/template/js/pages')
+    // .js('resources/template/js/oneui/app.js', 'public/template/js/oneui')
+    // .js('resources/template/js/pages/datatables.js', 'public/template/js/pages')
+    // .js('resources/template/js/pages/slick.js', 'public/template/js/pages')
     .js('resources/js/app.js', 'public/js')
     .sass('resources/template/sass/main.scss', 'public/template/css')
     // .sass('resources/template/sass/oneui/themes/amethyst.scss', 'public/template/css/themes')

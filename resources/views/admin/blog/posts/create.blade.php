@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="{{ asset('/vendor/laraberg/css/laraberg.css') }}">
 @endsection
 @section('js')
-    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="{{ asset('/vendor/laraberg/js/react.production.min.js') }}"></script>
+    <script src="{{ asset('/vendor/laraberg/js/react-dom.production.min.js') }}"></script>
     <script src="{{ asset('/vendor/laraberg/js/laraberg.js') }}"></script>
     <script src="/template/assets/js/plugins/cropperjs/cropper.min.js"></script>
     <script src={{ asset("/template/assets/js/plugins/select2/js/select2.full.min.js") }}></script>

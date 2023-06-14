@@ -10,14 +10,11 @@
                     </div>
                 </div>
             </div>
-            @if(request()->path() == "blog")
             <div class="row">
                 <div class="col-12">
                     @include('layout.header-parts.header-menu')
                 </div>
             </div>
-            @endif
-            @if(request()->path() == "resume")
             <div class="row">
                 <div class="col-10 offset-1 col-md-8 offset-md-2">
                     <div class="welcome-message">
@@ -36,7 +33,6 @@
                     </div>
                 </div>
             </div>
-            @endif
             <div class="row mt-3">
                 <div class="col-12">
                     <div class="social-icons">
