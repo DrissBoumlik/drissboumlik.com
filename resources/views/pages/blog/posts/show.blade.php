@@ -25,8 +25,7 @@
         <div class="content content-boxed">
         <div class="text-center fs-sm push">
             <span class="d-inline-block py-2 px-4 bg-body fw-medium rounded">
-                <a class="link-effect" href="be_pages_generic_profile.html">{{ $post->author->name }}</a>
-                <span> · {{ $post->published_at }} · </span>
+                <span>Posted {{ $post->published_at }} · </span>
                 <span>{{ $post->read_duration }} min read</span>
                 @if (\Auth::check())
                      ·
