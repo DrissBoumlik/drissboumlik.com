@@ -57,7 +57,7 @@
             <!-- Actions -->
             <div class="mt-5 d-flex justify-content-between push">
                 <div class="btn-group">
-                    <button class="btn btn-alt-primary like-post" data-post="{{ json_encode($post) }}">
+                    <button class="btn btn-alt-secondary like-post" data-post="{{ json_encode($post) }}">
                         <span class="post-likes-count">{{ $post->likes }} Likes</span><i class="fa fa-heart ms-1"></i>
                     </button>
                 </div>

@@ -64,9 +64,9 @@ class PostController extends Controller
                 }
                 \DB::table('post_tag')->insert($post_tag);
             }
-            return redirect("/admin/posts")->with(['response' => ['message' => 'Post store successfully', 'class' => 'alert-info']]);
+            return redirect("/admin/posts")->with(['response' => ['message' => 'Post store successfully', 'class' => 'alert-info'], 'icon' => '<i class="fa fa-fw fa-check"></i>']);
         } catch (\Throwable $e) {
-            return redirect("/admin/posts")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger']]);
+            return redirect("/admin/posts")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger'], 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']);
         }
     }
 
@@ -130,26 +130,12 @@ class PostController extends Controller
                 }
                 \DB::table('post_tag')->insert($post_tag);
             }
-            return redirect("/admin/posts/edit/$post->slug")->with(['response' => ['message' => 'Post updated successfully', 'class' => 'alert-info']]);
+            return redirect("/admin/posts/edit/$post->slug")->with(['response' => ['message' => 'Post updated successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-check"></i>']]);
         } catch (\Throwable $e) {
-            return redirect("/admin/posts/edit/$post->slug")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger']]);
+            return redirect("/admin/posts/edit/$post->slug")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
         }
     }
 
-    public function destroy($slug)
-    {
-        try {
-            $post = Post::whereSlug($slug)->first();
-            if ($post) {
-                \DB::table('post_tag')->where('post_id', $post->id)->delete();
-                $post->delete();
-                return redirect("/admin/posts")->with(['response' => ['message' => 'Post deleted successfully', 'class' => 'alert-info']]);
-            }
-            return redirect("/admin/posts")->with(['response' => ['message' => 'Post not found', 'class' => 'alert-warning']]);
-        } catch (\Throwable $e) {
-            return redirect("/admin/posts")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger']]);
-        }
-    }
 
     public function api_store(Request $request)
     {

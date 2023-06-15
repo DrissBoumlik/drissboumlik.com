@@ -52,6 +52,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var owl_carousel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! owl.carousel */ "./node_modules/owl.carousel/dist/owl.carousel.js");
 /* harmony import */ var owl_carousel__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(owl_carousel__WEBPACK_IMPORTED_MODULE_1__);
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 // import 'bootstrap';
 
 __webpack_require__(/*! particles.js */ "./node_modules/particles.js/particles.js");
@@ -144,7 +148,11 @@ function initDarkMode() {
   });
 }
 function get_alert_box(params) {
-  var alert_element = "\n        <div data-notify=\"container\" class=\"col-11 col-sm-4 alert ".concat(params["class"], " alert-dismissible animated fadeIn\" role=\"alert\" data-notify-position=\"bottom-right\" style=\"display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 1033; bottom: 20px; right: 20px; animation-iteration-count: 1;\">\n            <p class=\"mb-0\">\n                <span data-notify=\"icon\"></span>\n                <span data-notify=\"title\"></span>\n                <span data-notify=\"message\">").concat(params.message, "</span>\n            </p>\n            <a class=\"p-2 m-1 text-dark\" href=\"javascript:void(0)\" aria-label=\"Close\" data-notify=\"dismiss\" style=\"position: absolute; right: 10px; top: 5px; z-index: 1035;\">\n                <i class=\"fa fa-times\"></i>\n            </a>\n        </div>\n    ");
+  var alertElement = $('.alert.alert-dismissible');
+  if (alertElement.length) {
+    alertElement.click();
+  }
+  var alert_element = "\n        <div data-notify=\"container\" class=\"col-11 col-sm-4 alert ".concat(params["class"], " alert-dismissible animated fadeIn\" role=\"alert\" data-notify-position=\"bottom-right\"\n            style=\"display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 1033; bottom: 20px; right: 20px; animation-iteration-count: 1;\">\n            <p class=\"mb-0\">\n                <span data-notify=\"icon\"></span>\n                <span data-notify=\"title\"></span>\n                <span data-notify=\"message\">").concat(params.message, "</span>\n            </p>\n            <a class=\"p-2 m-1 text-dark\" href=\"javascript:void(0)\" aria-label=\"Close\" data-notify=\"dismiss\" style=\"position: absolute; right: 10px; top: 5px; z-index: 1035;\">\n                <i class=\"fa fa-times\"></i>\n            </a>\n        </div>\n    ");
   $(document.body).append(alert_element);
   $('.alert.alert-dismissible').on('click', function () {
     $(this).remove();
@@ -186,10 +194,30 @@ function initEvents() {
     // });
     $('.input-slug').val(postSlug);
   });
+
+  // Check if post is already viewed onload
+  var post = $('.like-post').data('post');
+  var liked_posts = JSON.parse(localStorage.getItem('liked-posts'));
+  var post_data = null;
+  if (liked_posts && liked_posts.hasOwnProperty(post.slug)) {
+    post_data = liked_posts[post.slug];
+    // Check if post is already liked onload
+    if (post_data.liked) {
+      $('.like-post').removeClass('btn-alt-secondary').addClass('btn-alt-primary');
+    }
+  } else {
+    localStorage.setItem('liked-posts', JSON.stringify(_defineProperty({}, post.slug, {
+      viewed: true,
+      liked: false
+    })));
+  }
+  liked_posts = JSON.parse(localStorage.getItem('liked-posts'));
+  console.log(liked_posts);
   $(document).on('click', '.like-post', function () {
+    var _this = $('.like-post');
     var post = $(this).data('post');
     var liked_posts = JSON.parse(localStorage.getItem('liked-posts'));
-    if (liked_posts && liked_posts.includes(post.slug)) {
+    if (liked_posts && liked_posts.hasOwnProperty(post.slug) && liked_posts[post.slug].liked) {
       get_alert_box({
         "class": 'alert-warning',
         message: 'Already liked !!'
@@ -200,8 +228,12 @@ function initEvents() {
       method: 'POST',
       url: '/blog/like/' + post.slug,
       success: function success(response) {
-        localStorage.setItem('liked-posts', JSON.stringify([response.post.slug]));
+        localStorage.setItem('liked-posts', JSON.stringify(_defineProperty({}, response.post.slug, {
+          viewed: true,
+          liked: true
+        })));
         $('.post-likes-count').text("".concat(response.post.likes, " Likes"));
+        _this.removeClass('btn-alt-secondary').addClass('btn-alt-primary');
       },
       error: function error(jqXHR, textStatus, errorThrown) {
         console.log(jqXHR, textStatus, errorThrown);

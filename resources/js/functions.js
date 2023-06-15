@@ -120,8 +120,13 @@ function initDarkMode() {
 }
 
 function get_alert_box(params) {
+    let alertElement = $('.alert.alert-dismissible');
+    if (alertElement.length) {
+        alertElement.click();
+    }
     let alert_element = `
-        <div data-notify="container" class="col-11 col-sm-4 alert ${params.class} alert-dismissible animated fadeIn" role="alert" data-notify-position="bottom-right" style="display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 1033; bottom: 20px; right: 20px; animation-iteration-count: 1;">
+        <div data-notify="container" class="col-11 col-sm-4 alert ${params.class} alert-dismissible animated fadeIn" role="alert" data-notify-position="bottom-right"
+            style="display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 1033; bottom: 20px; right: 20px; animation-iteration-count: 1;">
             <p class="mb-0">
                 <span data-notify="icon"></span>
                 <span data-notify="title"></span>
@@ -176,11 +181,31 @@ function initEvents() {
         $('.input-slug').val(postSlug);
     });
 
-    $(document).on('click', '.like-post', function () {
-        let post = $(this).data('post');
+    // Check if post is already viewed onload
+    let post = $('.like-post').data('post');
+    if (post == undefined) return;
+    let liked_posts = JSON.parse(localStorage.getItem('liked-posts'));
+    let post_data = null;
+    if (liked_posts && liked_posts.hasOwnProperty(post.slug)) {
+        post_data = liked_posts[post.slug];
+        // Check if post is already liked onload
+        if (post_data.liked) {
+            $('.like-post').removeClass('btn-alt-secondary').addClass('btn-alt-primary');
+        }
+    } else {
+        localStorage.setItem('liked-posts', JSON.stringify({[post.slug]: {viewed : true, liked: false}}))
+    }
 
+    liked_posts = JSON.parse(localStorage.getItem('liked-posts'));
+    console.log(liked_posts);
+
+
+    $(document).on('click', '.like-post', function () {
+
+        let _this = $('.like-post');
+        let post = $(this).data('post');
         let liked_posts = JSON.parse(localStorage.getItem('liked-posts'));
-        if (liked_posts && liked_posts.includes(post.slug)) {
+        if (liked_posts && liked_posts.hasOwnProperty(post.slug) && liked_posts[post.slug].liked) {
             get_alert_box({class : 'alert-warning', message : 'Already liked !!'})
             return
         }
@@ -189,8 +214,9 @@ function initEvents() {
             method: 'POST',
             url: '/blog/like/' + post.slug,
             success: function (response) {
-                localStorage.setItem('liked-posts', JSON.stringify([response.post.slug]))
+                localStorage.setItem('liked-posts', JSON.stringify({[response.post.slug]: {viewed : true, liked: true}}))
                 $('.post-likes-count').text(`${response.post.likes} Likes`);
+                _this.removeClass('btn-alt-secondary').addClass('btn-alt-primary');
             },
             error: function (jqXHR, textStatus, errorThrown){
                 console.log(jqXHR, textStatus, errorThrown);
