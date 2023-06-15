@@ -16,15 +16,19 @@ class SubscriberController extends Controller
 //            return ['message' => 'Already subscribed!', 'subscriber' => $subscriber, 'class' => 'text-warning'];
 //        }
 
-        $data = array('name'=>"Driss Boumlik");
-        $x = Mail::send('mail', $data, static function ($message) use ($subscriber_email) {
-            $message->to($subscriber_email, '')
-                ->subject('Testing Subscribing');
-            $message->from(env('MAIL_FROM_ADDRESS'), 'Driss Boumlik');
-        });
-        Mail::flushMacros();
-        dd($x);
-
+        try {
+            $data = array('name'=>"Driss Boumlik");
+            $x = Mail::send('mail', $data, static function ($message) use ($subscriber_email) {
+                $message->to($subscriber_email, '')
+                    ->subject('Testing Subscribing');
+                $message->from(env('MAIL_FROM_ADDRESS'), 'Driss Boumlik');
+            });
+            Mail::flushMacros();
+            dd($x);
+        } catch (\Throwable $th) {
+            dd($th);
+        }
+        dd(11);
 
         $subscriber = Subscriber::create([
             'email' => $subscriber_email,
