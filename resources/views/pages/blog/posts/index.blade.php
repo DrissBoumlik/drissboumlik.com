@@ -23,17 +23,17 @@
             @foreach ($posts as $post)
                 <!-- Story -->
                 <div class="col-md-4 col-sm-6">
-                    <a class="block block-rounded block-link-pop overflow-hidden" href="/blog/{{ $post['slug'] }}">
+                    <a class="block block-rounded block-link-pop overflow-hidden" href="/blog/{{ $post->slug }}">
                         <div class="post-image">
-                            <img class="img-fluid" src="/{{ $post['image'] }}" alt="">
+                            <img class="img-fluid" src="/{{ $post->image }}" alt="">
                         </div>
                         <div class="block-content">
-                            <h4 class="mb-1">{{ $post['title'] }}</h4>
+                            <h4 class="mb-1">{{ $post->title }}</h4>
                             <p class="fs-sm fw-medium mb-2">
-                                <span class="text-primary">{{ $post['author']->name }}</span> · {{ $post['published_at'] }} · <span class="text-muted">10 min</span>
+                                <span class="text-primary">{{ $post->author->name }}</span> · {{ $post->published_at }} · <span class="text-muted">10 min</span>
                             </p>
                             <p class="fs-sm text-muted">
-                                {!! $post['excerpt'] ?? \Str::limit($post['content'], 20); !!}
+                                {!! $post->excerpt ?? \Str::limit($post->content, 20); !!}
                             </p>
                         </div>
                     </a>
@@ -44,21 +44,29 @@
         <!-- Pagination -->
         <nav aria-label="Page navigation">
             <ul class="pagination justify-content-center push">
-                @if ($data->posts_data['lastPage'] != 1)
-                    @for ($i = 1; $i <= $data->posts_data['lastPage']; $i++)
-                        <li class="page-item {{ $data->posts_data['currentPage'] == $i ? 'active' : '' }}">
-                            <a class="page-link" href="?page={{ $i }}">{{ $i }}</a>
+                <li class="page-item">
+                    <a class="page-link" {{ $posts_data->currentPage == 1 ? "" : "href=?page=" . ($posts_data->currentPage - 1) }} aria-label="Next">
+                        <span aria-hidden="true">
+                            <i class="fa fa-angle-left"></i>
+                        </span>
+                        <span class="visually-hidden">Prev</span>
+                    </a>
+                </li>
+                @if ($posts_data->lastPage != 1)
+                    @for ($i = 1; $i <= $posts_data->lastPage; $i++)
+                        <li class="page-item {{ $posts_data->currentPage == $i ? 'active' : '' }}">
+                            <a class="page-link" {{ $posts_data->currentPage == $i ? '' : "href=?page=$i" }}>{{ $i }}</a>
                         </li>
                     @endfor
                 @endif
-                {{-- <li class="page-item">
-                    <a class="page-link" href="javascript:void(0)" aria-label="Next">
+                <li class="page-item">
+                    <a class="page-link" {{ $posts_data->currentPage == $posts_data->lastPage ? "" : "href=?page=" . ($posts_data->currentPage + 1) }} aria-label="Next">
                         <span aria-hidden="true">
                             <i class="fa fa-angle-right"></i>
                         </span>
                         <span class="visually-hidden">Next</span>
                     </a>
-                </li> --}}
+                </li>
             </ul>
         </nav>
         <!-- END Pagination -->

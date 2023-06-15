@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\SubscriberController;
 use Illuminate\Support\Facades\Route;
 
 // use App\Http\Controllers\ToolController;
@@ -68,6 +69,7 @@ Route::group([], function () {
         });
     });
 
+    Route::post('/subscribers', [SubscriberController::class, 'subscribe']);
     Route::get('/blog/tags', [BlogController::class, 'tagsList']);
     Route::get('/blog/tags/{slug}', [BlogController::class, 'getPostsBytag']);
     Route::get('/blog', [BlogController::class, 'index']);

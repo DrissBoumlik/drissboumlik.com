@@ -141,6 +141,27 @@ function initEvents() {
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
     });
 
+    $(document).on('submit', '.form-subscribe', function (e) {
+        e.preventDefault();
+        $.ajax({
+            method: 'POST',
+            url: '/subscribers',
+            data: {'subscriber_email' : $('#subscriber-email').val()},
+            success: function (response) {
+                let subscribe_response = $('#form-subscribe-response');
+                subscribe_response
+                    .text(response.message)
+                    .removeClass(subscribe_response.attr('data-class'))
+                    .addClass(response.class)
+                    .attr('data-class', response.class)
+                    .removeAttr('hidden');
+            },
+            error: function (jqXHR, textStatus, errorThrown){
+                console.log(jqXHR, textStatus, errorThrown);
+            }
+        });
+    });
+
     $(document).on('focusout', '.input-to-slugify', function () {
         let postTitle = $(this).val();
         let postSlug = string_to_slug(postTitle)

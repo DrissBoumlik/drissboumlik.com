@@ -18,16 +18,16 @@ class BlogController extends Controller
     public function index(Request $request)
     {
         $data = new \stdClass();
-        $data->posts_data = (new PostWithPaginationCollection(Post::with('author')
+        $posts_data = (object) (new PostWithPaginationCollection(Post::with('author')
                                                 ->orderBy('created_at', 'desc')
                                                 ->paginate($this->perPage)))->resolve();
 
-        $posts = $data->posts_data['data'];
-        unset($data->posts_data['data']);
+        $posts = $posts_data->data;
+        unset($posts_data->data);
 
         $data->title = 'Blog | Latest Articles';
 
-        return view('pages.blog.posts.index', ['data' => $data, 'posts' => $posts]);
+        return view('pages.blog.posts.index', ['data' => $data, 'posts_data' => $posts_data, 'posts' => $posts]);
     }
 
     public function show(Request $request, $slug)

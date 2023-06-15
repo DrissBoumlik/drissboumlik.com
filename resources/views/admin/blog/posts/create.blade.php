@@ -204,4 +204,6 @@
         </div>
     </div>
     <!-- END Page Content -->
+
+    @include('admin.addons.alert-box')
 @endsection
