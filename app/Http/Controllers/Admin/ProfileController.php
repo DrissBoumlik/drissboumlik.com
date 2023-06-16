@@ -31,9 +31,9 @@ class ProfileController extends Controller
                 "name" => $request->name,
                 "password" => $request->password ? bcrypt($request->password) : $user->password,
             ]);
-            return back()->with(['response' => ['message' => 'Profile updated successfully', 'class' => 'alert-info']]);
+            return back()->with(['response' => ['message' => 'Profile updated successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
         } catch (\Throwable $e) {
-            return back()->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger']]);
+            return back()->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
         }
     }
 }

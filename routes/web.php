@@ -31,7 +31,7 @@ Route::group([], function () {
 
     Route::group(['prefix' => 'admin'], function () {
 
-        Route::redirect('/', 'admin/posts');
+        Route::redirect('/', 'posts');
         Route::get('/login', [LoginController::class , 'showLoginForm'])->name('login');
         Route::post('/login', [LoginController::class , 'login']);
 

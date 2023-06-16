@@ -13,7 +13,7 @@
         <div class="bg-primary-dark-op">
             <div class="content content-full text-center">
                 <div class="my-3">
-                    <img class="img-avatar img-avatar-thumb" src="/template/assets/media/avatars/avatar13.jpg" alt="">
+                    <img class="img-avatar img-avatar-thumb" src="{{ asset('/assets/img/me/circle-256.ico') }}" alt="">
                 </div>
                 <h1 class="h2 text-white mb-0">Edit Account</h1>
                 <h2 class="h4 fw-normal text-white-75">
