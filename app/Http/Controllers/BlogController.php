@@ -25,6 +25,7 @@ class BlogController extends Controller
         $posts = $posts_data->data;
         unset($posts_data->data);
 
+
         $data->title = 'Blog | Latest Articles';
 
         return view('pages.blog.posts.index', ['data' => $data, 'posts_data' => $posts_data, 'posts' => $posts]);

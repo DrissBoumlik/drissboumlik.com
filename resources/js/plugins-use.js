@@ -1,5 +1,5 @@
 
-function initGallery(){
+function initGallery() {
     if ($('.js-gallery').length == 0) return;
     One.helpersOnLoad(['jq-magnific-popup']);
 }

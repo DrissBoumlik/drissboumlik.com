@@ -2,8 +2,8 @@
 <footer id="page-footer" class="bg-body-extra-light">
     <div class="content py-4">
         <!-- Footer Navigation -->
-        <div class="row items-push fs-sm border-bottom pt-4">
-            <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-10 offset-1">
+        <div class="row items-push fs-sm border-bottom pt-2">
+            <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-10 offset-1 mb-4">
                 <form class="push mb-2 form-subscribe">
                     <div class="input-group">
                         <input type="email" class="form-control form-control-alt subscriber-email" required value="admin@admin.com"

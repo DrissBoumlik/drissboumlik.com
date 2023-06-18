@@ -56,6 +56,7 @@
         </div>
         <!-- END User Profile -->
     </div>
+    <!-- END Page Content -->
 
     @include('admin.addons.alert-box')
 @endsection

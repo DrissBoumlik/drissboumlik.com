@@ -30,7 +30,7 @@
                         <div class="block-content">
                             <h4 class="mb-1">{{ $post->title }}</h4>
                             <p class="fs-sm fw-medium mb-2">
-                                <span class="text-primary">{{ $post->author->name }}</span> · {{ $post->published_at }} · <span class="text-muted">10 min</span>
+                                Posted {{ $post->published_at }} · <span class="text-muted">{{ $post->read_duration }} min read</span>
                             </p>
                             <p class="fs-sm text-muted">
                                 {!! $post->excerpt ?? \Str::limit($post->content, 20); !!}

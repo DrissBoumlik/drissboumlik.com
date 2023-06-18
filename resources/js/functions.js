@@ -154,8 +154,13 @@ function initEvents() {
             data: {'subscriber_email' : $('#subscriber-email').val()},
             success: function (response) {
                 let subscribe_response = $('#form-subscribe-response');
+                // let options = {
+                //     icon: 'fa fa-fw fa-circle-check me-1', from: 'bottom', message: 'Thank you for subscribing<br/>A confirmation email has been sent!',
+                //     allow_dismiss: true, showProgressbar: true, delay: 10000,
+                // }
+                // One.helpers('jq-notify', options);
                 subscribe_response
-                    .text(response.message)
+                    .html(response.message)
                     .removeClass(subscribe_response.attr('data-class'))
                     .addClass(response.class)
                     .attr('data-class', response.class)
@@ -206,7 +211,13 @@ function initEvents() {
             let post = $(this).data('post');
             let liked_posts = JSON.parse(localStorage.getItem('liked-posts'));
             if (liked_posts && liked_posts.hasOwnProperty(post.slug) && liked_posts[post.slug].liked) {
-                get_alert_box({class : 'alert-warning', message : 'Already liked !!'})
+                let options = {
+                    type: 'warning',
+                    icon: 'fa fa-fw fa-circle-exclamation me-1', from: 'bottom', message: 'Already liked!',
+                    allow_dismiss: true, showProgressbar: true, delay: 10000,
+                }
+                One.helpers('jq-notify', options);
+                // get_alert_box({class : 'alert-warning', message : 'Already liked !!'})
                 return
             }
 

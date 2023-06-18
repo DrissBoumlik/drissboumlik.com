@@ -48,6 +48,7 @@
     <script src="{{ asset('/template/assets/js/oneui.app.min.js') }}"></script>
     <script src={{ asset("/template/assets/js/lib/jquery.min.js") }}></script>
     @yield('js')
+    <script src="{{ asset('/template/assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
     <script src="{{ asset('/js/app.js') }}"></script>
 </head>
 

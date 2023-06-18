@@ -1,10 +1,10 @@
 @extends('admin.template.frontend')
 
 @section('css')
-    <link rel="stylesheet" href="/template/assets/js/plugins/magnific-popup/magnific-popup.css">
+    <link href="{{ asset('/template/assets/js/plugins/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
 @endsection
 @section('js')
-    <script src="/template/assets/js/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="{{ asset('/template/assets/js/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
 @endsection
 
 @section('content')
@@ -38,7 +38,7 @@
             </span>
         </div>
         <div class="row justify-content-center">
-            <div class="col-sm-8">
+            <div class="col-sm-10 col-md-8">
             <!-- Story -->
             <article class="story">
                 {!! $post->content !!}
@@ -77,10 +77,13 @@
     @if($related_posts && count($related_posts))
     <!-- More Stories -->
     <div class="content content-boxed">
+        <div class="text-center mt-5">
+            <h3 class="fw-bold mb-2 text-capitalize">related posts</h3>
+        </div>
         <!-- Section Content -->
         <div class="row py-5">
             @foreach($related_posts as $related_post)
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-6">
                 <a class="block block-rounded block-link-pop overflow-hidden" href="/blog/{{ $related_post->slug }}">
                 <div class="bg-image" style="background-image: url('/{{ $related_post->image }}');">
                     <div class="block-content bg-primary-dark-op">

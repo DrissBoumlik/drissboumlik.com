@@ -174,7 +174,12 @@ function initEvents() {
       },
       success: function success(response) {
         var subscribe_response = $('#form-subscribe-response');
-        subscribe_response.text(response.message).removeClass(subscribe_response.attr('data-class')).addClass(response["class"]).attr('data-class', response["class"]).removeAttr('hidden');
+        // let options = {
+        //     icon: 'fa fa-fw fa-circle-check me-1', from: 'bottom', message: 'Thank you for subscribing<br/>A confirmation email has been sent!',
+        //     allow_dismiss: true, showProgressbar: true, delay: 10000,
+        // }
+        // One.helpers('jq-notify', options);
+        subscribe_response.html(response.message).removeClass(subscribe_response.attr('data-class')).addClass(response["class"]).attr('data-class', response["class"]).removeAttr('hidden');
       },
       error: function error(jqXHR, textStatus, errorThrown) {
         console.log(jqXHR, textStatus, errorThrown);
@@ -197,49 +202,59 @@ function initEvents() {
 
   // Check if post is already viewed onload
   var post = $('.like-post').data('post');
-  var liked_posts = JSON.parse(localStorage.getItem('liked-posts'));
-  var post_data = null;
-  if (liked_posts && liked_posts.hasOwnProperty(post.slug)) {
-    post_data = liked_posts[post.slug];
-    // Check if post is already liked onload
-    if (post_data.liked) {
-      $('.like-post').removeClass('btn-alt-secondary').addClass('btn-alt-primary');
-    }
-  } else {
-    localStorage.setItem('liked-posts', JSON.stringify(_defineProperty({}, post.slug, {
-      viewed: true,
-      liked: false
-    })));
-  }
-  liked_posts = JSON.parse(localStorage.getItem('liked-posts'));
-  console.log(liked_posts);
-  $(document).on('click', '.like-post', function () {
-    var _this = $('.like-post');
-    var post = $(this).data('post');
+  if (post !== undefined) {
     var liked_posts = JSON.parse(localStorage.getItem('liked-posts'));
-    if (liked_posts && liked_posts.hasOwnProperty(post.slug) && liked_posts[post.slug].liked) {
-      get_alert_box({
-        "class": 'alert-warning',
-        message: 'Already liked !!'
-      });
-      return;
-    }
-    $.ajax({
-      method: 'POST',
-      url: '/blog/like/' + post.slug,
-      success: function success(response) {
-        localStorage.setItem('liked-posts', JSON.stringify(_defineProperty({}, response.post.slug, {
-          viewed: true,
-          liked: true
-        })));
-        $('.post-likes-count').text("".concat(response.post.likes, " Likes"));
-        _this.removeClass('btn-alt-secondary').addClass('btn-alt-primary');
-      },
-      error: function error(jqXHR, textStatus, errorThrown) {
-        console.log(jqXHR, textStatus, errorThrown);
+    var post_data = null;
+    if (liked_posts && liked_posts.hasOwnProperty(post.slug)) {
+      post_data = liked_posts[post.slug];
+      // Check if post is already liked onload
+      if (post_data.liked) {
+        $('.like-post').removeClass('btn-alt-secondary').addClass('btn-alt-primary');
       }
+    } else {
+      localStorage.setItem('liked-posts', JSON.stringify(_defineProperty({}, post.slug, {
+        viewed: true,
+        liked: false
+      })));
+    }
+    liked_posts = JSON.parse(localStorage.getItem('liked-posts'));
+    console.log(liked_posts);
+    $(document).on('click', '.like-post', function () {
+      var _this = $('.like-post');
+      var post = $(this).data('post');
+      var liked_posts = JSON.parse(localStorage.getItem('liked-posts'));
+      if (liked_posts && liked_posts.hasOwnProperty(post.slug) && liked_posts[post.slug].liked) {
+        var options = {
+          type: 'warning',
+          icon: 'fa fa-fw fa-circle-exclamation me-1',
+          from: 'bottom',
+          message: 'Already liked!',
+          allow_dismiss: true,
+          showProgressbar: true,
+          delay: 10000
+        };
+        One.helpers('jq-notify', options);
+        // get_alert_box({class : 'alert-warning', message : 'Already liked !!'})
+        return;
+      }
+      $.ajax({
+        method: 'POST',
+        url: '/blog/like/' + post.slug,
+        success: function success(response) {
+          localStorage.setItem('liked-posts', JSON.stringify(_defineProperty({}, response.post.slug, {
+            viewed: true,
+            liked: true
+          })));
+          $('.post-likes-count').text("".concat(response.post.likes, " Likes"));
+          _this.removeClass('btn-alt-secondary').addClass('btn-alt-primary');
+        },
+        error: function error(jqXHR, textStatus, errorThrown) {
+          console.log(jqXHR, textStatus, errorThrown);
+        }
+      });
     });
-  });
+  }
+  ;
   var imageElement = document.getElementById('image');
   if (imageElement) {
     imageElement.onchange = function (event) {

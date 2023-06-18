@@ -70,6 +70,8 @@ Route::group([], function () {
     });
 
     Route::post('/subscribers', [SubscriberController::class, 'subscribe']);
+    Route::put('/subscribers/{email}', [SubscriberController::class, 'update']);
+    Route::get('/subscribers/verify/{token}', [SubscriberController::class, 'verifySubscribtion']);
     Route::get('/blog/tags', [BlogController::class, 'tagsList']);
     Route::get('/blog/tags/{slug}', [BlogController::class, 'getPostsBytag']);
     Route::get('/blog', [BlogController::class, 'index']);

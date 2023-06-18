@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
-            $table->timestamp('subscribed_at');
+            $table->timestamp('subscribed_at')->nullable();
+            $table->string('token_verification')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

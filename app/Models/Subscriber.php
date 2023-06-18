@@ -10,5 +10,5 @@ class Subscriber extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = [ 'email', 'first_name', 'last_name', 'subscribed_at' ];
+    protected $fillable = [ 'email', 'first_name', 'last_name', 'subscribed_at', 'token_verification' ];
 }
