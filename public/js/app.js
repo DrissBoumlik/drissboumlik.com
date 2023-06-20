@@ -23,7 +23,7 @@ $(function () {
     (0,_plugins_use__WEBPACK_IMPORTED_MODULE_1__.initLaraberg)();
     (0,_plugins_use__WEBPACK_IMPORTED_MODULE_1__.initSelect2)();
     (0,_plugins_use__WEBPACK_IMPORTED_MODULE_1__.initGallery)();
-    (0,_plugins_use__WEBPACK_IMPORTED_MODULE_1__.initSyntaxHighlighting)();
+    // initSyntaxHighlighting();
     // initImageCropper();
     (0,_functions__WEBPACK_IMPORTED_MODULE_0__.initEvents)();
   } catch (error) {
@@ -86,7 +86,6 @@ function string_to_slug(str) {
   return str;
 }
 function setCookie(name, value) {
-  debugger;
   var d = new Date();
   d.setTime(d.getTime() + 365 * 24 * 60 * 60 * 1000);
   var expires = "expires=" + d.toUTCString();

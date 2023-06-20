@@ -33168,8 +33168,9 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
   width: 100%;
 }
 
-.wp-block-image.size-large img {
+.post-content img {
   max-width: 100%;
+  border-radius: 5px;
 }
 
 .post-image {
@@ -33178,13 +33179,21 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
   background-size: contain;
 }
 
+.gist-meta {
+  display: none !important;
+}
+
+.gist-data {
+  padding: 3px 10px 3px 0 !important;
+  border-bottom: unset !important;
+}
+
 .dark-mode .gist {
   font-size: 18px;
 }
 .dark-mode .gist-data {
   background-color: #1D1F21 !important;
 }
-.dark-mode .gist-meta,
 .dark-mode .gist-file,
 .dark-mode .octotree_toggle,
 .dark-mode ul.comparison-list > li.title,

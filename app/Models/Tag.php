@@ -11,7 +11,7 @@ class Tag extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['name', 'slug', 'description', 'color'];
+    protected $fillable = ['name', 'slug', 'description', 'cover', 'color'];
 
     public function posts(): BelongsToMany
     {

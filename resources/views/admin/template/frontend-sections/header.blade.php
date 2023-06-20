@@ -17,13 +17,13 @@
             <!-- Menu -->
             <div class="d-none d-lg-block">
                 <ul class="nav-main nav-main-horizontal nav-main-hover">
-                    @if (\Auth::check())
+                    @auth
                     <li class="nav-main-item">
                         <a class="nav-main-link" href="/admin">
                             <span class="nav-main-link-name">Admin Panel</span>
                         </a>
                     </li>
-                    @endif
+                    @endauth
                     <li class="nav-main-item">
                         <a class="nav-main-link {{ request()->is('') ? 'active' : '' }}" href="/">
                             <span class="nav-main-link-name">Home</span>

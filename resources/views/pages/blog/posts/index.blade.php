@@ -7,11 +7,11 @@
         <div class="bg-primary-dark-op">
             <div class="content content-full text-center pt-7 pb-6">
                 <h1 class="h2 text-white mb-2">
-                    The latest stories only for you.
+                    {{ $data->headline }}
                 </h1>
-                <h2 class="h4 fw-normal text-white-75 mb-0">
-                    Feel free to explore and read.
-                </h2>
+{{--                <h2 class="h4 fw-normal text-white-75 mb-0">--}}
+{{--                    Feel free to explore and read.--}}
+{{--                </h2>--}}
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
     <!-- Page Content -->
     <div class="content content-boxed">
         <div class="row">
-            @foreach ($posts as $post)
+            @forelse ($posts as $post)
                 <!-- Story -->
                 <div class="col-md-4 col-sm-6">
                     <a class="block block-rounded block-link-pop overflow-hidden" href="/blog/{{ $post->slug }}">
@@ -39,37 +39,43 @@
                     </a>
                 </div>
                 <!-- END Story -->
-            @endforeach
+            @empty
+                <div class="col-md-6 offset-md-3">
+                    <p class="text-muted text-center">No posts found on this page!</p>
+                </div>
+            @endforelse
         </div>
-        <!-- Pagination -->
-        <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center push">
-                <li class="page-item">
-                    <a class="page-link" {{ $posts_data->currentPage == 1 ? "" : "href=?page=" . ($posts_data->currentPage - 1) }} aria-label="Next">
+        @if ($posts_data->lastPage > 1)
+            <!-- Pagination -->
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center push">
+                    <li class="page-item">
+                        <a class="page-link" {{ $posts_data->currentPage == 1 ? "" : "href=?page=" . ($posts_data->currentPage - 1) }} aria-label="Next">
                         <span aria-hidden="true">
                             <i class="fa fa-angle-left"></i>
                         </span>
-                        <span class="visually-hidden">Prev</span>
-                    </a>
-                </li>
-                @if ($posts_data->lastPage != 1)
-                    @for ($i = 1; $i <= $posts_data->lastPage; $i++)
-                        <li class="page-item {{ $posts_data->currentPage == $i ? 'active' : '' }}">
-                            <a class="page-link" {{ $posts_data->currentPage == $i ? '' : "href=?page=$i" }}>{{ $i }}</a>
-                        </li>
-                    @endfor
-                @endif
-                <li class="page-item">
-                    <a class="page-link" {{ $posts_data->currentPage == $posts_data->lastPage ? "" : "href=?page=" . ($posts_data->currentPage + 1) }} aria-label="Next">
+                            <span class="visually-hidden">Prev</span>
+                        </a>
+                    </li>
+                    @if ($posts_data->lastPage != 1)
+                        @for ($i = 1; $i <= $posts_data->lastPage; $i++)
+                            <li class="page-item {{ $posts_data->currentPage == $i ? 'active' : '' }}">
+                                <a class="page-link" {{ $posts_data->currentPage == $i ? '' : "href=?page=$i" }}>{{ $i }}</a>
+                            </li>
+                        @endfor
+                    @endif
+                    <li class="page-item">
+                        <a class="page-link" {{ $posts_data->currentPage == $posts_data->lastPage ? "" : "href=?page=" . ($posts_data->currentPage + 1) }} aria-label="Next">
                         <span aria-hidden="true">
                             <i class="fa fa-angle-right"></i>
                         </span>
-                        <span class="visually-hidden">Next</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <!-- END Pagination -->
+                            <span class="visually-hidden">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- END Pagination -->
+        @endif
     </div>
     <!-- END Page Content -->
 @endsection

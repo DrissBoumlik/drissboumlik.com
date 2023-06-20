@@ -16,7 +16,7 @@
         <div class="bg-primary-dark-op">
             <div class="content content-full text-center pt-7 pb-6">
                 <h1 class="text-white mb-2">{{ $post->title }}</h1>
-                <h2 class="h4 fw-normal text-white-75 mb-0">Experience life to its fullest.</h2>
+{{--                <h2 class="h4 fw-normal text-white-75 mb-0">Experience life to its fullest.</h2>--}}
             </div>
         </div>
     </div>
@@ -29,14 +29,14 @@
             <span class="d-inline-block py-2 px-4 bg-body fw-medium rounded">
                 <span>Posted {{ $post->published_at }} · </span>
                 <span>{{ $post->read_duration }} min read</span>
-                @if (\Auth::check())
+                @auth
                      ·
                     <a href="/admin/posts/edit/{{ $post->slug }}" target="_blank" class="text-secondary text-decoration-underline">
                         <button type="button" class="btn btn-sm btn-secondary py-0">
                             Edit <i class="fa fa-fw fa-pencil"></i>
                         </button>
                     </a>
-                @endif
+                @endauth
             </span>
         </div>
         <div class="row justify-content-center">
@@ -47,6 +47,7 @@
                     {!! $post->content !!}
                 </div>
                 <div class="tags my-4">
+                    Tags :
                     @foreach ($post->tags as $tag)
                         <a href="/blog/tags/{{ $tag->slug }}">
                         <span style="background-color: {{ $tag->color }}"

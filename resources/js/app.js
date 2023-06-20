@@ -13,7 +13,7 @@ $(function () {
         initLaraberg();
         initSelect2();
         initGallery();
-        initSyntaxHighlighting();
+        // initSyntaxHighlighting();
         // initImageCropper();
         initEvents();
     } catch (error) {

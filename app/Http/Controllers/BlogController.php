@@ -27,6 +27,7 @@ class BlogController extends Controller
 
 
         $data->title = 'Blog | Latest Articles';
+        $data->headline = 'Blog | Latest Articles';
 
         return view('pages.blog.posts.index', ['data' => $data, 'posts_data' => $posts_data, 'posts' => $posts]);
     }
@@ -34,6 +35,9 @@ class BlogController extends Controller
     public function show(Request $request, $slug)
     {
         $post = Post::where('slug', $slug)->first();
+        if ($post == null) {
+            abort(404);
+        }
         $post->increment('views', 1);
         $data = new \stdClass();
 
@@ -57,8 +61,13 @@ class BlogController extends Controller
     {
         $tag = Tag::where('slug', $slug)->first();
 
+        if ($tag == null) {
+            abort(404);
+        }
+
         $data = new \stdClass();
         $data->title = 'Blog | Tags | ' . $tag->name;
+        $data->headline = 'Blog | Posts with tag : ' . $tag->name;
         $posts_data = (object) (new PostWithPaginationCollection($tag->posts()->with('author')
             ->orderBy('created_at', 'desc')
             ->paginate($this->perPage)))->resolve();
