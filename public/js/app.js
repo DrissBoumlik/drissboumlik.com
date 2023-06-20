@@ -23,6 +23,7 @@ $(function () {
     (0,_plugins_use__WEBPACK_IMPORTED_MODULE_1__.initLaraberg)();
     (0,_plugins_use__WEBPACK_IMPORTED_MODULE_1__.initSelect2)();
     (0,_plugins_use__WEBPACK_IMPORTED_MODULE_1__.initGallery)();
+    (0,_plugins_use__WEBPACK_IMPORTED_MODULE_1__.initSyntaxHighlighting)();
     // initImageCropper();
     (0,_functions__WEBPACK_IMPORTED_MODULE_0__.initEvents)();
   } catch (error) {
@@ -84,16 +85,8 @@ function string_to_slug(str) {
 
   return str;
 }
-function toggleDarkMode(_body, isActive) {
-  if (isActive) {
-    _body.addClass('dark-mode').removeClass('light-mode');
-    setCookie('mode', 'dark');
-  } else {
-    _body.removeClass('dark-mode').addClass('light-mode');
-    setCookie('mode', 'light');
-  }
-}
 function setCookie(name, value) {
+  debugger;
   var d = new Date();
   d.setTime(d.getTime() + 365 * 24 * 60 * 60 * 1000);
   var expires = "expires=" + d.toUTCString();
@@ -134,6 +127,15 @@ function initSlider() {
   };
   $('.owl-carousel').owlCarousel(params);
 }
+function toggleDarkMode(_body, isActive) {
+  if (isActive) {
+    _body.addClass('dark-mode').removeClass('light-mode');
+    setCookie('mode', 'dark');
+  } else {
+    _body.removeClass('dark-mode').addClass('light-mode');
+    setCookie('mode', 'light');
+  }
+}
 function initDarkMode() {
   var _body = $(document.body);
   $(document).on('click', '.toggle-dark-mode', function () {
@@ -145,6 +147,20 @@ function initDarkMode() {
       _this.removeClass('pushed');
     }, 300);
     toggleDarkMode(_body, _isActive);
+  });
+  $(document).on('click', '.toggle-dark-mode-blog', function () {
+    var page_container = $('#page-container');
+    if (page_container.hasClass('dark-mode')) {
+      // remove darkmode classes
+      page_container.addClass('page-header-dark dark-mode sidebar-dark');
+      // remove cookie
+      setCookie('theme', 'dark-mode');
+    } else {
+      // add darkmode classes
+      page_container.removeClass('page-header-dark dark-mode sidebar-dark');
+      // add cookie
+      setCookie('theme', 'light-mode');
+    }
   });
 }
 function get_alert_box(params) {
@@ -293,7 +309,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   initGallery: () => (/* binding */ initGallery),
 /* harmony export */   initImageCropper: () => (/* binding */ initImageCropper),
 /* harmony export */   initLaraberg: () => (/* binding */ initLaraberg),
-/* harmony export */   initSelect2: () => (/* binding */ initSelect2)
+/* harmony export */   initSelect2: () => (/* binding */ initSelect2),
+/* harmony export */   initSyntaxHighlighting: () => (/* binding */ initSyntaxHighlighting)
 /* harmony export */ });
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -302,6 +319,9 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function initSyntaxHighlighting() {
+  One.helpersOnLoad('js-highlightjs');
+}
 function initGallery() {
   if ($('.js-gallery').length == 0) return;
   One.helpersOnLoad(['jq-magnific-popup']);

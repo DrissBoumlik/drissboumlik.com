@@ -61,14 +61,12 @@
                                     placeholder="Post slug" value="{{ $post->slug }}">
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="post_body">Content</label>
-                                <!-- SimpleMDE Container -->
-                                {{-- <textarea class="js-simplemde" id="simplemde" name="post_body">{{ old('post_body') }}</textarea> --}}
-                                <textarea id="post_body" class="form-control laraberg-textarea" name="post_content" placeholder="Post content.." hidden>{!! $post->content !!}</textarea>
-                            </div>
-                            <div class="mb-4">
                                 <label class="form-label" for="post_excerpt">Excerpt</label>
                                 <textarea id="post_excerpt" class="form-control laraberg-textarea" name="post_excerpt" placeholder="Post excerpt.." rows="4" >{{ $post->excerpt }}</textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="description">Description</label>
+                                <textarea class="form-control" id="description" name="description" rows="4" placeholder="Post description..">{{ $post->description }}</textarea>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -83,10 +81,6 @@
                                         <option value="{{ $tag->id }}" {{ $tag->linked ? 'selected' : '' }}>{{ $tag->name }}</option>
                                     @endforeach
                                 </select>
-                            </div>
-                            <div class="mb-4">
-                                <label class="form-label" for="description">Description</label>
-                                <textarea class="form-control" id="description" name="description" rows="4" placeholder="Post description..">{{ $post->description }}</textarea>
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="status">Status</label>
@@ -117,6 +111,14 @@
                                 <div class="mt-2">
                                     <img id="image-preview" class="img-fluid" src="/{{ $post->image }}" alt="photo">
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-4">
+                                <label class="form-label" for="post_body">Content</label>
+                                <!-- SimpleMDE Container -->
+                                {{-- <textarea class="js-simplemde" id="simplemde" name="post_body">{{ old('post_body') }}</textarea> --}}
+                                <textarea id="post_body" class="form-control laraberg-textarea" name="post_content" placeholder="Post content.." hidden>{!! $post->content_raw !!}</textarea>
                             </div>
                         </div>
                         <div class="col-xxl-12">

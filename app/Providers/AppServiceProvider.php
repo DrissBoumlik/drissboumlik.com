@@ -33,10 +33,16 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('*', function ($view) {
             $mode = \Cookie::get('mode');
+//            dump($mode);
             if ($mode != 'dark' && $mode != 'light') {
                 $mode = 'dark';
             }
-            $view->with('mode', $mode);
+            $theme = \Cookie::get('theme');
+//            dd($theme);
+            if ($theme != 'dark-mode' && $theme != 'light-mode') {
+                $theme = 'light-mode';
+            }
+            $view->with(['mode' => $mode, 'theme' => $theme]);
         });
 
         Paginator::useBootstrap();

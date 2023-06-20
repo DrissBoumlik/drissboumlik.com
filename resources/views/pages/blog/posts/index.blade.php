@@ -24,17 +24,17 @@
                 <!-- Story -->
                 <div class="col-md-4 col-sm-6">
                     <a class="block block-rounded block-link-pop overflow-hidden" href="/blog/{{ $post->slug }}">
-                        <div class="post-image">
-                            <img class="img-fluid" src="/{{ $post->image }}" alt="">
+                        <div class="post-image" style="background-image: url('/{{ $post->image }}')">
+{{--                            <img class="img-fluid" src="/{{ $post->image }}" alt="">--}}
                         </div>
                         <div class="block-content">
-                            <h4 class="mb-1">{{ $post->title }}</h4>
+                            <h4 class="mb-1" title="{{ $post->title }}">{{ $post->short_title }}</h4>
                             <p class="fs-sm fw-medium mb-2">
                                 Posted {{ $post->published_at }} · <span class="text-muted">{{ $post->read_duration }} min read</span>
                             </p>
-                            <p class="fs-sm text-muted">
-                                {!! $post->excerpt ?? \Str::limit($post->content, 20); !!}
-                            </p>
+{{--                            <p class="fs-sm text-muted">--}}
+{{--                                {!! $post->excerpt ?? \Str::limit($post->content, 20); !!}--}}
+{{--                            </p>--}}
                         </div>
                     </a>
                 </div>

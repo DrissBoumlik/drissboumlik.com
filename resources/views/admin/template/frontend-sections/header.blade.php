@@ -5,7 +5,7 @@
         <!-- Left Section -->
         <div class="d-flex align-items-center">
             <!-- Logo -->
-            <a class="fw-semibold fs-5 tracking-wider text-dual me-3" href="index.html">
+            <a class="fw-semibold fs-5 tracking-wider text-dual me-3" href="/">
                 <span class="fw-normal">Driss Boumlik</span>
             </a>
             <!-- END Logo -->
@@ -20,7 +20,7 @@
                     @if (\Auth::check())
                     <li class="nav-main-item">
                         <a class="nav-main-link" href="/admin">
-                            <span class="nav-main-link-name">Panel</span>
+                            <span class="nav-main-link-name">Admin Panel</span>
                         </a>
                     </li>
                     @endif
@@ -44,7 +44,14 @@
                             <span class="nav-main-link-name">Resume</span>
                         </a>
                     </li>
-                    <li class="nav-main-heading">Extra</li>
+                    <li class="nav-main-item">
+                            <!-- Dark Mode -->
+                            <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
+                            <a class="nav-main-link btn btn-sm btn-alt-secondary toggle-dark-mode-blog" data-toggle="layout" data-action="dark_mode_toggle" href="javascript:void(0)">
+                                <i class="far fa-moon"></i>
+                            </a>
+                            <!-- END Dark Mode -->
+                    </li>
                 </ul>
             </div>
             <!-- END Menu -->

@@ -2,9 +2,11 @@
 
 @section('css')
     <link href="{{ asset('/template/assets/js/plugins/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="/template/assets/js/plugins/highlightjs/styles/atom-one-dark.css">
 @endsection
 @section('js')
     <script src="{{ asset('/template/assets/js/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+    <script src="/template/assets/js/plugins/highlightjs/highlight.pack.min.js"></script>
 @endsection
 
 @section('content')
@@ -41,7 +43,9 @@
             <div class="col-sm-10 col-md-8">
             <!-- Story -->
             <article class="story">
-                {!! $post->content !!}
+                <div class="post-content">
+                    {!! $post->content !!}
+                </div>
                 <div class="tags my-4">
                     @foreach ($post->tags as $tag)
                         <a href="/blog/tags/{{ $tag->slug }}">
@@ -91,7 +95,7 @@
                     </div>
                 </div>
                 <div class="block-content block-content-full fs-sm fw-medium">
-                    <span class="text-primary">Posted</span> {{ $related_post->published_at }} · <span>{{ $post->read_duration }} min</span>
+                    Posted {{ $related_post->published_at }} · <span>{{ $post->read_duration }} min</span>
                     <p class="fs-sm text-muted">
                         {!! $related_post->excerpt ?? \Str::limit($related_post->content, 20); !!}
                     </p>

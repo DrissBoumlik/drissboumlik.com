@@ -2,7 +2,7 @@
 
 
 @section('content')
-    @if($subscriber)
+    @if($subscriber && $subscriber->token_verification != null)
     <!-- Page Content -->
     <div class="content content-boxed">
         <!-- User Profile -->

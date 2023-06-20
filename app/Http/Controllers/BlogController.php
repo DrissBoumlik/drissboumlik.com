@@ -59,14 +59,14 @@ class BlogController extends Controller
 
         $data = new \stdClass();
         $data->title = 'Blog | Tags | ' . $tag->name;
-        $data->posts_data = (new PostWithPaginationCollection($tag->posts()->with('author')
+        $posts_data = (object) (new PostWithPaginationCollection($tag->posts()->with('author')
             ->orderBy('created_at', 'desc')
             ->paginate($this->perPage)))->resolve();
 
-        $posts = $data->posts_data['data'];
-        unset($data->posts_data['data']);
+        $posts = $posts_data->data;
+        unset($posts_data->data);
 
-        return view('pages.blog.posts.index', ['data' => $data, 'posts' => $posts]);
+        return view('pages.blog.posts.index', ['data' => $data, 'posts_data' => $posts_data, 'posts' => $posts]);
     }
 
     public function tagsList(Request $request)

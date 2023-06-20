@@ -14,7 +14,7 @@ class Post extends Model
 
     protected $fillable = [
         'author_id', 'title', 'slug', 'excerpt',
-        'content','image','description','status',
+        'content', 'content_raw','image','description','status',
         'featured','likes','views', 'published_at',
     ];
 

@@ -22,6 +22,7 @@ class PostResource extends JsonResource
             // Str::limit($this->body, Post::EXCERPT_LENGTH)
             'slug' => $this->slug,
             'excerpt' => $this->excerpt,
+            'content_raw' => $this->content_raw,
             'content' => $this->content,
             'image' => $this->image,
             'description' => $this->description,

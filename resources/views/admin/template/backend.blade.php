@@ -36,7 +36,7 @@
 
 <body>
   <!-- Page Container -->
-  <div id="page-container" class="sidebar-o sidebar-mini enable-page-overlay side-scroll main-content-narrow dark-mode sidebar-dark page-header-dark">
+  <div id="page-container" class="sidebar-o  enable-page-overlay side-scroll main-content-narrow {{ $theme == 'dark-mode' ? 'page-header-dark dark-mode sidebar-dark' : '' }}">
 
 
       @include('admin.template.backend-sections.left-sidebar')

@@ -37,14 +37,19 @@
                     <div class="row push">
                         <div class="col-lg-6 offset-lg-3">
                             <div class="mb-4">
+                                <label class="form-label" for="one-profile-edit-name">Name</label>
                                 <input type="text" class="form-control" id="one-profile-edit-name" name="name" placeholder="Enter your name.." value="{{ $user->name }}">
                             </div>
                             <div class="mb-4">
+                                <label class="form-label" for="one-profile-edit-email">Email Address</label>
                                 <input type="email" class="form-control" id="one-profile-edit-email" name="email" placeholder="Enter your email.." value="{{ $user->email }}">
                             </div>
-                            <div class="mb-4 password-form-input">
-                                <input type="password" class="form-control" id="one-profile-edit-password" placeholder="Password" name="password">
-                                <div class="show-password"><i class="fa-solid fa-eye"></i></div>
+                            <div class="mb-4">
+                                <label class="form-label" for="one-profile-edit-password-new">New Password</label>
+                                <div class="password-form-input">
+                                    <input type="password" class="form-control" id="one-profile-edit-password-new" placeholder="Password" name="password">
+                                    <div class="show-password"><i class="fa-solid fa-eye"></i></div>
+                                </div>
                             </div>
                             <div class="mb-4">
                                 <button type="submit" class="btn btn-alt-primary">Update</button>

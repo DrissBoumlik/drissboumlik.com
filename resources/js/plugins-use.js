@@ -1,4 +1,8 @@
 
+function initSyntaxHighlighting() {
+    One.helpersOnLoad('js-highlightjs');
+}
+
 function initGallery() {
     if ($('.js-gallery').length == 0) return;
     One.helpersOnLoad(['jq-magnific-popup']);
@@ -52,4 +56,4 @@ function initImageCropper() {
 
 
 
-export { initLaraberg, initSelect2, initGallery, initImageCropper };
+export { initLaraberg, initSelect2, initGallery, initImageCropper, initSyntaxHighlighting };

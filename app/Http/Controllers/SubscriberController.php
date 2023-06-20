@@ -8,23 +8,27 @@ use Illuminate\Support\Facades\Mail;
 
 class SubscriberController extends Controller
 {
-    public function update(Request $request, $email)
+    public function show(Request $request, $uuid)
+    {
+        $subscriber = Subscriber::where('subscription_id', $uuid)->first();
+        return view('pages.subscription.verify', ['subscriber' => $subscriber]);
+    }
+
+    public function update(Request $request, $uuid)
     {
         $data = new \stdClass;
         $data->title = "Subscription | Update Data";
         try {
-            $subscriber = Subscriber::where('email', $email)->first();
+            $subscriber = Subscriber::where('subscription_id', $uuid)->first();
             if ($subscriber) {
                 $subscriber->update([
                     "first_name" => $request->first_name ?? $subscriber->first_name,
                     "last_name" => $request->last_name ?? $subscriber->last_name,
                 ]);
             }
-            $request->session()->flash('response', ['message' => 'Data updated successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']);
-            return view('pages.subscription.verify', ['data' => $data, 'subscriber' => $subscriber]);
+            return redirect("/subscribers/$subscriber->uuid")->with('response', ['message' => 'Data updated successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']);
         } catch (\Throwable $e) {
-            $request->session()->flash('response', ['message' => 'Something went wrong, Please try later', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']);
-            return view('pages.subscription.verify', ['data' => $data, 'subscriber' => null]);
+            return redirect("/subscribers/null")->with(['response', ['message' => 'Something went wrong, Please try later', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
         }
     }
 
@@ -36,7 +40,8 @@ class SubscriberController extends Controller
         if ($subscriber) {
             $subscriber->update([
                 "subscribed_at" => now(),
-                "token_verification" => null
+                "token_verification" => null,
+                "subscription_id" => \Str::uuid(),
             ]);
         }
         return view('pages.subscription.verify', ['data' => $data, 'subscriber' => $subscriber]);

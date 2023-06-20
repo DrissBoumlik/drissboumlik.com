@@ -93,11 +93,14 @@ class PostController extends Controller
     public function update(Request $request, $slug)
     {
         try {
+            $post_content_raw = $request->get('post_content');
+            $post_content = str_replace(["\\n", "\\\n"], "\n", $post_content_raw);
             $post = Post::withTrashed()->whereSlug($slug)->first();
             $data = [
                 "title" => $request->title,
                 "slug" => $request->slug,
-                "content" => $request->post_content,
+                "content_raw" => $post_content_raw,
+                "content" => $post_content,
                 "excerpt" => $request->post_excerpt,
                 "description" => $request->description,
                 "status" => $request->status,

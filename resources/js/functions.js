@@ -51,17 +51,9 @@ function string_to_slug(str) {
     return str;
 }
 
-function toggleDarkMode(_body, isActive) {
-    if (isActive) {
-        _body.addClass('dark-mode').removeClass('light-mode');
-        setCookie('mode', 'dark');
-    } else {
-        _body.removeClass('dark-mode').addClass('light-mode');
-        setCookie('mode', 'light');
-    }
-}
 
 function setCookie(name, value) {
+    debugger
     var d = new Date();
     d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
     var expires = "expires=" + d.toUTCString();
@@ -105,6 +97,16 @@ function initSlider() {
     $('.owl-carousel').owlCarousel(params);
 }
 
+function toggleDarkMode(_body, isActive) {
+    if (isActive) {
+        _body.addClass('dark-mode').removeClass('light-mode');
+        setCookie('mode', 'dark');
+    } else {
+        _body.removeClass('dark-mode').addClass('light-mode');
+        setCookie('mode', 'light');
+    }
+}
+
 function initDarkMode() {
     let _body = $(document.body);
     $(document).on('click', '.toggle-dark-mode', function () {
@@ -116,6 +118,21 @@ function initDarkMode() {
             _this.removeClass('pushed');
         }, 300);
         toggleDarkMode(_body, _isActive);
+    });
+    $(document).on('click', '.toggle-dark-mode-blog', function () {
+        let page_container = $('#page-container');
+        if (page_container.hasClass('dark-mode')) {
+            // remove darkmode classes
+            page_container.addClass('page-header-dark dark-mode sidebar-dark');
+            // remove cookie
+            setCookie('theme', 'dark-mode');
+        } else {
+            // add darkmode classes
+            page_container.removeClass('page-header-dark dark-mode sidebar-dark');
+            // add cookie
+            setCookie('theme', 'light-mode');
+        }
+
     });
 }
 

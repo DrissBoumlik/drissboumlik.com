@@ -7,7 +7,7 @@
             <span class="smini-visible">
                 <img class="img-avatar img-avatar20" src="{{ asset('/assets/img/me/circle-256.ico') }}" alt="">
             </span>
-            <span class="smini-hide fs-5 tracking-wider">Admin<span class="fw-normal">Panel</span></span>
+            <span class="smini-hide fs-5 tracking-wider">Admin <span class="fw-normal">Panel</span></span>
         </a>
         <!-- END Logo -->
 
@@ -15,7 +15,7 @@
         <div>
             <!-- Dark Mode -->
             <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-            <a class="btn btn-sm btn-alt-secondary" data-toggle="layout" data-action="dark_mode_toggle" href="javascript:void(0)">
+            <a class="btn btn-sm btn-alt-secondary toggle-dark-mode-blog" data-toggle="layout" data-action="dark_mode_toggle" href="javascript:void(0)">
                 <i class="far fa-moon"></i>
             </a>
             <!-- END Dark Mode -->
@@ -75,8 +75,14 @@
                 </li>
                 <li class="nav-main-item">
                     <a class="nav-main-link{{ request()->is('admin/tags') ? ' active' : '' }}" href="/admin/tags">
-                        <i class="nav-main-link-icon si si-tag"></i>
+                        <i class="nav-main-link-icon fa fa-fw fa-tags"></i>
                         <span class="nav-main-link-name">Tags</span>
+                    </a>
+                </li>
+                <li class="nav-main-item">
+                    <a class="nav-main-link" href="/blog">
+                        <i class="nav-main-link-icon fa fa-fw fa-pencil"></i>
+                        <span class="nav-main-link-name">Blog</span>
                     </a>
                 </li>
             </ul>
