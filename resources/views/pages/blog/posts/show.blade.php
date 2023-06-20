@@ -89,16 +89,13 @@
             @foreach($related_posts as $related_post)
             <div class="col-md-4 col-sm-6">
                 <a class="block block-rounded block-link-pop overflow-hidden" href="/blog/{{ $related_post->slug }}">
-                <div class="bg-image" style="background-image: url('/{{ $related_post->image }}');">
-                    <div class="block-content bg-primary-dark-op">
+                <div class="bg-image post-image" style="background-image: url('/{{ $related_post->image }}');">
+                    <div class="block-content bg-primary-dark-op h-100">
                     <h4 class="text-white mt-5 push">{{ $related_post->title }}</h4>
                     </div>
                 </div>
                 <div class="block-content block-content-full fs-sm fw-medium">
                     Posted {{ $related_post->published_at }} · <span>{{ $post->read_duration }} min</span>
-                    <p class="fs-sm text-muted">
-                        {!! $related_post->excerpt ?? \Str::limit($related_post->content, 20); !!}
-                    </p>
                 </div>
                 </a>
             </div>
