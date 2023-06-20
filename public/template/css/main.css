@@ -33850,4 +33850,11 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
   }
 }
 
+@media (min-width: 768px) {
+  .nav-main-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
 /*# sourceMappingURL=main.css.map*/

@@ -15,7 +15,7 @@
         <!-- Right Section -->
         <div class="d-flex align-items-center">
             <!-- Menu -->
-            <div class="d-none d-lg-block">
+            <div class="d-none d-md-block">
                 <ul class="nav-main nav-main-horizontal nav-main-hover">
                     @auth
                     <li class="nav-main-item">
@@ -44,21 +44,21 @@
                             <span class="nav-main-link-name">Resume</span>
                         </a>
                     </li>
-                    <li class="nav-main-item">
-                            <!-- Dark Mode -->
-                            <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                            <a class="nav-main-link btn btn-sm btn-alt-secondary toggle-dark-mode-blog" data-toggle="layout" data-action="dark_mode_toggle" href="javascript:void(0)">
-                                <i class="far fa-moon"></i>
-                            </a>
-                            <!-- END Dark Mode -->
-                    </li>
                 </ul>
             </div>
             <!-- END Menu -->
+            <div class="dark-theme-btn">
+                <!-- Dark Mode -->
+                <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
+                <a class="btn btn-sm btn-alt-secondary toggle-dark-mode-blog" data-toggle="layout" data-action="dark_mode_toggle" href="javascript:void(0)">
+                    <i class="far fa-moon"></i>
+                </a>
+                <!-- END Dark Mode -->
+            </div>
 
             <!-- Toggle Sidebar -->
             <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-            <button type="button" class="btn btn-sm btn-alt-secondary d-lg-none ms-1" data-toggle="layout"
+            <button type="button" class="btn btn-sm btn-alt-secondary d-md-none ms-1" data-toggle="layout"
                     data-action="sidebar_toggle">
                 <i class="fa fa-fw fa-bars"></i>
             </button>

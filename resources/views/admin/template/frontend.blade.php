@@ -54,7 +54,7 @@
 
 <body>
     <!-- Page Container -->
-    <div id="page-container" class="side-scroll main-content-boxed {{ $theme == 'dark-mode' ? 'page-header-dark dark-mode sidebar-dark' : '' }}">
+    <div id="page-container" class="side-scroll main-content-boxed page-header-fixed {{ $theme == 'dark-mode' ? 'page-header-dark dark-mode sidebar-dark' : '' }}">
 
        @include('admin.template.frontend-sections.nav')
 
