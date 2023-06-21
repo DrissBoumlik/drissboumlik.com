@@ -24,7 +24,7 @@ class PostResource extends JsonResource
             'excerpt' => $this->excerpt,
             'content_raw' => $this->content_raw,
             'content' => $this->content,
-            'image' => $this->image,
+            'cover' => $this->cover,
             'description' => $this->description,
             'status' => $this->getDomClass(),
             'featured' => $this->featured,

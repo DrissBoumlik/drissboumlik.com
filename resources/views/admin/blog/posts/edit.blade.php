@@ -23,7 +23,7 @@
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
                 <div class="flex-grow-1">
                     <h1 class="h3 fw-bold mb-2">
-                        Post Edit
+                        Edit Post
                     </h1>
                 </div>
                 <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
@@ -107,9 +107,9 @@
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="image">Image</label>
-                                <input type="file" id="image" name="image" class="form-control" />
+                                <input type="file" id="image" name="cover" class="form-control" />
                                 <div class="mt-2">
-                                    <img id="image-preview" class="img-fluid" src="/{{ $post->image }}" alt="photo">
+                                    <img id="image-preview" class="img-fluid" src="/{{ $post->cover }}" alt="photo">
                                 </div>
                             </div>
                         </div>
@@ -118,7 +118,7 @@
                                 <label class="form-label" for="post_body">Content</label>
                                 <!-- SimpleMDE Container -->
                                 {{-- <textarea class="js-simplemde" id="simplemde" name="post_body">{{ old('post_body') }}</textarea> --}}
-                                <textarea id="post_body" class="form-control laraberg-textarea" name="post_content" placeholder="Post content.." hidden>{!! $post->content_raw !!}</textarea>
+                                <textarea id="post_body" class="form-control laraberg-textarea" name="post_content" placeholder="Post content.." hidden>{!! $post->content !!}</textarea>
                             </div>
                         </div>
                         <div class="col-xxl-12">

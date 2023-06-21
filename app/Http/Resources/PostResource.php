@@ -24,7 +24,7 @@ class PostResource extends JsonResource
             'excerpt' => $this->excerpt ?? \Str::words($this->content, 20),
             'content' => $this->content,
             'read_duration' => \Str::readDuration($this->content),
-            'image' => $this->image,
+            'cover' => $this->cover,
             'description' => $this->description,
             'status' => $this->status,
             'featured' => $this->featured,

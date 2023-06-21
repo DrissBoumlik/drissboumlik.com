@@ -21,19 +21,16 @@
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
                 <div class="flex-grow-1">
                     <h1 class="h3 fw-bold mb-2">
-                        Form Editors
+                        Create Post
                     </h1>
-                    <h2 class="fs-base lh-base fw-medium text-muted mb-0">
-                        Text editing at its finest.
-                    </h2>
                 </div>
                 <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
                         <li class="breadcrumb-item">
-                            <a class="link-fx" href="javascript:void(0)">Forms</a>
+                            <a class="link-fx" href="javascript:void(0)">Post</a>
                         </li>
                         <li class="breadcrumb-item" aria-current="page">
-                            Editors
+                            Create
                         </li>
                     </ol>
                 </nav>
@@ -61,18 +58,12 @@
                                     placeholder="Post slug">
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="post_body">Content</label>
-                                <!-- SimpleMDE Container -->
-                                {{-- <textarea class="js-simplemde" id="simplemde" name="post_body">{{ old('post_body') }}</textarea> --}}
-                                <textarea id="post_body" name="post_body" placeholder="Textarea content.." hidden></textarea>
-                            </div>
-                            <div class="mb-4">
                                 <label class="form-label" for="excerpt">Excerpt</label>
                                 <textarea class="form-control" id="excerpt" name="excerpt" rows="4" placeholder="Post excerpt.."></textarea>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="image">Image</label>
-                                <input type="file" id="image" name="image" class="form-control" />
+                                <label class="form-label" for="description">Description</label>
+                                <textarea class="form-control" id="description" name="description" rows="4" placeholder="Post description.."></textarea>
                             </div>
 {{--                            <div class="mb-4">--}}
 {{--                                <!-- Toolbar -->--}}
@@ -175,10 +166,6 @@
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="description">Description</label>
-                                <textarea class="form-control" id="description" name="description" rows="4" placeholder="Post description.."></textarea>
-                            </div>
-                            <div class="mb-4">
                                 <label class="form-label" for="status">Status</label>
                                 <select class="js-select2 form-select" id="status"
                                     name="status" style="width: 100%;" data-placeholder="Choose many..">
@@ -193,6 +180,21 @@
                                     <input class="form-check-input" type="checkbox" value="" id="featured" name="featured" checked>
                                     <label class="form-check-label" for="featured">Featured</label>
                                 </div>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="image">Image</label>
+                                <input type="file" id="image" name="cover" class="form-control" />
+                                <div class="mt-2">
+                                    <img id="image-preview" class="img-fluid" src="" alt="photo">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-4">
+                                <label class="form-label" for="post_body">Content</label>
+                                <!-- SimpleMDE Container -->
+                                {{-- <textarea class="js-simplemde" id="simplemde" name="post_body">{{ old('post_body') }}</textarea> --}}
+                                <textarea id="post_body" name="post_content" placeholder="Textarea content.." hidden></textarea>
                             </div>
                         </div>
                     </div>

@@ -24,7 +24,7 @@
                 <!-- Story -->
                 <div class="col-md-4 col-sm-6">
                     <a class="block block-rounded block-link-pop overflow-hidden" href="/blog/{{ $post->slug }}">
-                        <div class="post-image" style="background-image: url('/{{ $post->image }}')">
+                        <div class="post-cover" style="background-image: url('/{{ $post->cover }}')">
 {{--                            <img class="img-fluid" src="/{{ $post->image }}" alt="">--}}
                         </div>
                         <div class="block-content">

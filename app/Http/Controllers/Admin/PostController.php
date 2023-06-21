@@ -38,7 +38,7 @@ class PostController extends Controller
             $data = [
                 "title" => $request->title,
                 "slug" => $request->slug,
-                "content" => $request->post_body,
+                "content" => $request->post_content,
                 "excerpt" => $request->excerpt,
                 "description" => $request->description,
                 "status" => $request->status,
@@ -46,11 +46,11 @@ class PostController extends Controller
                 'author_id' => \Auth::user()->id,
                 'published_at' => $request->status == 2 ? now() : null,
             ];
-            $image_file = $request->file('image');
+            $image_file = $request->file('cover');
             if ($image_file) {
                 $file_ext = $image_file->getClientOriginalExtension();
                 $path = \Storage::disk('public')->putFileAs('blog/posts', $image_file, "$request->slug.$file_ext");
-                $data['image'] = "storage/$path";
+                $data['cover'] = "storage/$path";
             }
             $post = Post::create($data);
             if ($request->has('tags')) {
@@ -64,9 +64,9 @@ class PostController extends Controller
                 }
                 \DB::table('post_tag')->insert($post_tag);
             }
-            return redirect("/admin/posts")->with(['response' => ['message' => 'Post store successfully', 'class' => 'alert-info'], 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']);
+            return redirect("/admin/posts/edit/$post->slug")->with(['response' => ['message' => 'Post store successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
         } catch (\Throwable $e) {
-            return redirect("/admin/posts")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger'], 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']);
+            return redirect("/admin/posts")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
         }
     }
 
@@ -93,14 +93,12 @@ class PostController extends Controller
     public function update(Request $request, $slug)
     {
         try {
-            $post_content_raw = $request->get('post_content');
-            $post_content = str_replace(["\\n", "\\\n"], "\n", $post_content_raw);
             $post = Post::withTrashed()->whereSlug($slug)->first();
             $data = [
                 "title" => $request->title,
                 "slug" => $request->slug,
                 "content_raw" => $post_content_raw,
-                "content" => $post_content,
+                "content" => $request->post_content,
                 "excerpt" => $request->post_excerpt,
                 "description" => $request->description,
                 "status" => $request->status,
@@ -108,11 +106,11 @@ class PostController extends Controller
                 'author_id' => \Auth::user()->id,
                 'published_at' => $post->published_at ?? ($request->status == 2 ? now() : null),
             ];
-            $image_file = $request->file('image');
+            $image_file = $request->file('cover');
             if ($image_file) {
                 $file_ext = $image_file->getClientOriginalExtension();
                 $path = \Storage::disk('public')->putFileAs('blog/posts', $image_file, ($request->slug ?? $post->slug) . ".$file_ext");
-                $data['image'] = "storage/$path";
+                $data['cover'] = "storage/$path";
             }
             $post->update($data);
 

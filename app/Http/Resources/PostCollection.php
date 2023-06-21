@@ -23,7 +23,7 @@ class PostCollection extends ResourceCollection
                 'slug' => $item->slug,
                 'excerpt' => $item->excerpt ?? \Str::words($item->content, 20),
                 'content' => $item->content,
-                'image' => $item->image,
+                'cover' => $item->cover,
                 'description' => $item->description,
                 'status' => $item->status,
                 'featured' => $item->featured,

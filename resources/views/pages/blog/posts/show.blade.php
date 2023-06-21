@@ -12,7 +12,7 @@
 @section('content')
 
     <!-- Hero Content -->
-    <div class="bg-image" style="background-image: url('/{{ $post->image }}');">
+    <div class="bg-image" style="background-image: url('/{{ $post->cover }}');">
         <div class="bg-primary-dark-op">
             <div class="content content-full text-center pt-7 pb-6">
                 <h1 class="text-white mb-2">{{ $post->title }}</h1>
@@ -90,7 +90,7 @@
             @foreach($related_posts as $related_post)
             <div class="col-md-4 col-sm-6">
                 <a class="block block-rounded block-link-pop overflow-hidden" href="/blog/{{ $related_post->slug }}">
-                <div class="bg-image post-image" style="background-image: url('/{{ $related_post->image }}');">
+                <div class="bg-image post-cover" style="background-image: url('/{{ $related_post->cover }}');">
                     <div class="block-content bg-primary-dark-op h-100">
                     <h4 class="text-white mt-5 push">{{ $related_post->title }}</h4>
                     </div>
