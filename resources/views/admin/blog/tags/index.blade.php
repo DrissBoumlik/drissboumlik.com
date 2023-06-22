@@ -82,7 +82,7 @@
                             <td class="text-center fs-sm">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
-                                        <a href="/blog/tags/{{ $tag->slug }}" target="_blank" class="link-dark">
+                                        <a href="/tags/{{ $tag->slug }}" target="_blank" class="link-dark">
                                             <i class="fa fa-fw fa-eye"></i>
                                         </a>
                                     </button>
