@@ -15,7 +15,7 @@ class BlogController extends Controller
     private $perPage = 6;
 
 
-    public function index(Request $request)
+    public function getPosts(Request $request)
     {
         $data = new \stdClass();
         $posts_data = (object) (new PostWithPaginationCollection(Post::with('author')
@@ -32,7 +32,7 @@ class BlogController extends Controller
         return view('pages.blog.posts.index', ['data' => $data, 'posts_data' => $posts_data, 'posts' => $posts]);
     }
 
-    public function show(Request $request, $slug)
+    public function getPost(Request $request, $slug)
     {
         $post = Post::where('slug', $slug)->first();
         if ($post == null) {
@@ -78,7 +78,7 @@ class BlogController extends Controller
         return view('pages.blog.posts.index', ['data' => $data, 'posts_data' => $posts_data, 'posts' => $posts]);
     }
 
-    public function tagsList(Request $request)
+    public function getTags(Request $request)
     {
         $data = new \stdClass();
 

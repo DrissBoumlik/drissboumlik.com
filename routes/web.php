@@ -73,10 +73,10 @@ Route::group([], function () {
     Route::put('/subscribers/{uuid}', [SubscriberController::class, 'update']);
     Route::get('/subscribers/{uuid}', [SubscriberController::class, 'show']);
     Route::get('/subscribers/verify/{token}', [SubscriberController::class, 'verifySubscribtion']);
-    Route::get('/blog/tags', [BlogController::class, 'tagsList']);
-    Route::get('/blog/tags/{slug}', [BlogController::class, 'getPostsBytag']);
-    Route::get('/blog', [BlogController::class, 'index']);
-    Route::get('/blog/{slug}', [BlogController::class, 'show']);
+    Route::get('/tags', [BlogController::class, 'getTags']);
+    Route::get('/tags/{slug}', [BlogController::class, 'getPostsBytag']);
+    Route::get('/blog', [BlogController::class, 'getPosts']);
+    Route::get('/blog/{slug}', [BlogController::class, 'getPost']);
     Route::post('/blog/like/{slug}', [BlogController::class, 'likePost']);
     // Route::get('blog/{slug}', [PostController::class, 'show']);
 

@@ -128,6 +128,9 @@
                             <a href="/blog/{{ $post->slug }}" target="_blank" class="btn btn-dark me-1 mb-3">
                                 <i class="fa fa-fw fa-eye me-1"></i> View
                             </a>
+                            <button type="submit" class="btn btn-danger me-1 mb-3" name="destroy">
+                                <i class="fa fa-fw fa-trash me-1"></i> Hard Delete
+                            </button>
                         </div>
                     </div>
                 </form>

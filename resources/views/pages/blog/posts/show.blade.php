@@ -49,7 +49,7 @@
                 <div class="tags my-4">
                     Tags :
                     @foreach ($post->tags as $tag)
-                        <a href="/blog/tags/{{ $tag->slug }}">
+                        <a href="/tags/{{ $tag->slug }}">
                         <span style="background-color: {{ $tag->color }}"
                               class="fs-sm fw-semibold d-inline-block py-1 px-3 mb-2
                                         rounded-pill text-white">{{ $tag->name }}</span>

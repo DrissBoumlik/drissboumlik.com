@@ -72,6 +72,7 @@
                         <th>Slug</th>
                         <th>color</th>
                         <th>Posts</th>
+                        <th class="text-center"><i class="fa-solid fa-pen"></i></th>
                         <th>Active</th>
                     </tr>
                     </thead>
@@ -97,6 +98,7 @@
                             <td class="fw-semibold fs-sm">{{ $tag->slug }}</td>
                             <td class="fw-semibold fs-sm"><div class="item item-tiny item-circle mx-auto mb-3" style="background-color: {{ $tag->color }}"></div></td>
                             <td class="fw-semibold fs-sm">{{ $tag->posts_count }}</td>
+                            <td class="fs-sm"><span title="{{ $tag->created_at }}">{{ $tag->created_at_for_humans }}</span></td>
                             <td class="fs-sm"><div class="item item-tiny item-circle mx-auto mb-3 {{ $tag->active ? 'bg-success' : 'bg-danger' }}"></div></td>
                         </tr>
                     @endforeach

@@ -93,11 +93,15 @@ class PostController extends Controller
     public function update(Request $request, $slug)
     {
         try {
-            $post = Post::withTrashed()->whereSlug($slug)->first();
+            $post = Post::withTrashed()->where('slug', $slug)->first();
+
+            if ($request->has('destroy')) {
+                return $this->destroy($post);
+            }
+
             $data = [
                 "title" => $request->title,
                 "slug" => $request->slug,
-                "content_raw" => $post_content_raw,
                 "content" => $request->post_content,
                 "excerpt" => $request->post_excerpt,
                 "description" => $request->description,
@@ -135,6 +139,21 @@ class PostController extends Controller
         } catch (\Throwable $e) {
             return redirect("/admin/posts/edit/$post->slug")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
         }
+    }
+
+    private function destroy($post)
+    {
+        try {
+            if ($post) {
+                \DB::table('post_tag')->where('post_id', $post->id)->delete();
+                $deleted = $post->forceDelete();
+                return redirect("/admin/posts")->with(['response' => ['message' => 'Post deleted successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
+            } else {
+                return redirect("/admin/posts")->with(['response' => ['message' => 'Post not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
+            }
+        } catch (\Throwable $e) {
+            return redirect("/admin/posts")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
+       }
     }
 
 

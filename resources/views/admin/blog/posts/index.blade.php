@@ -101,8 +101,8 @@
                             <td class="fs-sm"><div class="item item-tiny item-circle mx-auto mb-3 {{ $post->featured ? 'bg-success' : 'bg-danger' }}"></div></td>
                             <td class="fs-sm">{{ $post->views }}</td>
                             <td class="fs-sm">{{ $post->likes }}</td>
-                            <td class="fs-sm">{{ $post->published_at ?? '---' }}</td>
-                            <td class="fs-sm">{{ $post->created_at }}</td>
+                            <td class="fs-sm"><span title="{{ $post->published_at }}">{{ $post->published_at_for_humans }}</span></td>
+                            <td class="fs-sm"><span title="{{ $post->created_at }}">{{ $post->created_at_for_humans }}</span></td>
                             <td class="fs-sm"><div class="item item-tiny item-circle mx-auto mb-3 {{ $post->active ? 'bg-success' : 'bg-danger' }}"></div></td>
                         </tr>
                         @endforeach

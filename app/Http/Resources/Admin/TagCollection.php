@@ -25,6 +25,8 @@ class TagCollection extends ResourceCollection
                 "created_at" => $item->created_at,
                 'active' => $item->deleted_at == null,
                 "posts_count" => $item->posts_count,
+                'created_at' => $item->created_at,
+                'created_at_for_humans' => $item->created_at->diffForHumans(),
             ];
         });
     }

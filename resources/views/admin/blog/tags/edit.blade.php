@@ -65,6 +65,9 @@
                             <button type="submit" class="btn btn-success me-1 mb-3">
                                 <i class="fa fa-fw fa-edit me-1"></i> Update
                             </button>
+                            <button type="submit" class="btn btn-danger me-1 mb-3" name="destroy">
+                                <i class="fa fa-fw fa-trash me-1"></i> Hard Delete
+                            </button>
                         </div>
                     </div>
                 </form>

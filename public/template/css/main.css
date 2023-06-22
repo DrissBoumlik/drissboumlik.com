@@ -33173,7 +33173,7 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
   border-radius: 5px;
 }
 
-.post-image {
+.post-cover {
   height: 150px;
   background-position: center;
   background-size: contain;
@@ -33848,6 +33848,10 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
   .sidebar-o #sidebar {
     width: 90%;
   }
+}
+
+.nav-main-link {
+  color: #6c757d;
 }
 
 @media (min-width: 768px) {
