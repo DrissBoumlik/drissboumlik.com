@@ -1,5 +1,5 @@
 import { drawText, initParticlesJS, initSlider, initDarkMode, initEvents } from "./functions";
-import { initLaraberg, initSelect2, initGallery, initImageCropper, initSyntaxHighlighting } from "./plugins-use";
+import { initLaraberg, initSelect2, initGallery, initImageCropper, initSyntaxHighlighting, initDatatable } from "./plugins-use";
 
 
 $(function () {
@@ -16,6 +16,8 @@ $(function () {
         // initSyntaxHighlighting();
         // initImageCropper();
         initEvents();
+        initDatatable();
+
     } catch (error) {
         // console.log(error);
         throw error

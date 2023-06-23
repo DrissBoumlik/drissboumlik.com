@@ -54,6 +54,166 @@ function initImageCropper() {
     }.init()));
 }
 
+function initDatatable() {
+    if ($('#posts').length) {
+        let params = {
+            id: '#posts',
+            method: 'POST',
+            url: '/api/posts',
+            columns: [
+                { data: 'id', name: 'id', title: 'Actions', className: 'text-center',
+                    render: function (data, type, row, params) {
+                        return `
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
+                                <a href="/blog/${row.slug}" target="_blank" class="link-dark">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
+                                <a href="/admin/posts/edit/${row.slug}" target="_blank" class="link-dark">
+                                    <i class="fa fa-fw fa-pencil-alt"></i>
+                                </a>
+                            </button>
+                        </div>
+                    `;
+                    }},
+                { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
+                { data: 'title', name: 'title', title: 'Title', className: 'fw-semibold fs-sm',
+                    render: function (data, type, row, params) {
+                        return `<span data-bs-toggle="tooltip" title="${row.title}">${row.short_title}</span>`;
+                    }},
+                { data: 'status', name: 'status', title: 'Status',
+                    render: function (data, type, row, params) {
+                        return `<span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill ${row.status.class}">${row.status.text}</span`;
+                    }},
+                { data: 'featured', name: 'featured', title: 'Featured', className: 'fs-sm',
+                    render: function (data, type, row, params) {
+                        return `<div class="item item-tiny item-circle mx-auto mb-3
+                        ${row.featured ? 'bg-success' : 'bg-danger' }"></div>`;
+                }},
+                { data: 'views', name: 'views', title: '<i class="fa-solid fa-eye"></i>', className: 'text-center'},
+                { data: 'likes', name: 'likes', title: '<i class="fa-solid fa-thumbs-up"></i>', className: 'text-center'},
+                { data: 'published_at', name: 'published_at', title: '<i class="fa-solid fa-upload"></i>', className: 'text-center fs-sm',
+                    render: function(data, type, row, params) {
+                        return `<span title="${row.published_at}">${row.published_at_for_humans}</span>`;
+                    }},
+                { data: 'created_at', name: 'created_at', title: '<i class="fa-solid fa-pen"></i>', className: 'text-center fs-sm',
+                    render: function(data, type, row, params) {
+                        return `<span title="${row.created_at}">${row.created_at_for_humans}</span>`;
+                    }},
+                { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
+                    render: function (data, type, row, params) {
+                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${row.active ? 'bg-success' : 'bg-danger' }"></div>`;
+                }},
+                // <th className="text-center"><i className="fa-solid fa-eye"></i></th>
+                // <th className="text-center"><i className="fa-solid fa-thumbs-up"></i></th>
+                // <th className="text-center"><i className="fa-solid fa-upload"></i></th>
+                // <th className="text-center"><i className="fa-solid fa-pen"></i></th>
+                // <th>Active</th>
+                // {"data": "commandes_pro_id", "name": "commandes_pro_id", "visible": false,className: 'noVis',}, // Id
+                // {"data": "contact_tel", "name": "contact_tel", title: 'Tel', searchName: 'contact_tel', className: 'text-nowrap'}, // Tel
+                // {
+                //     "data": "date_livraison_souhaitee",
+                //     "name": "date_livraison_souhaitee",
+                //     title: 'Livraison',
+                //     searchName: 'date_livraison_souhaitee',
+                //     type: 'date',
+                //     mRender: function (data) {
+                //         return $.format.date(data, 'dd/MM/yyyy HH:mm')
+                //     }
+                // },
+
+            ]
+        };
+        configDT(params);
+    }
+    if ($('#tags').length) {
+        let params = {
+            id: '#tags',
+            method: 'POST',
+            url: '/api/tags',
+            columns: [
+                { data: 'id', name: 'id', title: 'Actions', className: 'text-center',
+                    render: function (data, type, row, params) {
+                        return `
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
+                                <a href="/tags/${row.slug}" target="_blank" class="link-dark">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
+                                <a href="/admin/tags/edit/${row.slug}" target="_blank" class="link-dark">
+                                    <i class="fa fa-fw fa-pencil-alt"></i>
+                                </a>
+                            </button>
+                        </div>
+                    `;
+                }},
+                { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
+                { data: 'name', name: 'name', title: 'Name', className: 'fw-semibold fs-sm'},
+                { data: 'slug', name: 'slug', title: 'Slug', className: 'fw-semibold fs-sm'},
+                { data: 'color', name: 'color', title: 'Color', className: 'fw-semibold fs-sm',
+                    render: function(data, type, row, params) {
+                        return `<div class="item item-tiny item-circle mx-auto mb-3"
+                             style="background-color: ${row.color}"></div>`;
+                    }
+                },
+                { data: 'posts_count', name: 'posts_count', title: 'Posts', className: 'fw-semibold fs-sm'},
+                { data: 'created_at', name: 'created_at', title: '<i class="fa-solid fa-pen"></i>', className: 'text-center fs-sm',
+                    render: function(data, type, row, params) {
+                        return `<span title="${row.created_at}">${row.created_at_for_humans}</span>`;
+                }},
+                { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
+                    render: function (data, type, row, params) {
+                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${row.active ? 'bg-success' : 'bg-danger' }"></div>`;
+                }},
+            ]
+        };
+        configDT(params);
+    }
+}
+
+function configDT(params) {
+    let table = new DataTable(params.id, {
+        language: {
+            select: {
+                style: 'single',
+                info: false
+            },
+            // sWrapper: "dataTables_wrapper dt-bootstrap5",
+            // sFilterInput: "form-control form-control-sm",
+            // sLengthSelect: "form-select form-select-sm",
+            lengthMenu: "_MENU_",
+            search: "_INPUT_",
+            searchPlaceholder: "Search..",
+            info: "Page <strong>_PAGE_</strong> of <strong>_PAGES_</strong>",
+            paginate: {
+                first: '<i class="fa fa-angle-double-left"></i>',
+                previous: '<i class="fa fa-angle-left"></i>',
+                next: '<i class="fa fa-angle-right"></i>',
+                last: '<i class="fa fa-angle-double-right"></i>'
+            },
+            pagingType: "full_numbers",
+            pageLength: 5,
+        },
+        searching: true,
+        responsive: true,
+        pagingType: 'full_numbers', //'full',
+        // autoWidth: true,
+        processing: true,
+        serverSide: true,
+        "ajax": {
+            type: params.method,
+            url: params.url,
+        },
+        columns: params.columns,
+    });
+    $('.btn-refresh').on('click', function (e) {
+        table.ajax.reload(null, false);
+    });
+}
 
 
-export { initLaraberg, initSelect2, initGallery, initImageCropper, initSyntaxHighlighting };
+export { initLaraberg, initSelect2, initGallery, initImageCropper, initSyntaxHighlighting, initDatatable };

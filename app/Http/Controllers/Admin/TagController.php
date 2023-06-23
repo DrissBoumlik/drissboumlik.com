@@ -14,9 +14,7 @@ class TagController extends Controller
     {
         $data = new \stdClass();
         $data->title = 'Tags | Admin Panel';
-        $tags = Tag::withTrashed()->withCount('posts')->orderBy('created_at', 'desc')->get();
-        $tags = (new TagCollection($tags))->resolve();
-        return view('admin.blog.tags.index', ['data' => $data, 'tags' => $tags]);
+        return view('admin.blog.tags.index', ['data' => $data]);
     }
 
     public function create(Request $request)

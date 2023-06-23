@@ -17,10 +17,8 @@ class PostController extends Controller
     {
         $data = new \stdClass();
         $data->title = 'Posts | Admin Panel';
-        $posts = Post::withTrashed()->orderBy('created_at', 'desc')->get();
-        $posts = (new PostCollection($posts))->resolve();
 
-        return view('admin.blog.posts.index', ['data' => $data, 'posts' => $posts]);
+        return view('admin.blog.posts.index', ['data' => $data]);
     }
 
     public function create(Request $request)

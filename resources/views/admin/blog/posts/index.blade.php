@@ -21,7 +21,7 @@
     <script src="{{ asset('/template/assets/js/plugins/datatables-buttons/buttons.print.min.js') }}"></script>
     <script src="{{ asset('/template/assets/js/plugins/datatables-buttons/buttons.html5.min.js') }}"></script>
     <script>
-        One.onLoad((()=>class{static initDataTables(){jQuery.extend(jQuery.fn.DataTable.ext.classes,{sWrapper:"dataTables_wrapper dt-bootstrap5",sFilterInput:"form-control form-control-sm",sLengthSelect:"form-select form-select-sm"}),jQuery.extend(!0,jQuery.fn.DataTable.defaults,{language:{lengthMenu:"_MENU_",search:"_INPUT_",searchPlaceholder:"Search..",info:"Page <strong>_PAGE_</strong> of <strong>_PAGES_</strong>",paginate:{first:'<i class="fa fa-angle-double-left"></i>',previous:'<i class="fa fa-angle-left"></i>',next:'<i class="fa fa-angle-right"></i>',last:'<i class="fa fa-angle-double-right"></i>'}}}),jQuery.extend(!0,jQuery.fn.DataTable.Buttons.defaults,{dom:{button:{className:"btn btn-sm btn-primary"}}}),jQuery(".js-dataTable-full").DataTable({pageLength:10,lengthMenu:[[5,10,15,20],[5,10,15,20]],autoWidth:!1}),jQuery(".js-dataTable-full-pagination").DataTable({pagingType:"full_numbers",pageLength:10,lengthMenu:[[5,10,15,20],[5,10,15,20]],autoWidth:!1}),jQuery(".js-dataTable-simple").DataTable({pageLength:10,lengthMenu:!1,searching:!1,autoWidth:!1,dom:"<'row'<'col-sm-12'tr>><'row'<'col-sm-6'i><'col-sm-6'p>>"}),jQuery(".js-dataTable-buttons").DataTable({pageLength:10,lengthMenu:[[5,10,15,20],[5,10,15,20]],autoWidth:!1,buttons:["copy","csv","excel","pdf","print"],dom:"<'row'<'col-sm-12'<'text-center bg-body-light py-2 mb-2'B>>><'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>"}),jQuery(".js-dataTable-responsive").DataTable({pagingType:"full_numbers",pageLength:10,lengthMenu:[[5,10,15,20],[5,10,15,20]],autoWidth:!1,responsive:!0})}static init(){this.initDataTables()}}.init()));
+        // One.onLoad((()=>class{static initDataTables(){jQuery.extend(jQuery.fn.DataTable.ext.classes,{sWrapper:"dataTables_wrapper dt-bootstrap5",sFilterInput:"form-control form-control-sm",sLengthSelect:"form-select form-select-sm"}),jQuery.extend(!0,jQuery.fn.DataTable.defaults,{language:{lengthMenu:"_MENU_",search:"_INPUT_",searchPlaceholder:"Search..",info:"Page <strong>_PAGE_</strong> of <strong>_PAGES_</strong>",paginate:{first:'<i class="fa fa-angle-double-left"></i>',previous:'<i class="fa fa-angle-left"></i>',next:'<i class="fa fa-angle-right"></i>',last:'<i class="fa fa-angle-double-right"></i>'}}}),jQuery.extend(!0,jQuery.fn.DataTable.Buttons.defaults,{dom:{button:{className:"btn btn-sm btn-primary"}}}),jQuery(".js-dataTable-full").DataTable({pageLength:10,lengthMenu:[[5,10,15,20],[5,10,15,20]],autoWidth:!1}),jQuery(".js-dataTable-full-pagination").DataTable({pagingType:"full_numbers",pageLength:10,lengthMenu:[[5,10,15,20],[5,10,15,20]],autoWidth:!1}),jQuery(".js-dataTable-simple").DataTable({pageLength:10,lengthMenu:!1,searching:!1,autoWidth:!1,dom:"<'row'<'col-sm-12'tr>><'row'<'col-sm-6'i><'col-sm-6'p>>"}),jQuery(".js-dataTable-buttons").DataTable({pageLength:10,lengthMenu:[[5,10,15,20],[5,10,15,20]],autoWidth:!1,buttons:["copy","csv","excel","pdf","print"],dom:"<'row'<'col-sm-12'<'text-center bg-body-light py-2 mb-2'B>>><'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>"}),jQuery(".js-dataTable-responsive").DataTable({pagingType:"full_numbers",pageLength:10,lengthMenu:[[5,10,15,20],[5,10,15,20]],autoWidth:!1,responsive:!0})}static init(){this.initDataTables()}}.init()));
     </script>
 @endsection
 
@@ -55,7 +55,10 @@
         <!-- Dynamic Table Responsive -->
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <div class="block-content p-0 d-flex justify-content-end">
+                <div class="block-content p-0 d-flex justify-content-between">
+                    <button class="btn-refresh btn btn-outline-info">
+                        <i class="fa fa-fw fa-refresh me-1"></i> Refresh
+                    </button>
                     <a href="/admin/posts/create" class="btn btn-success">
                         <i class="fa fa-fw fa-plus me-1"></i> New Post
                     </a>
@@ -63,51 +66,7 @@
             </div>
             <div class="block-content block-content-full">
                 <!-- DataTables init on table by adding .js-dataTable-responsive class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
-                <table class="table table-bordered table-striped table-vcenter js-dataTable-responsive">
-                    <thead>
-                    <tr>
-                        <th class="text-center">Actions</th>
-                        <th class="text-center">ID</th>
-                        <th>Title</th>
-                        <th>Status</th>
-                        <th>Featured</th>
-                        <th class="text-center"><i class="fa-solid fa-eye"></i></th>
-                        <th class="text-center"><i class="fa-solid fa-thumbs-up"></i></th>
-                        <th class="text-center"><i class="fa-solid fa-upload"></i></th>
-                        <th class="text-center"><i class="fa-solid fa-pen"></i></th>
-                        <th>Active</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($posts as $post)
-                        <tr>
-                            <td class="text-center fs-sm">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
-                                        <a href="/blog/{{ $post->slug }}" target="_blank" class="link-dark">
-                                            <i class="fa fa-fw fa-eye"></i>
-                                        </a>
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
-                                        <a href="/admin/posts/edit/{{ $post->slug }}" target="_blank" class="link-dark">
-                                            <i class="fa fa-fw fa-pencil-alt"></i>
-                                        </a>
-                                    </button>
-                                </div>
-                            </td>
-                            <td class="text-center fs-sm">{{ $post->id }}</td>
-                            <td class="fw-semibold fs-sm"><span data-bs-toggle="tooltip" title="{{ $post->title }}">{{ $post->short_title }}</span></td>
-                            <td><span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill {{ $post->status->class }}">{{ $post->status->text }}</span></td>
-                            <td class="fs-sm"><div class="item item-tiny item-circle mx-auto mb-3 {{ $post->featured ? 'bg-success' : 'bg-danger' }}"></div></td>
-                            <td class="fs-sm">{{ $post->views }}</td>
-                            <td class="fs-sm">{{ $post->likes }}</td>
-                            <td class="fs-sm"><span title="{{ $post->published_at }}">{{ $post->published_at_for_humans }}</span></td>
-                            <td class="fs-sm"><span title="{{ $post->created_at }}">{{ $post->created_at_for_humans }}</span></td>
-                            <td class="fs-sm"><div class="item item-tiny item-circle mx-auto mb-3 {{ $post->active ? 'bg-success' : 'bg-danger' }}"></div></td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <table id="posts" class="posts table table-bordered table-striped table-vcenter js-dataTable-responsive"></table>
             </div>
         </div>
         <!-- Dynamic Table Responsive -->
