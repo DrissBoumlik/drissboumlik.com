@@ -92,6 +92,11 @@ function setCookie(name, value) {
   var expires = "expires=" + d.toUTCString();
   document.cookie = name + "=" + value + ";" + expires + ";path=/";
 }
+function getCookie(name) {
+  var value = "; ".concat(document.cookie);
+  var parts = value.split("; ".concat(name, "="));
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
 function initParticlesJS() {
   if ($('#particles-js').length) {
     // setTimeout(() => {
@@ -239,30 +244,39 @@ function initEvents() {
       var _this = $('.like-post');
       var post = $(this).data('post');
       var liked_posts = JSON.parse(localStorage.getItem('liked-posts'));
+      var url = "/blog/like/".concat(post.slug);
+      var unlike = 0;
       if (liked_posts && liked_posts.hasOwnProperty(post.slug) && liked_posts[post.slug].liked) {
-        var options = {
-          type: 'warning',
-          icon: 'fa fa-fw fa-circle-exclamation me-1',
-          from: 'bottom',
-          message: 'Already liked!',
-          allow_dismiss: true,
-          showProgressbar: true,
-          delay: 10000
-        };
-        One.helpers('jq-notify', options);
-        // get_alert_box({class : 'alert-warning', message : 'Already liked !!'})
-        return;
+        unlike = 1;
+        url += "/".concat(unlike);
+        // let options = {
+        //     type: 'warning',
+        //     icon: 'fa fa-fw fa-circle-exclamation me-1', from: 'bottom', message: 'Already liked!',
+        //     allow_dismiss: true, showProgressbar: true, delay: 10000,
+        // }
+        // One.helpers('jq-notify', options);
+        // // get_alert_box({class : 'alert-warning', message : 'Already liked !!'})
+        // return
       }
+
       $.ajax({
         method: 'POST',
-        url: '/blog/like/' + post.slug,
+        url: url,
         success: function success(response) {
-          localStorage.setItem('liked-posts', JSON.stringify(_defineProperty({}, response.post.slug, {
-            viewed: true,
-            liked: true
-          })));
+          if (unlike) {
+            localStorage.setItem('liked-posts', JSON.stringify(_defineProperty({}, response.post.slug, {
+              viewed: true,
+              liked: false
+            })));
+            _this.addClass('btn-alt-secondary').removeClass('btn-alt-primary');
+          } else {
+            localStorage.setItem('liked-posts', JSON.stringify(_defineProperty({}, response.post.slug, {
+              viewed: true,
+              liked: true
+            })));
+            _this.removeClass('btn-alt-secondary').addClass('btn-alt-primary');
+          }
           $('.post-likes-count').text("".concat(response.post.likes, " Likes"));
-          _this.removeClass('btn-alt-secondary').addClass('btn-alt-primary');
         },
         error: function error(jqXHR, textStatus, errorThrown) {
           console.log(jqXHR, textStatus, errorThrown);

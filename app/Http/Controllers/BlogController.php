@@ -50,10 +50,10 @@ class BlogController extends Controller
         return view('pages.blog.posts.show', ['data' => $data, 'post' => $post, 'related_posts' => $related_posts]);
     }
 
-    public function likePost(Request $request, $slug)
+    public function likePost(Request $request, $slug, $unlike = null)
     {
         $post = Post::where('slug', $slug)->first();
-        $post->increment('likes', 1);
+        $post->increment('likes', (bool) $unlike ? -1 : 1);
         return ['post' => $post];
     }
 

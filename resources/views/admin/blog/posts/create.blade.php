@@ -43,7 +43,7 @@
     <div class="content">
         <div class="row items-push">
             <div class="block-content">
-                <form action="/admin/posts" method="POST" class="" enctype="multipart/form-data">
+                <form action="/admin/posts" method="POST" class="" enctype="multipart/form-data" id="create-post">
                     @csrf
                     <div class="row items-push">
                         <div class="col-md-8">
@@ -155,7 +155,7 @@
                         <div class="col-md-4">
                             <div class="mb-4">
                                 <label class="form-label" for="tags">Tags</label>
-                                <select class="js-select2 form-select" id="tags"
+                                <select class="js-select2 form-select" id="tags-list"
                                     name="tags[]" style="width: 100%;" data-placeholder="Choose many.."
                                     multiple>
                                     <option></option>

@@ -59,6 +59,12 @@ function setCookie(name, value) {
     document.cookie = name + "=" + value + ";" + expires + ";path=/";
 }
 
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
 function initParticlesJS() {
     if ($('#particles-js').length) {
         // setTimeout(() => {
@@ -226,24 +232,33 @@ function initEvents() {
             let _this = $('.like-post');
             let post = $(this).data('post');
             let liked_posts = JSON.parse(localStorage.getItem('liked-posts'));
+            let url =  `/blog/like/${post.slug}`;
+            let unlike = 0;
             if (liked_posts && liked_posts.hasOwnProperty(post.slug) && liked_posts[post.slug].liked) {
-                let options = {
-                    type: 'warning',
-                    icon: 'fa fa-fw fa-circle-exclamation me-1', from: 'bottom', message: 'Already liked!',
-                    allow_dismiss: true, showProgressbar: true, delay: 10000,
-                }
-                One.helpers('jq-notify', options);
-                // get_alert_box({class : 'alert-warning', message : 'Already liked !!'})
-                return
+                unlike = 1;
+                url += `/${unlike}`;
+                // let options = {
+                //     type: 'warning',
+                //     icon: 'fa fa-fw fa-circle-exclamation me-1', from: 'bottom', message: 'Already liked!',
+                //     allow_dismiss: true, showProgressbar: true, delay: 10000,
+                // }
+                // One.helpers('jq-notify', options);
+                // // get_alert_box({class : 'alert-warning', message : 'Already liked !!'})
+                // return
             }
 
             $.ajax({
                 method: 'POST',
-                url: '/blog/like/' + post.slug,
+                url: url,
                 success: function (response) {
-                    localStorage.setItem('liked-posts', JSON.stringify({[response.post.slug]: {viewed : true, liked: true}}))
+                    if (unlike) {
+                        localStorage.setItem('liked-posts', JSON.stringify({[response.post.slug]: {viewed : true, liked: false}}))
+                        _this.addClass('btn-alt-secondary').removeClass('btn-alt-primary');
+                    } else {
+                        localStorage.setItem('liked-posts', JSON.stringify({[response.post.slug]: {viewed : true, liked: true}}));
+                        _this.removeClass('btn-alt-secondary').addClass('btn-alt-primary');
+                    }
                     $('.post-likes-count').text(`${response.post.likes} Likes`);
-                    _this.removeClass('btn-alt-secondary').addClass('btn-alt-primary');
                 },
                 error: function (jqXHR, textStatus, errorThrown){
                     console.log(jqXHR, textStatus, errorThrown);
