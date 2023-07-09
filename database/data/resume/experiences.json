@@ -13,6 +13,16 @@
             "techs" : "<p><span class='underline'>Technical environment :</span><br>Bootstrap, jQuery, Laravel, Php, Git, Svn, PhpStorm, DataGrip, Xampp, Visual Studio Code, Trello, Slack, GitLab.</p>"
         },
         {
+            "classList" : "community teacode",
+            "company" : "teacode",
+            "job" : "Founder",
+            "period" : "Dec 2020",
+            "start_date" : "2020-12",
+            "end_date" : null,
+            "content" : "<p>TeaCode is a community where Moroccan developers help each other and evolve in an environment conducive to learning. <a href='https://teacode.ma' rel='noopener' target='_blank'>Link <i class='fa-solid fa-up-right-from-square'></i></a></p>",
+            "techs" : null
+        },
+        {
             "classList" : "teaching udemy",
             "company" : "Udemy",
             "job" : "Teacher",
