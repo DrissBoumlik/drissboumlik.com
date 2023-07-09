@@ -24,12 +24,25 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        \Str::macro('readDuration', function(...$text) {
+            $totalWords = str_word_count(implode(" ", $text));
+            $minutesToRead = round($totalWords / 200);
+
+            return (int)max(1, $minutesToRead);
+        });
+
         view()->composer('*', function ($view) {
             $mode = \Cookie::get('mode');
+//            dump($mode);
             if ($mode != 'dark' && $mode != 'light') {
                 $mode = 'dark';
             }
-            $view->with('mode', $mode);
+            $theme = \Cookie::get('theme');
+//            dd($theme);
+            if ($theme != 'dark-mode' && $theme != 'light-mode') {
+                $theme = 'light-mode';
+            }
+            $view->with(['mode' => $mode, 'theme' => $theme]);
         });
 
         Paginator::useBootstrap();

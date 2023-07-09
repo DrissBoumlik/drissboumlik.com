@@ -1,57 +1,110 @@
-@extends('app')
+@extends('admin.template.frontend')
+
+@section('css')
+    <link href="{{ asset('/template/assets/js/plugins/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="/template/assets/js/plugins/highlightjs/styles/atom-one-dark.css">
+@endsection
+@section('js')
+    <script src="{{ asset('/template/assets/js/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+    <script src="/template/assets/js/plugins/highlightjs/highlight.pack.min.js"></script>
+@endsection
 
 @section('content')
-    <div class="container-fluid p-0">
-        @include('pages.partials.about')
-        <div class="posts">
-            <div class="section py-5">
-                <div class="container">
-{{--                    <div class="row section-header d-none">--}}
-{{--                        <div class="col-md-10 offset-md-1 col-12--}}
-{{--                                d-flex flex-column align-items-center justify-content-center">--}}
-{{--                            <hr class="section-title-line">--}}
-{{--                            <h1 class="section-title">Post</h1>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-                    <div class="row">
-                        <div class="col-12 col-md-8 offset-md-2 col-sm-10 offset-sm-1
-                                        col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mb-4 post">
-                            <div class="post-image mb-3">
-                                <img src="/storage/{{ $data->post->image }}" alt=""
-                                        class="w-100">
-                            </div>
-                            <div class="post-title mb-3">
-                                <h2 class="font-weight-bolder">{{ $data->post->title }}</h2>
-                            </div>
-                            <div class="post-meta-data">
-                                <div class="post-date">
-                                    <i class="fa-solid fa-clock"></i>
-                                    {{ $data->post->updated_at->format('j F Y') }}
-                                </div>
-                                @if ($data->post->meta_keywords)
-                                @php $tags = explode(' ', $data->post->meta_keywords) @endphp
-                                    <div class="post-tags mb-3">
-                                        @foreach ($tags as $tag)
-                                            <div class="post-tag d-inline-block me-2">
-                                                <i class="fa-solid fa-tag fs-small"></i>
-                                                <a href="/tags/{{ $tag }}">
-                                                    <span>{{ $tag }}</span>
-                                                </a>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                @endif
-                            </div>
-                            <div class="post-content mt-3">
-                                {!! $data->post->body !!}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+    <!-- Hero Content -->
+    <div class="bg-image" style="background-image: url('/{{ $post->cover }}');">
+        <div class="bg-primary-dark-op">
+            <div class="content content-full text-center pt-7 pb-6">
+                <h1 class="text-white mb-2">{{ $post->title }}</h1>
+{{--                <h2 class="h4 fw-normal text-white-75 mb-0">Experience life to its fullest.</h2>--}}
             </div>
         </div>
     </div>
+    <!-- END Hero Content -->
 
+    <!-- Page Content -->
+    <div class="bg-body-extra-light">
+        <div class="content content-boxed">
+        <div class="text-center fs-sm push">
+            <span class="d-inline-block py-2 px-4 bg-body fw-medium rounded">
+                <span>Posted {{ $post->published_at }} · </span>
+                <span>{{ $post->read_duration }} min read</span>
+                @auth
+                     ·
+                    <a href="/admin/posts/edit/{{ $post->slug }}" target="_blank" class="text-secondary text-decoration-underline">
+                        <button type="button" class="btn btn-sm btn-secondary py-0">
+                            Edit <i class="fa fa-fw fa-pencil"></i>
+                        </button>
+                    </a>
+                @endauth
+            </span>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-10 col-md-8">
+            <!-- Story -->
+            <article class="story">
+                <div class="post-content">
+                    {!! $post->content !!}
+                </div>
+                <div class="tags my-4">
+                    Tags :
+                    @foreach ($post->tags as $tag)
+                        <a href="/tags/{{ $tag->slug }}">
+                        <span style="background-color: {{ $tag->color }}"
+                              class="fs-sm fw-semibold d-inline-block py-1 px-3 mb-2
+                                        rounded-pill text-white">{{ $tag->name }}</span>
+                        </a>
+                    @endforeach
+                </div>
+            </article>
+            <!-- END Story -->
 
-    @include('layout.footer')
+            <!-- Actions -->
+            <div class="mt-5 d-flex justify-content-between push">
+                <div class="btn-group">
+                    <button class="btn btn-alt-secondary like-post" data-post="{{ json_encode($post) }}">
+                        <span class="post-likes-count">{{ $post->likes }} Likes</span><i class="fa fa-heart ms-1"></i>
+                    </button>
+                </div>
+                <div class="btn-group">
+                    <label class="btn btn-alt-secondary">
+                        {{ $post->views }} Views <i class="fa fa-eye ms-1"></i>
+                    </label>
+                </div>
+            </div>
+            <!-- END Actions -->
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- END Page Content -->
+
+    @if($related_posts && count($related_posts))
+    <!-- More Stories -->
+    <div class="content content-boxed">
+        <div class="text-center mt-5">
+            <h3 class="fw-bold mb-2 text-capitalize">related posts</h3>
+        </div>
+        <!-- Section Content -->
+        <div class="row py-5">
+            @foreach($related_posts as $related_post)
+            <div class="col-md-4 col-sm-6">
+                <a class="block block-rounded block-link-pop overflow-hidden" href="/blog/{{ $related_post->slug }}">
+                <div class="bg-image post-cover" style="background-image: url('/{{ $related_post->cover }}');">
+                    <div class="block-content bg-primary-dark-op h-100">
+                    <h4 class="text-white mt-5 push">{{ $related_post->title }}</h4>
+                    </div>
+                </div>
+                <div class="block-content block-content-full fs-sm fw-medium">
+                    Posted {{ $related_post->published_at }} · <span>{{ $post->read_duration }} min</span>
+                </div>
+                </a>
+            </div>
+            @endforeach
+        </div>
+        <!-- END Section Content -->
+    </div>
+    <!-- END More Stories -->
+    @endif
+
 @endsection
