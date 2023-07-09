@@ -1,0 +1,80 @@
+@extends('admin.template.backend')
+
+
+@section('content')
+    <!-- Hero -->
+    <div class="bg-body-light">
+        <div class="content content-full">
+            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
+                <div class="flex-grow-1">
+                    <h1 class="h3 fw-bold mb-2">
+                        Tag Edit
+                    </h1>
+                </div>
+                <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-alt">
+                        <li class="breadcrumb-item">
+                            <a class="link-fx" href="javascript:void(0)">Tags</a>
+                        </li>
+                        <li class="breadcrumb-item" aria-current="page">
+                            Edit
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- END Hero -->
+
+    <!-- Page Content -->
+    <div class="content">
+        <div class="row items-push">
+            <div class="block-content">
+                <form action="/admin/tags/{{ $tag->slug }}" method="POST" class="" enctype="multipart/form-data">
+                    @method('put')
+                    @csrf
+                    <div class="row items-push">
+                        <div class="col-xxl-8 offset-xxl-2">
+                            <div class="mb-4">
+                                <label class="form-label" for="tag-name">Name</label>
+                                <input type="text" class="form-control input-to-slugify" id="tag-name" name="name"
+                                    placeholder="Tag Name" value="{{ $tag->name }}">
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="tag-slug">Slug</label>
+                                <input type="text" class="form-control input-slug" id="tag-slug" name="slug"
+                                    placeholder="Tag slug" value="{{ $tag->slug }}">
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="description">Description</label>
+                                <textarea class="form-control" id="description" name="description" rows="4" placeholder="Tag description..">{{ $tag->description }}</textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="tag-color">Color</label>
+                                <input type="color" class="form-control" id="tag-color" name="color"
+                                       placeholder="Tag color" value="{{ $tag->color }}">
+                            </div>
+                            <div class="mb-4">
+                                <div class="form-check form-switch form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="active" name="active" {{ $tag->active ? 'checked' : '' }} >
+                                    <label class="form-check-label" for="active">Active</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-8 offset-xxl-2">
+                            <button type="submit" class="btn btn-success me-1 mb-3">
+                                <i class="fa fa-fw fa-edit me-1"></i> Update
+                            </button>
+                            <button type="submit" class="btn btn-danger me-1 mb-3" name="destroy">
+                                <i class="fa fa-fw fa-trash me-1"></i> Hard Delete
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- END Page Content -->
+
+    @include('admin.addons.alert-box')
+@endsection
