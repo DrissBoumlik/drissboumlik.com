@@ -8,15 +8,15 @@ if (!function_exists('getLinks')) {
             'facebook' => 'https://facebook.com/drissboumlik/',
             'instagram' => 'https://instagram.com/drissboumlik/',
             'twitter' => 'https://twitter.com/drissboumlik/',
-            'linkedin' => 'https://www.linkedin.com/in/drissboumlik/',
-            'github' => 'https://www.github.com/drissboumlik/',
+            'linkedin' => 'https://linkedin.com/in/drissboumlik/',
+            'github' => 'https://github.com/drissboumlik/',
             'youtube' => 'https://youtube.com/channel/UCss61diIS1kW_TRsHMMwtwQ',
             'community' => 'https://teacode.ma',
             'cv' => '/storage/cv/DrissBoumlik-en.pdf',
 
             // Contact
             'meet' => 'https://calendly.com/drissboumlik/30min/',
-            'email' => 'mailto:contact@drissboumlik.com?subject=Resume : ',
+            'email' => 'mailto:hi@drissboumlik.com?subject=Resume : ',
 
             // Brand
             'site' => 'https://teacode.ma/'
