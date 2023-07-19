@@ -26,8 +26,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('cache.headers:public;max_age=15811200;etag')->group(function () {
-Route::group([], function () {
+// Route::middleware(['cache.headers:public;max_age=15811200;etag', 'location'])->group(function () {
+Route::middleware('location')->group(function () {
 
     Route::group(['prefix' => 'admin'], function () {
 
