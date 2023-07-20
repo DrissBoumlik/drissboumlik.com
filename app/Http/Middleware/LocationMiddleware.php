@@ -25,6 +25,8 @@ class LocationMiddleware
             $visitedbefore = \App\Models\Visitor::where('ip', $currentUserInfo->ip)->first();
             if (!$visitedbefore) {
                 \App\Models\Visitor::create((array) $currentUserInfo);
+            } else {
+                $visitedbefore->increment('visits_count');
             }
         }
         return $next($request);
