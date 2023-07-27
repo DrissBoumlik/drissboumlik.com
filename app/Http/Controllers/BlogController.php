@@ -35,9 +35,6 @@ class BlogController extends Controller
         $related_posts = (new PostCollection($related_posts))->resolve();
 
         $post = (object)(new PostResource($post))->resolve();
-        $data->socialLinks = getSocialLinks();
-        $data->headerMenu = getHeaderMenu();
-        $data->footerMenu = getFooterMenu();
         $data->title = 'Blog | ' . $post->title;
 
         return view('pages.blog.posts.show', ['data' => $data, 'post' => $post, 'related_posts' => $related_posts]);
