@@ -17,7 +17,7 @@ class BlogController extends Controller
 
     public function getPosts(Request $request)
     {
-        $result = $this->preparePosts(Post::with('author'), 'Blog | Latest Articles', 'Blog | Latest Articles');
+        $result = $this->preparePosts(Post::with('author'), 'Blog | Latest Articles', 'Latest Articles');
 
         return view('pages.blog.posts.index', $result);
     }
@@ -58,7 +58,7 @@ class BlogController extends Controller
             abort(404);
         }
 
-        $result = $this->preparePosts($tag->posts()->with('author'), 'Blog | Tags | ' . $tag->name, 'Blog | Posts with tag : ' . $tag->name);
+        $result = $this->preparePosts($tag->posts()->with('author'), 'Blog | Tags | ' . $tag->name, 'Tags : ' . $tag->name);
 
         return view('pages.blog.posts.index', $result);
     }

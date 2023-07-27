@@ -3,10 +3,12 @@
 
 @section('page-content')
     <div class="container-fluid p-0">
-{{--        @include('pages.partials.about')--}}
         <div class="posts">
             <div class="section py-5">
                 <div class="container">
+                    <div class="header mb-5">
+                        <h3 class="text-center">{{ $data->headline }}</h3>
+                    </div>
                     <div class="row">
                         @foreach ($posts as $post)
                             <div class="col-12 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2 mb-4">
