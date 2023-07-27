@@ -92,7 +92,7 @@ Route::middleware('location')->group(function () {
     Route::get('resume', [PageController::class, 'resume']);
 
     // External
-    // Route::get('/{link}', [GotoController::class, 'goto']);
+     Route::get('/{link}', [\App\Http\Controllers\GotoController::class, 'goto']);
 
     // Route::any('/{var}', [HomeController::class, 'home'])->where('var', '.*');
 });
