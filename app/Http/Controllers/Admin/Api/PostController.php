@@ -11,7 +11,7 @@ class PostController extends Controller
 {
     public function index(Request $request)
     {
-        $posts = Post::withTrashed()->orderBy('created_at', 'desc')->get();
+        $posts = Post::withTrashed()->withCount('tags')->orderBy('created_at', 'desc')->get();
         $posts = (new PostCollection($posts))->resolve();
         $posts = \DataTables::of($posts)->toJson();
         return $posts;

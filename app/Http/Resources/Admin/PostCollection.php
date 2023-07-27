@@ -35,6 +35,7 @@ class PostCollection extends ResourceCollection
                 'created_at' => $item->created_at,
                 'created_at_for_humans' => $item->created_at->diffForHumans(),
                 'tags' => $item->tags->pluck('name')->toArray(), // $item->tags,
+                'tags_count' => $item->tags_count,
 //            'author' => $item->author,
                 'active' => $item->deleted_at == null,
             ];

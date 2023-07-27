@@ -1,81 +1,50 @@
-@extends('admin.template.frontend')
+@extends('layout.page-content')
 
 
-@section('content')
-    <!-- Hero Content -->
-    <div class="bg-image" style="background-image: url('/assets/img/blog/default.jfif');">
-        <div class="bg-primary-dark-op">
-            <div class="content content-full text-center pt-7 pb-6">
-                <h1 class="h2 text-white mb-2">
-                    {{ $data->headline }}
-                </h1>
-{{--                <h2 class="h4 fw-normal text-white-75 mb-0">--}}
-{{--                    Feel free to explore and read.--}}
-{{--                </h2>--}}
+@section('page-content')
+    <div class="container-fluid p-0">
+{{--        @include('pages.partials.about')--}}
+        <div class="posts">
+            <div class="section py-5">
+                <div class="container">
+                    <div class="row">
+                        @foreach ($posts as $post)
+                            <div class="col-12 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2 mb-4">
+                                <div class="post">
+                                    <div class="post-cover" style="background-image: url('/{{ $post->cover }}')"></div>
+                                    <div class="post-data">
+                                        <div class="post-title mb-1">
+                                            <a href="/blog/{{ $post->slug }}" class="text-dark text-decoration-none">
+                                                <h3 class="font-weight-bolder">{{ $post->title }}</h3>
+                                            </a>
+                                        </div>
+                                        <div class="post-meta-data">
+                                            <span title="{{ $post->published_at }}">Posted {{ $post->published_at_formatted }} · {{ $post->read_duration }} min</span>
+                                        </div>
+                                        <div class="post-content mt-2">
+                                            {!! $post->excerpt !!}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                        @if (!count($posts))
+                            <div class="col-12">
+                                <div class="message-wrapper d-flex justify-content-center align-items-center"
+                                     style="min-height: 300px">
+                                    <h3 class="text-uppercase">No posts found <i class="fa-solid fa-sad-cry"></i>!</h3>
+                                </div>
+                            </div>
+                        @endif
+                        <div class="col-12 col-md-8 offset-md-2
+                                    col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+                            <div class="pagination-wrapper justify-content-center">
+                                {{ $posts_data->onEachSide(5)->links() }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- END Hero Content -->
-
-    <!-- Page Content -->
-    <div class="content content-boxed">
-        <div class="row">
-            @forelse ($posts as $post)
-                <!-- Story -->
-                <div class="col-md-4 col-sm-6">
-                    <a class="block block-rounded block-link-pop overflow-hidden" href="/blog/{{ $post->slug }}">
-                        <div class="post-cover" style="background-image: url('/{{ $post->cover }}')">
-{{--                            <img class="img-fluid" src="/{{ $post->image }}" alt="">--}}
-                        </div>
-                        <div class="block-content">
-                            <h4 class="mb-1" title="{{ $post->title }}">{{ $post->short_title }}</h4>
-                            <p class="fs-sm fw-medium mb-2">
-                                Posted {{ $post->published_at }} · <span class="text-muted">{{ $post->read_duration }} min read</span>
-                            </p>
-{{--                            <p class="fs-sm text-muted">--}}
-{{--                                {!! $post->excerpt ?? \Str::limit($post->content, 20); !!}--}}
-{{--                            </p>--}}
-                        </div>
-                    </a>
-                </div>
-                <!-- END Story -->
-            @empty
-                <div class="col-md-6 offset-md-3">
-                    <p class="text-muted text-center">No posts found on this page!</p>
-                </div>
-            @endforelse
-        </div>
-        @if ($posts_data->lastPage > 1)
-            <!-- Pagination -->
-            <nav aria-label="Page navigation">
-                <ul class="pagination justify-content-center push">
-                    <li class="page-item">
-                        <a class="page-link" {{ $posts_data->currentPage == 1 ? "" : "href=?page=" . ($posts_data->currentPage - 1) }} aria-label="Next">
-                        <span aria-hidden="true">
-                            <i class="fa fa-angle-left"></i>
-                        </span>
-                            <span class="visually-hidden">Prev</span>
-                        </a>
-                    </li>
-                    @if ($posts_data->lastPage != 1)
-                        @for ($i = 1; $i <= $posts_data->lastPage; $i++)
-                            <li class="page-item {{ $posts_data->currentPage == $i ? 'active' : '' }}">
-                                <a class="page-link" {{ $posts_data->currentPage == $i ? '' : "href=?page=$i" }}>{{ $i }}</a>
-                            </li>
-                        @endfor
-                    @endif
-                    <li class="page-item">
-                        <a class="page-link" {{ $posts_data->currentPage == $posts_data->lastPage ? "" : "href=?page=" . ($posts_data->currentPage + 1) }} aria-label="Next">
-                        <span aria-hidden="true">
-                            <i class="fa fa-angle-right"></i>
-                        </span>
-                            <span class="visually-hidden">Next</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <!-- END Pagination -->
-        @endif
-    </div>
-    <!-- END Page Content -->
 @endsection

@@ -12,24 +12,14 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
-    private $perPage = 6;
+    private $perPage = 10;
 
 
     public function getPosts(Request $request)
     {
-        $data = new \stdClass();
-        $posts_data = (object) (new PostWithPaginationCollection(Post::with('author')
-                                                ->orderBy('created_at', 'desc')
-                                                ->paginate($this->perPage)))->resolve();
+        $result = $this->preparePosts(Post::with('author'), 'Blog | Latest Articles', 'Blog | Latest Articles');
 
-        $posts = $posts_data->data;
-        unset($posts_data->data);
-
-
-        $data->title = 'Blog | Latest Articles';
-        $data->headline = 'Blog | Latest Articles';
-
-        return view('pages.blog.posts.index', ['data' => $data, 'posts_data' => $posts_data, 'posts' => $posts]);
+        return view('pages.blog.posts.index', $result);
     }
 
     public function getPost(Request $request, $slug)
@@ -45,6 +35,9 @@ class BlogController extends Controller
         $related_posts = (new PostCollection($related_posts))->resolve();
 
         $post = (object)(new PostResource($post))->resolve();
+        $data->socialLinks = getSocialLinks();
+        $data->headerMenu = getHeaderMenu();
+        $data->footerMenu = getFooterMenu();
         $data->title = 'Blog | ' . $post->title;
 
         return view('pages.blog.posts.show', ['data' => $data, 'post' => $post, 'related_posts' => $related_posts]);
@@ -65,17 +58,9 @@ class BlogController extends Controller
             abort(404);
         }
 
-        $data = new \stdClass();
-        $data->title = 'Blog | Tags | ' . $tag->name;
-        $data->headline = 'Blog | Posts with tag : ' . $tag->name;
-        $posts_data = (object) (new PostWithPaginationCollection($tag->posts()->with('author')
-            ->orderBy('created_at', 'desc')
-            ->paginate($this->perPage)))->resolve();
+        $result = $this->preparePosts($tag->posts()->with('author'), 'Blog | Tags | ' . $tag->name, 'Blog | Posts with tag : ' . $tag->name);
 
-        $posts = $posts_data->data;
-        unset($posts_data->data);
-
-        return view('pages.blog.posts.index', ['data' => $data, 'posts_data' => $posts_data, 'posts' => $posts]);
+        return view('pages.blog.posts.index', $result);
     }
 
     public function getTags(Request $request)
@@ -93,5 +78,25 @@ class BlogController extends Controller
         $data->title = 'Blog | Tags';
 
         return view('pages.blog.tags.index', ['data' => $data, 'tags' => $tags]);
+    }
+
+    private function preparePosts($posts, $title, $headline)
+    {
+        $posts_data = (object) (new PostWithPaginationCollection($posts
+            ->orderBy('created_at', 'desc')
+            ->paginate($this->perPage)));
+
+        $posts = $posts_data->resolve();
+
+        $data = new \stdClass();
+        $data->title = $title;
+        $data->headline = $headline;
+
+        return [
+            'data' => $data,
+            'posts_data' => $posts_data,
+            'posts' => $posts
+        ];
+
     }
 }

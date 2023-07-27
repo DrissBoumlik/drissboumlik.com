@@ -3,9 +3,9 @@ body.dark-mode // background-color: $tc-blue-dark-3
     *
         color: $tc-white
 
-    .posts
-        border-top: 1px solid $tc-blue
-        background-color: $tc-blue-dark-4
+    //.posts
+        //border-top: 1px solid $tc-blue
+        //background-color: $tc-blue-dark-4
 
     .pagination-wrapper
         display: flex
@@ -22,16 +22,24 @@ body.dark-mode // background-color: $tc-blue-dark-3
                 color: $tc-blue
 
 
-    .post
-        .post-title h2, .btn-read-more a
-            color: $tc-grey-light
-    .post-form
-        background-color: $tc-blue-dark-3
-        .post-body-wrapper
-            svg
-                color: $tc-white
-            *
-                color: $tc-black-almost
+    .posts
+        .post
+            box-shadow: 0 1px 2px rgba($tc-blue-dark-2, 0.5), 0 1px 2px rgba($tc-blue-dark-2, 0.5)
+            .post-data
+                background-color: $tc-blue-dark-4
+                //*
+                    //color: $tc-black
+            &:hover
+                box-shadow: 0 0.5rem 2.5rem $tc-blue-dark-2
+            .post-title h2, .btn-read-more a
+                color: $tc-grey-light
+        .post-form
+            background-color: $tc-blue-dark-3
+            .post-body-wrapper
+                svg
+                    color: $tc-white
+                *
+                    color: $tc-black-almost
 
     .header-menu-wrapper .header-menu .header-menu-item
         &:after
@@ -106,3 +114,10 @@ body.dark-mode // background-color: $tc-blue-dark-3
 
     input.form-control::placeholder
         color: $tc-white
+
+
+    .not-found-container
+        .not-found-header
+            background-color: $tc-blue-dark-2
+        .not-found-body
+            background-color: $tc-blue-dark-4

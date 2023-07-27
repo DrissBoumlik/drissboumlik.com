@@ -1,18 +1,33 @@
 .posts
-    border-top: 1px solid $tc-grey
-    background-color: $tc-white
+    //border-top: 1px solid $tc-grey
+    //background-color: $tc-white
     .post
+        //background-color: $tc-grey-light-2
+        border: 1px solid $tc-grey
+        overflow: hidden
+        border-radius: 5px
+        box-shadow: 0 1px 2px rgba(214, 219, 226, 0.5), 0 1px 2px rgba(214, 219, 226, 0.5)
+        transition: transform 0.15s ease-out, opacity 0.15s ease-out, box-shadow 0.15s ease-out
+        &:hover
+            box-shadow: 0 0.5rem 2.5rem #d8dee6
+            transform: translateY(-2px)
         .post-title *
             color: $tc-blue-dark-1
-            font-size: 1.7rem
+            font-size: 1.25rem
         .post-tags a
             color: $tc-black
         .post-image img
             // border: 5px solid $tc-blue-dark-1
             border-radius: 5px
             filter: drop-shadow(2px 4px 6px $tc-blue-dark-3)
+        .post-cover
+            height: 150px
+            background-position: center
+            background-size: contain
+        .post-data
+            padding: 1.25rem
         .post-content
-            font-size: 18px
+            font-size: 1rem
             img
                 width: 100%
                 padding: 0
@@ -25,3 +40,16 @@
                     margin-bottom: 0
         .btn-read-more a
             color: $tc-black
+
+.post-page
+    .post
+        .post-title *
+            color: $tc-blue-dark-1
+        .width-100 img
+            width: 100%
+        p
+            margin-bottom: 1rem
+    .post-cover
+        height: 300px
+        background-size: cover
+        background-position: center center

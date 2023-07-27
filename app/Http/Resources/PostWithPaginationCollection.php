@@ -14,6 +14,7 @@ class PostWithPaginationCollection extends ResourceCollection
      */
     public function toArray($request)
     {
+        return PostResource::collection($this->resource);
         return [
             'data' => PostResource::collection($this->resource)->resolve(),
             'perPage' => $this->resource->perPage(),

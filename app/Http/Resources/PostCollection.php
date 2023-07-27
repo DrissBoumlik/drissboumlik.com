@@ -30,7 +30,7 @@ class PostCollection extends ResourceCollection
                 'likes' => $item->likes,
                 'views' => $item->views,
                 'published_at' => $item->published_at ? $item->published_at->diffForHumans() : '',
-                'tags' => $item->tags,
+                'tags' => $item->tags->pluck('name')->toArray(),
                 'author' => $item->author,
                 'read_duration' => \Str::readDuration($item->content),
             ];
