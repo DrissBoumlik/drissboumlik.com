@@ -20,6 +20,7 @@ class TagResource extends JsonResource
             "slug" => $this->slug,
             "description" => $this->description,
             "color" => $this->color,
+            "cover" => $this->cover,
             "created_at" => $this->created_at,
             'active' => $this->deleted_at == null,
             "posts_count" => $this->posts_count,
