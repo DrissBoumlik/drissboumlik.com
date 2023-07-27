@@ -1,46 +1,48 @@
-@extends('admin.template.frontend')
+@extends('layout.page-content')
 
 
-@section('content')
-    <!-- Hero Content -->
-    <div class="bg-image" style="background-image: url('/assets/img/blog/default.jfif');">
-        <div class="bg-primary-dark-op">
-            <div class="content content-full text-center pt-7 pb-6">
-                <h1 class="h2 text-white mb-2">
-                    The latest stories only for you.
-                </h1>
-                <h2 class="h4 fw-normal text-white-75 mb-0">
-                    Feel free to explore and read.
-                </h2>
+@section('page-content')
+    <div class="container-fluid p-0">
+        <div class="posts">
+            <div class="section py-5">
+                <div class="container">
+                    <div class="row">
+                        @foreach ($tags as $tag)
+                            <div class="col-12 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2 mb-4">
+                                <div class="post">
+                                    <div class="post-cover" style="background-image: url('/{{ $tag->cover }}')"></div>
+                                    <div class="post-data">
+                                        <div class="post-title mb-1">
+                                            <a href="/tags/{{ $tag->slug }}" class="text-dark text-decoration-none">
+                                                <h3 class="font-weight-bolder text-uppercase">{{ $tag->name }} ({{ $tag->posts_count }})</h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{--                <a href="/tags/{{ $tag->slug }}">--}}
+                            {{--                        <span style="background-color: {{ $tag->color }}"--}}
+                            {{--                              class="fs-sm fw-semibold d-inline-block py-1 px-3 mb-2--}}
+                            {{--                                        rounded-pill text-white">{{ $tag->name }} ({{ $tag->posts_count }})</span>--}}
+                            {{--                </a>--}}
+                        @endforeach
+                        @if (!count($tags))
+                            <div class="col-12">
+                                <div class="message-wrapper d-flex justify-content-center align-items-center"
+                                     style="min-height: 300px">
+                                    <h3 class="text-uppercase">No tags found <i class="fa-solid fa-sad-cry"></i>!</h3>
+                                </div>
+                            </div>
+                        @endif
+                        <div class="col-12 col-md-8 offset-md-2
+                                                    col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+                            <div class="pagination-wrapper justify-content-center">
+                                {{ $tags->onEachSide(5)->links() }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- END Hero Content -->
-
-    <!-- Page Content -->
-    <div class="content content-boxed">
-        <div class="tags">
-            @foreach ($tags as $tag)
-                <a href="/tags/{{ $tag->slug }}">
-                        <span style="background-color: {{ $tag->color }}"
-                              class="fs-sm fw-semibold d-inline-block py-1 px-3 mb-2
-                                        rounded-pill text-white">{{ $tag->name }} ({{ $tag->posts_count }})</span>
-                </a>
-            @endforeach
-        </div>
-        <!-- Pagination -->
-        <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center push">
-                @if ($data->tags_data['lastPage'] != 1)
-                    @for ($i = 1; $i <= $data->tags_data['lastPage']; $i++)
-                        <li class="page-item {{ $data->tags_data['currentPage'] == $i ? 'active' : '' }}">
-                            <a class="page-link" href="?page={{ $i }}">{{ $i }}</a>
-                        </li>
-                    @endfor
-                @endif
-            </ul>
-        </nav>
-        <!-- END Pagination -->
-    </div>
-    <!-- END Page Content -->
 @endsection
