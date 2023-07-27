@@ -35,7 +35,6 @@ class TagController extends Controller
 
     public function store(Request $request)
     {
-
         try {
             $data = [
                 "name" => $request->name,
@@ -43,6 +42,12 @@ class TagController extends Controller
                 "description" => $request->description,
                 "color" => $request->color,
             ];
+            $image_file = $request->file('cover');
+            if ($image_file) {
+                $file_ext = $image_file->getClientOriginalExtension();
+                $path = \Storage::disk('public')->putFileAs('blog/posts', $image_file, "$request->slug.$file_ext");
+                $data['cover'] = "storage/$path";
+            }
             $tag = Tag::create($data);
             return redirect("/admin/tags/edit/$tag->slug")->with(['response' => ['message' => 'Tag store successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
         } catch (\Throwable $e) {
@@ -65,6 +70,12 @@ class TagController extends Controller
                 "description" => $request->description,
                 "color" => $request->color,
             ];
+            $image_file = $request->file('cover');
+            if ($image_file) {
+                $file_ext = $image_file->getClientOriginalExtension();
+                $path = \Storage::disk('public')->putFileAs('blog/tags', $image_file, ($request->slug ?? $tag->slug) . ".$file_ext");
+                $data['cover'] = "storage/$path";
+            }
             $tag->update($data);
             if ($request->has('active')) {
                 $tag->restore();

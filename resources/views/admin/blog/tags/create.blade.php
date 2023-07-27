@@ -56,6 +56,13 @@
                                 <input type="color" class="form-control" id="tag-color" name="color"
                                        placeholder="Tag color">
                             </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="image">Image</label>
+                                <input type="file" id="image" name="cover" class="form-control" />
+                                <div class="mt-2">
+                                    <img id="image-preview" class="img-fluid" src="" alt="photo">
+                                </div>
+                            </div>
                         </div>
                         <div class="col-xxl-8 offset-xxl-2">
                             <button type="submit" class="btn btn-success me-1 mb-3">
