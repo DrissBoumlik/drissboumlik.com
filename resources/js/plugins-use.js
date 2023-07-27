@@ -94,6 +94,7 @@ function initDatatable() {
                 }},
                 { data: 'views', name: 'views', title: '<i class="fa-solid fa-eye"></i>', className: 'text-center'},
                 { data: 'likes', name: 'likes', title: '<i class="fa-solid fa-thumbs-up"></i>', className: 'text-center'},
+                { data: 'tags_count', name: 'tags_count', title: '<i class="fa-solid fa-tags"></i>', className: 'text-center'},
                 { data: 'published_at', name: 'published_at', title: '<i class="fa-solid fa-upload"></i>', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
                         return `<span title="${row.published_at}">${row.published_at_for_humans}</span>`;
