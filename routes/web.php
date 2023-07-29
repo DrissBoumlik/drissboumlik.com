@@ -26,8 +26,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware(['cache.headers:public;max_age=15811200;etag', 'location'])->group(function () {
-Route::middleware('location')->group(function () {
+Route::middleware(['cache.headers:public;max_age=15811200;etag', 'location'])->group(function () {
 
     Route::group(['prefix' => 'admin'], function () {
 
@@ -87,7 +86,7 @@ Route::middleware('location')->group(function () {
     Route::get('/sitemap', [SitemapController::class, 'sitemap']);
     Route::get('/generateSitemap', [SitemapController::class, 'generateSitemap']);
 
-    Route::redirect('/', '/blog');
+    Route::redirect('/', '/resume');
     // Resume
     Route::get('resume', [PageController::class, 'resume']);
 
