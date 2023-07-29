@@ -33,16 +33,29 @@ if (!function_exists('getSocialLinks')) {
 }
 
 if (!function_exists('getHeaderMenu')) {
-    function getHeaderMenu()
+    function getHeaderMenu($withHidden = false)
     {
-        return json_decode(\File::get(base_path() . '/database/data/layout/header-menu.json'));
+        $headerMenu = json_decode(\File::get(base_path() . '/database/data/layout/header-menu.json'));
+        if (!$withHidden) {
+            $headerMenu = array_filter($headerMenu, function ($item) {
+                return (!isset($item->hidden) || !$item->hidden);
+            });
+        }
+        return $headerMenu;
+
     }
 }
 
 if (!function_exists('getFooterMenu')) {
-    function getFooterMenu()
+    function getFooterMenu($withHidden = false)
     {
-        return json_decode(\File::get(base_path() . '/database/data/layout/footer-menu.json'));
+        $footerMenu = json_decode(\File::get(base_path() . '/database/data/layout/footer-menu.json'));
+        if (!$withHidden) {
+            $footerMenu = array_filter($footerMenu, function ($item) {
+                return (!isset($item->hidden) || !$item->hidden);
+            });
+        }
+        return $footerMenu;
     }
 }
 
