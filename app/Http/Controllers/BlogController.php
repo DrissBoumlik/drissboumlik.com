@@ -31,13 +31,11 @@ class BlogController extends Controller
         $post->increment('views', 1);
         $data = new \stdClass();
 
-        $related_posts = $post->relatedPosts();
-        $related_posts = (new PostCollection($related_posts))->resolve();
 
         $post = (object)(new PostResource($post))->resolve();
         $data->title = 'Blog | ' . $post->title;
 
-        return view('pages.blog.posts.show', ['data' => $data, 'post' => $post, 'related_posts' => $related_posts]);
+        return view('pages.blog.posts.show', ['data' => $data, 'post' => $post]);
     }
 
     public function likePost(Request $request, $slug, $unlike = null)
