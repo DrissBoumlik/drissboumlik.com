@@ -87,7 +87,7 @@ Route::middleware('location')->group(function () {
     Route::get('/sitemap', [SitemapController::class, 'sitemap']);
     Route::get('/generateSitemap', [SitemapController::class, 'generateSitemap']);
 
-    Route::redirect('/', '/admin/posts');
+    Route::redirect('/', '/blog');
     // Resume
     Route::get('resume', [PageController::class, 'resume']);
 
