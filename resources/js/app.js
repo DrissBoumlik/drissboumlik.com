@@ -1,5 +1,5 @@
 import { drawText, initParticlesJS, initSlider, initDarkMode, initEvents } from "./functions";
-import { initLaraberg, initSelect2, initGallery, initImageCropper, initSyntaxHighlighting, initDatatable } from "./plugins-use";
+import { initLaraberg, initSelect2, initGallery, initImageCropper, initSyntaxHighlighting, initDatatable, initPostPageEvent } from "./plugins-use";
 
 
 $(function () {
@@ -17,6 +17,7 @@ $(function () {
         // initImageCropper();
         initEvents();
         initDatatable();
+        initPostPageEvent();
 
     } catch (error) {
         // console.log(error);

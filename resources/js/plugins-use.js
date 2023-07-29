@@ -216,5 +216,10 @@ function configDT(params) {
     });
 }
 
+function initPostPageEvent() {
+    $('.post-page .wp-block-image').on('click', function () {
+        window.open($(this).find('img').attr('src'), '_blank');
+    });
+}
 
-export { initLaraberg, initSelect2, initGallery, initImageCropper, initSyntaxHighlighting, initDatatable };
+export { initLaraberg, initSelect2, initGallery, initImageCropper, initSyntaxHighlighting, initDatatable, initPostPageEvent };
