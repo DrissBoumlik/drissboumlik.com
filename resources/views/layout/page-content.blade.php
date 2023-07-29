@@ -1,6 +1,7 @@
 @extends('layout.app')
 
 @section('content')
+    @include('addons.banner')
     @php
         if (!isset($data) || $data == null) {
             $data = new \stdClass();
