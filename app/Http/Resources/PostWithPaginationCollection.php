@@ -15,18 +15,5 @@ class PostWithPaginationCollection extends ResourceCollection
     public function toArray($request)
     {
         return PostResource::collection($this->resource);
-        return [
-            'data' => PostResource::collection($this->resource)->resolve(),
-            'perPage' => $this->resource->perPage(),
-            'currentPage' => $this->resource->currentPage(),
-            'path' => $this->resource->path(),
-            // 'query' => $this->resource->query,
-            'fragment' => $this->resource->fragment(),
-            'pageName' => $this->resource->getPageName(),
-            'onEachSide' => $this->resource->onEachSide,
-            'options' => $this->resource->getOptions(),
-            'total' => $this->resource->total(),
-            'lastPage' => $this->resource->lastPage(),
-        ];
     }
 }
