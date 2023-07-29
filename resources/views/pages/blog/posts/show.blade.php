@@ -33,8 +33,8 @@
                                         @foreach ($post->tags as $tag)
                                             <div class="post-tag d-inline-block me-2">
                                                 <i class="fa-solid fa-tag fs-small"></i>
-                                                <a href="/tags/{{ $tag }}">
-                                                    <span>{{ $tag }}</span>
+                                                <a href="/tags/{{ $tag->slug }}">
+                                                    <span>{{ $tag->name }}</span>
                                                 </a>
                                             </div>
                                         @endforeach

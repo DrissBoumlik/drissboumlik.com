@@ -32,7 +32,7 @@ class PostResource extends JsonResource
             'views' => $this->views,
             'published_at' => $this->published_at,
             'published_at_formatted' => $this->published_at->diffForHumans(),
-            'tags' => $this->tags->pluck('name')->toArray(),
+            'tags' => $this->tags,
         ];
     }
 }
