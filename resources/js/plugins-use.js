@@ -182,24 +182,24 @@ function initDatatable() {
             columns: [
                 { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
                 { data: 'visits_count', name: 'visits_count', title: '<i class="fa fa-fw fa-eye"></i>', className: 'fw-semibold fs-sm'},
-                { data: 'countryCode', name: 'countryCode', title: 'countryCode', className: 'fw-semibold fs-sm'},
-                { data: 'countryName', name: 'countryName', title: 'countryName', className: 'fw-semibold fs-sm'},
-                { data: 'regionName', name: 'regionName', title: 'regionName', className: 'fw-semibold fs-sm'},
-                { data: 'cityName', name: 'cityName', title: 'cityName', className: 'fw-semibold fs-sm'},
+                { data: 'updated_at', name: 'updated_at', title: '<i class="fa-solid fa-pen"></i>', className: 'text-center fs-sm',
+                    render: function(data, type, row, params) {
+                        return `<span title="${row.updated_at_formatted}">${row.updated_at_formatted}</span>`;
+                    }
+                },
+                { data: 'countryCode', name: 'countryCode', title: 'Country Code', className: 'fw-semibold fs-sm'},
+                { data: 'countryName', name: 'countryName', title: 'Country Name', className: 'fw-semibold fs-sm'},
+                { data: 'regionName', name: 'regionName', title: 'Region Name', className: 'fw-semibold fs-sm'},
+                { data: 'cityName', name: 'cityName', title: 'City Name', className: 'fw-semibold fs-sm'},
                 { data: 'ip', name: 'ip', title: 'IP', className: 'text-center'},
                 { data: 'latitude', name: 'latitude', title: 'latitude', className: 'fw-semibold fs-sm'},
                 { data: 'longitude', name: 'longitude', title: 'longitude', className: 'fw-semibold fs-sm'},
-                { data: 'created_at', name: 'created_at', title: '<i class="fa-solid fa-pen"></i>', className: 'text-center fs-sm',
-                    render: function(data, type, row, params) {
-                        return `<span title="${row.created_at_formatted}">${row.created_at_for_humans}</span>`;
-                    }
-                },
-                { data: 'regionCode', name: 'regionCode', title: 'regionCode', className: 'fw-semibold fs-sm'},
-                { data: 'zipCode', name: 'zipCode', title: 'zipCode', className: 'fw-semibold fs-sm'},
-                { data: 'isoCode', name: 'isoCode', title: 'isoCode', className: 'fw-semibold fs-sm'},
-                { data: 'postalCode', name: 'postalCode', title: 'postalCode', className: 'fw-semibold fs-sm'},
-                { data: 'metroCode', name: 'metroCode', title: 'metroCode', className: 'fw-semibold fs-sm'},
-                { data: 'areaCode', name: 'areaCode', title: 'areaCode', className: 'fw-semibold fs-sm'},
+                { data: 'regionCode', name: 'regionCode', title: 'Region Code', className: 'fw-semibold fs-sm'},
+                { data: 'zipCode', name: 'zipCode', title: 'Zip Code', className: 'fw-semibold fs-sm'},
+                { data: 'isoCode', name: 'isoCode', title: 'Iso Code', className: 'fw-semibold fs-sm'},
+                { data: 'postalCode', name: 'postalCode', title: 'Postal Code', className: 'fw-semibold fs-sm'},
+                { data: 'metroCode', name: 'metroCode', title: 'Metro Code', className: 'fw-semibold fs-sm'},
+                { data: 'areaCode', name: 'areaCode', title: 'Area Code', className: 'fw-semibold fs-sm'},
                 { data: 'timezone', name: 'timezone', title: 'timezone', className: 'fw-semibold fs-sm'},
                 { data: 'driver', name: 'driver', title: 'driver', className: 'fw-semibold fs-sm'},
             ]
@@ -211,17 +211,20 @@ function initDatatable() {
 function configDT(params) {
     let table = new DataTable(params.id, {
         language: {
-            select: {
-                style: 'single',
-                info: false
-            },
+            // select: {
+            //     style: 'single',
+            //     info: false
+            // },
             // sWrapper: "dataTables_wrapper dt-bootstrap5",
             // sFilterInput: "form-control form-control-sm",
             // sLengthSelect: "form-select form-select-sm",
-            lengthMenu: "_MENU_",
-            search: "_INPUT_",
-            searchPlaceholder: "Search..",
-            info: "Page <strong>_PAGE_</strong> of <strong>_PAGES_</strong>",
+            // lengthMenu: "_MENU_",
+            // search: "_INPUT_",
+            // searchPlaceholder: "Search..",
+            // info: "Page <strong>_PAGE_</strong> of <strong>_PAGES_</strong>",
+            fnInfoCallback: function( settings, start, end, max, total, pre ) {
+                return `${start} <i class="fa-solid fa-arrow-right-long"></i> ${end} | ${total}`;
+            },
             paginate: {
                 first: '<i class="fa fa-angle-double-left"></i>',
                 previous: '<i class="fa fa-angle-left"></i>',
