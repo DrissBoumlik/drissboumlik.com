@@ -33,7 +33,8 @@ class VisitorResource extends JsonResource
             "timezone" => $this->timezone,
             "driver" => $this->driver,
             "created_at" => $this->created_at,
-            'created_at_formatted' => $this->created_at->diffForHumans(),
+            'created_at_formatted' => $this->created_at->format('Y-M-d h:m:s'),
+            'created_at_for_humans' => $this->created_at->diffForHumans(),
             "updated_at" => $this->updated_at,
             "updated_at_formatted" => $this->updated_at->diffForHumans(),
         ];

@@ -22,10 +22,10 @@ class TagCollection extends ResourceCollection
                 "slug" => $item->slug,
                 "description" => $item->description,
                 "color" => $item->color,
-                "created_at" => $item->created_at,
                 'active' => $item->deleted_at == null,
                 "posts_count" => $item->posts_count,
-                'created_at' => $item->created_at,
+                "created_at" => $item->created_at,
+                'created_at_formatted' => $item->created_at->format('Y-M-d h:m:s'),
                 'created_at_for_humans' => $item->created_at->diffForHumans(),
             ];
         });

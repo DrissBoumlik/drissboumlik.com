@@ -97,11 +97,11 @@ function initDatatable() {
                 { data: 'tags_count', name: 'tags_count', title: '<i class="fa-solid fa-tags"></i>', className: 'text-center'},
                 { data: 'published_at', name: 'published_at', title: '<i class="fa-solid fa-upload"></i>', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
-                        return `<span title="${row.published_at}">${row.published_at_for_humans}</span>`;
+                        return `<span title="${row.published_at_formatted}">${row.published_at_for_humans}</span>`;
                     }},
                 { data: 'created_at', name: 'created_at', title: '<i class="fa-solid fa-pen"></i>', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
-                        return `<span title="${row.created_at}">${row.created_at_for_humans}</span>`;
+                        return `<span title="${row.created_at_formatted}">${row.created_at_for_humans}</span>`;
                     }},
                 { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
                     render: function (data, type, row, params) {
@@ -164,7 +164,7 @@ function initDatatable() {
                 { data: 'posts_count', name: 'posts_count', title: 'Posts', className: 'fw-semibold fs-sm'},
                 { data: 'created_at', name: 'created_at', title: '<i class="fa-solid fa-pen"></i>', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
-                        return `<span title="${row.created_at}">${row.created_at_for_humans}</span>`;
+                        return `<span title="${row.created_at_formatted}">${row.created_at_for_humans}</span>`;
                 }},
                 { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
                     render: function (data, type, row, params) {
@@ -191,7 +191,7 @@ function initDatatable() {
                 { data: 'longitude', name: 'longitude', title: 'longitude', className: 'fw-semibold fs-sm'},
                 { data: 'created_at', name: 'created_at', title: '<i class="fa-solid fa-pen"></i>', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
-                        return `<span title="${row.created_at}">${row.created_at_formatted}</span>`;
+                        return `<span title="${row.created_at_formatted}">${row.created_at_for_humans}</span>`;
                     }
                 },
                 { data: 'regionCode', name: 'regionCode', title: 'regionCode', className: 'fw-semibold fs-sm'},
