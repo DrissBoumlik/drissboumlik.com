@@ -174,6 +174,38 @@ function initDatatable() {
         };
         configDT(params);
     }
+    if ($('#visitors').length) {
+        let params = {
+            id: '#visitors',
+            method: 'POST',
+            url: '/api/visitors',
+            columns: [
+                { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
+                { data: 'visits_count', name: 'visits_count', title: '<i class="fa fa-fw fa-eye"></i>', className: 'fw-semibold fs-sm'},
+                { data: 'countryCode', name: 'countryCode', title: 'countryCode', className: 'fw-semibold fs-sm'},
+                { data: 'countryName', name: 'countryName', title: 'countryName', className: 'fw-semibold fs-sm'},
+                { data: 'regionName', name: 'regionName', title: 'regionName', className: 'fw-semibold fs-sm'},
+                { data: 'cityName', name: 'cityName', title: 'cityName', className: 'fw-semibold fs-sm'},
+                { data: 'ip', name: 'ip', title: 'IP', className: 'text-center'},
+                { data: 'latitude', name: 'latitude', title: 'latitude', className: 'fw-semibold fs-sm'},
+                { data: 'longitude', name: 'longitude', title: 'longitude', className: 'fw-semibold fs-sm'},
+                { data: 'created_at', name: 'created_at', title: '<i class="fa-solid fa-pen"></i>', className: 'text-center fs-sm',
+                    render: function(data, type, row, params) {
+                        return `<span title="${row.created_at}">${row.created_at_formatted}</span>`;
+                    }
+                },
+                { data: 'regionCode', name: 'regionCode', title: 'regionCode', className: 'fw-semibold fs-sm'},
+                { data: 'zipCode', name: 'zipCode', title: 'zipCode', className: 'fw-semibold fs-sm'},
+                { data: 'isoCode', name: 'isoCode', title: 'isoCode', className: 'fw-semibold fs-sm'},
+                { data: 'postalCode', name: 'postalCode', title: 'postalCode', className: 'fw-semibold fs-sm'},
+                { data: 'metroCode', name: 'metroCode', title: 'metroCode', className: 'fw-semibold fs-sm'},
+                { data: 'areaCode', name: 'areaCode', title: 'areaCode', className: 'fw-semibold fs-sm'},
+                { data: 'timezone', name: 'timezone', title: 'timezone', className: 'fw-semibold fs-sm'},
+                { data: 'driver', name: 'driver', title: 'driver', className: 'fw-semibold fs-sm'},
+            ]
+        };
+        configDT(params);
+    }
 }
 
 function configDT(params) {
