@@ -223,7 +223,7 @@ function configDT(params) {
             // searchPlaceholder: "Search..",
             // info: "Page <strong>_PAGE_</strong> of <strong>_PAGES_</strong>",
             fnInfoCallback: function( settings, start, end, max, total, pre ) {
-                return `${start} <i class="fa-solid fa-arrow-right-long"></i> ${end} | ${total}`;
+                return `${start} <i class="fa-solid fa-arrow-right-long"></i> ${end} | ${total} (Total : ${max})`;
             },
             paginate: {
                 first: '<i class="fa fa-angle-double-left"></i>',
