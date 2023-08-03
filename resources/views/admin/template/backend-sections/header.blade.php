@@ -24,6 +24,7 @@
 
         <!-- Right Section -->
         <div class="d-flex align-items-center">
+            @include('admin.addons.darkmode')
             <!-- User Dropdown -->
             <div class="dropdown d-inline-block ms-2">
                 <button type="button" class="btn btn-sm btn-alt-secondary d-flex align-items-center" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
