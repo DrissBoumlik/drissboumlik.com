@@ -6,10 +6,11 @@
         @include('addons.brand-text')
         @include('layout.header-parts.head-meta')
 
+        @yield('pre-header-assets')
 
         @include('layout.header-parts.assets')
 
-        @yield('header-assets')
+        @yield('post-header-assets')
 
         <title>{{ $data->title ?? 'Driss Boumlik' }}</title>
     </head>
