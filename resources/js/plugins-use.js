@@ -10,8 +10,13 @@ function initGallery() {
 
 function initLaraberg() {
     if ($('#post_body').length == 0) return;
-    let options = { };
-    Laraberg.init('post_body', options)
+    tinymce.init({
+        selector: 'textarea#post_body', // Replace this CSS selector to match the placeholder element for TinyMCE
+        plugins: 'code table lists',
+        toolbar: 'undo redo | formatselect| bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table'
+    });
+    // let options = { };
+    // Laraberg.init('post_body', options)
 }
 
 function initSelect2() {

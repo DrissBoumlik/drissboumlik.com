@@ -34,6 +34,9 @@ mix
     // .copy('resources/template/assets/js', 'public/template/assets/js')
     // .copy('resources/template/assets/media', 'public/template/assets/media')
     // .copy('resources/template/assets/css', 'public/template/assets/css')
+    
+    .copyDirectory('vendor/tinymce/tinymce', 'public/js/tinymce')
+    
     .purgeCss({
         extend: {
             content: [path.join(__dirname, 'database/data/**/*.json'),

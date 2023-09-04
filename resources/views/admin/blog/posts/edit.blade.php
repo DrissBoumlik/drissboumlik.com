@@ -14,6 +14,7 @@
 {{--    <script src="/template/assets/js/plugins/cropperjs/cropper.min.js"></script>--}}
     <script src="{{ asset('/template/assets/js/plugins/select2/js/select2.full.min.js') }}"></script>
 {{--    <script src="/template/assets/js/plugins/simplemde/simplemde.min.js"></script>--}}
+    <script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
 @endsection
 
 @section('content')

@@ -3,6 +3,14 @@ import { initLaraberg, initSelect2, initGallery, initImageCropper, initSyntaxHig
 
 
 $(function () {
+    init();
+});
+
+document.addEventListener('livewire:navigated', () => {
+    init();
+});
+
+function init() {
     try {
 
         // drawText();
@@ -18,32 +26,9 @@ $(function () {
         initEvents();
         initDatatable();
         initPostPageEvent();
-
+        setTimeout(() => hljs.highlightAll(), 1000)
     } catch (error) {
         // console.log(error);
         throw error
     }
-});
-
-document.addEventListener('livewire:navigated', () => { 
-    try {
-
-        // drawText();
-        initParticlesJS();
-        initSlider();
-        initDarkMode();
-
-        initLaraberg();
-        initSelect2();
-        initGallery();
-        // initSyntaxHighlighting();
-        // initImageCropper();
-        initEvents();
-        initDatatable();
-        initPostPageEvent();
-
-    } catch (error) {
-        // console.log(error);
-        throw error
-    }
-});
+}
