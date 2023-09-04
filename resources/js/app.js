@@ -24,3 +24,26 @@ $(function () {
         throw error
     }
 });
+
+document.addEventListener('livewire:navigated', () => { 
+    try {
+
+        // drawText();
+        initParticlesJS();
+        initSlider();
+        initDarkMode();
+
+        initLaraberg();
+        initSelect2();
+        initGallery();
+        // initSyntaxHighlighting();
+        // initImageCropper();
+        initEvents();
+        initDatatable();
+        initPostPageEvent();
+
+    } catch (error) {
+        // console.log(error);
+        throw error
+    }
+});
