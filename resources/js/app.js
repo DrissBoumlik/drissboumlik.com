@@ -26,7 +26,10 @@ function init() {
         initEvents();
         initDatatable();
         initPostPageEvent();
-        setTimeout(() => hljs.highlightAll(), 1000)
+        setTimeout(() => {
+            try { hljs.highlightAll() }
+            catch (error) { console.log(error)}
+        }, 1000)
     } catch (error) {
         // console.log(error);
         throw error
