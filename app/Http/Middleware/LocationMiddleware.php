@@ -22,12 +22,7 @@ class LocationMiddleware
 //        $ip = '48.188.144.248';
         $currentUserInfo = Location::get($ip);
         if ($currentUserInfo) {
-            $visitedbefore = \App\Models\Visitor::where('ip', $currentUserInfo->ip)->first();
-            if (!$visitedbefore) {
-                \App\Models\Visitor::create((array) $currentUserInfo);
-            } else {
-                $visitedbefore->increment('visits_count');
-            }
+            \App\Models\Visitor::create((array)$currentUserInfo);
         }
         return $next($request);
     }
