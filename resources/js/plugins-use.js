@@ -187,16 +187,16 @@ function initDatatable() {
             columns: [
                 { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
                 { data: 'visits_count', name: 'visits_count', title: '<i class="fa fa-fw fa-eye"></i>', className: 'fw-semibold fs-sm'},
-                { data: 'updated_at', name: 'updated_at', title: '<i class="fa-solid fa-pen"></i>', className: 'text-center fs-sm',
+                { data: 'ip', name: 'ip', title: 'IP', className: 'text-center'},
+                { data: 'updated_at', name: 'updated_at', title: 'updated @', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
-                        return `<span title="${row.updated_at_formatted}">${row.updated_at_formatted}</span>`;
+                        return data.split('.')[0].replace('T', ' ');
                     }
                 },
                 { data: 'countryCode', name: 'countryCode', title: 'Country Code', className: 'fw-semibold fs-sm'},
                 { data: 'countryName', name: 'countryName', title: 'Country Name', className: 'fw-semibold fs-sm'},
                 { data: 'regionName', name: 'regionName', title: 'Region Name', className: 'fw-semibold fs-sm'},
                 { data: 'cityName', name: 'cityName', title: 'City Name', className: 'fw-semibold fs-sm'},
-                { data: 'ip', name: 'ip', title: 'IP', className: 'text-center'},
                 { data: 'latitude', name: 'latitude', title: 'latitude', className: 'fw-semibold fs-sm'},
                 { data: 'longitude', name: 'longitude', title: 'longitude', className: 'fw-semibold fs-sm'},
                 { data: 'regionCode', name: 'regionCode', title: 'Region Code', className: 'fw-semibold fs-sm'},

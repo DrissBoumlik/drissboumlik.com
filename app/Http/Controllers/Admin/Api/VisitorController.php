@@ -7,14 +7,13 @@ use App\Http\Resources\Admin\VisitorResource;
 use App\Models\Post;
 use App\Models\Visitor;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class VisitorController extends Controller
 {
     public function index(Request $request)
     {
-        $visitors = Visitor::all();
-        $visitors = VisitorResource::collection($visitors)->resolve();
-        $visitors = \DataTables::of($visitors)->toJson();
-        return $visitors;
+        $visitors = Visitor::query();
+        return DataTables::eloquent($visitors)->make(true);
     }
 }
