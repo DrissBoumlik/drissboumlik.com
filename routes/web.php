@@ -1,6 +1,7 @@
 <?php
 
 // use App\Http\Controllers\AdminController;
+use App\Http\Controllers\GotoController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\TagController;
@@ -94,7 +95,8 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag', 'location'])->g
     Route::get('resume', [PageController::class, 'resume']);
 
     // External
-     Route::get('/{link}', [\App\Http\Controllers\GotoController::class, 'goto']);
+    Route::get('/not-found', [GotoController::class, 'not_found']);
+    Route::get('/{link}', [GotoController::class, 'goto']);
 
-    // Route::any('/{var}', [HomeController::class, 'home'])->where('var', '.*');
+    Route::any('/{var}', [GotoController::class, 'not_found'])->where('var', '.*');
 });

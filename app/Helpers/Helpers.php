@@ -1,5 +1,13 @@
 <?php
 
+if (!function_exists('redirect_to_404_page')) {
+    function redirect_to_404_page()
+    {
+        $data = new \stdClass;
+        $data->title = 'Page Not Found | Driss Boumlik';
+        return view('errors.404', ['data' => $data]);
+    }
+}
 
 if (!function_exists('getLinks')) {
     function getLinks(){
