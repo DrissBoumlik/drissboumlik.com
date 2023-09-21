@@ -19,7 +19,7 @@ if (!function_exists('getLinks')) {
             'linkedin' => 'https://linkedin.com/in/drissboumlik/',
             'github' => 'https://github.com/drissboumlik/',
             'youtube' => 'https://youtube.com/channel/UCss61diIS1kW_TRsHMMwtwQ',
-            'community' => 'https://teacode.ma',
+            'community' => 'https://teacode.drissboumlik.com',
             'cv' => '/storage/cv/DrissBoumlik-en.pdf',
 
             // Contact
@@ -27,7 +27,7 @@ if (!function_exists('getLinks')) {
             'email' => 'mailto:hi@drissboumlik.com?subject=Resume : ',
 
             // Brand
-            'site' => 'https://teacode.ma/'
+            'site' => 'https://teacode.drissboumlik.com/'
         ];
         return $links;
     }
