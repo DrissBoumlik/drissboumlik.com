@@ -1,5 +1,5 @@
-<div class="py-5" id="recommandations">
-    <div class="section recommandations">
+<div class="py-5">
+    <div class="section recommandations" id="recommandations">
         <div class="container">
             <div class="row section-header">
                 <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
