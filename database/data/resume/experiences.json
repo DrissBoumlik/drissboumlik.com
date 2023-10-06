@@ -2,13 +2,35 @@
     "header" : "experiences",
     "items" : [
         {
-            "classList" : "laravel branch work",
+            "classList" : "branch work",
+            "company" : "KJR Telecom",
+            "location": "Casablanca, Morocco",
+            "job" : "Senior Full Stack Developer",
+            "period" : "Dec 2022",
+            "start_date" : "2022-12",
+            "end_date" : null,
+            "content" : "<ul><li>Development of a System to :<ul><li>Manage customer connection tickets.</li><li>Manage appointments and technicians interventions.</li></ul><li>Technical support for new recruits.</li><li>Improvement of the development environment (Scripting, alias…).</li></ul>",
+            "techs" : "<p><span class='underline'>Technical environment :</span><br>Bootstrap, jQuery, Laravel, Php, Git, Svn, PhpStorm, DataGrip, Xampp, Visual Studio Code, Trello, Slack, GitLab.</p>"
+        },
+        {
+            "classList" : "microsoft abl",
+            "company" : "ABL Aviation",
+            "location": "Casablanca, Morocco",
+            "job" : "Senior Full Stack Developer",
+            "period" : "Aug 2022 - Nov 2022",
+            "start_date" : "2022-8",
+            "end_date" : "2022-11",
+            "content" : null,
+            "techs" : "<p><span class='underline'>Technical environment :</span><br>Bootstrap, jQuery, Laravel, Php, Git, PhpStorm, DataGrip, Xampp, Visual Studio Code, Trello, Sql Server, C# .Net, Azure.</p>"
+        },
+        {
+            "classList" : "laravel work",
             "company" : "RC2K Engineering",
             "location": "Casablanca, Morocco",
             "job" : "Full Stack Developer - Laravel / Javasript",
-            "period" : "Nov 2019",
+            "period" : "Nov 2019 - Jul 2022",
             "start_date" : "2019-11",
-            "end_date" : null,
+            "end_date" : "2022-07",
             "content" : "<ul><li>Development of an HR Management System.</li><li>Development of a Production Statistics System for call center agents.</li><li>Development of a System to :<ul><li>Manage customer connection tickets.</li><li>Manage appointments and technicians interventions.</li></ul><li>Technical support for new recruits.</li><li>Improvement of the development environment (Scripting, alias…).</li></ul>",
             "techs" : "<p><span class='underline'>Technical environment :</span><br>Bootstrap, jQuery, Laravel, Php, Git, Svn, PhpStorm, DataGrip, Xampp, Visual Studio Code, Trello, Slack, GitLab.</p>"
         },
