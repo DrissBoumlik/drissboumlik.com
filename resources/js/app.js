@@ -5,7 +5,7 @@ import { initLaraberg, initSelect2, initGallery, initImageCropper, initSyntaxHig
 $(function () {
     try {
 
-        // drawText();
+        drawText();
         initParticlesJS();
         initSlider();
         initDarkMode();
