@@ -7,9 +7,14 @@
     // box-shadow: -3px -3px 7px rgba($tc-grey-dark, 0.5), 3px 3px 7px rgba($tc-grey-dark, 0.5), -3px 3px 7px rgba($tc-grey-dark, 0.5), 3px -3px 7px rgba($tc-grey-dark, 0.5)
     position: fixed
     z-index: 99999
-    bottom: 20%
+    transform: translateY(-50%)
+    top: 50%
     right: 5px
     border: 2px solid $tc-blue-dark-2
+    opacity: 0.3
+    transition: opacity 0.3s linear
+    &:hover
+        opacity: 1
     .sections-menu-items
         li
             margin: 0 !important

@@ -1,10 +1,14 @@
-// import 'bootstrap';
+import 'bootstrap';
 import {initImageCropper} from "./plugins-use";
 
 require('particles.js');
 // var slugify = require('slugify')
 import 'owl.carousel';
 var slugify = require('slugify')
+
+function initTooltip() {
+    $('[data-toggle="tooltip"]').tooltip();
+}
 
 function drawText() {
     let text = `
@@ -291,4 +295,4 @@ function initEvents() {
     }
 }
 
-export { drawText, initParticlesJS, initSlider, initDarkMode, initEvents };
+export { drawText, initParticlesJS, initSlider, initDarkMode, initEvents, initTooltip };
