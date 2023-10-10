@@ -1,3 +1,5 @@
+<div class="py-5" id="experiences">
+    <div class="section experiences">
 <div class="py-5">
     <div class="section experiences" id="experiences">
         <div class="container">
@@ -20,11 +22,24 @@
                                     </span>
                                     @if ($experience->content)
                                         <hr class="my-2">
-                                        {!! $experience->content !!}
+                                        @isset($experience->content->headline) {!! $experience->content->headline !!} @endisset
+                                        @if(isset($experience->content->items) && is_array($experience->content->items))
+                                            <ul>
+                                            @foreach($experience->content->items as $item)
+                                                <li>{!! $item !!}</li>
+                                            @endforeach
+                                            </ul>
+                                        @endif
                                     @endif
-                                    @if ($experience->techs)
+                                    @if (isset($experience->techs) && is_array($experience->techs))
                                         <hr class="my-2">
-                                        {!! $experience->techs !!}
+                                        <div class="tech-env">
+                                            <p><span class='underline'>Technical environment :</span><br/>
+                                                @foreach($experience->techs as $tech)
+                                                    <i class="{{ $tech }}"></i>
+                                                @endforeach
+                                            </p>
+                                        </div>
                                     @endif
                                 </div>
                             </div>
