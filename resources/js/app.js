@@ -1,11 +1,11 @@
-import { drawText, initParticlesJS, initSlider, initDarkMode, initEvents } from "./functions";
+import { drawText, initParticlesJS, initSlider, initDarkMode, initEvents, initTooltip } from "./functions";
 import { initLaraberg, initSelect2, initGallery, initImageCropper, initSyntaxHighlighting, initDatatable, initPostPageEvent } from "./plugins-use";
 
 
 $(function () {
     try {
-
-        // drawText();
+        initTooltip();
+        drawText();
         initParticlesJS();
         initSlider();
         initDarkMode();

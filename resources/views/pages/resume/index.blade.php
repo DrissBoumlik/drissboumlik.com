@@ -14,6 +14,7 @@
                     @include('pages.resume.sections.'.$key, [$key => $section])
                 </div>
             @endforeach
+            @include('pages.resume.menu')
         </div>
     </div>
 

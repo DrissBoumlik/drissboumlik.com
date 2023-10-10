@@ -9,8 +9,20 @@
             "period" : "Dec 2022",
             "start_date" : "2022-12",
             "end_date" : null,
-            "content" : "<ul><li>Development of a System to :<ul><li>Manage customer connection tickets.</li><li>Manage appointments and technicians interventions.</li></ul><li>Technical support for new recruits.</li><li>Improvement of the development environment (Scripting, alias…).</li></ul>",
-            "techs" : "<p><span class='underline'>Technical environment :</span><br>Bootstrap, jQuery, Laravel, Php, Git, Svn, PhpStorm, DataGrip, Xampp, Visual Studio Code, Trello, Slack, GitLab.</p>"
+            "content" : {
+                "items" : [
+                "Development of a System to Manage customer connection tickets & appointments for technicians interventions.",
+                "Technical support for new recruits.",
+                "Improvement of the development environment (Scripting, alias…)."
+            ]},
+            "techs" : [
+                "fa-brands fa-bootstrap",
+                "fa-brands fa-square-js", "icon-jquery",
+                "fa-brands fa-square-git", "fa-brands fa-gitlab",
+                "fa-brands fa-php", "fa-brands fa-laravel",
+                "icon-mysql",
+                "fa-brands fa-trello", "fa-brands fa-slack"
+            ]
         },
         {
             "classList" : "microsoft abl",
@@ -21,7 +33,14 @@
             "start_date" : "2022-8",
             "end_date" : "2022-11",
             "content" : null,
-            "techs" : "<p><span class='underline'>Technical environment :</span><br>Bootstrap, jQuery, Laravel, Php, Git, PhpStorm, DataGrip, Xampp, Visual Studio Code, Trello, Sql Server, C# .Net, Azure.</p>"
+            "techs" : [
+                "fa-brands fa-bootstrap",
+                "fa-brands fa-square-js", "icon-jquery",
+                "fa-brands fa-square-git", "fa-brands fa-github",
+                "fa-brands fa-php", "fa-brands fa-laravel",
+                "icon-mssql",
+                "fa-brands fa-trello", "devicon-azure-plain"
+            ]
         },
         {
             "classList" : "laravel work",
@@ -31,8 +50,22 @@
             "period" : "Nov 2019 - Jul 2022",
             "start_date" : "2019-11",
             "end_date" : "2022-07",
-            "content" : "<ul><li>Development of an HR Management System.</li><li>Development of a Production Statistics System for call center agents.</li><li>Development of a System to :<ul><li>Manage customer connection tickets.</li><li>Manage appointments and technicians interventions.</li></ul><li>Technical support for new recruits.</li><li>Improvement of the development environment (Scripting, alias…).</li></ul>",
-            "techs" : "<p><span class='underline'>Technical environment :</span><br>Bootstrap, jQuery, Laravel, Php, Git, Svn, PhpStorm, DataGrip, Xampp, Visual Studio Code, Trello, Slack, GitLab.</p>"
+            "content" : {
+                "items" : [
+                    "Development of an HR Management System.",
+                    "Development of a Production Statistics System for call center agents.",
+                    "Development of a System to Manage customer connection tickets & appointments for technicians interventions.",
+                    "Technical support for new recruits.",
+                    "Improvement of the development environment (Scripting, alias…)."
+            ]},
+            "techs" : [
+                "fa-brands fa-bootstrap",
+                "fa-brands fa-square-js", "icon-jquery",
+                "fa-brands fa-square-git", "fa-brands fa-gitlab",
+                "fa-brands fa-php", "fa-brands fa-laravel",
+                "icon-mysql",
+                "fa-brands fa-trello", "fa-brands fa-slack"
+            ]
         },
         {
             "classList" : "community teacode",
@@ -41,8 +74,9 @@
             "period" : "Dec 2020",
             "start_date" : "2020-12",
             "end_date" : null,
-            "content" : "<p>TeaCode is a community where Moroccan developers help each other and evolve in an environment conducive to learning. <a href='https://drissboumlik.com/community' rel='noopener' target='_blank'>Link <i class='fa-solid fa-up-right-from-square'></i></a></p>",
-            "techs" : null
+            "content" : {
+                "headline": "<p>TeaCode is a community where Moroccan developers help each other and evolve in an environment conducive to learning. <a href='https://drissboumlik.com/community' rel='noopener' target='_blank'>Link <i class='fa-solid fa-up-right-from-square'></i></a>"
+            }
         },
         {
             "classList" : "teaching udemy",
@@ -51,8 +85,9 @@
             "period" : "May 2018 - Jul 2020",
             "start_date" : "2018-05",
             "end_date" : "2020-07",
-            "content" : "<p>My first online course : <a href='https://www.udemy.com/css-mastering-animations/' target='blank' class='key-word' rel='noopener'>CSS - Mastering animations</a>.</p>",
-            "techs" : null
+            "content" : {
+                "headline": "<p>My first online course : <a href='https://www.udemy.com/css-mastering-animations/' target='blank' class='key-word' rel='noopener'>CSS - Mastering animations</a>."
+            }
         },
         {
             "classList" : "angular grintaaa",
@@ -62,8 +97,25 @@
             "period" : "Sep 2019 - Sep 2021",
             "start_date" : "2019-09",
             "end_date" : "2021-09",
-            "content" : "<p>Development of a social network for athletes.</p><ul><li>Add / Follow another contact.</li><li>Create events.</li><li>Create / Share posts.</li><li>Send invitation to participate in a game.</li><li>Request to participate in a game.</li><li>Review the members.</li></ul>",
-            "techs" : "<p><span class='underline'>Technical environment :</span><br>Angular 8, Bootstrap, jQuery, Laravel 6, Rest Api, Git, WebStorm, PhpStorm, DataGrip, Xampp</p>"
+            "content" : {
+                "headline": "<p>Development of a social network for athletes.</p>",
+                "items": [
+                    "Add / Follow another contact.",
+                    "Create events.",
+                    "Create / Share posts.",
+                    "Send invitation to participate in a game.",
+                    "Request to participate in a game.",
+                    "Review the members."
+                ]
+            },
+            "techs" : [
+                "fa-brands fa-bootstrap",
+                "fa-brands fa-square-js", "icon-jquery", "fa-brands fa-angular",
+                "fa-brands fa-square-git", "fa-brands fa-bitbucket",
+                "fa-brands fa-php", "fa-brands fa-laravel",
+                "icon-redis", "icon-postgres",
+                "fa-brands fa-trello"
+            ]
         },
         {
             "classList" : "laravel ehm",
@@ -73,8 +125,21 @@
             "period" : "June 2019 - Sep 2019",
             "start_date" : "2019-06",
             "end_date" : "2019-09",
-            "content" : "<p>Development of a showcase site for :</p><ul><li>Production / Distribution of fresh fruit.</li><li>Services (Consulting, Farm management, agricultural development ...)</li></ul>",
-            "techs" : "<p><span class='underline'>Technical environment :</span><br>Laravel, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp, Gulp.</p>"
+            "content" : {
+                "headline": "<p>Development of a showcase site for :</p>",
+                "items": [
+                    "Production / Distribution of fresh fruit.",
+                    "Services (Consulting, Farm management, agricultural development ...)"
+                ]
+            },
+            "techs" : [
+                "fa-brands fa-bootstrap", "fa-brands fa-sass",
+                "fa-brands fa-square-js", "icon-jquery", "icon-gulp",
+                "fa-brands fa-square-git",
+                "fa-brands fa-php", "fa-brands fa-laravel",
+                "icon-mysql",
+                "fa-brands fa-trello"
+            ]
         },
         {
             "classList" : "wordpress mediating",
@@ -84,8 +149,21 @@
             "period" : "Jan 2019 - May 2019",
             "start_date" : "2019-01",
             "end_date" : "2019-05",
-            "content" : "<ul><li>Development of a Ticket Management System.</li><li>Development of the AMDL website (Moroccan Logistics Development Agency)</li><li>Correction and evolution of existing websites.</li><li>Technical support for new recruits.</li></ul>",
-            "techs" : "<p><span class='underline'>Technical environment :</span><br>Laravel, Wordpress, Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp.</p>"
+            "content" : {
+                "items": [
+                    "Development of a Ticket Management System.",
+                    "Development of the AMDL website (Moroccan Logistics Development Agency)",
+                    "Correction and evolution of existing websites.",
+                    "Technical support for new recruits."
+                ]
+            },
+            "techs" : [
+                "fa-brands fa-bootstrap", "fa-brands fa-sass",
+                "fa-brands fa-square-js", "icon-jquery",
+                "fa-brands fa-square-git",
+                "fa-brands fa-wordpress", "fa-brands fa-laravel",
+                "icon-mysql"
+            ]
         },
         {
             "classList" : "wordpress rae",
@@ -95,8 +173,19 @@
             "period" : "Jan 2019 - Apr 2019",
             "start_date" : "2019-01",
             "end_date" : "2019-04",
-            "content" : "<ul><li>Development of a portal site for studies in Ukraine / Russia.</li><li>Deployment of the site on the client's server.</li></ul>",
-            "techs" : "<p><span class='underline'>Technical environment :</span><br>Bootstrap, Sass, jQuery, Git, Visual Studio Code, Prepros, Xampp.</p>"
+            "content" : {
+                "items": [
+                    "Development of a portal site for studies in Ukraine / Russia.",
+                    "Deployment of the site on the client's server."
+                ]
+            },
+            "techs" : [
+                "fa-brands fa-bootstrap", "fa-brands fa-sass",
+                "fa-brands fa-square-js", "icon-jquery",
+                "fa-brands fa-square-git",
+                "fa-brands fa-wordpress", "fa-brands fa-php",
+                "icon-mysql"
+            ]
         },
         {
             "classList" : "laravel graviton",
@@ -106,8 +195,20 @@
             "period" : "Apr 2018 - Sep 2018",
             "start_date" : "2018-04",
             "end_date" : "2018-09",
-            "content" : "<p>Development of an agricultural upstream management information system for the COSUMAR group.</p><p>The digitalization of the aggregate-aggregate relationship and the automation of agricultural processes.</p><ul><li>Participation in the analysis and design phase.</li><li>Implementation of REST APIs in BackEnd.</li><li>Technical support for developers.</li><li>Improvement of the development environment (Scripting, alias…).</li></ul>",
-            "techs" : "<p><span class='underline'>Technical environment :</span><br>Php, Laravel, Git, PostgreSQL, Rest Api, PhpStorm, DataGrip, Phabricator, Cloud 9, pgModeler, Postman</p>"
+            "content" : {
+                "headline": "<p>Development of an agricultural upstream management information system for the COSUMAR group.</p><p>The digitalization of the aggregate-aggregate relationship and the automation of agricultural processes.</p>",
+                "items": [
+                    "Participation in the analysis and design phase.",
+                    "Implementation of REST APIs in BackEnd.",
+                    "Technical support for developers.",
+                    "Improvement of the development environment (Scripting, alias…)."
+                ]
+            },
+            "techs" : [
+                "fa-brands fa-square-git", "fa-brands fa-phabricator",
+                "fa-brands fa-php", "fa-brands fa-laravel",
+                "icon-postgres"
+            ]
         },
         {
             "classList" : "innoved robot",
@@ -117,8 +218,9 @@
             "period" : "Nov 2016 - Feb 2018",
             "start_date" : "2016-11",
             "end_date" : "2018-02",
-            "content" : "<p>Teach children between 5-16 years old the basics of programming using <a href='https://scratch.mit.edu/' target='blank' class='key-word' rel='noopener'>Scratch</a> & <a href='https://education.lego.com/en-us' target='blank' class='key-word' rel='noopener'>Ev3 Mindstorms</a></p>",
-            "techs" : null
+            "content" : {
+                "headline": "<p>Teach children between 5-16 years old the basics of programming using <a href='https://scratch.mit.edu/' target='blank' class='key-word' rel='noopener'>Scratch</a> & <a href='https://education.lego.com/en-us' target='blank' class='key-word' rel='noopener'>Ev3 Mindstorms</a></p>"
+            }
         },
         {
             "classList" : "bootstrap dirham",
@@ -128,8 +230,13 @@
             "period" : "Jul 2016 - Sep 2016",
             "start_date" : "2016-07",
             "end_date" : "2016-09",
-            "content" : "<p>Redesign / Development of the DirhamExpress website.</p>",
-            "techs" : "<p><span class='underline'>Technical environment :</span><br>HTML, CSS, Javascript, jQuery, Bootstrap, Visual Studio Code.</p>"
+            "content" : {
+                "headline": "<p>Redesign / Development of the DirhamExpress website.</p>"
+            },
+            "techs" : [
+                "fa-brands fa-html5", "fa-brands fa-css3-alt", "fa-brands fa-bootstrap",
+                "fa-brands fa-square-js", "icon-jquery"
+            ]
         },
         {
             "classList" : "csharp association",
@@ -139,8 +246,19 @@
             "period" : "Apr 2016 - Jun 2016",
             "start_date" : "2016-04",
             "end_date" : "2016-06",
-            "content" : "<p>Development of a management system for a covered room (Check-in, Reservation, Stock Management, Equipment, etc.).</p><ul><li>Manage members check-in.</li><li>Management of reservations for the covered room.</li><li>Stock management.</li><li>Management of the association's internal equipment.</li></ul>",
-            "techs" : "<p><span class='underline'>Technical environment :</span><br>C#, .NET, DevExpress, Sql Server, Crystal Report, Visual Studio.</p>"
+            "content" : {
+                "headline": "<p>Development of a management system for a covered room (Check-in, Reservation, Stock Management, Equipment, etc.).</p>",
+                "items": [
+                    "Manage members check-in.",
+                    "Management of reservations for the covered room.",
+                    "Stock management.",
+                    "Management of the association's internal equipment."
+                ]
+            },
+            "techs" : [
+                "icon-csharp", "devicon-dot-net-plain",
+                "icon-mssql"
+            ]
         }
     ]
 }

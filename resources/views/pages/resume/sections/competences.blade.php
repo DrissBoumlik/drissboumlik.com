@@ -1,5 +1,5 @@
-<div class="py-5" id="competences">
-    <div class="section competences">
+<div class="py-5">
+    <div class="section competences" id="competences">
         <div class="container">
             <div class="row section-header">
                 <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-    <div class="section languages mt-5">
+    <div class="section languages mt-5" id="languages">
         <div class="container">
             <div class="row section-header">
                 <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
@@ -57,7 +57,7 @@
             </div>
         </div>
     </div>
-    <div class="section add-skills mt-5">
+    <div class="section add-skills mt-5" id="add-skills">
         <div class="container">
             <div class="row section-header">
                 <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
