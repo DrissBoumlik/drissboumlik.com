@@ -36,7 +36,7 @@
                                         <div class="tech-env">
                                             <p><span class='underline'>Technical environment :</span><br/>
                                                 @foreach($experience->techs as $tech)
-                                                    <i class="{{ $tech }}"></i>
+                                                    {!! preg_match('(fa-|icon-)', $tech) ? "<i class='$tech'></i>" : "<span class='text-decoration-underline'>$tech</span>" !!}
                                                 @endforeach
                                             </p>
                                         </div>

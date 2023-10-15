@@ -37,8 +37,8 @@
                 "fa-brands fa-bootstrap",
                 "fa-brands fa-square-js", "icon-jquery",
                 "fa-brands fa-square-git", "fa-brands fa-github",
-                "fa-brands fa-php", "fa-brands fa-laravel",
-                "icon-mssql",
+                "fa-brands fa-php", "fa-brands fa-laravel", "icon-mysql",
+                "icon-csharp", "icon-mssql",
                 "fa-brands fa-trello", "devicon-azure-plain"
             ]
         },
@@ -112,7 +112,7 @@
                 "fa-brands fa-bootstrap",
                 "fa-brands fa-square-js", "icon-jquery", "fa-brands fa-angular",
                 "fa-brands fa-square-git", "fa-brands fa-bitbucket",
-                "fa-brands fa-php", "fa-brands fa-laravel",
+                "fa-brands fa-php", "fa-brands fa-laravel", "Rest Api",
                 "icon-redis", "icon-postgres",
                 "fa-brands fa-trello"
             ]
@@ -205,9 +205,9 @@
                 ]
             },
             "techs" : [
-                "fa-brands fa-square-git", "fa-brands fa-phabricator",
                 "fa-brands fa-php", "fa-brands fa-laravel",
-                "icon-postgres"
+                "fa-brands fa-square-git", "fa-brands fa-phabricator",
+                "icon-postgres", "Cloud 9", "Postman"
             ]
         },
         {
