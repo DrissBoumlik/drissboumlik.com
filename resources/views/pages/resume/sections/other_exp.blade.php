@@ -15,8 +15,7 @@
                             <div class="list-group-item-figure box-header">
                                 <div class="has-badge d-flex align-items-center">
                                     <div class="box-icon me-2">
-                                        <img src="{{ asset('/assets/img/icons/' . $other_expItem->icon) }}"
-                                        alt="{{ $other_expItem->title }}" height="25" width="25">
+                                        {!! $other_expItem->icon !!}
                                     </div>
                                     <div class="box-header-txt">
                                         <h1 class="text-capitalize">{{ $other_expItem->title }}</h1>
