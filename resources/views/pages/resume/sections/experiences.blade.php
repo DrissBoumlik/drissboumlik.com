@@ -1,5 +1,3 @@
-<div class="py-5" id="experiences">
-    <div class="section experiences">
 <div class="py-5">
     <div class="section experiences" id="experiences">
         <div class="container">
@@ -36,7 +34,7 @@
                                         <div class="tech-env">
                                             <p><span class='underline'>Technical environment :</span><br/>
                                                 @foreach($experience->techs as $tech)
-                                                    {!! preg_match('(fa-|icon-)', $tech) ? "<i class='$tech'></i>" : "<span class='text-decoration-underline'>$tech</span>" !!}
+                                                    <span data-toggle="tooltip" data-placement="bottom" title="{{ $tech->title }}">{!! $tech->content !!}</span>
                                                 @endforeach
                                             </p>
                                         </div>

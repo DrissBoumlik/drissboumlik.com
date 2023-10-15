@@ -16,12 +16,16 @@
                 "Improvement of the development environment (Scripting, alias…)."
             ]},
             "techs" : [
-                "fa-brands fa-bootstrap",
-                "fa-brands fa-square-js", "icon-jquery",
-                "fa-brands fa-square-git", "fa-brands fa-gitlab",
-                "fa-brands fa-php", "fa-brands fa-laravel",
-                "icon-mysql",
-                "fa-brands fa-trello", "fa-brands fa-slack"
+                {"title": "Bootstrap" ,"content" : "<i class='fa-brands fa-bootstrap' ></i>"},
+                {"title": "Javascript" ,"content" : "<i class='fa-brands fa-square-js' ></i>"},
+                {"title": "Jquery" ,"content" : "<i class='icon-jquery' ></i>"},
+                {"title": "Git" ,"content" : "<i class='fa-brands fa-square-git' ></i>"},
+                {"title": "Gitlab" ,"content" : "<i class='fa-brands fa-gitlab' ></i>"},
+                {"title": "PHP" ,"content" : "<i class='fa-brands fa-php' ></i>"},
+                {"title": "Laravel" ,"content" : "<i class='fa-brands fa-laravel' ></i>"},
+                {"title": "MySQL" ,"content" : "<i class='icon-mysql' ></i>"},
+                {"title": "Trello" ,"content" : "<i class='fa-brands fa-trello' ></i>"},
+                {"title": "Slack" ,"content" : "<i class='fa-brands fa-slack' ></i>"}
             ]
         },
         {
@@ -34,12 +38,18 @@
             "end_date" : "2022-11",
             "content" : null,
             "techs" : [
-                "fa-brands fa-bootstrap",
-                "fa-brands fa-square-js", "icon-jquery",
-                "fa-brands fa-square-git", "fa-brands fa-github",
-                "fa-brands fa-php", "fa-brands fa-laravel", "icon-mysql",
-                "icon-csharp", "icon-mssql",
-                "fa-brands fa-trello", "devicon-azure-plain"
+                { "title" : "Bootstrap", "content" : "<i class='fa-brands fa-bootstrap'></i>"},
+                { "title" : "Javascript", "content" : "<i class='fa-brands fa-square-js'></i>"},
+                { "title" : "Jquery", "content" : "<i class='icon-jquery'></i>"},
+                { "title" : "Git", "content" : "<i class='fa-brands fa-square-git'></i>"},
+                { "title" : "Github", "content" : "<i class='fa-brands fa-github'></i>"},
+                { "title" : "PHP", "content" : "<i class='fa-brands fa-php'></i>"},
+                { "title" : "Laravel", "content" : "<i class='fa-brands fa-laravel'></i>"},
+                { "title" : "MySQL", "content" : "<i class='icon-mysql'></i>"},
+                { "title" : "CSharp", "content" : "<i class='icon-csharp'></i>"},
+                { "title" : "MSSQL", "content" : "<i class='icon-mssql'></i>"},
+                { "title" : "Trello", "content" : "<i class='fa-brands fa-trello'></i>"},
+                { "title" : "azure", "content" : "<i class='devicon-azure-plain'></i>"}
             ]
         },
         {
@@ -59,12 +69,16 @@
                     "Improvement of the development environment (Scripting, alias…)."
             ]},
             "techs" : [
-                "fa-brands fa-bootstrap",
-                "fa-brands fa-square-js", "icon-jquery",
-                "fa-brands fa-square-git", "fa-brands fa-gitlab",
-                "fa-brands fa-php", "fa-brands fa-laravel",
-                "icon-mysql",
-                "fa-brands fa-trello", "fa-brands fa-slack"
+                {"title" : "Bootstrap", "content" : "<i class='fa-brands fa-bootstrap'></i>"},
+                {"title" : "Javascript", "content" : "<i class='fa-brands fa-square-js'></i>"},
+                {"title" : "Jquery", "content" : "<i class='icon-jquery'></i>"},
+                {"title" : "Git", "content" : "<i class='fa-brands fa-square-git'></i>"},
+                {"title" : "Gitlab", "content" : "<i class='fa-brands fa-gitlab'></i>"},
+                {"title" : "PHP", "content" : "<i class='fa-brands fa-php'></i>"},
+                {"title" : "Laravel", "content" : "<i class='fa-brands fa-laravel'></i>"},
+                {"title" : "MySQL", "content" : "<i class='icon-mysql'></i>"},
+                {"title" : "Trello", "content" : "<i class='fa-brands fa-trello'></i>"},
+                {"title" : "Slack", "content" : "<i class='fa-brands fa-slack'></i>"}
             ]
         },
         {
@@ -109,12 +123,18 @@
                 ]
             },
             "techs" : [
-                "fa-brands fa-bootstrap",
-                "fa-brands fa-square-js", "icon-jquery", "fa-brands fa-angular",
-                "fa-brands fa-square-git", "fa-brands fa-bitbucket",
-                "fa-brands fa-php", "fa-brands fa-laravel", "Rest Api",
-                "icon-redis", "icon-postgres",
-                "fa-brands fa-trello"
+                {"title" : "Bootstrap", "content" : "<i class='fa-brands fa-bootstrap'></i>"},
+                {"title" : "Javascript", "content" : "<i class='fa-brands fa-square-js'></i>"},
+                {"title" : "Jquery", "content" : "<i class='icon-jquery'></i>"},
+                {"title" : "angular", "content" : "<i class='fa-brands fa-angular'></i>"},
+                {"title" : "Git", "content" : "<i class='fa-brands fa-square-git'></i>"},
+                {"title" : "Bitbucket", "content" : "<i class='fa-brands fa-bitbucket'></i>"},
+                {"title" : "PHP", "content" : "<i class='fa-brands fa-php'></i>"},
+                {"title" : "Laravel", "content" : "<i class='fa-brands fa-laravel'></i>"},
+                {"title" : "Rest Api", "content" : "<span class='text-decoration-underline'>Rest Api</span>"},
+                {"title" : "Redis", "content" : "<i class='icon-redis'></i>"},
+                {"title" : "Postgres", "content" : "<i class='icon-postgres'></i>"},
+                {"title" : "Trello", "content" : "<i class='fa-brands fa-trello'></i>"}
             ]
         },
         {
@@ -133,12 +153,16 @@
                 ]
             },
             "techs" : [
-                "fa-brands fa-bootstrap", "fa-brands fa-sass",
-                "fa-brands fa-square-js", "icon-jquery", "icon-gulp",
-                "fa-brands fa-square-git",
-                "fa-brands fa-php", "fa-brands fa-laravel",
-                "icon-mysql",
-                "fa-brands fa-trello"
+                {"title" : "Bootstrap", "content" : "<i class='fa-brands fa-bootstrap'></i>"},
+                {"title" : "Sass", "content" : "<i class='fa-brands fa-sass'></i>"},
+                {"title" : "Javascript", "content" : "<i class='fa-brands fa-square-js'></i>"},
+                {"title" : "Jquery", "content" : "<i class='icon-jquery'></i>"},
+                {"title" : "Gulp", "content" : "<i class='icon-gulp'></i>"},
+                {"title" : "Git", "content" : "<i class='fa-brands fa-square-git'></i>"},
+                {"title" : "PHP", "content" : "<i class='fa-brands fa-php'></i>"},
+                {"title" : "Laravel", "content" : "<i class='fa-brands fa-laravel'></i>"},
+                {"title" : "MySQL", "content" : "<i class='icon-mysql'></i>"},
+                {"title" : "Trello", "content" : "<i class='fa-brands fa-trello'></i>"}
             ]
         },
         {
@@ -158,11 +182,14 @@
                 ]
             },
             "techs" : [
-                "fa-brands fa-bootstrap", "fa-brands fa-sass",
-                "fa-brands fa-square-js", "icon-jquery",
-                "fa-brands fa-square-git",
-                "fa-brands fa-wordpress", "fa-brands fa-laravel",
-                "icon-mysql"
+                {"title" : "Bootstrap", "content" : "<i class='fa-brands fa-bootstrap'></i>"},
+                {"title" : "Sass", "content" : "<i class='fa-brands fa-sass'></i>"},
+                {"title" : "Javascript", "content" : "<i class='fa-brands fa-square-js'></i>"},
+                {"title" : "Jquery", "content" : "<i class='icon-jquery'></i>"},
+                {"title" : "Git", "content" : "<i class='fa-brands fa-square-git'></i>"},
+                {"title" : "Wordpress", "content" : "<i class='fa-brands fa-wordpress'></i>"},
+                {"title" : "Laravel", "content" : "<i class='fa-brands fa-laravel'></i>"},
+                {"title" : "MySQL", "content" : "<i class='icon-mysql'></i>"}
             ]
         },
         {
@@ -180,11 +207,14 @@
                 ]
             },
             "techs" : [
-                "fa-brands fa-bootstrap", "fa-brands fa-sass",
-                "fa-brands fa-square-js", "icon-jquery",
-                "fa-brands fa-square-git",
-                "fa-brands fa-wordpress", "fa-brands fa-php",
-                "icon-mysql"
+                {"title" : "Bootstrap" , "content" : "<i class='fa-brands fa-bootstrap'></i>"},
+                {"title" : "Sass" , "content" : "<i class='fa-brands fa-sass'></i>"},
+                {"title" : "Javascript" , "content" : "<i class='fa-brands fa-square-js'></i>"},
+                {"title" : "Jquery" , "content" : "<i class='icon-jquery'></i>"},
+                {"title" : "Git" , "content" : "<i class='fa-brands fa-square-git'></i>"},
+                {"title" : "Wordpress" , "content" : "<i class='fa-brands fa-wordpress'></i>"},
+                {"title" : "PHP" , "content" : "<i class='fa-brands fa-php'></i>"},
+                {"title" : "MySQL" , "content" : "<i class='icon-mysql'></i>"}
             ]
         },
         {
@@ -205,9 +235,13 @@
                 ]
             },
             "techs" : [
-                "fa-brands fa-php", "fa-brands fa-laravel",
-                "fa-brands fa-square-git", "fa-brands fa-phabricator",
-                "icon-postgres", "Cloud 9", "Postman"
+                {"title" : "PHP", "content": "<i class='fa-brands fa-php'></i>"},
+                {"title" : "Laravel", "content": "<i class='fa-brands fa-laravel'></i>"},
+                {"title" : "Git", "content": "<i class='fa-brands fa-square-git'></i>"},
+                {"title" : "Phabricator", "content": "<i class='fa-brands fa-phabricator'></i>"},
+                {"title" : "Postgres", "content": "<i class='icon-postgres'></i>"},
+                {"title" : "Cloud 9", "content": "<span class='text-decoration-underline'>Cloud 9</span>"},
+                {"title" : "Postman", "content": "<span class='text-decoration-underline'>Postman</span>"}
             ]
         },
         {
@@ -234,8 +268,11 @@
                 "headline": "<p>Redesign / Development of the DirhamExpress website.</p>"
             },
             "techs" : [
-                "fa-brands fa-html5", "fa-brands fa-css3-alt", "fa-brands fa-bootstrap",
-                "fa-brands fa-square-js", "icon-jquery"
+                {"title" : "Html", "content" : "<i class='fa-brands fa-html5'></i>"},
+                {"title" : "Css", "content" : "<i class='fa-brands fa-css3-alt'></i>"},
+                {"title" : "Bootstrap", "content" : "<i class='fa-brands fa-bootstrap'></i>"},
+                {"title" : "Javascript", "content" : "<i class='fa-brands fa-square-js'></i>"},
+                {"title" : "Jquery", "content" : "<i class='icon-jquery'></i>"}
             ]
         },
         {
@@ -256,8 +293,9 @@
                 ]
             },
             "techs" : [
-                "icon-csharp", "devicon-dot-net-plain",
-                "icon-mssql"
+                {"title" : "CSharp", "content" : "<i class='icon-csharp'></i>"},
+                {"title" : ".Net", "content" : "<i class='devicon-dot-net-plain'></i>"},
+                {"title" : "MSSQL", "content" : "<i class='icon-mssql'></i>"}
             ]
         }
     ]
