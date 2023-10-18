@@ -11,7 +11,7 @@
         $data->headerMenu = getHeaderMenu();
         $data->footerMenu = getFooterMenu();
     @endphp
-    @include('pages.resume.about')
+    @include('pages.partials.about')
     <div class="container-fluid p-0">
         <section id="page-content" class="page-content">
             @yield('page-content-header')
