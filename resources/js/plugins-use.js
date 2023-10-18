@@ -1,6 +1,8 @@
 
 function initSyntaxHighlighting() {
-    One.helpersOnLoad('js-highlightjs');
+    try { hljs.highlightAll() }
+    catch (error) { console.log(error)}
+    // One.helpersOnLoad('js-highlightjs');
 }
 
 function initGallery() {
@@ -8,12 +10,12 @@ function initGallery() {
     One.helpersOnLoad(['jq-magnific-popup']);
 }
 
-function initLaraberg() {
+function initPostEditor() {
     if ($('#post_body').length == 0) return;
     tinymce.init({
         selector: 'textarea#post_body', // Replace this CSS selector to match the placeholder element for TinyMCE
-        plugins: 'code table lists',
-        toolbar: 'undo redo | formatselect| bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table'
+        plugins: 'code table lists codesample image',
+        toolbar: 'code codesample image | undo redo | formatselect| bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | table'
     });
     // let options = { };
     // Laraberg.init('post_body', options)
@@ -262,4 +264,4 @@ function initPostPageEvent() {
     });
 }
 
-export { initLaraberg, initSelect2, initGallery, initImageCropper, initSyntaxHighlighting, initDatatable, initPostPageEvent };
+export { initPostEditor, initSelect2, initGallery, initImageCropper, initSyntaxHighlighting, initDatatable, initPostPageEvent };

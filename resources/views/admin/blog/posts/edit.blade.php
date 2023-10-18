@@ -4,13 +4,13 @@
     <!-- Page JS Plugins CSS -->
 {{--    <link rel="stylesheet" href="/template/assets/js/plugins/cropperjs/cropper.min.css">--}}
     <link rel="stylesheet" href="{{ asset('/template/assets/js/plugins/select2/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/vendor/laraberg/css/laraberg.css') }}">
+{{--    <link rel="stylesheet" href="{{ asset('/vendor/laraberg/css/laraberg.css') }}">--}}
 {{--    <link rel="stylesheet" href="/template/assets/js/plugins/simplemde/simplemde.min.css">--}}
 @endsection
 @section('js')
-    <script src="{{ asset('/vendor/laraberg/js/react.production.min.js') }}"></script>
-    <script src="{{ asset('/vendor/laraberg/js/react-dom.production.min.js') }}"></script>
-    <script src="{{ asset('/vendor/laraberg/js/laraberg.js') }}"></script>
+{{--    <script src="{{ asset('/vendor/laraberg/js/react.production.min.js') }}"></script>--}}
+{{--    <script src="{{ asset('/vendor/laraberg/js/react-dom.production.min.js') }}"></script>--}}
+{{--    <script src="{{ asset('/vendor/laraberg/js/laraberg.js') }}"></script>--}}
 {{--    <script src="/template/assets/js/plugins/cropperjs/cropper.min.js"></script>--}}
     <script src="{{ asset('/template/assets/js/plugins/select2/js/select2.full.min.js') }}"></script>
 {{--    <script src="/template/assets/js/plugins/simplemde/simplemde.min.js"></script>--}}
