@@ -103,10 +103,13 @@ function initSlider() {
 }
 
 function toggleDarkMode(_body, isActive) {
+    let highlightjs_href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/';
     if (isActive) {
+        $('#highlightjs-style').attr('href', highlightjs_href + 'dark.min.css');
         _body.addClass('dark-mode').removeClass('light-mode');
         setCookie('mode', 'dark');
     } else {
+        $('#highlightjs-style').attr('href', highlightjs_href + 'default.min.css')
         _body.removeClass('dark-mode').addClass('light-mode');
         setCookie('mode', 'light');
     }

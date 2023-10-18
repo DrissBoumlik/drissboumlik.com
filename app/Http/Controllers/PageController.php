@@ -30,7 +30,7 @@ class PageController extends Controller
         $data->headerMenu = getHeaderMenu();
         $data->footerMenu = getFooterMenu();
 
-        $data->title = 'Driss Boumlik | Resume';
+        $data->title = 'Resume | Driss Boumlik';
 
         return view('pages.resume.index', ['data' => $data]);
     }

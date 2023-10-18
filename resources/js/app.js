@@ -1,5 +1,5 @@
 import { drawText, initParticlesJS, initSlider, initDarkMode, initEvents } from "./functions";
-import { initLaraberg, initSelect2, initGallery, initImageCropper, initSyntaxHighlighting, initDatatable, initPostPageEvent } from "./plugins-use";
+import { initPostEditor, initSelect2, initGallery, initImageCropper, initSyntaxHighlighting, initDatatable, initPostPageEvent } from "./plugins-use";
 
 
 $(function () {
@@ -10,15 +10,14 @@ $(function () {
         initSlider();
         initDarkMode();
 
-        initLaraberg();
+        initPostEditor();
         initSelect2();
-        initGallery();
-        // initSyntaxHighlighting();
+        // initGallery();
+        initSyntaxHighlighting();
         // initImageCropper();
         initEvents();
         initDatatable();
-        initPostPageEvent();
-
+        // initPostPageEvent();
     } catch (error) {
         // console.log(error);
         throw error

@@ -2,16 +2,17 @@
 
 @section('css')
     <!-- Page JS Plugins CSS -->
-    <link rel="stylesheet" href="/template/assets/js/plugins/cropperjs/cropper.min.css">
-    <link rel="stylesheet" href={{ asset("/template/assets/js/plugins/select2/css/select2.min.css") }}>
-    <link rel="stylesheet" href="{{ asset('/vendor/laraberg/css/laraberg.css') }}">
+{{--    <link rel="stylesheet" href="{{ asset('/template/assets/js/plugins/cropperjs/cropper.min.css') }}">--}}
+    <link rel="stylesheet" href="{{ asset('/template/assets/js/plugins/select2/css/select2.min.css') }}">
+{{--    <link rel="stylesheet" href="{{ asset('/vendor/laraberg/css/laraberg.css') }}">--}}
 @endsection
 @section('js')
-    <script src="{{ asset('/vendor/laraberg/js/react.production.min.js') }}"></script>
-    <script src="{{ asset('/vendor/laraberg/js/react-dom.production.min.js') }}"></script>
-    <script src="{{ asset('/vendor/laraberg/js/laraberg.js') }}"></script>
-    <script src="/template/assets/js/plugins/cropperjs/cropper.min.js"></script>
-    <script src={{ asset("/template/assets/js/plugins/select2/js/select2.full.min.js") }}></script>
+{{--    <script src="{{ asset('/vendor/laraberg/js/react.production.min.js') }}"></script>--}}
+{{--    <script src="{{ asset('/vendor/laraberg/js/react-dom.production.min.js') }}"></script>--}}
+{{--    <script src="{{ asset('/vendor/laraberg/js/laraberg.js') }}"></script>--}}
+{{--    <script src="/template/assets/js/plugins/cropperjs/cropper.min.js"></script>--}}
+    <script src="{{ asset('/template/assets/js/plugins/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
 @endsection
 
 @section('content')
@@ -194,7 +195,7 @@
                                 <label class="form-label" for="post_body">Content</label>
                                 <!-- SimpleMDE Container -->
                                 {{-- <textarea class="js-simplemde" id="simplemde" name="post_body">{{ old('post_body') }}</textarea> --}}
-                                <textarea id="post_body" name="post_content" placeholder="Textarea content.." hidden></textarea>
+                                <textarea id="post_body" class="form-control" name="post_content" placeholder="Post content.." hidden></textarea>
                             </div>
                         </div>
                     </div>
