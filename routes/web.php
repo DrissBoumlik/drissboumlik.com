@@ -2,6 +2,7 @@
 
 // use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GotoController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\TagController;
@@ -90,7 +91,8 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag', 'location'])->g
     Route::get('/sitemap', [SitemapController::class, 'sitemap']);
     Route::get('/generateSitemap', [SitemapController::class, 'generateSitemap']);
 
-    Route::redirect('/', '/resume');
+//    Route::redirect('/', '/resume');
+    Route::get('/', [HomeController::class, 'home']);
     // Resume
     Route::get('resume', [PageController::class, 'resume']);
 
