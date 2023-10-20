@@ -14,12 +14,17 @@
                         @if (!isset($recommandation->hidden) || !$recommandation->hidden)
                         <div class="owl-carousel-item item">
                             <div class="owl-carousel-item-wrapper row">
-                                <div class="owl-carousel-img col-12">
-                                    <img src="{{ asset('/assets/img/people/' . $recommandation->icon) }}"
-                                    class="d-block square-100 rounded-circle" alt="..." height="95" width="95">
-                                </div>
                                 <div class="owl-carousel-txt col-12">
                                     {!! $recommandation->content !!}
+                                    <div class="recommandation-author">
+                                        <div class="owl-carousel-img author-image">
+                                            <img src="{{ asset('/assets/img/people/' . $recommandation->icon) }}"
+                                                 class="d-block square-40 rounded-circle" alt="..." height="95" width="95">
+                                        </div>
+                                        <div class="author-name">
+                                            <small class='funny-font'>{!! $recommandation->author !!}</small>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
