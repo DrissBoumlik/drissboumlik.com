@@ -3,7 +3,7 @@
         @foreach ($data->headerMenu as $link)
             <li class="header-menu-item menu-item list-group-item animated-underline
                     overflow-auto my-2 mx-2 {{ request()->is($link->slug) ? 'active' : '' }}">
-                <a href="/{{ $link->slug }}" rel="noopener" target="{{ $link->target ?? '_self' }}"
+                <a href="{{ \URL::to($link->slug) }}" rel="noopener" target="{{ $link->target ?? '_self' }}"
                     aria-label="{{ $link->title }}" class="text-capitalize">
                     {{ $link->title }}
                 </a>
