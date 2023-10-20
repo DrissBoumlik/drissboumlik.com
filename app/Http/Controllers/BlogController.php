@@ -25,7 +25,7 @@ class BlogController extends Controller
     public function getPost(Request $request, $slug)
     {
         $post = Post::where('slug', $slug)->first();
-        if ($post == null) {
+        if ($post === null) {
             abort(404);
         }
         $post->increment('views', 1);
