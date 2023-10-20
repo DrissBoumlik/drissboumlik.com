@@ -23,8 +23,8 @@ class HomeController extends Controller
         $data->title = 'Home | Driss Boumlik';
         $data->headline = 'Latest Articles';
         $data->sections = [];
-        $data->sections['recommandations'] = json_decode(\File::get(base_path() . "/database/data/resume/recommandations.json"));
-        $data->sections['recommandations']->items = collect($data->sections['recommandations']->items)->shuffle()->all();
+        $data->sections['recommendations'] = json_decode(\File::get(base_path() . "/database/data/resume/recommendations.json"));
+        $data->sections['recommendations']->items = collect($data->sections['recommendations']->items)->shuffle()->all();
         $posts = $this->getLatestPosts();
 
         return view('pages.home', ['data' => $data, 'posts' => $posts]);

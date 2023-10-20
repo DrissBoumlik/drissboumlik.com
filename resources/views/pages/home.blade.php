@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="section">
-                @include('pages.resume.sections.recommandations', ['recommandations' => $data->sections['recommandations']])
+                @include('pages.resume.sections.recommendations', ['recommendations' => $data->sections['recommendations']])
             </div>
         </div>
     </div>
