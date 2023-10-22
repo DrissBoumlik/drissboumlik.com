@@ -68,7 +68,7 @@
     },
     {
         "img": "assets/img/social/pdf.png",
-        "icon": "<i class='fa-solid fa-file-pdf'></i>",
+        "icon": "<i class='fa-solid fa-file-arrow-down'></i>",
         "link": "cv",
         "title": "cv",
         "color": "#EE6551"
