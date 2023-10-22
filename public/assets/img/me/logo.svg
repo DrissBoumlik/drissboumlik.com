@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" 
+	xmlns="http://www.w3.org/2000/svg" 
+	viewBox="15 -5 280 320"
+	viewBoxOld="0 0 309.98 360.61"
+	>
+  <defs>
+    <style>
+	  #Layer_1 {
+		height: 35px;
+		width: 35px;
+	  }
+      .cls-1 {
+        fill: #429cd6;
+      }
+
+      .cls-1, .cls-2 {
+        font-family: FiraCode-Medium, 'Fira Code';
+        font-size: 212.36px;
+        font-weight: 500;
+      }
+
+      .cls-2 {
+        fill: #18457b;
+      }
+
+      .cls-3 {
+        fill: none;
+        stroke: #0f2547;
+        stroke-width: 15px;
+      }
+    </style>
+  </defs>
+  <circle class="cls-3" cx="154.99" cy="154.99" r="147.49"/>
+  <text class="cls-2" transform="translate(29.96 251.71) scale(1.27 1)"><tspan x="0" y="0">d</tspan></text>
+  <text class="cls-1" transform="translate(115.71 200.02) scale(1.27 1)"><tspan x="0" y="0">b</tspan></text>
+</svg>
