@@ -28,7 +28,7 @@
                             </div>
                             <div class="row">
                                 @foreach ($posts as $post)
-                                    <div class="col-12 col-lg-6 col-xl-6 mb-4">
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-4">
                                         @include('components.post', ['post' => $post])
                                     </div>
                                 @endforeach
@@ -45,8 +45,8 @@
                                     <h1 class="section-title">Services</h1>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-xl-4 col-lg-4 col-12 mb-4">
+                            <div class="row justify-content-center">
+                                <div class="col-xl-4 col-lg-4 col-md-6 col-12 mb-4">
                                     <div class="service-box w-100">
                                         <div class="service-icon">
                                             <i class="fa-solid fa-palette"></i>
@@ -56,7 +56,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-4 col-12 mb-4">
+                                <div class="col-xl-4 col-lg-4 col-md-6 col-12 mb-4">
                                     <div class="service-box w-100">
                                         <div class="service-icon">
                                             <i class="fa-solid fa-code"></i>
@@ -66,7 +66,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-4 col-12 mb-4">
+                                <div class="col-xl-4 col-lg-4 col-md-6 col-12 mb-4">
                                     <div class="service-box w-100">
                                         <div class="service-icon">
                                             <i class="fa-solid fa-laptop-code"></i>
