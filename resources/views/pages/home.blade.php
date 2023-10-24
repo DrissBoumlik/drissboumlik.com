@@ -14,9 +14,8 @@
     <div class="container-fluid p-0">
         <div class="sections">
             <div class="section">
-                <div class="posts">
-                    <div class="section py-5">
-                        <div class="container">
+                <div class="posts py-5">
+                    <div class="container">
                             <div class="row section-header">
                                 <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
                                     <hr class="section-title-line">
@@ -31,13 +30,11 @@
                                 @endforeach
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
             <div class="section">
-                <div class="services">
-                    <div class="section py-5">
-                        <div class="container">
+                <div class="services py-5">
+                    <div class="container">
                             <div class="row section-header">
                                 <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
                                     <hr class="section-title-line">
@@ -77,7 +74,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
             <div class="section">
