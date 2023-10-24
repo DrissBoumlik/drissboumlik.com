@@ -18,6 +18,7 @@ mix
     // .js('resources/template/js/pages/datatables.js', 'public/template/js/pages')
     // .js('resources/template/js/pages/slick.js', 'public/template/js/pages')
     .js('resources/js/app.js', 'public/js')
+    .js('resources/js/pages/contact.js', 'public/js/pages')
     .sass('resources/template/sass/main.scss', 'public/template/css')
     // .sass('resources/template/sass/oneui/themes/amethyst.scss', 'public/template/css/themes')
     // .sass('resources/template/sass/oneui/themes/city.scss', 'public/template/css/themes')
