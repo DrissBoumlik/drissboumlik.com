@@ -27,7 +27,7 @@ class HomeController extends Controller
         $data->sections['recommendations']->items = collect($data->sections['recommendations']->items)->shuffle()->all();
         $posts = $this->getLatestPosts();
 
-        return view('pages.home', ['data' => $data, 'posts' => $posts]);
+        return view('pages.home.index', ['data' => $data, 'posts' => $posts]);
     }
 
     private function getLatestPosts()
