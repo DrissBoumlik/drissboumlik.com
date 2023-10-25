@@ -11,14 +11,12 @@ class ContactController extends Controller
 {
     public function getInTouch(Request $request)
     {
-//        dd($request->all());
         $request->validate([
             "name" => "required|max:100",
             "email" => "required|email|max:255",
-            "subject" => "required|max:255",
             "body" => "required|max:1000",
         ]);
-        $request_data = $request->only('name', 'email', 'subject', 'body');
+        $request_data = $request->only('name', 'email', 'body');
 
         Mail::send('emails.contact', $request_data, static function ($message) use ($request_data) {
             $message->to('hi@drissboumlik.com', 'DB')
