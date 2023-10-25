@@ -1,4 +1,4 @@
-<div id="about" class="about section-wrapper py-md-4rem py-3rem">
+<div id="about" class="about section-wrapper py-md-5rem py-3rem">
     <div class="section about-header">
         <div id="particles-js" class="particles-js"></div>
         <div class="container">
