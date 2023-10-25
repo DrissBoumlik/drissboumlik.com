@@ -18,6 +18,7 @@ if (!function_exists('getLinks')) {
             'twitter' => 'https://twitter.com/drissboumlik/',
             'linkedin' => 'https://linkedin.com/in/drissboumlik/',
             'github' => 'https://github.com/drissboumlik/',
+            'discord' => 'https://discordapp.com/users/156878784019038208',
             'youtube' => 'https://youtube.com/channel/UCss61diIS1kW_TRsHMMwtwQ',
             'community' => 'https://community.drissboumlik.com',
             'cv' => '/storage/cv/DrissBoumlik-en.pdf',
@@ -34,9 +35,15 @@ if (!function_exists('getLinks')) {
 }
 
 if (!function_exists('getSocialLinks')) {
-    function getSocialLinks()
+    function getSocialLinks($withHidden = false)
     {
-        return json_decode(\File::get(base_path() . '/database/data/layout/social-links.json'));
+        $socialLinks = json_decode(\File::get(base_path() . '/database/data/layout/social-links.json'));
+        if (!$withHidden) {
+            $socialLinks = array_filter($socialLinks, function ($item) {
+                return (!isset($item->hidden) || !$item->hidden);
+            });
+        }
+        return $socialLinks;
     }
 }
 
