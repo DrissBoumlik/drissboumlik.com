@@ -35,15 +35,15 @@
     animation: pushed .3s linear
 
 body.dark-mode
-    .wrapper-dark-mode .toggle-dark-mode
-        background-color: $tc-white
-        border: 1px solid $tc-white
-
-
-    .wrapper-dark-mode .toggle-dark-mode i.icon-mode
-        color: $tc-blue-dark-3
-        font-size: 1.7rem
-        // font-weight: 400
-        // &:before
-        //     content: '\f0eb'
-
+    .wrapper-dark-mode
+        .toggle-dark-mode
+            background-color: $tc-white
+            border: 1px solid $tc-white
+            i.icon-mode
+                color: $tc-blue-dark-3
+                font-size: 1.7rem
+            @media(max-width: 576px)
+                width: 40px
+                height: 40px
+                i.icon-mode
+                    font-size: 1.4rem
