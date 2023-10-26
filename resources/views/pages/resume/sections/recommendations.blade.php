@@ -17,9 +17,9 @@
                                 <div class="owl-carousel-txt col-12">
                                     {!! $recommendation->content !!}
                                     <div class="recommendation-author">
-                                        <div class="owl-carousel-img author-image">
+                                        <div class="owl-carousel-img author-image square-60 overflow-hidden">
                                             <img src="{{ asset('/assets/img/people/' . $recommendation->icon) }}"
-                                                 class="d-block square-40 rounded-circle" alt="..." height="95" width="95">
+                                                 class="d-block rounded-circle" alt="...">
                                         </div>
                                         <div class="author-name">
                                             <small class='funny-font'>{!! $recommendation->author !!}</small>
