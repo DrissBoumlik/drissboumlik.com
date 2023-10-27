@@ -18,10 +18,10 @@
     <div class="container-fluid p-0">
         <div class="sections">
             <div class="section">
-                @include('pages.home.sections.posts')
+                @include('pages.home.sections.services')
             </div>
             <div class="section">
-                @include('pages.home.sections.services')
+                @include('pages.home.sections.posts')
             </div>
             <div class="section">
                 @include('pages.resume.sections.recommendations', ['recommendations' => $data->sections['recommendations']])
