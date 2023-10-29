@@ -14,7 +14,7 @@
                         <div class="welcome-message">
                             <div class="welcome-message-wrapper tc-black-almost">
                                 <div class="txt">
-                                    I code, blog, speak, write, teach ... and other stuff usually not in the same order
+                                    I code, blog, speak, write, teach ... and other stuff usually not in the same order.<br/>
                                     I'm a developer & teacher among other things who likes to build & share to make some positive difference.
                                 </div>
                             </div>
