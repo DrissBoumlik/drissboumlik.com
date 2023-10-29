@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('post-header-assets')
-    <script src="{{ asset('/js/pages/contact.js') }}"></script>
+    <script src="{{ asset('/js/pages/home.js') }}"></script>
 @endsection
 
 @section('content')
@@ -14,8 +14,10 @@
         $data->headerMenu = getHeaderMenu();
         $data->footerMenu = getFooterMenu();
     @endphp
-    @include('pages.partials.about')
+    @include('layout.menu')
+{{--    @include('pages.partials.about')--}}
     <div class="container-fluid p-0">
+            @include('pages.home.sections.about-me')
         <div class="sections">
             <div class="section">
                 @include('pages.home.sections.services')
