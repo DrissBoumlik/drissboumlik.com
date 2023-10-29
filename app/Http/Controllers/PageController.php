@@ -28,7 +28,6 @@ class PageController extends Controller
 
         $data->socialLinks = getSocialLinks();
         $data->headerMenu = getHeaderMenu();
-        $data->footerMenu = getFooterMenu();
 
         $data->title = 'Resume | Driss Boumlik';
 

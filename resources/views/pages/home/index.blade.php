@@ -5,19 +5,9 @@
 @endsection
 
 @section('content')
-    @php
-        if (!isset($data) || $data == null) {
-            $data = new \stdClass();
-        }
-
-        $data->socialLinks = getSocialLinks();
-        $data->headerMenu = getHeaderMenu();
-        $data->footerMenu = getFooterMenu();
-    @endphp
     @include('layout.menu')
-{{--    @include('pages.partials.about')--}}
     <div class="container-fluid p-0">
-            @include('pages.home.sections.about-me')
+        @include('pages.home.sections.about-me')
         <div class="sections">
             <div class="section">
                 @include('pages.home.sections.services')

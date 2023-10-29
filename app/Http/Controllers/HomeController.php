@@ -27,6 +27,9 @@ class HomeController extends Controller
         $data->sections['recommendations']->items = collect($data->sections['recommendations']->items)->shuffle()->all();
         $posts = $this->getLatestPosts();
 
+        $data->socialLinks = getSocialLinks();
+        $data->headerMenu = getHeaderMenu();
+
         return view('pages.home.index', ['data' => $data, 'posts' => $posts]);
     }
 

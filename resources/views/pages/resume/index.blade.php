@@ -1,12 +1,13 @@
 @extends('layout.app')
 
-@section('content')
+@section('post-header-assets')
+    <script src="{{ asset('/js/pages/home.js') }}"></script>
+@endsection
 
-    {{-- @include('layouts.menu') --}}
-    {{-- @include('addons.flags') --}}
+@section('content')
+    @include('layout.menu')
     <div class="container-fluid p-0">
-        @include('pages.partials.about')
-        {{-- @include('pages.index-parts.activities') --}}
+        @include('pages.home.sections.about-me')
         <div class="sections">
             @foreach ($data->sections as $key => $section)
                 {{-- @php $i = array_search($key,array_keys($data->sections)) @endphp --}}

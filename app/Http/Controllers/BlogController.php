@@ -17,8 +17,15 @@ class BlogController extends Controller
 
     public function getPosts(Request $request)
     {
-        $result = $this->preparePosts(Post::with('author'), 'Blog | Latest Articles', 'Latest Articles');
+        $result = $this->preparePosts(Post::with('author'));
 
+        $data = new \stdClass();
+        $data->title = 'Blog | Latest Articles';
+        $data->headline = 'Latest Articles';
+
+        $data->socialLinks = getSocialLinks();
+        $data->headerMenu = getHeaderMenu();
+        $result['data'] = $data;
         return view('pages.blog.posts.index', $result);
     }
 
@@ -30,7 +37,9 @@ class BlogController extends Controller
         }
         $post->increment('views', 1);
         $data = new \stdClass();
-
+        $data->headline = 'Latest Articles';
+        $data->socialLinks = getSocialLinks();
+        $data->headerMenu = getHeaderMenu();
 
         $post = (object)(new PostResource($post))->resolve();
         $data->title = 'Blog | ' . $post->title;
@@ -53,8 +62,14 @@ class BlogController extends Controller
             abort(404);
         }
 
-        $result = $this->preparePosts($tag->posts()->with('author'), 'Blog | Tags | ' . $tag->name, 'Tags : ' . $tag->name);
+        $result = $this->preparePosts($tag->posts()->with('author'));
+        $data = new \stdClass();
+        $data->title = 'Blog | Tags | ' . $tag->name;
+        $data->headline = 'Tags : ' . $tag->name;
 
+        $data->socialLinks = getSocialLinks();
+        $data->headerMenu = getHeaderMenu();
+        $result['data'] = $data;
         return view('pages.blog.posts.index', $result);
     }
 
@@ -75,7 +90,7 @@ class BlogController extends Controller
         return view('pages.blog.tags.index', ['data' => $data, 'tags' => $tags]);
     }
 
-    private function preparePosts($posts, $title, $headline)
+    private function preparePosts($posts)
     {
         $posts_data = (object) (new PostWithPaginationCollection($posts
             ->orderBy('created_at', 'desc')
@@ -83,12 +98,7 @@ class BlogController extends Controller
 
         $posts = $posts_data->resolve();
 
-        $data = new \stdClass();
-        $data->title = $title;
-        $data->headline = $headline;
-
         return [
-            'data' => $data,
             'posts_data' => $posts_data,
             'posts' => $posts
         ];
