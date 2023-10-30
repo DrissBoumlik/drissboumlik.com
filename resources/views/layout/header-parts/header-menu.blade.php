@@ -1,5 +1,5 @@
 <div class="header-menu-wrapper menu-wrapper">
-    <ul class="header-menu menu list-group list-group-horizontal align-items-start">
+    <ul class="header-menu menu list-group list-group-horizontal">
         @foreach ($data->headerMenu as $link)
             <li class="header-menu-item menu-item list-group-item animated-underline
                     overflow-auto my-2 mx-2 {{ request()->is($link->slug) ? 'active' : '' }}">
@@ -10,11 +10,20 @@
             </li>
         @endforeach
         @auth
-            <li class="header-menu-item menu-item list-group-item animated-underline overflow-auto my-2 mx-2">
+            <li class="header-menu-item menu-item list-group-item overflow-auto my-2 mx-2">
                 <a href="/admin" rel="noopener" target="_blank"
                    aria-label="Admin Panel" class="text-capitalize">
-                    <i class="fa fa-fw fa-user-shield tc-blue-dark-1"></i> Admin Panel
+                    <i class="fa-solid fa-gear"></i>
                 </a>
+            </li>
+            <li class="header-menu-item menu-item list-group-item overflow-auto my-2 mx-2">
+                <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{ route('logout') }}"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="fa-solid fa-power-off"></i>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </li>
         @endauth
     </ul>
