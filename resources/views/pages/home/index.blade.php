@@ -23,7 +23,7 @@
                 @include('pages.home.sections.posts')
             </div>
             <div class="section">
-                @include('pages.resume.sections.recommendations', ['recommendations' => $data->sections['recommendations']])
+                @include('pages.resume.sections.testimonials', ['testimonials' => $data->sections['testimonials']])
             </div>
             <div class="section">
                 @include('pages.home.sections.get-in-touch')

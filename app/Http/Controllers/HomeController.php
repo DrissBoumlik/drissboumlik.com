@@ -24,8 +24,8 @@ class HomeController extends Controller
         $data->sections = [];
         $data->sections['techs'] = getTechs();
         $data->sections['portfolio'] = getPortfolio();
-        $data->sections['recommendations'] = getRecommendations();
-        $data->sections['recommendations']->items = collect($data->sections['recommendations']->items)->shuffle()->all();
+        $data->sections['testimonials'] = getTestimonials();
+        $data->sections['testimonials']->items = collect($data->sections['testimonials']->items)->shuffle()->all();
         $posts = $this->getLatestFeaturedPosts();
 
         $data->socialLinks = getSocialLinks();

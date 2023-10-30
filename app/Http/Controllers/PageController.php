@@ -19,8 +19,8 @@ class PageController extends Controller
         // $data->sections['certificates'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/certificates.json"));
         $data->sections['passion'] = getPassion();
         $data->sections['other_exp'] = getOtherExperiences();
-        $data->sections['recommendations'] = getRecommendations();
-		$data->sections['recommendations']->items = collect($data->sections['recommendations']->items)->shuffle()->all();
+        $data->sections['testimonials'] = getTestimonials();
+		$data->sections['testimonials']->items = collect($data->sections['testimonials']->items)->shuffle()->all();
         $data->sections['experiences']->items = array_map(function($item) {
             $item->duration = calculateDate($item->start_date, $item->end_date);
             return $item;

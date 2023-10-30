@@ -177,14 +177,14 @@ if (!function_exists('getOtherExperiences')) {
     }
 }
 
-if (!function_exists('getRecommendations')) {
-    function getRecommendations($withHidden = false)
+if (!function_exists('getTestimonials')) {
+    function getTestimonials($withHidden = false)
     {
-        $recommendations = json_decode(\File::get(base_path() . "/database/data/resume/recommendations.json"));
+        $testimonials = json_decode(\File::get(base_path() . "/database/data/resume/testimonials.json"));
         if (!$withHidden) {
-            $recommendations->items = filterHiddenItems($recommendations->items);
+            $testimonials->items = filterHiddenItems($testimonials->items);
         }
-        return $recommendations;
+        return $testimonials;
     }
 }
 
