@@ -1,5 +1,5 @@
-<div class="py-5" id="passion">
-    <div class="passion">
+<div class="py-5">
+    <div class="section passion" id="passion">
         <div class="container">
             <div class="row section-header">
                 <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
@@ -15,8 +15,7 @@
                             <div class="list-group-item-figure box-header">
                                 <div class="has-badge d-flex align-items-center">
                                     <div class="box-icon me-2">
-                                        <img src="{{ asset('/assets/img/icons/' . $passionItem->icon) }}"
-                                        alt="{{ $passionItem->title }}" width="25" height="25">
+                                        {!! $passionItem->icon !!}
                                     </div>
                                     <div class="box-header-txt">
                                         <h1 class="text-capitalize">{{ $passionItem->title }}</h1>
