@@ -1,5 +1,5 @@
 
-<div id="about" class="about section-wrapper py-md-5rem py-3rem">
+<div id="about" class="about section-wrapper py-md-5rem py-3rem mt-5rem">
     <div id="particles-js" class="particles-js"></div>
     <div class="container d-flex align-items-center">
         <div class="section about-header">

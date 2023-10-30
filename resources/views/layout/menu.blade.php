@@ -1,4 +1,4 @@
-<div class="menu nav-scroller py-2 mb-5rem {{ $mode . '-mode' }}">
+<div class="menu nav-scroller py-2 {{ $mode . '-mode' }}">
     <div class="container">
         <div class="menu-blocks d-flex justify-content-center align-items-center">
             <div class="brand me-2">
