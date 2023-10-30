@@ -12,12 +12,12 @@
         @auth
             <li class="header-menu-item menu-item list-group-item overflow-auto my-2 mx-2">
                 <a href="/admin" rel="noopener" target="_blank"
-                   aria-label="Admin Panel" class="text-capitalize">
+                   aria-label="Admin Panel">
                     <i class="fa-solid fa-gear"></i>
                 </a>
             </li>
             <li class="header-menu-item menu-item list-group-item overflow-auto my-2 mx-2">
-                <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{ route('logout') }}"
+                <a href="{{ route('logout') }}"
                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fa-solid fa-power-off"></i>
                 </a>
