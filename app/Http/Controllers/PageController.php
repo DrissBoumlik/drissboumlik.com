@@ -12,14 +12,14 @@ class PageController extends Controller
 
         $data->sections = [];
         // $data->summary = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/summary.json"));
-        $data->sections['experiences'] = json_decode(\File::get(base_path() . "/database/data/resume/experiences.json"));
-        $data->sections['competences'] = json_decode(\File::get(base_path() . "/database/data/resume/competences.json"));
-        $data->sections['education'] = json_decode(\File::get(base_path() . "/database/data/resume/education.json"));
-        // $data->sections['portfolio'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/portfolio.json"));
+        $data->sections['experiences'] = getExperiences();
+        $data->sections['competences'] = getCompetences();
+        $data->sections['education'] = getEducation();
+        $data->sections['portfolio'] = getPortfolio();
         // $data->sections['certificates'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/certificates.json"));
-        $data->sections['passion'] = json_decode(\File::get(base_path() . "/database/data/resume/passion.json"));
-        $data->sections['other_exp'] = json_decode(\File::get(base_path() . "/database/data/resume/other_exp.json"));
-        $data->sections['recommendations'] = json_decode(\File::get(base_path() . "/database/data/resume/recommendations.json"));
+        $data->sections['passion'] = getPassion();
+        $data->sections['other_exp'] = getOtherExperiences();
+        $data->sections['recommendations'] = getRecommendations();
 		$data->sections['recommendations']->items = collect($data->sections['recommendations']->items)->shuffle()->all();
         $data->sections['experiences']->items = array_map(function($item) {
             $item->duration = calculateDate($item->start_date, $item->end_date);

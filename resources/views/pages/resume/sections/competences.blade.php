@@ -4,11 +4,11 @@
             <div class="row section-header">
                 <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
                     <hr class="section-title-line">
-                    <h1 class="section-title">competences</h1>
+                    <h1 class="section-title">{{ $competences->techs->header }}</h1>
                 </div>
             </div>
             <div class="row">
-                @foreach ($competences->techs as $key => $tech)
+                @foreach ($competences->techs->items as $key => $tech)
                     <div class="col-md-6 col-12">
                         <div class="progress mb-4">
                             <div id="{{ $tech->id }}" class="progress-bar delay padding-left"
@@ -33,11 +33,11 @@
             <div class="row section-header">
                 <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
                     <hr class="section-title-line">
-                    <h1 class="section-title">languages</h1>
+                    <h1 class="section-title">{{ $competences->langs->header }}</h1>
                 </div>
             </div>
             <div class="row">
-                @foreach ($competences->langs as $key => $lang)
+                @foreach ($competences->langs->items as $key => $lang)
                     <div class="col-md-6 col-12">
                         <div class="progress mb-4">
                             <div id="{{ $lang->id }}" class="progress-bar delay padding-left"
@@ -62,11 +62,11 @@
             <div class="row section-header">
                 <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
                     <hr class="section-title-line">
-                    <h1 class="section-title">additionnel skills</h1>
+                    <h1 class="section-title">{{ $competences->addSkills->header }}</h1>
                 </div>
             </div>
             <div class="row">
-                @foreach ($competences->addSkills as $key => $addSkill)
+                @foreach ($competences->addSkills->items as $key => $addSkill)
                     <div class="col-md-6 col-12">
                         <div class="progress mb-4">
                             <div id="{{ $addSkill->id }}" class="progress-bar delay padding-left"
