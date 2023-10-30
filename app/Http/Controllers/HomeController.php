@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    private $latestPostsCount = 4;
+    private $latestFeaturedPostsCount = 4;
 
     public function home(Request $request, $var = null)
     {
@@ -21,11 +21,10 @@ class HomeController extends Controller
         }
         $data = new \stdClass;
         $data->title = 'Home | Driss Boumlik';
-        $data->headline = 'Latest Articles';
         $data->sections = [];
         $data->sections['recommendations'] = json_decode(\File::get(base_path() . "/database/data/resume/recommendations.json"));
         $data->sections['recommendations']->items = collect($data->sections['recommendations']->items)->shuffle()->all();
-        $posts = $this->getLatestPosts();
+        $posts = $this->getLatestFeaturedPosts();
 
         $data->socialLinks = getSocialLinks();
         $data->headerMenu = getHeaderMenu();
@@ -33,9 +32,9 @@ class HomeController extends Controller
         return view('pages.home.index', ['data' => $data, 'posts' => $posts]);
     }
 
-    private function getLatestPosts()
+    private function getLatestFeaturedPosts()
     {
         return (new PostCollection(Post::where('featured', true)
-            ->orderBy('updated_at', 'desc')->take($this->latestPostsCount)->get()))->resolve();
+            ->orderBy('updated_at', 'desc')->take($this->latestFeaturedPostsCount)->get()))->resolve();
     }
 }
