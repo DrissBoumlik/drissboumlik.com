@@ -57,18 +57,18 @@ class BlogController extends Controller
     public function getPostsByTag(Request $request, $slug)
     {
         $tag = Tag::where('slug', $slug)->first();
-
+        $data = new \stdClass();
+        $data->title = 'Blog | Tags';
+        $data->headline = 'Tags';
+        $data->socialLinks = getSocialLinks();
+        $data->headerMenu = getHeaderMenu();
         if ($tag == null) {
-            abort(404);
+            return redirect_to_404_page();
         }
 
         $result = $this->preparePosts($tag->posts()->with('author'));
-        $data = new \stdClass();
         $data->title = 'Blog | Tags | ' . $tag->name;
         $data->headline = 'Tags : ' . $tag->name;
-
-        $data->socialLinks = getSocialLinks();
-        $data->headerMenu = getHeaderMenu();
         $result['data'] = $data;
         return view('pages.blog.posts.index', $result);
     }

@@ -5,6 +5,9 @@ if (!function_exists('redirect_to_404_page')) {
     {
         $data = new \stdClass;
         $data->title = 'Page Not Found | Driss Boumlik';
+        $data->headline = 'Tags';
+        $data->socialLinks = getSocialLinks();
+        $data->headerMenu = getHeaderMenu();
         return view('errors.404', ['data' => $data]);
     }
 }

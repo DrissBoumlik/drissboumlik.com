@@ -4,7 +4,7 @@
 
     <div class="container-fluid p-0">
 
-        <div class="_404">
+        <div class="_404" style="height: 90vh">
             <div class="row my-5">
                 <div class="col-lg-8 offset-lg-2 col-12">
                     <div class="not-found-container">
