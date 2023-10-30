@@ -3,7 +3,8 @@
     "items" : [
         {
             "image": "appDesk.png",
-            "content": "<p><span class='underline'>Desktop App</span><br>C#.Net | DevExpress | Sql Server</p>"
+            "content": "<p><span class='underline'>Desktop App</span><br>C#.Net | DevExpress | Sql Server</p>",
+            "hidden": true
         },
         {
             "image": "dirEx.png",
@@ -35,19 +36,23 @@
         },
         {
             "image": "circet.png",
-            "content": "<p><span class='underline'>Full Stack</span><br>Laravel | Ajax | Sass | Bootstrap</p>"
+            "content": "<p><span class='underline'>Full Stack</span><br>Laravel | Ajax | Sass | Bootstrap</p>",
+            "hidden": true
         },
         {
             "image": "blog.png",
-            "content": "<p><span class='underline'>CMS</span><br>Sass | Bootstrap | Wordpress</p>"
+            "content": "<p><span class='underline'>CMS</span><br>Sass | Bootstrap | Wordpress</p>",
+            "hidden": true
         },
         {
             "image": "ticket.png",
-            "content": "<p><span class='underline'>Full Stack</span><br>Laravel | Ajax | Bootstrap</p>"
+            "content": "<p><span class='underline'>Full Stack</span><br>Laravel | Ajax | Bootstrap</p>",
+            "hidden": true
         },
         {
             "image": "css.png",
-            "content": "<p><a rel='noopener' target='_blank' href='https://udemy.com/css-mastering-animations'><span class='underline'>Formation</span><br>Master CSS Animations</a></p>"
+            "content": "<p><a rel='noopener' target='_blank' href='https://udemy.com/css-mastering-animations'><span class='underline'>Formation</span><br>Master CSS Animations</a></p>",
+            "hidden": true
         }
     ]
 }

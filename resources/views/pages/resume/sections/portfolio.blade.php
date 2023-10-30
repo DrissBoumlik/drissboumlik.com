@@ -10,14 +10,14 @@
             <div class="container">
                 <div class="row">
                     @foreach ($portfolio->items as $portfolioItem)
-                        <div class="col-sm-4 col-md-4">
-                            <div class="box small">
-                                <div class="wrapper">
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="box">
+                                <div class="project-image">
                                     <img class="w-100" src="{{ asset('/assets/img/portfolio/' . $portfolioItem->image) }}" alt="">
                                 </div>
-                                <div class="tuto-title">
-                                    {!! $portfolioItem->content !!}
-                                </div>
+{{--                                <div class="tuto-title">--}}
+{{--                                    {!! $portfolioItem->content !!}--}}
+{{--                                </div>--}}
                             </div>
                         </div>
                     @endforeach
