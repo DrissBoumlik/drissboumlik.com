@@ -1,11 +1,11 @@
 import { drawText, initParticlesJS, initSlider, initDarkMode, initEvents } from "./functions";
-import { initPostEditor, initSelect2, initGallery, initImageCropper, initSyntaxHighlighting, initDatatable, initPostPageEvent } from "./plugins-use";
+import { initPostEditor, initSelect2, initSyntaxHighlighting, initDatatable } from "./plugins-use";
 
 
 $(function () {
     try {
 
-        // drawText();
+        drawText();
         initParticlesJS();
         initSlider();
         initDarkMode();
@@ -20,6 +20,6 @@ $(function () {
         // initPostPageEvent();
     } catch (error) {
         // console.log(error);
-        throw error
+        // throw error
     }
 });

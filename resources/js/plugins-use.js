@@ -1,7 +1,9 @@
 
 function initSyntaxHighlighting() {
     try { hljs.highlightAll() }
-    catch (error) { console.log(error)}
+    catch (error) {
+        // console.log(error)
+    }
     // One.helpersOnLoad('js-highlightjs');
 }
 
