@@ -95,3 +95,118 @@ if (!function_exists('calculateDate')) {
                     ($months > 0 ? $months . ' ' . 'months' : '') . '</span>';
     }
 }
+
+
+if (!function_exists('getExperiences')) {
+    function getExperiences($withHidden = false)
+    {
+        $experiences = json_decode(\File::get(base_path() . "/database/data/resume/experiences.json"));
+        if (!$withHidden) {
+            $experiences->items = filterHiddenItems($experiences->items);
+        }
+        return $experiences;
+    }
+}
+
+if (!function_exists('getPortfolio')) {
+    function getPortfolio($withHidden = false)
+    {
+        $portfolio = json_decode(\File::get(base_path() . "/database/data/resume/portfolio.json"));
+        if (!$withHidden) {
+            $portfolio->items = filterHiddenItems($portfolio->items);
+        }
+        return $portfolio;
+    }
+}
+
+if (!function_exists('getCertificates')) {
+    function getCertificates($withHidden = false)
+    {
+        $certificates = json_decode(\File::get(base_path() . "/database/data/resume/certificates.json"));
+        if (!$withHidden) {
+            $certificates->items = filterHiddenItems($certificates->items);
+        }
+        return $certificates;
+    }
+}
+
+if (!function_exists('getCompetences')) {
+    function getCompetences($withHidden = false)
+    {
+        $competences = (array) json_decode(\File::get(base_path() . "/database/data/resume/competences.json"));
+        if (!$withHidden) {
+            $competences = array_map(function ($competenceGroup) {
+                $competenceGroup->items = filterHiddenItems($competenceGroup->items);
+                return $competenceGroup;
+            }, $competences);
+        }
+        return (object) $competences;
+    }
+}
+
+if (!function_exists('getEducation')) {
+    function getEducation($withHidden = false)
+    {
+        $education = json_decode(\File::get(base_path() . "/database/data/resume/education.json"));
+        if (!$withHidden) {
+            $education->items = filterHiddenItems($education->items);
+        }
+        return $education;
+    }
+}
+
+if (!function_exists('getPassion')) {
+    function getPassion($withHidden = false)
+    {
+        $passion = json_decode(\File::get(base_path() . "/database/data/resume/passion.json"));
+        if (!$withHidden) {
+            $passion->items = filterHiddenItems($passion->items);
+        }
+        return $passion;
+    }
+}
+
+if (!function_exists('getOtherExperiences')) {
+    function getOtherExperiences($withHidden = false)
+    {
+        $other_exp = json_decode(\File::get(base_path() . "/database/data/resume/other_exp.json"));
+        if (!$withHidden) {
+            $other_exp->items = filterHiddenItems($other_exp->items);
+        }
+        return $other_exp;
+    }
+}
+
+if (!function_exists('getRecommendations')) {
+    function getRecommendations($withHidden = false)
+    {
+        $recommendations = json_decode(\File::get(base_path() . "/database/data/resume/recommendations.json"));
+        if (!$withHidden) {
+            $recommendations->items = filterHiddenItems($recommendations->items);
+        }
+        return $recommendations;
+    }
+}
+
+if (!function_exists('getTechs')) {
+    function getTechs($withHidden = false)
+    {
+        $techs = json_decode(\File::get(base_path() . "/database/data/Components/techs.json"));
+        if (!$withHidden) {
+            $techs->items = array_filter($techs->items, function ($item) {
+                return (!isset($item->hidden) || !$item->hidden);
+            });
+        }
+        return $techs;
+    }
+}
+
+
+if (!function_exists('filterHiddenItems')) {
+    function filterHiddenItems($items)
+    {
+        return array_filter($items, function ($item) {
+            return (!isset($item->hidden) || !$item->hidden);
+        });
+    }
+}
