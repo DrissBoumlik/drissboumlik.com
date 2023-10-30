@@ -1,6 +1,7 @@
 @extends('layout.app')
 
 @section('post-header-assets')
+    <link rel="stylesheet" href="{{ asset('/plugins/devicon/devicon.min.css') }}">
     <script src="{{ asset('/js/pages/home.js') }}"></script>
 @endsection
 
@@ -11,6 +12,12 @@
         <div class="sections">
             <div class="section">
                 @include('pages.home.sections.services')
+            </div>
+            <div class="section">
+                @include('pages.resume.sections.portfolio', ['portfolio' => $data->sections['portfolio']])
+            </div>
+            <div class="section">
+                @include('pages.home.sections.techs', ['techs' => $data->sections['techs']])
             </div>
             <div class="section">
                 @include('pages.home.sections.posts')

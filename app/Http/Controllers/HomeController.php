@@ -22,7 +22,9 @@ class HomeController extends Controller
         $data = new \stdClass;
         $data->title = 'Home | Driss Boumlik';
         $data->sections = [];
-        $data->sections['recommendations'] = json_decode(\File::get(base_path() . "/database/data/resume/recommendations.json"));
+        $data->sections['techs'] = getTechs();
+        $data->sections['portfolio'] = getPortfolio();
+        $data->sections['recommendations'] = getRecommendations();
         $data->sections['recommendations']->items = collect($data->sections['recommendations']->items)->shuffle()->all();
         $posts = $this->getLatestFeaturedPosts();
 
