@@ -6,6 +6,7 @@
         border-radius: 5px
         padding: 1.25rem
         text-align: center
+        color: $tc-blue-dark-2
         .service-icon
             padding: 1rem
             font-size: 2.5rem
@@ -18,3 +19,22 @@
         max-height: 300px
 
 
+.skills
+    .skill-item
+        display: flex
+        align-items: center
+        justify-content: center
+        flex-direction: row
+        column-gap: 5px
+        margin-bottom: 2rem
+    .skill-icon
+        display: flex
+        font-size: 3rem
+        i
+            color: $tc-blue-dark-2
+    .skill-text
+        font-size: 1.3rem
+
+body.dark-mode
+    .skill-icon i
+        color: $tc-white
