@@ -81,6 +81,12 @@
                     </a>
                 </li>
                 <li class="nav-main-item">
+                    <a class="nav-main-link{{ request()->is('admin/messages') ? ' active' : '' }}" href="/admin/messages">
+                        <i class="nav-main-link-icon fa fa-fw fa-envelope"></i>
+                        <span class="nav-main-link-name">Messages</span>
+                    </a>
+                </li>
+                <li class="nav-main-item">
                     <a class="nav-main-link" href="/blog">
                         <i class="nav-main-link-icon fa fa-fw fa-globe"></i>
                         <span class="nav-main-link-name">Blog</span>

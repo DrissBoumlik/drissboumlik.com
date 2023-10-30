@@ -213,6 +213,82 @@ function initDatatable() {
         };
         configDT(params);
     }
+    if ($('#messages').length) {
+        let params = {
+            id: '#messages',
+            method: 'POST',
+            url: '/api/messages',
+            columns: [
+                { data: 'id', name: 'id', title: 'Actions', className: 'text-center',
+                    render: function (data, type, row, params) {
+                        return `
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm js-bs-tooltip-enabled display-email-details">
+                                <i class="fa fs-3 fa-eye"></i>
+                            </button>
+                        </div>
+                    `;
+                    }
+                },
+                { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
+                { data: 'name', name: 'name', title: 'Name', className: 'text-center'},
+                { data: 'email', name: 'email', title: 'Email', className: 'text-center'},
+                { data: 'body', name: 'body', title: 'Body', className: 'text-center',
+                    render: function(data, type, row, params) {
+                        return data.substring(0, 30) + '...';
+                    }
+                },
+                { data: 'created_at', name: 'created_at', title: 'created @', className: 'text-center fs-sm',
+                    render: function(data, type, row, params) {
+                        return data.split('.')[0].replace('T', ' ');
+                    }
+                },
+            ]
+        };
+        let messagesDataTable = configDT(params);
+        $('#messages').on('click', '.display-email-details', function(e) {
+            const $row = $(this).closest('tr');
+            const data = messagesDataTable.row( $row ).data();
+            console.log(data);
+
+            let modal = `
+            <div class="modal modal-email-details" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">${data.name}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Sender : ${data.name}</label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Email : ${data.email}</label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Message : <br/>${data.body}</label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Created @ : ${data.created_at}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-backdrop fade show"></div>`;
+            $('body').append(modal);
+            let modalEmailDetails = $('.modal-email-details');
+            $('.btn-close').add('.modal-email-details').on('click', function(e) {
+                if (e.target != modalEmailDetails[0] && e.target != $('.btn-close')[0]) {
+                    return;
+                }
+                modalEmailDetails.remove();
+                $('.modal-backdrop').remove();
+            });
+            modalEmailDetails.show()
+        });
+    }
 }
 
 function configDT(params) {
@@ -252,10 +328,16 @@ function configDT(params) {
             url: params.url,
         },
         columns: params.columns,
+        initComplete: function (settings, json) {
+            if (params.onComplete) {
+                params.onComplete(settings, json);
+            }
+        }
     });
     $('.btn-refresh').on('click', function (e) {
         table.ajax.reload(null, false);
     });
+    return table;
 }
 
 function initPostPageEvent() {

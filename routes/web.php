@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\VisitorController;
+use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -68,6 +69,8 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag', 'location'])->g
             Route::get('/tags/edit/{slug}', [TagController::class, 'edit']);
             Route::put('/tags/{slug}', [TagController::class, 'update']);
             Route::post('/tags', [TagController::class, 'store']);
+
+            Route::get('/messages', [MessageController::class, 'index']);
 
             Route::get('/visitors', [VisitorController::class, 'index']);
         });
