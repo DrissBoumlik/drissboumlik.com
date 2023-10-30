@@ -2,17 +2,17 @@
     {
         "icon": "<i class='fa-solid fa-globe'></i>",
         "link": "community",
-        "title": "community"
+        "title": "Join our community"
     },
     {
         "icon": "<i class='fa-brands fa-linkedin'></i>",
         "link": "linkedin",
-        "title": "linkedin"
+        "title": "Follow me on linkedin"
     },
     {
         "icon": "<i class='fa-brands fa-github'></i>",
         "link": "github",
-        "title": "github"
+        "title": "Follow me on github"
     },
     {
         "icon": "<i class='fa-brands fa-facebook-f'></i>",
@@ -23,7 +23,7 @@
     {
         "icon": "<i class='fa-brands fa-discord'></i>",
         "link": "discord",
-        "title": "discord"
+        "title": "Find me on discord"
     },
     {
         "icon": "<i class='fa-brands fa-youtube'></i>",
@@ -52,11 +52,12 @@
     {
         "icon": "<i class='fa-solid fa-at'></i>",
         "link": "email",
-        "title": "email"
+        "title": "Get in touch"
     },
     {
         "icon": "<i class='fa-solid fa-file-arrow-down'></i>",
         "link": "cv",
-        "title": "cv"
+        "title": "cv",
+        "hidden": true
     }
 ]
