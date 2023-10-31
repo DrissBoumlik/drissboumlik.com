@@ -22,7 +22,7 @@
                                                  class="d-block rounded-circle" alt="...">
                                         </div>
                                         <div class="author-name">
-                                            <span class='tiny-font'>{!! $testimonial->author !!}<br/>{!! $testimonial->position !!}</span>
+                                            <span>{!! $testimonial->author !!}<br/>{!! $testimonial->position !!}</span>
                                         </div>
                                     </div>
                                 </div>
