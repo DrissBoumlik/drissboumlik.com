@@ -1,13 +1,7 @@
 <div class="py-5" id="testimonials">
     <div class="testimonials">
         <div class="container">
-            <div class="row section-header">
-                <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
-                    <hr class="section-title-line">
-                    <h1 class="section-title">{{ $testimonials->header }}</h1>
-                </div>
-            </div>
-
+            @include('components.headline', ['headline' => $testimonials->header])
             <div class="row">
                 <div class="owl-carousel owl-theme">
                     @foreach ($testimonials->items as $index => $testimonial)

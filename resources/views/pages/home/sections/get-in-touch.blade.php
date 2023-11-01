@@ -1,11 +1,6 @@
 <div class="get-in-touch py-5">
     <div class="container">
-        <div class="row section-header">
-            <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
-                <hr class="section-title-line">
-                <h1 class="section-title">Get in Touch</h1>
-            </div>
-        </div>
+        @include('components.headline', ['headline' => 'Get in Touch'])
         <div class="row">
             <div class="col-12 col-lg-6 offset-lg-3">
                 <form id="contact-form" class="mb-4">

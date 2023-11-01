@@ -1,12 +1,7 @@
 <div class="py-5">
     <div class="section experiences" id="experiences">
         <div class="container">
-            <div class="row section-header">
-                <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
-                    <hr class="section-title-line">
-                    <h1 class="section-title">experiences</h1>
-                </div>
-            </div>
+            @include('components.headline', ['headline' => 'experiences'])
             <div class="row">
                 <div class="col-12">
                     <div class="timeline">

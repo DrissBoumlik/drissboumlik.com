@@ -1,12 +1,7 @@
 <div class="py-5" id="competences">
     <div class="competences">
         <div class="container">
-            <div class="row section-header">
-                <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
-                    <hr class="section-title-line">
-                    <h1 class="section-title">{{ $competences->techs->header }}</h1>
-                </div>
-            </div>
+            @include('components.headline', ['headline' => $competences->techs->header])
             <div class="row">
                 @foreach ($competences->techs->items as $key => $tech)
                     <div class="col-md-6 col-12">
@@ -30,12 +25,7 @@
     </div>
     <div class="languages mt-5">
         <div class="container">
-            <div class="row section-header">
-                <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
-                    <hr class="section-title-line">
-                    <h1 class="section-title">{{ $competences->langs->header }}</h1>
-                </div>
-            </div>
+            @include('components.headline', ['headline' => $competences->langs->header])
             <div class="row">
                 @foreach ($competences->langs->items as $key => $lang)
                     <div class="col-md-6 col-12">
@@ -59,12 +49,7 @@
     </div>
     <div class="add-skills mt-5">
         <div class="container">
-            <div class="row section-header">
-                <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
-                    <hr class="section-title-line">
-                    <h1 class="section-title">{{ $competences->addSkills->header }}</h1>
-                </div>
-            </div>
+            @include('components.headline', ['headline' => $competences->addSkills->header])
             <div class="row">
                 @foreach ($competences->addSkills->items as $key => $addSkill)
                     <div class="col-md-6 col-12">

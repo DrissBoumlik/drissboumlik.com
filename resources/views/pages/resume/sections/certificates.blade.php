@@ -1,12 +1,7 @@
 <div class="py-5" id="certificates">
     <div class="section certificates">
         <div class="container">
-            <div class="row section-header">
-                <div class="col-md-10 offset-md-1 col-12 d-flex flex-column align-items-center justify-content-center">
-                    <hr class="section-title-line">
-                    <h1 class="section-title">{{ $certificates->header }}</h1>
-                </div>
-            </div>
+            @include('components.headline', ['headline' => $certificates->header])
             <div class="row">
                 @foreach ($certificates->items as $index => $certificate)
                     <div class="col-md-6 col-12">
