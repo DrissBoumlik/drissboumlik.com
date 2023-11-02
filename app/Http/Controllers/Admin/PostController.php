@@ -27,6 +27,7 @@ class PostController extends Controller
         $data->tags = Tag::select("name", "id")->get();
 
         $data->title = 'Create Post | Admin Panel';
+        $data->postsStatus = getPostStatus();
         return view('admin.blog.posts.create', ['data' => $data]);
     }
 
@@ -85,6 +86,7 @@ class PostController extends Controller
         });
 
         $data->title = 'Update Post | Admin Panel';
+        $data->postsStatus = getPostStatus();
         return view('admin.blog.posts.edit', ['data' => $data, 'post' => $post]);
     }
 

@@ -89,7 +89,7 @@
                                     name="status" style="width: 100%;" data-placeholder="Choose many..">
                                     <!-- Required for data-placeholder attribute to work with Select2 plugin -->
 
-                                    @foreach(getPostStatus() as $key => $status)
+                                    @foreach($data->postsStatus as $key => $status)
                                         <option value="{{ $key }}" {{ $post->status->value == $key ? 'selected' : '' }}>{{ ucfirst($status) }}</option>
                                     @endforeach
                                 </select>
