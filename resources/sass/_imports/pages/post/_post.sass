@@ -64,7 +64,7 @@
         background-size: cover
         background-position: top center
         background-attachment: fixed
-    code
+    code:not(.hljs)
         color: $tc-black
         background-color: $tc-grey-light-3
         padding: 0 5px
@@ -76,3 +76,6 @@
         border-radius: 10px
         code.hljs
             box-shadow: inset 4px 0 6px -1px $tc-grey-light-3, inset -4px 0 6px -1px $tc-grey-light-3
+            &.hljs, &.hljs *
+                font-family: 'Fira Code'
+                font-size: 0.8rem
