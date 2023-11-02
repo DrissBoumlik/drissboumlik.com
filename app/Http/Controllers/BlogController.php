@@ -96,6 +96,9 @@ class BlogController extends Controller
 
     private function preparePosts($posts)
     {
+        if (!\Auth::check()) {
+            $posts = $posts->where('status', 2);
+        }
         $posts_data = (object) (new PostWithPaginationCollection($posts
             ->orderBy('created_at', 'desc')
             ->paginate($this->perPage)));
