@@ -31,7 +31,7 @@ class PostResource extends JsonResource
             'likes' => $this->likes,
             'views' => $this->views,
             'published_at' => $this->published_at,
-            'published_at_formatted' => $this->published_at->diffForHumans(),
+            'published_at_formatted' => $this->published_at?->diffForHumans(),
             'tags' => $this->tags,
         ];
     }
