@@ -36,7 +36,10 @@ class HomeController extends Controller
 
     private function getLatestFeaturedPosts()
     {
-        return (new PostCollection(Post::where('featured', true)
-            ->orderBy('updated_at', 'desc')->take($this->latestFeaturedPostsCount)->get()))->resolve();
+        $posts = Post::where('featured', true);
+        if (!\Auth::check()) {
+            $posts = $posts->where('status', 2);
+        }
+        return (new PostCollection($posts->orderBy('updated_at', 'desc')->take($this->latestFeaturedPostsCount)->get()))->resolve();
     }
 }
