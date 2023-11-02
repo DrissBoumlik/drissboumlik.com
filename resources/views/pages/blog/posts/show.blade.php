@@ -1,9 +1,5 @@
 @extends('layout.page-content')
 
-@section('pre-header-assets')
-{{--    <link id="highlightjs-style" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/{{ $mode == 'light' ? 'default.min.css' : 'dark.min.css' }}">--}}
-    <link id="highlightjs-style" rel="stylesheet" href="{{ asset('/plugins/highlight-js/' . ($mode == 'light' ? 'default.min.css' : 'dark.min.css')) }}">
-@endsection
 @section('post-header-assets')
 {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>--}}
     <script src="{{ asset('/plugins/highlight-js/highlight.min.js') }}"></script>
