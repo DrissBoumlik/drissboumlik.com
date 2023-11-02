@@ -16,8 +16,9 @@ function initPostEditor() {
     if ($('#post_body').length == 0) return;
     tinymce.init({
         selector: 'textarea#post_body', // Replace this CSS selector to match the placeholder element for TinyMCE
-        plugins: 'code table lists codesample image',
-        toolbar: 'code codesample image | undo redo | formatselect| bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | table'
+        plugins: 'code link table lists codesample image preview pagebreak',
+        toolbar: 'code codesample link image | undo redo | formatselect| bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | table | pagebreak preview',
+        pagebreak_separator: '<hr/>'
     });
     // let options = { };
     // Laraberg.init('post_body', options)
