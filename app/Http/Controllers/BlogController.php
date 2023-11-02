@@ -31,9 +31,13 @@ class BlogController extends Controller
 
     public function getPost(Request $request, $slug)
     {
-        $post = Post::where('slug', $slug)->first();
+        $post = Post::where('slug', $slug);
+        if (!\Auth::check()){
+            $post = $post->where('status', 2);
+        }
+        $post = $post->first();
         if ($post === null) {
-            abort(404);
+            return redirect_to_404_page();
         }
         $post->increment('views', 1);
         $data = new \stdClass();
