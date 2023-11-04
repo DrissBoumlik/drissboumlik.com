@@ -20,6 +20,8 @@
         height: 200px
         min-height: 150px
         max-height: 300px
+    .form-floating > .form-control:focus ~ label:after
+        background-color: transparent
 
 
 .skills
@@ -42,3 +44,7 @@
 body.dark-mode
     .skill-icon i
         color: $tc-white
+
+    .get-in-touch .form-floating
+        > label
+            color: $tc-white
