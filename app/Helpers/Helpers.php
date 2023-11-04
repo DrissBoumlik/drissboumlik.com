@@ -1,5 +1,13 @@
 <?php
 
+if (!function_exists('generateRandomColor')) {
+    function generateRandomColor()
+    {
+        $color = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
+        return $color;
+    }
+}
+
 if (!function_exists('redirect_to_404_page')) {
     function redirect_to_404_page()
     {
