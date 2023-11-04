@@ -45,16 +45,7 @@
 //     margin-top: $navbar-height
 // .about-header
     // margin-top: 66px
-.brand-slogan
-    text-align: center
-    font-family: Untitled-Sans
-    font-size: 3rem
-    font-weight: bold
-    @media (max-width: 767px)
-        font-size: 2rem
-        text-align: left
-    span
-        color: $tc-blue
+
 .welcome-message
     *
         text-align: center
@@ -242,13 +233,13 @@
 .brand-slogan
     text-align: left //center
     font-family: Untitled-Sans
-    font-size: 3rem
+    font-size: 2rem
     font-weight: bold
     color: $tc-black-almost
-    @media (max-width: 768px)
-        font-size: 2rem
-    @media (max-width: 992px)
+    @media (min-width: 768px)
         font-size: 2.5rem
+    @media (min-width: 992px)
+        font-size: 3rem
     // text-align: left
     span
         color: $tc-blue

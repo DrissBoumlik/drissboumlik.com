@@ -4,7 +4,7 @@
     <div class="container d-flex align-items-center">
         <div class="section about-header">
             <div class="">
-                <div class="row _justify-content-center _align-items-center mb-3">
+                <div class="row _justify-content-center _align-items-center mb-2">
                     <div class="col-11 col-md-12 col-lg-10">
                         <h3 class="brand-slogan">I'm <span>Driss</span> <span>Boumlik</span></h3>
                     </div>
@@ -15,7 +15,7 @@
                             <div class="welcome-message-wrapper tc-black-almost">
                                 <div class="txt">
                                     I code, blog, speak, write, teach ... and other stuff usually not in the same order.<br/>
-                                    I'm a developer & teacher among other things who likes to<br/>build & share to make some positive difference.
+                                    I'm a developer & teacher among other things who likes to build & share to make some positive difference.
                                 </div>
                             </div>
                         </div>
