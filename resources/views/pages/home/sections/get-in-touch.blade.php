@@ -5,21 +5,19 @@
             <div class="col-12 col-lg-6 offset-lg-3">
                 <form id="contact-form" class="mb-4">
                     @csrf
-                    <div class="mb-3">
-                        <label for="form-name" class="form-label">Name</label>
+                    <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="form-name" placeholder="John Doe" name="name" required />
+                        <label for="form-name">Name</label>
                     </div>
-                    <div class="mb-3">
-                        <label for="form-email" class="form-label">Email address</label>
+                    <div class="form-floating mb-3">
                         <input type="email" class="form-control" id="form-email" placeholder="jd@email.com" name="email" required />
+                        <label for="form-email">Email address</label>
                     </div>
-                    <div class="mb-3">
-                        <label for="form-body" class="form-label">Message</label>
+                    <div class="form-floating mb-3">
                         <textarea class="form-control" id="form-body" rows="3" name="body" placeholder="Your Message" required maxlength="1000"></textarea>
+                        <label for="form-body">Message</label>
                     </div>
-                    <button type="submit" class="btn tc-blue-dark-1-bg tc-blue-dark-2-bg-hover w-100">
-                        Submit
-                    </button>
+                    <button type="submit" class="btn tc-blue-dark-2-bg tc-blue-bg-hover w-100">Send</button>
                 </form>
             </div>
         </div>
