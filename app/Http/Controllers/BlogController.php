@@ -71,8 +71,8 @@ class BlogController extends Controller
         }
 
         $result = $this->preparePosts($tag->posts()->with('author'));
-        $data->title = 'Blog | Tags | ' . $tag->name;
-        $data->headline = 'Tags : ' . $tag->name;
+        $data->title = 'Blog | Tags : ' . $tag->name;
+        $data->headline = 'Tags <i class="fa-solid fa-angle-right mx-1"></i> ' . $tag->name;
         $result['data'] = $data;
         return view('pages.blog.posts.index', $result);
     }
