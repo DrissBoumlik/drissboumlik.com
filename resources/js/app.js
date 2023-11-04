@@ -1,5 +1,5 @@
 import { drawText, initParticlesJS, initSlider, initDarkMode, initEvents } from "./functions";
-import { initPostEditor, initSelect2, initSyntaxHighlighting, initDatatable } from "./plugins-use";
+import { initPostEditor, initSelect2, initDatatable } from "./plugins-use";
 
 
 $(function () {
@@ -13,7 +13,7 @@ $(function () {
         initPostEditor();
         initSelect2();
         // initGallery();
-        initSyntaxHighlighting();
+        // initSyntaxHighlighting();
         // initImageCropper();
         initEvents();
         initDatatable();

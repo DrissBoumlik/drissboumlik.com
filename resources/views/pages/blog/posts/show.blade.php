@@ -2,9 +2,11 @@
 
 @section('post-header-assets')
 {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>--}}
-    <script src="{{ asset('/plugins/highlight-js/highlight.min.js') }}"></script>
+{{--    <script src="{{ asset('/plugins/highlight-js/highlight.min.js') }}"></script>--}}
     {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script>--}}
-    <script src="{{ asset('/plugins/highlight-js/go.min.js') }}"></script>
+{{--    <script src="{{ asset('/plugins/highlight-js/go.min.js') }}"></script>--}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/plugins/prismjs/prism-tomorrow-night.css') }}">
+    <script src="{{ asset('/plugins/prismjs/prism-tomorrow-night.js') }}"></script>
 @endsection
 
 @section('page-content')
