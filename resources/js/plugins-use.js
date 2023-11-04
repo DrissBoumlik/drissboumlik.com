@@ -18,7 +18,27 @@ function initPostEditor() {
         selector: 'textarea#post_body', // Replace this CSS selector to match the placeholder element for TinyMCE
         plugins: 'code link table lists codesample image preview pagebreak',
         toolbar: 'code codesample link image | undo redo | formatselect| bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | table | pagebreak preview',
-        pagebreak_separator: '<hr/>'
+        pagebreak_separator: '<hr/>',
+        codesample_languages: [
+            { text: 'Bash', value: 'bash' },
+            { text: 'Typscript', value: 'typscript' },
+            { text: 'Markdown', value: 'markdown' },
+            { text: 'Pug', value: 'pug' },
+            { text: 'Sass', value: 'sass' },
+            { text: 'Yaml', value: 'yaml' },
+            { text: 'SQL', value: 'sql' },
+
+            { text: 'HTML/XML', value: 'markup' },
+            { text: 'CSS', value: 'css' },
+            { text: 'JavaScript', value: 'javascript' },
+            { text: 'PHP', value: 'php' },
+            { text: 'Ruby', value: 'ruby' },
+            { text: 'Python', value: 'python' },
+            { text: 'Java', value: 'java' },
+            { text: 'C', value: 'c' },
+            { text: 'C#', value: 'csharp' },
+            { text: 'C++', value: 'cpp' }
+        ],
     });
     // let options = { };
     // Laraberg.init('post_body', options)
