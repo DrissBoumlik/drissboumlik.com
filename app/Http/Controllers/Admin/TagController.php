@@ -20,7 +20,7 @@ class TagController extends Controller
     public function create(Request $request)
     {
         $data = new \stdClass();
-        $data->title = 'Create Tag | Admin Panel';
+        $data->title = 'New Tag | Admin Panel';
         return view('admin.blog.tags.create', ['data' => $data]);
     }
 
@@ -28,7 +28,7 @@ class TagController extends Controller
     {
         $data = new \stdClass();
         $tag = Tag::withTrashed()->whereSlug($slug)->first();
-        $data->title = 'Edit Tag | Admin Panel';
+        $data->title = "Edit | $tag->name | Admin Panel";
         $tag = (object) (new TagResource($tag))->resolve();
         return view('admin.blog.tags.edit', ['data' => $data, 'tag' => $tag]);
     }
