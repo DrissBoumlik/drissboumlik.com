@@ -48,7 +48,7 @@ class PostController extends Controller
             $image_file = $request->file('cover');
             if ($image_file) {
                 $file_ext = $image_file->getClientOriginalExtension();
-                $path = \Storage::disk('public')->putFileAs("blog/posts/$request->slug", $image_file, $request->slug.$file_ext);
+                $path = \Storage::disk('public')->putFileAs("blog/posts/$request->slug", $image_file, "$request->slug.$file_ext");
                 $data['cover'] = "storage/$path";
             }
             $post = Post::create($data);
