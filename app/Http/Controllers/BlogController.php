@@ -12,7 +12,8 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
-    private $perPage = 10;
+    private $postsPerPage = 10;
+    private $tagsPerPage = 20;
 
 
     public function getPosts(Request $request)
@@ -20,7 +21,7 @@ class BlogController extends Controller
         $result = $this->preparePosts(Post::with('author'));
 
         $data = new \stdClass();
-        $data->title = 'Blog | Latest Articles';
+        $data->title = 'Latest Articles | Blog';
         $data->headline = 'Latest Articles';
 
         $data->socialLinks = getSocialLinks();
@@ -46,7 +47,7 @@ class BlogController extends Controller
         $data->headerMenu = getHeaderMenu();
 
         $post = (object)(new PostResource($post))->resolve();
-        $data->title = 'Blog | ' . $post->title;
+        $data->title = "$post->title | ";
 
         return view('pages.blog.posts.show', ['data' => $data, 'post' => $post]);
     }
@@ -62,7 +63,6 @@ class BlogController extends Controller
     {
         $tag = Tag::where('slug', $slug)->first();
         $data = new \stdClass();
-        $data->title = 'Blog | Tags';
         $data->headline = 'Tags';
         $data->socialLinks = getSocialLinks();
         $data->headerMenu = getHeaderMenu();
@@ -71,8 +71,8 @@ class BlogController extends Controller
         }
 
         $result = $this->preparePosts($tag->posts()->with('author'));
-        $data->title = 'Blog | Tags : ' . $tag->name;
-        $data->headline = 'Tags <i class="fa-solid fa-angle-right mx-1"></i> ' . $tag->name;
+        $data->title = "Tags : $tag->name | Blog";
+        $data->headline = '<a href="/tags">All tags</a> <i class="fa-solid fa-angle-right mx-1"></i> ' . $tag->name;
         $result['data'] = $data;
         return view('pages.blog.posts.index', $result);
     }
@@ -80,16 +80,19 @@ class BlogController extends Controller
     public function getTags(Request $request)
     {
         $data = new \stdClass();
+        $data->socialLinks = getSocialLinks();
+        $data->headerMenu = getHeaderMenu();
+        $data->headline = 'Tags';
 
         $data->tags_data = (new TagWithPaginationCollection(Tag::withCount('posts')
             ->orderBy('created_at', 'desc')
-            ->paginate($this->perPage)))->resolve();
+            ->paginate($this->tagsPerPage)))->resolve();
 
         $tags = $data->tags_data['data'];
         unset($data->tags_data['data']);
 
 
-        $data->title = 'Blog | Tags';
+        $data->title = 'Tags | Blog';
 
         return view('pages.blog.tags.index', ['data' => $data, 'tags' => $tags]);
     }
@@ -101,7 +104,7 @@ class BlogController extends Controller
         }
         $posts_data = (object) (new PostWithPaginationCollection($posts
             ->orderBy('created_at', 'desc')
-            ->paginate($this->perPage)));
+            ->paginate($this->postsPerPage)));
 
         $posts = $posts_data->resolve();
 
