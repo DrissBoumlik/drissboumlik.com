@@ -12,7 +12,6 @@
     {
         "title": "tags",
         "slug": "tags",
-        "hidden": true,
         "target": "_self"
     },
     {

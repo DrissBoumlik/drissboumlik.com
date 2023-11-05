@@ -80,7 +80,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag', 'location'])->g
 //    Route::put('/subscribers/{uuid}', [SubscriberController::class, 'update']);
 //    Route::get('/subscribers/{uuid}', [SubscriberController::class, 'show']);
 //    Route::get('/subscribers/verify/{token}', [SubscriberController::class, 'verifySubscribtion']);
-//    Route::get('/tags', [BlogController::class, 'getTags']);
+    Route::get('/tags', [BlogController::class, 'getTags']);
     Route::get('/tags/{slug}', [BlogController::class, 'getPostsBytag']);
     Route::get('/blog', [BlogController::class, 'getPosts']);
     Route::get('/blog/{slug}', [BlogController::class, 'getPost']);

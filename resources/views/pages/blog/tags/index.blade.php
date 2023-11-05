@@ -3,29 +3,24 @@
 
 @section('page-content')
     <div class="container-fluid p-0">
-        <div class="posts">
+        <div class="tags">
             <div class="section py-5">
                 <div class="container">
+                    @include('components.headline', ['headline' => $data->headline])
                     <div class="row">
                         @foreach ($tags as $tag)
-                            <div class="col-12 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2 mb-4">
-                                <div class="post">
-                                    <div class="post-cover" style="background-image: url('/{{ $tag->cover }}')"></div>
-                                    <div class="post-data">
-                                        <div class="post-title mb-1">
-                                            <a href="/tags/{{ $tag->slug }}" class="text-dark text-decoration-none">
-                                                <h3 class="font-weight-bolder text-uppercase">{{ $tag->name }} ({{ $tag->posts_count }})</h3>
+                                <div class="col-md-4 col-6 mb-2">
+                                    <div class="tag-item">
+                                        <div class="tag-color" style="border: 1px solid {{ $tag->color }};"></div>
+                                        <div class="tag-text">
+                                            <a href="/tags/{{ $tag->slug }}" class="tag-link text-decoration-none">
+                                                <div class="font-weight-bolder text-uppercase
+                                                d-flex align-items-center justify-content-center">{{ $tag->name }}</div>
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            {{--                <a href="/tags/{{ $tag->slug }}">--}}
-                            {{--                        <span style="background-color: {{ $tag->color }}"--}}
-                            {{--                              class="fs-sm fw-semibold d-inline-block py-1 px-3 mb-2--}}
-                            {{--                                        rounded-pill text-white">{{ $tag->name }} ({{ $tag->posts_count }})</span>--}}
-                            {{--                </a>--}}
-                        @endforeach
+                            @endforeach
                         @if (!count($tags))
                             <div class="col-12">
                                 <div class="message-wrapper d-flex justify-content-center align-items-center"
@@ -35,7 +30,7 @@
                             </div>
                         @endif
                         <div class="col-12 col-md-8 offset-md-2
-                                                    col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+                                    col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mt-5">
                             <div class="pagination-wrapper justify-content-center">
                                 {{ $tags->onEachSide(5)->links() }}
                             </div>
