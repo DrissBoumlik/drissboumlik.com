@@ -9,13 +9,12 @@
                     @include('components.headline', ['headline' => $data->headline])
                     <div class="row">
                         @foreach ($tags as $tag)
-                                <div class="col-md-4 col-6 mb-2">
+                                <div class="col-md-4 col-6 mb-4">
                                     <div class="tag-item">
-                                        <div class="tag-color" style="border: 1px solid {{ $tag->color }};"></div>
+                                        <div class="tag-color" style="background-image: url('/{{ $tag->cover }}')"></div>
                                         <div class="tag-text">
                                             <a href="/tags/{{ $tag->slug }}" class="tag-link text-decoration-none">
-                                                <div class="font-weight-bolder text-uppercase
-                                                d-flex align-items-center justify-content-center">{{ $tag->name }}</div>
+                                                <div class="font-weight-bolder text-uppercase tag-link-text">{{ $tag->name }}</div>
                                             </a>
                                         </div>
                                     </div>
