@@ -84,8 +84,7 @@ class BlogController extends Controller
         $data->headerMenu = getHeaderMenu();
         $data->headline = 'Tags';
 
-        $data->tags_data = (new TagWithPaginationCollection(Tag::withCount('posts')
-            ->orderBy('created_at', 'desc')
+        $data->tags_data = (new TagWithPaginationCollection(Tag::orderBy('updated_at', 'desc')
             ->paginate($this->tagsPerPage)))->resolve();
 
         $tags = $data->tags_data['data'];
