@@ -45,7 +45,7 @@ class TagController extends Controller
             $image_file = $request->file('cover');
             if ($image_file) {
                 $file_ext = $image_file->getClientOriginalExtension();
-                $path = \Storage::disk('public')->putFileAs('blog/posts', $image_file, "$request->slug.$file_ext");
+                $path = \Storage::disk('public')->putFileAs("blog/tags/$request->slug", $image_file, "$request->slug.$file_ext");
                 $data['cover'] = "storage/$path";
             }
             $tag = Tag::create($data);
@@ -73,7 +73,8 @@ class TagController extends Controller
             $image_file = $request->file('cover');
             if ($image_file) {
                 $file_ext = $image_file->getClientOriginalExtension();
-                $path = \Storage::disk('public')->putFileAs('blog/tags', $image_file, ($request->slug ?? $tag->slug) . ".$file_ext");
+                $file_name = $request->slug ?? $tag->slug;
+                $path = \Storage::disk('public')->putFileAs("blog/tags/$request->slug", $image_file, "$file_name.$file_ext");
                 $data['cover'] = "storage/$path";
             }
             $tag->update($data);
