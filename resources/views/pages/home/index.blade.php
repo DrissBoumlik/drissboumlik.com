@@ -14,7 +14,7 @@
                 @include('pages.home.sections.services')
             </div>
             <div class="section">
-                @include('pages.resume.sections.portfolio', ['portfolio' => $data->sections['portfolio']])
+                @include('pages.resume.sections.work', ['work' => $data->sections['work']])
             </div>
             <div class="section">
                 @include('pages.home.sections.techs', ['techs' => $data->sections['techs']])

@@ -119,14 +119,14 @@ if (!function_exists('getExperiences')) {
     }
 }
 
-if (!function_exists('getPortfolio')) {
-    function getPortfolio($withHidden = false)
+if (!function_exists('getWork')) {
+    function getWork($withHidden = false)
     {
-        $portfolio = json_decode(\File::get(base_path() . "/database/data/resume/portfolio.json"));
+        $work = json_decode(\File::get(base_path() . "/database/data/resume/work.json"));
         if (!$withHidden) {
-            $portfolio->items = filterHiddenItems($portfolio->items);
+            $work->items = filterHiddenItems($work->items);
         }
-        return $portfolio;
+        return $work;
     }
 }
 

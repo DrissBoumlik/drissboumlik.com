@@ -15,7 +15,7 @@ class PageController extends Controller
         $data->sections['experiences'] = getExperiences();
         $data->sections['competences'] = getCompetences();
         $data->sections['education'] = getEducation();
-        $data->sections['portfolio'] = getPortfolio();
+        $data->sections['work'] = getWork();
         // $data->sections['certificates'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/certificates.json"));
         $data->sections['passion'] = getPassion();
         $data->sections['other_exp'] = getOtherExperiences();

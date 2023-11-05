@@ -23,7 +23,7 @@ class HomeController extends Controller
         $data->title = 'Home | Driss Boumlik';
         $data->sections = [];
         $data->sections['techs'] = getTechs();
-        $data->sections['portfolio'] = getPortfolio();
+        $data->sections['work'] = getWork();
         $data->sections['testimonials'] = getTestimonials();
         $data->sections['testimonials']->items = collect($data->sections['testimonials']->items)->shuffle()->all();
         $posts = $this->getLatestFeaturedPosts();
