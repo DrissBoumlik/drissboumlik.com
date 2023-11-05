@@ -10,7 +10,7 @@
 {{--            <span title="{{ $post->published_at }}">Posted {{ $post->published_at_formatted }} · {{ $post->read_duration }} min</span>--}}
 {{--        </div>--}}
         <div class="post-content mt-2">
-            {!! $post->excerpt !!}
+            {!! $post->short_excerpt !!}
         </div>
     </div>
 </div>

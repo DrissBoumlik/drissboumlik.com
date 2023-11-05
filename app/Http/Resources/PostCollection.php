@@ -18,10 +18,10 @@ class PostCollection extends ResourceCollection
             return (object) [
                 'author_id' => $item->author_id,
                 'title' => $item->title,
-                'short_title' => strlen($item->title) < 20 ? $item->title : \Str::limit($item->title, 20),
-                // Str::limit($item->body, Post::EXCERPT_LENGTH)
+                'short_title' => shortenTextIfLongByLength($item->title, 20),
                 'slug' => $item->slug,
                 'excerpt' => $item->excerpt ?? \Str::words($item->content, 20),
+                'short_excerpt' => shortenTextIfLongByLength($item->excerpt ?? $this->content, 100),
                 'content' => $item->content,
                 'cover' => $item->cover,
                 'description' => $item->description,

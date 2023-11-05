@@ -221,3 +221,10 @@ if (!function_exists('filterHiddenItems')) {
         });
     }
 }
+
+if (!function_exists('shortenTextIfLongByLength')) {
+    function shortenTextIfLongByLength($text, $length)
+    {
+        return strlen($text) < $length ? $text : \Str::limit($text, $length);
+    }
+}

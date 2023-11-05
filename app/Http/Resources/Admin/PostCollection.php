@@ -20,7 +20,7 @@ class PostCollection extends ResourceCollection
                 'id' => $item->id,
                 'author_id' => $item->author_id,
                 'title' => $item->title,
-                'short_title' => strlen($item->title) < 20 ? $item->title : \Str::limit($item->title, 20), // Str::limit($item->body, Post::EXCERPT_LENGTH)
+                'short_title' => shortenTextIfLongByLength($item->title, 20),
                 'slug' => $item->slug,
                 'excerpt' => $item->excerpt,
                 'content' => $item->content,
