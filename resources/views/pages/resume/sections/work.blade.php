@@ -7,9 +7,7 @@
                     @foreach ($work->items as $workItem)
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="box">
-                                <div class="project-image">
-                                    <img class="w-100" src="{{ asset('/assets/img/work/' . $workItem->image) }}"
-                                         alt="" loading="lazy">
+                                <div class="work-image-cover" style="background-image: url('{{ asset('/assets/img/work/' . $workItem->image) }}')">
                                 </div>
                             </div>
                         </div>
