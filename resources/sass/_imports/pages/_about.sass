@@ -143,8 +143,7 @@
                     position: relative
                     top: -1.5px
                     .btn-action
-                        top: -1px
-                        left: -1px
+                        transform: translate(-2px, -2px)
                         position: relative
                         height: 100%
                         color: $tc-white
@@ -154,12 +153,12 @@
                         justify-content: center
                         border: none
                         border-radius: 3px
+                        box-shadow: 1px 1px 3px $tc-blue-dark-4
                         &.pushed
                             animation: pushed 0.7s linear infinite
                         &:active
-                            top: 0
-                            left: 0
-                            box-shadow: inset 1px 2px 5px $tc-blue-dark-4
+                            transform: translate(0, 0)
+                            box-shadow: 0px 0px 2px $tc-blue-dark-4
             .body .body-container
                 position: relative
                 padding: 10px
@@ -283,6 +282,10 @@ body.dark-mode
                 scrollbar-color: $tc-blue transparent
                 &::-webkit-scrollbar-thumb
                     background: $tc-blue
+            .btn-actions .btn-action
+                box-shadow: 1px 1px 3px $tc-grey-dark
+                &:active
+                    box-shadow: 0px 0px 2px $tc-grey-dark
         .output-wrapper .line-output
             background-color: $tc-blue-dark-4
         .output-wrapper .body-loading .loader
