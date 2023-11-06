@@ -17,13 +17,7 @@
                 </a>
             </li>
             <li class="header-menu-item menu-item list-group-item overflow-auto my-2 mx-2">
-                <a href="{{ route('logout') }}"
-                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    <i class="fa-solid fa-power-off"></i>
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
+                @include('components.logout-button', ['logout_btn' => '<i class="fa-solid fa-power-off"></i>', 'link_classes' => ''])
             </li>
         @endauth
     </ul>
