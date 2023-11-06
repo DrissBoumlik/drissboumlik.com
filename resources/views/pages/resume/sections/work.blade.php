@@ -6,7 +6,7 @@
                 <div class="row">
                     @foreach ($work->items as $workItem)
                         <div class="col-12 col-md-6 col-lg-4">
-                            <div class="box">
+                            <div class="box mb-4">
                                 <div class="work-image-cover" style="background-image: url('{{ asset('/assets/img/work/' . $workItem->image) }}')">
                                 </div>
                             </div>
