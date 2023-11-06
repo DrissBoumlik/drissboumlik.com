@@ -14,7 +14,7 @@ function editor() {
     let aboutCode = $('.about-code');
     $('.ide-section').each(function (i, item){
         setTimeout(() => {
-            $(item).css('transition', 'all 0.5s ease').removeClass('hidden-small');
+            $(item).css('transition', 'transform 0.5s ease').removeClass('hidden-small');
         }, i * 250);
     });
     let editorBody = aboutCode.find('.editor-wrapper .body-container');
