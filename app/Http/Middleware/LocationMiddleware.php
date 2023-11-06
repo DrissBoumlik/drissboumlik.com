@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Visitor;
 use Closure;
 use Illuminate\Http\Request;
 use Stevebauman\Location\Facades\Location;
@@ -22,7 +23,15 @@ class LocationMiddleware
 //        $ip = '48.188.144.248';
         $currentUserInfo = Location::get($ip);
         if ($currentUserInfo) {
-            \App\Models\Visitor::create((array)$currentUserInfo);
+            $visitor = Visitor::where('ip', $ip)->orderBy('updated_at', 'desc')->first();
+            if ($visitor) {
+                $timeSinceLastVisit = now()->diffInRealHours($visitor->updated_at);
+                if ($timeSinceLastVisit > 12) {
+                    Visitor::create((array)$currentUserInfo);
+                }
+            } else {
+                Visitor::create((array)$currentUserInfo);
+            }
         }
         return $next($request);
     }
