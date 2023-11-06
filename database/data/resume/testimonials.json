@@ -2,20 +2,26 @@
     "header" : "Testimonials",
     "items" : [
         {
+            "icon": "outzgi.jpg",
+            "content": "<p>During my career, I’ve rarely come across real professionals like Driss.<br/>I had the opportunity to work with him on several projects, and I have to say. He made a huge increase in the productivity level across the whole company. Driss earns my highest recommendation not just as a thoughtful leader but as a team player as well.</p>",
+            "author": "Abdeltif Outzgui",
+            "position": "Software Engineer"
+        },
+        {
             "icon": "hilali.jpg",
-            "content": "<p>Driss is an IT programer genius. He has an outstanding network. He is a professional, helpful, and positive person. It is a pleasure and honor to recommend to anyone who wants to hire him. He is truly a gem.</p>",
+            "content": "<p>Driss is an IT programer genius. He has an outstanding network.<br/>He is a professional, helpful, and positive person. It is a pleasure and honor to recommend to anyone who wants to hire him. He is truly a gem.</p>",
             "author": "Hamza Hilali",
             "position": "Software Engineer"
         },
         {
             "icon": "kabbaj.jpg",
-            "content": "<p>Driss was essential to the team, and contributed significantly to the success of the company. Working at Rc2k is most challenging, and he thrived. Driss will find a way to weather any storm with a smile. He most definitely shines in a a busy environment. Definitely worth recommending.</p>",
+            "content": "<p>Driss was essential to the team, and contributed significantly to the success of the company.<br/>Working at Rc2k is most challenging, and he thrived. Driss will find a way to weather any storm with a smile. He most definitely shines in a a busy environment. Definitely worth recommending.</p>",
             "author": "Kaoutar Kabbaj",
             "position": "Software Engineer"
         },
         {
             "icon": "khallouk.jpg",
-            "content": "<p>Driss is wonderful to work with, and has great expertise in Laravel, problem solving, helping other developers. His knowledge is vast. He is not only a reliable and forward thinking software engineer but also an inspiring team player. Ambitious and independent expert. He denotes a lot of analytical capability and willingness for both his personal & professional development. I definitely would recommend him as software engineer.</p>",
+            "content": "<p>Driss is wonderful to work with, and has great expertise in Laravel, problem solving, helping other developers. His knowledge is vast.<br/>He is not only a reliable and forward thinking software engineer but also an inspiring team player.<br/>Ambitious and independent expert. He denotes a lot of analytical capability and willingness for both his personal & professional development. I definitely would recommend him as software engineer.</p>",
             "author": "Abdelkarim Khallouk (RIP)",
             "position": "Software Engineer"
         },
@@ -34,22 +40,15 @@
         },
         {
             "icon" : "ouabou.jpg",
-            "content" : "<p>Driss Boumlik is amazing at his job! He knows his way around people, he is good with the clients, does whatever it takes to help colleagues and gets things done. He makes sure that everyone is on the same page and focused on the main goal.</p>",
+            "content" : "<p>Driss Boumlik is amazing at his job! He knows his way around people, he is good with the clients, does whatever it takes to help colleagues and gets things done.<br/>He makes sure that everyone is on the same page and focused on the main goal.</p>",
             "author": "Abdelhakim Ouabou",
             "position": "Software Engineer"
         },
         {
             "icon" : "lahrach.jpg",
-            "content" : "<p>As a team member, driss earns my highest recommendation, why ? he's a hard worker, so helpful and a good communicator. I had the pleasure of working with him for two years .</p>",
+            "content" : "<p>As a team member, driss earns my highest recommendation, why ? he's a hard worker, so helpful and a good communicator.<br/>I had the pleasure of working with him for two years.</p>",
             "author": "Imane Lahrach",
             "position": "Full Stack Developer"
-        },
-        {
-            "icon" : "rabii.jpg",
-            "content" : "<p>Is one of the most valuable people I have ever met. Both smart and professional. Experienced, deadline oriented and intelligent person. Highly recommended.</p>",
-            "author": "Rabii Rahmouni",
-            "position": "Project Manager",
-            "hidden": true
         },
         {
             "icon" : "hourri.jpg",
@@ -60,19 +59,19 @@
         },
         {
             "icon" : "mohammed.jpg",
-            "content" : "<p>One of the best collaborators, he understands very well client requirements, very patient and professional. Highly appreciate his communication skills, team working and also a very good listener. Keep up the good work Driss.</p>",
+            "content" : "<p>One of the best collaborators, he understands very well client requirements, very patient and professional.<br/>Highly appreciate his communication skills, team working and also a very good listener.<br/>Keep up the good work Driss.</p>",
             "author": "Mohammed Jaouad",
             "position": "Founder & CEO at Essorline"
         },
         {
             "icon" : "nassim.jpg",
-            "content" : "<p>Jovial and serious make Driss the person everyone wants to work with. Our collaboration has been successful. I strongly recommend.</p>",
+            "content" : "<p>Jovial and serious make Driss the person everyone wants to work with.<br/>Our collaboration has been successful.<br/>I strongly recommend.</p>",
             "author": "Nassim Mouline",
             "position": "Full Stack Developer"
         },
         {
             "icon" : "karim.jpg",
-            "content" : "<p>Driss Boumlik proved to be a great person to work with. His skills in analyzing & coding makes him to view solutions instead of problems. Loyal, insightful and independent. He is not only a reliable and forward thinking developer but also an inspiring team player. The success achieved in his job required extensive knowledge and dedication. Experiencing his quick and sharp mind at the workplace is most outstanding.</p>",
+            "content" : "<p>Driss Boumlik proved to be a great person to work with. His skills in analyzing & coding makes him to view solutions instead of problems. Loyal, insightful and independent. He is not only a reliable and forward thinking developer but also an inspiring team player.<br/>The success achieved in his job required extensive knowledge and dedication. Experiencing his quick and sharp mind at the workplace is most outstanding.</p>",
             "author": "Karim Oulad Chalha",
             "position": "Full Stack Developer"
         },
@@ -80,7 +79,8 @@
             "icon" : "hamza.jpg",
             "content" : "<p>Je n'ai pas rencontré beaucoup de personnes comme boumlik dans ma carrière.</p>",
             "author": "Hamza Hmidani",
-            "position": "Full Stack Developer"
+            "position": "Full Stack Developer",
+            "hidden": true
         }
     ]
 }
