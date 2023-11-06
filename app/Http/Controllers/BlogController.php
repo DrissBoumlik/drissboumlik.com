@@ -85,6 +85,7 @@ class BlogController extends Controller
         $data->headline = 'Tags';
 
         $data->tags_data = (new TagWithPaginationCollection(Tag::whereHas('posts')
+            ->orderBy('updated_at', 'desc')
             ->paginate($this->tagsPerPage)))->resolve();
 
         $tags = $data->tags_data['data'];
