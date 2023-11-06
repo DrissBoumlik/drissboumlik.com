@@ -89,7 +89,7 @@ class BlogController extends Controller
 
         $tags = $data->tags_data['data'];
         unset($data->tags_data['data']);
-        $tags->collection = $tags->collection->shuffle();
+//        $tags->collection = $tags->collection->shuffle();
 
 
         $data->title = 'Tags | Blog';
