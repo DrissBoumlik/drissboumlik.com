@@ -13,7 +13,9 @@
     border-radius: 50%
     box-shadow: -5px -5px 10px rgba($tc-grey-dark, 0.5), 5px 5px 10px rgba($tc-grey-dark, 0.5), -5px 5px 10px rgba($tc-grey-dark, 0.5), 5px -5px 10px rgba($tc-grey-dark, 0.5)
     // box-shadow: -5px -5px 10px rgb(223 223 223 / 50%), 5px 5px 10px rgb(223 223 223 / 50%), -5px 5px 10px rgb(223 223 223 / 50%), 5px -5px 10px rgb(223 223 223 / 50%)
-
+    @media(max-width: 576px)
+        width: 40px
+        height: 40px
 
 .wrapper-dark-mode .toggle-dark-mode i.icon-mode
     color: $tc-white
@@ -42,8 +44,5 @@ body.dark-mode
             i.icon-mode
                 color: $tc-blue-dark-3
                 font-size: 1.7rem
-            @media(max-width: 576px)
-                width: 40px
-                height: 40px
                 i.icon-mode
                     font-size: 1.4rem
