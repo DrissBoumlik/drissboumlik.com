@@ -73,6 +73,8 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag', 'location'])->g
             Route::get('/messages', [MessageController::class, 'index']);
 
             Route::get('/visitors', [VisitorController::class, 'index']);
+
+            Route::get('/generate-sitemap', [SitemapController::class, 'generateSitemap']);
         });
     });
 
@@ -92,7 +94,6 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag', 'location'])->g
 
      // SiteMap
     Route::get('/sitemap', [SitemapController::class, 'sitemap']);
-    Route::get('/generateSitemap', [SitemapController::class, 'generateSitemap']);
 
 //    Route::redirect('/', '/resume');
     Route::get('/', [HomeController::class, 'home']);
