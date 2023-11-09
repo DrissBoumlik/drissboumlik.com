@@ -15,6 +15,7 @@
         <title>{{ $data->title ?? 'Driss Boumlik' }}</title>
     </head>
     <body class="antialiased {{ $mode . '-mode' }}">
+        @include('addons.announcement', ['text' => 'Website in development mode for now', 'icon' => '<i class="fa-solid fa-circle-info"></i>'])
         {{-- @include('addons.google-tag-manager-body') --}}
         <div class="wrapper">
                 @yield('content')
