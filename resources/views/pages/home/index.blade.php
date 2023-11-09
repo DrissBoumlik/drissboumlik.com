@@ -19,9 +19,9 @@
             <div class="section">
                 @include('pages.home.sections.techs', ['techs' => $data->sections['techs']])
             </div>
-            <div class="section">
-                @include('pages.home.sections.posts')
-            </div>
+{{--            <div class="section">--}}
+{{--                @include('pages.home.sections.posts')--}}
+{{--            </div>--}}
             <div class="section">
                 @include('pages.resume.sections.testimonials', ['testimonials' => $data->sections['testimonials']])
             </div>

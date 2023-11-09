@@ -26,12 +26,12 @@ class HomeController extends Controller
         $data->sections['work'] = getWork();
         $data->sections['testimonials'] = getTestimonials();
         $data->sections['testimonials']->items = collect($data->sections['testimonials']->items)->shuffle()->all();
-        $posts = $this->getLatestFeaturedPosts();
+//        $posts = $this->getLatestFeaturedPosts();
 
         $data->socialLinks = getSocialLinks();
         $data->headerMenu = getHeaderMenu();
 
-        return view('pages.home.index', ['data' => $data, 'posts' => $posts]);
+        return view('pages.home.index', ['data' => $data]);
     }
 
     private function getLatestFeaturedPosts()
