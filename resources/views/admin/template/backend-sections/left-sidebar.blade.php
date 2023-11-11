@@ -87,7 +87,7 @@
                     </a>
                 </li>
                 <li class="nav-main-item">
-                    <a class="nav-main-link{{ request()->is('admin/generate-sitemap') ? ' active' : '' }}" href="/admin/generate-sitemap">
+                    <a class="nav-main-link{{ request()->is('admin/generate-sitemap') ? ' active' : '' }}" href="/admin/generate-sitemap" target="_blank">
                         <i class="nav-main-link-icon fa fa-fw fa-sitemap"></i>
                         <span class="nav-main-link-name">Generate Sitemap</span>
                     </a>
