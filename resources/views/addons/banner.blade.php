@@ -9,6 +9,9 @@
                 </span>
             </div>
         </div>
+        <div class="banner-close">
+            <i class="fa-solid fa-times"></i>
+        </div>
     </div>
 </div>
 @endif

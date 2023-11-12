@@ -290,6 +290,10 @@ function initEvents() {
             input_password.attr('type', type);
         });
     }
+
+    $('.banner-close').on('click', function () {
+        $(this).closest('.banner').remove();
+    });
 }
 
 export { drawText, initParticlesJS, initSlider, initDarkMode, initEvents };
