@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['cache.headers:public;max_age=15811200;etag', 'location'])->group(function () {
+Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(function () {
 
     Route::group(['prefix' => 'admin'], function () {
 
@@ -78,33 +78,35 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag', 'location'])->g
         });
     });
 
+    Route::middleware(['location'])->group(function () {
 //    Route::post('/subscribers', [SubscriberController::class, 'subscribe']);
 //    Route::put('/subscribers/{uuid}', [SubscriberController::class, 'update']);
 //    Route::get('/subscribers/{uuid}', [SubscriberController::class, 'show']);
 //    Route::get('/subscribers/verify/{token}', [SubscriberController::class, 'verifySubscribtion']);
-    Route::get('/tags', [BlogController::class, 'getTags']);
-    Route::get('/tags/{slug}', [BlogController::class, 'getPostsBytag']);
-    Route::get('/blog', [BlogController::class, 'getPosts']);
-    Route::get('/blog/{slug}', [BlogController::class, 'getPost']);
-//    Route::post('/blog/like/{slug}/{unlike?}', [BlogController::class, 'likePost']);
-    // Route::get('blog/{slug}', [PostController::class, 'show']);
+        Route::get('/tags', [BlogController::class, 'getTags']);
+        Route::get('/tags/{slug}', [BlogController::class, 'getPostsBytag']);
+        Route::get('/blog', [BlogController::class, 'getPosts']);
+        Route::get('/blog/{slug}', [BlogController::class, 'getPost']);
+    //    Route::post('/blog/like/{slug}/{unlike?}', [BlogController::class, 'likePost']);
+        // Route::get('blog/{slug}', [PostController::class, 'show']);
 
-    // Route::get('/tags/{tag}', [PostController::class, 'getPostsByTag']);
+        // Route::get('/tags/{tag}', [PostController::class, 'getPostsByTag']);
 
 
-     // SiteMap
-    Route::get('/sitemap', [SitemapController::class, 'sitemap']);
+        // SiteMap
+        Route::get('/sitemap', [SitemapController::class, 'sitemap']);
 
-//    Route::redirect('/', '/resume');
-    Route::get('/', [HomeController::class, 'home']);
-    // Resume
-    Route::get('resume', [PageController::class, 'resume']);
-    // Resume
-    Route::get('testimonials', [PageController::class, 'testimonials']);
+    //    Route::redirect('/', '/resume');
+        Route::get('/', [HomeController::class, 'home']);
+        // Resume
+        Route::get('resume', [PageController::class, 'resume']);
+        // Resume
+        Route::get('testimonials', [PageController::class, 'testimonials']);
 
-    // External
-    Route::get('/not-found', [GotoController::class, 'not_found']);
-    Route::get('/{link}', [GotoController::class, 'goto']);
+        // External
+        Route::get('/not-found', [GotoController::class, 'not_found']);
+        Route::get('/{link}', [GotoController::class, 'goto']);
+    });
 
     Route::any('/{var}', [GotoController::class, 'not_found'])->where('var', '.*');
 });
