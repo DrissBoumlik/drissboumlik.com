@@ -6,7 +6,6 @@
         <div class="testimonials">
             <div class="section py-5">
                 <div class="container">
-{{--                    @include('components.headline', ['headline' => $data->headline])--}}
                     <div class="section no-slider">
                         @include('pages.resume.sections.testimonials', ['testimonials' => $data->sections['testimonials']])
                     </div>

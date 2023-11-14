@@ -9,3 +9,9 @@
     margin-bottom: $mb
 =border_radius($value)
     border-radius: $value
+
+=slider_width_margin_proportion($element, $width, $value, $factor: 2)
+    #{$element}
+        width: calc($width - $value)
+        &:nth-child(odd)
+            margin-right: calc($factor * $value)

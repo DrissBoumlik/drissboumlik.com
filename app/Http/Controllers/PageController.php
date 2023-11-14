@@ -37,7 +37,7 @@ class PageController extends Controller
     public function testimonials(Request $request)
     {
         $data = new \stdClass();
-        $data->title = 'Resume | Driss Boumlik';
+        $data->title = 'Testimonials | Driss Boumlik';
         $data->headline = 'testimonials';
         $data->headerMenu = getHeaderMenu();
         $data->sections['testimonials'] = getTestimonials();
