@@ -94,8 +94,8 @@
                     //&:before
                     //    content: '\2014 \00A0'
                 > p
-                    color: $tc-white
-                    background-color: $tc-grey-fancy
+                    color: $tc-blue-dark-3
+                    background-color: $tc-grey-light-1
                     z-index: -1
                     padding: 10px
                     border-radius: 10px
@@ -104,8 +104,15 @@
                         content: ""
                         height: 15px
                         width: 15px
-                        background-color: $tc-grey-fancy
+                        background-color: $tc-grey-light-1
                         position: absolute
                         bottom: -7px
                         left: 17px
                         transform: rotate(45deg)
+
+body.dark-mode
+    .owl-carousel .owl-carousel-item .owl-carousel-item-wrapper .owl-carousel-txt > p
+        color: $tc-white
+        background-color: $tc-grey-fancy
+        &:before
+            background-color: $tc-grey-fancy
