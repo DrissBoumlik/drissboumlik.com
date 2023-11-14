@@ -5,8 +5,10 @@
             <div class="row">
                 <div class="owl-carousel owl-theme">
                     @foreach ($testimonials->items as $index => $testimonial)
-                        @if (!isset($testimonial->hidden) || !$testimonial->hidden)
-                        <div class="owl-carousel-item item">
+                        <div class="owl-carousel-item item col-md-6 col-12">
+                            <span class="testimonial-icon">
+                                <i class="fa-solid fa-quote-right"></i>
+                            </span>
                             <div class="owl-carousel-item-wrapper row">
                                 <div class="owl-carousel-txt col-12">
                                     {!! $testimonial->content !!}
@@ -23,7 +25,6 @@
                                 </div>
                             </div>
                         </div>
-                        @endif
                     @endforeach
                 </div>
             </div>

@@ -99,6 +99,8 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag', 'location'])->g
     Route::get('/', [HomeController::class, 'home']);
     // Resume
     Route::get('resume', [PageController::class, 'resume']);
+    // Resume
+    Route::get('testimonials', [PageController::class, 'testimonials']);
 
     // External
     Route::get('/not-found', [GotoController::class, 'not_found']);

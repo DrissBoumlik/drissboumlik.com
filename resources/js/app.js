@@ -7,7 +7,9 @@ $(function () {
 
         drawText();
         initParticlesJS();
-        initSlider();
+        if ($('.no-slider').length === 0) {
+            initSlider();
+        }
         initDarkMode();
 
         initPostEditor();

@@ -34,4 +34,16 @@ class PageController extends Controller
         return view('pages.resume.index', ['data' => $data]);
     }
 
+    public function testimonials(Request $request)
+    {
+        $data = new \stdClass();
+        $data->title = 'Resume | Driss Boumlik';
+        $data->headline = 'testimonials';
+        $data->headerMenu = getHeaderMenu();
+        $data->sections['testimonials'] = getTestimonials();
+//        $data->sections['testimonials']->items = collect($data->sections['testimonials']->items)->shuffle()->all();
+
+        return view('pages.testimonials', ['data' => $data]);
+    }
+
 }
