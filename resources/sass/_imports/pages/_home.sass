@@ -4,14 +4,21 @@
 .services
     .service-box
         border-radius: 5px
-        padding: 1.25rem
+        padding: 0.5rem
         text-align: center
-        color: $tc-blue-dark-2
+        *
+            color: $tc-blue-dark-2
         .service-icon
             padding: 1rem
             font-size: 2.5rem
         .service-title
-            font-size: 1.5rem
+            font-size: 1.2rem
+        @media (min-width: 576px)
+            padding: 1.25rem
+            .service-icon
+                font-size: 3.5rem
+            .service-title
+                font-size: 1.5rem
 
 .get-in-touch
     .form-control
@@ -48,3 +55,6 @@ body.dark-mode
     .get-in-touch .form-floating
         > label
             color: $tc-white
+
+    .services .service-box *
+        color: $tc-white

@@ -212,6 +212,27 @@ if (!function_exists('getTechs')) {
     }
 }
 
+if (!function_exists('getServices')) {
+    function getServices($withHidden = false)
+    {
+        $services = json_decode(\File::get(base_path() . "/database/data/Components/services.json"));
+        if (!$withHidden) {
+            $services->items = array_filter($services->items, function ($item) {
+                return (!isset($item->hidden) || !$item->hidden);
+            });
+        }
+        return $services;
+    }
+}
+
+if (!function_exists('getServicesById')) {
+    function getServicesById($item_id)
+    {
+        $services = json_decode(\File::get(base_path() . "/database/data/Components/services.json"));
+        $service = array_values(array_filter($services->items, fn($item) => $item->id === $item_id));
+        return count($service) ? $service[0] : null;
+    }
+}
 
 if (!function_exists('filterHiddenItems')) {
     function filterHiddenItems($items)
