@@ -46,4 +46,14 @@ class PageController extends Controller
         return view('pages.testimonials', ['data' => $data]);
     }
 
+    public function getService(Request $request, $service)
+    {
+        $data = new \stdClass();
+        $data->title = 'Services | Driss Boumlik';
+        $data->headline = 'services';
+        $data->headerMenu = getHeaderMenu();
+        $data->socialLinks = getSocialLinks();
+        $service = getServicesById($service);
+        return view('pages.services.index', ['data' => $data, 'service' => $service]);
+    }
 }

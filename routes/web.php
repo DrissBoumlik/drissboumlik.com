@@ -100,8 +100,10 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
         Route::get('/', [HomeController::class, 'home']);
         // Resume
         Route::get('resume', [PageController::class, 'resume']);
-        // Resume
+        // Testimonials
         Route::get('testimonials', [PageController::class, 'testimonials']);
+        // Services
+        Route::get('services/{service}', [PageController::class, 'getService']);
 
         // External
         Route::get('/not-found', [GotoController::class, 'not_found']);
