@@ -32,6 +32,7 @@ class PostResource extends JsonResource
             'views' => $this->views,
             'published_at' => $this->published_at,
             'published_at_formatted' => $this->published_at?->diffForHumans(),
+            'published_at_short_format' => $this->published_at?->format('F d, Y'),
             'tags' => $this->tags,
         ];
     }
