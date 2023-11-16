@@ -3,7 +3,6 @@
     &:hover
         .work-image-cover
             filter: blur(5px) opacity(0.3)
-            box-shadow: 0 0.5rem 2.5rem #d8dee6
         .work-links
             opacity: 1
 
@@ -15,11 +14,12 @@
     //border: 2px solid $tc-grey-light-2
     border-radius: 5px
     overflow: hidden
-    box-shadow: 0 1px 2px rgba(214, 219, 226, 0.5), 0 1px 2px rgba(214, 219, 226, 0.5)
     filter: blur(0) opacity(1)
-    transition: opacity 0.15s ease-out, box-shadow 0.15s ease-out, filter 0.3s linear
-    @media(min-width: 768px)
+    transition: filter 0.3s linear
+    @media(max-width: 768px)
         height: 200px
+    @media (max-width: 992px)
+        height: 250px
 .work-links
     opacity: 0
     transition: opacity 0.3s linear
@@ -53,6 +53,8 @@ body.dark-mode
 .page-wide
     .work-image-cover
         height: 300px
+        @media (max-width: 992px)
+            height: 250px
     .work-box:hover
         .work-data
             opacity: 1
@@ -77,6 +79,8 @@ body.dark-mode
         display: flex
         flex-direction: column
         justify-content: flex-end
+        @media (max-width: 992px)
+            font-size: 1.25rem
         .work-name
             text-decoration: underline
         .work-name, .work-description
