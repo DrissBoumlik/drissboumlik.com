@@ -39,6 +39,11 @@
         i
             color: $tc-blue-dark-3
 
+.see-more
+    display: flex
+    justify-content: center
+    align-items: center
+
 body.dark-mode
     .work-image-cover
         box-shadow: 0 1px 2px rgba($tc-blue-dark-2, 0.5), 0 1px 2px rgba($tc-blue-dark-2, 0.5)
@@ -46,3 +51,32 @@ body.dark-mode
             box-shadow: 0 0.5rem 2.5rem $tc-blue-dark-2
     .work-link i
         color: $tc-white
+
+.page-wide
+    .work-image-cover
+        height: 300px
+    .work-box:hover
+        .work-data
+            opacity: 1
+    .work-data
+        padding: 20px
+        opacity: 0
+        transition: opacity 0.3s linear
+        position: absolute
+        top: 0
+        height: 100%
+        width: 100%
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+    .work-txt
+        text-align: center
+        font-size: 1.5rem
+        margin-bottom: 1.2rem
+        &:first-letter
+            text-transform: capitalize
+    .work-links
+        height: unset
+        position: relative
+        opacity: 1

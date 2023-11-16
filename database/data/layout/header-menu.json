@@ -5,6 +5,11 @@
         "target": "_self"
     },
     {
+        "title": "work",
+        "slug": "work",
+        "target": "_self"
+    },
+    {
         "title": "testimonials",
         "slug": "testimonials",
         "target": "_self"
