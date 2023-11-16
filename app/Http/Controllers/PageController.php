@@ -10,6 +10,7 @@ class PageController extends Controller
     {
         $data = new \stdClass();
 
+        $data->headline = 'resume';
         $data->sections = [];
         // $data->summary = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/summary.json"));
         $data->sections['experiences'] = getExperiences();
@@ -64,6 +65,9 @@ class PageController extends Controller
         $data->headerMenu = getHeaderMenu();
         $data->socialLinks = getSocialLinks();
         $service = getServicesById($service);
+        if (!$service) {
+            return redirect_to_404_page();
+        }
         return view('pages.services.index', ['data' => $data, 'service' => $service]);
     }
 }
