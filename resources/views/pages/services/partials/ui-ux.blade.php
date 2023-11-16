@@ -5,101 +5,17 @@
             <div class="row">
                 <div class="col-12">
                     <div class="service ui-ux">
-                        <p>where innovation meets functionality, and user experience takes center stage. I specialize in
-                            creating digital
-                            experiences that not only captivate users visually but also enhance usability and
-                            engagement. Here's how I can help
-                            you with my UI/UX design services:</p>
-
-                        <ol>
-                            <li>
-                                User-Centric Approach:
-                                <div>My design philosophy revolves around putting the user at the core of the creative
-                                    process. I delve into
-                                    user personas, behavior patterns, and preferences to create interfaces that resonate
-                                    with your audience.
-                                </div>
-                            </li>
-                            <li>
-                                Intuitive Information Architecture:
-                                <div>Navigating a digital space should be seamless. I excel in crafting intuitive
-                                    information architectures that
-                                    guide users effortlessly through your digital ecosystem, ensuring a positive and
-                                    frustration-free
-                                    experience.
-                                </div>
-                            </li>
-                            <li>
-                                Visual Excellence:
-                                <div>Aesthetics matter. I bring a keen eye for design and a passion for visual
-                                    storytelling to create stunning
-                                    user interfaces. From color palettes to typography, every element is carefully
-                                    chosen to convey your brand
-                                    identity and evoke the right emotions.
-                                </div>
-                            </li>
-                            <li>
-                                Responsive and Adaptive Design:
-                                <div>In a world of diverse devices, responsive design is paramount. Your digital
-                                    presence will not only look
-                                    fantastic on desktops but will adapt gracefully to various screen sizes, providing a
-                                    consistent experience
-                                    across platforms.
-                                </div>
-                            </li>
-                            <li>
-                                Interaction Design:
-                                <div>Great user experiences involve more than static visuals. I specialize in
-                                    interaction design, ensuring that
-                                    every button, animation, and transition serves a purpose, enhancing usability and
-                                    delighting users as they
-                                    engage with your product.
-                                </div>
-                            </li>
-                            <li>
-                                Accessibility and Inclusivity:
-                                <div>Digital experiences should be accessible to everyone. I incorporate accessibility
-                                    best practices to ensure
-                                    that your design is inclusive, catering to users with diverse needs and abilities.
-                                </div>
-                            </li>
-                            <li>
-                                Collaborative Design Process:
-                                <div>Your vision is central to the design process. I believe in collaboration, working
-                                    closely with you to
-                                    understand your goals, gather feedback, and iterate on designs, ensuring the final
-                                    product aligns seamlessly
-                                    with your vision.
-                                </div>
-                            </li>
-                            <li>
-                                Usability Testing and Iteration:
-                                <div>I don't stop at the first draft. I conduct usability testing and gather feedback to
-                                    refine the design
-                                    iteratively. This process ensures that your product not only looks great but also
-                                    performs optimally in the
-                                    hands of your users.
-                                </div>
-                            </li>
-                            <li>
-                                Timely Delivery:
-                                <div>Deadlines matter. You can trust me to deliver high-quality designs on time,
-                                    ensuring your project
-                                    progresses smoothly and efficiently.
-                                </div>
-                            </li>
-                            <li>
-                                Continuous Improvement:
-                                <div>The digital landscape evolves, and so should your design. I stay updated on the
-                                    latest UI/UX trends and
-                                    technologies, ensuring your digital presence remains innovative and relevant over
-                                    time.
-                                </div>
-                            </li>
-                        </ol>
+                        <p>Thanks to my first ugly websites & designs (which I liked at that time),
+                            I learned how to build beautiful interfaces & assure simple experience.</p>
+                        <p>One of my main mistakes I use to do back in the days, is that I wasn't advising my clients with what's best for their product or design,
+                            and sometimes we end up building something they didn't like, which led to rebuilding.</p>
+                        <p>I spend most of my experience focusing on the backend side,
+                            but since I like to learn about other fields and not be restricted to only one, I allowed myself to dive into the design world.</p>
+                        <p>I don't claim to be one of the best but here is how I can help your business,
+                            I do believe in collaboration, working closely with you to understand your goals,
+                            ask many questions, gather feedback, ensuring the final product aligns seamlessly with your vision</p>
                         <p>Let's collaborate to turn your ideas into a visually stunning and user-friendly reality.
-                            Contact me today to discuss how my UI/UX design services can elevate your digital presence.
-                        </p>
+                            <a href="/#get-in-touch">Contact</a> me today to discuss how my UI/UX design services can elevate your digital presence.</p>
                     </div>
                 </div>
             </div>
