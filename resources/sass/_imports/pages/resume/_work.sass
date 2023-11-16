@@ -3,6 +3,7 @@
     &:hover
         .work-image-cover
             filter: blur(5px) opacity(0.3)
+            box-shadow: 0 0.5rem 2.5rem #d8dee6
         .work-links
             opacity: 1
 
@@ -16,10 +17,7 @@
     overflow: hidden
     box-shadow: 0 1px 2px rgba(214, 219, 226, 0.5), 0 1px 2px rgba(214, 219, 226, 0.5)
     filter: blur(0) opacity(1)
-    transition: transform 0.15s ease-out, opacity 0.15s ease-out, box-shadow 0.15s ease-out, filter 0.3s linear
-    &:hover
-        box-shadow: 0 0.5rem 2.5rem #d8dee6
-        transform: translateY(-2px)
+    transition: opacity 0.15s ease-out, box-shadow 0.15s ease-out, filter 0.3s linear
     @media(min-width: 768px)
         height: 200px
 .work-links
@@ -71,12 +69,21 @@ body.dark-mode
         align-items: center
         justify-content: center
     .work-txt
+        font-family: Harmattan
         text-align: center
         font-size: 1.5rem
-        margin-bottom: 1.2rem
-        &:first-letter
-            text-transform: capitalize
+        //margin-bottom: 1.2rem
+        flex: 2
+        display: flex
+        flex-direction: column
+        justify-content: flex-end
+        .work-name
+            text-decoration: underline
+        .work-name, .work-description
+            &:first-letter
+                text-transform: capitalize
     .work-links
         height: unset
         position: relative
         opacity: 1
+        flex: 1

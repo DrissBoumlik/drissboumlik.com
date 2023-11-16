@@ -17,7 +17,8 @@
                                             </div>
                                             <div class="work-data">
                                                 <div class="work-txt">
-                                                    {{ $workItem->description }}
+                                                    <div class="work-name">{{ $workItem->name }}</div>
+                                                    <div class="work-description">{{ $workItem->description }}</div>
                                                 </div>
                                                 @isset($workItem->links)
                                                     <div class="work-links">
