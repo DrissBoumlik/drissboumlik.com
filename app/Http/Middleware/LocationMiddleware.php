@@ -23,6 +23,8 @@ class LocationMiddleware
 //        $ip = '48.188.144.248';
         $currentUserInfo = Location::get($ip);
         if ($currentUserInfo) {
+            $route = $request->decodedPath();
+            $currentUserInfo->url = ($route === '/' ? '' : '/') . $route;
             $visitor = Visitor::where('ip', $ip)->orderBy('updated_at', 'desc')->first();
             if ($visitor) {
                 $timeSinceLastVisit = now()->diffInRealHours($visitor->updated_at);

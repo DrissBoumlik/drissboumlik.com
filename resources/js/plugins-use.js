@@ -213,6 +213,7 @@ function initDatatable() {
                 { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
                 { data: 'visits_count', name: 'visits_count', title: '<i class="fa fa-fw fa-eye"></i>', className: 'fw-semibold fs-sm'},
                 { data: 'ip', name: 'ip', title: 'IP', className: 'text-center'},
+                { data: 'url', name: 'url', title: 'URL', className: 'text-left'},
                 { data: 'updated_at', name: 'updated_at', title: 'updated @', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
                         return data.split('.')[0].replace('T', ' ');
