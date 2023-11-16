@@ -40,7 +40,7 @@ class PageController extends Controller
         $data->title = 'Testimonials | Driss Boumlik';
         $data->headline = 'testimonials';
         $data->headerMenu = getHeaderMenu();
-        $data->sections['testimonials'] = getTestimonials();
+        $data->testimonials = getTestimonials();
 //        $data->sections['testimonials']->items = collect($data->sections['testimonials']->items)->shuffle()->all();
 
         return view('pages.testimonials', ['data' => $data]);
