@@ -5,7 +5,7 @@
                     overflow-auto my-2 mx-2 {{ request()->is($link->slug) ? 'active' : '' }}">
                 <a href="{{ \URL::to($link->slug) }}" rel="noopener" target="{{ $link->target ?? '_self' }}"
                     aria-label="{{ $link->title }}" class="text-capitalize">
-                    {{ $link->title }}
+                    {!! $link->title !!}
                 </a>
             </li>
         @endforeach
