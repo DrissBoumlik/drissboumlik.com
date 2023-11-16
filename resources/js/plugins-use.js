@@ -87,6 +87,7 @@ function initImageCropper() {
 function initDatatable() {
     if ($('#posts').length) {
         let params = {
+            first_time: true,
             id: '#posts',
             method: 'POST',
             url: '/api/posts',
@@ -161,6 +162,7 @@ function initDatatable() {
     }
     if ($('#tags').length) {
         let params = {
+            first_time: true,
             id: '#tags',
             method: 'POST',
             url: '/api/tags',
@@ -206,6 +208,7 @@ function initDatatable() {
     }
     if ($('#visitors').length) {
         let params = {
+            first_time: true,
             id: '#visitors',
             method: 'POST',
             url: '/api/visitors',
@@ -239,6 +242,7 @@ function initDatatable() {
     }
     if ($('#messages').length) {
         let params = {
+            first_time: true,
             id: '#messages',
             method: 'POST',
             url: '/api/messages',
@@ -317,6 +321,7 @@ function initDatatable() {
 
 function configDT(params) {
     let table = new DataTable(params.id, {
+        pageLength: 50,
         language: {
             // select: {
             //     style: 'single',
@@ -350,9 +355,13 @@ function configDT(params) {
         "ajax": {
             type: params.method,
             url: params.url,
+            data: function(data) {
+                data.first_time = params.first_time;
+            }
         },
         columns: params.columns,
         initComplete: function (settings, json) {
+            delete params.first_time;
             if (params.onComplete) {
                 params.onComplete(settings, json);
             }
