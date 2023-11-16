@@ -28,6 +28,7 @@
         {
             "image": "grinta.png",
             "content": "<p><span class='underline'>Full Stack</span><br>Laravel | Angular</p>",
+            "featured": true,
             "links": {
                 "repository": null,
                 "website": "https://drissboumlik.github.io/grinta-front/"
@@ -44,6 +45,7 @@
         {
             "image": "amdl.png",
             "content": "<p><span class='underline'>CMS</span><br>Wordpress | Bootstrap | jQuery </p>",
+            "featured": true,
             "links": {
                 "repository": null,
                 "website": "https://www.amdl.gov.ma"
@@ -85,6 +87,7 @@
         {
             "image": "webapp.jpg",
             "content": "<p><span class='underline'>Back End</span><br>Laravel</p>",
+            "featured": true,
             "links": {
                 "repository": null,
                 "website": "https://agrigestion.attaissir.com/"

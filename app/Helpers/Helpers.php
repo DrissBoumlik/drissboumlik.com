@@ -120,11 +120,16 @@ if (!function_exists('getExperiences')) {
 }
 
 if (!function_exists('getWork')) {
-    function getWork($withHidden = false)
+    function getWork($withHidden = false, $onlyFeatured = false)
     {
         $work = json_decode(\File::get(base_path() . "/database/data/resume/work.json"));
         if (!$withHidden) {
             $work->items = filterHiddenItems($work->items);
+        }
+        if ($onlyFeatured) {
+            $work->items = array_filter($work->items, function ($item) {
+                return isset($item->featured) && $item->featured;
+            });
         }
         return $work;
     }
