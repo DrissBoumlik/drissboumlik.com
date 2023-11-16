@@ -1,4 +1,4 @@
-<div class="get-in-touch py-5">
+<div class="get-in-touch py-5" id="get-in-touch">
     <div class="container">
         @include('components.headline', ['headline' => 'Get in Touch'])
         <div class="row">
