@@ -1,20 +1,13 @@
 @extends('layout.app')
 
 @section('content')
-    <div class="page">
     @if(request()->is(['blog', 'blog/*', 'tags', 'tags/*']))
         @include('addons.banner', ['text' => 'Blog in testing phase for now', 'icon' => '<i class="fa-solid fa-circle-info"></i>'])
     @endif
     @include('layout.menu')
-    <div class="container-fluid p-0">
-        <section id="page-content" class="page-content">
-            @yield('page-content-header')
-            <div class="container py-5 px-2">
-                @yield('page-content')
-            </div>
-        </section>
+    <div id="page" class="page container py-5 px-2">
+        @yield('page-content')
     </div>
     @yield('addons')
     @include('layout.footer')
-    </div>
 @endsection

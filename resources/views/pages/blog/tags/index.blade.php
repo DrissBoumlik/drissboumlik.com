@@ -1,5 +1,10 @@
-@extends('layout.page-content')
+@extends('layout.page-content-wide')
 
+@section('headline')
+    <div class="d-flex flex-column align-items-center justify-content-center">
+        <h1 class="header-txt">{!! $data->headline !!}</h1>
+    </div>
+@endsection
 
 @section('page-content')
     <div class="container-fluid p-0">
@@ -7,7 +12,6 @@
             <div class="py-5" id="tags">
                 <div class="section tags">
                     <div class="container">
-                        @include('components.headline', ['headline' => $data->headline])
                         <div class="row">
                             @foreach ($tags as $tag)
                                     <div class="col-12 col-md-6 col-lg-4 mb-4">

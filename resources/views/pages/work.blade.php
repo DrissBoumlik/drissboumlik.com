@@ -1,13 +1,17 @@
 @extends('layout.page-content-wide')
 
+@section('headline')
+    <div class="d-flex flex-column align-items-center justify-content-center">
+        <h1 class="header-txt">{!! $data->work->header !!}</h1>
+    </div>
+@endsection
 
 @section('page-content')
     <div class="container-fluid p-0">
-        <div class="work section py-5">
+        <div class="work-page work section py-5">
             <div class="py-5" id="work">
                 <div class="section work">
                     <div class="container">
-                        @include('components.headline', ['headline' => $data->work->header])
                         <div class="work-items">
                             <div class="row">
                                 @foreach ($data->work->items as $workItem)

@@ -1,13 +1,17 @@
-@extends('layout.page-content')
+@extends('layout.page-content-wide')
 
+@section('headline')
+    <div class="d-flex flex-column align-items-center justify-content-center">
+        <h1 class="header-txt">{!! $data->testimonials->header !!}</h1>
+    </div>
+@endsection
 
 @section('page-content')
-    <div class="container-fluid p-0">
+    <div class="container-fluid">
         <div class="testimonials section no-slider py-5">
             <div class="py-5" id="testimonials">
                 <div class="testimonials">
                     <div class="container">
-                        @include('components.headline', ['headline' => $data->testimonials->header])
                         <div class="row">
                             <div class="owl-carousel owl-theme">
                                 @foreach ($data->testimonials->items as $index => $testimonial)

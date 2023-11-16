@@ -1,7 +1,6 @@
 @extends('layout.app')
 
 @section('post-header-assets')
-{{--    <link rel="stylesheet" href="{{ asset('/plugins/devicon/devicon.min.css') }}">--}}
     <script src="{{ asset('/js/pages/home.js') }}"></script>
 @endsection
 
