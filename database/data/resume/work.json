@@ -2,7 +2,7 @@
     "header" : "work",
     "items" : [
         {
-            "image": "circet-gestion-ie.png",
+            "image": "circet-gestion-ie.webp",
             "content": "<p><span class='underline'>Full Stack</span><br>Laravel | Ajax | Sass | Bootstrap</p>",
             "name": "Tasks management system",
             "description": "a management system for organizing, tracking, and prioritizing call center agents tasks.",
@@ -12,7 +12,7 @@
             }
         },
         {
-            "image": "circet-gestion-ca.png",
+            "image": "circet-gestion-ca.webp",
             "content": "<p><span class='underline'>Full Stack</span><br>Laravel | Ajax | Sass | Bootstrap</p>",
             "name": "Production Statistics Management System",
             "description": "a system for collecting, analyzing, and managing data related to the production processes for call center agents.",
@@ -22,7 +22,7 @@
             }
         },
         {
-            "image": "teacodema.png",
+            "image": "teacodema.webp",
             "content": "<p><span class='underline'>Full Stack</span><br>Laravel | Ajax | Sass | Bootstrap</p>",
             "name": "TeaCode Community",
             "description": "a community where Moroccan developers help each other and evolve in an environment conducive to learning.",
@@ -32,7 +32,7 @@
             }
         },
         {
-            "image": "grinta.png",
+            "image": "grinta.webp",
             "content": "<p><span class='underline'>Full Stack</span><br>Laravel | Angular</p>",
             "name": "Grintaaa",
             "description": "a social network for athletes.",
@@ -43,7 +43,7 @@
             }
         },
         {
-            "image": "ehm.png",
+            "image": "ehm.webp",
             "content": "<p><span class='underline'>Full Stack</span><br>Laravel</p>",
             "name": "EHM portal",
             "description": "showcase portal for the EHM (Elite Harvest Morocco) services.",
@@ -53,7 +53,7 @@
             }
         },
         {
-            "image": "amdl.png",
+            "image": "amdl.webp",
             "content": "<p><span class='underline'>CMS</span><br>Wordpress | Bootstrap | jQuery </p>",
             "name": "AMDL portal",
             "description": "showcase portal for the MLDA (Moroccan Logistics Development Agency).",
@@ -64,7 +64,7 @@
             }
         },
         {
-            "image": "fm6oa.png",
+            "image": "fm6oa.webp",
             "content": "<p><span class='underline'>CMS</span><br>Wordpress | Bootstrap | jQuery </p>",
             "name": "Mohammed VI Foundation of African scholars",
             "description": "a framework for cooperation and exchange of experiences between African Scholars.",
@@ -74,7 +74,7 @@
             }
         },
         {
-            "image": "sdgs.png",
+            "image": "sdgs.webp",
             "content": "<p><span class='underline'>Contribution</span><br>Laravel</p>",
             "links": {
                 "repository": null,
@@ -83,7 +83,7 @@
             "hidden": true
         },
         {
-            "image": "css.png",
+            "image": "css.webp",
             "content": "<p><a rel='noopener' target='_blank' href='https://udemy.com/css-mastering-animations'><span class='underline'>Formation</span><br>Master CSS Animations</a></p>",
             "name": "Css - Mastering Animations",
             "description": "make your web page alive with css animations & transitions and take your web design skills to the next level.",
@@ -93,7 +93,7 @@
             }
         },
         {
-            "image": "rae.ma.png",
+            "image": "rae.ma.webp",
             "content": "<p><span class='underline'>CMS</span><br>Wordpress | Bootstrap | jQuery </p>",
             "links": {
                 "repository": "https://github.com/DrissBoumlik/rae.ma",
@@ -113,7 +113,7 @@
             }
         },
         {
-            "image": "dirEx.png",
+            "image": "dirEx.webp",
             "content": "<p><span class='underline'>Front End</span><br>Bootstrap | jQuery</p>",
             "links": {
                 "repository": "https://github.com/DrissBoumlik/dirhamexpress",
@@ -122,7 +122,7 @@
             "hidden": true
         },
         {
-            "image": "appDesk.png",
+            "image": "appDesk.webp",
             "content": "<p><span class='underline'>Desktop App</span><br>C#.Net | DevExpress | Sql Server</p>",
             "links": {
                 "repository": "http://github.com/DrissBoumlik/salle_couverte",
