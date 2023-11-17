@@ -14,7 +14,7 @@
                     <div class="container">
                         <div class="row">
                             @foreach ($posts as $post)
-                                <div class="col-12 col-lg-6 col-xl-6 mb-4">
+                                <div class="col-12 col-md-8 offset-md-2 col-lg-6 col-lg-0 col-xl-6 col-xl-0 mb-4">
                                     @include('components.post', ['post' => $post])
                                 </div>
                             @endforeach
