@@ -17,6 +17,11 @@ use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\SubscriberController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Admin\Api\PostController as ApiPostController;
+use App\Http\Controllers\Admin\Api\TagController as ApiTagController;
+use App\Http\Controllers\Admin\Api\VisitorController as ApiVisitorController;
+use App\Http\Controllers\Admin\Api\MessageController as ApiMessageController;
+use App\Http\Controllers\Api\ContactController;
 // use App\Http\Controllers\ToolController;
 
 /*
@@ -31,6 +36,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(function () {
+
+    Route::group(['prefix' => 'api'], function () {
+        Route::post('/posts', [ApiPostController::class, 'index']);
+        Route::post('/tags', [ApiTagController::class, 'index']);
+        Route::post('/visitors', [ApiVisitorController::class, 'index']);
+        Route::post('/messages', [ApiMessageController::class, 'index']);
+        Route::post('/get-in-touch', [ContactController::class, 'getInTouch']);
+    });
 
     Route::group(['prefix' => 'admin'], function () {
 
@@ -62,7 +75,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::post('/posts', [PostController::class, 'store']);
             Route::get('/posts/edit/{slug}', [PostController::class, 'edit']);
             Route::put('/posts/{slug}', [PostController::class, 'update']);
-            Route::post('/api/posts', [PostController::class, 'api_store']); // Testing cropper js
+//            Route::post('/api/posts', [PostController::class, 'api_store']); // Testing cropper js
 
             Route::get('/tags', [TagController::class, 'index']);
             Route::get('/tags/create', [TagController::class, 'create']);

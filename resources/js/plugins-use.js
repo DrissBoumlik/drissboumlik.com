@@ -351,10 +351,11 @@ function configDT(params) {
         // autoWidth: true,
         processing: true,
         serverSide: true,
-        "ajax": {
+        ajax: {
             type: params.method,
             url: params.url,
             data: function(data) {
+                data._token = $('meta[name="csrf-token"]').attr('content');
                 data.first_time = params.first_time;
             }
         },

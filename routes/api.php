@@ -1,11 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\Api\PostController;
-use App\Http\Controllers\Admin\Api\TagController;
-use App\Http\Controllers\Admin\Api\VisitorController;
-use App\Http\Controllers\Admin\Api\MessageController;
-use App\Http\Controllers\Api\ContactController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +12,3 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/posts', [PostController::class, 'index']);
-Route::post('/tags', [TagController::class, 'index']);
-Route::post('/visitors', [VisitorController::class, 'index']);
-Route::post('/messages', [MessageController::class, 'index']);
-
-Route::post('/get-in-touch', [ContactController::class, 'getInTouch']);
