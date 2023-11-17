@@ -104,6 +104,8 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
         Route::get('testimonials', [PageController::class, 'testimonials']);
         // Work
         Route::get('work', [PageController::class, 'work']);
+        // Contact
+        Route::get('contact', [PageController::class, 'contact']);
         // Services
         Route::get('services/{service}', [PageController::class, 'getService']);
 

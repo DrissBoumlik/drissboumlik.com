@@ -57,6 +57,15 @@ class PageController extends Controller
         return view('pages.work', ['data' => $data]);
     }
 
+    public function contact(Request $request)
+    {
+        $data = new \stdClass();
+        $data->title = 'Contact | Driss Boumlik';
+        $data->headline = 'contact';
+        $data->headerMenu = getHeaderMenu();
+        return view('pages.contact', ['data' => $data]);
+    }
+
     public function getService(Request $request, $service)
     {
         $data = new \stdClass();
