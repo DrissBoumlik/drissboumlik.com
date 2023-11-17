@@ -7,6 +7,7 @@
 
 @section('js')
     <!-- Page JS Plugins -->
+    <script src="{{ asset('/plugins/moment-js/moment.js') }}"></script>
     <script src="{{ asset('/template/assets/js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('/template/assets/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
 @endsection

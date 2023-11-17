@@ -6,14 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Admin\TagCollection;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class TagController extends Controller
 {
     public function index(Request $request)
     {
-        $tags = Tag::withTrashed()->withCount('posts')->orderBy('created_at', 'desc')->get();
-        $tags = (new TagCollection($tags))->resolve();
-        $tags = \DataTables::of($tags)->toJson();
-        return $tags;
+        $tags = Tag::withTrashed()->withCount('posts');
+        $is_first_time = $request->has('first_time');
+        if ($is_first_time) {
+            $tags = $tags->orderBy('id', 'desc');
+        }
+        return DataTables::eloquent($tags)->make(true);
     }
 }

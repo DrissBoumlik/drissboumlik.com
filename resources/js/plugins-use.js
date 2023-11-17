@@ -1,3 +1,4 @@
+import {shortenTextIfLongByLength, getDomClass} from "./functions";
 
 function initSyntaxHighlighting() {
     try { hljs.highlightAll() }
@@ -112,11 +113,12 @@ function initDatatable() {
                 { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
                 { data: 'title', name: 'title', title: 'Title', className: 'fw-semibold fs-sm',
                     render: function (data, type, row, params) {
-                        return `<span data-bs-toggle="tooltip" title="${row.title}">${row.short_title}</span>`;
+                        return `<span data-bs-toggle="tooltip" title="${row.title}">${shortenTextIfLongByLength(row.title,20)}</span>`;
                     }},
                 { data: 'status', name: 'status', title: 'Status',
                     render: function (data, type, row, params) {
-                        return `<span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill ${row.status.class}">${row.status.text}</span`;
+                        let status = getDomClass(row.status);
+                        return `<span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill ${status.class}">${status.text}</span`;
                     }},
                 { data: 'featured', name: 'featured', title: 'Featured', className: 'fs-sm',
                     render: function (data, type, row, params) {
@@ -126,13 +128,23 @@ function initDatatable() {
                 { data: 'views', name: 'views', title: '<i class="fa-solid fa-eye"></i>', className: 'text-center'},
                 { data: 'likes', name: 'likes', title: '<i class="fa-solid fa-thumbs-up"></i>', className: 'text-center'},
                 { data: 'tags_count', name: 'tags_count', title: '<i class="fa-solid fa-tags"></i>', className: 'text-center'},
-                { data: 'published_at', name: 'published_at', title: '<i class="fa-solid fa-upload"></i>', className: 'text-center fs-sm',
+                { data: 'published_at', name: 'published_at', title: 'Published @', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
-                        return `<span title="${row.published_at_formatted}">${row.published_at_for_humans}</span>`;
+                        let published_at_for_humans = moment(row.published_at).fromNow();
+                        let published_at_formatted = moment(row.published_at).format('Y-M-d hh:mm');
+                        return `<span title="${published_at_formatted}">${published_at_for_humans}</span>`;
                     }},
-                { data: 'created_at', name: 'created_at', title: '<i class="fa-solid fa-pen"></i>', className: 'text-center fs-sm',
+                { data: 'created_at', name: 'created_at', title: 'Created @', clasxsName: 'text-center fs-sm',
                     render: function(data, type, row, params) {
-                        return `<span title="${row.created_at_formatted}">${row.created_at_for_humans}</span>`;
+                        let created_at_for_humans = moment(row.created_at).fromNow();
+                        let created_at_formatted = moment(row.created_at).format('Y-M-d hh:mm');
+                        return `<span title="${created_at_formatted}">${created_at_for_humans}</span>`;
+                    }},
+                { data: 'updated_at', name: 'updated_at', title: 'Updated @', className: 'text-center fs-sm',
+                    render: function(data, type, row, params) {
+                        let updated_at_for_humans = moment(row.updated_at).fromNow();
+                        let updated_at_formatted = moment(row.updated_at).format('Y-M-d hh:mm');
+                        return `<span title="${updated_at_formatted}">${updated_at_for_humans}</span>`;
                     }},
                 { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
                     render: function (data, type, row, params) {
@@ -194,9 +206,11 @@ function initDatatable() {
                     }
                 },
                 { data: 'posts_count', name: 'posts_count', title: 'Posts', className: 'fw-semibold fs-sm'},
-                { data: 'created_at', name: 'created_at', title: '<i class="fa-solid fa-pen"></i>', className: 'text-center fs-sm',
+                { data: 'created_at', name: 'created_at', title: 'created @', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
-                        return `<span title="${row.created_at_formatted}">${row.created_at_for_humans}</span>`;
+                        let created_at_for_humans = moment(row.created_at).fromNow();
+                        let created_at_formatted = moment(row.created_at).format('Y-M-d hh:mm');
+                        return `<span title="${created_at_formatted}">${created_at_for_humans}</span>`;
                 }},
                 { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
                     render: function (data, type, row, params) {
@@ -219,7 +233,9 @@ function initDatatable() {
                 { data: 'url', name: 'url', title: 'URL', className: 'text-left'},
                 { data: 'updated_at', name: 'updated_at', title: 'updated @', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
-                        return data.split('.')[0].replace('T', ' ');
+                        let updated_at_for_humans = moment(row.updated_at).fromNow();
+                        let updated_at_formatted = moment(row.updated_at).format('Y-M-d hh:mm');
+                        return `<span title="${updated_at_formatted}">${updated_at_for_humans}</span>`;
                     }
                 },
                 { data: 'countryCode', name: 'countryCode', title: 'Country Code', className: 'fw-semibold fs-sm'},
@@ -268,7 +284,9 @@ function initDatatable() {
                 },
                 { data: 'created_at', name: 'created_at', title: 'created @', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
-                        return data.split('.')[0].replace('T', ' ');
+                        let created_at_for_humans = moment(row.created_at).fromNow();
+                        let created_at_formatted = moment(row.created_at).format('Y-M-d hh:mm');
+                        return `<span title="${created_at_formatted}">${created_at_for_humans}</span>`;
                     }
                 },
             ]

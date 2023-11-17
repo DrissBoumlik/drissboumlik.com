@@ -296,4 +296,17 @@ function initEvents() {
     });
 }
 
-export { drawText, initParticlesJS, initSlider, initDarkMode, initEvents };
+function shortenTextIfLongByLength(text, length, end = '...'){
+    return text.length < length ? text : text.substring(0, length) + end;
+}
+
+function getDomClass(status) {
+    let classes = [
+        {'value' : 0, 'class' : 'bg-gray text-gray-dark', 'text' : 'Draft'},
+        {'value' : 1, 'class' : 'bg-warning-light text-warning', 'text' : 'Pending'},
+        {'value' : 2, 'class' : 'bg-success-light text-success', 'text' : 'Published'},
+    ]
+    return classes[status];
+}
+
+export { drawText, initParticlesJS, initSlider, initDarkMode, initEvents, shortenTextIfLongByLength, getDomClass };
