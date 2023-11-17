@@ -112,7 +112,8 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
         // External
         Route::get('/not-found', [GotoController::class, 'not_found']);
         Route::get('/{link}', [GotoController::class, 'goto']);
+
+        Route::any('/{var}', [GotoController::class, 'not_found'])->where('var', '.*');
     });
 
-    Route::any('/{var}', [GotoController::class, 'not_found'])->where('var', '.*');
 });
