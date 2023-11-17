@@ -2,12 +2,14 @@
     {
         "icon": "<i class='fa-solid fa-globe'></i>",
         "link": "community",
-        "title": "Join our community"
+        "title": "Join our community",
+        "hidden": true
     },
     {
         "icon": "<i class='fa-brands fa-linkedin'></i>",
         "link": "linkedin",
-        "title": "Follow me on linkedin"
+        "title": "Follow me on linkedin",
+        "hidden": true
     },
     {
         "icon": "<i class='fa-brands fa-github'></i>",
@@ -51,8 +53,9 @@
     },
     {
         "icon": "<i class='fa-solid fa-at'></i>",
-        "link": "email",
-        "title": "Get in touch"
+        "link": "contact",
+        "title": "Get in touch",
+        "target": "_self"
     },
     {
         "icon": "<i class='fa-solid fa-file-arrow-down'></i>",
