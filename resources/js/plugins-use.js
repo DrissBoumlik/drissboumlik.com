@@ -127,7 +127,7 @@ function initDatatable() {
                 }},
                 { data: 'views', name: 'views', title: '<i class="fa-solid fa-eye"></i>', className: 'text-center'},
                 { data: 'likes', name: 'likes', title: '<i class="fa-solid fa-thumbs-up"></i>', className: 'text-center'},
-                { data: 'tags_count', name: 'tags_count', title: '<i class="fa-solid fa-tags"></i>', className: 'text-center'},
+                { data: 'tags_count', name: 'tags_count', title: 'tags', className: 'text-center', searchable: false},
                 { data: 'published_at', name: 'published_at', title: 'Published @', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
                         let published_at_for_humans = moment(row.published_at).fromNow();
@@ -146,28 +146,10 @@ function initDatatable() {
                         let updated_at_formatted = moment(row.updated_at).format('Y-M-d hh:mm');
                         return `<span title="${updated_at_formatted}">${updated_at_for_humans}</span>`;
                     }},
-                { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
+                { data: 'deleted_at', name: 'deleted_at', title: 'Active', className: 'fs-sm',
                     render: function (data, type, row, params) {
-                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${row.active ? 'bg-success' : 'bg-danger' }"></div>`;
+                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${!row.deleted_at ? 'bg-success' : 'bg-danger' }"></div>`;
                 }},
-                // <th className="text-center"><i className="fa-solid fa-eye"></i></th>
-                // <th className="text-center"><i className="fa-solid fa-thumbs-up"></i></th>
-                // <th className="text-center"><i className="fa-solid fa-upload"></i></th>
-                // <th className="text-center"><i className="fa-solid fa-pen"></i></th>
-                // <th>Active</th>
-                // {"data": "commandes_pro_id", "name": "commandes_pro_id", "visible": false,className: 'noVis',}, // Id
-                // {"data": "contact_tel", "name": "contact_tel", title: 'Tel', searchName: 'contact_tel', className: 'text-nowrap'}, // Tel
-                // {
-                //     "data": "date_livraison_souhaitee",
-                //     "name": "date_livraison_souhaitee",
-                //     title: 'Livraison',
-                //     searchName: 'date_livraison_souhaitee',
-                //     type: 'date',
-                //     mRender: function (data) {
-                //         return $.format.date(data, 'dd/MM/yyyy HH:mm')
-                //     }
-                // },
-
             ]
         };
         configDT(params);
@@ -205,16 +187,16 @@ function initDatatable() {
                              style="background-color: ${row.color}"></div>`;
                     }
                 },
-                { data: 'posts_count', name: 'posts_count', title: 'Posts', className: 'fw-semibold fs-sm'},
+                { data: 'posts_count', name: 'posts_count', title: 'Posts', className: 'fw-semibold fs-sm', searchable: false},
                 { data: 'created_at', name: 'created_at', title: 'created @', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
                         let created_at_for_humans = moment(row.created_at).fromNow();
                         let created_at_formatted = moment(row.created_at).format('Y-M-d hh:mm');
                         return `<span title="${created_at_formatted}">${created_at_for_humans}</span>`;
                 }},
-                { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
+                { data: 'deleted_at', name: 'deleted_at', title: 'Active', className: 'fs-sm',
                     render: function (data, type, row, params) {
-                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${row.active ? 'bg-success' : 'bg-danger' }"></div>`;
+                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${!row.deleted_at ? 'bg-success' : 'bg-danger' }"></div>`;
                 }},
             ]
         };
