@@ -34,7 +34,7 @@ class BlogController extends Controller
     {
         $post = Post::where('slug', $slug);
         if (!\Auth::check()){
-            $post = $post->where('status', 2);
+            $post = $post->where('status', 2); // Published Posts
         }
         $post = $post->first();
         if ($post === null) {
@@ -84,7 +84,11 @@ class BlogController extends Controller
         $data->headerMenu = getHeaderMenu();
         $data->headline = 'Tags';
 
-        $data->tags_data = (new TagWithPaginationCollection(Tag::whereHas('posts')
+        $data->tags_data = (new TagWithPaginationCollection(Tag::whereHas('posts', function($query) {
+                if (!\Auth::check()){
+                    $query->where('status', 2); // Published Posts
+                }
+            })
             ->orderBy('updated_at', 'desc')
             ->paginate($this->tagsPerPage)))->resolve();
 
@@ -101,7 +105,7 @@ class BlogController extends Controller
     private function preparePosts($posts)
     {
         if (!\Auth::check()) {
-            $posts = $posts->where('status', 2);
+            $posts = $posts->where('status', 2); // Published Posts
         }
         $posts_data = (object) (new PostWithPaginationCollection($posts
             ->orderBy('created_at', 'desc')
