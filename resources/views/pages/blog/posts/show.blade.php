@@ -10,11 +10,13 @@
         <div class="row">
             <div class="col-12 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
                 <div class="post-title mb-3">
-                    <h2 class="font-weight-bolder">{{ $post->title }}</h2>
+                    <h1 class="header-txt">{{ $post->title }}</h1>
                 </div>
                 <div class="post-meta-data">
                     <div class="post-date mb-1">
-                        <span title="{{ $post->published_at }}">Posted {{ $post->published_at_formatted }}</span>
+                        @if($post->published_at)
+                            <span title="{{ $post->published_at }}">Posted {{ $post->published_at_formatted }}</span>
+                        @endif
                         @auth
                             ·
                             <a href="/admin/posts/edit/{{ $post->slug }}" target="_blank" class="text-secondary animated-underline">
@@ -23,7 +25,7 @@
                         @endauth
                     </div>
                     @if ($post->tags)
-                        <div class="post-tags mb-3">
+                        <div class="post-tags">
                             @foreach ($post->tags as $tag)
                                 <div class="post-tag d-inline-block me-2">
                                     <i class="fa-solid fa-tag fs-small"></i>
