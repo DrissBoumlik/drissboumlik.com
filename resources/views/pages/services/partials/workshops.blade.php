@@ -23,7 +23,7 @@
                             I foster an atmosphere where all participants feel comfortable sharing ideas, asking questions,
                             and actively participating in the learning process.</p>
 
-                        <p>Let's embark on a journey of learning and growth together. <a href="/#get-in-touch">Contact</a> me to discuss how my workshops can benefit you or your organization.</p>
+                        <p>Let's embark on a journey of learning and growth together. <a href="/contact">Contact</a> me to discuss how my workshops can benefit you or your organization.</p>
                     </div>
                 </div>
             </div>
