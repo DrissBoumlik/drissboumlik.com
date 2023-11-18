@@ -26,6 +26,7 @@
                                     </div>
                                 </div>
                             @endif
+                            @if(count($posts) && $posts_data->lastPage() > 1)
                             <div class="col-12 col-md-8 offset-md-2
                                         col-lg-8 offset-lg-2 col-xl-6 offset-xl-3
                                         mt-5">
@@ -33,6 +34,7 @@
                                     {{ $posts_data->onEachSide(5)->links() }}
                                 </div>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>
