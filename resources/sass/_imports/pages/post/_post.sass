@@ -46,8 +46,8 @@
             color: $tc-black
 
 .post-page
-    *:not(i)
-        font-family: Untitled-Sans
+    //*:not(i)
+    //    font-family: Untitled-Sans
     h1,h2,h3,h4,h5,h6
         margin-top: 3rem
         margin-bottom: 1rem
@@ -81,6 +81,9 @@
         font-size: 1.3rem
         display: inline-block
         font-family: Harmattan
+    code[class*=language-], pre[class*=language-]
+        font-family: 'Fira Code'
+        font-size: 0.8rem
     pre
         border-radius: 10px
         code.hljs
