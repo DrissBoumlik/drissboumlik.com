@@ -16,12 +16,12 @@ class GotoController extends Controller
             $url = $links[$link];
         }
         if (!$url) {
-            $url = '/not-found';
+            return redirect_to_404_page();
         }
         return redirect($url);
     }
 
-    public function not_found(Request $request)
+    public function not_found(Request $request, $var)
     {
         return redirect_to_404_page();
     }
