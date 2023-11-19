@@ -8,7 +8,7 @@
     <div id="about" class="about section-wrapper py-md-5rem py-3rem">
         <div class="section about-header">
             <div id="particles-js" class="particles-js"></div>
-            <div class="headline-wrapper">
+            <div class="container headline-wrapper">
                 @yield('headline')
             </div>
         </div>
