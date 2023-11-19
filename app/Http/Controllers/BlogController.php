@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\PostCollection;
 use App\Http\Resources\PostResource;
 use App\Http\Resources\PostWithPaginationCollection;
 use App\Http\Resources\TagWithPaginationCollection;
@@ -15,6 +14,34 @@ class BlogController extends Controller
     private $postsPerPage = 10;
     private $tagsPerPage = 20;
 
+    private $searchPerPage = 10; // 5x2
+
+    public function search(Request $request)
+    {
+        $term = $request->get('term');
+        $data = new \stdClass();
+        $data->socialLinks = getSocialLinks();
+        $data->headerMenu = getHeaderMenu();
+        $data->headline = "Search results for : $term";
+        $data->term = $term;
+        $data->title = 'Search... | Blog';
+        if ($term) {
+            $term = "%$term%";
+        }
+        $data->results = Post::query()
+            ->where('title', 'like', $term)
+            ->orWhere('excerpt', 'like', $term)
+            ->orWhere('description', 'like', $term)
+            ->orWhere('content', 'like', $term)
+            ->select('title', \DB::Raw("concat('/blog/', slug) as link"), 'cover'); //->paginate($this->searchPerPage);
+        $data->results = Tag::query()
+            ->where('name', 'like', $term)
+            ->orWhere('description', 'like', $term)
+            ->select('title', 'excerpt', 'content')
+            ->select('name as title', \DB::Raw("concat('/tags/', slug) as link"), 'cover')
+            ->unionAll($data->results)->paginate($this->searchPerPage);
+        return view('pages.blog.search', ['data' => $data]);
+    }
 
     public function getPosts(Request $request)
     {

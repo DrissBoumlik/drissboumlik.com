@@ -105,6 +105,8 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
 
         // Route::get('/tags/{tag}', [PostController::class, 'getPostsByTag']);
 
+        // Search Blog
+        Route::get('/search', [BlogController::class, 'search']);
 
         // SiteMap
         Route::get('/sitemap', [SitemapController::class, 'sitemap']);
