@@ -58,3 +58,20 @@ body.dark-mode
 
     .services .service-box *
         color: $tc-white
+
+.community
+    .container > .row:nth-child(2)
+        flex-direction: row
+        @media (max-width: 768px)
+            flex-direction: column-reverse
+            .community-description
+                text-align: center
+            .img-wrapper
+                display: none
+    .community-description p
+        font-size: 1.1rem
+        margin-bottom: 0.7rem
+    .img-wrapper
+        box-shadow: 5px 5px 5px 0 $tc-blue
+        border-radius: 10px
+        overflow: hidden

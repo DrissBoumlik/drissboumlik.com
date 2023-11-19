@@ -22,6 +22,9 @@
             {{--                @include('pages.home.sections.posts')--}}
             {{--            </div>--}}
             <div class="section">
+                @include('pages.shared.community')
+            </div>
+            <div class="section">
                 @include('pages.shared.testimonials', ['testimonials' => $data->sections['testimonials']])
             </div>
             <div class="section">
