@@ -21,7 +21,7 @@
                                     <a target="_blank" href="https://rawg.io/@cartouche/games">virtually</a>,
                                     otherwise I watch <a target="_blank" href="https://anilist.co/user/cartouche/animelist">anime</a>
                                     and <a target="_blank" href="https://trakt.tv/users/cartouche01/progress">tv shows</a>.</p>
-                                <p>You can reach me through : <a href="mailto:hi@drissboumlik.com">hi@drissboumlik.com</a></p>
+                                <p>Checkout my <a href="/resume">resume</a> and reach me through : <a href="mailto:hi@drissboumlik.com">hi@drissboumlik.com</a></p>
                             </div>
                             <div class="col-md-6 col-sm-10 col-11">
                                 <div class="img-wrapper">
