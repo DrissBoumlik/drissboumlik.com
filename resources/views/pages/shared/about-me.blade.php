@@ -14,8 +14,8 @@
                         <div class="welcome-message">
                             <div class="welcome-message-wrapper tc-black-almost">
                                 <div class="txt">
-                                    I code, blog, speak, write, teach ... and other stuff usually not in the same order.<br/>
-                                    I'm a developer & teacher among other things who likes to build & share to make some positive difference.
+                                    I code, blog, speak, teach, mentor ... and other stuff usually not in the same order.<br/>
+                                    I like to build & share things that add value or make positive impact.
                                 </div>
                             </div>
                         </div>
