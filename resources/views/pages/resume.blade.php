@@ -11,7 +11,7 @@
         <div class="sections">
             @foreach ($data->sections as $key => $section)
                 <div class="{{ $key }} section">
-                    @include('pages.resume.sections.'.$key, [$key => $section])
+                    @include("pages.shared.$key", [$key => $section])
                 </div>
             @endforeach
         </div>

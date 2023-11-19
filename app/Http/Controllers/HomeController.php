@@ -32,7 +32,7 @@ class HomeController extends Controller
         $data->socialLinks = getSocialLinks();
         $data->headerMenu = getHeaderMenu();
 
-        return view('pages.home.index', ['data' => $data]);
+        return view('pages.home', ['data' => $data]);
     }
 
     private function getLatestFeaturedPosts()

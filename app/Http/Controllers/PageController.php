@@ -32,7 +32,7 @@ class PageController extends Controller
 
         $data->title = 'Resume | Driss Boumlik';
 
-        return view('pages.resume.index', ['data' => $data]);
+        return view('pages.resume', ['data' => $data]);
     }
 
     public function testimonials(Request $request)
