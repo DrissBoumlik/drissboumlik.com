@@ -6,6 +6,18 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+
+    public function about(Request $request)
+    {
+        $data = new \stdClass();
+
+        $data->headline = 'about me';
+        $data->socialLinks = getSocialLinks();
+        $data->headerMenu = getHeaderMenu();
+        $data->title = 'About me | Driss Boumlik';
+
+        return view('pages.about', ['data' => $data]);
+    }
     public function resume(Request $request)
     {
         $data = new \stdClass();

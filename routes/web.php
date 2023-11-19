@@ -111,6 +111,8 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
 
     //    Route::redirect('/', '/resume');
         Route::get('/', [HomeController::class, 'home']);
+        // About
+        Route::get('about', [PageController::class, 'about']);
         // Resume
         Route::get('resume', [PageController::class, 'resume']);
         // Testimonials

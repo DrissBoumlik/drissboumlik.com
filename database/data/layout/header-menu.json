@@ -5,6 +5,11 @@
         "target": "_self"
     },
     {
+        "title": "about",
+        "slug": "about",
+        "target": "_self"
+    },
+    {
         "title": "work",
         "slug": "work",
         "target": "_self"
