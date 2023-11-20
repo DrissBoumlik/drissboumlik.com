@@ -3,7 +3,7 @@
     <!-- Side Header -->
     <div class="content-header">
         <!-- Logo -->
-        <a class="font-semibold text-dual" href="/">
+        <a class="font-semibold text-dual" href="/admin">
             <span class="smini-visible">
                 <img class="img-avatar img-avatar20" src="{{ asset('/assets/img/me/circle-256.ico') }}" alt="">
             </span>
