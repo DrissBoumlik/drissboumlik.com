@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    @include('layout.menu')
+    @include('layout.menu', ['headerMenu' => $data->headerMenu])
     <div class="container-fluid p-0">
         @include('pages.shared.about-me')
         <div class="sections">
