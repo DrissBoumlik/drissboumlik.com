@@ -14,6 +14,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\ToolController;
 use App\Http\Controllers\SubscriberController;
 use Illuminate\Support\Facades\Route;
 
@@ -88,6 +89,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::get('/visitors', [VisitorController::class, 'index']);
 
             Route::get('/generate-sitemap', [SitemapController::class, 'generateSitemap']);
+            Route::get('/export-db', [ToolController::class , 'export_db']);
         });
     });
 
