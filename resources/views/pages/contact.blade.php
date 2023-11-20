@@ -13,7 +13,7 @@
                 <div class="section">
                     <div class="container">
                         <div class="row">
-                            <div class="col-12 col-lg-6 offset-lg-3">
+                            <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                                 <form id="contact-form" class="mb-4">
                                     @csrf
                                     <div class="form-floating mb-3">
