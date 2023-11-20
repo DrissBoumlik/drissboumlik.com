@@ -25,7 +25,7 @@
                             </div>
                             <div class="col-md-6 col-sm-10 col-11">
                                 <div class="img-wrapper">
-                                    <img class="img-fluid" src="https://community.drissboumlik.com/assets/img/activities/coding-challenges.svg" alt="">
+                                    <img class="img-fluid" src="{{ asset('/assets/img/activities/coding-challenges.svg') }}" alt="">
                                 </div>
                             </div>
                         </div>
