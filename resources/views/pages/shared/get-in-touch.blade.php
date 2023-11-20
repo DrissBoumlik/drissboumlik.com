@@ -6,11 +6,11 @@
                 <form id="contact-form" class="mb-4">
                     @csrf
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="form-name" placeholder="" name="name" required />
+                        <input type="text" class="form-control" id="form-name" placeholder="" name="name" autocomplete="on" required />
                         <label for="form-name">Name</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="form-email" placeholder="" name="email" required />
+                        <input type="email" class="form-control" id="form-email" placeholder="" name="email"autocomplete="off" required />
                         <label for="form-email">Email address</label>
                     </div>
                     <div class="form-floating mb-3">
