@@ -19,8 +19,8 @@ class HomeController extends Controller
         if ($var) {
             return redirect('/not-found');
         }
-        $data = new \stdClass;
-        $data->title = 'Home | Driss Boumlik';
+        $data = pageSetup('Home | Driss Boumlik', null, true, true, true);
+        $data->socialLinksCommunity = getSocialLinksCommunity();
         $data->sections = [];
         $data->sections['techs'] = getTechs();
         $data->sections['work'] = getWork(onlyFeatured: true);
@@ -28,10 +28,6 @@ class HomeController extends Controller
         $data->sections['testimonials'] = getTestimonials();
         $data->sections['testimonials']->items = collect($data->sections['testimonials']->items)->shuffle()->all();
 //        $posts = $this->getLatestFeaturedPosts();
-
-        $data->socialLinksCommunity = getSocialLinksCommunity();
-        $data->socialLinks = getSocialLinks();
-        $data->headerMenu = getHeaderMenu();
 
         return view('pages.home', ['data' => $data]);
     }

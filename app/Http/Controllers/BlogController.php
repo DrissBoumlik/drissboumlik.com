@@ -19,13 +19,7 @@ class BlogController extends Controller
     public function getPosts(Request $request)
     {
         $result = $this->preparePosts(Post::with('author'));
-
-        $data = new \stdClass();
-        $data->title = 'Latest Articles | Blog';
-        $data->headline = 'Latest Articles';
-
-        $data->socialLinks = getSocialLinks();
-        $data->headerMenu = getHeaderMenu();
+        $data = pageSetup('Latest Articles | Blog', 'Latest Articles', true, true);
         $result['data'] = $data;
         return view('pages.blog.posts.index', $result);
     }
@@ -41,13 +35,8 @@ class BlogController extends Controller
             return redirect_to_404_page();
         }
         $post->increment('views', 1);
-        $data = new \stdClass();
-        $data->headline = 'Latest Articles';
-        $data->socialLinks = getSocialLinks();
-        $data->headerMenu = getHeaderMenu();
-
+        $data = pageSetup("$post->title | Blog", 'Latest Articles', true, true);
         $post = (object)(new PostResource($post))->resolve();
-        $data->title = "$post->title | ";
 
         return view('pages.blog.posts.show', ['data' => $data, 'post' => $post]);
     }
@@ -62,27 +51,19 @@ class BlogController extends Controller
     public function getPostsByTag(Request $request, $slug)
     {
         $tag = Tag::where('slug', $slug)->first();
-        $data = new \stdClass();
-        $data->headline = 'Tags';
-        $data->socialLinks = getSocialLinks();
-        $data->headerMenu = getHeaderMenu();
         if ($tag == null) {
             return redirect_to_404_page();
         }
 
         $result = $this->preparePosts($tag->posts()->with('author'));
-        $data->title = "Tags : $tag->name | Blog";
-        $data->headline = '<a href="/tags">All tags</a> <i class="fa-solid fa-angle-right mx-1"></i> ' . $tag->name;
+        $data = pageSetup("Tags : $tag->name | Blog", "<a href='/tags'>All tags</a> <i class='fa-solid fa-angle-right mx-1'></i> $tag->name", true, true);
         $result['data'] = $data;
         return view('pages.blog.posts.index', $result);
     }
 
     public function getTags(Request $request)
     {
-        $data = new \stdClass();
-        $data->socialLinks = getSocialLinks();
-        $data->headerMenu = getHeaderMenu();
-        $data->headline = 'Tags';
+        $data = pageSetup('Tags | Blog', 'Tags', true, true);
 
         $data->tags_data = (new TagWithPaginationCollection(Tag::whereHas('posts', function($query) {
                 if (!\Auth::check()){
@@ -97,7 +78,6 @@ class BlogController extends Controller
 //        $tags->collection = $tags->collection->shuffle();
 
 
-        $data->title = 'Tags | Blog';
 
         return view('pages.blog.tags.index', ['data' => $data, 'tags' => $tags]);
     }

@@ -9,20 +9,13 @@ class PageController extends Controller
 
     public function about(Request $request)
     {
-        $data = new \stdClass();
-
-        $data->headline = 'about me';
-        $data->socialLinks = getSocialLinks();
-        $data->headerMenu = getHeaderMenu();
-        $data->title = 'About me | Driss Boumlik';
-
+        $data = pageSetup('About me | Driss Boumlik', 'about me', true, true, true);
         return view('pages.about', ['data' => $data]);
     }
     public function resume(Request $request)
     {
-        $data = new \stdClass();
+        $data = pageSetup('Resume | Driss Boumlik', 'resume', true, true);
 
-        $data->headline = 'resume';
         $data->sections = [];
         // $data->summary = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/summary.json"));
         $data->sections['experiences'] = getExperiences();
@@ -39,20 +32,12 @@ class PageController extends Controller
             return $item;
         }, $data->sections['experiences']->items);
 
-        $data->socialLinks = getSocialLinks();
-        $data->headerMenu = getHeaderMenu();
-
-        $data->title = 'Resume | Driss Boumlik';
-
         return view('pages.resume', ['data' => $data]);
     }
 
     public function testimonials(Request $request)
     {
-        $data = new \stdClass();
-        $data->title = 'Testimonials | Driss Boumlik';
-        $data->headline = 'testimonials';
-        $data->headerMenu = getHeaderMenu();
+        $data = pageSetup('Testimonials | Driss Boumlik', 'testimonials', true, true);
         $data->testimonials = getTestimonials();
 //        $data->sections['testimonials']->items = collect($data->sections['testimonials']->items)->shuffle()->all();
 
@@ -61,39 +46,26 @@ class PageController extends Controller
 
     public function work(Request $request)
     {
-        $data = new \stdClass();
-        $data->title = 'Work | Driss Boumlik';
-        $data->headline = 'work';
-        $data->headerMenu = getHeaderMenu();
+        $data = pageSetup('Work | Driss Boumlik', 'work', true, true);
         $data->work = getWork();
         return view('pages.work', ['data' => $data]);
     }
 
     public function contact(Request $request)
     {
-        $data = new \stdClass();
-        $data->title = 'Contact | Driss Boumlik';
-        $data->headline = 'contact';
-        $data->headerMenu = getHeaderMenu();
+        $data = pageSetup('Contact | Driss Boumlik', 'contact', true, true);
         return view('pages.contact', ['data' => $data]);
     }
 
     public function privacyPolicy(Request $request)
     {
-        $data = new \stdClass();
-        $data->title = 'Privacy Policy | Driss Boumlik';
-        $data->headline = 'privacy policy';
-        $data->headerMenu = getHeaderMenu();
+        $data = pageSetup('Privacy Policy | Driss Boumlik', 'privacy policy', true, true);
         return view('pages.privacy-policy', ['data' => $data]);
     }
 
     public function getService(Request $request, $service)
     {
-        $data = new \stdClass();
-        $data->title = 'Services | Driss Boumlik';
-        $data->headline = 'services';
-        $data->headerMenu = getHeaderMenu();
-        $data->socialLinks = getSocialLinks();
+        $data = pageSetup('Services | Driss Boumlik', 'services', true, true);
         $service = getServicesById($service);
         if (!$service) {
             return redirect_to_404_page();

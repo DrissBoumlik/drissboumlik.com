@@ -279,3 +279,16 @@ if (!function_exists('shortenTextIfLongByLength')) {
         return strlen($text) < $length ? $text : \Str::limit($text, $length);
     }
 }
+
+if (!function_exists('pageSetup')) {
+    function pageSetup($title, $headline, $headerMenu = false, $footerMenu = false, $socialLinks = false)
+    {
+        $data = new \stdClass();
+        $data->title = $title;
+        $data->headline = $headline;
+        $data->headerMenu = $headerMenu ? getHeaderMenu() : null;
+        $data->footerMenu = $footerMenu ? getFooterMenu() : null;
+        $data->socialLinks = $socialLinks ? getSocialLinks() : null;
+        return $data;
+    }
+}
