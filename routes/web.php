@@ -125,6 +125,8 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
         Route::get('contact', [PageController::class, 'contact']);
         // Services
         Route::get('services/{service}', [PageController::class, 'getService']);
+        // Privacy policy
+        Route::get('privacy-policy', [PageController::class, 'privacyPolicy']);
 
         // External
         Route::get('/not-found', [GotoController::class, 'not_found']);

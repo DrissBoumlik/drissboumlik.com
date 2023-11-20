@@ -78,6 +78,15 @@ class PageController extends Controller
         return view('pages.contact', ['data' => $data]);
     }
 
+    public function privacyPolicy(Request $request)
+    {
+        $data = new \stdClass();
+        $data->title = 'Privacy Policy | Driss Boumlik';
+        $data->headline = 'privacy policy';
+        $data->headerMenu = getHeaderMenu();
+        return view('pages.privacy-policy', ['data' => $data]);
+    }
+
     public function getService(Request $request, $service)
     {
         $data = new \stdClass();
