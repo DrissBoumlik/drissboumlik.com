@@ -276,7 +276,8 @@ function initDatatable() {
         $('#messages').on('click', '.display-email-details', function(e) {
             const $row = $(this).closest('tr');
             const data = messagesDataTable.row( $row ).data();
-            console.log(data);
+
+            let created_at = moment(data.created_at);
 
             let modal = `
             <div class="modal modal-email-details" tabindex="-1">
@@ -297,7 +298,7 @@ function initDatatable() {
                                 <label for="exampleFormControlInput1" class="form-label">Message : <br/>${data.body}</label>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Created @ : ${data.created_at}</label>
+                                <label for="exampleFormControlInput1" class="form-label">Created @ : ${created_at.format('Y-M-d hh:mm')} / ${created_at.fromNow()}</label>
                             </div>
                         </div>
                     </div>
