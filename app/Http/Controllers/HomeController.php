@@ -29,6 +29,7 @@ class HomeController extends Controller
         $data->sections['testimonials']->items = collect($data->sections['testimonials']->items)->shuffle()->all();
 //        $posts = $this->getLatestFeaturedPosts();
 
+        $data->socialLinksCommunity = getSocialLinksCommunity();
         $data->socialLinks = getSocialLinks();
         $data->headerMenu = getHeaderMenu();
 

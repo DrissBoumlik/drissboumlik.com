@@ -11,6 +11,9 @@
                     <p>If you like to be part of it checkout <a target="_blank" href="http://community.drissboumlik.com/github">Github</a>
                         and <a target="_blank" href="http://community.drissboumlik.com/join">Discord</a>.</p>
                 </div>
+                <div class="social-icons mt-3">
+                    @include('addons.social-links', ['socialLinks' => $socialLinks])
+                </div>
             </div>
             <div class="col-md-5 col-sm-10 col-11 position-relative">
                 <div class="img-wrapper">

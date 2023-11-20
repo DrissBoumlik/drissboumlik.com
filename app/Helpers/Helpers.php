@@ -58,6 +58,19 @@ if (!function_exists('getSocialLinks')) {
     }
 }
 
+if (!function_exists('getSocialLinksCommunity')) {
+    function getSocialLinksCommunity($withHidden = false)
+    {
+        $socialLinksCommunity = json_decode(\File::get(base_path() . '/database/data/layout/social-links-community.json'));
+        if (!$withHidden) {
+            $socialLinksCommunity = array_filter($socialLinksCommunity, function ($item) {
+                return (!isset($item->hidden) || !$item->hidden);
+            });
+        }
+        return $socialLinksCommunity;
+    }
+}
+
 if (!function_exists('getHeaderMenu')) {
     function getHeaderMenu($withHidden = false)
     {

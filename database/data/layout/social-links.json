@@ -1,65 +1,65 @@
 [
     {
         "icon": "<i class='fa-solid fa-globe'></i>",
-        "link": "community",
+        "link": "/community",
         "title": "Join our community",
         "hidden": true
     },
     {
         "icon": "<i class='fa-brands fa-linkedin'></i>",
-        "link": "linkedin",
+        "link": "/linkedin",
         "title": "Follow me on linkedin",
         "hidden": true
     },
     {
         "icon": "<i class='fa-brands fa-github'></i>",
-        "link": "github",
+        "link": "/github",
         "title": "Follow me on github"
     },
     {
         "icon": "<i class='fa-brands fa-facebook-f'></i>",
-        "link": "facebook",
+        "link": "/facebook",
         "title": "facebook",
         "hidden": true
     },
     {
         "icon": "<i class='fa-brands fa-discord'></i>",
-        "link": "discord",
+        "link": "/discord",
         "title": "Find me on discord"
     },
     {
         "icon": "<i class='fa-brands fa-youtube'></i>",
-        "link": "youtube",
+        "link": "/youtube",
         "title": "youtube",
         "hidden": true
     },
     {
         "icon": "<i class='fa-brands fa-instagram'></i>",
-        "link": "instagram",
+        "link": "/instagram",
         "title": "instagram",
         "hidden": true
     },
     {
         "icon": "<i class='fa-brands fa-twitter'></i>",
-        "link": "twitter",
+        "link": "/twitter",
         "title": "twitter",
         "hidden": true
     },
     {
         "icon": "<i class='fa-solid fa-calendar-check'></i>",
-        "link": "meet",
+        "link": "/meet",
         "title": "meet",
         "hidden": true
     },
     {
         "icon": "<i class='fa-solid fa-at'></i>",
-        "link": "contact",
+        "link": "/contact",
         "title": "Get in touch",
         "target": "_self"
     },
     {
         "icon": "<i class='fa-solid fa-file-arrow-down'></i>",
-        "link": "cv",
+        "link": "/cv",
         "title": "cv",
         "hidden": true
     }

@@ -20,7 +20,7 @@
                             </div>
                         </div>
                         <div class="social-icons mt-3">
-                            @include('addons.social-links', ['socialLinks' => $data->socialLinks])
+                            @include('addons.social-links', ['socialLinks' => $socialLinks])
                         </div>
                     </div>
                 </div>
