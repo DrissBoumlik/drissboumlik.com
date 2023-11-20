@@ -10,11 +10,7 @@ class GotoController extends Controller
 
     public function goto(Request $request, $link)
     {
-        $links = getLinks();
-        $url = null;
-        if ($link && array_key_exists($link, $links)) {
-            $url = $links[$link];
-        }
+        $url = getLinkByKey($link);
         if (!$url) {
             return redirect_to_404_page();
         }

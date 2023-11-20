@@ -45,6 +45,18 @@ if (!function_exists('getLinks')) {
     }
 }
 
+if (!function_exists('getLinkByKey')) {
+    function getLinkByKey($key)
+    {
+        try {
+            $links = getLinks();
+            return $links[$key];
+        } catch (\Throwable $e) {
+            return null;
+        }
+    }
+}
+
 if (!function_exists('getSocialLinks')) {
     function getSocialLinks($withHidden = false)
     {
