@@ -8,7 +8,7 @@
                         evolve in an environment conducive to learning.</p>
                     <p>Founded at the end of 2020 and continue to grow, thanks to more than 1.6k members, and specially to these amazing
                         <a target="_blank" href="http://community.drissboumlik.com/p/contributors#contributors">contributors</a>.</p>
-                    <p>If you like to be part of it here checkout <a target="_blank" href="http://community.drissboumlik.com/github">Github</a>
+                    <p>If you like to be part of it checkout <a target="_blank" href="http://community.drissboumlik.com/github">Github</a>
                         and <a target="_blank" href="http://community.drissboumlik.com/join">Discord</a>.</p>
                 </div>
             </div>
