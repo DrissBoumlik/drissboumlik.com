@@ -12,13 +12,14 @@ class GotoController extends Controller
     {
         $url = getLinkByKey($link);
         if (!$url) {
-            return redirect_to_404_page();
+            return redirect('/not-found');
         }
         return redirect($url);
     }
 
-    public function not_found(Request $request, $var)
+    public function not_found(Request $request)
     {
-        return redirect_to_404_page();
+        $data = pageSetup('Page Not Found | Driss Boumlik', 'Page Not Found', true, true);
+        return view('errors.404', ['data' => $data]);
     }
 }

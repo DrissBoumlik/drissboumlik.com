@@ -32,7 +32,7 @@ class BlogController extends Controller
         }
         $post = $post->first();
         if ($post === null) {
-            return redirect_to_404_page();
+            return redirect('/not-found');
         }
         $post->increment('views', 1);
         $data = pageSetup("$post->title | Blog", 'Latest Articles', true, true);
@@ -52,7 +52,7 @@ class BlogController extends Controller
     {
         $tag = Tag::where('slug', $slug)->first();
         if ($tag == null) {
-            return redirect_to_404_page();
+            return redirect('/not-found');
         }
 
         $result = $this->preparePosts($tag->posts()->with('author'));

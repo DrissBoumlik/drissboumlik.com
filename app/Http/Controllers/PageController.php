@@ -68,7 +68,7 @@ class PageController extends Controller
         $data = pageSetup('Services | Driss Boumlik', 'services', true, true);
         $service = getServicesById($service);
         if (!$service) {
-            return redirect_to_404_page();
+            return redirect('/not-found');
         }
         return view('pages.services.index', ['data' => $data, 'service' => $service]);
     }
