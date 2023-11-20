@@ -2,9 +2,9 @@
 
 @section('page-content')
 
-    <div class="container-fluid p-0">
+    <div class="container p-0">
 
-        <div class="_404 d-flex align-items-center" style="height: 90vh">
+        <div class="_404 d-flex align-items-center justify-content-center" style="height: 90vh">
             <div class="row my-5 w-100">
                 <div class="col-lg-8 offset-lg-2 col-12">
                     <div class="not-found-container">
