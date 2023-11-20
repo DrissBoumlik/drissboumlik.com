@@ -6,15 +6,15 @@
     },
     {
         "title": "community",
-        "slug": "community"
+        "slug": "/community"
     },
     {
         "title": "resources",
-        "slug": "resources"
+        "slug": "https://community.drissboumlik.com/p/resources"
     },
     {
         "title": "privacy policy",
-        "slug": "privacy-policy"
+        "slug": "/privacy-policy"
     }
 
 ]

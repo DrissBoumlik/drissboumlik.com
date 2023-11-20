@@ -5,7 +5,7 @@
                 @foreach ($data->footerMenu as $link)
                     <li class="footer-menu-item menu-item list-group-item
                         overflow-auto animated-underline my-0 mx-3">
-                        <a href="/{{ $link->slug }}" rel="noopener" target="{{ $link->target ?? '_self' }}"
+                        <a href="{{ $link->slug }}" rel="noopener" target="{{ $link->target ?? '_self' }}"
                             aria-label="{{ $link->title }}" class="text-capitalize">
                             {{ $link->title }}
                         </a>
