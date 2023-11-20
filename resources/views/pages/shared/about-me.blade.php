@@ -2,20 +2,20 @@
 <div id="about" class="about section-wrapper py-md-5rem py-3rem mt-5rem">
     <div id="particles-js" class="particles-js"></div>
     <div class="container d-flex align-items-center">
-        <div class="section about-header">
-            <div class="">
-                <div class="row _justify-content-center _align-items-center mb-2">
-                    <div class="col-11 col-md-12 col-lg-10">
-                        <h3 class="brand-slogan">I'm <span>Driss</span> <span>Boumlik</span></h3>
-                    </div>
+        <div class="section about-header me-lg-2">
+            <div class="row mb-2">
+                <div class="col-11 col-md-12 col-lg-10">
+                    <h3 class="brand-slogan">I'm <span>Driss</span> <span>Boumlik</span></h3>
                 </div>
-                <div class="row">
+            </div>
+            <div class="row">
                     <div class="col-12">
                         <div class="welcome-message">
                             <div class="welcome-message-wrapper tc-black-almost">
                                 <div class="txt">
-                                    I code, blog, speak, teach, mentor ... and other stuff usually not in the same order.<br/>
-                                    I like to build & share things that add value or make positive impact.
+                                    <p>I code, blog, speak, teach, mentor ... and other stuff usually not in the same order.</p>
+                                    <p>I like to build & share things that add value or make positive impact.</p>
+                                    <p>Find more <a href="/about">about me</a>.</p>
                                 </div>
                             </div>
                         </div>
@@ -24,7 +24,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
         <div class="section about-code">
             <div class="code-wrapper">
