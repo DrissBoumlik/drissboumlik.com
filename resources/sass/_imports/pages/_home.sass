@@ -32,6 +32,10 @@
 
 
 .skills
+    .skill-item-wrapper
+        @media (max-width: 300px)
+            flex: 0 0 auto
+            width: 50%
     .skill-item
         display: flex
         align-items: center
@@ -43,10 +47,14 @@
         display: flex
         font-size: 3rem
         margin-bottom: .5rem
+        @media (max-width: 576px)
+            font-size: 2.7rem
         i
             color: $tc-blue-dark-2
     .skill-text
         font-size: 1rem
+        @media (max-width: 576px)
+            font-size: 0.9rem
 
 body.dark-mode
     .skill-icon i
