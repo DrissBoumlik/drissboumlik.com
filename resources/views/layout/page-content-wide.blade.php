@@ -18,5 +18,5 @@
         @yield('page-content')
     </div>
     @yield('addons')
-    @include('layout.footer')
+    @include('layout.footer', ['footerMenu' => $data->footerMenu])
 @endsection
