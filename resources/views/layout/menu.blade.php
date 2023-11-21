@@ -3,7 +3,7 @@
         <div class="menu-blocks d-flex justify-content-center align-items-center">
             <nav class="nav d-flex justify-content-center">
                 <div class="header-menu-wrapper menu-wrapper">
-                    <ul class="header-menu menu list-group list-group-horizontal">
+                    <ul class="header-menu list-group list-group-horizontal">
                         @foreach ($headerMenu as $link)
                             <li class="header-menu-item menu-item list-group-item animated-underline
                     overflow-auto my-2 mx-2 {{ request()->is($link->slug) ? 'active' : '' }}">
