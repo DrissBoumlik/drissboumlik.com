@@ -1,7 +1,8 @@
 @extends('layout.app')
 
 @section('post-header-assets')
-    <script src="{{ asset('/js/pages/home.js') }}"></script>
+    <script src="{{ asset('/js/pages/code-animation.js') }}"></script>
+    <script src="{{ asset('/js/pages/contact.js') }}"></script>
 @endsection
 
 @section('content')
