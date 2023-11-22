@@ -72,7 +72,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="mb-4">
-                                <label class="form-label" for="tags">Tags</label>
+                                <label class="form-label" for="tags-list">Tags</label>
                                 <select class="js-select2 form-select" id="tags-list"
                                     name="tags[]" style="width: 100%;" data-placeholder="Choose many.."
                                     multiple>

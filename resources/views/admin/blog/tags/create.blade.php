@@ -40,12 +40,12 @@
                             <div class="mb-4">
                                 <label class="form-label" for="tag-name">Name</label>
                                 <input type="text" class="form-control input-to-slugify" id="tag-name" name="name"
-                                    placeholder="Tag Name">
+                                    placeholder="Tag Name" required>
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="tag-slug">Slug</label>
                                 <input type="text" class="form-control input-slug" id="tag-slug" name="slug"
-                                    placeholder="Tag slug">
+                                    placeholder="Tag slug" required>
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="description">Description</label>

@@ -51,12 +51,12 @@
                             <div class="mb-4">
                                 <label class="form-label" for="post-title">Title</label>
                                 <input type="text" class="form-control input-to-slugify" id="post-title" name="title"
-                                    placeholder="Post Title">
+                                    placeholder="Post Title" required>
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="post-slug">Slug</label>
                                 <input type="text" class="form-control input-slug" id="post-slug" name="slug"
-                                    placeholder="Post slug">
+                                    placeholder="Post slug" required>
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="excerpt">Excerpt</label>
@@ -155,7 +155,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="mb-4">
-                                <label class="form-label" for="tags">Tags</label>
+                                <label class="form-label" for="tags-list">Tags</label>
                                 <select class="js-select2 form-select" id="tags-list"
                                     name="tags[]" style="width: 100%;" data-placeholder="Choose many.."
                                     multiple>
@@ -195,7 +195,7 @@
                                 <label class="form-label" for="post_body">Content</label>
                                 <!-- SimpleMDE Container -->
                                 {{-- <textarea class="js-simplemde" id="simplemde" name="post_body">{{ old('post_body') }}</textarea> --}}
-                                <textarea id="post_body" class="form-control" name="post_content" placeholder="Post content.." hidden></textarea>
+                                <textarea id="post_body" class="form-control" name="post_content" placeholder="Post content.." hidden>Post content..</textarea>
                             </div>
                         </div>
                     </div>
