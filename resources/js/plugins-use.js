@@ -20,6 +20,8 @@ function initPostEditor() {
         plugins: 'code link table lists codesample image preview pagebreak',
         toolbar: 'code codesample link image | undo redo | formatselect| bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | table | pagebreak preview',
         pagebreak_separator: '<hr/>',
+        height: 700,
+        fixed_toolbar_container: '.tox-editor-header',
         codesample_languages: [
             { text: 'Bash', value: 'bash' },
             { text: 'Typscript', value: 'typscript' },
