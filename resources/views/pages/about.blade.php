@@ -25,7 +25,7 @@
                             </div>
                             <div class="col-md-6 col-sm-10 col-11">
                                 <div class="img-wrapper">
-                                    <img class="img-fluid" src="{{ asset('/assets/img/activities/coding-challenges.svg') }}" alt="">
+                                    <img class="img-fluid w-100" src="{{ asset('/assets/img/activities/coding-challenges.svg') }}" alt="" width="300" height="300" loading="lazy">
                                 </div>
                             </div>
                         </div>

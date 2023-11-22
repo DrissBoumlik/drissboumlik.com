@@ -17,7 +17,7 @@
             </div>
             <div class="col-md-5 col-sm-10 col-11 position-relative">
                 <div class="img-wrapper">
-                    <img class="img-fluid" src="{{ asset('/assets/img/work/teacodema.webp') }}" alt="">
+                    <img class="img-fluid w-100" src="{{ asset('/assets/img/work/teacodema.webp') }}" alt="" width="200" height="100" loading="lazy">
                 </div>
             </div>
         </div>
