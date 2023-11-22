@@ -64,7 +64,7 @@
                                 <label class="form-label" for="image">Image</label>
                                 <input type="file" id="image" name="cover" class="form-control" />
                                 <div class="mt-2">
-                                    <img id="image-preview" class="img-fluid" src="/{{ $tag->cover }}" alt="photo">
+                                    <img id="image-preview" class="img-fluid w-100" src="{{ $tag->cover ? "/$tag->cover" : asset('/assets/img/blog/default-tag.webp') }}" alt="photo" width="200" height="100" loading="lazy">
                                 </div>
                             </div>
                         </div>

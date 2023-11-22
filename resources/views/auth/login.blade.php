@@ -86,7 +86,7 @@
                         @endif
                     </div>
                     <div class="col-md-6 img-block">
-                        <img src="{{ asset('/assets/img/activities/workshops.svg') }}" class="auth-img" loading="lazy">
+                        <img src="{{ asset('/assets/img/activities/workshops.svg') }}" alt="" class="auth-img img-fluid w-100" width="300" height="300" loading="lazy">
                     </div>
                 </div>
             </div>

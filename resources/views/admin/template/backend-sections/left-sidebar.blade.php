@@ -5,7 +5,7 @@
         <!-- Logo -->
         <a class="font-semibold text-dual" href="/admin">
             <span class="smini-visible">
-                <img class="img-avatar img-avatar20" src="{{ asset('/assets/img/me/circle-256.ico') }}" alt="">
+                <img class="img-avatar img-avatar20" src="{{ asset('/assets/img/me/circle-256.ico') }}" alt="" width="20" height="20" loading="lazy">
             </span>
             <span class="smini-hide fs-5 tracking-wider">Admin <span class="fw-normal">Panel</span></span>
         </a>
