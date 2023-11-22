@@ -14,7 +14,7 @@
             <div class="post-meta-data">
                 <div class="post-date mb-1">
                     @if($post->published_at)
-                        <span title="{{ $post->published_at }}">Posted {{ $post->published_at_formatted }}</span>
+                        <span title="{{ $post->published_at }}">Posted: {{ $post->published_at_short_format }} • {{ $post->read_duration }} min read</span>
                     @endif
                     @auth
                         ·
