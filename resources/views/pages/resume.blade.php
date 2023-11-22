@@ -1,4 +1,4 @@
-@extends('layout.page-content-wide')
+@extends('layout.page-content-wide', ['px_0' => 'px-0', 'py_0' => 'py-0'])
 
 @section('headline')
     <div class="d-flex flex-column align-items-center justify-content-center">
