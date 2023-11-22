@@ -1,11 +1,11 @@
 @extends('auth.app')
 
 @section('content')
-    <div class="container auth-box">
+    <div class="container-fluid auth-box">
         <section class="vh-100">
             <div class="container-fluid d-flex justify-content-center align-items-center h-100">
                 <div class="row d-flex justify-content-center align-items-center w-100">
-                    <div class="col-md-6 login-block">
+                    <div class="col-lg-6 col-md-10 login-block">
                         @if (env('APP_ENV') == 'local')
                         <form class="login-form" method="POST" action="{{ route('login') }}">
                             @csrf
@@ -85,7 +85,7 @@
                 </form>
                         @endif
                     </div>
-                    <div class="col-md-6 img-block">
+                    <div class="col-lg-6 col-md-2 img-block">
                         <img src="{{ asset('/assets/img/activities/workshops.svg') }}" alt="" class="auth-img img-fluid w-100" width="300" height="300" loading="lazy">
                     </div>
                 </div>

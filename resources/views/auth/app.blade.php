@@ -18,7 +18,6 @@
         {{-- @include('addons.google-tag-manager-body') --}}
         <div class="wrapper">
                 @yield('content')
-                @include('layout.footer')
         </div>
         @include('addons.toggle-darkmode')
         {{-- @include('addons.alert') --}}
