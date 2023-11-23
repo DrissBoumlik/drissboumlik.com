@@ -18,6 +18,7 @@ mix
     // .js('resources/template/js/pages/datatables.js', 'public/template/js/pages')
     // .js('resources/template/js/pages/slick.js', 'public/template/js/pages')
     .js('resources/js/app.js', 'public/js')
+    .js('resources/js/admin/app.js', 'public/js/admin')
     .js('resources/js/pages/code-animation.js', 'public/js/pages')
     .js('resources/js/pages/contact.js', 'public/js/pages')
     .sass('resources/template/sass/main.scss', 'public/template/css')

@@ -18,4 +18,4 @@
 <script src="{{ asset('/template/assets/js/oneui.app.min.js') }}"></script>
 <script src={{ asset("/template/assets/js/lib/jquery.min.js") }}></script>
 @yield('js')
-<script defer src="{{ asset('/js/app.js') }}"></script>
+<script defer src="{{ asset('/js/admin/app.js') }}"></script>
