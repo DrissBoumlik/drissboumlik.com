@@ -43,7 +43,7 @@ class PostController extends Controller
                 "status" => $request->status,
                 "featured" => $request->featured,
                 'author_id' => \Auth::user()->id,
-                'published_at' => $request->status == 2 ? now() : null,
+                'published_at' => ($request->status === "2" ? ($request->published_at ?? now()) : null),
             ];
             $image_file = $request->file('cover');
             if ($image_file) {
@@ -108,7 +108,7 @@ class PostController extends Controller
                 "status" => $request->status,
                 "featured" => $request->has('featured'),
                 'author_id' => \Auth::user()->id,
-                'published_at' => $post->published_at ?? ($request->status == 2 ? now() : null),
+                'published_at' => ($request->status === "2" ? ($request->published_at ?? now()) : null),
             ];
             $image_file = $request->file('cover');
             if ($image_file) {

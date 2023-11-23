@@ -4,6 +4,7 @@
     <!-- Page JS Plugins CSS -->
 {{--    <link rel="stylesheet" href="/template/assets/js/plugins/cropperjs/cropper.min.css">--}}
     <link rel="stylesheet" href="{{ asset('/template/assets/js/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/template/assets/js/plugins/flatpickr/flatpickr.min.css') }}">
 {{--    <link rel="stylesheet" href="{{ asset('/vendor/laraberg/css/laraberg.css') }}">--}}
 {{--    <link rel="stylesheet" href="/template/assets/js/plugins/simplemde/simplemde.min.css">--}}
 @endsection
@@ -13,6 +14,8 @@
 {{--    <script src="{{ asset('/vendor/laraberg/js/laraberg.js') }}"></script>--}}
 {{--    <script src="/template/assets/js/plugins/cropperjs/cropper.min.js"></script>--}}
     <script src="{{ asset('/template/assets/js/plugins/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('/template/assets/js/plugins/flatpickr/flatpickr.min.js') }}"></script>
+
 {{--    <script src="/template/assets/js/plugins/simplemde/simplemde.min.js"></script>--}}
     <script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
 @endsection
@@ -69,6 +72,20 @@
                                 <label class="form-label" for="description">Description</label>
                                 <textarea class="form-control" id="description" name="description" rows="4" placeholder="Post description..">{{ $post->description }}</textarea>
                             </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="published_at">Published at</label>
+                                <input type="text" class="js-flatpickr form-control" id="published_at" name="published_at" value="{{ $post->published_at }}" data-enable-time="true" data-time_24hr="true">
+                            </div>
+                            <div class="timestamps d-flex justify-content-between align-items-center">
+                                <div class="mb-4">
+                                    <label class="form-label" for="updated_at">Updated at</label>
+                                    <input type="text" class="js-flatpickr form-control" id="updated_at" disabled name="updated_at" value="{{ $post->updated_at }}" data-enable-time="true" data-time_24hr="true">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label" for="created_at">Updated at</label>
+                                    <input type="text" class="js-flatpickr form-control" id="created_at" disabled name="created_at" value="{{ $post->created_at }}" data-enable-time="true" data-time_24hr="true">
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-4">
@@ -107,7 +124,7 @@
                                 </div>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="image">Image</label>
+                                <label class="form-label" for="image">Cover</label>
                                 <input type="file" id="image" name="cover" class="form-control" />
                                 <div class="mt-2">
                                     <img id="image-preview" class="img-fluid w-100" src="{{ $post->cover ? "/$post->cover" : asset('/assets/img/blog/default-post.webp') }}" alt="photo" width="200" height="100" loading="lazy">
