@@ -36,7 +36,17 @@
             "period" : "Aug 2022 - Nov 2022",
             "start_date" : "2022-8",
             "end_date" : "2022-11",
-            "content" : null,
+            "content" : {
+                "items" : [
+                    "Establishing project specifications and technical direction.",
+                    "Guiding team members with troubleshooting technical issues.",
+                    "Performing coding assignments.",
+                    "Reviewing code work for accuracy and functionality.",
+                    "Creating and implementing design plans.",
+                    "Correction and evolution of existing websites",
+                    "Technical support for developers & new recruits.",
+                    "Improvement of the development environment (Scripting, alias…)."
+                ]},
             "techs" : [
                 { "title" : "Bootstrap", "content" : "<i class='fa-brands fa-bootstrap'></i>"},
                 { "title" : "Javascript", "content" : "<i class='fa-brands fa-square-js'></i>"},
