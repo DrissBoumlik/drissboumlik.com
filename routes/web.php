@@ -39,14 +39,16 @@ use App\Http\Controllers\Api\ContactController;
 Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(function () {
 
     Route::group(['prefix' => 'api'], function () {
-        Route::post('/posts', [ApiPostController::class, 'index']);
-        Route::post('/tags', [ApiTagController::class, 'index']);
-        Route::post('/visitors', [ApiVisitorController::class, 'index']);
-        Route::post('/messages', [ApiMessageController::class, 'index']);
+        Route::middleware('auth')->group(function () {
+            Route::post('/posts', [ApiPostController::class, 'index']);
+            Route::post('/tags', [ApiTagController::class, 'index']);
+            Route::post('/visitors', [ApiVisitorController::class, 'index']);
+            Route::post('/messages', [ApiMessageController::class, 'index']);
+        });
         Route::post('/get-in-touch', [ContactController::class, 'getInTouch']);
     });
 
-    Route::group(['prefix' => 'admin'], function () {
+    Route::prefix('admin')->group(function () {
 
         Route::redirect('/', '/admin/posts');
         Route::get('/login', [LoginController::class , 'showLoginForm'])->name('login');
@@ -58,7 +60,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
         Route::post('/password/reset', [ResetPasswordController::class , 'reset'])->name('password.update');
 
 
-        Route::group(['middleware' => 'auth'], function() {
+        Route::middleware('auth')->group(function () {
             // Profile
             // Route::get('profile', [AdminController::class, 'profile'])->name('profile');
             // Route::post('profile', [AdminController::class, 'updateProfile'])->name('profile.update');
@@ -93,7 +95,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
         });
     });
 
-    Route::middleware(['location'])->group(function () {
+    Route::middleware('location')->group(function () {
 //    Route::post('/subscribers', [SubscriberController::class, 'subscribe']);
 //    Route::put('/subscribers/{uuid}', [SubscriberController::class, 'update']);
 //    Route::get('/subscribers/{uuid}', [SubscriberController::class, 'show']);
