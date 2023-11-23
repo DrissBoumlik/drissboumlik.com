@@ -10,10 +10,10 @@
                             <div class="list-group-item-figure box-header">
                                 <div class="has-badge d-flex align-items-center">
                                     <div class="box-icon me-2">
-                                        <img src="{{ asset('/assets/img/icons/' . $certificate->icon) }}" alt="{{ $certificate->title }}">
+                                        <i class="fa-brands fa-microsoft"></i>
                                     </div>
                                     <div class="box-header-txt">
-                                        <h4 class="text-capitalize">{{ $certificate->title }}</h4>
+                                        <h5 class="text-capitalize">{{ $certificate->title }}</h5>
                                     </div>
                                 </div>
                             </div><!-- .lits-group-item-figure -->
