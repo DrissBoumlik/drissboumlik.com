@@ -19,9 +19,9 @@ class ContactController extends Controller
         $request_data = $request->only('name', 'email', 'body');
 
         Mail::send('emails.contact', $request_data, static function ($message) use ($request_data) {
-            $message->to('hi@drissboumlik.com', 'DB')
+            $message->to(env('MAIL_TO_ADDRESS'), 'DB')
                 ->subject('DB Contact Form : Message from ' . $request_data['name'])
-                ->from(env('MAIL_FROM_ADDRESS'), 'noreply');
+                ->from(env('MAIL_FROM_ADDRESS'), 'DB Contact Form');
         });
 
         Message::create($request_data);
