@@ -35,12 +35,11 @@
             "image": "teabot.webp",
             "content": "<p><span class='underline'>Full Stack</span><br>Laravel | Ajax | Sass | Bootstrap</p>",
             "name": "TeaBot",
-            "description": "a discord bot made with python to help and monitor the TeaCode commuity.",
+            "description": "a discord bot made with python to help and monitor the TeaCode community.",
             "links": {
                 "repository": "https://github.com/teacodema/teabot-py",
                 "website": null
-            },
-            "hidden": true
+            }
         },
         {
             "image": "grinta.webp",
