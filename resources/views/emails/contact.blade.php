@@ -1,4 +1,4 @@
-
+<p>You recieved an email</p>
 <p>
     Name : {{ $name }}
 </p>
