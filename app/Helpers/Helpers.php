@@ -20,15 +20,14 @@ if (!function_exists('getLinks')) {
             'github' => 'https://github.com/drissboumlik/',
             'discord' => 'https://discordapp.com/users/156878784019038208',
             'youtube' => 'https://youtube.com/channel/UCss61diIS1kW_TRsHMMwtwQ',
+            // Community
             'community' => 'https://community.drissboumlik.com',
-            'cv' => '/storage/cv/DrissBoumlik-en.pdf',
-
+            // Resume
+            'cv' => 'https://docs.google.com/document/d/1idAAzjxMJXOTOY5QkOnQTq4clsICGlv8wCmDyyEw6Xs/edit#heading=h.x8fm1uorkbaw',
+            'cv-pdf' => '/storage/cv/DrissBoumlik-en.pdf',
             // Contact
             'meet' => 'https://calendly.com/drissboumlik/30min/',
             'email' => 'mailto:hi@drissboumlik.com?subject=Resume : ',
-
-            // Brand
-            'site' => 'https://community.drissboumlik.com/'
         ];
         return $links;
     }
