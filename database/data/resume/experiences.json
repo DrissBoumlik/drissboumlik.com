@@ -11,7 +11,7 @@
             "end_date" : null,
             "content" : {
                 "items" : [
-                    "Development of a System to Manage customer connection tickets & appointments for technicians interventions.",
+                    "Designed a system to oversee customer interaction tickets and schedule appointments for technician interventions.",
                     "Technical support for new recruits.",
                     "Improvement of the development environment (Scripting, alias…)."
                 ]},
@@ -72,9 +72,9 @@
             "end_date" : "2022-07",
             "content" : {
                 "items" : [
-                    "Development of an HR Management System.",
-                    "Development of a Production Statistics System for call center agents.",
-                    "Development of a System to Manage customer connection tickets & appointments for technicians interventions.",
+                    "Designed and implemented a comprehensive Human Resources Management System (HRMS) to streamline and optimize workforce operations.",
+                    "Engineering a Production Statistics System tailored for call center agents, enhancing performance monitoring and optimizing operational efficiency.",
+                    "Designed and implemented a comprehensive system for the efficient management of customer connection tickets and technician intervention appointments, enhancing operational effectiveness and customer service.",
                     "Technical support for new recruits.",
                     "Improvement of the development environment (Scripting, alias…)."
                 ]},
@@ -115,21 +115,21 @@
         },
         {
             "classList" : "angular grintaaa",
-            "company" : "Freelance",
+            "company" : "Grintaaa - Freelance",
             "location": "Remote, France",
             "job" : "Full Stack Developer - Angular / Laravel",
             "period" : "Sep 2019 - Sep 2021",
             "start_date" : "2019-09",
             "end_date" : "2021-09",
             "content" : {
-                "headline": "<p>Development of a social network for athletes.</p>",
+                "headline": "<p>Designed a social network platform tailored specifically for athletes, fostering community engagement, communication and sportsmanship.</p>",
                 "items": [
                     "Add / Follow another contact.",
                     "Create events.",
                     "Create / Share posts.",
                     "Send invitation to participate in a game.",
                     "Request to participate in a game.",
-                    "Review the members."
+                    "Rate members."
                 ]},
             "techs" : [
                 {"title" : "Bootstrap", "content" : "<i class='fa-brands fa-bootstrap'></i>"},
@@ -148,18 +148,14 @@
         },
         {
             "classList" : "laravel ehm",
-            "company" : "Freelance",
+            "company" : "EHM - Freelance",
             "location": "Rabat, Morocco",
             "job" : "Full Stack Developer - Laravel",
             "period" : "June 2019 - Sep 2019",
             "start_date" : "2019-06",
             "end_date" : "2019-09",
             "content" : {
-                "headline": "<p>Development of a showcase site for :</p>",
-                "items": [
-                    "Production / Distribution of fresh fruit.",
-                    "Services (Consulting, Farm management, agricultural development ...)"
-                ]
+                "headline": "<p>Designed and developed a showcase website dedicated to the Production/Distribution of fresh fruit and associated services, including Consulting, Farm Management, and Agricultural Development ...etc</p>"
             },
             "techs" : [
                 {"title" : "Bootstrap", "content" : "<i class='fa-brands fa-bootstrap'></i>"},
@@ -176,7 +172,7 @@
         },
         {
             "classList" : "wordpress mediating",
-            "company" : "Freelance",
+            "company" : "Mediating - Freelance",
             "location": "Rabat, Morocco",
             "job" : "Full Stack Developer - Laravel / Wordpress",
             "period" : "Jan 2019 - May 2019",
@@ -184,8 +180,8 @@
             "end_date" : "2019-05",
             "content" : {
                 "items": [
-                    "Development of a Ticket Management System.",
-                    "Development of the AMDL website (Moroccan Logistics Development Agency)",
+                    "Designed a Ticket Management System, demonstrating proficiency in software development and contributing to efficient and organized workflow processes.",
+                    "Designed and developed the AMDL website (Moroccan Logistics Development Agency), showcasing expertise in web development and contributing to the online presence of a key logistics organization",
                     "Correction and evolution of existing websites.",
                     "Technical support for new recruits."
                 ]
@@ -203,17 +199,14 @@
         },
         {
             "classList" : "wordpress rae",
-            "company" : "Freelance",
+            "company" : "RAE - Freelance",
             "location": "Rabat, Morocco",
             "job" : "Full Stack Developer - Php",
             "period" : "Jan 2019 - Apr 2019",
             "start_date" : "2019-01",
             "end_date" : "2019-04",
             "content" : {
-                "items": [
-                    "Development of a portal site for studies in Ukraine / Russia.",
-                    "Deployment of the site on the client's server."
-                ]
+                "headline": "Designed and developed a portal site dedicated to facilitating information about studies in Ukraine and Russia, showcasing proficiency in web development and contributing to educational accessibility."
             },
             "techs" : [
                 {"title" : "Bootstrap" , "content" : "<i class='fa-brands fa-bootstrap'></i>"},
@@ -235,7 +228,7 @@
             "start_date" : "2018-04",
             "end_date" : "2018-09",
             "content" : {
-                "headline": "<p>Development of an agricultural upstream management information system for the COSUMAR group.</p><p>The digitalization of the aggregate-aggregate relationship and the automation of agricultural processes.</p>",
+                "headline": "<p>Developed an Agricultural Upstream Management Information System for the COSUMAR group, demonstrating expertise in digitization of the aggregate-aggregate relationship and automation of agricultural processes.</p>",
                 "items": [
                     "Participation in the analysis and design phase.",
                     "Implementation of REST APIs in BackEnd.",
