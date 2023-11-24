@@ -45,7 +45,7 @@
         .btn-read-more a
             color: $tc-black
 
-.post-title .header-txt
+.post-title.header-txt
     text-transform: unset
     font-size: 2rem
 
@@ -78,6 +78,10 @@
             height: auto
         //p
         //    margin-bottom: 1rem
+    .post-date
+        background-color: $tc-grey-light-1
+        border-radius: 0.4rem
+        padding: 0.5rem 1.5rem
     .post-cover
         height: 200px
         background-size: cover
@@ -109,6 +113,9 @@
     a
         text-decoration: none
 body.dark-mode
+    .post
+        .post-date
+            background-color: $tc-blue-dark-4
     .post-tags *
         color: $tc-grey-dark
 
