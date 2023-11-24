@@ -18,9 +18,9 @@
                                     and other stuff usually not in the same order.</p>
                                 <p>I like to build & share things that add value or make positive impact.</p>
                                 <p>I play soccer twice a week in reality, and everyday
-                                    <a target="_blank" href="https://rawg.io/@cartouche/games">virtually</a>,
-                                    otherwise I watch <a target="_blank" href="https://anilist.co/user/cartouche/animelist">anime</a>
-                                    and <a target="_blank" href="https://trakt.tv/users/cartouche01/progress">tv shows</a>.</p>
+                                    <a target="_blank" href="https://rawg.io/@cartouche/games" rel="noopener">virtually</a>,
+                                    otherwise I watch <a target="_blank" href="https://anilist.co/user/cartouche/animelist" rel="noopener">anime</a>
+                                    and <a target="_blank" href="https://trakt.tv/users/cartouche01/progress" rel="noopener">tv shows</a>.</p>
                                 <p>Checkout my <a href="/resume">resume</a> and reach me through : <a href="mailto:hi@drissboumlik.com">hi@drissboumlik.com</a></p>
                             </div>
                             <div class="col-md-6 col-sm-10 col-11">

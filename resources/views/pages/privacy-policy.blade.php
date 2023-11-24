@@ -29,10 +29,10 @@
                                 <p class="block-content"><span class="fw-bold">Google Analytics :</span> We use Google Analytics to analyze the traffic on our Website.
                                     Google Analytics collects information such as IP addresses, browser type, and operating system.
                                     This information is used to analyze trends, administer the site, track user movements,
-                                    and gather demographic information. <a href="https://policies.google.com/privacy">Link to Google's Privacy Policy</a>.</p>
+                                    and gather demographic information. <a href="https://policies.google.com/privacy" rel="noopener">Link to Google's Privacy Policy</a>.</p>
                                 <p class="block-content"><span class="fw-bold">Cloudflare :</span> We use Cloudflare to enhance the security and performance of our Website.
                                     Cloudflare may collect data such as IP addresses, system configuration information,
-                                    and other traffic data. <a href="https://www.cloudflare.com/privacypolicy/">Link to Cloudflare's Privacy Policy</a>.</p>
+                                    and other traffic data. <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener">Link to Cloudflare's Privacy Policy</a>.</p>
 
                                 <h4 class="block-title">Log Data</h4>
                                 <p class="block-content">Like many site operators, we collect information that your browser sends whenever you visit our Site ("Log Data").

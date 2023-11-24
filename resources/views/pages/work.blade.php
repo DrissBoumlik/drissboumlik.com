@@ -29,7 +29,7 @@
                                                         @isset($workItem->links->repository)
                                                             <div class="work-link">
                                                                 <a href="{{ $workItem->links->repository }}"
-                                                                   target="_blank">
+                                                                   target="_blank" rel="noopener">
                                                                     <i class="fa-brands fa-github"></i>
                                                                 </a>
                                                             </div>
@@ -37,7 +37,7 @@
                                                         @isset($workItem->links->website)
                                                             <div class="work-link">
                                                                 <a href="{{ $workItem->links->website }}"
-                                                                   target="_blank">
+                                                                   target="_blank" rel="noopener">
                                                                     <i class="fa-solid fa-globe"></i>
                                                                 </a>
                                                             </div>
