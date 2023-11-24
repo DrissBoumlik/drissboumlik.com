@@ -66,6 +66,9 @@
     a
         color: $tc-blue
         text-decoration: underline
+    li, li *
+        color: $tc-grey-fancy
+        text-decoration: unset
     .post
         .post-title *
             font-size: 2.5rem
@@ -101,11 +104,6 @@
         font-size: 0.8rem
     pre
         border-radius: 10px
-        code.hljs
-            box-shadow: inset 4px 0 6px -1px $tc-grey-light-3, inset -4px 0 6px -1px $tc-grey-light-3
-            &.hljs, &.hljs *
-                font-family: 'Fira Code'
-                font-size: 0.8rem
 
 .post-tags
     *
@@ -116,9 +114,8 @@ body.dark-mode
     .post
         .post-date
             background-color: $tc-blue-dark-4
-    .post-tags *
+    .post-tags *, li, li *
         color: $tc-grey-dark
-
 
 .post
     .post-tags
