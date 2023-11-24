@@ -19,16 +19,19 @@
                     <div class="row">
                         <div class="col-12 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2 mb-4 post">
                             <div class="post-meta-data d-flex flex-column align-items-center">
-                                <div class="post-date mb-1">
+                                <div class="post-date mb-2">
                                     @if($post->published_at)
-                                        <span title="{{ $post->published_at }}">Posted: {{ $post->published_at_short_format }} • {{ $post->read_duration }} min read</span>
+                                        <div class="published_date">
+                                            <span title="{{ $post->published_at }}">{{ $post->published_at_short_format }}</span>
+                                            •
+                                            <span>{{ $post->read_duration }} min read</span>
+                                            @auth
+                                                <span> • <a href="/admin/posts/edit/{{ $post->slug }}" target="_blank">
+                                                    <i class="fa fa-fw fa-pencil"></i> Edit
+                                                </a></span>
+                                            @endauth
+                                        </div>
                                     @endif
-                                    @auth
-                                        ·
-                                        <a href="/admin/posts/edit/{{ $post->slug }}" target="_blank" class="text-secondary animated-underline">
-                                            <i class="fa fa-fw fa-pencil"></i> Edit
-                                        </a>
-                                    @endauth
                                 </div>
                                 @if ($post->tags)
                                     <div class="post-tags">
