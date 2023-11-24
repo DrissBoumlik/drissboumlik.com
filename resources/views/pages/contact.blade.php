@@ -16,16 +16,16 @@
             <div class="py-5" id="get-in-touch">
                 <div class="section">
                     <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-                                <form id="contact-form" class="mb-4">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-lg-6 col-md-7 col-12">
+                                <form id="contact-form" class="mb-4 mb-md-0">
                                     @csrf
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="form-name" placeholder="" name="name" required />
+                                        <input type="text" class="form-control" id="form-name" placeholder="" name="name" autocomplete="off" required />
                                         <label for="form-name">Name</label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input type="email" class="form-control" id="form-email" placeholder="" name="email" required />
+                                        <input type="email" class="form-control" id="form-email" placeholder="" name="email" autocomplete="off" required />
                                         <label for="form-email">Email address</label>
                                     </div>
                                     <div class="form-floating mb-3">
@@ -34,6 +34,11 @@
                                     </div>
                                     <button type="submit" class="btn tc-blue-dark-2-bg tc-blue-bg-hover w-100">Send</button>
                                 </form>
+                            </div>
+                            <div class="col-lg-6 col-md-5 col-11">
+                                <div class="img-wrapper">
+                                    <img class="img-fluid w-md-75 w-100 d-block m-auto" src="{{ asset('/assets/img/activities/hangouts.svg') }}" alt="" width="300" height="300" loading="lazy">
+                                </div>
                             </div>
                         </div>
                     </div>
