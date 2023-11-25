@@ -91,14 +91,15 @@
         background-position: top center
         background-attachment: fixed
     code
-        color: $tc-black
-        background-color: $tc-grey-light-1
         padding: 0 5px
         border-radius: 5px
         font-size: 1.3rem
         display: inline-block
         font-family: Harmattan
         line-height: 1.5rem !important
+        &:not([class*=language])
+            color: $tc-black
+            background-color: $tc-grey-light-1
     code[class*=language-], pre[class*=language-]
         font-family: 'Fira Code'
         font-size: 0.8rem
@@ -112,7 +113,7 @@
         text-decoration: none
 body.dark-mode
     .post
-        code
+        code:not([class*=language])
             color: $tc-white
             background-color: $tc-grey-fancy
         .post-date
