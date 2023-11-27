@@ -112,6 +112,10 @@
                                 </select>
                             </div>
                             <div class="mb-4">
+                                <label class="form-label" for="post-views">Views</label>
+                                <input type="text" class="form-control" id="post-views" name="views" placeholder="Post views" value="{{ $post->views }}">
+                            </div>
+                            <div class="mb-4">
                                 <div class="form-check form-switch form-check-inline">
                                     <input class="form-check-input" type="checkbox" id="featured" name="featured" {{ $post->featured == 0 ? '' : 'checked' }} >
                                     <label class="form-check-label" for="featured">Featured</label>

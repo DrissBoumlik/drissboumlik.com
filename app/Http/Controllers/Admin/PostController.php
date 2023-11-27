@@ -109,6 +109,7 @@ class PostController extends Controller
                 "featured" => $request->has('featured'),
                 'author_id' => \Auth::user()->id,
                 'published_at' => ($request->status === "2" ? ($request->published_at ?? now()) : null),
+                'views' => $request->views ?? $post->views
             ];
             $image_file = $request->file('cover');
             if ($image_file) {
