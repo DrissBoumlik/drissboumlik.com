@@ -9,6 +9,9 @@
 <!-- Stylesheets -->
 <!-- OneUI framework -->
 @yield('css')
+<link href="{{ asset('/css/externals.css') }}" rel="preload" as="style">
+<link href="{{ asset('/css/externals.css') }}" rel="stylesheet">
+<link href="{{ asset('/template/css/main.css') }}" rel="preload" as="style">
 <link href="{{ asset('/template/css/main.css') }}" rel="stylesheet">
 {{-- <link rel="stylesheet" id="css-main" href="/template/assets/css/oneui.min.css"> --}}
 
