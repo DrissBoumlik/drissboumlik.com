@@ -28,7 +28,8 @@ class LocationMiddleware
             $visitor = Visitor::where('ip', $ip)->orderBy('updated_at', 'desc')->first();
             if ($visitor) {
                 $timeSinceLastVisit = now()->diffInRealHours($visitor->updated_at);
-                if ($timeSinceLastVisit > 12) {
+                $timeSinceLastVisitMinValue = 2;
+                if ($timeSinceLastVisit > $timeSinceLastVisitMinValue) {
                     Visitor::create((array)$currentUserInfo);
                 }
             } else {
