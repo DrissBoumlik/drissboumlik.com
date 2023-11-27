@@ -8,6 +8,7 @@ use App\Http\Resources\PostWithPaginationCollection;
 use App\Http\Resources\TagWithPaginationCollection;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\Visitor;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -34,7 +35,17 @@ class BlogController extends Controller
         if ($post === null) {
             return redirect('/not-found');
         }
-        $post->increment('views', 1);
+        $ip = $request->ip();
+        $visitor = Visitor::where('ip', $ip)
+            ->where('url', "/blog/$slug")
+            ->orderBy('updated_at', 'desc')->first();
+        if ($visitor) {
+            $timeSinceLastVisit = now()->diffInRealSeconds($visitor->updated_at);
+            $timeSinceLastVisitMinValue = 7200; $aboutToVisit = 1;
+            if ($timeSinceLastVisit > $timeSinceLastVisitMinValue || $timeSinceLastVisit < $aboutToVisit) {
+                $post->increment('views', 1);
+            }
+        }
         $data = pageSetup("$post->title | Blog", 'Latest Articles', true, true);
         $post = (object)(new PostResource($post))->resolve();
 
