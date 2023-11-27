@@ -23,8 +23,10 @@
                                     @if($post->published_at)
                                         <div class="published_date">
                                             <span title="{{ $post->published_at }}">{{ $post->published_at_short_format }}</span>
-                                            •
+                                            <span class="fw-bold">•</span>
                                             <span>{{ $post->read_duration }} min read</span>
+                                            <span class="fw-bold">•</span>
+                                            <span><i class="fa fa-fw fa-eye"></i> {{ $post->views }}</span>
                                             @auth
                                                 <span> • <a href="/admin/posts/edit/{{ $post->slug }}" target="_blank">
                                                     <i class="fa fa-fw fa-pencil"></i> Edit
