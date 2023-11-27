@@ -1,11 +1,14 @@
 .menu
-    position: sticky
+    position: relative
+    @media (min-width: 576px)
+        position: sticky
     top: 0
     z-index: 9999
     backdrop-filter: blur(4px)
 
 .header-menu-wrapper .header-menu
     .header-menu-item
+        margin: 0.5rem
         &:after
             background-color: $tc-blue-dark-2
         a
