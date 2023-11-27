@@ -1,8 +1,8 @@
 
-<div id="about" class="about section-wrapper py-md-5rem py-3rem mt-5rem">
+<div id="about" class="about section-wrapper py-md-5rem py-3rem mt-5rem mt-md-5rem">
     <div id="particles-js" class="particles-js"></div>
     <div class="container d-flex align-items-center">
-        <div class="section about-header me-lg-2">
+        <div class="section about-header pe-md-3 pe-0">
             <div class="row mb-2">
                 <div class="col-11 col-md-12 col-lg-10">
                     <h3 class="brand-slogan">I'm <span>Driss</span> <span>Boumlik</span></h3>
