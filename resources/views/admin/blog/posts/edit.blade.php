@@ -76,7 +76,7 @@
                                 <label class="form-label" for="published_at">Published at</label>
                                 <input type="text" class="js-flatpickr form-control" id="published_at" name="published_at" value="{{ $post->published_at }}" data-enable-time="true" data-time_24hr="true">
                             </div>
-                            <div class="timestamps d-flex justify-content-between align-items-center">
+                            <div class="timestamps d-flex justify-content-between align-items-center column-gap-2">
                                 <div class="mb-4">
                                     <label class="form-label" for="updated_at">Updated at</label>
                                     <input type="text" class="js-flatpickr form-control" id="updated_at" disabled name="updated_at" value="{{ $post->updated_at }}" data-enable-time="true" data-time_24hr="true">
