@@ -9,8 +9,8 @@
 {{-- @include('addons.google-tag-manager-head') --}}
 
 <link rel="canonical" href="https://www.drissboumlik.com/">
-<meta name="og:image" content="{{ asset('/assets/img/me/icon.png') }}">
-<meta name="twitter:image" content="{{ asset('/assets/img/me/icon.png') }}">
+<meta name="og:image" content="{{ asset('/assets/img/me/icon.ico') }}">
+<meta name="twitter:image" content="{{ asset('/assets/img/me/icon.ico') }}">
 <meta name="og:image:width" content="1200">
 <meta name="twitter:image:width" content="1200">
 <meta name="og:image:height" content="1200">
@@ -18,5 +18,5 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image:alt" content="Main picture">
 
-<link rel="icon" type="image/x-icon" href="{{ asset('/assets/img/me/bd.png') }}">
-<link rel="apple-touch-icon" href="{{ asset('/assets/img/me/bd.png') }}">
+<link rel="icon" type="image/x-icon" href="{{ asset('/assets/img/me/icon.ico') }}">
+<link rel="apple-touch-icon" href="{{ asset('/assets/img/me/icon.ico') }}">
