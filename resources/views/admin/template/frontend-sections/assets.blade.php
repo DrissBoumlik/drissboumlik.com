@@ -24,8 +24,8 @@ OneUI JS
 Core libraries and functionality
 webpack is putting everything together at assets/_js/main/app.js
 -->
-<script src="{{ asset('/template/assets/js/oneui.app.min.js') }}"></script>
+<script defer src="{{ asset('/template/assets/js/oneui.app.min.js') }}"></script>
 <script src={{ asset("/template/assets/js/lib/jquery.min.js") }}></script>
 @yield('js')
-<script src="{{ asset('/template/assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
-<script src="{{ asset('/js/admin/app.js') }}"></script>
+<script defer src="{{ asset('/template/assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+<script defer src="{{ asset('/js/admin/app.js') }}"></script>
