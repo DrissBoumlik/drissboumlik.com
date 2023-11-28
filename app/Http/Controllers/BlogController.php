@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\PostResource;
 use App\Http\Resources\PostWithPaginationCollection;
+use App\Http\Resources\SearchWithPaginationCollection;
 use App\Http\Resources\TagWithPaginationCollection;
 use App\Models\Post;
 use App\Models\Tag;
@@ -24,22 +25,36 @@ class BlogController extends Controller
         $data->headerMenu = getHeaderMenu();
         $data->headline = "Search results for : $term";
         $data->term = $term;
-        $data->title = 'Search... | Blog';
+        $data->title = "Search: $term | Blog";
         if ($term) {
             $term = "%$term%";
         }
-        $data->results = Post::query()
-            ->where('title', 'like', $term)
-            ->orWhere('excerpt', 'like', $term)
-            ->orWhere('description', 'like', $term)
-            ->orWhere('content', 'like', $term)
-            ->select('title', \DB::Raw("concat('/blog/', slug) as link"), 'cover'); //->paginate($this->searchPerPage);
-        $data->results = Tag::query()
-            ->where('name', 'like', $term)
-            ->orWhere('description', 'like', $term)
-            ->select('title', 'excerpt', 'content')
-            ->select('name as title', \DB::Raw("concat('/tags/', slug) as link"), 'cover')
-            ->unionAll($data->results)->paginate($this->searchPerPage);
+        $data->results_posts = \DB::table('posts');
+        if (!\Auth::check()){
+            $data->results_posts = $data->results_posts->where('status', 2); // Published Posts
+        }
+        $data->results_posts = $data->results_posts->whereNull('deleted_at')
+            ->where(function ($query) use ($term) {
+                $query->where('title', 'like', $term)
+                    ->orWhere('excerpt', 'like', $term)
+                    ->orWhere('description', 'like', $term)
+                    ->orWhere('content', 'like', $term);
+            })
+            ->orderBy('updated_at', 'desc')
+            ->select('title', \DB::Raw("concat('/blog/', slug) as link"), 'cover', \DB::Raw("'<i class=\"fa-regular fa-file-lines\"></i>' as type")); //->paginate($this->searchPerPage);
+        $data->results = \DB::table('tags')->whereNull('deleted_at');
+//        if (!\Auth::check()){
+//            $data->results =  $data->results->whereExists(\DB::table('posts')->where('posts.')->get());
+//        }
+        $data->results = $data->results->where(function ($query) use ($term) {
+                $query->where('name', 'like', $term)
+                    ->orWhere('description', 'like', $term);
+            })
+            ->orderBy('updated_at', 'desc')
+            ->select('name as title', \DB::Raw("concat('/tags/', slug) as link"), 'cover', \DB::Raw("'<i class=\"fa-solid fa-tag\"></i>' as type"))
+            ->unionAll($data->results_posts)->paginate($this->searchPerPage);
+        $data->results_metadata = clone $data->results;
+        $data->results = ((object) (new SearchWithPaginationCollection($data->results))->resolve())->items;
         return view('pages.blog.search', ['data' => $data]);
     }
 
@@ -112,10 +127,10 @@ class BlogController extends Controller
         $data->headline = 'Tags';
 
         $data->tags_data = (new TagWithPaginationCollection(Tag::whereHas('posts', function($query) {
-                if (!\Auth::check()){
-                    $query->where('status', 2); // Published Posts
-                }
-            })
+            if (!\Auth::check()){
+                $query->where('status', 2); // Published Posts
+            }
+        })
             ->orderBy('updated_at', 'desc')
             ->paginate($this->tagsPerPage)))->resolve();
 
