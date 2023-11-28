@@ -2,7 +2,7 @@
 
 @section('headline')
     <div class="d-flex flex-column align-items-center justify-content-center">
-        <h1 class="header-txt">{!! $data->headline !!}</h1>
+        <h1 class="header-txt">{!! $data->headline !!} <span class="display-search-form px-2"><i class="fa-solid fa-magnifying-glass"></i></span></h1>
     </div>
 @endsection
 
@@ -47,4 +47,5 @@
             </div>
         </div>
     </div>
+    @include('components.search-blog')
 @endsection
