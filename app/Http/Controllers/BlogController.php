@@ -42,16 +42,21 @@ class BlogController extends Controller
             })
             ->orderBy('updated_at', 'desc')
             ->select('title', \DB::Raw("concat('/blog/', slug) as link"), 'cover', \DB::Raw("'<i class=\"fa-regular fa-file-lines\"></i>' as type")); //->paginate($this->searchPerPage);
-        $data->results = \DB::table('tags')->whereNull('deleted_at');
-//        if (!\Auth::check()){
-//            $data->results =  $data->results->whereExists(\DB::table('posts')->where('posts.')->get());
-//        }
+        $data->results = \DB::table('tags as t')->whereNull('t.deleted_at');
+        if (!\Auth::check()){
+            $data->results = $data->results
+                            ->join('post_tag as pt', 't.id', '=', 'pt.tag_id')
+                            ->join('posts as p', 'p.id', '=', 'pt.post_id')
+                            ->whereNull('p.deleted_at')
+                            ->where('p.status', '=', 2);
+        }
         $data->results = $data->results->where(function ($query) use ($term) {
-                $query->where('name', 'like', $term)
-                    ->orWhere('description', 'like', $term);
-            })
-            ->orderBy('updated_at', 'desc')
-            ->select('name as title', \DB::Raw("concat('/tags/', slug) as link"), 'cover', \DB::Raw("'<i class=\"fa-solid fa-tag\"></i>' as type"))
+            $query->where('name', 'like', $term)
+                ->orWhere('t.description', 'like', $term);
+        })
+            ->orderBy('t.updated_at', 'desc')
+            ->select('name as title', \DB::Raw("concat('/tags/', t.slug) as link"), 't.cover', \DB::Raw("'<i class=\"fa-solid fa-tag\"></i>' as type"))
+            ->distinct()
             ->unionAll($data->results_posts)->paginate($this->searchPerPage);
         $data->results_metadata = clone $data->results;
         $data->results = ((object) (new SearchWithPaginationCollection($data->results))->resolve())->items;
