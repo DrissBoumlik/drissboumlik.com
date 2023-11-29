@@ -21,12 +21,8 @@ class BlogController extends Controller
     public function search(Request $request)
     {
         $term = $request->get('term');
-        $data = new \stdClass();
-        $data->socialLinks = getSocialLinks();
-        $data->headerMenu = getHeaderMenu();
-        $data->headline = "Search results for : $term";
+        $data = pageSetup("Search: $term | Blog", "Search results for : $term", true, true);
         $data->term = $term;
-        $data->title = "Search: $term | Blog";
         if ($term) {
             $term = "%$term%";
         }
