@@ -38,7 +38,7 @@ class BlogController extends Controller
                     ->orWhere('content', 'like', $term);
             })
             ->orderBy('updated_at', 'desc')
-            ->select('title', \DB::Raw("concat('/blog/', slug) as link"), 'cover', \DB::Raw("'<i class=\"fa-regular fa-file-lines\"></i>' as type")); //->paginate($this->searchPerPage);
+            ->select('title', \DB::Raw("concat('/blog/', slug) as link"), 'cover', \DB::Raw("'<i class=\"fa-solid fa-file-lines\"></i>' as type")); //->paginate($this->searchPerPage);
         $data->results = \DB::table('tags as t')->whereNull('t.deleted_at');
         if (!\Auth::check()){
             $data->results = $data->results
