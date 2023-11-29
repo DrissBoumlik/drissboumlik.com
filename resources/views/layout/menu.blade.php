@@ -1,14 +1,7 @@
 <div class="menu nav-scroller py-2">
     <div class="container">
-        <div class="menu-blocks d-flex justify-content-center align-items-center">
-            <div class="brand turn-trigger me-2 d-none d-sm-block">
-                <a href="/" class="d-flex align-items-center">
-                    <div class="logo logo-brand turn position-relative d-inline-block">
-                        @include('components.logo-svg')
-                    </div>
-                </a>
-            </div>
-            <nav class="nav d-flex justify-content-center">
+        <div class="menu-blocks d-flex align-items-center">
+            <nav class="nav d-flex justify-content-center flex-grow-1">
                 <div class="header-menu-wrapper menu-wrapper">
                     <ul class="header-menu list-group list-group-horizontal">
                         @foreach ($headerMenu as $link)
@@ -20,20 +13,29 @@
                                 </a>
                             </li>
                         @endforeach
-                        @auth
+                        @if(request()->is(['blog', 'tags', 'search']))
                             <li class="header-menu-item menu-item list-group-item animated-underline overflow-auto">
-                                <a href="/admin" rel="noopener" target="_blank"
-                                   aria-label="Admin Panel">
-                                    <i class="fa-solid fa-gear"></i>
-                                </a>
+                                <span class="display-search-form"><i class="fa-solid fa-magnifying-glass"></i></span>
                             </li>
-                            <li class="header-menu-item menu-item list-group-item animated-underline overflow-auto">
-                                @include('components.logout-button', ['logout_btn' => '<i class="fa-solid fa-power-off"></i>', 'link_classes' => ''])
-                            </li>
-                        @endauth
+                        @endif
                     </ul>
                 </div>
             </nav>
+            @auth
+            <div class="header-menu-wrapper login-menu-items flex-grow-2">
+                <ul class="header-menu list-group list-group-horizontal">
+                    <li class="header-menu-item menu-item list-group-item animated-underline overflow-auto">
+                        <a href="/admin" rel="noopener" target="_blank"
+                           aria-label="Admin Panel">
+                            <i class="fa-solid fa-gear"></i>
+                        </a>
+                    </li>
+                    <li class="header-menu-item menu-item list-group-item animated-underline overflow-auto">
+                        @include('components.logout-button', ['logout_btn' => '<i class="fa-solid fa-power-off"></i>', 'link_classes' => ''])
+                    </li>
+                </ul>
+            </div>
+            @endauth
         </div>
     </div>
 </div>
