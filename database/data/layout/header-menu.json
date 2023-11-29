@@ -1,5 +1,10 @@
 [
     {
+        "title": "<i class='fa-solid fa-house'></i>",
+        "slug": "/",
+        "target": "_self"
+    },
+    {
         "title": "work",
         "slug": "work",
         "target": "_self"
