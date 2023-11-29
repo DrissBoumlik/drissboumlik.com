@@ -20,7 +20,8 @@
                                 <p>If am not in front of my laptop, I play soccer twice a week in reality, and everyday
                                     <a target="_blank" href="https://rawg.io/@cartouche/games" rel="noopener">virtually</a>,
                                     otherwise I watch <a target="_blank" href="https://anilist.co/user/cartouche/animelist" rel="noopener">anime</a>
-                                    and <a target="_blank" href="https://trakt.tv/users/cartouche01/progress" rel="noopener">tv shows</a> or read
+                                    and <a target="_blank" href="https://trakt.tv/users/cartouche01/progress" rel="noopener">tv shows</a>, listen to
+                                    <a target="_blank" href="https://castbox.fm/cl/360626">podcasts</a> or read
                                     <a target="_blank" href="https://www.goodreads.com/review/list/170245827-driss?view=covers" rel="noopener">books</a>.</p>
                                 <p>Checkout my <a href="/resume">resume</a> and reach me through : <a href="mailto:hi@drissboumlik.com">hi@drissboumlik.com</a></p>
                             </div>
