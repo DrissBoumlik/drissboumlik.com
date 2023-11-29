@@ -27,8 +27,8 @@ class LocationMiddleware
             $currentUserInfo->url = ($route === '/' ? '' : '/') . $route;
             $visitor = Visitor::where('ip', $ip)->orderBy('updated_at', 'desc')->first();
             if ($visitor) {
-                $timeSinceLastVisit = now()->diffInRealHours($visitor->updated_at);
-                $timeSinceLastVisitMinValue = 2;
+                $timeSinceLastVisit = now()->diffInRealSeconds($visitor->updated_at);
+                $timeSinceLastVisitMinValue = 7200;
                 if ($timeSinceLastVisit > $timeSinceLastVisitMinValue) {
                     Visitor::create((array)$currentUserInfo);
                 }
