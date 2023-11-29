@@ -5,6 +5,14 @@
         "hidden": true
     },
     {
+        "title": "testimonials",
+        "slug": "/testimonials"
+    },
+    {
+        "title": "blog",
+        "slug": "/blog"
+    },
+    {
         "title": "community",
         "slug": "/community"
     },
