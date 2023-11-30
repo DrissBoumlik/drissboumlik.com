@@ -30,7 +30,7 @@
         ]
     },
     "addSkills" : {
-        "header" : "additionnel skills",
+        "header" : "additional skills",
         "items" :[
             { "id": "com", "name": "communication", "value": 80 },
             { "id": "adapt", "name": "adaptability", "value": 80 },
