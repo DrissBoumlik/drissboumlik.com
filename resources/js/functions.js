@@ -1,8 +1,11 @@
-// import 'bootstrap';
+import 'bootstrap';
 import { toggleDarkMode } from "./shared/functions";
 require('particles.js');
 import 'owl.carousel';
 
+function initTooltip() {
+    $('[data-toggle="tooltip"]').tooltip();
+}
 function drawText() {
     let text = `
        /$$           /$$
@@ -144,4 +147,4 @@ function initEvents() {
 }
 
 
-export { drawText, initParticlesJS, initSlider, initDarkMode, initEvents };
+export { drawText, initParticlesJS, initSlider, initDarkMode, initEvents, initTooltip };
