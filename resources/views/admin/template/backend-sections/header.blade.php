@@ -28,13 +28,13 @@
             <!-- User Dropdown -->
             <div class="dropdown d-inline-block ms-2">
                 <button type="button" class="btn btn-sm btn-alt-secondary d-flex align-items-center" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle" src="{{ asset('/assets/img/me/circle-256.png') }}" alt="Header Avatar" style="width: 21px;">
+                    <img class="rounded-circle" src="{{ asset('/assets/img/me/circle-256.png') }}" alt="Header Avatar" width="20" height="20" loading="lazy">
                     <span class="d-none d-sm-inline-block ms-2">{{ \Auth::user()->name }}</span>
                     <i class="fa fa-fw fa-angle-down d-none d-sm-inline-block ms-1 mt-1"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0 border-0" aria-labelledby="page-header-user-dropdown">
                     <div class="p-3 text-center bg-body-light border-bottom rounded-top">
-                        <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ asset('/assets/img/me/circle-256.ico') }}" alt="">
+                        <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ asset('/assets/img/me/circle-256.ico') }}" alt="" width="50" height="50" loading="lazy">
                         <p class="mt-2 mb-0 fw-medium">{{ \Auth::user()->name }}</p>
                     </div>
                     <div class="p-2">
@@ -44,13 +44,7 @@
                     </div>
                     <div role="separator" class="dropdown-divider m-0"></div>
                     <div class="p-2">
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{ route('logout') }}"
-                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <span class="fs-sm fw-medium">Log Out</span>
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
+                        @include('components.logout-button', ['logout_btn' => '<span class="fs-sm fw-medium">Log Out</span>', 'link_classes' => 'dropdown-item d-flex align-items-center justify-content-between'])
                     </div>
                 </div>
             </div>

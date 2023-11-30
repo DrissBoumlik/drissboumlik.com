@@ -1,5 +1,6 @@
 .sections
     > .section
+        position: relative
         &:nth-child(odd)
             background-color: $tc-grey-light
             .box-item
@@ -13,20 +14,6 @@
             .timeline .content
                 background-color: $tc-grey-light
 
-.section-header
-    margin-bottom: 3rem !important
-.section-title-line
-    background-color: $tc-blue-dark-1
-    width: 110px
-    height: 2px!important
-    margin-bottom: 15px
-    opacity: 1
-.section-title
-    text-transform: uppercase
-    color: $tc-blue-dark-1
-    font-weight: bold
-    // margin-bottom: 20px
-    font-size: 1.5rem
 .progress
     height: 30px
     background-color: $tc-grey-light-3

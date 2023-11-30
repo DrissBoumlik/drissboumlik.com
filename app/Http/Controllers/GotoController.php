@@ -10,19 +10,16 @@ class GotoController extends Controller
 
     public function goto(Request $request, $link)
     {
-        $links = getLinks();
-        $url = null;
-        if ($link && array_key_exists($link, $links)) {
-            $url = $links[$link];
-        }
+        $url = getLinkByKey($link);
         if (!$url) {
-            $url = '/not-found';
+            return redirect('/not-found');
         }
         return redirect($url);
     }
 
     public function not_found(Request $request)
     {
-        return redirect_to_404_page();
+        $data = pageSetup('Page Not Found | Driss Boumlik', 'Page Not Found', true, true);
+        return view('errors.404', ['data' => $data]);
     }
 }

@@ -9,6 +9,9 @@
 <!-- Stylesheets -->
 <!-- OneUI framework -->
 @yield('css')
+<link href="{{ asset('/css/externals.css') }}" rel="preload" as="style">
+<link href="{{ asset('/css/externals.css') }}" rel="stylesheet">
+<link href="{{ asset('/template/css/main.css') }}" rel="preload" as="style">
 <link href="{{ asset('/template/css/main.css') }}" rel="stylesheet">
 {{-- <link rel="stylesheet" id="css-main" href="/template/assets/css/oneui.min.css"> --}}
 
@@ -21,8 +24,8 @@ OneUI JS
 Core libraries and functionality
 webpack is putting everything together at assets/_js/main/app.js
 -->
-<script src="{{ asset('/template/assets/js/oneui.app.min.js') }}"></script>
+<script defer src="{{ asset('/template/assets/js/oneui.app.min.js') }}"></script>
 <script src={{ asset("/template/assets/js/lib/jquery.min.js") }}></script>
 @yield('js')
-<script src="{{ asset('/template/assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
-<script src="{{ asset('/js/app.js') }}"></script>
+<script defer src="{{ asset('/template/assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+<script defer src="{{ asset('/js/admin/app.js') }}"></script>

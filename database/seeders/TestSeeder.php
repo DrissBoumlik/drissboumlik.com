@@ -15,10 +15,6 @@ class TestSeeder extends Seeder
      *
      * @return void
      */
-    function generateRandomColor() {
-        $color = '#'.str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
-        return $color;
-    }
 
     public function run()
     {
@@ -52,7 +48,7 @@ class TestSeeder extends Seeder
             $tags[] = [
                 "name" => $name,
                 "slug" => \Str::slug($name),
-                "color" => $this->generateRandomColor(),
+                "color" => generateRandomColor(),
                 'description' =>  $faker->text(350),
                 "created_at" => now(), "updated_at" => now()
             ];

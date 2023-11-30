@@ -1,37 +1,44 @@
-@extends('layout.page-content')
+@extends('layout.page-content-wide')
 
-@section('page-content-header')
-    <div class="post-page">
-        <div class="post-cover" style="background-image: url('/{{ $post->cover }}')"></div>
+@section('post-header-assets')
+    <link rel="stylesheet" type="text/css" href="{{ asset('/plugins/prismjs/prism-tomorrow-night.css') }}">
+    <script src="{{ asset('/plugins/prismjs/prism-tomorrow-night.js') }}"></script>
+@endsection
+
+@section('headline')
+    <div class="d-flex flex-column align-items-center justify-content-center">
+        <h1 class="header-txt post-title">{!! $post->title !!}</h1>
     </div>
 @endsection
 
 @section('page-content')
     <div class="container-fluid p-0">
-{{--        @include('pages.partials.about')--}}
         <div class="post-page">
             <div class="section">
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2 mb-4 post">
-                            <div class="post-title mb-3">
-                                <h2 class="font-weight-bolder">{{ $post->title }}</h2>
-                            </div>
-                            <div class="post-meta-data">
-                                <div class="post-date mb-1">
-                                    <span title="{{ $post->published_at }}">Posted {{ $post->published_at_formatted }}</span>
-                                    @auth
-                                        ·
-                                        <a href="/admin/posts/edit/{{ $post->slug }}" target="_blank" class="text-secondary animated-underline">
-                                                <i class="fa fa-fw fa-pencil"></i> Edit
-                                        </a>
-                                    @endauth
+                            <div class="post-meta-data d-flex flex-column align-items-center">
+                                <div class="post-date mb-2">
+                                    @if($post->published_at)
+                                        <div class="published_date">
+                                            <span title="{{ $post->published_at }}">{{ $post->published_at_short_format }}</span>
+                                            <span class="fw-bold">•</span>
+                                            <span>{{ $post->read_duration }} min read</span>
+                                            <span class="fw-bold">•</span>
+                                            <span><i class="fa fa-fw fa-eye"></i> {{ $post->views }}</span>
+                                            @auth
+                                                <span> • <a href="/admin/posts/edit/{{ $post->slug }}" target="_blank">
+                                                    <i class="fa fa-fw fa-pencil"></i> Edit
+                                                </a></span>
+                                            @endauth
+                                        </div>
+                                    @endif
                                 </div>
                                 @if ($post->tags)
-{{--                                    @php $tags = explode(' ', $post->tags) @endphp--}}
-                                    <div class="post-tags mb-3">
+                                    <div class="post-tags">
                                         @foreach ($post->tags as $tag)
-                                            <div class="post-tag d-inline-block me-2">
+                                            <div class="post-tag d-inline-block">
                                                 <i class="fa-solid fa-tag fs-small"></i>
                                                 <a href="/tags/{{ $tag->slug }}">
                                                     <span>{{ $tag->name }}</span>

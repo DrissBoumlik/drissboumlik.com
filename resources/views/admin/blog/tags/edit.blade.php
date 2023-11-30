@@ -8,7 +8,7 @@
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
                 <div class="flex-grow-1">
                     <h1 class="h3 fw-bold mb-2">
-                        Tag Edit
+                        Edit Tag
                     </h1>
                 </div>
                 <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
@@ -38,12 +38,12 @@
                             <div class="mb-4">
                                 <label class="form-label" for="tag-name">Name</label>
                                 <input type="text" class="form-control input-to-slugify" id="tag-name" name="name"
-                                    placeholder="Tag Name" value="{{ $tag->name }}">
+                                    placeholder="Tag Name" value="{{ $tag->name }}" required>
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="tag-slug">Slug</label>
                                 <input type="text" class="form-control input-slug" id="tag-slug" name="slug"
-                                    placeholder="Tag slug" value="{{ $tag->slug }}">
+                                    placeholder="Tag slug" value="{{ $tag->slug }}" required>
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="description">Description</label>
@@ -64,7 +64,7 @@
                                 <label class="form-label" for="image">Image</label>
                                 <input type="file" id="image" name="cover" class="form-control" />
                                 <div class="mt-2">
-                                    <img id="image-preview" class="img-fluid" src="/{{ $tag->cover }}" alt="photo">
+                                    <img id="image-preview" class="img-fluid w-100" src="{{ $tag->cover ? "/$tag->cover" : asset('/assets/img/blog/default-tag.webp') }}" alt="photo" width="200" height="100" loading="lazy">
                                 </div>
                             </div>
                         </div>

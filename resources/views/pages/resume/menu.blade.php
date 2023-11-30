@@ -15,6 +15,9 @@
         <li class="list-group-item" title="Education" data-toggle="tooltip" data-placement="left">
             <a href="/resume#education"><i class="fa-solid fa-user-graduate"></i></a>
         </li>
+        <li class="list-group-item" title="Work" data-toggle="tooltip" data-placement="left">
+            <a href="/resume#work"><i class="fa-solid fa-briefcase"></i></a>
+        </li>
         <li class="list-group-item" title="Passion" data-toggle="tooltip" data-placement="left">
             <a href="/resume#passion"><i class="fa-solid fa-plug-circle-check"></i></a>
         </li>
@@ -22,7 +25,7 @@
             <a href="/resume#other-experiences"><i class="fa-solid fa-person-digging"></i></a>
         </li>
         <li class="list-group-item" title="What People Say" data-toggle="tooltip" data-placement="left">
-            <a href="/resume#recommandations"><i class="fa-solid fa-comments"></i></a>
+            <a href="/resume#testimonials"><i class="fa-solid fa-comments"></i></a>
         </li>
     </ul>
 </div>

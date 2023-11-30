@@ -17,7 +17,6 @@ class VisitorResource extends JsonResource
         return (object) [
             "id" => $this->id,
             "ip" => $this->ip,
-            "visits_count" => $this->visits_count,
             "countryName" => $this->countryName,
             "countryCode" => $this->countryCode,
             "regionCode" => $this->regionCode,

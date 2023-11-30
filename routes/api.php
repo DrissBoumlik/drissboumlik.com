@@ -1,9 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\Api\PostController;
-use App\Http\Controllers\Admin\Api\TagController;
-use App\Http\Controllers\Admin\Api\VisitorController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +12,3 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/posts', [PostController::class, 'index']);
-Route::post('/tags', [TagController::class, 'index']);
-Route::post('/visitors', [VisitorController::class, 'index']);

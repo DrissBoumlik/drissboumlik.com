@@ -1,25 +1,13 @@
 @extends('layout.app')
 
 @section('content')
-    @include('addons.banner')
-    @php
-        if (!isset($data) || $data == null) {
-            $data = new \stdClass();
-        }
-
-        $data->socialLinks = getSocialLinks();
-        $data->headerMenu = getHeaderMenu();
-        $data->footerMenu = getFooterMenu();
-    @endphp
-    @include('pages.resume.about')
-    <div class="container-fluid p-0">
-        <section id="page-content" class="page-content">
-            @yield('page-content-header')
-            <div class="container p-md-5 py-5 px-2">
-                @yield('page-content')
-            </div>
-        </section>
+    @if(request()->is(['blog', 'blog/*', 'tags', 'tags/*']))
+        @include('addons.banner', ['text' => 'Blog in testing phase for now', 'icon' => '<i class="fa-solid fa-circle-info"></i>'])
+    @endif
+    @include('layout.menu', ['headerMenu' => $data->headerMenu])
+    <div id="page" class="page container py-5 px-2">
+        @yield('page-content')
     </div>
     @yield('addons')
-    @include('layout.footer')
+    @include('layout.footer', ['footerMenu' => $data->footerMenu])
 @endsection

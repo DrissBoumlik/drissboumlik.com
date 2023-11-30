@@ -20,7 +20,7 @@ class TagController extends Controller
     public function create(Request $request)
     {
         $data = new \stdClass();
-        $data->title = 'Create Tag | Admin Panel';
+        $data->title = 'New Tag | Admin Panel';
         return view('admin.blog.tags.create', ['data' => $data]);
     }
 
@@ -28,7 +28,7 @@ class TagController extends Controller
     {
         $data = new \stdClass();
         $tag = Tag::withTrashed()->whereSlug($slug)->first();
-        $data->title = 'Edit Tag | Admin Panel';
+        $data->title = "Edit | $tag->name | Admin Panel";
         $tag = (object) (new TagResource($tag))->resolve();
         return view('admin.blog.tags.edit', ['data' => $data, 'tag' => $tag]);
     }
@@ -45,7 +45,7 @@ class TagController extends Controller
             $image_file = $request->file('cover');
             if ($image_file) {
                 $file_ext = $image_file->getClientOriginalExtension();
-                $path = \Storage::disk('public')->putFileAs('blog/posts', $image_file, "$request->slug.$file_ext");
+                $path = \Storage::disk('public')->putFileAs("blog/tags/$request->slug", $image_file, "$request->slug.$file_ext");
                 $data['cover'] = "storage/$path";
             }
             $tag = Tag::create($data);
@@ -73,7 +73,8 @@ class TagController extends Controller
             $image_file = $request->file('cover');
             if ($image_file) {
                 $file_ext = $image_file->getClientOriginalExtension();
-                $path = \Storage::disk('public')->putFileAs('blog/tags', $image_file, ($request->slug ?? $tag->slug) . ".$file_ext");
+                $file_name = $request->slug ?? $tag->slug;
+                $path = \Storage::disk('public')->putFileAs("blog/tags/$request->slug", $image_file, "$file_name.$file_ext");
                 $data['cover'] = "storage/$path";
             }
             $tag->update($data);

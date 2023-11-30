@@ -2,13 +2,15 @@
 
 @section('content')
     @php
-        $data = new \stdClass();
+        if (!isset($data) || $data == null) {
+            $data = new \stdClass();
+        }
+
         $data->socialLinks = getSocialLinks();
         $data->headerMenu = getHeaderMenu();
         $data->footerMenu = getFooterMenu();
     @endphp
     @include('pages.partials.about')
-
     <div class="container-fluid p-0">
         <section class="p-md-5 py-5 px-2 page" id="page">
             <div class="container">

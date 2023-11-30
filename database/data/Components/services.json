@@ -1,0 +1,23 @@
+{
+    "header": "Services",
+    "items": [
+        {
+            "id": "ui-ux",
+            "text": "UI/UX Design",
+            "icon": "<i class='fa-solid fa-palette'></i>",
+            "link": "/services/ui-ux"
+        },
+        {
+            "id": "webdev",
+            "text": "Web Development",
+            "icon": "<i class='fa-solid fa-code'></i>",
+            "link": "/services/webdev"
+        },
+        {
+            "id": "workshops",
+            "text": "Workshops",
+            "icon": "<i class='fa-solid fa-laptop-code'></i>",
+            "link": "/services/workshops"
+        }
+    ]
+}

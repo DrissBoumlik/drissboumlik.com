@@ -20,7 +20,7 @@ class PostCollection extends ResourceCollection
                 'id' => $item->id,
                 'author_id' => $item->author_id,
                 'title' => $item->title,
-                'short_title' => strlen($item->title) < 20 ? $item->title : \Str::limit($item->title, 20), // Str::limit($item->body, Post::EXCERPT_LENGTH)
+                'short_title' => shortenTextIfLongByLength($item->title, 20),
                 'slug' => $item->slug,
                 'excerpt' => $item->excerpt,
                 'content' => $item->content,
@@ -36,6 +36,9 @@ class PostCollection extends ResourceCollection
                 'created_at' => $item->created_at,
                 'created_at_formatted' => $item->created_at->format('Y-M-d h:m:s'),
                 'created_at_for_humans' => $item->created_at->diffForHumans(),
+                'updated_at' => $item->updated_at,
+                'updated_at_formatted' => $item->updated_at->format('Y-M-d h:m:s'),
+                'updated_at_for_humans' => $item->updated_at->diffForHumans(),
                 'tags' => $item->tags->pluck('name')->toArray(), // $item->tags,
                 'tags_count' => $item->tags_count,
 //            'author' => $item->author,

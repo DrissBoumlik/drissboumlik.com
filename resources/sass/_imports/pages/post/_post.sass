@@ -2,30 +2,34 @@
     //border-top: 1px solid $tc-grey
     //background-color: $tc-white
     .post
+        padding: 20px
+        background-color: $tc-grey-light
         //background-color: $tc-grey-light-2
-        border: 1px solid $tc-grey
+        //border: 1px solid $tc-grey
         overflow: hidden
-        border-radius: 5px
+        border-radius: 10px
         box-shadow: 0 1px 2px rgba(214, 219, 226, 0.5), 0 1px 2px rgba(214, 219, 226, 0.5)
         transition: transform 0.15s ease-out, opacity 0.15s ease-out, box-shadow 0.15s ease-out
         &:hover
-            box-shadow: 0 0.5rem 2.5rem #d8dee6
+            box-shadow: 0 0.2rem 1rem #d8dee6
             transform: translateY(-2px)
         .post-title *
             color: $tc-blue-dark-1
             font-size: 1.25rem
-        .post-tags a
-            color: $tc-black
+        .post-metadata
+            font-family: Harmattan
+            font-size: 1.3rem
         .post-image img
             // border: 5px solid $tc-blue-dark-1
             border-radius: 5px
             filter: drop-shadow(2px 4px 6px $tc-blue-dark-3)
         .post-cover
-            height: 150px
+            height: 200px
             background-position: center
             background-size: cover
+            border-radius: 10px
         .post-data
-            padding: 1.25rem
+            padding-top: 1.25rem
         .post-content
             font-size: 1rem
             img
@@ -41,18 +45,95 @@
         .btn-read-more a
             color: $tc-black
 
+.post-title.header-txt
+    text-transform: unset
+    font-size: 2rem
+
 .post-page
+    //*:not(i)
+    //    font-family: Untitled-Sans
+    h1,h2,h3,h4,h5,h6
+        margin-top: 3rem
+        margin-bottom: 1rem
+        font-weight: bold
+    ul, ol
+        font-size: 1.2rem
+        padding-left: 2rem
+    p
+        font-size: 1.2rem
+        margin-bottom: 1rem
+        line-height: 2.2rem
+    a
+        color: $tc-blue
+        text-decoration: underline
+    li, li *
+        color: $tc-blue-dark-1
+        text-decoration: unset
     .post
         .post-title *
+            font-size: 2.5rem
             color: $tc-blue-dark-1
-        .wp-block-image
-            cursor: pointer
-            img
-                width: 100%
-        p
-            margin-bottom: 1rem
+            @media(max-width: 576px)
+                font-size: 1.5rem
+        img
+            //cursor: pointer
+            width: 100%
+            height: auto
+        //p
+        //    margin-bottom: 1rem
+    .post-date
+        background-color: $tc-grey-light-1
+        border-radius: 0.4rem
+        padding: 0.5rem 1rem
     .post-cover
         height: 200px
         background-size: cover
         background-position: top center
         background-attachment: fixed
+    code
+        padding: 0 5px
+        border-radius: 5px
+        font-size: 1.3rem
+        display: inline-block
+        font-family: Harmattan
+        line-height: 1.5rem !important
+        &:not([class*=language])
+            color: $tc-black
+            background-color: $tc-grey-light-1
+    code[class*=language-], pre[class*=language-]
+        font-family: 'Fira Code'
+        font-size: 0.8rem
+    pre
+        border-radius: 10px
+
+.post-tags
+    *
+        color: $tc-grey-fancy
+    a
+        text-decoration: none
+body.dark-mode
+    .post
+        code:not([class*=language])
+            color: $tc-white
+            background-color: $tc-grey-fancy
+        .post-date
+            background-color: $tc-blue-dark-4
+    .post-tags *
+        color: $tc-grey-dark
+    .post-page
+        li, li *
+            color: $tc-blue-dark-1
+
+.post
+    .post-tags
+        display: flex
+        flex-direction: row
+        column-gap: 10px
+        flex-wrap: wrap
+        .post-tag
+            //border: 1px solid $tc-black-light
+            border-radius: 50px
+            //padding: 0 5px
+            //background-color: $tc-grey-dark
+            a
+                color: $tc-white

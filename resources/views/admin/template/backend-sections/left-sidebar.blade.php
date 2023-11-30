@@ -3,9 +3,9 @@
     <!-- Side Header -->
     <div class="content-header">
         <!-- Logo -->
-        <a class="font-semibold text-dual" href="/">
+        <a class="font-semibold text-dual" href="/admin">
             <span class="smini-visible">
-                <img class="img-avatar img-avatar20" src="{{ asset('/assets/img/me/circle-256.ico') }}" alt="">
+                <img class="img-avatar img-avatar20" src="{{ asset('/assets/img/me/circle-256.ico') }}" alt="" width="20" height="20" loading="lazy">
             </span>
             <span class="smini-hide fs-5 tracking-wider">Admin <span class="fw-normal">Panel</span></span>
         </a>
@@ -78,6 +78,24 @@
                     <a class="nav-main-link{{ request()->is('admin/visitors') ? ' active' : '' }}" href="/admin/visitors">
                         <i class="nav-main-link-icon fa fa-fw fa-eye"></i>
                         <span class="nav-main-link-name">Visitors</span>
+                    </a>
+                </li>
+                <li class="nav-main-item">
+                    <a class="nav-main-link{{ request()->is('admin/messages') ? ' active' : '' }}" href="/admin/messages">
+                        <i class="nav-main-link-icon fa fa-fw fa-envelope"></i>
+                        <span class="nav-main-link-name">Messages</span>
+                    </a>
+                </li>
+                <li class="nav-main-item">
+                    <a class="nav-main-link{{ request()->is('admin/generate-sitemap') ? ' active' : '' }}" href="/admin/generate-sitemap" target="_blank">
+                        <i class="nav-main-link-icon fa fa-fw fa-sitemap"></i>
+                        <span class="nav-main-link-name">Generate Sitemap</span>
+                    </a>
+                </li>
+                <li class="nav-main-item">
+                    <a class="nav-main-link{{ request()->is('admin/export-db') ? ' active' : '' }}" href="/admin/export-db" target="_blank">
+                        <i class="nav-main-link-icon fa fa-fw fa-database"></i>
+                        <span class="nav-main-link-name">Export DB</span>
                     </a>
                 </li>
                 <li class="nav-main-item">

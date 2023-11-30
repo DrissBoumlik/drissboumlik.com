@@ -20,8 +20,11 @@ class SitemapController extends Controller
 
     public function generateSitemap(Request $request)
     {
-        $path = \Storage::disk('public')->path('sitemap.xml');
-        \Spatie\Sitemap\SitemapGenerator::create('https://drissboumlik.com')->getSitemap()->writeToFile($path);
+        $now = date("Y-m-d_h-i");
+        $sitemap_archive_path = \Storage::disk('public')->path('sitemap-archive');
+        $current_file = \Storage::disk('public')->path('sitemap.xml');
+        \Spatie\Sitemap\SitemapGenerator::create('https://drissboumlik.com')->getSitemap()->writeToFile($current_file);
+        \File::copy($current_file, $sitemap_archive_path . "/sitemap_$now.xml");
         return redirect('/sitemap');
     }
 }

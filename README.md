@@ -1,5 +1,5 @@
 <img src="assets/resume-cover.png" />
 
-# My portfolio
+# My work
 
 Visit : [drissboumlik.com](https://drissboumlik.com)

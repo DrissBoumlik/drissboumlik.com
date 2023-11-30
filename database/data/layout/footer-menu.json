@@ -1,43 +1,28 @@
 [
     {
-        "title": "videos",
-        "slug": "videos",
-        "target": "_blank"
-    },
-    {
         "title": "podcast",
-        "slug": "coming-soon"
+        "slug": "podcast",
+        "hidden": true
     },
     {
-        "title": "events",
-        "slug": "events",
-        "target": "_blank"
+        "title": "testimonials",
+        "slug": "/testimonials"
+    },
+    {
+        "title": "blog",
+        "slug": "/blog"
+    },
+    {
+        "title": "community",
+        "slug": "/community"
     },
     {
         "title": "resources",
-        "slug": "resources",
-        "hidden": true
+        "slug": "https://community.drissboumlik.com/p/resources"
     },
     {
-        "title": "developer roadmaps",
-        "slug": "roadmaps",
-        "target": "_blank",
-        "hidden": true
-    },
-    {
-        "title": "patreon",
-        "slug": "patreon",
-        "target": "_blank",
-        "hidden": true
-    },
-    {
-        "title": "contributors",
-        "slug": "contributors"
-    },
-    {
-        "title": "privacy",
-        "slug": "privacy",
-        "hidden": true
+        "title": "privacy policy",
+        "slug": "/privacy-policy"
     }
 
 ]

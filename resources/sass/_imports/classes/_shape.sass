@@ -13,14 +13,28 @@
     +shape(45px, 45px)
 .square-50
     +shape(50px, 50px)
+.square-60
+    +shape(60px, 60px)
+.square-65
+    +shape(65px, 65px)
 .square-70
-    +shape(50px, 50px)
+    +shape(70px, 70px)
 .square-75
     +shape(75px, 75px)
 .square-100
     +shape(100px, 100px)
 
 .br-5px
-    border-radius: 5px
+    +border_radius(5px)
+.br-10px
+    +border_radius(10px)
 .br-none
-    border-radius: 0!important
+    +border_radius(0!important)
+.br-30px
+    +border_radius(30px)
+.br-50px
+    +border_radius(50px)
+
+@media (min-width: 992px)
+    .w-md-75
+        width: 75% !important

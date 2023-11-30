@@ -1,6 +1,22 @@
+.no-slider .owl-carousel
+    cursor: auto
+    display: flex
+    flex-wrap: wrap
+    row-gap: 40px
+    &:active
+        cursor: auto
+    +slider_width_margin_proportion('.owl-carousel-item', 50%, 20px, 2)
+    @media (max-width: 992px)
+        padding: 0
+        +slider_width_margin_proportion('.owl-carousel-item', 50%, 10px, 2)
+    .owl-carousel-item
+        @media (max-width: 767px)
+            width: 100%
+            margin-right: 0!important
+
 .owl-carousel
     cursor: grab
-    padding-top: 30px
+    //padding-top: 30px
     &:active
         cursor: grabbing
     // .owl-carousel-indicators
@@ -15,6 +31,7 @@
     .owl-stage
         margin-bottom: 1rem
         display: flex
+        padding-top: 10px
     .owl-item
         float: unset
         padding: 0 10px
@@ -32,10 +49,29 @@
         // &:not(:last-child)
         //     background: white
     .owl-carousel-item
+        position: relative
+        width: 100%
+        .testimonial-icon
+            color: $tc-grey-light-3
+            position: absolute
+            right: -10px
+            z-index: 1000
+            top: -20px
+            font-size: 2rem
         .owl-carousel-item-wrapper
             display: flex
             justify-content: center
             // align-items: center
+            .testimonial-author
+                margin-top: 1rem
+                display: flex
+                align-items: center
+                justify-content: start
+                column-gap: 10px
+            .author-name
+                font-family: "Helvetica"
+                font-size: 0.9rem
+
             .owl-carousel-img img
                 border: 3px solid $tc-blue
                 // margin-right: 0.5rem
@@ -45,9 +81,9 @@
                 display: flex
                 justify-content: center
             .owl-carousel-txt
-                margin-top: 1.5rem
+                //margin-top: 1.5rem
                 width: 100%
-                text-align: center
+                //text-align: center
                 // @media(max-width: 1200px)
                 //     width: 90%
                 // @media(max-width: 576px)
@@ -56,5 +92,28 @@
                 flex-direction: column
                 small
                     margin-top: 7px
+                    //&:before
+                    //    content: '\2014 \00A0'
+                > p
+                    color: $tc-blue-dark-3
+                    background-color: $tc-grey-light-1
+                    z-index: -1
+                    padding: 20px
+                    border-radius: 10px
+                    position: relative
                     &:before
-                        content: '\2014 \00A0'
+                        content: ""
+                        height: 15px
+                        width: 15px
+                        background-color: $tc-grey-light-1
+                        position: absolute
+                        bottom: -7px
+                        left: 17px
+                        transform: rotate(45deg)
+
+body.dark-mode
+    .owl-carousel .owl-carousel-item .owl-carousel-item-wrapper .owl-carousel-txt > p
+        color: $tc-white
+        background-color: $tc-grey-fancy
+        &:before
+            background-color: $tc-grey-fancy

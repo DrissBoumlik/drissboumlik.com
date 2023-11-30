@@ -40,12 +40,12 @@
                             <div class="mb-4">
                                 <label class="form-label" for="tag-name">Name</label>
                                 <input type="text" class="form-control input-to-slugify" id="tag-name" name="name"
-                                    placeholder="Tag Name">
+                                    placeholder="Tag Name" required>
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="tag-slug">Slug</label>
                                 <input type="text" class="form-control input-slug" id="tag-slug" name="slug"
-                                    placeholder="Tag slug">
+                                    placeholder="Tag slug" required>
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="description">Description</label>
@@ -60,7 +60,7 @@
                                 <label class="form-label" for="image">Image</label>
                                 <input type="file" id="image" name="cover" class="form-control" />
                                 <div class="mt-2">
-                                    <img id="image-preview" class="img-fluid" src="" alt="photo">
+                                    <img id="image-preview" class="img-fluid w-100" src="{{ asset('/assets/img/blog/default-tag.webp') }}" alt="photo" width="200" height="100" loading="lazy">
                                 </div>
                             </div>
                         </div>

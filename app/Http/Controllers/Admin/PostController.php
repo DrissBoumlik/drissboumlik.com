@@ -26,7 +26,8 @@ class PostController extends Controller
         $data = new \stdClass();
         $data->tags = Tag::select("name", "id")->get();
 
-        $data->title = 'Create Post | Admin Panel';
+        $data->title = 'New Post | Admin Panel';
+        $data->postsStatus = getPostStatus();
         return view('admin.blog.posts.create', ['data' => $data]);
     }
 
@@ -42,12 +43,12 @@ class PostController extends Controller
                 "status" => $request->status,
                 "featured" => $request->featured,
                 'author_id' => \Auth::user()->id,
-                'published_at' => $request->status == 2 ? now() : null,
+                'published_at' => ($request->status === "2" ? ($request->published_at ?? now()) : null),
             ];
             $image_file = $request->file('cover');
             if ($image_file) {
                 $file_ext = $image_file->getClientOriginalExtension();
-                $path = \Storage::disk('public')->putFileAs('blog/posts', $image_file, "$request->slug.$file_ext");
+                $path = \Storage::disk('public')->putFileAs("blog/posts/$request->slug", $image_file, "$request->slug.$file_ext");
                 $data['cover'] = "storage/$path";
             }
             $post = Post::create($data);
@@ -84,7 +85,8 @@ class PostController extends Controller
             return $tag;
         });
 
-        $data->title = 'Update Post | Admin Panel';
+        $data->title = "Edit | $post->title | Admin Panel";
+        $data->postsStatus = getPostStatus();
         return view('admin.blog.posts.edit', ['data' => $data, 'post' => $post]);
     }
 
@@ -106,12 +108,14 @@ class PostController extends Controller
                 "status" => $request->status,
                 "featured" => $request->has('featured'),
                 'author_id' => \Auth::user()->id,
-                'published_at' => $post->published_at ?? ($request->status == 2 ? now() : null),
+                'published_at' => ($request->status === "2" ? ($request->published_at ?? now()) : null),
+                'views' => $request->views ?? $post->views
             ];
             $image_file = $request->file('cover');
             if ($image_file) {
                 $file_ext = $image_file->getClientOriginalExtension();
-                $path = \Storage::disk('public')->putFileAs('blog/posts', $image_file, ($request->slug ?? $post->slug) . ".$file_ext");
+                $file_name = $request->slug ?? $post->slug;
+                $path = \Storage::disk('public')->putFileAs("blog/posts/$request->slug", $image_file, "$file_name.$file_ext");
                 $data['cover'] = "storage/$path";
             }
             $post->update($data);

@@ -6,33 +6,70 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+
+    public function about(Request $request)
+    {
+        $data = pageSetup('About me | Driss Boumlik', 'about me', true, true, true);
+        return view('pages.about', ['data' => $data]);
+    }
     public function resume(Request $request)
     {
-        $data = new \stdClass();
+        $data = pageSetup('Resume | Driss Boumlik', 'resume', true, true);
 
         $data->sections = [];
         // $data->summary = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/summary.json"));
-        $data->sections['experiences'] = json_decode(\File::get(base_path() . "/database/data/resume/experiences.json"));
-        $data->sections['competences'] = json_decode(\File::get(base_path() . "/database/data/resume/competences.json"));
-        $data->sections['education'] = json_decode(\File::get(base_path() . "/database/data/resume/education.json"));
-        // $data->sections['portfolio'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/portfolio.json"));
+        $data->sections['experiences'] = getExperiences();
+        $data->sections['competences'] = getCompetences();
+        $data->sections['education'] = getEducation();
+        $data->sections['work'] = getWork(onlyFeatured: true);
         // $data->sections['certificates'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/certificates.json"));
-        $data->sections['passion'] = json_decode(\File::get(base_path() . "/database/data/resume/passion.json"));
-        $data->sections['other_exp'] = json_decode(\File::get(base_path() . "/database/data/resume/other_exp.json"));
-        $data->sections['recommandations'] = json_decode(\File::get(base_path() . "/database/data/resume/recommandations.json"));
-		$data->sections['recommandations']->items = collect($data->sections['recommandations']->items)->shuffle()->all();
+        $data->sections['passion'] = getPassion();
+        $data->sections['other_exp'] = getOtherExperiences();
+        $data->sections['testimonials'] = getTestimonials();
+		$data->sections['testimonials']->items = collect($data->sections['testimonials']->items)->shuffle()->all();
         $data->sections['experiences']->items = array_map(function($item) {
             $item->duration = calculateDate($item->start_date, $item->end_date);
             return $item;
         }, $data->sections['experiences']->items);
 
-        $data->socialLinks = getSocialLinks();
-        $data->headerMenu = getHeaderMenu();
-        $data->footerMenu = getFooterMenu();
-
-        $data->title = 'Driss Boumlik | Resume';
-
-        return view('pages.resume.index', ['data' => $data]);
+        return view('pages.resume', ['data' => $data]);
     }
 
+    public function testimonials(Request $request)
+    {
+        $data = pageSetup('Testimonials | Driss Boumlik', 'testimonials', true, true);
+        $data->testimonials = getTestimonials();
+//        $data->sections['testimonials']->items = collect($data->sections['testimonials']->items)->shuffle()->all();
+
+        return view('pages.testimonials', ['data' => $data]);
+    }
+
+    public function work(Request $request)
+    {
+        $data = pageSetup('Work | Driss Boumlik', 'work', true, true);
+        $data->work = getWork();
+        return view('pages.work', ['data' => $data]);
+    }
+
+    public function contact(Request $request)
+    {
+        $data = pageSetup('Contact | Driss Boumlik', 'contact', true, true);
+        return view('pages.contact', ['data' => $data]);
+    }
+
+    public function privacyPolicy(Request $request)
+    {
+        $data = pageSetup('Privacy Policy | Driss Boumlik', 'privacy policy', true, true);
+        return view('pages.privacy-policy', ['data' => $data]);
+    }
+
+    public function getService(Request $request, $service)
+    {
+        $data = pageSetup('Services | Driss Boumlik', 'services', true, true);
+        $service = getServicesById($service);
+        if (!$service) {
+            return redirect('/not-found');
+        }
+        return view('pages.services.index', ['data' => $data, 'service' => $service]);
+    }
 }

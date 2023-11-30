@@ -4,16 +4,20 @@
     <!-- Page JS Plugins CSS -->
 {{--    <link rel="stylesheet" href="/template/assets/js/plugins/cropperjs/cropper.min.css">--}}
     <link rel="stylesheet" href="{{ asset('/template/assets/js/plugins/select2/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/vendor/laraberg/css/laraberg.css') }}">
+    <link rel="stylesheet" href="{{ asset('/template/assets/js/plugins/flatpickr/flatpickr.min.css') }}">
+{{--    <link rel="stylesheet" href="{{ asset('/vendor/laraberg/css/laraberg.css') }}">--}}
 {{--    <link rel="stylesheet" href="/template/assets/js/plugins/simplemde/simplemde.min.css">--}}
 @endsection
 @section('js')
-    <script src="{{ asset('/vendor/laraberg/js/react.production.min.js') }}"></script>
-    <script src="{{ asset('/vendor/laraberg/js/react-dom.production.min.js') }}"></script>
-    <script src="{{ asset('/vendor/laraberg/js/laraberg.js') }}"></script>
+{{--    <script src="{{ asset('/vendor/laraberg/js/react.production.min.js') }}"></script>--}}
+{{--    <script src="{{ asset('/vendor/laraberg/js/react-dom.production.min.js') }}"></script>--}}
+{{--    <script src="{{ asset('/vendor/laraberg/js/laraberg.js') }}"></script>--}}
 {{--    <script src="/template/assets/js/plugins/cropperjs/cropper.min.js"></script>--}}
     <script src="{{ asset('/template/assets/js/plugins/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('/template/assets/js/plugins/flatpickr/flatpickr.min.js') }}"></script>
+
 {{--    <script src="/template/assets/js/plugins/simplemde/simplemde.min.js"></script>--}}
+    <script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
 @endsection
 
 @section('content')
@@ -68,10 +72,24 @@
                                 <label class="form-label" for="description">Description</label>
                                 <textarea class="form-control" id="description" name="description" rows="4" placeholder="Post description..">{{ $post->description }}</textarea>
                             </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="published_at">Published at</label>
+                                <input type="text" class="js-flatpickr form-control" id="published_at" name="published_at" value="{{ $post->published_at }}" data-enable-time="true" data-time_24hr="true">
+                            </div>
+                            <div class="timestamps d-flex justify-content-between align-items-center column-gap-2">
+                                <div class="mb-4">
+                                    <label class="form-label" for="updated_at">Updated at</label>
+                                    <input type="text" class="js-flatpickr form-control" id="updated_at" disabled name="updated_at" value="{{ $post->updated_at }}" data-enable-time="true" data-time_24hr="true">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label" for="created_at">Updated at</label>
+                                    <input type="text" class="js-flatpickr form-control" id="created_at" disabled name="created_at" value="{{ $post->created_at }}" data-enable-time="true" data-time_24hr="true">
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-4">
-                                <label class="form-label" for="tags">Tags</label>
+                                <label class="form-label" for="tags-list">Tags</label>
                                 <select class="js-select2 form-select" id="tags-list"
                                     name="tags[]" style="width: 100%;" data-placeholder="Choose many.."
                                     multiple>
@@ -88,10 +106,14 @@
                                     name="status" style="width: 100%;" data-placeholder="Choose many..">
                                     <!-- Required for data-placeholder attribute to work with Select2 plugin -->
 
-                                    @foreach(getPostStatus() as $key => $status)
+                                    @foreach($data->postsStatus as $key => $status)
                                         <option value="{{ $key }}" {{ $post->status->value == $key ? 'selected' : '' }}>{{ ucfirst($status) }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="post-views">Views</label>
+                                <input type="text" class="form-control" id="post-views" name="views" placeholder="Post views" value="{{ $post->views }}">
                             </div>
                             <div class="mb-4">
                                 <div class="form-check form-switch form-check-inline">
@@ -106,10 +128,10 @@
                                 </div>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="image">Image</label>
+                                <label class="form-label" for="image">Cover</label>
                                 <input type="file" id="image" name="cover" class="form-control" />
                                 <div class="mt-2">
-                                    <img id="image-preview" class="img-fluid" src="/{{ $post->cover }}" alt="photo">
+                                    <img id="image-preview" class="img-fluid w-100" src="{{ $post->cover ? "/$post->cover" : asset('/assets/img/blog/default-post.webp') }}" alt="photo" width="200" height="100" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -118,7 +140,7 @@
                                 <label class="form-label" for="post_body">Content</label>
                                 <!-- SimpleMDE Container -->
                                 {{-- <textarea class="js-simplemde" id="simplemde" name="post_body">{{ old('post_body') }}</textarea> --}}
-                                <textarea id="post_body" class="form-control laraberg-textarea" name="post_content" placeholder="Post content.." hidden>{!! $post->content !!}</textarea>
+                                <textarea id="post_body" class="form-control" name="post_content" placeholder="Post content.." hidden>{!! $post->content !!}</textarea>
                             </div>
                         </div>
                         <div class="col-xxl-12">

@@ -25,6 +25,6 @@ class Visitor extends Model
         'areaCode',
         'timezone',
         'driver',
-        'visits_count',
+        'url',
     ];
 }

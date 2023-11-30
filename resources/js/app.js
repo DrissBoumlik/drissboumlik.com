@@ -1,26 +1,18 @@
-import { drawText, initParticlesJS, initSlider, initDarkMode, initEvents, initTooltip } from "./functions";
-import { initLaraberg, initSelect2, initGallery, initImageCropper, initSyntaxHighlighting, initDatatable, initPostPageEvent } from "./plugins-use";
+import { drawText, initParticlesJS, initSlider, initDarkMode, initEvents } from "./functions";
 
 
 $(function () {
     try {
-        initTooltip();
+
         drawText();
         initParticlesJS();
-        initSlider();
+        if ($('.no-slider').length === 0) {
+            initSlider();
+        }
         initDarkMode();
-
-        initLaraberg();
-        initSelect2();
-        initGallery();
-        // initSyntaxHighlighting();
-        // initImageCropper();
         initEvents();
-        initDatatable();
-        initPostPageEvent();
-
     } catch (error) {
         // console.log(error);
-        throw error
+        // throw error
     }
 });

@@ -47,7 +47,7 @@
                     </form>
                 </div>
                 <div class="col-md-6 img-block">
-                    <img src="{{ asset('/assets/img/activities/workshops.svg') }}" class="auth-img" loading="lazy">
+                    <img src="{{ asset('/assets/img/activities/workshops.svg') }}" class="auth-img" alt="" width="300" height="300" loading="lazy">
                 </div>
             </div>
         </div>

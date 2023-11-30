@@ -17,7 +17,7 @@
     <body class="antialiased {{ $mode . '-mode' }}">
         {{-- @include('addons.google-tag-manager-body') --}}
         <div class="wrapper">
-                @yield('content')
+            @yield('content')
         </div>
         {{-- @include('addons.loader') --}}
         {{-- @include('addons.fb-btn') --}}

@@ -1,7 +1,9 @@
 body.dark-mode // background-color: $tc-blue-dark-3
     background-color: rgba($tc-blue-dark-3, 1)
-    *
+    h1, h2, h3, h4, h5, h6, p, ul, ol, li, div, i, span:is([class=""])
         color: $tc-white
+    code:is([class=""])
+        color: $tc-blue-dark-1
 
     //.posts
         //border-top: 1px solid $tc-blue
@@ -12,26 +14,35 @@ body.dark-mode // background-color: $tc-blue-dark-3
         .page-item
             &.disabled .page-link
                 color: $tc-grey
+                &:hover
+                    background-color: $tc-blue-dark-4
             &.active .page-link
                 color: $tc-white
+                &:hover
+                    background-color: $tc-blue-dark-4
                 // border-color: $tc-white
                 // background-color: $tc-blue
             .page-link
                 background-color: $tc-blue-dark-4
+                &:hover
+                    background-color: $tc-blue-dark-2
             &:not(.active) .page-link:hover
                 color: $tc-blue
 
 
     .posts
         .post
-            border: 1px solid $tc-blue
+            //border: 1px solid $tc-blue
             box-shadow: 0 1px 2px rgba($tc-blue-dark-2, 0.5), 0 1px 2px rgba($tc-blue-dark-2, 0.5)
-            .post-data
-                background-color: $tc-blue-dark-4
+            background-color: $tc-blue-dark-4
+            .post-title *
+                color: $tc-blue
+            //.post-data
+            //    background-color: $tc-blue-dark-4
                 //*
                     //color: $tc-black
             &:hover
-                box-shadow: 0 0.5rem 2.5rem $tc-blue-dark-2
+                box-shadow: 0 0.2rem 1rem $tc-blue-dark-2
             .post-title h2, .btn-read-more a
                 color: $tc-grey-light
         .post-form
@@ -41,11 +52,10 @@ body.dark-mode // background-color: $tc-blue-dark-3
                     color: $tc-white
                 *
                     color: $tc-black-almost
-
     .header-menu-wrapper .header-menu .header-menu-item
         &:after
             background-color: $tc-white
-        a
+        a, a *
             color: $tc-white
 
     .page
@@ -61,8 +71,6 @@ body.dark-mode // background-color: $tc-blue-dark-3
     .social-icons-wrapper
         .social-icon i
             color: $tc-white
-    .section-title-line
-        background-color: $tc-white
     .timeline
         &:after
             background-color: $tc-blue
@@ -105,13 +113,14 @@ body.dark-mode // background-color: $tc-blue-dark-3
     .progress
         background-color: $tc-blue-dark-2
     .progress-bar
-        color: $tc-white!important
         background-color: $tc-blue-dark-1
+        *
+            color: $tc-white!important
 
     .auth-box
         .login-form
             background-color: $tc-blue-dark-4
-    input.form-control, input.form-control:focus
+    input.form-control, input.form-control:focus, textarea.form-control, textarea.form-control, textarea::placeholder
         color: $tc-white
         background-color: $tc-blue-dark-4
 

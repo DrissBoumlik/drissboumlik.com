@@ -2,19 +2,27 @@
 
 // use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GotoController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\VisitorController;
+use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\ToolController;
 use App\Http\Controllers\SubscriberController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Admin\Api\PostController as ApiPostController;
+use App\Http\Controllers\Admin\Api\TagController as ApiTagController;
+use App\Http\Controllers\Admin\Api\VisitorController as ApiVisitorController;
+use App\Http\Controllers\Admin\Api\MessageController as ApiMessageController;
+use App\Http\Controllers\Api\ContactController;
 // use App\Http\Controllers\ToolController;
 
 /*
@@ -28,9 +36,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['cache.headers:public;max_age=15811200;etag', 'location'])->group(function () {
+Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(function () {
 
-    Route::group(['prefix' => 'admin'], function () {
+    Route::group(['prefix' => 'api'], function () {
+        Route::middleware('auth')->group(function () {
+            Route::post('/posts', [ApiPostController::class, 'index']);
+            Route::post('/tags', [ApiTagController::class, 'index']);
+            Route::post('/visitors', [ApiVisitorController::class, 'index']);
+            Route::post('/messages', [ApiMessageController::class, 'index']);
+        });
+        Route::post('/get-in-touch', [ContactController::class, 'getInTouch']);
+    });
+
+    Route::prefix('admin')->group(function () {
 
         Route::redirect('/', '/admin/posts');
         Route::get('/login', [LoginController::class , 'showLoginForm'])->name('login');
@@ -42,7 +60,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag', 'location'])->g
         Route::post('/password/reset', [ResetPasswordController::class , 'reset'])->name('password.update');
 
 
-        Route::group(['middleware' => 'auth'], function() {
+        Route::middleware('auth')->group(function () {
             // Profile
             // Route::get('profile', [AdminController::class, 'profile'])->name('profile');
             // Route::post('profile', [AdminController::class, 'updateProfile'])->name('profile.update');
@@ -60,7 +78,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag', 'location'])->g
             Route::post('/posts', [PostController::class, 'store']);
             Route::get('/posts/edit/{slug}', [PostController::class, 'edit']);
             Route::put('/posts/{slug}', [PostController::class, 'update']);
-            Route::post('/api/posts', [PostController::class, 'api_store']); // Testing cropper js
+//            Route::post('/api/posts', [PostController::class, 'api_store']); // Testing cropper js
 
             Route::get('/tags', [TagController::class, 'index']);
             Route::get('/tags/create', [TagController::class, 'create']);
@@ -68,35 +86,57 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag', 'location'])->g
             Route::put('/tags/{slug}', [TagController::class, 'update']);
             Route::post('/tags', [TagController::class, 'store']);
 
+            Route::get('/messages', [MessageController::class, 'index']);
+
             Route::get('/visitors', [VisitorController::class, 'index']);
+
+            Route::get('/generate-sitemap', [SitemapController::class, 'generateSitemap']);
+            Route::get('/export-db', [ToolController::class , 'export_db']);
         });
     });
 
-    Route::post('/subscribers', [SubscriberController::class, 'subscribe']);
-    Route::put('/subscribers/{uuid}', [SubscriberController::class, 'update']);
-    Route::get('/subscribers/{uuid}', [SubscriberController::class, 'show']);
-    Route::get('/subscribers/verify/{token}', [SubscriberController::class, 'verifySubscribtion']);
-    Route::get('/tags', [BlogController::class, 'getTags']);
-    Route::get('/tags/{slug}', [BlogController::class, 'getPostsBytag']);
-    Route::get('/blog', [BlogController::class, 'getPosts']);
-    Route::get('/blog/{slug}', [BlogController::class, 'getPost']);
-    Route::post('/blog/like/{slug}/{unlike?}', [BlogController::class, 'likePost']);
-    // Route::get('blog/{slug}', [PostController::class, 'show']);
+    Route::middleware('location')->group(function () {
+//    Route::post('/subscribers', [SubscriberController::class, 'subscribe']);
+//    Route::put('/subscribers/{uuid}', [SubscriberController::class, 'update']);
+//    Route::get('/subscribers/{uuid}', [SubscriberController::class, 'show']);
+//    Route::get('/subscribers/verify/{token}', [SubscriberController::class, 'verifySubscribtion']);
+        Route::get('/tags', [BlogController::class, 'getTags']);
+        Route::get('/tags/{slug}', [BlogController::class, 'getPostsBytag']);
+        Route::get('/blog', [BlogController::class, 'getPosts']);
+        Route::get('/blog/{slug}', [BlogController::class, 'getPost']);
+    //    Route::post('/blog/like/{slug}/{unlike?}', [BlogController::class, 'likePost']);
+        // Route::get('blog/{slug}', [PostController::class, 'show']);
 
-    // Route::get('/tags/{tag}', [PostController::class, 'getPostsByTag']);
+        // Route::get('/tags/{tag}', [PostController::class, 'getPostsByTag']);
 
+        // Search Blog
+        Route::get('/search', [BlogController::class, 'search']);
 
-     // SiteMap
-    Route::get('/sitemap', [SitemapController::class, 'sitemap']);
-    Route::get('/generateSitemap', [SitemapController::class, 'generateSitemap']);
+        // SiteMap
+        Route::get('/sitemap', [SitemapController::class, 'sitemap']);
 
-    Route::redirect('/', '/resume');
-    // Resume
-    Route::get('resume', [PageController::class, 'resume']);
+    //    Route::redirect('/', '/resume');
+        Route::get('/', [HomeController::class, 'home']);
+        // About
+        Route::get('about', [PageController::class, 'about']);
+        // Resume
+        Route::get('resume', [PageController::class, 'resume']);
+        // Testimonials
+        Route::get('testimonials', [PageController::class, 'testimonials']);
+        // Work
+        Route::get('work', [PageController::class, 'work']);
+        // Contact
+        Route::get('contact', [PageController::class, 'contact']);
+        // Services
+        Route::get('services/{service}', [PageController::class, 'getService']);
+        // Privacy policy
+        Route::get('privacy-policy', [PageController::class, 'privacyPolicy']);
 
-    // External
-    Route::get('/not-found', [GotoController::class, 'not_found']);
-    Route::get('/{link}', [GotoController::class, 'goto']);
+        // External
+        Route::get('/not-found', [GotoController::class, 'not_found']);
+        Route::get('/{link}', [GotoController::class, 'goto']);
 
-    Route::any('/{var}', [GotoController::class, 'not_found'])->where('var', '.*');
+        Route::any('/{var}', [GotoController::class, 'not_found'])->where('var', '.*');
+    });
+
 });
