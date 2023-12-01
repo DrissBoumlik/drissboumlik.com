@@ -10,9 +10,9 @@
                                 <div class="content">
                                     <h2 class="function text-capitalize">{{ $experience->job }}</h2>
                                     <h2 class="where text-uppercase">{{ $experience->company }}</h2>
-                                    <span><i class="fa-solid fa-calendar-days"></i> {{ $experience->period }} |
+                                    <div class="experience-period"><i class="fa-solid fa-calendar-days"></i> {{ $experience->period }} |
                                         {!! $experience->duration !!}
-                                    </span>
+                                    </div>
                                     @if ($experience->content)
                                         <hr class="my-2">
                                         @isset($experience->content->headline) {!! $experience->content->headline !!} @endisset
@@ -28,11 +28,11 @@
                                         <hr class="my-2">
                                         <div class="tech-env">
                                             <div class="underline">Technical environment :</div>
-                                            <div class="tech-env-items">
+                                            <div class="tech-env-items mt-1">
                                                 @foreach($experience->techs as $tech)
-                                                    <span class="tech-tag tag">{!! $tech->title !!}</span>
+                                                    <span class="tech-item" data-toggle="tooltip" data-placement="bottom" title="{{ $tech->title }}">{!! $tech->content !!}</span>
                                                 @endforeach
-                                                </div>
+                                            </div>
                                         </div>
                                     @endif
                                 </div>
