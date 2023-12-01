@@ -21,7 +21,9 @@
                                         </span>
                                         <div class="owl-carousel-item-wrapper row">
                                             <div class="owl-carousel-txt col-12">
-                                                {!! $testimonial->content !!}
+                                                <div class="testimonial-content">
+                                                    {!! $testimonial->content !!}
+                                                </div>
                                                 <div class="testimonial-author">
                                                     <div class="owl-carousel-img author-image square-50 overflow-hidden">
                                                         <img src="{{ asset('/assets/img/people/' . $testimonial->icon) }}"
