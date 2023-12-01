@@ -159,10 +159,10 @@ if (!function_exists('getCertificates')) {
     }
 }
 
-if (!function_exists('getCompetences')) {
-    function getCompetences($withHidden = false)
+if (!function_exists('getSkills')) {
+    function getSkills($withHidden = false)
     {
-        $competences = (array) json_decode(\File::get(base_path() . "/database/data/resume/competences.json"));
+        $competences = (array) json_decode(\File::get(base_path() . "/database/data/resume/skills.json"));
         if (!$withHidden) {
             $competences = array_map(function ($competenceGroup) {
                 $competenceGroup->items = filterHiddenItems($competenceGroup->items);

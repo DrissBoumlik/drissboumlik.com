@@ -1,6 +1,6 @@
 {
     "techs" : {
-        "header" : "competences",
+        "header" : "skills",
         "items" : [
             { "id": "js", "name": "javascript", "value": 80 },
             { "id": "php", "name": "php", "value": 80 },
