@@ -28,9 +28,9 @@
                                         <hr class="my-2">
                                         <div class="tech-env">
                                             <div class="underline">Technical environment :</div>
-                                            <div class="tech-env-items mt-1">
+                                            <div class="tech-env-items">
                                                 @foreach($experience->techs as $tech)
-                                                    <span class="tech-item" data-toggle="tooltip" data-placement="bottom" title="{{ $tech->title }}">{!! $tech->content !!}</span>
+                                                    <span class="tech-item">{{ $tech->title }}</span>
                                                 @endforeach
                                             </div>
                                         </div>

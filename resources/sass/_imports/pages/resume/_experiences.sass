@@ -5,10 +5,23 @@
     align-items: center
     flex-direction: row
     flex-wrap: wrap
-    column-gap: 5px
+    //column-gap: 10px
     .tech-item
-        cursor: pointer
-        color: $tc-blue-dark-4
+        font-size: 1rem
+        display: flex
+        align-items: center
+        position: relative
+        //cursor: pointer
+        //color: $tc-blue-dark-4
+        &:not(:last-child)
+            padding-right: 15px
+            &:after
+                content: "\f111"
+                font-size: 0.25rem
+                font-weight: 900
+                font-family: 'Font Awesome 6 Free'
+                position: absolute
+                right: 5px
 .tag
     padding: 0 5px
     margin-left: -2px
