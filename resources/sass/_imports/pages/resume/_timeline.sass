@@ -34,13 +34,18 @@
             font-family: "Font Awesome 5 Brands"
             background-color: #8892BF
             font-weight: 900
+        &.git:after
+            content: "\f841"
+            font-family: "Font Awesome 6 Brands"
+            background-color: #2F4F4F
+            font-weight: 400
         &.branch:after
             content: ""
             font-family: "Font Awesome 5 Free"
             background-color: #2F4F4F
             font-weight: 900
         &.teaching:after
-            content: "\f51c" //"\f19d" //"\f501" //"\f303"
+            content: "\f19d" //"\f51c" //"\f501" //"\f303"
             font-family: "Font Awesome 5 Free"
             background-color: #EA5252
             font-weight: 900
@@ -79,6 +84,11 @@
             font-family: "Font Awesome 5 Brands"
             background-color: #CD6799
             font-weight: 100
+        &.dotnet:after
+            content: "\f17a"
+            font-family: "Font Awesome 6 Brands"
+            background-color: #382db2
+            font-weight: 400
         &.csharp:after
             content: "\f121"
             font-family: "Font Awesome 5 Free"
@@ -99,81 +109,6 @@
             font-family: 'Font Awesome 6 Brands'
             background-color: #071D49
             font-weight: 400
-
-        &.abl
-            &:nth-child(even) .content
-                border-right: 3px solid #88179E
-            &:nth-child(odd) .content
-                border-left: 3px solid #88179E
-
-        &.work
-            &:nth-child(even) .content
-                border-right: 3px solid #dc3545
-            &:nth-child(odd) .content
-                border-left: 3px solid #dc3545
-        &.freelance
-            &:nth-child(even) .content
-                border-right: 3px solid #9a9a9a
-            &:nth-child(odd) .content
-                border-left: 3px solid #9a9a9a
-        &.udemy
-            &:nth-child(even) .content
-                border-right: 3px solid #EA5252
-            &:nth-child(odd) .content
-                border-left: 3px solid #EA5252
-
-        &.grintaaa
-            &:nth-child(even) .content
-                border-right: 3px solid #7FCD17
-            &:nth-child(odd) .content
-                border-left: 3px solid #7FCD17
-
-        &.teacode
-            &:nth-child(even) .content
-                border-right: 3px solid $tc-blue
-            &:nth-child(odd) .content
-                border-left: 3px solid $tc-blue
-
-        &.mediating
-            &:nth-child(even) .content
-                border-right: 3px solid #FF9300
-            &:nth-child(odd) .content
-                border-left: 3px solid #FF9300
-        &.ehm
-            &:nth-child(even) .content
-                border-right: 3px solid #009921
-            &:nth-child(odd) .content
-                border-left: 3px solid #009921
-        &.rae
-            &:nth-child(even) .content
-                border-right: 3px solid #c5c800
-            &:nth-child(odd) .content
-                border-left: 3px solid #c5c800
-        &.freelance
-            &:nth-child(even) .content
-                border-right: 3px solid #9a9a9a
-            &:nth-child(odd) .content
-                border-left: 3px solid #9a9a9a
-        &.graviton
-            &:nth-child(even) .content
-                border-right: 3px solid #DB5844
-            &:nth-child(odd) .content
-                border-left: 3px solid #DB5844
-        &.innoved
-            &:nth-child(even) .content
-                border-right: 3px solid #F76B67
-            &:nth-child(odd) .content
-                border-left: 3px solid #F76B67
-        &.dirham
-            &:nth-child(even) .content
-                border-right: 3px solid #93B7DE
-            &:nth-child(odd) .content
-                border-left: 3px solid #93B7DE
-        &.association
-            &:nth-child(even) .content
-                border-right: 3px solid #71335A
-            &:nth-child(odd) .content
-                border-left: 3px solid #71335A
 
         .content
             text-align: left
@@ -223,8 +158,8 @@
             transform-origin: right
         &:nth-child(odd)
             padding-right: 30px
-            .content
-                border-left: 3px solid $tc-blue-dark-2
+            //.content
+            //    border-left: 3px solid $tc-blue-dark-2
             &:before
                 content: " "
                 height: 0
@@ -239,8 +174,8 @@
         &:nth-child(even)
             padding-left: 30px
             left: 50%
-            .content
-                border-right: 3px solid $tc-blue-dark-2
+            //.content
+            //    border-right: 3px solid $tc-blue-dark-2
             &:after
                 left: -20px
             &:before
@@ -324,54 +259,8 @@
                 border-width: 10px 10px 10px 0
                 border-color: transparent #fff transparent transparent
 
-            &.abl .content
-                border-right: 3px solid #88179E!important
-            &.work .content
-                border-right: 3px solid #dc3545!important
-                // border-left: none
-            &.freelance .content
-                border-right: 3px solid #9a9a9a!important
-                // border-left: none
-            &.teacode .content
-                border-right: 3px solid #1DA1F2!important
-                // border-left: none
-            &.udemy .content
-                border-right: 3px solid #EA5252!important
-                // border-left: none
-            &.teacode .content
-                border-right: 3px solid $tc-blue!important
-            &.grintaaa .content
-                border-right: 3px solid #7FCD17!important
-                // border-left: none
-            &.mediating .content
-                border-right: 3px solid #FF9300!important
-                // border-left: none
-            &.ehm .content
-                border-right: 3px solid #009921!important
-                // border-left: none
-            &.rae .content
-                border-right: 3px solid #c5c800!important
-                // border-left: none
-            &.freelance .content
-                border-right: 3px solid #9a9a9a!important
-                // border-left: none
-            &.graviton .content
-                border-right: 3px solid #DB5844!important
-                // border-left: none
-            &.freelance .content
-                border-right: 3px solid #9a9a9a!important
-                // border-left: none
-            &.innoved .content
-                border-right: 3px solid #F76B67!important
-                // border-left: none
-            &.dirham .content
-                border-right: 3px solid #93B7DE!important
-                // border-left: none
-            &.association .content
-                border-right: 3px solid #71335A!important
-                // border-left: none
 
             .content
-                border-right: 3px solid $tc-blue-dark-2
+                //border-right: 3px solid $tc-blue-dark-2
                 border-left: 1px solid $tc-grey!important
                 transform-origin: center !important

@@ -16,7 +16,7 @@
                                     @if ($experience->content)
                                         <hr class="my-2">
                                         @isset($experience->content->headline) {!! $experience->content->headline !!} @endisset
-                                        @if(isset($experience->content->items) && is_array($experience->content->items))
+                                        @if (isset($experience->content->items) && is_array($experience->content->items))
                                             <ul>
                                                 @foreach($experience->content->items as $item)
                                                     <li>{!! $item !!}</li>
