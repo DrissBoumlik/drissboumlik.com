@@ -24,4 +24,16 @@ class ToolController extends Controller
             // 'Accept-Ranges'=> 'bytes'
         ]);
     }
+
+    public function getTableColumns(Request $request, $table)
+    {
+        return \DB::getSchemaBuilder()->getColumnListing($table);
+    }
+
+    public function getTableColumnStats(Request $request, $table, $column)
+    {
+        return \DB::table($table)
+            ->select($column, \DB::raw("count($column) as visits"))
+            ->groupBy($column)->get();
+    }
 }

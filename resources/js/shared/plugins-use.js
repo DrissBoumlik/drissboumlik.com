@@ -1,4 +1,65 @@
-import {shortenTextIfLongByLength, getDomClass} from "./functions";
+import {shortenTextIfLongByLength, getDomClass} from "../admin/functions";
+
+function initChart() {
+    const ctx = document.getElementById('myChart');
+    if (ctx === null) {
+        return;
+    }
+    $.ajax({
+        type: 'GET',
+        url: '/api/visitors/columns',
+        success: function(response) {
+            let html = '';
+            response.forEach(function(k,i) {
+                html += `<option value="${k}">${k}</option>`;
+            });
+            let columnsList = $('#columns-list')
+            columnsList.html(html);
+            let visitsChart = null;
+            columnsList.on('change', function() {
+                let columnSelected = $("option:selected", this).val();
+                $.ajax({
+                    type: 'GET',
+                    url: `/api/stats/visitors/${columnSelected}`,
+                    success: function(response) {
+                        let _labels = response.map(a => a[columnSelected]);
+                        let _data = response.map(a => a.visits);
+                        if (visitsChart) { visitsChart.destroy(); }
+                        visitsChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: _labels,
+                                datasets: [{
+                                    label: `Number of visits by ${columnSelected}`,
+                                    data: _data,
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                plugins: {
+                                    zoom: {
+                                        zoom: {
+                                            drag: {
+                                                enabled: true,
+                                            },
+                                            wheel: {
+                                                enabled: true,
+                                            },
+                                            pinch: {
+                                                enabled: true
+                                            },
+                                            mode: 'xy',
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+        }
+    });
+}
 
 function initPostEditor() {
     if ($('#post_body').length == 0) return;
@@ -329,4 +390,4 @@ function configDT(params) {
     return table;
 }
 
-export { initPostEditor, initSelect2, initDatatable };
+export { initPostEditor, initSelect2, initDatatable, initChart };

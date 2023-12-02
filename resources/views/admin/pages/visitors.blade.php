@@ -7,6 +7,9 @@
 
 @section('js')
     <!-- Page JS Plugins -->
+    <script type="module" src="{{ asset('/plugins/chartjs/chart.umd.js') }}"></script>
+    <script type="module" src="{{ asset('/plugins/chartjs/hammerjs@2.0.8.js') }}"></script>
+    <script type="module" src="{{ asset('/plugins/chartjs/chartjs-plugin-zoom.min.js') }}"></script>
     <script src="{{ asset('/plugins/moment-js/moment.js') }}"></script>
     <script src="{{ asset('/template/assets/js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('/template/assets/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
@@ -52,6 +55,13 @@
                 <div class="table-responsive">
                     <!-- DataTables init on table by adding .js-dataTable-responsive class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
                     <table id="visitors" class="visitors table table-bordered table-striped table-vcenter js-dataTable-responsive"></table>
+                </div>
+                <div class="chart mt-5">
+                    <div class="column-selection">
+                        <label for="column-selected">Select column</label>
+                        <select name="columns-list" id="columns-list"></select>
+                    </div>
+                    <canvas id="myChart"></canvas>
                 </div>
             </div>
         </div>
