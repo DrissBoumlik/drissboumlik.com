@@ -62,7 +62,7 @@
                         <select class="form-select" name="columns-list" id="columns-list"></select>
                     </div>
                     <div class="page-selection">
-                        <label class="form-label" for="pages-list">Select column</label>
+                        <label class="form-label" for="pages-list">Select Page</label>
                         <select class="form-select" name="pages-list" id="pages-list"></select>
                     </div>
                     <canvas id="myChart"></canvas>
