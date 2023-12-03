@@ -364,6 +364,7 @@ function initDatatable() {
 function configDT(params) {
     let table = new DataTable(params.id, {
         pageLength: 50,
+        lengthMenu: [5, 10, 25, 50, 75, 100, 200],
         language: {
             // select: {
             //     style: 'single',
