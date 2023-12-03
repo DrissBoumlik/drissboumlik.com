@@ -2,17 +2,17 @@
 
 @section('css')
     <!-- Page JS Plugins CSS -->
-    @vite(['resources/template/assets/js/plugins/datatables-bs5/css/dataTables.bootstrap5.min.css'])
+    <link href="/template/assets/js/plugins/datatables-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 @endsection
 
 @section('js')
     <!-- Page JS Plugins -->
-    @vite(['resources/plugins/chartjs/chart.umd.js'])
-    @vite(['resources/plugins/chartjs/hammerjs@2.0.8.js'])
-    @vite(['resources/plugins/chartjs/chartjs-plugin-zoom.min.js'])
+    <script src="/plugins/chartjs/chart.umd.js"></script>
+    <script src="/plugins/chartjs/hammerjs@2.0.8.js"></script>
+    <script src="/plugins/chartjs/chartjs-plugin-zoom.min.js"></script>
     <script src="{{ asset('/plugins/moment-js/moment.js') }}"></script>
-    @vite(['resources/template/assets/js/plugins/datatables/jquery.dataTables.min.js'])
-    @vite(['resources/template/assets/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js'])
+    <script src="/template/assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/template/assets/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js"></script>
 @endsection
 
 @section('content')
