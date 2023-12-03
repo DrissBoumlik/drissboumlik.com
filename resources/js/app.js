@@ -15,6 +15,6 @@ $(function () {
         initEvents();
     } catch (error) {
         // console.log(error);
-        // throw error
+        throw error
     }
 });

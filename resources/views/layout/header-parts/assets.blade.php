@@ -10,4 +10,5 @@
 <link href="{{ asset('/css/externals.css') }}" rel="stylesheet">
 <link id="app-css-preload" href="{{ asset('/css/app.css') }}" rel="preload" as="style">
 <link id="app-css" href="{{ asset('/css/app.css') }}" rel="stylesheet">
-<script defer src="{{ asset('/js/app.js') }}"></script>
+<script src="/plugins/particles/particles.js"></script>
+@vite(['resources/js/app.js'])

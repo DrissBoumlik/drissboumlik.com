@@ -1,6 +1,8 @@
 import 'bootstrap';
+import $ from 'jquery';
 import { toggleDarkMode } from "./shared/functions";
-require('particles.js');
+// import 'particles.js';
+import particlesJson from '../plugins/particles/particles.min.json';
 import 'owl.carousel';
 
 function initTooltip() {
@@ -34,7 +36,7 @@ function initParticlesJS() {
         // setTimeout(() => {
         //     $('.loader-wrapper').addClass('disappear');
         // }, 500);
-        particlesJS.load('particles-js', '/plugins/particles/particles.min.json');
+        particlesJS('particles-js', particlesJson);
     }
 }
 
@@ -63,7 +65,7 @@ function initSlider() {
             },
         }
     };
-    $('.owl-carousel').owlCarousel(params);
+    jQuery('.owl-carousel').owlCarousel(params);
 }
 
 function initDarkMode() {

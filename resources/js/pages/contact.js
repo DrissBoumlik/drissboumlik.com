@@ -1,4 +1,5 @@
 import { initContactFormEvent } from "./functions";
+import $ from 'jquery';
 
 $(function () {
     try {

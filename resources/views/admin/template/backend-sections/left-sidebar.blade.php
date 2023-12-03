@@ -14,7 +14,9 @@
         <!-- Extra -->
         <div>
             @include('admin.addons.darkmode')
-
+            <button type="button" class="btn btn-sm btn-alt-secondary me-2 d-none d-lg-inline-block" data-toggle="layout" data-action="sidebar_mini_toggle">
+                <i class="fa fa-fw fa-ellipsis-v"></i>
+            </button>
             <!-- Options -->
 {{--            <div class="dropdown d-inline-block ms-1">--}}
 {{--                <a class="btn btn-sm btn-alt-secondary" id="sidebar-themes-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">--}}

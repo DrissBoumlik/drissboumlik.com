@@ -1,3 +1,4 @@
+import $ from 'jquery';
 
 function generateCode() {
     if (window.innerWidth <= 768) {

@@ -1,4 +1,5 @@
 import { generateCode } from "./functions";
+import $ from 'jquery';
 
 $(function () {
     try {
