@@ -6,9 +6,7 @@
 <link rel="preload" href="{{ asset('/assets/fonts/istokweb.woff2') }}" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{{ asset('/assets/fonts/UntitledSansWeb-Bold.woff2') }}" as="font" type="font/woff2" crossorigin>
 
-<link href="{{ asset('/css/externals.css') }}" rel="preload" as="style">
-<link href="{{ asset('/css/externals.css') }}" rel="stylesheet">
-<link id="app-css-preload" href="{{ asset('/css/app.css') }}" rel="preload" as="style">
-<link id="app-css" href="{{ asset('/css/app.css') }}" rel="stylesheet">
+@vite(['resources/sass/externals.sass'])
+@vite(['resources/sass/app.sass'])
 <script src="/plugins/particles/particles.js"></script>
 @vite(['resources/js/app.js'])

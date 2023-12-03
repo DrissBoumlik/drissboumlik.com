@@ -1,7 +1,7 @@
 @extends('layout.page-content-wide')
 
 @section('post-header-assets')
-    <script src="{{ asset('/js/pages/contact.js') }}"></script>
+    @vite(['resources/js/pages/contact.js'])
 @endsection
 
 @section('headline')
