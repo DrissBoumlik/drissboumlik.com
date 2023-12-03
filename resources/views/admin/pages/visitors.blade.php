@@ -61,7 +61,7 @@
                         <label class="form-label" for="columns-list">Select column</label>
                         <select class="form-select" name="columns-list" id="columns-list"></select>
                     </div>
-                    <div class="page-selection">
+                    <div class="page-selection mt-3">
                         <label class="form-label" for="pages-list">Select Page</label>
                         <select class="form-select" name="pages-list" id="pages-list"></select>
                     </div>
