@@ -2,17 +2,17 @@
 
 @section('css')
     <!-- Page JS Plugins CSS -->
-    <link rel="stylesheet" href="{{ asset('/template/assets/js/plugins/datatables-bs5/css/dataTables.bootstrap5.min.css') }}">
+    @vite(['resources/template/assets/js/plugins/datatables-bs5/css/dataTables.bootstrap5.min.css'])
 @endsection
 
 @section('js')
     <!-- Page JS Plugins -->
-    <script type="module" src="{{ asset('/plugins/chartjs/chart.umd.js') }}"></script>
-    <script type="module" src="{{ asset('/plugins/chartjs/hammerjs@2.0.8.js') }}"></script>
-    <script type="module" src="{{ asset('/plugins/chartjs/chartjs-plugin-zoom.min.js') }}"></script>
+    @vite(['resources/plugins/chartjs/chart.umd.js'])
+    @vite(['resources/plugins/chartjs/hammerjs@2.0.8.js'])
+    @vite(['resources/plugins/chartjs/chartjs-plugin-zoom.min.js'])
     <script src="{{ asset('/plugins/moment-js/moment.js') }}"></script>
-    <script src="{{ asset('/template/assets/js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('/template/assets/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
+    @vite(['resources/template/assets/js/plugins/datatables/jquery.dataTables.min.js'])
+    @vite(['resources/template/assets/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js'])
 @endsection
 
 @section('content')

@@ -9,10 +9,8 @@
 <!-- Stylesheets -->
 <!-- OneUI framework -->
 @yield('css')
-<link href="{{ asset('/css/externals.css') }}" rel="preload" as="style">
-<link href="{{ asset('/css/externals.css') }}" rel="stylesheet">
-<link href="{{ asset('/template/css/main.css') }}" rel="preload" as="style">
-<link href="{{ asset('/template/css/main.css') }}" rel="stylesheet">
+@vite(['resources/sass/externals.sass'])
+@vite(['resources/template/sass/main.scss'])
 {{-- <link rel="stylesheet" id="css-main" href="/template/assets/css/oneui.min.css"> --}}
 
 <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
@@ -24,8 +22,8 @@ OneUI JS
 Core libraries and functionality
 webpack is putting everything together at assets/_js/main/app.js
 -->
-<script defer src="{{ asset('/template/assets/js/oneui.app.min.js') }}"></script>
-<script src={{ asset("/template/assets/js/lib/jquery.min.js") }}></script>
+@vite(['resources/template/assets/js/oneui.app.min.js'])
+@vite(['resources/template/assets/js/lib/jquery.min.js'])
 @yield('js')
-<script defer src="{{ asset('/template/assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
-<script defer src="{{ asset('/js/admin/app.js') }}"></script>
+@vite(['resources/template/assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js'])
+@vite(['resources/js/admin/app.js'])

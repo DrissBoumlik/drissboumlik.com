@@ -2,14 +2,14 @@
 
 @section('css')
     <!-- Page JS Plugins CSS -->
-    <link rel="stylesheet" href="{{ asset('/template/assets/js/plugins/datatables-bs5/css/dataTables.bootstrap5.min.css') }}">
+    @vite(['resources/template/assets/js/plugins/datatables-bs5/css/dataTables.bootstrap5.min.css'])
 @endsection
 
 @section('js')
     <!-- Page JS Plugins -->
     <script src="{{ asset('/plugins/moment-js/moment.js') }}"></script>
-    <script src="{{ asset('/template/assets/js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('/template/assets/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
+    @vite(['resources/template/assets/js/plugins/datatables/jquery.dataTables.min.js'])
+    @vite(['resources/template/assets/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js'])
 @endsection
 
 @section('content')
