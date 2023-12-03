@@ -20,6 +20,7 @@ function initChart() {
             columnsList.on('change', function() {
                 let columnSelected = $("option:selected", this).val();
                 params.columnSelected = columnSelected;
+                params.page = 1;
                 getColumnStats(params);
             });
 
@@ -361,7 +362,7 @@ function initDatatable() {
 
 function configDT(params) {
     let table = new DataTable(params.id, {
-        pageLength: 5,
+        pageLength: 50,
         language: {
             // select: {
             //     style: 'single',
