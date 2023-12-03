@@ -208,7 +208,7 @@ exports.STORE = {
         return new GenericWorker("STORE decompression");
     }
 };
-exports.DEFLATE = require("./flate");
+import DEFLATE from "./flate";
 
 },{"./flate":7,"./stream/GenericWorker":28}],4:[function(require,module,exports){
 "use strict";
@@ -1050,10 +1050,10 @@ function JSZip() {
         return newObj;
     };
 }
-JSZip.prototype = require("./object");
-JSZip.prototype.loadAsync = require("./load");
-JSZip.support = require("./support");
-JSZip.defaults = require("./defaults");
+import prototype from "./object";
+import prototype.loadAsync from "./load";
+import support from "./support";
+import defaults from "./defaults";
 
 // TODO find a better way to handle this version,
 // a require('package.json').version doesn't work with webpack, see #327
@@ -1063,7 +1063,7 @@ JSZip.loadAsync = function (content, options) {
     return new JSZip().loadAsync(content, options);
 };
 
-JSZip.external = require("./external");
+import external from "./external";
 module.exports = JSZip;
 
 },{"./defaults":5,"./external":6,"./load":11,"./object":15,"./support":30}],11:[function(require,module,exports){
@@ -1731,7 +1731,7 @@ module.exports = out;
  * reduce the final size of the bundle (only one stream implementation, not
  * two).
  */
-module.exports = require("stream");
+import exports from "stream";
 
 },{"stream":undefined}],17:[function(require,module,exports){
 "use strict";
@@ -3042,7 +3042,7 @@ var support = require("./support");
 var base64 = require("./base64");
 var nodejsUtils = require("./nodejsUtils");
 var external = require("./external");
-require("setimmediate");
+import "setimmediate";
 
 
 /**

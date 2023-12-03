@@ -1,6 +1,6 @@
 import 'bootstrap';
 import { toggleDarkMode } from "./shared/functions";
-require('particles.js');
+import 'particles.js';
 import 'owl.carousel';
 
 function initTooltip() {
