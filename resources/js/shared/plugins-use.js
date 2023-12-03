@@ -14,48 +14,72 @@ function initChart() {
                 html += `<option value="${k}">${k}</option>`;
             });
             let columnsList = $('#columns-list')
+            let pagesList = $('#pages-list');
             columnsList.html(html);
-            let visitsChart = null;
+            let params = {columnSelected: null, pagesList, visitsChart: null, ctx, page: 1};
             columnsList.on('change', function() {
                 let columnSelected = $("option:selected", this).val();
-                $.ajax({
-                    type: 'GET',
-                    url: `/api/stats/visitors/${columnSelected}`,
-                    success: function(response) {
-                        let _labels = response.map(a => a[columnSelected]);
-                        let _data = response.map(a => a.visits);
-                        if (visitsChart) { visitsChart.destroy(); }
-                        visitsChart = new Chart(ctx, {
-                            type: 'bar',
-                            data: {
-                                labels: _labels,
-                                datasets: [{
-                                    label: `Number of visits by ${columnSelected}`,
-                                    data: _data,
-                                    borderWidth: 1
-                                }]
-                            },
-                            options: {
-                                plugins: {
-                                    zoom: {
-                                        zoom: {
-                                            drag: {
-                                                enabled: true,
-                                            },
-                                            wheel: {
-                                                enabled: true,
-                                            },
-                                            pinch: {
-                                                enabled: true
-                                            },
-                                            mode: 'xy',
-                                        }
-                                    }
-                                }
+                params.columnSelected = columnSelected;
+                getColumnStats(params);
+            });
+
+            pagesList.on('change', function() {
+                let columnSelected = columnsList.val();
+                let pageSelected = $("option:selected", this).val();
+                params.columnSelected = columnSelected;
+                params.page = pageSelected;
+                getColumnStats(params);
+            });
+        }
+    });
+}
+
+function getColumnStats(params) {
+    $.ajax({
+        type: 'GET',
+        url: `/api/stats/visitors/${params.columnSelected}?page=${params.page}`,
+        success: function(response) {
+
+            if (params.page === 1) {
+                let html = '';
+                for (let i = 1; i <= response.last_page; i++) {
+                    html += `<option value="${i}">Page ${i}</option>`;
+                }
+                params.pagesList.html(html);
+            }
+
+            let responseData = response.data;
+            let _labels = responseData.map(a => a[params.columnSelected]);
+            let _data = responseData.map(a => a.visits);
+            if (params.visitsChart) { params.visitsChart.destroy(); }
+            params.visitsChart = new Chart(params.ctx, {
+                type: 'bar',
+                data: {
+                    labels: _labels,
+                    datasets: [{
+                        label: `Number of visits by ${params.columnSelected}`,
+                        data: _data,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    plugins: {
+                        zoom: {
+                            zoom: {
+                                drag: {
+                                    enabled: true,
+                                },
+                                wheel: {
+                                    enabled: true,
+                                },
+                                pinch: {
+                                    enabled: true
+                                },
+                                mode: 'xy',
                             }
-                        });
+                        }
                     }
-                });
+                }
             });
         }
     });
@@ -337,7 +361,7 @@ function initDatatable() {
 
 function configDT(params) {
     let table = new DataTable(params.id, {
-        pageLength: 50,
+        pageLength: 5,
         language: {
             // select: {
             //     style: 'single',

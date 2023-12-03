@@ -58,8 +58,12 @@
                 </div>
                 <div class="chart mt-5">
                     <div class="column-selection">
-                        <label for="column-selected">Select column</label>
-                        <select name="columns-list" id="columns-list"></select>
+                        <label class="form-label" for="columns-list">Select column</label>
+                        <select class="form-select" name="columns-list" id="columns-list"></select>
+                    </div>
+                    <div class="page-selection">
+                        <label class="form-label" for="pages-list">Select column</label>
+                        <select class="form-select" name="pages-list" id="pages-list"></select>
                     </div>
                     <canvas id="myChart"></canvas>
                 </div>

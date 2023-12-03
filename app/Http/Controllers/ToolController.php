@@ -34,6 +34,6 @@ class ToolController extends Controller
     {
         return \DB::table($table)
             ->select($column, \DB::raw("count($column) as visits"))
-            ->groupBy($column)->get();
+            ->groupBy($column)->paginate();
     }
 }
