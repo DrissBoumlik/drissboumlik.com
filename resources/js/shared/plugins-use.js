@@ -11,12 +11,13 @@ function initChart() {
         success: function(response) {
             let html = '';
             response.forEach(function(k,i) {
-                html += `<option value="${k}">${k}</option>`;
+                html += `<option value="${k}" ${k === 'countryName' ? 'selected' : ''}>${k}</option>`;
             });
             let columnsList = $('#columns-list')
             let pagesList = $('#pages-list');
             columnsList.html(html);
-            let params = {columnSelected: null, pagesList, visitsChart: null, ctx, page: 1};
+            let params = {columnSelected: 'countryName', pagesList, visitsChart: null, ctx, page: 1};
+            getColumnStats(params);
             columnsList.on('change', function() {
                 let columnSelected = $("option:selected", this).val();
                 params.columnSelected = columnSelected;
