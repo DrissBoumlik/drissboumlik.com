@@ -1,5 +1,5 @@
 import { drawText, initParticlesJS, initSlider, initDarkMode, initEvents, initTooltip } from "./functions";
-
+import $ from 'jquery';
 
 $(function () {
     try {
@@ -8,8 +8,9 @@ $(function () {
         }
         drawText();
         initParticlesJS();
-        if ($('.no-slider').length === 0) {
-            initSlider();
+        if ($('.owl-carousel-wrapper').length !== 0) {
+            import('owl.carousel')
+                .then(initSlider);
         }
         initDarkMode();
         initEvents();

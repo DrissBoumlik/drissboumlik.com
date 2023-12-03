@@ -1,9 +1,7 @@
 import 'bootstrap';
 import $ from 'jquery';
 import { toggleDarkMode } from "./shared/functions";
-// import 'particles.js';
 import particlesJson from '../plugins/particles/particles.min.json';
-import 'owl.carousel';
 
 function initTooltip() {
     $('[data-toggle="tooltip"]').tooltip();
