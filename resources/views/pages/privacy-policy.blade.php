@@ -8,7 +8,7 @@
 
 @section('page-content')
     <div class="container-fluid">
-        <div class="privacy-policy section no-slider py-5">
+        <div class="privacy-policy section py-5">
             <div class="py-5" id="privacy-policy">
                 <div class="testimonials">
                     <div class="container">

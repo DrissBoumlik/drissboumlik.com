@@ -1,5 +1,5 @@
 <div class="py-5" id="testimonials">
-    <div class="testimonials">
+    <div class="testimonials owl-carousel-wrapper">
         <div class="container">
             @include('components.headline', ['headline' => $testimonials->header])
             <div class="row">
