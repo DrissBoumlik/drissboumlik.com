@@ -1,8 +1,17 @@
 import { defineConfig } from 'vite';
+import { viteStaticCopy } from 'vite-plugin-static-copy'
 import laravel from 'laravel-vite-plugin';
 
 export default defineConfig({
     plugins: [
+        viteStaticCopy({
+            targets: [
+                { src: 'resources/plugins/chartjs/*.*', dest: 'public/plugins/chartjs' },
+                { src: 'resources/plugins/jquery/*.*', dest: 'public/plugins/jquery' },
+                { src: 'resources/plugins/moment-js/*.*', dest: 'public/plugins/moment-js' },
+                { src: 'resources/plugins/particles/*.*', dest: 'public/plugins/particles' },
+            ]
+        }),
         laravel({
             input: [
                 'resources/sass/app.sass',
