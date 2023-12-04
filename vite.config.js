@@ -6,10 +6,11 @@ export default defineConfig({
     plugins: [
         viteStaticCopy({
             targets: [
-                { src: 'resources/plugins/chartjs/*.*', dest: 'public/plugins/chartjs' },
-                { src: 'resources/plugins/jquery/*.*', dest: 'public/plugins/jquery' },
-                { src: 'resources/plugins/moment-js/*.*', dest: 'public/plugins/moment-js' },
-                { src: 'resources/plugins/particles/*.*', dest: 'public/plugins/particles' },
+                { src: 'resources/plugins/chartjs/*', dest: 'public/plugins/chartjs' },
+                { src: 'resources/plugins/jquery/*', dest: 'public/plugins/jquery' },
+                { src: 'resources/plugins/moment-js/*', dest: 'public/plugins/moment-js' },
+                { src: 'resources/plugins/particles/*', dest: 'public/plugins/particles' },
+                { src: 'resources/plugins/prismjs/*', dest: 'public/plugins/prismjs' },
             ]
         }),
         laravel({
