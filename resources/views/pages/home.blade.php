@@ -1,10 +1,7 @@
 @extends('layout.app')
 
 @section('post-header-assets')
-    <script src="/plugins/jquery/jquery-3.7.1.js"></script>
-    <script src="/plugins/jquery/jquery-3.7.1.slim.js"></script>
-{{--    @vite(['resources/plugins/jquery/jquery-3.6.1.slim.min.js'])--}}
-    @vite(['node_modules/owl.carousel/dist/owl.carousel.min.js'])
+    <script src="{{ asset('/plugins/jquery/jquery-3.7.1.slim.js') }}"></script>
     @vite(['resources/js/pages/code-animation.js', 'resources/js/pages/contact.js'])
 @endsection
 
