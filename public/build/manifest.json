@@ -7,21 +7,25 @@
     "file": "assets/My Epic Selfie.3a98e218.woff2",
     "src": "resources/assets/fonts/My Epic Selfie.woff2"
   },
+  "resources/assets/fonts/Fira_Code_v6.2/ttf/FiraCode-Regular.ttf": {
+    "file": "assets/FiraCode-Regular.5992ab96.ttf",
+    "src": "resources/assets/fonts/Fira_Code_v6.2/ttf/FiraCode-Regular.ttf"
+  },
   "resources/assets/fonts/Helvetica.ttf": {
     "file": "assets/Helvetica.5f865ddf.ttf",
     "src": "resources/assets/fonts/Helvetica.ttf"
   },
-  "resources/assets/fonts/Fira_Code_v6.2/ttf/FiraCode-Regular.ttf": {
-    "file": "assets/FiraCode-Regular.5992ab96.ttf",
-    "src": "resources/assets/fonts/Fira_Code_v6.2/ttf/FiraCode-Regular.ttf"
+  "resources/assets/fonts/Fira_Code_v6.2/ttf/FiraCode-Medium.ttf": {
+    "file": "assets/FiraCode-Medium.97091f90.ttf",
+    "src": "resources/assets/fonts/Fira_Code_v6.2/ttf/FiraCode-Medium.ttf"
   },
   "resources/assets/fonts/UntitledSansWeb-Regular.woff2": {
     "file": "assets/UntitledSansWeb-Regular.c4aec736.woff2",
     "src": "resources/assets/fonts/UntitledSansWeb-Regular.woff2"
   },
-  "resources/assets/fonts/Fira_Code_v6.2/ttf/FiraCode-Medium.ttf": {
-    "file": "assets/FiraCode-Medium.97091f90.ttf",
-    "src": "resources/assets/fonts/Fira_Code_v6.2/ttf/FiraCode-Medium.ttf"
+  "resources/assets/fonts/UntitledSansWeb-MediumItalic.woff2": {
+    "file": "assets/UntitledSansWeb-MediumItalic.d826e081.woff2",
+    "src": "resources/assets/fonts/UntitledSansWeb-MediumItalic.woff2"
   },
   "resources/assets/fonts/UntitledSansWeb-RegularItalic.woff2": {
     "file": "assets/UntitledSansWeb-RegularItalic.ce091fdd.woff2",
@@ -31,61 +35,61 @@
     "file": "assets/UntitledSansWeb-Medium.c1b11547.woff2",
     "src": "resources/assets/fonts/UntitledSansWeb-Medium.woff2"
   },
-  "resources/assets/fonts/UntitledSansWeb-MediumItalic.woff2": {
-    "file": "assets/UntitledSansWeb-MediumItalic.d826e081.woff2",
-    "src": "resources/assets/fonts/UntitledSansWeb-MediumItalic.woff2"
+  "resources/assets/fonts/GT-America-Standard-Regular.woff2": {
+    "file": "assets/GT-America-Standard-Regular.734acf53.woff2",
+    "src": "resources/assets/fonts/GT-America-Standard-Regular.woff2"
   },
   "resources/assets/fonts/UntitledSansWeb-BoldItalic.woff2": {
     "file": "assets/UntitledSansWeb-BoldItalic.4c27cb05.woff2",
     "src": "resources/assets/fonts/UntitledSansWeb-BoldItalic.woff2"
   },
-  "resources/assets/fonts/UntitledSansWeb-Bold.woff2": {
-    "file": "assets/UntitledSansWeb-Bold.13288efb.woff2",
-    "src": "resources/assets/fonts/UntitledSansWeb-Bold.woff2"
-  },
-  "resources/assets/fonts/GT-America-Standard-Regular.woff2": {
-    "file": "assets/GT-America-Standard-Regular.734acf53.woff2",
-    "src": "resources/assets/fonts/GT-America-Standard-Regular.woff2"
-  },
   "resources/assets/fonts/GT-America-Standard-Regular-Italic.woff2": {
     "file": "assets/GT-America-Standard-Regular-Italic.c5382d04.woff2",
     "src": "resources/assets/fonts/GT-America-Standard-Regular-Italic.woff2"
   },
-  "resources/assets/fonts/GT-America-Standard-Medium.woff2": {
-    "file": "assets/GT-America-Standard-Medium.568b40e8.woff2",
-    "src": "resources/assets/fonts/GT-America-Standard-Medium.woff2"
+  "resources/assets/fonts/UntitledSansWeb-Bold.woff2": {
+    "file": "assets/UntitledSansWeb-Bold.13288efb.woff2",
+    "src": "resources/assets/fonts/UntitledSansWeb-Bold.woff2"
   },
   "resources/assets/fonts/GT-America-Standard-Medium-Italic.woff2": {
     "file": "assets/GT-America-Standard-Medium-Italic.12a48887.woff2",
     "src": "resources/assets/fonts/GT-America-Standard-Medium-Italic.woff2"
   },
+  "resources/assets/fonts/GT-America-Standard-Medium.woff2": {
+    "file": "assets/GT-America-Standard-Medium.568b40e8.woff2",
+    "src": "resources/assets/fonts/GT-America-Standard-Medium.woff2"
+  },
+  "resources/assets/fonts/devicon.eot": {
+    "file": "assets/devicon.0e4c406d.eot",
+    "src": "resources/assets/fonts/devicon.eot"
+  },
   "resources/assets/fonts/font-mfizz.eot": {
     "file": "assets/font-mfizz.d69ec6f8.eot",
     "src": "resources/assets/fonts/font-mfizz.eot"
-  },
-  "resources/assets/fonts/font-mfizz.svg": {
-    "file": "assets/font-mfizz.2af9a124.svg",
-    "src": "resources/assets/fonts/font-mfizz.svg"
-  },
-  "resources/template/assets/fonts/inter/inter-v11-latin-regular.woff2": {
-    "file": "assets/inter-v11-latin-regular.d56fec21.woff2",
-    "src": "resources/template/assets/fonts/inter/inter-v11-latin-regular.woff2"
-  },
-  "resources/template/assets/fonts/inter/inter-v11-latin-300.woff2": {
-    "file": "assets/inter-v11-latin-300.8f400eb2.woff2",
-    "src": "resources/template/assets/fonts/inter/inter-v11-latin-300.woff2"
   },
   "resources/template/assets/fonts/inter/inter-v11-latin-500.woff2": {
     "file": "assets/inter-v11-latin-500.aa5a5a7a.woff2",
     "src": "resources/template/assets/fonts/inter/inter-v11-latin-500.woff2"
   },
+  "resources/template/assets/fonts/inter/inter-v11-latin-300.woff2": {
+    "file": "assets/inter-v11-latin-300.8f400eb2.woff2",
+    "src": "resources/template/assets/fonts/inter/inter-v11-latin-300.woff2"
+  },
+  "resources/template/assets/fonts/inter/inter-v11-latin-regular.woff2": {
+    "file": "assets/inter-v11-latin-regular.d56fec21.woff2",
+    "src": "resources/template/assets/fonts/inter/inter-v11-latin-regular.woff2"
+  },
   "resources/template/assets/fonts/inter/inter-v11-latin-600.woff2": {
     "file": "assets/inter-v11-latin-600.ff769fa6.woff2",
     "src": "resources/template/assets/fonts/inter/inter-v11-latin-600.woff2"
   },
-  "resources/assets/fonts/devicon.eot": {
-    "file": "assets/devicon.0e4c406d.eot",
-    "src": "resources/assets/fonts/devicon.eot"
+  "resources/assets/fonts/font-mfizz.svg": {
+    "file": "assets/font-mfizz.2af9a124.svg",
+    "src": "resources/assets/fonts/font-mfizz.svg"
+  },
+  "node_modules/devicon/fonts/devicon.ttf": {
+    "file": "assets/devicon.2783a9a2.ttf",
+    "src": "node_modules/devicon/fonts/devicon.ttf"
   },
   "resources/template/assets/fonts/inter/inter-v11-latin-700.woff2": {
     "file": "assets/inter-v11-latin-700.3ced3f55.woff2",
@@ -95,57 +99,53 @@
     "file": "assets/fa-solid-900.6b555920.woff2",
     "src": "resources/assets/fontawesome/webfonts/fa-solid-900.woff2"
   },
-  "node_modules/devicon/fonts/devicon.ttf": {
-    "file": "assets/devicon.2783a9a2.ttf",
-    "src": "node_modules/devicon/fonts/devicon.ttf"
-  },
-  "resources/template/assets/fonts/simple-line-icons/Simple-Line-Icons.eot": {
-    "file": "assets/Simple-Line-Icons.1c823013.eot",
-    "src": "resources/template/assets/fonts/simple-line-icons/Simple-Line-Icons.eot"
+  "resources/assets/fonts/Harmattan-Regular.ttf": {
+    "file": "assets/Harmattan-Regular.bb28f5f9.ttf",
+    "src": "resources/assets/fonts/Harmattan-Regular.ttf"
   },
   "resources/assets/fonts/Harmattan-Bold.ttf": {
     "file": "assets/Harmattan-Bold.daa870d3.ttf",
     "src": "resources/assets/fonts/Harmattan-Bold.ttf"
   },
-  "resources/assets/fonts/Harmattan-Regular.ttf": {
-    "file": "assets/Harmattan-Regular.bb28f5f9.ttf",
-    "src": "resources/assets/fonts/Harmattan-Regular.ttf"
+  "resources/template/assets/fonts/simple-line-icons/Simple-Line-Icons.eot": {
+    "file": "assets/Simple-Line-Icons.1c823013.eot",
+    "src": "resources/template/assets/fonts/simple-line-icons/Simple-Line-Icons.eot"
   },
   "resources/assets/fonts/My Epic Selfie.woff": {
     "file": "assets/My Epic Selfie.f9fb5e24.woff",
     "src": "resources/assets/fonts/My Epic Selfie.woff"
   },
-  "resources/assets/fonts/UntitledSansWeb-Regular.woff": {
-    "file": "assets/UntitledSansWeb-Regular.fc554649.woff",
-    "src": "resources/assets/fonts/UntitledSansWeb-Regular.woff"
-  },
-  "resources/assets/fonts/UntitledSansWeb-Medium.woff": {
-    "file": "assets/UntitledSansWeb-Medium.0604ba70.woff",
-    "src": "resources/assets/fonts/UntitledSansWeb-Medium.woff"
-  },
-  "resources/assets/fonts/UntitledSansWeb-RegularItalic.woff": {
-    "file": "assets/UntitledSansWeb-RegularItalic.a361c0ed.woff",
-    "src": "resources/assets/fonts/UntitledSansWeb-RegularItalic.woff"
-  },
   "resources/assets/fonts/Fira_Code_v6.2/woff/FiraCode-Regular.woff": {
     "file": "assets/FiraCode-Regular.e4b5a20d.woff",
     "src": "resources/assets/fonts/Fira_Code_v6.2/woff/FiraCode-Regular.woff"
-  },
-  "resources/assets/fonts/UntitledSansWeb-MediumItalic.woff": {
-    "file": "assets/UntitledSansWeb-MediumItalic.bc10c38b.woff",
-    "src": "resources/assets/fonts/UntitledSansWeb-MediumItalic.woff"
   },
   "resources/assets/fonts/Fira_Code_v6.2/woff/FiraCode-Medium.woff": {
     "file": "assets/FiraCode-Medium.91f1c9c3.woff",
     "src": "resources/assets/fonts/Fira_Code_v6.2/woff/FiraCode-Medium.woff"
   },
-  "resources/assets/fonts/UntitledSansWeb-BoldItalic.woff": {
-    "file": "assets/UntitledSansWeb-BoldItalic.6ba4eb7a.woff",
-    "src": "resources/assets/fonts/UntitledSansWeb-BoldItalic.woff"
+  "resources/assets/fonts/UntitledSansWeb-MediumItalic.woff": {
+    "file": "assets/UntitledSansWeb-MediumItalic.bc10c38b.woff",
+    "src": "resources/assets/fonts/UntitledSansWeb-MediumItalic.woff"
+  },
+  "resources/assets/fonts/UntitledSansWeb-Regular.woff": {
+    "file": "assets/UntitledSansWeb-Regular.fc554649.woff",
+    "src": "resources/assets/fonts/UntitledSansWeb-Regular.woff"
+  },
+  "resources/assets/fonts/UntitledSansWeb-RegularItalic.woff": {
+    "file": "assets/UntitledSansWeb-RegularItalic.a361c0ed.woff",
+    "src": "resources/assets/fonts/UntitledSansWeb-RegularItalic.woff"
+  },
+  "resources/assets/fonts/UntitledSansWeb-Medium.woff": {
+    "file": "assets/UntitledSansWeb-Medium.0604ba70.woff",
+    "src": "resources/assets/fonts/UntitledSansWeb-Medium.woff"
   },
   "resources/assets/fonts/GT-America-Standard-Regular.woff": {
     "file": "assets/GT-America-Standard-Regular.cf8ee84c.woff",
     "src": "resources/assets/fonts/GT-America-Standard-Regular.woff"
+  },
+  "resources/assets/fonts/UntitledSansWeb-BoldItalic.woff": {
+    "file": "assets/UntitledSansWeb-BoldItalic.6ba4eb7a.woff",
+    "src": "resources/assets/fonts/UntitledSansWeb-BoldItalic.woff"
   },
   "resources/assets/fonts/GT-America-Standard-Regular-Italic.woff": {
     "file": "assets/GT-America-Standard-Regular-Italic.2cd1db5a.woff",
@@ -155,6 +155,10 @@
     "file": "assets/UntitledSansWeb-Bold.cb69efa0.woff",
     "src": "resources/assets/fonts/UntitledSansWeb-Bold.woff"
   },
+  "resources/assets/fonts/GT-America-Standard-Medium-Italic.woff": {
+    "file": "assets/GT-America-Standard-Medium-Italic.43d2ddd8.woff",
+    "src": "resources/assets/fonts/GT-America-Standard-Medium-Italic.woff"
+  },
   "resources/assets/fonts/GT-America-Standard-Medium.woff": {
     "file": "assets/GT-America-Standard-Medium.f75f4e7f.woff",
     "src": "resources/assets/fonts/GT-America-Standard-Medium.woff"
@@ -163,37 +167,33 @@
     "file": "assets/font-mfizz.38c5f269.woff",
     "src": "resources/assets/fonts/font-mfizz.woff"
   },
-  "resources/assets/fonts/GT-America-Standard-Medium-Italic.woff": {
-    "file": "assets/GT-America-Standard-Medium-Italic.43d2ddd8.woff",
-    "src": "resources/assets/fonts/GT-America-Standard-Medium-Italic.woff"
+  "resources/assets/fontawesome/webfonts/fa-solid-900.ttf": {
+    "file": "assets/fa-solid-900.2caded24.ttf",
+    "src": "resources/assets/fontawesome/webfonts/fa-solid-900.ttf"
   },
   "resources/template/assets/fonts/simple-line-icons/Simple-Line-Icons.woff2": {
     "file": "assets/Simple-Line-Icons.104673f4.woff2",
     "src": "resources/template/assets/fonts/simple-line-icons/Simple-Line-Icons.woff2"
   },
-  "resources/assets/fontawesome/webfonts/fa-solid-900.ttf": {
-    "file": "assets/fa-solid-900.2caded24.ttf",
-    "src": "resources/assets/fontawesome/webfonts/fa-solid-900.ttf"
-  },
   "node_modules/devicon/fonts/devicon.woff": {
     "file": "assets/devicon.be0b81a6.woff",
     "src": "node_modules/devicon/fonts/devicon.woff"
-  },
-  "resources/assets/fonts/font-mfizz.ttf": {
-    "file": "assets/font-mfizz.c945ce32.ttf",
-    "src": "resources/assets/fonts/font-mfizz.ttf"
   },
   "resources/assets/fonts/My Epic Selfie.ttf": {
     "file": "assets/My Epic Selfie.7083a173.ttf",
     "src": "resources/assets/fonts/My Epic Selfie.ttf"
   },
-  "resources/assets/fonts/Fira_Code_v6.2/woff2/FiraCode-Medium.woff2": {
-    "file": "assets/FiraCode-Medium.0e04bafb.woff2",
-    "src": "resources/assets/fonts/Fira_Code_v6.2/woff2/FiraCode-Medium.woff2"
+  "resources/assets/fonts/font-mfizz.ttf": {
+    "file": "assets/font-mfizz.c945ce32.ttf",
+    "src": "resources/assets/fonts/font-mfizz.ttf"
   },
   "resources/assets/fonts/Fira_Code_v6.2/woff2/FiraCode-Regular.woff2": {
     "file": "assets/FiraCode-Regular.a6ce5952.woff2",
     "src": "resources/assets/fonts/Fira_Code_v6.2/woff2/FiraCode-Regular.woff2"
+  },
+  "resources/assets/fonts/Fira_Code_v6.2/woff2/FiraCode-Medium.woff2": {
+    "file": "assets/FiraCode-Medium.0e04bafb.woff2",
+    "src": "resources/assets/fonts/Fira_Code_v6.2/woff2/FiraCode-Medium.woff2"
   },
   "resources/template/assets/fonts/simple-line-icons/Simple-Line-Icons.ttf": {
     "file": "assets/Simple-Line-Icons.3f501ddb.ttf",
@@ -211,21 +211,21 @@
     "file": "assets/devicon.34c21608.svg",
     "src": "resources/assets/fonts/devicon.svg"
   },
-  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2": {
-    "file": "assets/fa-regular-400.2bccecf0.woff2",
-    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"
-  },
   "node_modules/owl.carousel/dist/assets/owl.video.play.png": {
     "file": "assets/owl.video.play.04360456.png",
     "src": "node_modules/owl.carousel/dist/assets/owl.video.play.png"
   },
-  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2": {
-    "file": "assets/fa-brands-400.3a8924cd.woff2",
-    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"
-  },
   "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2": {
     "file": "assets/fa-solid-900.9fc85f3a.woff2",
     "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2": {
+    "file": "assets/fa-regular-400.2bccecf0.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2": {
+    "file": "assets/fa-brands-400.3a8924cd.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"
   },
   "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.woff2": {
     "file": "assets/fa-v4compatibility.4d4a2d7f.woff2",
@@ -235,17 +235,17 @@
     "file": "assets/fa-regular-400.5d02dc9b.ttf",
     "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"
   },
-  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.ttf": {
-    "file": "assets/fa-v4compatibility.09663a36.ttf",
-    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.ttf"
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf": {
+    "file": "assets/fa-solid-900.fbbf06d7.ttf",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"
   },
   "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf": {
     "file": "assets/fa-brands-400.5656d596.ttf",
     "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"
   },
-  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf": {
-    "file": "assets/fa-solid-900.fbbf06d7.ttf",
-    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.ttf": {
+    "file": "assets/fa-v4compatibility.09663a36.ttf",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.ttf"
   },
   "node_modules/devicon/fonts/devicon.svg": {
     "file": "assets/devicon.82027410.svg",
@@ -316,14 +316,14 @@
     "src": "resources/sass/app.sass",
     "isEntry": true
   },
-  "resources/template/sass/main.scss": {
-    "file": "assets/main.033dc674.css",
-    "src": "resources/template/sass/main.scss",
-    "isEntry": true
-  },
   "resources/sass/externals.sass": {
     "file": "assets/externals.ca5cc611.css",
     "src": "resources/sass/externals.sass",
+    "isEntry": true
+  },
+  "resources/template/sass/main.scss": {
+    "file": "assets/main.033dc674.css",
+    "src": "resources/template/sass/main.scss",
     "isEntry": true
   },
   "resources/assets/fonts/devicon.ttf": {
