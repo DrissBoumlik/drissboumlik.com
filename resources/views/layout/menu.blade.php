@@ -24,8 +24,7 @@
             <div class="header-menu-wrapper login-menu-items flex-grow-2">
                 <ul class="header-menu list-group list-group-horizontal">
                     <li class="header-menu-item menu-item list-group-item animated-underline">
-                        <a href="/admin" rel="noopener" target="_blank"
-                           aria-label="Admin Panel">
+                        <a href="/admin" rel="noopener" aria-label="Admin Panel">
                             <i class="fa-solid fa-gear"></i>
                         </a>
                     </li>
