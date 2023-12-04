@@ -6,12 +6,13 @@ export default defineConfig({
     plugins: [
         viteStaticCopy({
             targets: [
-                { src: 'resources/plugins/chartjs/*', dest: 'public/plugins/chartjs' },
-                { src: 'resources/plugins/jquery/*', dest: 'public/plugins/jquery' },
-                { src: 'resources/plugins/moment-js/*', dest: 'public/plugins/moment-js' },
-                { src: 'resources/plugins/particles/*', dest: 'public/plugins/particles' },
-                { src: 'resources/plugins/prismjs/*', dest: 'public/plugins/prismjs' },
-                { src: 'resources/plugins/tinymce/*', dest: 'public/plugins/tinymce' },
+                { src: 'resources/plugins/chartjs/*', dest: '../plugins/chartjs' },
+                { src: 'resources/plugins/jquery/*', dest: '../plugins/jquery' },
+                { src: 'resources/plugins/moment-js/*', dest: '../plugins/moment-js' },
+                { src: 'resources/plugins/particles/*', dest: '../plugins/particles' },
+                { src: 'resources/plugins/prismjs/*', dest: '../plugins/prismjs' },
+                { src: 'resources/plugins/tinymce/*', dest: '../plugins/tinymce' },
+                { src: 'resources/assets/fontawesome/webfonts/*', dest: 'webfonts' },
             ]
         }),
         laravel({
