@@ -17,7 +17,7 @@
     <script src="{{ asset('/template/assets/js/plugins/flatpickr/flatpickr.min.js') }}"></script>
 
 {{--    <script src="/template/assets/js/plugins/simplemde/simplemde.min.js"></script>--}}
-    @vite(['resources/plugins/tinymce/tinymce.min.js'])
+    <script src="{{ asset('/plugins/tinymce/tinymce.min.js') }}"></script>
 @endsection
 
 @section('content')
