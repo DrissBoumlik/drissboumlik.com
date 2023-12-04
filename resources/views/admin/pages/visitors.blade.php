@@ -2,17 +2,17 @@
 
 @section('css')
     <!-- Page JS Plugins CSS -->
-    <link href="/template/assets/js/plugins/datatables-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <link href="{{ asset('/template/assets/js/plugins/datatables-bs5/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
 @endsection
 
 @section('js')
     <!-- Page JS Plugins -->
-    <script src="/plugins/chartjs/chart.umd.js"></script>
-    <script src="/plugins/chartjs/hammerjs@2.0.8.js"></script>
-    <script src="/plugins/chartjs/chartjs-plugin-zoom.min.js"></script>
+    <script src="{{ asset('/plugins/chartjs/chart.umd.js') }}"></script>
+    <script src="{{ asset('/plugins/chartjs/hammerjs@2.0.8.js') }}"></script>
+    <script src="{{ asset('/plugins/chartjs/chartjs-plugin-zoom.min.js') }}"></script>
     <script src="{{ asset('/plugins/moment-js/moment.js') }}"></script>
-    <script src="/template/assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="/template/assets/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="{{ asset('/template/assets/js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('/template/assets/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
 @endsection
 
 @section('content')
