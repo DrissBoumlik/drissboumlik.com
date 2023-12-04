@@ -1,11 +1,5 @@
 @extends('admin.template.backend')
 
-@section('css')
-
-@endsection
-@section('js')
-
-@endsection
 
 @section('content')
     <!-- Hero -->
