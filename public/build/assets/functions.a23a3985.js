@@ -1,1 +1,0 @@
-function m(o,d){var e=new Date;e.setTime(e.getTime()+365*24*60*60*1e3);var r="expires="+e.toUTCString();document.cookie=o+"="+d+";"+r+";path=/"}function t(o,d,e){o.hasClass(d.lightmode)?(o.addClass(d.darkmode).removeClass(d.lightmode),m(e.name,e.darkmodeValue)):(o.removeClass(d.darkmode).addClass(d.lightmode),m(e.name,e.lightmodeValue))}export{t};
