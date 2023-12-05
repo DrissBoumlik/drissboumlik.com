@@ -2,17 +2,12 @@
 
 @section('css')
     <!-- Page JS Plugins CSS -->
-    <link href="{{ asset('/template/assets/js/plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/template/assets/js/plugins/datatables-bs5/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
 @endsection
 
 @section('js')
     <!-- Page JS Plugins -->
-    <script src="{{ asset('/plugins/chartjs/chart.umd.js') }}"></script>
-    <script src="{{ asset('/plugins/chartjs/hammerjs@2.0.8.js') }}"></script>
-    <script src="{{ asset('/plugins/chartjs/chartjs-plugin-zoom.min.js') }}"></script>
     <script src="{{ asset('/plugins/moment-js/moment.js') }}"></script>
-    <script src="{{ asset('/template/assets/js/plugins/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('/template/assets/js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('/template/assets/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
 @endsection
@@ -54,44 +49,6 @@
                 </div>
             </div>
             <div class="block-content block-content-full">
-                <div class="container-fluid charts mt-5">
-                    <div class="row chart-section">
-                        <h3>Stats by Field</h3>
-                        <div class="column-selection col-6">
-                            <label class="form-label" for="columns-list">Select column</label>
-                            <select class="form-select js-select2" name="columns-list" id="columns-list"></select>
-                        </div>
-                        <div class="page-selection col-6">
-                            <label class="form-label" for="pages-list">Select Page</label>
-                            <select class="form-select js-select2" name="pages-list" id="pages-list"></select>
-                        </div>
-                        <div class="col-12 mt-4">
-                            <canvas id="myChart"></canvas>
-                        </div>
-                    </div>
-                    <div class="row chart-section">
-                        <h3>Stats by Year</h3>
-                        <div class="column-selection col-6">
-                            <label class="form-label" for="columns-list2">Select column</label>
-                            <select class="form-select js-select2" name="columns-list2" id="columns-list2"></select>
-                        </div>
-                        <div class="year-selection col-6">
-                            <label class="form-label" for="years-list2">Select Year</label>
-                            <select class="form-select js-select2" name="years-list2" id="years-list2">
-                                <option value="2022">2022</option>
-                                <option value="2023" selected>2023</option>
-                                <option value="2024">2024</option>
-                            </select>
-                        </div>
-                        <div class="page-selection col-6 mt-3">
-                            <label class="form-label" for="pages-list2">Select Page</label>
-                            <select class="form-select js-select2" name="pages-list2" id="pages-list2"></select>
-                        </div>
-                        <div class="col-12 mt-4">
-                            <canvas id="myChart2"></canvas>
-                        </div>
-                    </div>
-                </div>
                 <div class="table-responsive mt-5">
                     <!-- DataTables init on table by adding .js-dataTable-responsive class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
                     <table id="visitors" class="visitors table table-bordered table-striped table-vcenter js-dataTable-responsive"></table>

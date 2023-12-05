@@ -91,6 +91,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::get('/messages', [MessageController::class, 'index']);
 
             Route::get('/visitors', [VisitorController::class, 'index']);
+            Route::get('/visitors/charts', [VisitorController::class, 'charts']);
 
             Route::get('/generate-sitemap', [SitemapController::class, 'generateSitemap']);
             Route::get('/export-db', [ToolController::class , 'export_db']);

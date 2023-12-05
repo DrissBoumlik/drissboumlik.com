@@ -1,6 +1,9 @@
 import {getDomClass, shortenTextIfLongByLength} from "../admin/functions";
 
 function initChart() {
+    if ($('.charts').length === 0) {
+        return;
+    }
     let defaultValue = 'countryName';
     initChartByField(defaultValue);
     initChartByYearEvents(defaultValue);

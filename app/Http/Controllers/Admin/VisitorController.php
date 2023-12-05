@@ -13,4 +13,11 @@ class VisitorController extends Controller
         $data->title = 'Visitors | Admin Panel';
         return view('admin.pages.visitors', ['data' => $data]);
     }
+
+    public function charts(Request $request)
+    {
+        $data = new \stdClass();
+        $data->title = 'Charts | Visitors | Admin Panel';
+        return view('admin.pages.charts', ['data' => $data]);
+    }
 }

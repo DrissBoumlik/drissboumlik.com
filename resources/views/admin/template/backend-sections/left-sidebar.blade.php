@@ -80,6 +80,12 @@
                     </a>
                 </li>
                 <li class="nav-main-item">
+                    <a class="nav-main-link{{ request()->is('admin/visitors/charts') ? ' active' : '' }}" href="/admin/visitors/charts">
+                        <i class="nav-main-link-icon fa fa-fw fa-chart-simple"></i>
+                        <span class="nav-main-link-name">Visitors charts</span>
+                    </a>
+                </li>
+                <li class="nav-main-item">
                     <a class="nav-main-link{{ request()->is('admin/messages') ? ' active' : '' }}" href="/admin/messages">
                         <i class="nav-main-link-icon fa fa-fw fa-envelope"></i>
                         <span class="nav-main-link-name">Messages</span>
