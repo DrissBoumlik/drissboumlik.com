@@ -1,5 +1,6 @@
 // import 'bootstrap';
 import { toggleDarkMode } from "../shared/functions";
+import { initSelect2 } from "../shared/plugins-use";
 
 function string_to_slug(str) {
     str = str.replace(/^\s+|\s+$/g, ''); // trim
@@ -35,6 +36,10 @@ function initDarkMode() {
 function initEvents() {
     $.ajaxSetup({
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+    });
+
+    $(document).on('ajaxComplete', function(event,xhr,options) {
+        try { initSelect2(); } catch (e) {}
     });
 
     One.helpersOnLoad('js-flatpickr');

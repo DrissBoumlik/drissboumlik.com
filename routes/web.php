@@ -47,7 +47,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
         });
         Route::post('/get-in-touch', [ContactController::class, 'getInTouch']);
         Route::get('/{table}/columns', [ToolController::class, 'getTableColumns']);
-        Route::get('/stats/{table}/{column}', [ToolController::class, 'getTableColumnStats']);
+        Route::post('/stats', [ToolController::class, 'getTableColumnStats']);
     });
 
     Route::prefix('admin')->group(function () {

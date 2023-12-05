@@ -30,8 +30,19 @@ class ToolController extends Controller
         return \DB::getSchemaBuilder()->getColumnListing($table);
     }
 
-    public function getTableColumnStats(Request $request, $table, $column)
+    public function getTableColumnStats(Request $request)
     {
+        $table = $request->get('table');
+        $column = $request->get('column');
+        $year = $request->get('year');
+        if ($year) {
+            return \DB::table($table)
+                ->select($column, \DB::raw("month(updated_at) as month"), \DB::raw("count($column) as visits"))
+                ->whereYear('updated_at', $year)
+                ->orderby('visits', 'desc')
+                ->groupBy($column, 'month')->paginate(20);
+        }
+
         return \DB::table($table)
             ->select($column, \DB::raw("count($column) as visits"))
             ->orderby('visits', 'desc')

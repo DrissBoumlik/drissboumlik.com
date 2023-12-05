@@ -7,7 +7,7 @@ $(function () {
 
         initDarkMode();
         initPostEditor();
-        initSelect2();
+        try { initSelect2(); } catch (e) {}
         initEvents();
         initDatatable();
         initChart();

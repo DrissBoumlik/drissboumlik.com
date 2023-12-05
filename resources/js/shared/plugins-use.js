@@ -1,6 +1,98 @@
-import {shortenTextIfLongByLength, getDomClass} from "../admin/functions";
+import {getDomClass, shortenTextIfLongByLength} from "../admin/functions";
 
 function initChart() {
+    let defaultValue = 'countryName';
+    initChartByField(defaultValue);
+    initChartByYearEvents(defaultValue);
+}
+
+function initChartByYearEvents(defaultValue = 'countryName') {
+    const ctx = document.getElementById('myChart2');
+    if (ctx === null) {
+        return;
+    }
+    let columnsList2 = $('#columns-list2')
+    let pagesList2 = $('#pages-list2');
+    let yearsList = $('#years-list2');
+    let params = {
+        columnSelected: defaultValue,
+        pagesList: pagesList2,
+        visitsChart: null,
+        ctx,
+        page: 1,
+        yearSelected: moment().year()
+    };
+    initChartByYear(params);
+    columnsList2.on('change', function() {
+        params.columnSelected = columnsList2.val();
+        params.page = 1;
+        params.yearSelected = yearsList.val();
+        initChartByYear(params);
+    });
+    yearsList.on('change', function() {
+        params.columnSelected = columnsList2.val();
+        params.page = 1;
+        params.yearSelected = yearsList.val();
+        initChartByYear(params);
+    });
+    pagesList2.on('change', function() {
+        params.columnSelected = columnsList2.val();
+        params.page = pagesList2.val();
+        params.yearSelected = yearsList.val();
+        initChartByYear(params);
+    });
+}
+
+function initChartByYear(params) {
+    $.ajax({
+        type: 'POST',
+        url: `/api/stats?page=${params.page}`,
+        data: {table: 'visitors', column: params.columnSelected, year: params.yearSelected},
+        success: function(response) {
+            if (params.page === 1) {
+                let html = '';
+                for (let i = 1; i <= response.last_page; i++) {
+                    html += `<option value="${i}">Page ${i}</option>`;
+                }
+                params.pagesList.html(html);
+            }
+            let _labels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+            let _datasets = [];
+            if (response.data.length === 0) {
+                _datasets.push({
+                    label: 'NO DATA FOUND',
+                    data: null,
+                    borderWidth: 1
+                });
+            } else {
+                let monthsData = Object.groupBy(response.data, (item) => item[params.columnSelected]);
+                for (let key in monthsData) {
+                    let dataTmp = monthsData[key];
+                    if (dataTmp) {
+                        let _data = [];
+                        let labels_tmp = [..._labels];
+                        monthsData[key].forEach(function (a) {
+                            _data[a.month - 1] = a.visits;
+                            delete labels_tmp[a.month - 1];
+                        });
+                        labels_tmp.forEach(function (k, i) {
+                            _data[i] = 0;
+                        })
+                        _datasets.push({
+                            label: key,
+                            data: _data,
+                            borderWidth: 1
+                        });
+                    }
+                }
+            }
+
+            if (params.visitsChart) { params.visitsChart.destroy(); }
+            params.visitsChart = makeChart({ctx: params.ctx, labels: _labels, datasets: _datasets, title: `Visits of ${params.yearSelected}`});
+        }
+    });
+}
+function initChartByField(defaultValue = 'countryName') {
     const ctx = document.getElementById('myChart');
     if (ctx === null) {
         return;
@@ -11,25 +103,24 @@ function initChart() {
         success: function(response) {
             let html = '';
             response.forEach(function(k,i) {
-                html += `<option value="${k}" ${k === 'countryName' ? 'selected' : ''}>${k}</option>`;
+                html += `<option value="${k}" ${k === defaultValue ? 'selected' : ''}>${k}</option>`;
             });
             let columnsList = $('#columns-list')
+            let columnsList2 = $('#columns-list2')
             let pagesList = $('#pages-list');
             columnsList.html(html);
-            let params = {columnSelected: 'countryName', pagesList, visitsChart: null, ctx, page: 1};
+            columnsList2.html(html);
+            let params = {columnSelected: defaultValue, pagesList, visitsChart: null, ctx, page: 1};
             getColumnStats(params);
             columnsList.on('change', function() {
-                let columnSelected = $("option:selected", this).val();
-                params.columnSelected = columnSelected;
+                params.columnSelected = columnsList.val();
                 params.page = 1;
                 getColumnStats(params);
             });
 
             pagesList.on('change', function() {
-                let columnSelected = columnsList.val();
-                let pageSelected = $("option:selected", this).val();
-                params.columnSelected = columnSelected;
-                params.page = pageSelected;
+                params.columnSelected = columnsList.val();
+                params.page = pagesList.val();
                 getColumnStats(params);
             });
         }
@@ -38,8 +129,9 @@ function initChart() {
 
 function getColumnStats(params) {
     $.ajax({
-        type: 'GET',
-        url: `/api/stats/visitors/${params.columnSelected}?page=${params.page}`,
+        type: 'POST',
+        url: `/api/stats?page=${params.page}`,
+        data: {table: 'visitors', column: params.columnSelected},
         success: function(response) {
 
             if (params.page === 1) {
@@ -54,38 +146,48 @@ function getColumnStats(params) {
             let _labels = responseData.map(a => a[params.columnSelected]);
             let _data = responseData.map(a => a.visits);
             if (params.visitsChart) { params.visitsChart.destroy(); }
-            params.visitsChart = new Chart(params.ctx, {
-                type: 'bar',
-                data: {
-                    labels: _labels,
-                    datasets: [{
-                        label: `Number of visits by ${params.columnSelected}`,
-                        data: _data,
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    plugins: {
-                        zoom: {
-                            zoom: {
-                                drag: {
-                                    enabled: true,
-                                },
-                                wheel: {
-                                    enabled: true,
-                                },
-                                pinch: {
-                                    enabled: true
-                                },
-                                mode: 'xy',
-                            }
-                        }
-                    }
-                }
-            });
+
+            params.visitsChart = makeChart({ctx: params.ctx, title: `Visits by ${params.columnSelected}`, labels: _labels, datasets: [{
+                    label: `Visits nb by ${params.columnSelected}`,
+                    data: _data,
+                    borderWidth: 1
+                }]});
         }
     });
 }
+
+function makeChart(params) {
+    return new Chart(params.ctx, {
+        type: 'bar',
+        data: {
+            labels: params.labels,
+            datasets: params.datasets
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: params.title
+                },
+                zoom: {
+                    zoom: {
+                        drag: {
+                            enabled: true,
+                        },
+                        wheel: {
+                            enabled: true,
+                        },
+                        pinch: {
+                            enabled: true
+                        },
+                        mode: 'x',
+                    }
+                }
+            }
+        }
+    });
+}
+
 
 function initPostEditor() {
     if ($('#post_body').length == 0) return;
