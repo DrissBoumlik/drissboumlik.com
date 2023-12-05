@@ -4,7 +4,7 @@ import { toggleDarkMode } from "./shared/functions";
 import particlesJson from '../plugins/particles/particles.min.json';
 
 function initTooltip() {
-    $('[data-toggle="tooltip"]').tooltip();
+    jQuery('[data-toggle="tooltip"]').tooltip();
 }
 function drawText() {
     let text = `

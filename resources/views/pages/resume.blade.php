@@ -1,5 +1,9 @@
 @extends('layout.page-content-wide', ['px_0' => 'px-0', 'py_0' => 'py-0'])
 
+@section('pre-header-assets')
+    <script src="{{ asset('/plugins/jquery/jquery-3.7.1.slim.js') }}"></script>
+@endsection
+
 @section('headline')
     <div class="d-flex flex-column align-items-center justify-content-center">
         <h1 class="header-txt">{!! $data->headline !!}</h1>
