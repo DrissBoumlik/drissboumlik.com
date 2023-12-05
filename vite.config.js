@@ -19,6 +19,7 @@ export default defineConfig({
             input: [
                 'resources/sass/app.sass',
                 'resources/sass/externals.sass',
+                'resources/sass/admin/app.sass',
                 'resources/template/sass/main.scss',
                 'resources/js/admin/app.js',
                 'resources/js/app.js',

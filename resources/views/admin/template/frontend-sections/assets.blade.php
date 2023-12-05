@@ -10,6 +10,7 @@
 <!-- OneUI framework -->
 @yield('css')
 @vite(['resources/sass/externals.sass'])
+@vite(['resources/sass/admin/app.sass'])
 @vite(['resources/template/sass/main.scss'])
 {{-- <link rel="stylesheet" id="css-main" href="/template/assets/css/oneui.min.css"> --}}
 
