@@ -40,7 +40,7 @@
                                 </div>
                             </div>
                             <div class="form-outline mb-0">
-                                <button type="submit" class="btn btn-primary" id="log">Login</button>
+                                <button type="submit" class="btn tc-blue-dark-2-bg tc-blue-bg-hover w-100" id="log">Login</button>
                             </div>
                         </form>
                     </div>

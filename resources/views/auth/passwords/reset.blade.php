@@ -42,7 +42,7 @@
                             @enderror
                         </div>
                         <div class="form-outline mb-0">
-                            <button type="submit" class="btn btn-primary">Reset Password</button>
+                            <button type="submit" class="btn tc-blue-dark-2-bg tc-blue-bg-hover w-100">Reset Password</button>
                         </div>
                     </form>
                 </div>

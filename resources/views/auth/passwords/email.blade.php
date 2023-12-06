@@ -25,7 +25,7 @@
                                 @enderror
                             </div>
                             <div class="form-outline mb-0">
-                                <button type="submit" class="btn btn-primary">Send Password Reset Link</button>
+                                <button type="submit" class="btn tc-blue-dark-2-bg tc-blue-bg-hover w-100">Send Password Reset Link</button>
                             </div>
                         </form>
                     </div>
