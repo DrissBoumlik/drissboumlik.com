@@ -195,14 +195,14 @@ if (!function_exists('getPassion')) {
     }
 }
 
-if (!function_exists('getOtherExperiences')) {
-    function getOtherExperiences($withHidden = false)
+if (!function_exists('getNonITExperiences')) {
+    function getNonITExperiences($withHidden = false)
     {
-        $other_exp = json_decode(\File::get(base_path() . "/database/data/resume/other_exp.json"));
+        $non_it_experiences = json_decode(\File::get(base_path() . "/database/data/resume/non-it-experiences.json"));
         if (!$withHidden) {
-            $other_exp->items = filterHiddenItems($other_exp->items);
+            $non_it_experiences->items = filterHiddenItems($non_it_experiences->items);
         }
-        return $other_exp;
+        return $non_it_experiences;
     }
 }
 

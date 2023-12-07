@@ -24,7 +24,7 @@ class PageController extends Controller
         $data->sections['work'] = getWork(onlyFeatured: true);
         // $data->sections['certificates'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/certificates.json"));
         $data->sections['passion'] = getPassion();
-        $data->sections['other_exp'] = getOtherExperiences();
+        $data->sections['non_it_experiences'] = getNonITExperiences();
         $data->sections['testimonials'] = getTestimonials();
 		$data->sections['testimonials']->items = collect($data->sections['testimonials']->items)->shuffle()->all();
         $data->sections['experiences']->items = array_map(function($item) {

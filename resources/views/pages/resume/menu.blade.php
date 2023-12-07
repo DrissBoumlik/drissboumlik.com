@@ -21,8 +21,8 @@
         <li class="list-group-item" title="Passion" data-toggle="tooltip" data-placement="left">
             <a href="#passion"><i class="fa-solid fa-plug-circle-check"></i></a>
         </li>
-        <li class="list-group-item" title="Other Experiences" data-toggle="tooltip" data-placement="left">
-            <a href="#other-experiences"><i class="fa-solid fa-person-digging"></i></a>
+        <li class="list-group-item" title="Non-IT Experiences" data-toggle="tooltip" data-placement="left">
+            <a href="#non-it-experiences"><i class="fa-solid fa-person-digging"></i></a>
         </li>
         <li class="list-group-item" title="Testimonials" data-toggle="tooltip" data-placement="left">
             <a href="#testimonials"><i class="fa-solid fa-comments"></i></a>
