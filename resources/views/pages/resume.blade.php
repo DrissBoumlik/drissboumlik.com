@@ -14,7 +14,7 @@
     <div class="container-fluid p-0">
         <div class="sections">
             @foreach ($data->sections as $key => $section)
-                <div class="{{ $key }} section">
+                <div class="{{ $key }} section py-5">
                     @include("pages.shared.$key", [$key => $section])
                 </div>
             @endforeach

@@ -10,25 +10,25 @@
     <div class="container-fluid p-0">
         @include('pages.shared.about-me', ['socialLinks' => $data->socialLinks])
         <div class="sections">
-            <div class="section">
+            <div class="section py-5">
                 @include('pages.shared.services', ['services' => $data->sections['services']])
             </div>
-            <div class="section">
+            <div class="section py-5">
                 @include('pages.shared.work', ['work' => $data->sections['work']])
             </div>
-            <div class="section">
+            <div class="section py-5">
                 @include('pages.shared.techs', ['techs' => $data->sections['techs']])
             </div>
             {{--            <div class="section">--}}
             {{--                @include('pages.home.sections.posts')--}}
             {{--            </div>--}}
-            <div class="section">
+            <div class="section py-5">
                 @include('pages.shared.community', ['socialLinks' => $data->socialLinksCommunity])
             </div>
-            <div class="section">
+            <div class="section py-5">
                 @include('pages.shared.testimonials', ['testimonials' => $data->sections['testimonials']])
             </div>
-            <div class="section">
+            <div class="section py-5">
                 @include('pages.shared.get-in-touch')
             </div>
         </div>
