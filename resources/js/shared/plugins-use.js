@@ -59,7 +59,6 @@ function initChartByYear(params) {
                 }
                 params.pagesList.html(html);
             }
-            let _labels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
             let _datasets = [];
             if (response.data.length === 0) {
                 _datasets.push({
@@ -73,7 +72,7 @@ function initChartByYear(params) {
                     let dataTmp = monthsData[key];
                     if (dataTmp) {
                         let _data = [];
-                        let labels_tmp = [..._labels];
+                        let labels_tmp = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
                         monthsData[key].forEach(function (a) {
                             _data[a.month - 1] = a.visits;
                             delete labels_tmp[a.month - 1];
@@ -91,6 +90,7 @@ function initChartByYear(params) {
             }
 
             if (params.visitsChart) { params.visitsChart.destroy(); }
+            let _labels =["January","February","March","April","May","June","July", "August","September","October","November","December"];
             params.visitsChart = makeChart({ctx: params.ctx, labels: _labels, datasets: _datasets, title: `Visits of ${params.yearSelected}`});
         }
     });
