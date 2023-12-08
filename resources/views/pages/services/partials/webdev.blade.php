@@ -24,7 +24,7 @@
                         <p>Our collaboration doesn't end at launch. I provide ongoing support to address any issues,
                             implement updates, and ensure your website continues to perform at its best.</p>
 
-                        <p>Let's embark on a journey to elevate your digital presence. <a href="/contact">Contact</a> me today, and let's
+                        <p>Let's embark on a journey to elevate your digital presence. Checkout my <a href="/work">work</a> & <a href="/contact">Contact</a> me today, and let's
                             discuss how my web development expertise can bring your vision to the online world.</p>
                     </div>
                 </div>

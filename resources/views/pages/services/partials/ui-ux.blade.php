@@ -15,7 +15,8 @@
                             I do believe in collaboration, working closely with you to understand your goals,
                             ask many questions, gather feedback, ensuring the final product aligns seamlessly with your vision</p>
                         <p>Let's collaborate to turn your ideas into a visually stunning and user-friendly reality.
-                             <a href="/contact">Contact</a> me today to discuss how my UI/UX design services can elevate your digital presence.</p>
+                            Checkout my <a href="https://codepen.com/drissboumlik" target="_blank">codepen</a>, <a href="/work">work</a> &
+                            <a href="/contact">Contact</a> me today to discuss how my UI/UX design services can elevate your digital presence.</p>
                     </div>
                 </div>
             </div>
