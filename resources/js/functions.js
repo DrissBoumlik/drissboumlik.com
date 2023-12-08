@@ -1,10 +1,14 @@
-import 'bootstrap';
+import * as bootstrap from 'bootstrap';
 import $ from 'jquery';
+window.$ = window.jQuery = $;
 import { toggleDarkMode } from "./shared/functions";
 import particlesJson from '../plugins/particles/particles.min.json';
 
 function initTooltip() {
-    jQuery('[data-toggle="tooltip"]').tooltip();
+    let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
 }
 function drawText() {
     let text = `

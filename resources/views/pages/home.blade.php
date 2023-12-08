@@ -1,7 +1,6 @@
 @extends('layout.app')
 
 @section('post-header-assets')
-    <script src="{{ asset('/plugins/jquery/jquery-3.7.1.slim.js') }}"></script>
     @vite(['resources/js/pages/code-animation.js', 'resources/js/pages/contact.js'])
 @endsection
 
