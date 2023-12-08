@@ -230,6 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'HTMLMin' => HTMLMin\HTMLMin\Facades\HTMLMin::class,
+        'Vite' => Illuminate\Support\Facades\Vite::class,
     ],
 
 ];
