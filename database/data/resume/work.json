@@ -2,23 +2,25 @@
     "header" : "work",
     "items" : [
         {
-            "image": "circet-gestion-ie.webp",
-            "content": "<p><span class='underline'>Full Stack</span><br>Laravel | Ajax | Sass | Bootstrap</p>",
-            "name": "Tasks management system",
-            "description": "a management system for organizing, tracking, and prioritizing call center agents tasks.",
+            "image": "grinta.webp",
+            "content": "<p><span class='underline'>Full Stack</span><br>Laravel | Angular</p>",
+            "name": "Grintaaa",
+            "description": "a social network for athletes.",
+            "featured": true,
             "links": {
                 "repository": null,
-                "website": "https://projects.drissboumlik.com/gestion-ie/public"
+                "website": "https://drissboumlik.github.io/grinta-front/"
             }
         },
         {
-            "image": "circet-gestion-ca.webp",
-            "content": "<p><span class='underline'>Full Stack</span><br>Laravel | Ajax | Sass | Bootstrap</p>",
-            "name": "Production Statistics Management System",
-            "description": "a system for collecting, analyzing, and managing data related to the production processes for call center agents.",
+            "image": "webapp.jpg",
+            "content": "<p><span class='underline'>Back End</span><br>Laravel</p>",
+            "name": "Attaissir",
+            "description": "digitization of the aggregate-aggregate relationship and the automation of agricultural processes.",
+            "featured": true,
             "links": {
                 "repository": null,
-                "website": "https://projects.drissboumlik.com/gestion-ca/public"
+                "website": "https://agrigestion.attaissir.com/"
             }
         },
         {
@@ -29,27 +31,6 @@
             "links": {
                 "repository": "https://github.com/teacodema",
                 "website": "https://community.drissboumlik.com"
-            }
-        },
-        {
-            "image": "teabot.webp",
-            "content": "<p><span class='underline'>Full Stack</span><br>Laravel | Ajax | Sass | Bootstrap</p>",
-            "name": "TeaBot",
-            "description": "a discord bot made with python to help and monitor the TeaCode community.",
-            "links": {
-                "repository": "https://github.com/teacodema/teabot-py",
-                "website": null
-            }
-        },
-        {
-            "image": "grinta.webp",
-            "content": "<p><span class='underline'>Full Stack</span><br>Laravel | Angular</p>",
-            "name": "Grintaaa",
-            "description": "a social network for athletes.",
-            "featured": true,
-            "links": {
-                "repository": null,
-                "website": "https://drissboumlik.github.io/grinta-front/"
             }
         },
         {
@@ -74,6 +55,16 @@
             }
         },
         {
+            "image": "teabot.webp",
+            "content": "<p><span class='underline'>Full Stack</span><br>Laravel | Ajax | Sass | Bootstrap</p>",
+            "name": "TeaBot",
+            "description": "a discord bot made with python to help and monitor the TeaCode community.",
+            "links": {
+                "repository": "https://github.com/teacodema/teabot-py",
+                "website": null
+            }
+        },
+        {
             "image": "fm6oa.webp",
             "content": "<p><span class='underline'>CMS</span><br>Wordpress | Bootstrap | jQuery </p>",
             "name": "Mohammed VI Foundation of African scholars",
@@ -81,6 +72,26 @@
             "links": {
                 "repository": null,
                 "website": "http://fm6oa.org/en"
+            }
+        },
+        {
+            "image": "circet-gestion-ie.webp",
+            "content": "<p><span class='underline'>Full Stack</span><br>Laravel | Ajax | Sass | Bootstrap</p>",
+            "name": "Tasks management system",
+            "description": "a management system for organizing, tracking, and prioritizing call center agents tasks.",
+            "links": {
+                "repository": null,
+                "website": "https://projects.drissboumlik.com/gestion-ie/public"
+            }
+        },
+        {
+            "image": "circet-gestion-ca.webp",
+            "content": "<p><span class='underline'>Full Stack</span><br>Laravel | Ajax | Sass | Bootstrap</p>",
+            "name": "Production Statistics Management System",
+            "description": "a system for collecting, analyzing, and managing data related to the production processes for call center agents.",
+            "links": {
+                "repository": null,
+                "website": "https://projects.drissboumlik.com/gestion-ca/public"
             }
         },
         {
@@ -110,17 +121,6 @@
                 "website": "http://rae.ma"
             },
             "hidden": true
-        },
-        {
-            "image": "webapp.jpg",
-            "content": "<p><span class='underline'>Back End</span><br>Laravel</p>",
-            "name": "Attaissir",
-            "description": "digitization of the aggregate-aggregate relationship and the automation of agricultural processes.",
-            "featured": true,
-            "links": {
-                "repository": null,
-                "website": "https://agrigestion.attaissir.com/"
-            }
         },
         {
             "image": "dirEx.webp",
