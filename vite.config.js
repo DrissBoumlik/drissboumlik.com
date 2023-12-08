@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 import laravel from 'laravel-vite-plugin';
+import purge from '@erbelion/vite-plugin-laravel-purgecss'
 
 export default defineConfig({
     plugins: [
@@ -12,7 +13,6 @@ export default defineConfig({
                 { src: 'resources/plugins/particles/*', dest: '../plugins/particles' },
                 { src: 'resources/plugins/prismjs/*', dest: '../plugins/prismjs' },
                 { src: 'resources/plugins/tinymce/*', dest: '../plugins/tinymce' },
-                { src: 'resources/assets/fontawesome/webfonts/*', dest: 'webfonts' },
             ]
         }),
         laravel({
@@ -29,5 +29,13 @@ export default defineConfig({
             ],
             refresh: true,
         }),
+        purge({
+            paths: [
+                'resources/views/**/*.blade.php',
+                'database/data/**/*.json',
+                'resources/js/**/*.js',
+                'node_modules/owl.carousel/dist/owl.carousel.min.js'
+            ]
+        })
     ],
 });
