@@ -43,14 +43,24 @@ function initEvents() {
     });
 
     $('.btn-export').on('click', function() {
-        let tablesNames = '';
-        document.querySelectorAll('#tables .table-item').forEach(function(e) {
-            if (e.checked) {
-                tablesNames += e.closest('tr').querySelector('.table-name').innerText + ' ';
-            }
-        });
-        tablesNames = tablesNames.trim();
-        window.open('/admin/export-db?tables='+tablesNames);
+        let tablesNames = null;
+        if (!$('#export-all-tables').prop('checked')) {
+            tablesNames = '';
+            document.querySelectorAll('#tables .table-item').forEach(function (e) {
+                if (e.checked) {
+                    tablesNames += e.closest('tr').querySelector('.table-name').innerText + ' ';
+                }
+            });
+            tablesNames = tablesNames.trim();
+        }
+        let dontCreateTables = $('#do-not-create-tables').prop('checked');
+        let queryString = `
+            ${tablesNames ? 'tables=' + tablesNames : ''}
+            &
+            ${dontCreateTables ? 'dontCreateTables=1' : ''}
+        `;
+        console.log(queryString.trim());
+        window.open('/admin/export-db?' + queryString);
     });
 
     One.helpersOnLoad('js-flatpickr');

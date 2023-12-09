@@ -9,6 +9,7 @@ class ToolController extends Controller
     public function export_db(Request $request)
     {
         $tables = $request->get('tables');
+        $dontCreateTables = $request->has('dontCreateTables');
         $now = date("Y-m-d_h-i");
         $db_name = env('DB_DATABASE');
         $filename = $db_name . "_exported_at_$now.sql";
@@ -21,6 +22,9 @@ class ToolController extends Controller
             ->setDbName($db_name)
             ->setUserName(env('DB_USERNAME'))
             ->setPassword(env('DB_PASSWORD'));
+        if ($dontCreateTables) {
+            $dumpDB = $dumpDB->doNotCreateTables();
+        }
         if ($tables) {
             $tables = explode(' ', $request->get('tables'));
             $dumpDB = $dumpDB->includeTables($tables);

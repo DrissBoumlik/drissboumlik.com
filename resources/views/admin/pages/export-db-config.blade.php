@@ -52,6 +52,18 @@
                 </div>
             </div>
             <div class="block-content block-content-full">
+                <div class="export-db-config">
+                    <div class="form-check form-block">
+                        <input class="form-check-input" type="checkbox" value="" id="do-not-create-tables" name="do-not-create-tables">
+                        <label class="form-check-label" for="do-not-create-tables">Don't create tables</label>
+                    </div>
+                    <div class="form-check form-block">
+                        <input class="form-check-input" type="checkbox" value="" id="export-all-tables" name="export-all-tables">
+                        <label class="form-check-label" for="export-all-tables">Export all tables</label>
+                    </div>
+                </div>
+            </div>
+            <div class="block-content block-content-full">
                 <div class="table-responsive">
                     <!-- DataTables init on table by adding .js-dataTable-responsive class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
                     <table id="tables" class="visitors table table-bordered table-striped table-vcenter js-dataTable-responsive">
