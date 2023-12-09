@@ -95,7 +95,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
 
             Route::get('/generate-sitemap', [SitemapController::class, 'generateSitemap']);
             Route::get('/export-db/config', [ToolController::class , 'exportDbConfig']);
-            Route::post('/export-db', [ToolController::class , 'export_db']);
+            Route::get('/export-db', [ToolController::class , 'export_db']);
         });
     });
 

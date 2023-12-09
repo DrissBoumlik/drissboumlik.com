@@ -22,6 +22,7 @@ class ToolController extends Controller
             ->setUserName(env('DB_USERNAME'))
             ->setPassword(env('DB_PASSWORD'));
         if ($tables) {
+            $tables = explode(' ', $request->get('tables'));
             $dumpDB = $dumpDB->includeTables($tables);
         }
         $dumpDB->dumpToFile($dumpPath);

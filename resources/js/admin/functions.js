@@ -43,23 +43,14 @@ function initEvents() {
     });
 
     $('.btn-export').on('click', function() {
-        let tablesNames = [];
+        let tablesNames = '';
         document.querySelectorAll('#tables .table-item').forEach(function(e) {
             if (e.checked) {
-                tablesNames.push(e.closest('tr').querySelector('.table-name').innerText);
+                tablesNames += e.closest('tr').querySelector('.table-name').innerText + ' ';
             }
         });
-        $.ajax({
-            type: 'POST',
-            url: '/admin/export-db',
-            data: {tables: tablesNames},
-            success: function(response) {
-                console.log(response);
-            },
-            error: function(jqXHR) {
-                console.log(jqXHR.responseJSON.message);
-            }
-        });
+        tablesNames = tablesNames.trim();
+        window.open('/admin/export-db?tables='+tablesNames);
     });
 
     One.helpersOnLoad('js-flatpickr');
