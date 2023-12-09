@@ -34,6 +34,7 @@ export default defineConfig({
                 'resources/views/**/*.blade.php',
                 'database/data/**/*.json',
                 'resources/js/**/*.js',
+                'resources/template/assets/js/oneui.app.min.js',
                 'node_modules/owl.carousel/dist/owl.carousel.min.js'
             ]
         })
