@@ -98,7 +98,7 @@
                     </a>
                 </li>
                 <li class="nav-main-item">
-                    <a class="nav-main-link{{ request()->is('admin/export-db') ? ' active' : '' }}" href="/admin/export-db" target="_blank">
+                    <a class="nav-main-link{{ request()->is('admin/export-db/config') ? ' active' : '' }}" href="/admin/export-db/config">
                         <i class="nav-main-link-icon fa fa-fw fa-database"></i>
                         <span class="nav-main-link-name">Export DB</span>
                     </a>

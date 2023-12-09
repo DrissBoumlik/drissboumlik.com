@@ -42,6 +42,26 @@ function initEvents() {
         try { initSelect2(); } catch (e) {}
     });
 
+    $('.btn-export').on('click', function() {
+        let tablesNames = [];
+        document.querySelectorAll('#tables .table-item').forEach(function(e) {
+            if (e.checked) {
+                tablesNames.push(e.closest('tr').querySelector('.table-name').innerText);
+            }
+        });
+        $.ajax({
+            type: 'POST',
+            url: '/admin/export-db',
+            data: {tables: tablesNames},
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(jqXHR) {
+                console.log(jqXHR.responseJSON.message);
+            }
+        });
+    });
+
     One.helpersOnLoad('js-flatpickr');
 
 
