@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="block-content block-content-full">
-                <div class="table-responsive mt-5">
+                <div class="table-responsive">
                     <!-- DataTables init on table by adding .js-dataTable-responsive class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
                     <table id="visitors" class="visitors table table-bordered table-striped table-vcenter js-dataTable-responsive"></table>
                 </div>
