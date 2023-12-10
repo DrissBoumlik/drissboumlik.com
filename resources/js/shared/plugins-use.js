@@ -255,12 +255,12 @@ function initDatatable() {
                         return `
                         <div class="btn-group">
                             <button type="button" class="btn btn-sm btn-outline-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
-                                <a href="/blog/${row.slug}" target="_blank" class="link-dark">
+                                <a href="/blog/${row.slug}" class="link-dark">
                                     <i class="fa fa-fw fa-eye"></i>
                                 </a>
                             </button>
                             <button type="button" class="btn btn-sm btn-outline-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
-                                <a href="/admin/posts/edit/${row.slug}" target="_blank" class="link-dark">
+                                <a href="/admin/posts/edit/${row.slug}" class="link-dark">
                                     <i class="fa fa-fw fa-pencil-alt"></i>
                                 </a>
                             </button>
@@ -323,12 +323,12 @@ function initDatatable() {
                         return `
                         <div class="btn-group">
                             <button type="button" class="btn btn-sm btn-outline-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
-                                <a href="/tags/${row.slug}" target="_blank" class="link-dark">
+                                <a href="/tags/${row.slug}" class="link-dark">
                                     <i class="fa fa-fw fa-eye"></i>
                                 </a>
                             </button>
                             <button type="button" class="btn btn-sm btn-outline-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
-                                <a href="/admin/tags/edit/${row.slug}" target="_blank" class="link-dark">
+                                <a href="/admin/tags/edit/${row.slug}" class="link-dark">
                                     <i class="fa fa-fw fa-pencil-alt"></i>
                                 </a>
                             </button>
