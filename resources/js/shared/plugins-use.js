@@ -288,20 +288,20 @@ function initDatatable() {
                 { data: 'published_at', name: 'published_at', title: 'Published @', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
                         let published_at_for_humans = moment(row.published_at).fromNow();
-                        let published_at_formatted = moment(row.published_at).format('Y-M-d hh:mm');
-                        return `<span title="${published_at_formatted}">${published_at_for_humans}</span>`;
+                        let published_at_formatted = moment(row.published_at).format('Y-M-D hh:mm');
+                        return `<span title="${published_at_formatted}">${published_at_for_humans}<br/>${published_at_formatted}</span>`;
                     }},
                 { data: 'created_at', name: 'created_at', title: 'Created @', clasxsName: 'text-center fs-sm',
                     render: function(data, type, row, params) {
                         let created_at_for_humans = moment(row.created_at).fromNow();
-                        let created_at_formatted = moment(row.created_at).format('Y-M-d hh:mm');
-                        return `<span title="${created_at_formatted}">${created_at_for_humans}</span>`;
+                        let created_at_formatted = moment(row.created_at).format('Y-M-D hh:mm');
+                        return `<span title="${created_at_formatted}">${created_at_for_humans}<br/>${created_at_formatted}</span>`;
                     }},
                 { data: 'updated_at', name: 'updated_at', title: 'Updated @', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
                         let updated_at_for_humans = moment(row.updated_at).fromNow();
-                        let updated_at_formatted = moment(row.updated_at).format('Y-M-d hh:mm');
-                        return `<span title="${updated_at_formatted}">${updated_at_for_humans}</span>`;
+                        let updated_at_formatted = moment(row.updated_at).format('Y-M-D hh:mm');
+                        return `<span title="${updated_at_formatted}">${updated_at_for_humans}<br/>${updated_at_formatted}</span>`;
                     }},
                 { data: 'deleted_at', name: 'deleted_at', title: 'Active', className: 'fs-sm',
                     render: function (data, type, row, params) {
@@ -348,8 +348,8 @@ function initDatatable() {
                 { data: 'created_at', name: 'created_at', title: 'created @', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
                         let created_at_for_humans = moment(row.created_at).fromNow();
-                        let created_at_formatted = moment(row.created_at).format('Y-M-d hh:mm');
-                        return `<span title="${created_at_formatted}">${created_at_for_humans}</span>`;
+                        let created_at_formatted = moment(row.created_at).format('Y-M-D hh:mm');
+                        return `<span title="${created_at_formatted}">${created_at_for_humans}<br/>${created_at_formatted}</span>`;
                 }},
                 { data: 'deleted_at', name: 'deleted_at', title: 'Active', className: 'fs-sm',
                     render: function (data, type, row, params) {
@@ -372,8 +372,8 @@ function initDatatable() {
                 { data: 'updated_at', name: 'updated_at', title: 'updated @', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
                         let updated_at_for_humans = moment(row.updated_at).fromNow();
-                        let updated_at_formatted = moment(row.updated_at).format('Y-M-d hh:mm');
-                        return `<span title="${updated_at_formatted}">${updated_at_for_humans}</span>`;
+                        let updated_at_formatted = moment(row.updated_at).format('Y-M-D hh:mm');
+                        return `<span title="${updated_at_formatted}">${updated_at_for_humans}<br/>${updated_at_formatted}</span>`;
                     }
                 },
                 { data: 'countryCode', name: 'countryCode', title: 'Country Code', className: 'fw-semibold fs-sm'},
@@ -423,8 +423,8 @@ function initDatatable() {
                 { data: 'created_at', name: 'created_at', title: 'created @', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
                         let created_at_for_humans = moment(row.created_at).fromNow();
-                        let created_at_formatted = moment(row.created_at).format('Y-M-d hh:mm');
-                        return `<span title="${created_at_formatted}">${created_at_for_humans}</span>`;
+                        let created_at_formatted = moment(row.created_at).format('Y-M-D hh:mm');
+                        return `<span title="${created_at_formatted}">${created_at_for_humans}<br/>${created_at_formatted}</span>`;
                     }
                 },
             ]
@@ -455,7 +455,7 @@ function initDatatable() {
                                 <label for="exampleFormControlInput1" class="form-label">Message : <br/>${data.body}</label>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Created @ : ${created_at.format('Y-M-d hh:mm')} / ${created_at.fromNow()}</label>
+                                <label for="exampleFormControlInput1" class="form-label">Created @ : ${created_at.format('Y-M-D hh:mm')} / ${created_at.fromNow()}</label>
                             </div>
                         </div>
                     </div>
