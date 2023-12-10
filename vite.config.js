@@ -4,6 +4,9 @@ import laravel from 'laravel-vite-plugin';
 import purge from '@erbelion/vite-plugin-laravel-purgecss'
 
 export default defineConfig({
+    css: {
+        devSourcemap: true
+    },
     plugins: [
         viteStaticCopy({
             targets: [
@@ -35,6 +38,9 @@ export default defineConfig({
                 'database/data/**/*.json',
                 'resources/js/**/*.js',
                 'resources/template/assets/js/oneui.app.min.js',
+                'resources/template/assets/js/plugins/datatables/jquery.dataTables.min.js',
+                'resources/template/assets/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js',
+                'resources/template/assets/js/plugins/select2/js/select2.full.min.js',
                 'node_modules/owl.carousel/dist/owl.carousel.min.js'
             ]
         })
