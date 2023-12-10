@@ -198,7 +198,7 @@ function initPostEditor() {
     let options = {
         selector: 'textarea#post_body',
         plugins: 'searchreplace autolink visualblocks visualchars media charmap nonbreaking anchor insertdatetime advlist wordcount help emoticons autosave code link table lists codesample image preview pagebreak',
-        toolbar: 'code codesample link image | undo redo | bold italic underline | pagebreak | alignleft aligncenter alignright alignjustify lineheight | indent outdent | bullist numlist | table | preview',
+        toolbar: 'code codesample link image pagebreak | undo redo restoredraft | bold italic underline | alignleft aligncenter alignright alignjustify lineheight indent outdent | bullist numlist',
         pagebreak_separator: '<hr/>',
         height: 700,
         fixed_toolbar_container: '.tox-editor-header',
