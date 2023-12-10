@@ -15,6 +15,5 @@ yarn-error.log
 /.idea
 /.vscode
 /public/mix-manifest.json
-resources/views/missing-by-webpackmix.blade.php
 /public/assets/img/work/original
 /database/dumps
