@@ -1,3 +1,4 @@
+import {initPostEditor} from "../shared/plugins-use";
 
 
 function setCookie(name, value) {
@@ -20,6 +21,7 @@ function toggleDarkMode(element, classes, cookieData) {
         element.removeClass(classes.darkmode).addClass(classes.lightmode);
         setCookie(cookieData.name, cookieData.lightmodeValue);
     }
+    initPostEditor();
 }
 
 function get_alert_box(params) {
@@ -45,4 +47,4 @@ function get_alert_box(params) {
 }
 
 
-export { toggleDarkMode, get_alert_box };
+export { toggleDarkMode, get_alert_box, getCookie };

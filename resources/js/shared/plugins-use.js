@@ -1,4 +1,5 @@
 import {getDomClass, shortenTextIfLongByLength} from "../admin/functions";
+import { getCookie } from "./functions";
 
 function initChart() {
     if ($('.charts').length === 0) {
@@ -194,10 +195,10 @@ function makeChart(params) {
 
 function initPostEditor() {
     if ($('#post_body').length == 0) return;
-    tinymce.init({
-        selector: 'textarea#post_body', // Replace this CSS selector to match the placeholder element for TinyMCE
-        plugins: 'code link table lists codesample image preview pagebreak',
-        toolbar: 'code codesample link image | undo redo | formatselect| bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | table | pagebreak preview',
+    let options = {
+        selector: 'textarea#post_body',
+        plugins: 'searchreplace autolink visualblocks visualchars media charmap nonbreaking anchor insertdatetime advlist wordcount help emoticons autosave code link table lists codesample image preview pagebreak',
+        toolbar: 'code codesample link image | undo redo | bold italic underline | pagebreak | alignleft aligncenter alignright alignjustify lineheight | indent outdent | bullist numlist | table | preview',
         pagebreak_separator: '<hr/>',
         height: 700,
         fixed_toolbar_container: '.tox-editor-header',
@@ -221,9 +222,18 @@ function initPostEditor() {
             { text: 'C#', value: 'csharp' },
             { text: 'C++', value: 'cpp' }
         ],
-    });
-    // let options = { };
-    // Laraberg.init('post_body', options)
+    };
+    let theme = getCookie('theme');
+    if (theme === 'dark-mode') {
+        options = {...options,  skin: 'oxide-dark', content_css: 'dark'};
+    }
+    let tinymceDOM = tinymce.get('post_body');
+    if(tinymceDOM != null) {
+        let _content = tinymceDOM.getContent();
+        tinymceDOM.destroy();
+        tinymceDOM.setContent(_content);
+    }
+    tinymce.init(options);
 }
 
 function initSelect2() {
