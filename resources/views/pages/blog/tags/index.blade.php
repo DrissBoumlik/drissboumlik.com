@@ -16,7 +16,10 @@
                             @foreach ($tags as $tag)
                                 <div class="col-12 col-md-6 col-lg-4 mb-4">
                                     <div class="tag-item">
-                                        <div class="tag-cover" style="background-image: url('/{{ $tag->cover }}')"></div>
+                                        <div class="tag-cover">
+                                            <img src="/{{ $tag->cover }}" alt="{{ $tag->name }}"
+                                                 class="img-fluid" loading="lazy" />
+                                        </div>
                                         <div class="tag-text">
                                             <a href="/tags/{{ $tag->slug }}" class="tag-link text-decoration-none">
                                                 <div class="font-weight-bolder text-uppercase tag-link-text">{{ $tag->name }}</div>

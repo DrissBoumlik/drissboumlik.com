@@ -25,9 +25,13 @@
             filter: drop-shadow(2px 4px 6px $tc-blue-dark-3)
         .post-cover
             height: 200px
-            background-position: center
-            background-size: cover
             border-radius: 10px
+            overflow: hidden
+            img
+                width: 100%
+                height: 100%
+                object-fit: cover
+                object-position: center
         .post-data
             padding-top: 1.25rem
         .post-content

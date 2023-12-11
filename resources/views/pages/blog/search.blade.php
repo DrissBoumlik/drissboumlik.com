@@ -17,8 +17,9 @@
                                 <div class="col-12 col-md-8 offset-md-2 col-lg-6 col-lg-0 mb-4">
                                     <div class="search-result-item">
                                         <a href="{{ $result->link }}" class="search-result-link text-decoration-none">
-                                            <div class="search-result-cover" style="background-image: url(/{{ $result->cover }})">
-
+                                            <div class="search-result-cover">
+                                                <img src="/{{ $result->cover }}" alt="{{ $result->short_title }}"
+                                                     class="img-fluid" loading="lazy" />
                                             </div>
                                             <div class="search-result-text p-3 text-center">
                                                 <div class="font-weight-bolder search-result-link-text">{!! $result->type !!} {{ $result->short_title }}</div>

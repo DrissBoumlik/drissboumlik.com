@@ -1,5 +1,8 @@
 <div class="post h-100">
-    <div class="post-cover" style="background-image: url('/{{ $post->cover }}')"></div>
+    <div class="post-cover">
+        <img src="/{{ $post->cover }}" alt="{{ $post->title }}"
+             class="img-fluid" loading="lazy" />
+    </div>
     <div class="post-data">
         <div class="post-title mb-1">
             <a href="/blog/{{ $post->slug }}" class="text-dark text-decoration-none">
