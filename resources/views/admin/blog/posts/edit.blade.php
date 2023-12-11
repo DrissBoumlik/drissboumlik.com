@@ -82,7 +82,7 @@
                                     <input type="text" class="js-flatpickr form-control" id="updated_at" disabled name="updated_at" value="{{ $post->updated_at }}" data-enable-time="true" data-time_24hr="true">
                                 </div>
                                 <div class="mb-4">
-                                    <label class="form-label" for="created_at">Updated at</label>
+                                    <label class="form-label" for="created_at">Created at</label>
                                     <input type="text" class="js-flatpickr form-control" id="created_at" disabled name="created_at" value="{{ $post->created_at }}" data-enable-time="true" data-time_24hr="true">
                                 </div>
                             </div>
