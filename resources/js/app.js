@@ -3,7 +3,7 @@ import $ from 'jquery';
 
 $(function () {
     try {
-        if($('.resume-menu').length !== 0) {
+        if($('[data-toggle]').length !== 0) {
             initTooltip();
         }
         drawText();
