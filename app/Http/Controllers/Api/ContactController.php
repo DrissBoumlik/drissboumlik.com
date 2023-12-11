@@ -17,6 +17,7 @@ class ContactController extends Controller
             "body" => "required|max:1000",
         ]);
         $request_data = $request->only('name', 'email', 'body');
+        Message::create($request_data);
 
         Mail::send('emails.contact', $request_data, static function ($message) use ($request_data) {
             $message->to(env('MAIL_TO_ADDRESS'), 'DB')
@@ -24,7 +25,6 @@ class ContactController extends Controller
                 ->from(env('MAIL_FROM_ADDRESS'), 'DB Contact Form');
         });
 
-        Message::create($request_data);
         return response()->json(['message' => 'Message sent successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>'], 200);
     }
 }
