@@ -46,10 +46,9 @@
         "hidden": true
     },
     {
-        "icon": "<i class='fa-solid fa-calendar-check'></i>",
+        "icon": "<i class='fa-solid fa-calendar-days'></i>",
         "link": "/meet",
-        "title": "meet",
-        "hidden": true
+        "title": "Book 30 minutes call"
     },
     {
         "icon": "<i class='fa-solid fa-at'></i>",
