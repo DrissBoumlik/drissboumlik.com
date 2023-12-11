@@ -19,7 +19,7 @@
     <button class="btn-refresh btn btn-outline-info">
         <i class="fa fa-fw fa-refresh me-1"></i> Refresh
     </button>
-    <button class="btn btn-outline-warning btn-export mb-3">
+    <button class="btn btn-outline-warning btn-export">
         <i class="fa-solid fa-download"></i> Export
     </button>
 @endsection
