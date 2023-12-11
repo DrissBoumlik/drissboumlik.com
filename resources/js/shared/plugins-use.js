@@ -287,11 +287,11 @@ function initDatatable() {
                 { data: 'tags_count', name: 'tags_count', title: 'tags', className: 'text-center', searchable: false},
                 { data: 'published_at', name: 'published_at', title: 'Published @', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
-                        let published_at_for_humans = moment(row.published_at).fromNow();
-                        let published_at_formatted = moment(row.published_at).format('Y-M-D hh:mm');
+                        let published_at_for_humans = row.published_at ? moment(row.published_at).fromNow() : '------';
+                        let published_at_formatted = row.published_at ? moment(row.published_at).format('Y-M-D hh:mm') : '------';
                         return `<span title="${published_at_formatted}">${published_at_for_humans}<br/>${published_at_formatted}</span>`;
                     }},
-                { data: 'created_at', name: 'created_at', title: 'Created @', clasxsName: 'text-center fs-sm',
+                { data: 'created_at', name: 'created_at', title: 'Created @', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
                         let created_at_for_humans = moment(row.created_at).fromNow();
                         let created_at_formatted = moment(row.created_at).format('Y-M-D hh:mm');
