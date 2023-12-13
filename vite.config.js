@@ -35,7 +35,7 @@ export default defineConfig({
         purge({
             paths: [
                 'resources/views/**/*.blade.php',
-                'database/data/**/*.json',
+                'config/data/**/*.php',
                 'resources/js/**/*.js',
                 'resources/template/assets/js/oneui.app.min.js',
                 'resources/template/assets/js/plugins/datatables/jquery.dataTables.min.js',
