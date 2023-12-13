@@ -4,7 +4,7 @@
             @include('components.headline', ['headline' => $work->header])
             <div class="container">
                 <div class="row">
-                    @foreach ($work->items as $workItem)
+                    @foreach ($work->data as $workItem)
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="work-box box mb-4">
                                 <div class="work-image-cover">

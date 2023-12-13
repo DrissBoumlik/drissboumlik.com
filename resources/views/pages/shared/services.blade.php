@@ -2,7 +2,7 @@
     <div class="container">
         @include('components.headline', ['headline' => $services->header])
         <div class="row justify-content-center mb-4">
-            @foreach($services->items as $service)
+            @foreach($services->data as $service)
             <div class="col-sm-6 col-md-4 col-12">
                 <div class="service-box w-100">
                     <a href="{{ $service->link }}" >

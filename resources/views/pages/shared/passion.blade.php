@@ -3,7 +3,7 @@
         <div class="container">
             @include('components.headline', ['headline' => $passion->header])
             <div class="row">
-                @foreach ($passion->items as $index => $passionItem)
+                @foreach ($passion->data as $index => $passionItem)
                     <div class="col-md-6 col-12">
                         <div class="list-group-item box-item">
                             <!-- .lits-group-item-figure -->

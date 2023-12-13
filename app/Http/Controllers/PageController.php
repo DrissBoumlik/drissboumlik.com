@@ -22,15 +22,14 @@ class PageController extends Controller
         $data->sections['competences'] = getSkills();
         $data->sections['education'] = getEducation();
         $data->sections['work'] = getWork(onlyFeatured: true);
-        // $data->sections['certificates'] = json_decode(\File::get(base_path() . "/database/data/resume/${lang}/certificates.json"));
+//        $data->sections['certificates'] = getCertificates();
         $data->sections['passion'] = getPassion();
         $data->sections['non_it_experiences'] = getNonITExperiences();
         $data->sections['testimonials'] = getTestimonials();
-		$data->sections['testimonials']->items = collect($data->sections['testimonials']->items)->shuffle()->all();
-        $data->sections['experiences']->items = array_map(function($item) {
+        $data->sections['experiences']->data = array_map(function($item) {
             $item->duration = calculateDate($item->start_date, $item->end_date);
             return $item;
-        }, $data->sections['experiences']->items);
+        }, $data->sections['experiences']->data);
 
         return view('pages.resume', ['data' => $data]);
     }

@@ -48,11 +48,9 @@ if (!function_exists('getLinkByKey')) {
 if (!function_exists('getSocialLinks')) {
     function getSocialLinks($withHidden = false)
     {
-        $socialLinks = json_decode(\File::get(base_path() . '/database/data/layout/social-links.json'));
+        $socialLinks = config('data.layout.social-links');
         if (!$withHidden) {
-            $socialLinks = array_filter($socialLinks, function ($item) {
-                return (!isset($item->hidden) || !$item->hidden);
-            });
+            $socialLinks = array_filter($socialLinks, static fn($item) => !isset($item->hidden) || !$item->hidden);
         }
         return $socialLinks;
     }
@@ -61,11 +59,9 @@ if (!function_exists('getSocialLinks')) {
 if (!function_exists('getSocialLinksCommunity')) {
     function getSocialLinksCommunity($withHidden = false)
     {
-        $socialLinksCommunity = json_decode(\File::get(base_path() . '/database/data/layout/social-links-community.json'));
+        $socialLinksCommunity =config('data.layout.social-links-community');
         if (!$withHidden) {
-            $socialLinksCommunity = array_filter($socialLinksCommunity, function ($item) {
-                return (!isset($item->hidden) || !$item->hidden);
-            });
+            $socialLinksCommunity = array_filter($socialLinksCommunity, static fn ($item) => !isset($item->hidden) || !$item->hidden);
         }
         return $socialLinksCommunity;
     }
@@ -74,11 +70,9 @@ if (!function_exists('getSocialLinksCommunity')) {
 if (!function_exists('getHeaderMenu')) {
     function getHeaderMenu($withHidden = false)
     {
-        $headerMenu = json_decode(\File::get(base_path() . '/database/data/layout/header-menu.json'));
+        $headerMenu = config('data.layout.header-menu');
         if (!$withHidden) {
-            $headerMenu = array_filter($headerMenu, function ($item) {
-                return (!isset($item->hidden) || !$item->hidden);
-            });
+            $headerMenu = array_filter($headerMenu, static fn($item) => !isset($item->hidden) || !$item->hidden);
         }
         return $headerMenu;
 
@@ -88,11 +82,9 @@ if (!function_exists('getHeaderMenu')) {
 if (!function_exists('getFooterMenu')) {
     function getFooterMenu($withHidden = false)
     {
-        $footerMenu = json_decode(\File::get(base_path() . '/database/data/layout/footer-menu.json'));
+        $footerMenu = config('data.layout.footer-menu');
         if (!$withHidden) {
-            $footerMenu = array_filter($footerMenu, function ($item) {
-                return (!isset($item->hidden) || !$item->hidden);
-            });
+            $footerMenu = array_filter($footerMenu, static fn($item) => !isset($item->hidden) || !$item->hidden);
         }
         return $footerMenu;
     }
@@ -124,9 +116,9 @@ if (!function_exists('calculateDate')) {
 if (!function_exists('getExperiences')) {
     function getExperiences($withHidden = false)
     {
-        $experiences = json_decode(\File::get(base_path() . "/database/data/resume/experiences.json"));
+        $experiences = config('data.resume.experiences');
         if (!$withHidden) {
-            $experiences->items = filterHiddenItems($experiences->items);
+            $experiences->data = filterHiddenItems($experiences->data);
         }
         return $experiences;
     }
@@ -135,14 +127,12 @@ if (!function_exists('getExperiences')) {
 if (!function_exists('getWork')) {
     function getWork($withHidden = false, $onlyFeatured = false)
     {
-        $work = json_decode(\File::get(base_path() . "/database/data/resume/work.json"));
+        $work = config('data.resume.work');
         if (!$withHidden) {
-            $work->items = filterHiddenItems($work->items);
+            $work->data = filterHiddenItems($work->data);
         }
         if ($onlyFeatured) {
-            $work->items = array_filter($work->items, function ($item) {
-                return isset($item->featured) && $item->featured;
-            });
+            $work->data = array_filter($work->data, static fn($item) => isset($item->featured) && $item->featured);
         }
         return $work;
     }
@@ -151,9 +141,9 @@ if (!function_exists('getWork')) {
 if (!function_exists('getCertificates')) {
     function getCertificates($withHidden = false)
     {
-        $certificates = json_decode(\File::get(base_path() . "/database/data/resume/certificates.json"));
+        $certificates = config('data.resume.certificates');
         if (!$withHidden) {
-            $certificates->items = filterHiddenItems($certificates->items);
+            $certificates->data = filterHiddenItems($certificates->data);
         }
         return $certificates;
     }
@@ -162,7 +152,7 @@ if (!function_exists('getCertificates')) {
 if (!function_exists('getSkills')) {
     function getSkills($withHidden = false)
     {
-        $competences = (array) json_decode(\File::get(base_path() . "/database/data/resume/skills.json"));
+        $competences = (array) config('data.resume.skills');
         if (!$withHidden) {
             $competences = array_map(function ($competenceGroup) {
                 $competenceGroup->items = filterHiddenItems($competenceGroup->items);
@@ -176,9 +166,9 @@ if (!function_exists('getSkills')) {
 if (!function_exists('getEducation')) {
     function getEducation($withHidden = false)
     {
-        $education = json_decode(\File::get(base_path() . "/database/data/resume/education.json"));
+        $education = config('data.resume.education');
         if (!$withHidden) {
-            $education->items = filterHiddenItems($education->items);
+            $education->data = filterHiddenItems($education->data);
         }
         return $education;
     }
@@ -187,9 +177,9 @@ if (!function_exists('getEducation')) {
 if (!function_exists('getPassion')) {
     function getPassion($withHidden = false)
     {
-        $passion = json_decode(\File::get(base_path() . "/database/data/resume/passion.json"));
+        $passion = config('data.resume.passion');
         if (!$withHidden) {
-            $passion->items = filterHiddenItems($passion->items);
+            $passion->data = filterHiddenItems($passion->data);
         }
         return $passion;
     }
@@ -198,9 +188,9 @@ if (!function_exists('getPassion')) {
 if (!function_exists('getNonITExperiences')) {
     function getNonITExperiences($withHidden = false)
     {
-        $non_it_experiences = json_decode(\File::get(base_path() . "/database/data/resume/non-it-experiences.json"));
+        $non_it_experiences = config('data.resume.non-it-experiences');
         if (!$withHidden) {
-            $non_it_experiences->items = filterHiddenItems($non_it_experiences->items);
+            $non_it_experiences->data = filterHiddenItems($non_it_experiences->data);
         }
         return $non_it_experiences;
     }
@@ -209,9 +199,9 @@ if (!function_exists('getNonITExperiences')) {
 if (!function_exists('getTestimonials')) {
     function getTestimonials($withHidden = false)
     {
-        $testimonials = json_decode(\File::get(base_path() . "/database/data/resume/testimonials.json"));
+        $testimonials = config('data.resume.testimonials');
         if (!$withHidden) {
-            $testimonials->items = filterHiddenItems($testimonials->items);
+            $testimonials->data = filterHiddenItems($testimonials->data);
         }
         return $testimonials;
     }
@@ -220,11 +210,9 @@ if (!function_exists('getTestimonials')) {
 if (!function_exists('getTechs')) {
     function getTechs($withHidden = false)
     {
-        $techs = json_decode(\File::get(base_path() . "/database/data/Components/techs.json"));
+        $techs = config('data.components.techs');
         if (!$withHidden) {
-            $techs->items = array_filter($techs->items, function ($item) {
-                return (!isset($item->hidden) || !$item->hidden);
-            });
+            $techs->data = array_filter($techs->data, static fn ($item) => !isset($item->hidden) || !$item->hidden);
         }
         return $techs;
     }
@@ -233,11 +221,9 @@ if (!function_exists('getTechs')) {
 if (!function_exists('getServices')) {
     function getServices($withHidden = false)
     {
-        $services = json_decode(\File::get(base_path() . "/database/data/Components/services.json"));
+        $services = config('data.components.services');
         if (!$withHidden) {
-            $services->items = array_filter($services->items, function ($item) {
-                return (!isset($item->hidden) || !$item->hidden);
-            });
+            $services->data = array_filter($services->data, static fn($item) => !isset($item->hidden) || !$item->hidden);
         }
         return $services;
     }
@@ -246,8 +232,8 @@ if (!function_exists('getServices')) {
 if (!function_exists('getServicesById')) {
     function getServicesById($item_id)
     {
-        $services = json_decode(\File::get(base_path() . "/database/data/Components/services.json"));
-        $service = array_values(array_filter($services->items, fn($item) => $item->id === $item_id));
+        $services = config('data.components.services');
+        $service = array_values(array_filter($services->data, static fn($item) => $item->id === $item_id));
         return count($service) ? $service[0] : null;
     }
 }
@@ -255,9 +241,7 @@ if (!function_exists('getServicesById')) {
 if (!function_exists('filterHiddenItems')) {
     function filterHiddenItems($items)
     {
-        return array_filter($items, function ($item) {
-            return (!isset($item->hidden) || !$item->hidden);
-        });
+        return array_filter($items, static fn($item) => !isset($item->hidden) || !$item->hidden);
     }
 }
 

@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="timeline">
-                        @foreach ($experiences->items as $experience)
+                        @foreach ($experiences->data as $experience)
                             <div class="section {{ $experience->classList }}">
                                 <div class="content">
                                     <h2 class="function text-capitalize">{{ $experience->job }}</h2>

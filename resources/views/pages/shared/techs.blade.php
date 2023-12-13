@@ -2,7 +2,7 @@
     <div class="container">
         @include('components.headline', ['headline' => $techs->header])
         <div class="row">
-            @foreach($techs->items as $c)
+            @foreach($techs->data as $c)
                 <div class="col-4 col-sm-3 col-md-2 skill-item-wrapper">
                     <div class="skill-item">
                         <div class="skill-icon">{!! $c->icon !!}</div>

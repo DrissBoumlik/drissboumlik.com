@@ -14,7 +14,7 @@
                     <div class="container">
                         <div class="work-items">
                             <div class="row">
-                                @foreach ($data->work->items as $workItem)
+                                @foreach ($data->work->data as $workItem)
                                     <div class="col-12 col-md-6">
                                         <div class="work-box box mb-4">
                                             <div class="work-image-cover">

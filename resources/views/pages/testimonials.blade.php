@@ -14,7 +14,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="owl-carousel owl-theme">
-                                @foreach ($data->testimonials->items as $index => $testimonial)
+                                @foreach ($data->testimonials->data as $index => $testimonial)
                                     <div class="owl-carousel-item item col-md-6 col-12">
                                         <span class="testimonial-icon">
                                             <i class="fa-solid fa-quote-right"></i>

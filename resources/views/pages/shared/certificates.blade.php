@@ -3,7 +3,7 @@
         <div class="container">
             @include('components.headline', ['headline' => $certificates->header])
             <div class="row">
-                @foreach ($certificates->items as $index => $certificate)
+                @foreach ($certificates->data as $index => $certificate)
                     <div class="col-md-6 col-12">
                         <div class="list-group-item box-item">
                             <!-- .lits-group-item-figure -->

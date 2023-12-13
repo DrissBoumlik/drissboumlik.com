@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="timeline">
-                        @foreach ($education->items as $educationItem)
+                        @foreach ($education->data as $educationItem)
                             <div class="section left graduate rotated">
                                 <div class="content">
                                     <h2 class="where text-uppercase">{{  $educationItem->school }}</h2>
