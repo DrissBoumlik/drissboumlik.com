@@ -15,7 +15,7 @@ return (object) [
             ]
         ],
         (object) [
-            "image" => "webapp.jpg",
+            "image" => "webapp.webp",
             "content" => "<p><span class='underline'>Back End</span><br>Laravel</p>",
             "name" => "Attaissir",
             "description" => "digitization of the aggregate-aggregate relationship and the automation of agricultural processes.",
