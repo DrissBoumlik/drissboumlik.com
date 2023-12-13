@@ -9,14 +9,19 @@ use App\Http\Resources\TagWithPaginationCollection;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Models\Visitor;
+use App\Services\PostService;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
-    private $postsPerPage = 10;
-    private $tagsPerPage = 20;
+    private const TAGS_PER_PAGE = 20;
+    private const SEARCH_PER_PAGE = 10; // 5x2
+    private PostService $postService;
 
-    private $searchPerPage = 10; // 5x2
+    public function __construct(PostService $postService)
+    {
+        $this->postService = $postService;
+    }
 
     public function search(Request $request)
     {
@@ -54,7 +59,7 @@ class BlogController extends Controller
             ->orderBy('t.updated_at', 'desc')
             ->select('name as title', \DB::Raw("concat('/tags/', t.slug) as link"), 't.cover', \DB::Raw("'<i class=\"fa-solid fa-tag\"></i>' as type"))
             ->distinct()
-            ->unionAll($data->results_posts)->paginate($this->searchPerPage);
+            ->unionAll($data->results_posts)->paginate(self::SEARCH_PER_PAGE);
         $data->results_metadata = clone $data->results;
         $data->results = ((object) (new SearchWithPaginationCollection($data->results))->resolve())->items;
         return view('pages.blog.search', ['data' => $data]);
@@ -62,7 +67,7 @@ class BlogController extends Controller
 
     public function getPosts(Request $request)
     {
-        $result = $this->preparePosts(Post::with('author'));
+        $result = $this->postService->preparePosts(Post::with('author'));
         $data = pageSetup('Latest Articles | Blog', 'Latest Articles', true, true);
         $result['data'] = $data;
         return view('pages.blog.posts.index', $result);
@@ -109,7 +114,7 @@ class BlogController extends Controller
             return redirect('/not-found');
         }
 
-        $result = $this->preparePosts($tag->posts()->with('author'));
+        $result = $this->postService->preparePosts($tag->posts()->with('author'));
         $data = pageSetup("Tags : $tag->name | Blog", "<a href='/tags'>All tags</a> <i class='fa-solid fa-angle-right mx-1'></i> $tag->name", true, true);
         $result['data'] = $data;
         return view('pages.blog.posts.index', $result);
@@ -125,7 +130,7 @@ class BlogController extends Controller
             }
         })
             ->orderBy('updated_at', 'desc')
-            ->paginate($this->tagsPerPage)))->resolve();
+            ->paginate(self::TAGS_PER_PAGE)))->resolve();
 
         $tags = $data->tags_data['data'];
         unset($data->tags_data['data']);
@@ -136,21 +141,4 @@ class BlogController extends Controller
         return view('pages.blog.tags.index', ['data' => $data, 'tags' => $tags]);
     }
 
-    private function preparePosts($posts)
-    {
-        if (!\Auth::check()) {
-            $posts = $posts->where('status', 2); // Published Posts
-        }
-        $posts_data = (object) (new PostWithPaginationCollection($posts
-            ->orderBy('created_at', 'desc')
-            ->paginate($this->postsPerPage)));
-
-        $posts = $posts_data->resolve();
-
-        return [
-            'posts_data' => $posts_data,
-            'posts' => $posts
-        ];
-
-    }
 }
