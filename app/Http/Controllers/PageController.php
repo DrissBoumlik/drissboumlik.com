@@ -2,10 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\PostService;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    public function home(Request $request, $var = null)
+    {
+        $baseUrl = $request->getBaseUrl();
+        if (strpos($baseUrl, 'public') != false || strpos($baseUrl, 'base') != false) {
+            return redirect('/not-found');
+        }
+        if ($var) {
+            return redirect('/not-found');
+        }
+        $data = pageSetup('Home | Driss Boumlik', null, true, true, true);
+        $data->socialLinksCommunity = getSocialLinksCommunity();
+        $data->sections = [];
+        $data->sections['techs'] = getTechs();
+        $data->sections['work'] = getWork(onlyFeatured: true);
+        $data->sections['services'] = getServices();
+        $data->sections['testimonials'] = getTestimonials();
+//        $data->posts = $this->postService->getLatestFeaturedPosts();
+
+        return view('pages.home', ['data' => $data]);
+    }
 
     public function about(Request $request)
     {
