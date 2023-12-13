@@ -31,7 +31,8 @@ class PostCollection extends ResourceCollection
                 'views' => $item->views,
                 'published_at' => $item->published_at,
                 'published_at_formatted' => $item->published_at?->diffForHumans(),
-                'tags' => $item->tags->pluck('name')->toArray(),
+                'published_at_short_format' => $item->published_at?->format('F d, Y'),
+                'tags' => $item->tags,
                 'author' => $item->author,
                 'read_duration' => \Str::readDuration($item->content),
             ];
