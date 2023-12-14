@@ -8,8 +8,9 @@
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="work-box box mb-4">
                                 <div class="work-image-cover">
-                                    <img src="{{ asset('/assets/img/work/' . $workItem->image) }}" alt="{{ $workItem->name }}"
-                                         class="img-fluid" loading="lazy" />
+                                    <img src="{{ asset('/assets/img/work/compressed/' . $workItem->image) }}" alt="{{ $workItem->name }}"
+                                         data-src="{{ asset('/assets/img/work/' . $workItem->image) }}"
+                                         class="img-fluid lazyload" loading="lazy" />
                                 </div>
                                 @isset($workItem->links)
                                     <div class="work-links">

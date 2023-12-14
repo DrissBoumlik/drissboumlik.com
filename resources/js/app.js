@@ -1,5 +1,6 @@
 import { drawText, initParticlesJS, initSlider, initDarkMode, initEvents, initTooltip } from "./functions";
 import $ from 'jquery';
+import 'lazysizes';
 
 $(function () {
     try {
