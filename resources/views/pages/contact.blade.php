@@ -41,7 +41,9 @@
                             </div>
                             <div class="col-lg-6 col-md-5 col-11">
                                 <div class="img-wrapper">
-                                    <img class="img-fluid w-100" src="{{ asset('/assets/img/activities/hangouts.svg') }}" alt="" width="300" height="300" loading="lazy">
+                                    <img class="img-fluid w-100 lazyload" src="{{ asset('/assets/img/activities/compressed/hangouts.webp') }}"
+                                         data-src="{{ asset('/assets/img/activities/hangouts.svg') }}"
+                                         alt="" width="300" height="300" loading="lazy">
                                 </div>
                             </div>
                         </div>
