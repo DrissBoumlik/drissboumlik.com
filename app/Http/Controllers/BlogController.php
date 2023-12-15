@@ -124,21 +124,14 @@ class BlogController extends Controller
     {
         $data = pageSetup('Tags | Blog', 'Tags', true, true);
 
-        $data->tags_data = (new TagWithPaginationCollection(Tag::whereHas('posts', function($query) {
+        $tags_data = (new TagWithPaginationCollection(Tag::whereHas('posts', function($query) {
             if (!\Auth::check()){
                 $query->where('status', 2); // Published Posts
             }
-        })
-            ->orderBy('updated_at', 'desc')
-            ->paginate(self::TAGS_PER_PAGE)))->resolve();
+        })->orderBy('updated_at', 'desc')->paginate(self::TAGS_PER_PAGE)));
+        $tags = $tags_data->resolve();
 
-        $tags = $data->tags_data['data'];
-        unset($data->tags_data['data']);
-//        $tags->collection = $tags->collection->shuffle();
-
-
-
-        return view('pages.blog.tags.index', ['data' => $data, 'tags' => $tags]);
+        return view('pages.blog.tags.index', ['data' => $data, 'tags' => $tags, 'tags_data' => $tags_data]);
     }
 
 }

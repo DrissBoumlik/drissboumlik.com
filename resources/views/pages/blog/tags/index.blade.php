@@ -17,8 +17,9 @@
                                 <div class="col-12 col-md-6 col-lg-4 mb-4">
                                     <div class="tag-item">
                                         <div class="tag-cover">
-                                            <img src="/{{ $tag->cover }}" alt="{{ $tag->name }}"
-                                                 class="img-fluid" loading="lazy" />
+                                            <img src="/{{ $tag->cover_compressed }}" alt="{{ $tag->name }}"
+                                                 data-src="/{{ $tag->cover }}"
+                                                 class="img-fluid lazyload" loading="lazy" />
                                         </div>
                                         <div class="tag-text">
                                             <a href="/tags/{{ $tag->slug }}" class="tag-link text-decoration-none">
@@ -36,11 +37,11 @@
                                     </div>
                                 </div>
                             @endif
-                            @if(count($tags) && $tags->lastPage() > 1)
+                            @if(count($tags) && $tags_data->lastPage() > 1)
                             <div class="col-12 col-md-8 offset-md-2
                                         col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mt-5">
                                 <div class="pagination-wrapper justify-content-center">
-                                    {{ $tags->onEachSide(5)->links() }}
+                                    {{ $tags_data->onEachSide(5)->links() }}
                                 </div>
                             </div>
                             @endif
