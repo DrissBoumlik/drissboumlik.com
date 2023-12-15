@@ -6,10 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Admin\TagCollection;
 use App\Http\Resources\Admin\TagResource;
 use App\Models\Tag;
+use App\Services\PostService;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
+    private PostService $postService;
+
+    public function __construct(PostService $postService)
+    {
+        $this->postService = $postService;
+    }
+
     public function index(Request $request)
     {
         $data = new \stdClass();
@@ -43,11 +51,7 @@ class TagController extends Controller
                 "color" => $request->color,
             ];
             $image_file = $request->file('cover');
-            if ($image_file) {
-                $file_ext = $image_file->getClientOriginalExtension();
-                $path = \Storage::disk('public')->putFileAs("blog/tags/$request->slug", $image_file, "$request->slug.$file_ext");
-                $data['cover'] = "storage/$path";
-            }
+            $this->postService->processPostCover($data, $image_file, $request->slug, "blog/tags/$request->slug");
             $tag = Tag::create($data);
             return redirect("/admin/tags/edit/$tag->slug")->with(['response' => ['message' => 'Tag store successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
         } catch (\Throwable $e) {
@@ -71,12 +75,7 @@ class TagController extends Controller
                 "color" => $request->color,
             ];
             $image_file = $request->file('cover');
-            if ($image_file) {
-                $file_ext = $image_file->getClientOriginalExtension();
-                $file_name = $request->slug ?? $tag->slug;
-                $path = \Storage::disk('public')->putFileAs("blog/tags/$request->slug", $image_file, "$file_name.$file_ext");
-                $data['cover'] = "storage/$path";
-            }
+            $this->postService->processPostCover($data, $image_file, $request->slug ?? $tag->slug, "blog/tags/$request->slug");
             $tag->update($data);
             if ($request->has('active')) {
                 $tag->restore();
