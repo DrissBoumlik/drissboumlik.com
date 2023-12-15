@@ -7,7 +7,12 @@
 
 @section('headline')
     <div class="d-flex flex-column align-items-center justify-content-center">
-        <h1 class="header-txt post-title">{!! $post->title !!}</h1>
+        <h1 class="header-txt post-title capitalize-first-letter">{!! $post->title !!}
+            @auth
+                <span class="fs-5"><a href="/admin/posts/edit/{{ $post->slug }}" target="_blank">
+                        <i class="fa fa-fw fa-pencil tc-grey-dark"></i></a></span>
+            @endauth
+        </h1>
     </div>
 @endsection
 
@@ -27,12 +32,9 @@
                                             <span>{{ $post->read_duration }} min read</span>
                                             <span class="fw-bold">•</span>
                                             <span><i class="fa fa-fw fa-eye"></i> {{ $post->views }}</span>
-                                            @auth
-                                                <span> • <a href="/admin/posts/edit/{{ $post->slug }}" target="_blank">
-                                                    <i class="fa fa-fw fa-pencil"></i> Edit
-                                                </a></span>
-                                            @endauth
                                         </div>
+                                    @else
+                                        <div class="published_date">Not Published</div>
                                     @endif
                                 </div>
                                 @if ($post->tags)
