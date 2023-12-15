@@ -106,8 +106,12 @@
                                 <label class="form-label" for="image">Cover</label>
                                 <input type="file" id="image" name="cover" class="form-control" />
                                 <div class="mt-2">
-                                    <img id="image-preview" class="img-fluid w-100" src="{{ asset('/assets/img/blog/default-post.webp') }}" alt="photo" width="200" height="100" loading="lazy">
+                                    <img id="image-preview" class="image-preview img-fluid w-100" src="{{ asset('/assets/img/blog/default-post.webp') }}" alt="photo" width="200" height="100" loading="lazy">
                                 </div>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="post-assets">Post assets</label>
+                                <input type="file" id="post-assets" name="post-assets[]" multiple class="form-control" />
                             </div>
                         </div>
                         <div class="col-md-12">

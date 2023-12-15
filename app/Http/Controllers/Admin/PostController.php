@@ -47,10 +47,11 @@ class PostController extends Controller
             ];
             $image_file = $request->file('cover');
             if ($image_file) {
-                $file_ext = $image_file->getClientOriginalExtension();
-                $path = \Storage::disk('public')->putFileAs("blog/posts/$request->slug", $image_file, "$request->slug.$file_ext");
-                $data['cover'] = "storage/$path";
+                $file_name = $request->slug;
+                $path = "blog/posts/$request->slug";
+                $data['cover'] = $this->storePostAsset($path, $file_name, $image_file);
             }
+            $this->processPostsAssets($request->file('post-assets'), $request->slug);
             $post = Post::create($data);
             if ($request->has('tags')) {
                 $post_tag = [];
@@ -79,6 +80,19 @@ class PostController extends Controller
         $post_tag_ids = $post->tags->pluck('id');
 
 //        $post->status = $post->getDomClass();
+        if ($post->cover) {
+            $cover_path = explode("/$post->slug.webp", $post->cover)[0] . "/assets";
+            $files = \File::files($cover_path);
+            if ($files && count($files)) {
+                $post->content_assets = [];
+                foreach ($files as $file) {
+                    $filename = $file->getRelativePathname();
+                    if (str_contains($filename, 'compressed')) {
+                        $post->content_assets[] = (object) ["link" => "/$cover_path/$filename", "filename" => $filename];
+                    }
+                }
+            }
+        }
 
         $data->tags = $data->tags->map(function ($tag) use ($post_tag_ids) {
             $tag->linked = $post_tag_ids->contains($tag->id);
@@ -113,11 +127,11 @@ class PostController extends Controller
             ];
             $image_file = $request->file('cover');
             if ($image_file) {
-                $file_ext = $image_file->getClientOriginalExtension();
                 $file_name = $request->slug ?? $post->slug;
-                $path = \Storage::disk('public')->putFileAs("blog/posts/$request->slug", $image_file, "$file_name.$file_ext");
-                $data['cover'] = "storage/$path";
+                $path = "blog/posts/$request->slug";
+                $data['cover'] = $this->storePostAsset($path, $file_name, $image_file);
             }
+            $this->processPostsAssets($request->file('post-assets'), $request->slug);
             $post->update($data);
 
             if ($request->has('active')) {
@@ -158,6 +172,41 @@ class PostController extends Controller
        }
     }
 
+    private function processPostsAssets($post_assets, $slug)
+    {
+        if ($post_assets && is_array($post_assets)) {
+            foreach ($post_assets as $key => $post_asset) {
+                $file_name = "post_asset_$key";
+                $path = "blog/posts/$slug/assets";
+                $this->storePostAsset($path, $file_name, $post_asset);
+            }
+        }
+    }
+    private function storePostAsset($path, $file_name, $image_file)
+    {
+        $image_file_ext = $image_file->getClientOriginalExtension();
+        $image_file_path = "$path/$file_name.webp"; // \Storage::disk('public')->putFileAs($path, $image_file, "$file_name.$image_file_ext");
+        if ($image_file_ext !== 'webp') {
+            $image_file_webp = \Image::make($image_file)->encode('webp', 100);
+            $image_file_webp->save(base_path("storage/app/public/") . $image_file_path);
+        }
+        $this->compressPostAsset($path, $file_name, 'webp');
+        return "storage/$image_file_path";
+    }
+
+    private function compressPostAsset($path, $file_name, $image_file_ext = 'webp')
+    {
+        $base_path = base_path() . '/public/storage';
+        $pathToImage = "$base_path/$path/$file_name.$image_file_ext";
+        $pathToOptimizedImage = "$base_path/$path/$file_name--compressed.$image_file_ext";
+        $image = \Spatie\Image\Image::load($pathToImage);
+        $newWidth = $image->getWidth() * 0.2;
+        $newHeight = $image->getHeight() * 0.2;
+        $image->optimize()
+            ->quality(20)
+            ->width($newWidth)->height($newHeight)
+            ->save($pathToOptimizedImage);
+    }
 
     public function api_store(Request $request)
     {
