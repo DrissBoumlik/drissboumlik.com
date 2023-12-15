@@ -14,6 +14,7 @@ class PostResource extends JsonResource
      */
     public function toArray($request)
     {
+        $coverSplitted = $this->cover ? explode('.webp', $this->cover) : null;
         return (object) [
             'author_id' => $this->author_id,
             'author' => $this->author,
@@ -25,6 +26,7 @@ class PostResource extends JsonResource
             'content' => $this->content,
             'read_duration' => \Str::readDuration($this->content),
             'cover' => $this->cover,
+            'cover_compressed' => $this->cover ? "$coverSplitted[0]--compressed.webp" : $this->cover,
             'description' => $this->description,
             'status' => $this->status,
             'featured' => $this->featured,
