@@ -82,13 +82,15 @@ class PostController extends Controller
 //        $post->status = $post->getDomClass();
         if ($post->cover) {
             $cover_path = explode("/$post->slug.webp", $post->cover)[0] . "/assets";
-            $files = \File::files($cover_path);
-            if ($files && count($files)) {
-                $post->content_assets = [];
-                foreach ($files as $file) {
-                    $filename = $file->getRelativePathname();
-                    if (str_contains($filename, 'compressed')) {
-                        $post->content_assets[] = (object) ["link" => "/$cover_path/$filename", "filename" => $filename];
+            if (\File::isDirectory($cover_path)) {
+                $files = \File::files($cover_path);
+                if ($files && count($files)) {
+                    $post->content_assets = [];
+                    foreach ($files as $file) {
+                        $filename = $file->getRelativePathname();
+                        if (str_contains($filename, 'compressed')) {
+                            $post->content_assets[] = (object)["link" => "/$cover_path/$filename", "filename" => $filename];
+                        }
                     }
                 }
             }
@@ -185,9 +187,17 @@ class PostController extends Controller
     private function storePostAsset($path, $file_name, $image_file)
     {
         $image_file_ext = $image_file->getClientOriginalExtension();
-        $image_file_path = "$path/$file_name.webp"; // \Storage::disk('public')->putFileAs($path, $image_file, "$file_name.$image_file_ext");
-        if ($image_file_ext !== 'webp') {
+        $image_file_path = "$path/$file_name.webp";
+        $mimeType = \File::mimeType($image_file);
+        if (str_contains($mimeType, 'webp')) {
+            \Storage::disk('public')->putFileAs($path, $image_file, "$file_name.$image_file_ext");
+        } else {
             $image_file_webp = \Image::make($image_file)->encode('webp', 100);
+            $base_path = base_path();
+            $base_path_assets = base_path("storage/app/public/$path");
+            if (!\File::isDirectory($base_path_assets)) {
+                \File::makeDirectory($base_path_assets);
+            }
             $image_file_webp->save(base_path("storage/app/public/") . $image_file_path);
         }
         $this->compressPostAsset($path, $file_name, 'webp');

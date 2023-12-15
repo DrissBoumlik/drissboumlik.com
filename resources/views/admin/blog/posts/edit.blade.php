@@ -87,12 +87,16 @@
                                 </div>
                             </div>
                             <div class="post-assets">
-                                <h5 class="mb-1">Post content assets</h5>
+                                <h5 class="mb-1">Post assets list ({{ count($post?->content_assets ?? []) }})</h5>
                                 @isset($post->content_assets)
                                     @foreach($post->content_assets as $post_asset)
                                         <div><a href="{{ $post_asset->link }}" target="_blank">{{ $post_asset->filename }}</a></div>
                                     @endforeach
                                 @endisset
+                                <div class="mb-4">
+                                    <label class="form-label" for="storage">Storage path</label>
+                                    <input type="text" class="form-control" id="storage" disabled value="/storage/blog/posts/SLUG/assets/post_asset_KEY--compressed.WEBP">
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -139,7 +143,9 @@
                                 <label class="form-label" for="image">Cover</label>
                                 <input type="file" id="image" name="cover" class="form-control" />
                                 <div class="mt-2">
-                                    <img id="image-preview" class="image-preview img-fluid w-100" src="{{ $post->cover ? "/$post->cover" : asset('/assets/img/blog/default-post.webp') }}" alt="photo" width="200" height="100" loading="lazy">
+                                    <img id="image-preview" class="image-preview img-fluid w-100 lazyload" src="{{ $post->cover ? "/$post->cover_compressed" : asset('/assets/img/blog/default-post.webp') }}"
+                                         data-src="{{ $post->cover ? "/$post->cover" : asset('/assets/img/blog/default-post.webp') }}"
+                                         alt="photo" width="200" height="100" loading="lazy">
                                 </div>
                             </div>
                             <div class="mb-4">
@@ -148,10 +154,6 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="mb-4">
-                                <label class="form-label" for="storage">Storage path</label>
-                                <input type="text" class="form-control" id="storage" disabled value="/storage/blog/posts/SLUG/assets/post_asset_KEY--compressed.WEBP">
-                            </div>
                             <div class="">
                                 <label class="form-label" for="post_body">Content</label>
                                 <!-- SimpleMDE Container -->
