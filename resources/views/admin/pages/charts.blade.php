@@ -49,11 +49,11 @@
                         <h3>Stats by Field</h3>
                         <div class="column-selection col-6">
                             <label class="form-label" for="columns-list">Select column</label>
-                            <select class="form-select js-select2" name="columns-list" id="columns-list"></select>
+                            <select class="form-select" name="columns-list" id="columns-list"></select>
                         </div>
                         <div class="page-selection col-6">
                             <label class="form-label" for="pages-list">Select Page</label>
-                            <select class="form-select js-select2" name="pages-list" id="pages-list"></select>
+                            <select class="form-select" name="pages-list" id="pages-list"></select>
                         </div>
                         <div class="col-12 mt-4">
                             <canvas id="myChart"></canvas>
@@ -63,11 +63,11 @@
                         <h3>Stats by Year</h3>
                         <div class="column-selection col-6">
                             <label class="form-label" for="columns-list2">Select column</label>
-                            <select class="form-select js-select2" name="columns-list2" id="columns-list2"></select>
+                            <select class="form-select" name="columns-list2" id="columns-list2"></select>
                         </div>
                         <div class="year-selection col-6">
                             <label class="form-label" for="years-list2">Select Year</label>
-                            <select class="form-select js-select2" name="years-list2" id="years-list2">
+                            <select class="form-select" name="years-list2" id="years-list2">
                                 <option value="2022">2022</option>
                                 <option value="2023" selected>2023</option>
                                 <option value="2024">2024</option>
@@ -75,7 +75,7 @@
                         </div>
                         <div class="page-selection col-6 mt-3">
                             <label class="form-label" for="pages-list2">Select Page</label>
-                            <select class="form-select js-select2" name="pages-list2" id="pages-list2"></select>
+                            <select class="form-select" name="pages-list2" id="pages-list2"></select>
                         </div>
                         <div class="col-12 mt-4">
                             <canvas id="myChart2"></canvas>

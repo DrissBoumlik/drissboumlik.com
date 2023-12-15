@@ -38,10 +38,6 @@ function initEvents() {
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
     });
 
-    $(document).on('ajaxComplete', function(event,xhr,options) {
-        try { initSelect2(); } catch (e) {}
-    });
-
     $('.btn-export').on('click', function() {
         let tablesNames = null;
         if (!$('#export-all-tables').prop('checked')) {
