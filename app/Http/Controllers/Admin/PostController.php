@@ -207,7 +207,7 @@ class PostController extends Controller
 
     private function compressPostAsset($path, $file_name, $image_file_ext = 'webp')
     {
-        $base_path = base_path() . '/public/storage';
+        $base_path = base_path("storage/app/public");
         $pathToImage = "$base_path/$path/$file_name.$image_file_ext";
         $pathToOptimizedImage = "$base_path/$path/$file_name--compressed.$image_file_ext";
         $image = \Spatie\Image\Image::load($pathToImage);

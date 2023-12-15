@@ -46,5 +46,10 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Paginator::useBootstrap();
+        $base_path = base_path();
+        if(file_exists(str_ends_with($base_path, 'base'))) {
+            $this->app->useStoragePath( realpath($base_path . '/..') . '/storage');
+            $this->app->usePublicPath($base_path . '/..');
+        }
     }
 }
