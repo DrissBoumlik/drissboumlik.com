@@ -41,7 +41,8 @@ export default defineConfig({
                 'resources/template/assets/js/plugins/datatables/jquery.dataTables.min.js',
                 'resources/template/assets/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js',
                 'resources/template/assets/js/plugins/select2/js/select2.full.min.js',
-                'node_modules/owl.carousel/dist/owl.carousel.min.js'
+                'node_modules/owl.carousel/dist/owl.carousel.min.js',
+                'node_modules/lazysizes/lazysizes.min.js'
             ]
         })
     ],
