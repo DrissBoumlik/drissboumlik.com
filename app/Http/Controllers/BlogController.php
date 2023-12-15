@@ -68,7 +68,7 @@ class BlogController extends Controller
     public function getPosts(Request $request)
     {
         $result = $this->postService->preparePosts(Post::with('author'));
-        $data = pageSetup('Latest Articles | Blog', 'Latest Articles', true, true);
+        $data = pageSetup('Blog | Driss Boumlik', 'Blog', true, true);
         $result['data'] = $data;
         return view('pages.blog.posts.index', $result);
     }
