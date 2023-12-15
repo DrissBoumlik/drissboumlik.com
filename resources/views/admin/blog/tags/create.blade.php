@@ -36,7 +36,7 @@
                 <form action="/admin/tags" method="POST" class="" enctype="multipart/form-data">
                     @csrf
                     <div class="row items-push">
-                        <div class="col-xxl-8 offset-xxl-2">
+                        <div class="col-md-6 offset-md-3">
                             <div class="mb-4">
                                 <label class="form-label" for="tag-name">Name</label>
                                 <input type="text" class="form-control input-to-slugify" id="tag-name" name="name"
@@ -60,14 +60,14 @@
                                 <label class="form-label" for="image">Image</label>
                                 <input type="file" id="image" name="cover" class="form-control" />
                                 <div class="mt-2">
-                                    <img id="image-preview" class="img-fluid w-100" src="{{ asset('/assets/img/blog/default-tag.webp') }}" alt="photo" width="200" height="100" loading="lazy">
+                                    <img id="image-preview" class="img-fluid image-preview" src="{{ asset('/assets/img/blog/default-tag.webp') }}" alt="photo" width="200" height="100" loading="lazy">
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-xxl-8 offset-xxl-2">
-                            <button type="submit" class="btn btn-success me-1 mb-3">
-                                <i class="fa fa-fw fa-plus me-1"></i> Submit
-                            </button>
+                            <div class="d-flex justify-content-between">
+                                <button type="submit" class="btn btn-success me-1 mb-3 w-100">
+                                    <i class="fa fa-fw fa-plus me-1"></i> Submit
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </form>

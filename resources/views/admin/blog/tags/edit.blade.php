@@ -34,7 +34,7 @@
                     @method('put')
                     @csrf
                     <div class="row items-push">
-                        <div class="col-xxl-8 offset-xxl-2">
+                        <div class="col-md-6 offset-md-3">
                             <div class="mb-4">
                                 <label class="form-label" for="tag-name">Name</label>
                                 <input type="text" class="form-control input-to-slugify" id="tag-name" name="name"

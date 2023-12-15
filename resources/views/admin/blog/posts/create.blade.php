@@ -68,7 +68,7 @@
                                 <label class="form-label" for="description">Description</label>
                                 <textarea class="form-control" id="description" name="description" rows="4" placeholder="Post description.."></textarea>
                             </div>
-                            <div class="mb-4">
+                            <div class="">
                                 <label class="form-label" for="published_at">Published at</label>
                                 <input type="text" class="js-flatpickr form-control" id="published_at" name="published_at" value="{{ now() }}" data-enable-time="true" data-time_24hr="true">
                             </div>
@@ -109,23 +109,25 @@
                                     <img id="image-preview" class="image-preview img-fluid w-100" src="{{ asset('/assets/img/blog/default-post.webp') }}" alt="photo" width="200" height="100" loading="lazy">
                                 </div>
                             </div>
-                            <div class="mb-4">
+                            <div class="">
                                 <label class="form-label" for="post-assets">Post assets</label>
                                 <input type="file" id="post-assets" name="post-assets[]" multiple class="form-control" />
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="mb-4">
+                            <div class="">
                                 <label class="form-label" for="post_body">Content</label>
                                 <!-- SimpleMDE Container -->
                                 {{-- <textarea class="js-simplemde" id="simplemde" name="post_body">{{ old('post_body') }}</textarea> --}}
                                 <textarea id="post_body" class="form-control" name="post_content" placeholder="Post content.." hidden>Post content..</textarea>
                             </div>
                         </div>
+                        <div class="col-12 d-flex justify-content-between">
+                            <button type="submit" class="btn btn-success me-1 mb-3 w-100">
+                                <i class="fa fa-fw fa-plus me-1"></i> Submit
+                            </button>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-success me-1 mb-3">
-                        <i class="fa fa-fw fa-plus me-1"></i> Submit
-                    </button>
                 </form>
             </div>
         </div>
