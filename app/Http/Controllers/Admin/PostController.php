@@ -46,11 +46,7 @@ class PostController extends Controller
                 'published_at' => ($request->status === "2" ? ($request->published_at ?? now()) : null),
             ];
             $image_file = $request->file('cover');
-            if ($image_file) {
-                $file_name = $request->slug;
-                $path = "blog/posts/$request->slug";
-                $data['cover'] = $this->storePostAsset($path, $file_name, $image_file);
-            }
+            $this->processPostCover($data, $image_file, $request->slug);
             $this->processPostsAssets($request->file('post-assets'), $request->slug);
             $post = Post::create($data);
             if ($request->has('tags')) {
@@ -128,11 +124,7 @@ class PostController extends Controller
                 'views' => $request->views ?? $post->views
             ];
             $image_file = $request->file('cover');
-            if ($image_file) {
-                $file_name = $request->slug ?? $post->slug;
-                $path = "blog/posts/$request->slug";
-                $data['cover'] = $this->storePostAsset($path, $file_name, $image_file);
-            }
+            $this->processPostCover($data, $image_file, $request->slug, $post->slug);
             $this->processPostsAssets($request->file('post-assets'), $request->slug);
             $post->update($data);
 
@@ -182,6 +174,15 @@ class PostController extends Controller
                 $path = "blog/posts/$slug/assets";
                 $this->storePostAsset($path, $file_name, $post_asset);
             }
+        }
+    }
+
+    private function processPostCover(&$data, $image_file, $slug, $post_slug = null)
+    {
+        if ($image_file) {
+            $file_name = $slug ?? $post_slug;
+            $path = "blog/posts/$slug";
+            $data['cover'] = $this->storePostAsset($path, $file_name, $image_file);
         }
     }
     private function storePostAsset($path, $file_name, $image_file)
