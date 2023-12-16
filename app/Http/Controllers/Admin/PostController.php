@@ -88,7 +88,6 @@ class PostController extends Controller
 //        $post->status = $post->getDomClass();
         if ($post->cover) {
             $assets_path = "storage/blog/posts/$post->slug/assets";
-            $post->content_assets = $this->mediaService->fetchPostContentAssets($assets_path);
         }
 
         $data->tags = $data->tags->map(function ($tag) use ($post_tag_ids) {

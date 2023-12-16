@@ -13,7 +13,7 @@ class MediaService
     {
         if ($post_assets && is_array($post_assets)) {
             if ($append_to_post_assets) {
-                $key = count($this->fetchPostContentAssets("storage/$post_assets_path"));
+                $key = count($this->fetchPostContentAssets("storage/$post_assets_path", onlyCompressed: true, onlyOriginals: false));
             } else {
                 $key = 0;
                 \File::cleanDirectory("storage/$post_assets_path");
@@ -69,15 +69,20 @@ class MediaService
             ->save($pathToOptimizedImage);
     }
 
-    public function fetchPostContentAssets($assets_path)
+    public function fetchPostContentAssets($assets_path, $onlyCompressed = true, $onlyOriginals = false)
     {
         $content_assets = [];
+        if (!$onlyCompressed && !$onlyOriginals) {
+            return $content_assets;
+        }
         if (\File::isDirectory($assets_path)) {
             $files = \File::files($assets_path);
             if ($files && count($files)) {
                 foreach ($files as $file) {
                     $filename = $file->getRelativePathname();
-                    if (str_contains($filename, 'compressed')) {
+                    $isCompressedFile = str_contains($filename, 'compressed');
+                    if (($onlyCompressed && $isCompressedFile)
+                        || ($onlyOriginals && !$isCompressedFile)) {
                         $content_assets[] = (object)["link" => "/$assets_path/$filename", "filename" => $filename];
                     }
                 }

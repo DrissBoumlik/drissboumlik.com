@@ -86,17 +86,14 @@
                                     <input type="text" class="js-flatpickr form-control" id="created_at" disabled name="created_at" value="{{ $post->created_at }}" data-enable-time="true" data-time_24hr="true">
                                 </div>
                             </div>
-                            <div class="post-assets">
-                                <h5 class="mb-1">Post assets list ({{ count($post?->content_assets ?? []) }})</h5>
-                                @isset($post->content_assets)
-                                    @foreach($post->content_assets as $post_asset)
-                                        <div><a href="{{ $post_asset->link }}" target="_blank">{{ $post_asset->filename }}</a></div>
-                                    @endforeach
-                                @endisset
-                                <div class="mt-4">
-                                    <label class="form-label" for="storage">Storage path</label>
-                                    <input type="text" class="form-control" id="storage" disabled value="/storage/blog/posts/SLUG/assets/post_asset_KEY--compressed.WEBP">
-                                </div>
+                            <div class="mb-4">
+                                <button type="button" class="btn btn-secondary me-1 mb-3 w-100 btn-view-post-assets">
+                                    <i class="fa fa-fw fa-images"></i> View assets
+                                </button>
+                            </div>
+                            <div class="mt-4">
+                                <label class="form-label" for="storage">Storage path</label>
+                                <input type="text" class="form-control" id="storage" disabled value="/storage/blog/posts/SLUG/assets/post_asset_KEY--compressed.WEBP">
                             </div>
                         </div>
                         <div class="col-md-4">
