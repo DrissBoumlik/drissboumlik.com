@@ -57,7 +57,7 @@ class PostController extends Controller
             ];
             $image_file = $request->file('cover');
             $this->mediaService->processPostCover($data, $image_file, $request->slug, "blog/posts/$request->slug");
-            $this->mediaService->processPostsAssets($request->file('post-assets'), "blog/posts/$request->slug/assets");
+            $this->mediaService->processPostsAssets($request->file('post-assets'), "blog/posts/$request->slug/assets", false);
             $post = Post::create($data);
             if ($request->has('tags')) {
                 $post_tag = [];
@@ -87,19 +87,8 @@ class PostController extends Controller
 
 //        $post->status = $post->getDomClass();
         if ($post->cover) {
-            $cover_path = explode("/$post->slug.webp", $post->cover)[0] . "/assets";
-            if (\File::isDirectory($cover_path)) {
-                $files = \File::files($cover_path);
-                if ($files && count($files)) {
-                    $post->content_assets = [];
-                    foreach ($files as $file) {
-                        $filename = $file->getRelativePathname();
-                        if (str_contains($filename, 'compressed')) {
-                            $post->content_assets[] = (object)["link" => "/$cover_path/$filename", "filename" => $filename];
-                        }
-                    }
-                }
-            }
+            $assets_path = "storage/blog/posts/$post->slug/assets";
+            $post->content_assets = $this->mediaService->fetchPostContentAssets($assets_path);
         }
 
         $data->tags = $data->tags->map(function ($tag) use ($post_tag_ids) {
@@ -135,7 +124,7 @@ class PostController extends Controller
             ];
             $image_file = $request->file('cover');
             $this->mediaService->processPostCover($data, $image_file, $request->slug ?? $post->slug, "blog/posts/$request->slug");
-            $this->mediaService->processPostsAssets($request->file('post-assets'), "blog/posts/$request->slug/assets");
+            $this->mediaService->processPostsAssets($request->file('post-assets'), "blog/posts/$request->slug/assets", $request->has('append-to-post-assets'));
             $post->update($data);
 
             if ($request->has('active')) {

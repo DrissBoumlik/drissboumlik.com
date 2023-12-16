@@ -148,9 +148,13 @@
                                          alt="photo" width="200" height="100" loading="lazy">
                                 </div>
                             </div>
-                            <div class="">
+                            <div class="mb-4">
                                 <label class="form-label" for="post-assets">Post assets</label>
                                 <input type="file" id="post-assets" name="post-assets[]" multiple class="form-control" />
+                            </div>
+                            <div class="form-check form-switch form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="append-to-post-assets" name="append-to-post-assets" checked>
+                                <label class="form-check-label" for="append-to-post-assets">Append to post assets</label>
                             </div>
                         </div>
                         <div class="col-md-12">

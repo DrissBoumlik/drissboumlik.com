@@ -9,13 +9,20 @@ use App\Models\Post;
 class MediaService
 {
 
-    public function processPostsAssets($post_assets, $post_assets_path)
+    public function processPostsAssets($post_assets, $post_assets_path, $append_to_post_assets = true)
     {
         if ($post_assets && is_array($post_assets)) {
-            foreach ($post_assets as $key => $post_asset) {
+            if ($append_to_post_assets) {
+                $key = count($this->fetchPostContentAssets("storage/$post_assets_path"));
+            } else {
+                $key = 0;
+                \File::cleanDirectory("storage/$post_assets_path");
+            }
+            foreach ($post_assets as $post_asset) {
                 $file_name = "post_asset_$key";
 //                $path = "blog/posts/$slug/assets";
                 $this->storePostAsset($post_assets_path, $file_name, $post_asset);
+                $key++;
             }
         }
     }
@@ -60,5 +67,22 @@ class MediaService
             ->quality(20)
             ->width($newWidth)->height($newHeight)
             ->save($pathToOptimizedImage);
+    }
+
+    public function fetchPostContentAssets($assets_path)
+    {
+        $content_assets = [];
+        if (\File::isDirectory($assets_path)) {
+            $files = \File::files($assets_path);
+            if ($files && count($files)) {
+                foreach ($files as $file) {
+                    $filename = $file->getRelativePathname();
+                    if (str_contains($filename, 'compressed')) {
+                        $content_assets[] = (object)["link" => "/$assets_path/$filename", "filename" => $filename];
+                    }
+                }
+            }
+        }
+        return $content_assets;
     }
 }
