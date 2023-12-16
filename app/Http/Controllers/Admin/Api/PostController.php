@@ -29,7 +29,7 @@ class PostController extends Controller
     public function getPostAssets(Request $request, $slug)
     {
         $assets_path = "storage/blog/posts/$slug/assets";
-        $post_assets = $this->mediaService->fetchPostContentAssets($assets_path, onlyCompressed: false, onlyOriginals: true);
+        $post_assets = $this->mediaService->fetchPostContentAssets($assets_path, onlyCompressed: true, onlyOriginals: false);
         return ['post_assets' => $post_assets];
     }
 }
