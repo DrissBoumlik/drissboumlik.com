@@ -6,16 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Admin\TagCollection;
 use App\Http\Resources\Admin\TagResource;
 use App\Models\Tag;
-use App\Services\PostService;
+use App\Services\MediaService;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
-    private PostService $postService;
+    private MediaService $mediaService;
 
-    public function __construct(PostService $postService)
+    public function __construct(MediaService $mediaService)
     {
-        $this->postService = $postService;
+        $this->mediaService = $mediaService;
     }
 
     public function index(Request $request)
@@ -51,7 +51,7 @@ class TagController extends Controller
                 "color" => $request->color,
             ];
             $image_file = $request->file('cover');
-            $this->postService->processPostCover($data, $image_file, $request->slug, "blog/tags/$request->slug");
+            $this->mediaService->processPostCover($data, $image_file, $request->slug, "blog/tags/$request->slug");
             $tag = Tag::create($data);
             return redirect("/admin/tags/edit/$tag->slug")->with(['response' => ['message' => 'Tag store successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
         } catch (\Throwable $e) {
@@ -75,7 +75,7 @@ class TagController extends Controller
                 "color" => $request->color,
             ];
             $image_file = $request->file('cover');
-            $this->postService->processPostCover($data, $image_file, $request->slug ?? $tag->slug, "blog/tags/$request->slug");
+            $this->mediaService->processPostCover($data, $image_file, $request->slug ?? $tag->slug, "blog/tags/$request->slug");
             $tag->update($data);
             if ($request->has('active')) {
                 $tag->restore();

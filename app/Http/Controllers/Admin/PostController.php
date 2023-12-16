@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Admin\PostCollection;
 use App\Http\Resources\Admin\PostResource;
 use App\Models\Post;
+use App\Services\MediaService;
 use App\Services\PostService;
 use Illuminate\Http\Request;
 use App\Models\Tag;
@@ -14,10 +15,12 @@ class PostController extends Controller
 {
     private $perPage = 10;
     private PostService $postService;
+    private MediaService $mediaService;
 
-    public function __construct(PostService $postService)
+    public function __construct(PostService $postService, MediaService $mediaService)
     {
         $this->postService = $postService;
+        $this->mediaService = $mediaService;
     }
 
     public function index(Request $request)
@@ -53,8 +56,8 @@ class PostController extends Controller
                 'published_at' => ($request->status === "2" ? ($request->published_at ?? now()) : null),
             ];
             $image_file = $request->file('cover');
-            $this->postService->processPostCover($data, $image_file, $request->slug, "blog/posts/$request->slug");
-            $this->postService->processPostsAssets($request->file('post-assets'), "blog/posts/$request->slug/assets");
+            $this->mediaService->processPostCover($data, $image_file, $request->slug, "blog/posts/$request->slug");
+            $this->mediaService->processPostsAssets($request->file('post-assets'), "blog/posts/$request->slug/assets");
             $post = Post::create($data);
             if ($request->has('tags')) {
                 $post_tag = [];
@@ -131,8 +134,8 @@ class PostController extends Controller
                 'views' => $request->views ?? $post->views
             ];
             $image_file = $request->file('cover');
-            $this->postService->processPostCover($data, $image_file, $request->slug ?? $post->slug, "blog/posts/$request->slug");
-            $this->postService->processPostsAssets($request->file('post-assets'), "blog/posts/$request->slug/assets");
+            $this->mediaService->processPostCover($data, $image_file, $request->slug ?? $post->slug, "blog/posts/$request->slug");
+            $this->mediaService->processPostsAssets($request->file('post-assets'), "blog/posts/$request->slug/assets");
             $post->update($data);
 
             if ($request->has('active')) {
