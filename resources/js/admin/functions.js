@@ -33,6 +33,7 @@ function initDarkMode() {
     });
 }
 
+let postAssets = null;
 function initEvents() {
     $.ajaxSetup({
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
@@ -93,54 +94,18 @@ function initEvents() {
     if (viewPostAssetsBtn.length) {
         viewPostAssetsBtn.on('click', function() {
 
-            $.ajax({
-                type: 'GET',
-                url: `/api/posts/${$('#post-slug').val()}/assets`,
-                success: function(response) {
-                    let post_assets = response.post_assets;
-
-                    let gallery = ``;
-                    post_assets.forEach(function (post_asset) {
-                        gallery += `<div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-5" style="height: 150px">
-                                        <div class="post-content-asset h-100 overflow-hidden" style="border-radius: 5px">
-                                        <img src="${ post_asset.link }" class="img-fluid w-100 h-100" style="object-fit: fill; object-position: top center" alt=""></div>
-                                        <a href="${ post_asset.link }" target="_blank">
-                                        <span class="fs-sm">${post_asset.filename}</span></a>
-                                        </div>`;
-                    });
-
-                    let theme = getCookie("theme")
-                    let modal = `
-                    <div class="modal modal-post-assets ${theme}" tabindex="-1">
-                        <div class="modal-dialog modal-lg modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Post Assets: ${post_assets.length} images</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">${gallery}</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-backdrop fade show"></div>`;
-                    $('body').append(modal);
-                    let modalPostAssets = $('.modal-post-assets');
-                    $('.btn-close').add('.modal-post-assets').on('click', function(e) {
-                        if (e.target !== modalPostAssets[0] && e.target !== $('.btn-close')[0]) {
-                            return;
-                        }
-                        modalPostAssets.remove();
-                        $('.modal-backdrop').remove();
-                    });
-                    modalPostAssets.show()
-
-
-                }
-            });
+            if (!postAssets || !postAssets.length) {
+                $.ajax({
+                    type: 'GET',
+                    url: `/api/posts/${$('#post-slug').val()}/assets`,
+                    success: function (response) {
+                        postAssets = response.post_assets;
+                        fillPostAssetsModal(postAssets);
+                    }
+                });
+            } else {
+                fillPostAssetsModal(postAssets);
+            }
         });
     }
 
@@ -153,6 +118,50 @@ function initEvents() {
         });
     }
 
+}
+
+function fillPostAssetsModal(postAssets){
+    let gallery = ``;
+    postAssets.forEach(function (post_asset) {
+        let link_original = post_asset.link.replace('--compressed', '');
+        gallery += `<div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-5" style="height: 150px">
+                                        <div class="post-content-asset h-100 overflow-hidden" style="border-radius: 5px">
+                                        <img src="${post_asset.link}" class="img-fluid w-100 h-100 lazyload"
+                                         data-src="${link_original}"
+                                         style="object-fit: fill; object-position: top center" alt=""></div>
+                                        <a href="${post_asset.link}" target="_blank">
+                                        <span class="fs-sm">${post_asset.filename}</span></a>
+                                        </div>`;
+    });
+
+    let theme = getCookie("theme")
+    let modal = `
+                    <div class="modal modal-post-assets ${theme}" tabindex="-1">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Post Assets: ${postAssets.length} images</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">${gallery}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-backdrop fade show"></div>`;
+    $('body').append(modal);
+    let modalPostAssets = $('.modal-post-assets');
+    $('.btn-close').add('.modal-post-assets').on('click', function (e) {
+        if (e.target !== modalPostAssets[0] && e.target !== $('.btn-close')[0]) {
+            return;
+        }
+        modalPostAssets.remove();
+        $('.modal-backdrop').remove();
+    });
+    modalPostAssets.show();
 }
 
 function shortenTextIfLongByLength(text, length, end = '...'){
