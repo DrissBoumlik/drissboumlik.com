@@ -18,7 +18,7 @@ class FileManagerController extends Controller
             $data->previous_path = substr($path, 0, strrpos($path, '/'));
         }
         $dirs = array_map(function ($dir) {
-            return (object) ['path' => $dir, 'name' => explode('\\', $dir)[1]];
+            return (object) ['path' => $dir, 'name' => explode(DIRECTORY_SEPARATOR, $dir)[1]];
         }, File::directories($path));
         $data->content = [
             'directories' => $dirs,
