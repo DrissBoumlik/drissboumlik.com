@@ -55,9 +55,9 @@
                                 <div class="col-6 col-sm-4 col-md-3 mb-4 media-item-wrapper">
                                     <div class="directory media-item mb-2">
                                         <a href="/admin/media-manager/{{ $dir->path }}" class="media-item-link">
-                                            <div class="directory-icon"><i class="fa-solid fa-folder-open"></i></div>
-                                            <div class="directory-name mb-2">
-                                                <span title="{{ $dir->name }}">{{ $dir->name }}</span>
+                                            <div class="directory-icon w-100 h-100"><i class="fa-solid fa-folder-open"></i></div>
+                                            <div class="directory-name w-100 h-100">
+                                                <span title="{{ $dir->name }}" class="capitalize-first-letter">{{ $dir->name }}</span>
                                             </div>
                                         </a>
                                     </div>
