@@ -1,5 +1,5 @@
 // import 'bootstrap';
-import {getCookie, toggleDarkMode} from "../shared/functions";
+import {get_alert_box, getCookie, toggleDarkMode} from "../shared/functions";
 import { initSelect2 } from "../shared/plugins-use";
 
 function string_to_slug(str) {
@@ -106,6 +106,26 @@ function initEvents() {
             } else {
                 fillPostAssetsModal(postAssets);
             }
+        });
+    }
+
+    let deleteFileBtn = $('.delete-file')
+    if (deleteFileBtn.length) {
+        deleteFileBtn.on('click', function() {
+            let filePath = $(this).data('path');
+            $.ajax({
+                type: 'DELETE',
+                url: `/api/file/${filePath}`,
+                success: function (response) {
+                    console.log(response);
+                    get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                    // window.location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown){
+                    console.log(jqXHR, textStatus, errorThrown);
+                    get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg});
+                }
+            });
         });
     }
 

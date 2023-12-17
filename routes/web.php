@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\VisitorController;
 use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\FileManagerController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -48,6 +49,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
         Route::post('/get-in-touch', [ContactController::class, 'getInTouch']);
         Route::get('/{table}/columns', [ToolController::class, 'getTableColumns']);
         Route::post('/stats', [ToolController::class, 'getTableColumnStats']);
+        Route::delete('/file/{path}', [FileManagerController::class, 'deleteFile'])->where('path', '.*');
     });
 
     Route::prefix('admin')->group(function () {
@@ -96,6 +98,8 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::get('/generate-sitemap', [SitemapController::class, 'generateSitemap']);
             Route::get('/export-db/config', [ToolController::class , 'exportDbConfig']);
             Route::get('/export-db', [ToolController::class , 'export_db']);
+
+            Route::get('media-manager/{path?}', [FileManagerController::class, 'index'])->where('path', '.*');
         });
     });
 

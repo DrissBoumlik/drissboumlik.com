@@ -74,6 +74,12 @@
                     </a>
                 </li>
                 <li class="nav-main-item">
+                    <a class="nav-main-link{{ request()->is('admin/media-manager') ? ' active' : '' }}" href="/admin/media-manager">
+                        <i class="nav-main-link-icon fa fa-fw fa-images"></i>
+                        <span class="nav-main-link-name">Media Manager</span>
+                    </a>
+                </li>
+                <li class="nav-main-item">
                     <a class="nav-main-link{{ request()->is('admin/visitors') ? ' active' : '' }}" href="/admin/visitors">
                         <i class="nav-main-link-icon fa fa-fw fa-eye"></i>
                         <span class="nav-main-link-name">Visitors</span>
