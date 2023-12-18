@@ -172,6 +172,25 @@ function initEvents() {
         });
     }
 
+    let emptyTrashBtn = $('.btn-empty-trash');
+    if (emptyTrashBtn.length) {
+        emptyTrashBtn.on('click', function() {
+            $.ajax({
+                type: 'DELETE',
+                url: `/api/directories/storage/trash`,
+                success: function (response) {
+                    console.log(response);
+                    get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                    // window.location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown){
+                    console.log(jqXHR, textStatus, errorThrown);
+                    get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                }
+            });
+        });
+    }
+
     let show_password_btn = $('.show-password');
     if (show_password_btn.length) {
         show_password_btn.on('click', function() {

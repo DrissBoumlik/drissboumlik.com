@@ -45,6 +45,18 @@ class FileManagerController extends Controller
             return ['msg' => "Directories created : $count"];
         }
     }
+
+    public function emptyDirectory(Request $request, $path)
+    {
+        try {
+            if (File::cleanDirectory($path)) {
+                return ['msg' => 'Trash Emptied successfully'];
+            }
+            return response()->json(['msg' => 'Issue with the process or Directory not found'], 404);
+        } catch (\Exception $e) {
+            return response()->json(['msg' => $e->getMessage()], 404);
+        }
+    }
     public function deleteFile(Request $request, $path, $name)
     {
         try {

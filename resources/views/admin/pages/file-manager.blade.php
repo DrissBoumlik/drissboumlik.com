@@ -43,13 +43,16 @@
             <div class="block-header block-header-default">
                 <div class="block-content p-0 d-flex justify-content-between">
                     <a href="/admin/media-manager/{{ $data->previous_path }}" class="btn btn-outline-warning"><i class="fa fa-fw fa-chevron-circle-left me-1"></i>Back</a>
-                    <form id="form-create-directories">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="directories-names" name="directories-names" placeholder="Separate names by ;" required>
-                            <button type="submit" class="btn btn-outline-success"><i class="fa fa-fw fa-folder-plus"></i></button>
-                        </div>
-                    </form>
+                    <button class="btn btn-outline-danger btn-empty-trash"><i class="fa fa-fw fa-trash me-1"></i>Empty Trash</button>
                 </div>
+            </div>
+            <div class="block-header block-header-default br-0">
+                <form id="form-create-directories">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="directories-names" name="directories-names" placeholder="Separate names by ;" required>
+                        <button type="submit" class="btn btn-outline-success"><i class="fa fa-fw fa-folder-plus me-1"></i>New Directory</button>
+                    </div>
+                </form>
             </div>
             <div class="block-content block-content-full">
                 <ol class="breadcrumb breadcrumb-alt">
