@@ -38,8 +38,16 @@ function initEvents() {
     $.ajaxSetup({
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
     });
-    $( document ).on( "ajaxStart", function() {
-        get_loader();
+    $( document ).on( "ajaxSend", function(event, jqxhr, settings) {
+        if (settings.url.startsWith('/api')) {
+            get_loader();
+        }
+    });
+    $( document ).on( "ajaxComplete", function(event, jqxhr, settings) {
+        let loader = $('.spinner-border');
+        if (loader.length) {
+            loader.remove();
+        }
     });
 
     let btnExport = $('.btn-export');
