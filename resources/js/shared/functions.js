@@ -24,7 +24,25 @@ function toggleDarkMode(element, classes, cookieData) {
     initPostEditor();
 }
 
-function get_alert_box(params) {
+function get_loader() {
+    let loader = $('.spinner-border');
+    if (loader.length) {
+        loader.remove();
+    }
+    loader = `<div class="spinner-border" role="status"
+                                style="width: 3rem; height: 3rem; position: fixed; bottom: 1rem; right: 1rem;
+                                border-color: var(--tc-grey-dark) transparent var(--tc-grey-dark) var(--tc-grey-dark);" >
+                            <span class="visually-hidden">Loading...</span>
+                        </div>`;
+    $(document.body).append(loader)
+}
+function get_alert_box(params, removeLoader = true) {
+    if (removeLoader) {
+        let loader = $('.spinner-border');
+        if (loader.length) {
+            loader.remove();
+        }
+    }
     let alertElement = $('.alert.alert-dismissible');
     if (alertElement.length) {
         alertElement.remove();
@@ -47,4 +65,4 @@ function get_alert_box(params) {
 }
 
 
-export { toggleDarkMode, get_alert_box, getCookie };
+export { toggleDarkMode, get_alert_box, getCookie, get_loader };

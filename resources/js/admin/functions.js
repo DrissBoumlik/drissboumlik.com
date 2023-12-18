@@ -1,5 +1,5 @@
 // import 'bootstrap';
-import {get_alert_box, getCookie, toggleDarkMode} from "../shared/functions";
+import {get_alert_box, get_loader, getCookie, toggleDarkMode} from "../shared/functions";
 import { initSelect2 } from "../shared/plugins-use";
 
 function string_to_slug(str) {
@@ -37,6 +37,9 @@ let postAssets = null;
 function initEvents() {
     $.ajaxSetup({
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+    });
+    $( document ).on( "ajaxStart", function() {
+        get_loader();
     });
 
     let btnExport = $('.btn-export');
