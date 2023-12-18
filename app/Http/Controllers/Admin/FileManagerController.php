@@ -37,12 +37,16 @@ class FileManagerController extends Controller
 
     public function createDirectories(Request $request)
     {
-        ['directoriesNames' => $directoriesNames, 'currentPath' => $currentPath] = $request->all();
-        if ($directoriesNames && is_array($directoriesNames) && $count = count($directoriesNames)) {
-            foreach ($directoriesNames as $directoryName) {
-                File::makeDirectory("$currentPath/$directoryName");
+        try {
+            ['directoriesNames' => $directoriesNames, 'currentPath' => $currentPath] = $request->all();
+            if ($directoriesNames && is_array($directoriesNames) && $count = count($directoriesNames)) {
+                foreach ($directoriesNames as $directoryName) {
+                    File::makeDirectory("$currentPath/$directoryName");
+                }
+                return ['msg' => "Directories created : $count"];
             }
-            return ['msg' => "Directories created : $count"];
+        } catch (\Exception $e) {
+            return response()->json(['msg' => $e->getMessage()], 404);
         }
     }
 
