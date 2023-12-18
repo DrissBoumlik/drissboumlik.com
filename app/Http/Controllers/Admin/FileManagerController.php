@@ -35,12 +35,15 @@ class FileManagerController extends Controller
         return view('admin.pages.file-manager', ['data' => $data]);
     }
 
-    public function deleteFile(Request $request, $path)
+    public function deleteFile(Request $request, $path, $name)
     {
         try {
+            File::ensureDirectoryExists('storage/trash/');
             if (File::isDirectory($path)) {
+                File::copyDirectory($path, "storage/trash/$name");
                 File::deleteDirectory($path);
             } elseif (File::isFile($path)) {
+                File::copy($path, "storage/trash/$name");
                 File::delete($path);
             }
             return ['msg' => 'Deleted successfully'];

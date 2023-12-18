@@ -112,14 +112,16 @@ function initEvents() {
     let deleteFileBtn = $('.delete-file')
     if (deleteFileBtn.length) {
         deleteFileBtn.on('click', function() {
+            let _this = $(this);
             let answer = confirm("Are you sure ?");
             if (!answer) {
                 return;
             }
-            let filePath = $(this).data('path');
+            let path = _this.data('path');
+            let name = _this.data('name');
             $.ajax({
                 type: 'DELETE',
-                url: `/api/file/${filePath}`,
+                url: `/api/path/${path}/name/${name}`,
                 success: function (response) {
                     console.log(response);
                     get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});

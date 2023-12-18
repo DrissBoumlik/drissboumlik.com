@@ -49,7 +49,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
         Route::post('/get-in-touch', [ContactController::class, 'getInTouch']);
         Route::get('/{table}/columns', [ToolController::class, 'getTableColumns']);
         Route::post('/stats', [ToolController::class, 'getTableColumnStats']);
-        Route::delete('/file/{path}', [FileManagerController::class, 'deleteFile'])->where('path', '.*');
+        Route::delete('/path/{path}/name/{name}', [FileManagerController::class, 'deleteFile'])->where('path', '.*');
     });
 
     Route::prefix('admin')->group(function () {

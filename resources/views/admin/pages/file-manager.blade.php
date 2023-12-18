@@ -66,7 +66,8 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <button type="submit" class="btn btn-outline-danger w-100 delete-file" data-path="{{ $dir->path }}">Delete</button>
+                                    <button type="submit" class="btn btn-outline-danger w-100 delete-file"
+                                            data-name="{{ $dir->name }}" data-path="{{ $dir->path }}">Delete</button>
                                 </div>
                             @endforeach
                         @else
@@ -93,7 +94,8 @@
                                         @endif
                                         </a>
                                     </div>
-                                    <button type="submit" class="btn btn-outline-danger w-100 delete-file" data-path="{{ $file->getPathname() }}">Delete</button>
+                                    <button type="submit" class="btn btn-outline-danger w-100 delete-file"
+                                            data-name="{{ $file->getFilename() }}" data-path="{{ $file->getPathname() }}">Delete</button>
                                 </div>
                             @endforeach
                         @else
