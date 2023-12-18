@@ -132,7 +132,7 @@ function initEvents() {
                 },
                 error: function (jqXHR, textStatus, errorThrown){
                     console.log(jqXHR, textStatus, errorThrown);
-                    get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg});
+                    get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
                 }
             });
         });
