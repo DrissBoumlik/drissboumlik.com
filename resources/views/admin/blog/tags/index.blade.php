@@ -17,11 +17,9 @@
 
 @section('buttons')
     <button class="btn-refresh btn btn-outline-info">
-        <i class="fa fa-fw fa-refresh me-1"></i> Refresh
-    </button>
+        <i class="fa fa-fw fa-refresh me-1"></i>Refresh</button>
     <a href="/admin/tags/create" class="btn btn-success">
-        <i class="fa fa-fw fa-plus me-1"></i> New Tag
-    </a>
+        <i class="fa fa-fw fa-plus me-1"></i>New Tag</a>
 @endsection
 
 @section('list')

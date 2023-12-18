@@ -17,11 +17,9 @@
 
 @section('buttons')
     <button class="btn-refresh btn btn-outline-info">
-        <i class="fa fa-fw fa-refresh me-1"></i> Refresh
-    </button>
+        <i class="fa fa-fw fa-refresh me-1"></i>Refresh</button>
     <button class="btn btn-outline-warning btn-export">
-        <i class="fa-solid fa-download"></i> Export
-    </button>
+        <i class="fa-solid fa-download me-1"></i>Export</button>
 @endsection
 
 @section('custom-dom')
