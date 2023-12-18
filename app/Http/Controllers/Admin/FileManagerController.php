@@ -39,6 +39,9 @@ class FileManagerController extends Controller
     {
         try {
             ['directoriesNames' => $directoriesNames, 'currentPath' => $currentPath] = $request->all();
+            if (!$currentPath) {
+                $currentPath = "storage";
+            }
             if ($directoriesNames && is_array($directoriesNames) && $count = count($directoriesNames)) {
                 foreach ($directoriesNames as $directoryName) {
                     File::makeDirectory("$currentPath/$directoryName");

@@ -146,9 +146,14 @@ function initEvents() {
             if (!answer) {
                 return;
             }
-            let currentPath = window.location.pathname.replace('/admin/media-manager/', '');
+            const regex = new RegExp(`/admin/media-manager/\?`, 'g');
+            let currentPath = window.location.pathname.replaceAll(regex, '');
+            console.log(currentPath);
+            if (currentPath === "") {
+                currentPath = "storage";
+            }
             let directoriesNames = $('#directories-names').val().trim();
-            if (directoriesNames === "" || currentPath === "") {
+            if (directoriesNames === "") {
                 get_alert_box({class: 'alert-warning', message: "Empty inputs !!", icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
                 return;
             }
