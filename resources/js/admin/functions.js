@@ -112,6 +112,10 @@ function initEvents() {
     let deleteFileBtn = $('.delete-file')
     if (deleteFileBtn.length) {
         deleteFileBtn.on('click', function() {
+            let answer = confirm("Are you sure ?");
+            if (!answer) {
+                return;
+            }
             let filePath = $(this).data('path');
             $.ajax({
                 type: 'DELETE',
