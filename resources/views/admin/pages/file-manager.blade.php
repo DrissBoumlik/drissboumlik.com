@@ -76,9 +76,16 @@
                                 <div class="col-6 col-sm-4 col-md-3 mb-4 media-item-wrapper">
                                     <div class="file media-item mb-2">
                                         <a href="/{{ $file->getPathname() }}" target="_blank" class="media-item-link">
+                                        @if(str_contains(\File::mimeType($file), 'image'))
                                             <div class="file-image h-100">
                                                 <img src="/{{ $file->getPathname() }}" class="img-fluid w-100 h-100" alt="{{ $file->getFilename() }}"/>
                                             </div>
+                                        @else
+                                            <div class="file-icon w-100 h-100"><i class="fa-solid fa-file"></i></div>
+                                            <div class="file-name w-100 h-100">
+                                                <span title="{{ $file->getFilename() }}" class="capitalize-first-letter">{{ $file->getFilename() }}</span>
+                                            </div>
+                                        @endif
                                         </a>
                                     </div>
                                     <button type="submit" class="btn btn-outline-danger w-100 delete-file" data-path="{{ $file->getPathname() }}">Delete</button>
