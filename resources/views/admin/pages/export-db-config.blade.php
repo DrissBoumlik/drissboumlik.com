@@ -48,7 +48,12 @@
             <tr>
                 <td class="table-name">{{ $table->name }}</td>
                 <td>{{ $table->count }}</td>
-                <td class="text-center"><input type="checkbox" class="form-check-input table-item" name="tables[]"></td>
+                <td class="text-center">
+                    <div class="form-check form-switch form-check-inline">
+                        <input class="form-check-input table-item" type="checkbox" name="tables[]" checked>
+                    </div>
+{{--                    <input type="checkbox" class="form-check-input table-item" name="tables[]">--}}
+                </td>
             </tr>
         @endforeach
     </table>
