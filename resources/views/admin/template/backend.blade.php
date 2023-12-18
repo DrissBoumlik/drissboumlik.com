@@ -9,7 +9,7 @@
 
 <body>
   <!-- Page Container -->
-  <div id="page-container" class="sidebar-o  enable-page-overlay side-scroll main-content-narrow {{ $theme == 'dark-mode' ? 'page-header-dark dark-mode sidebar-dark' : 'light-mode' }}">
+  <div id="page-container" class="sidebar-o  enable-page-overlay side-scroll {{ $theme == 'dark-mode' ? 'page-header-dark dark-mode sidebar-dark' : 'light-mode' }}">
 
 
       @include('admin.template.backend-sections.left-sidebar')
