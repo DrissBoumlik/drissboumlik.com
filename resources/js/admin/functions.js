@@ -39,26 +39,29 @@ function initEvents() {
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
     });
 
-    $('.btn-export').on('click', function() {
-        let tablesNames = null;
-        if (!$('#export-all-tables').prop('checked')) {
-            tablesNames = '';
-            document.querySelectorAll('#tables .table-item').forEach(function (e) {
-                if (e.checked) {
-                    tablesNames += e.closest('tr').querySelector('.table-name').innerText + ' ';
-                }
-            });
-            tablesNames = tablesNames.trim();
-        }
-        let dontCreateTables = $('#do-not-create-tables').prop('checked');
-        let queryString = `
+    let btnExport = $('.btn-export');
+    if (btnExport.length) {
+        btnExport.on('click', function () {
+            let tablesNames = null;
+            if (!$('#export-all-tables').prop('checked')) {
+                tablesNames = '';
+                document.querySelectorAll('#tables .table-item').forEach(function (e) {
+                    if (e.checked) {
+                        tablesNames += e.closest('tr').querySelector('.table-name').innerText + ' ';
+                    }
+                });
+                tablesNames = tablesNames.trim();
+            }
+            let dontCreateTables = $('#do-not-create-tables').prop('checked');
+            let queryString = `
             ${tablesNames ? 'tables=' + tablesNames : ''}
             &
             ${dontCreateTables ? 'dontCreateTables=1' : ''}
         `;
-        console.log(queryString.trim());
-        window.open('/admin/export-db?' + queryString);
-    });
+            console.log(queryString.trim());
+            window.open('/admin/export-db?' + queryString);
+        });
+    }
 
     One.helpersOnLoad('js-flatpickr');
 
