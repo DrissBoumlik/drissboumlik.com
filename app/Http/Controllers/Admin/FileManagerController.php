@@ -64,12 +64,16 @@ class FileManagerController extends Controller
     public function deleteFile(Request $request, $path, $name)
     {
         try {
-            File::ensureDirectoryExists('storage/trash/');
+            $trash = 'storage/trash';
+            if ($trash === $path) {
+                throw new \Exception("You can't delete the trash");
+            }
+            File::ensureDirectoryExists("$trash/");
             if (File::isDirectory($path)) {
-                File::copyDirectory($path, "storage/trash/$name");
+                File::copyDirectory($path, "$trash/$name");
                 File::deleteDirectory($path);
             } elseif (File::isFile($path)) {
-                File::copy($path, "storage/trash/$name");
+                File::copy($path, "$trash/$name");
                 File::delete($path);
             }
             return ['msg' => 'Deleted successfully'];
