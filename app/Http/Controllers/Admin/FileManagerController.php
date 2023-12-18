@@ -13,7 +13,14 @@ class FileManagerController extends Controller
         $data = new \stdClass();
         $data->title = 'Media Manager | Admin Panel';
 
+        $data->path = substr($path, strrpos($path, '/') + 1, strlen($path));
         $data->previous_path = null;
+        $data->breadcrumb = array_reduce(explode('/', $path), function($acc, $segment) {
+            $acc['href'] .= "/$segment";
+            $href = $acc['href'];
+            $acc['breadcrumb'] .= "<li class='breadcrumb-item capitalize-first-letter'><a href='/admin/media-manager$href'>$segment</a></li>";
+            return $acc;
+        }, ['href' => '', 'breadcrumb' => '']);
         if (str_contains($path, '/')) {
             $data->previous_path = substr($path, 0, strrpos($path, '/'));
         }

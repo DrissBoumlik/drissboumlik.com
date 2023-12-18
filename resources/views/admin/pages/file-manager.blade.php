@@ -47,6 +47,11 @@
                 </div>
             </div>
             <div class="block-content block-content-full">
+                <ol class="breadcrumb breadcrumb-alt">
+                    {!! $data->breadcrumb['breadcrumb'] !!}
+                </ol>
+            </div>
+            <div class="block-content block-content-full">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12"><h3>Directories</h3></div>
