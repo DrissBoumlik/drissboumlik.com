@@ -35,6 +35,16 @@ class FileManagerController extends Controller
         return view('admin.pages.file-manager', ['data' => $data]);
     }
 
+    public function createDirectories(Request $request)
+    {
+        ['directoriesNames' => $directoriesNames, 'currentPath' => $currentPath] = $request->all();
+        if ($directoriesNames && is_array($directoriesNames) && $count = count($directoriesNames)) {
+            foreach ($directoriesNames as $directoryName) {
+                File::makeDirectory("$currentPath/$directoryName");
+            }
+            return ['msg' => "Directories created : $count"];
+        }
+    }
     public function deleteFile(Request $request, $path, $name)
     {
         try {

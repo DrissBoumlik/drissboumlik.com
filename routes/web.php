@@ -50,6 +50,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
         Route::get('/{table}/columns', [ToolController::class, 'getTableColumns']);
         Route::post('/stats', [ToolController::class, 'getTableColumnStats']);
         Route::delete('/path/{path}/name/{name}', [FileManagerController::class, 'deleteFile'])->where('path', '.*');
+        Route::post('/directories', [FileManagerController::class, 'createDirectories']);
     });
 
     Route::prefix('admin')->group(function () {

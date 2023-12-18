@@ -42,8 +42,13 @@
         <div class="block block-rounded">
             <div class="block-header block-header-default">
                 <div class="block-content p-0 d-flex justify-content-between">
-                    <a href="/admin/media-manager/{{ $data->previous_path }}" class="btn btn-outline-warning"><i class="fa fa-fw fa-chevron-circle-left me-1"></i> Back</a>
-                    <a href="" class="btn btn-outline-info"><i class="fa fa-fw fa-refresh me-1"></i> Refresh</a>
+                    <a href="/admin/media-manager/{{ $data->previous_path }}" class="btn btn-outline-warning"><i class="fa fa-fw fa-chevron-circle-left me-1"></i>Back</a>
+                    <form id="form-create-directories">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="directories-names" name="directories-names" placeholder="Separate names by ;" required>
+                            <button type="submit" class="btn btn-outline-success"><i class="fa fa-fw fa-folder-plus"></i></button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="block-content block-content-full">
@@ -74,7 +79,7 @@
                             <div class="col-12"><div class="text-center p-5">No directories found</div></div>
                         @endif
                     </div>
-                    <div class=""><hr style="border-top: 2px solid var(--tc-blue)"/></div>
+                    <div class="row"><div class="col-12"><hr style="border-top: 2px solid var(--tc-blue)"/></div></div>
                     <div class="row">
                         <div class="col-12"><h3>Files</h3></div>
                         @if (isset($data->content['files']) && count($data->content['files']))

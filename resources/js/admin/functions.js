@@ -135,6 +135,40 @@ function initEvents() {
         });
     }
 
+    let formCreateDirectories = $('#form-create-directories');
+    if (formCreateDirectories.length) {
+        formCreateDirectories.on('submit', function(e) {
+            e.preventDefault();
+            let answer = confirm("Are you sure ?");
+            if (!answer) {
+                return;
+            }
+            let currentPath = window.location.pathname.replace('/admin/media-manager/', '');
+            let directoriesNames = $('#directories-names').val().trim();
+            if (directoriesNames === "" || currentPath === "") {
+                get_alert_box({class: 'alert-warning', message: "Empty inputs !!", icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                return;
+            }
+            directoriesNames = directoriesNames.split(';').map(function(dirName){
+                return dirName.trim().replaceAll(/ +/gi, ' ');
+            });
+            $.ajax({
+                method: 'POST',
+                url: '/api/directories',
+                data: {directoriesNames, currentPath},
+                success: function (response) {
+                    console.log(response);
+                    get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                    // window.location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown){
+                    console.log(jqXHR, textStatus, errorThrown);
+                    get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                }
+            });
+        });
+    }
+
     let show_password_btn = $('.show-password');
     if (show_password_btn.length) {
         show_password_btn.on('click', function() {
