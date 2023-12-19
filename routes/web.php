@@ -52,6 +52,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
         Route::delete('/path/{path}/name/{name}', [FileManagerController::class, 'deleteFile'])->where('path', '.*');
         Route::post('/directories', [FileManagerController::class, 'createDirectories']);
         Route::delete('/directories/{path}', [FileManagerController::class, 'emptyDirectory'])->where('path', '.*');
+        Route::post('/blog/{slug}/{value}', [BlogController::class, 'likePost']);
     });
 
     Route::prefix('admin')->group(function () {

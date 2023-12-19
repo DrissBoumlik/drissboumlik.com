@@ -7,6 +7,8 @@
 {{-- <meta name="robots" content="index, follow"> --}}
 {{-- @include('addons.google-analytics') --}}
 {{-- @include('addons.google-tag-manager-head') --}}
+<!-- CSRF Token -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 <link rel="canonical" href="https://www.drissboumlik.com/">
 <meta name="og:image" content="{{ asset('/assets/img/me/icon.ico') }}">

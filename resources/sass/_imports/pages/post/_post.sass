@@ -85,7 +85,7 @@
             height: auto
         //p
         //    margin-bottom: 1rem
-    .post-date
+    .post-date, .highlight-box
         background-color: $tc-grey-light-1
         border-radius: 0.4rem
         padding: 0.5rem 1rem
@@ -109,6 +109,11 @@
         font-size: 0.8rem
     pre
         border-radius: 10px
+    .btn-like-post
+        transition: background-color .3s linear, border-color .1s linear
+    .report-actions
+        border-radius: 0 0.4rem 0.4rem 0
+        border-left: 4px solid $tc-blue-dark-1
 
 .post-tags
     *
@@ -120,7 +125,7 @@ body.dark-mode
         code:not([class*=language])
             color: $tc-white
             background-color: $tc-grey-fancy
-        .post-date
+        .post-date, .highlight-box
             background-color: $tc-blue-dark-4
     .post-tags *
         color: $tc-grey-dark
