@@ -1285,5 +1285,6 @@ token  treeview-part   entry-name  ext-pps:before,   token  treeview-part   entr
             </a>
         </div>
     </div>
+    <div class="tooltip bs-tooltip-auto fade show" role="tooltip" id="tooltip397936" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(54px, -4806px);"><div class="tooltip-arrow" style="position: absolute; left: 0px; transform: translate(66px, 0px);"></div><div class="tooltip-inner">Follow me on github</div></div>
 </div>
 
