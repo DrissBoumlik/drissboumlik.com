@@ -60,7 +60,7 @@
                             <select class="form-select" name="pages-list" id="pages-list"></select>
                         </div>
                         <div class="perpage-selection col-6 mt-3">
-                            <label class="form-label" for="perpage-list">Select Year</label>
+                            <label class="form-label" for="perpage-list">Select Per Page</label>
                             <select class="form-select" name="perpage-list" id="perpage-list">
                                 <option value="10">10</option>
                                 <option value="20" selected>20</option>
@@ -95,7 +95,7 @@
                             <select class="form-select" name="pages-list2" id="pages-list2"></select>
                         </div>
                         <div class="perpage-selection col-6 mt-3">
-                            <label class="form-label" for="perpage-list2">Select Year</label>
+                            <label class="form-label" for="perpage-list2">Select Per Page</label>
                             <select class="form-select" name="perpage-list2" id="perpage-list2">
                                 <option value="10">10</option>
                                 <option value="20" selected>20</option>
