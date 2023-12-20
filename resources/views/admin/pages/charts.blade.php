@@ -59,6 +59,19 @@
                             <label class="form-label" for="pages-list">Select Page</label>
                             <select class="form-select" name="pages-list" id="pages-list"></select>
                         </div>
+                        <div class="perpage-selection col-6 mt-3">
+                            <label class="form-label" for="perpage-list">Select Year</label>
+                            <select class="form-select" name="perpage-list" id="perpage-list">
+                                <option value="10">10</option>
+                                <option value="20" selected>20</option>
+                                <option value="30">30</option>
+                                <option value="40">40</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                                <option value="150">150</option>
+                                <option value="200">200</option>
+                            </select>
+                        </div>
                         <div class="col-12 mt-4">
                             <canvas id="myChart"></canvas>
                         </div>
@@ -80,6 +93,19 @@
                         <div class="page-selection col-6 mt-3">
                             <label class="form-label" for="pages-list2">Select Page</label>
                             <select class="form-select" name="pages-list2" id="pages-list2"></select>
+                        </div>
+                        <div class="perpage-selection col-6 mt-3">
+                            <label class="form-label" for="perpage-list2">Select Year</label>
+                            <select class="form-select" name="perpage-list2" id="perpage-list2">
+                                <option value="10">10</option>
+                                <option value="20" selected>20</option>
+                                <option value="30">30</option>
+                                <option value="40">40</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                                <option value="150">150</option>
+                                <option value="200">200</option>
+                            </select>
                         </div>
                         <div class="col-12 mt-4">
                             <canvas id="myChart2"></canvas>

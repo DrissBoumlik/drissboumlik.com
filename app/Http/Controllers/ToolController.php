@@ -59,17 +59,18 @@ class ToolController extends Controller
         $table = $request->get('table');
         $column = $request->get('column');
         $year = $request->get('year');
+        $perPage = $request->get('perPage') ?? 20;
         if ($year) {
             return \DB::table($table)
                 ->select($column, \DB::raw("month(updated_at) as month"), \DB::raw("count($column) as visits"))
                 ->whereYear('updated_at', $year)
                 ->orderby('visits', 'desc')
-                ->groupBy($column, 'month')->paginate(20);
+                ->groupBy($column, 'month')->paginate($perPage);
         }
 
         return \DB::table($table)
             ->select($column, \DB::raw("count($column) as visits"))
             ->orderby('visits', 'desc')
-            ->groupBy($column)->paginate(10);
+            ->groupBy($column)->paginate($perPage);
     }
 }

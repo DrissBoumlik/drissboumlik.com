@@ -18,6 +18,7 @@ function initChartByYearEvents(defaultValue = 'countryName') {
     let columnsList2 = $('#columns-list2')
     let pagesList2 = $('#pages-list2');
     let yearsList = $('#years-list2');
+    let perpageList2 = $('#perpage-list2');
     let params = {
         columnSelected: defaultValue,
         pagesList: pagesList2,
@@ -45,13 +46,20 @@ function initChartByYearEvents(defaultValue = 'countryName') {
         params.yearSelected = yearsList.val();
         initChartByYear(params);
     });
+    perpageList2.on('change', function() {
+        params.columnSelected = columnsList2.val();
+        params.page = 1;
+        params.yearSelected = yearsList.val();
+        params.perPage = perpageList2.val();
+        initChartByYear(params);
+    });
 }
 
 function initChartByYear(params) {
     $.ajax({
         type: 'POST',
         url: `/api/stats?page=${params.page}`,
-        data: {table: 'visitors', column: params.columnSelected, year: params.yearSelected},
+        data: {table: 'visitors', column: params.columnSelected, year: params.yearSelected, perPage: params.perPage},
         success: function(response) {
             if (params.page === 1) {
                 let html = '';
@@ -112,6 +120,7 @@ function initChartByField(defaultValue = 'countryName') {
             let columnsList = $('#columns-list')
             let columnsList2 = $('#columns-list2')
             let pagesList = $('#pages-list');
+            let perpageList = $('#perpage-list');
             columnsList.html(html);
             columnsList2.html(html);
             let params = {columnSelected: defaultValue, pagesList, visitsChart: null, ctx, page: 1};
@@ -127,6 +136,13 @@ function initChartByField(defaultValue = 'countryName') {
                 params.page = pagesList.val();
                 getColumnStats(params);
             });
+
+            perpageList.on('change', function() {
+                params.columnSelected = columnsList.val();
+                params.page = 1;
+                params.perPage = perpageList.val();
+                getColumnStats(params);
+            });
         }
     });
 }
@@ -135,7 +151,7 @@ function getColumnStats(params) {
     $.ajax({
         type: 'POST',
         url: `/api/stats?page=${params.page}`,
-        data: {table: 'visitors', column: params.columnSelected},
+        data: {table: 'visitors', column: params.columnSelected, perPage: params.perPage},
         success: function(response) {
 
             if (params.page === 1) {
