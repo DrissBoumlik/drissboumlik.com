@@ -55,7 +55,7 @@
                             </div>
                             <div class="report-actions highlight-box mt-5 px-3 py-2">
                                 <p class="m-0">If you noticed a tpyo, bug <i class="fa-solid fa-bug"></i> or have an idea <i class="fa-solid fa-lightbulb"></i> for the next article,
-                                    Feel free to email me at : hi@drissboumlik.com</p>
+                                    Feel free to email me at hi@drissboumlik.com</p>
                             </div>
                         </div>
                     </div>
