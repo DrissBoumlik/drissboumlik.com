@@ -236,6 +236,10 @@ function initPostEditor() {
     tinymce.init(options);
 }
 
+function initFlatpickr() {
+    if ($('.js-flatpickr').length == 0) return;
+    One.helpersOnLoad('js-flatpickr');
+}
 function initSelect2() {
     if ($('.js-select2').length == 0) return;
     One.helpersOnLoad(['jq-select2']);
@@ -532,4 +536,4 @@ function configDT(params) {
     return table;
 }
 
-export { initPostEditor, initSelect2, initDatatable, initChart };
+export { initPostEditor, initSelect2, initDatatable, initChart, initFlatpickr };

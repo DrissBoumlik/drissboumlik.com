@@ -1,5 +1,10 @@
 @extends('admin.template.datatable')
 
+@section('post-header-assets')
+    @parent
+    @vite(['resources/js/admin/pages/export-db.js'])
+@endsection
+
 @section('list-title')
     Tables list
 @endsection

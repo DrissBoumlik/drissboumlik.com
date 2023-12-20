@@ -11,6 +11,10 @@
     <script src="{{ asset('/template/assets/js/plugins/select2/js/select2.full.min.js') }}"></script>
 @endsection
 
+@section('post-header-assets')
+    @vite(['resources/js/admin/pages/media-manager.js'])
+@endsection
+
 @section('content')
     <!-- Hero -->
     <div class="bg-body-light">

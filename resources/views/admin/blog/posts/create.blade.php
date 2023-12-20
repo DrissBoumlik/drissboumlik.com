@@ -17,6 +17,10 @@
     <script src="{{ asset('/plugins/tinymce/tinymce.min.js') }}"></script>
 @endsection
 
+@section('post-header-assets')
+    @vite(['resources/js/admin/pages/post.js'])
+@endsection
+
 @section('content')
     <!-- Hero -->
     <div class="bg-body-light">

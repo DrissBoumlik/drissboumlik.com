@@ -11,7 +11,9 @@
 
         {{-- @include('addons.google-tag-manager-head') --}}
 
+        @yield('pre-header-assets')
         @include('layout.header-parts.assets')
+        @yield('post-header-assets')
         <title>{{ $data->title ?? 'Admin Panel' }}</title>
     </head>
     <body class="antialiased {{ $mode . '-mode' }}">

@@ -1,5 +1,9 @@
 @extends('auth.app')
 
+@section('post-header-assets')
+    @vite(['resources/js/pages/auth.js'])
+@endsection
+
 @section('content')
     <div class="container-fluid auth-box">
         <section class="vh-100">

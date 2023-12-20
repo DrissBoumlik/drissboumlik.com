@@ -1,5 +1,9 @@
 @extends('layout.page-content-wide')
 
+@section('post-header-assets')
+    @vite(['resources/js/pages/blog.js'])
+@endsection
+
 @section('headline')
     <div class="d-flex flex-column align-items-center justify-content-center">
         <h1 class="header-txt fs-small text-transform-unset">{!! $data->headline !!}</h1>

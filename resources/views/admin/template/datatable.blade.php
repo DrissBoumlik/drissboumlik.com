@@ -12,6 +12,10 @@
     <script src="{{ asset('/template/assets/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
 @endsection
 
+@section('post-header-assets')
+    @vite(['resources/js/admin/pages/datatable.js'])
+@endsection
+
 @section('content')
     <!-- Hero -->
     <div class="bg-body-light">

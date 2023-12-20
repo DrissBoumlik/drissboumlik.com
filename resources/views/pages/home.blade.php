@@ -1,7 +1,8 @@
 @extends('layout.app')
 
 @section('post-header-assets')
-    @vite(['resources/js/pages/code-animation.js', 'resources/js/pages/contact.js'])
+    @vite(['resources/js/pages/code-animation.js', 'resources/js/pages/contact.js',
+            'resources/js/pages/carousel.js', 'resources/js/pages/tooltip.js'])
 @endsection
 
 @section('content')

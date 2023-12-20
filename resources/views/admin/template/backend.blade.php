@@ -4,7 +4,9 @@
 <head>
     @include('admin.template.frontend-sections.meta')
 
+    @yield('pre-header-assets')
     @include('admin.template.frontend-sections.assets')
+    @yield('post-header-assets')
 </head>
 
 <body>

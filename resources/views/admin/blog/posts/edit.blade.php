@@ -20,6 +20,10 @@
     <script src="{{ asset('/plugins/tinymce/tinymce.min.js') }}"></script>
 @endsection
 
+@section('post-header-assets')
+    @vite(['resources/js/admin/pages/post.js'])
+@endsection
+
 @section('content')
     <!-- Hero -->
     <div class="bg-body-light">
@@ -79,11 +83,11 @@
                             <div class="timestamps d-flex justify-content-between align-items-center column-gap-2">
                                 <div class="mb-4">
                                     <label class="form-label" for="updated_at">Updated at</label>
-                                    <input type="text" class="js-flatpickr form-control" id="updated_at" disabled name="updated_at" value="{{ $post->updated_at }}" data-enable-time="true" data-time_24hr="true">
+                                    <input type="text" class="form-control" id="updated_at" disabled name="updated_at" value="{{ $post->updated_at }}" data-enable-time="true" data-time_24hr="true">
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label" for="created_at">Created at</label>
-                                    <input type="text" class="js-flatpickr form-control" id="created_at" disabled name="created_at" value="{{ $post->created_at }}" data-enable-time="true" data-time_24hr="true">
+                                    <input type="text" class="form-control" id="created_at" disabled name="created_at" value="{{ $post->created_at }}" data-enable-time="true" data-time_24hr="true">
                                 </div>
                             </div>
                             <div class="mb-4">
@@ -111,12 +115,10 @@
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="status">Status</label>
-                                <select class="js-select2 form-select" id="status"
+                                <select class="form-select" id="status"
                                     name="status" style="width: 100%;" data-placeholder="Choose many..">
-                                    <!-- Required for data-placeholder attribute to work with Select2 plugin -->
-
                                     @foreach($data->postsStatus as $key => $status)
-                                        <option value="{{ $key }}" {{ $post->status->value == $key ? 'selected' : '' }}>{{ ucfirst($status) }}</option>
+                                        <option value="{{ $key }}" {{ $post->status->value === $key ? 'selected' : '' }}>{{ ucfirst($status) }}</option>
                                     @endforeach
                                 </select>
                             </div>

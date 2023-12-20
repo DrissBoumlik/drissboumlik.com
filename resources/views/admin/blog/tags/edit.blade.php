@@ -1,5 +1,8 @@
 @extends('admin.template.backend')
 
+@section('post-header-assets')
+    @vite(['resources/js/admin/pages/post.js'])
+@endsection
 
 @section('content')
     <!-- Hero -->

@@ -1,5 +1,9 @@
 @extends('layout.page-content-wide', ['px_0' => 'px-0', 'py_0' => 'py-0'])
 
+@section('post-header-assets')
+    @vite(['resources/js/pages/carousel.js', 'resources/js/pages/tooltip.js'])
+@endsection
+
 @section('headline')
     <div class="d-flex flex-column align-items-center justify-content-center">
         <h1 class="header-txt">{!! $data->headline !!}</h1>

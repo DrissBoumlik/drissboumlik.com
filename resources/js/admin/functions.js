@@ -34,7 +34,7 @@ function initDarkMode() {
 }
 
 let postAssets = null;
-function initEvents() {
+function initAjaxEvents() {
     $.ajaxSetup({
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
     });
@@ -49,173 +49,6 @@ function initEvents() {
             loader.remove();
         }
     });
-
-    let btnExport = $('.btn-export');
-    if (btnExport.length) {
-        btnExport.on('click', function () {
-            let tablesNames = null;
-            if (!$('#export-all-tables').prop('checked')) {
-                tablesNames = '';
-                document.querySelectorAll('#tables .table-item').forEach(function (e) {
-                    if (e.checked) {
-                        tablesNames += e.closest('tr').querySelector('.table-name').innerText + ' ';
-                    }
-                });
-                tablesNames = tablesNames.trim();
-            }
-            let dontCreateTables = $('#do-not-create-tables').prop('checked');
-            let queryString = `
-            ${tablesNames ? 'tables=' + tablesNames : ''}
-            &
-            ${dontCreateTables ? 'dontCreateTables=1' : ''}
-        `;
-            console.log(queryString.trim());
-            window.open('/admin/export-db?' + queryString);
-        });
-    }
-
-    One.helpersOnLoad('js-flatpickr');
-
-
-    $(document).on('focusout', '.input-to-slugify', function () {
-        let postTitle = $(this).val();
-        let postSlug = string_to_slug(postTitle)
-        // let postSlug = slugify(postTitle, {
-        //     // replacement: '-',  // replace spaces with replacement character, defaults to `-`
-        //     // remove: undefined, // remove characters that match regex, defaults to `undefined`
-        //     lower: true,      // convert to lower case, defaults to `false`
-        //     strict: true,     // strip special characters except replacement, defaults to `false`
-        //     // locale: 'vi',      // language code of the locale to use
-        //     trim: true         // trim leading and trailing replacement chars, defaults to `true`
-        // });
-        $('.input-slug').val(postSlug);
-    });
-
-    let imageElement = document.getElementById('image')
-    if (imageElement) {
-        imageElement.onchange = (event) => {
-            if (event.target.files.length > 0) {
-                let src = URL.createObjectURL(event.target.files[0]);
-                let preview = document.getElementById("image-preview");
-                preview.src = src;
-
-                // initImageCropper();
-            }
-        };
-    }
-
-    let viewPostAssetsBtn = $('.btn-view-post-assets')
-    if (viewPostAssetsBtn.length) {
-        viewPostAssetsBtn.on('click', function() {
-
-            if (!postAssets || !postAssets.length) {
-                $.ajax({
-                    type: 'GET',
-                    url: `/api/posts/${$('#post-slug').val()}/assets`,
-                    success: function (response) {
-                        postAssets = response.post_assets;
-                        fillPostAssetsModal(postAssets);
-                    }
-                });
-            } else {
-                fillPostAssetsModal(postAssets);
-            }
-        });
-    }
-
-    let deleteFileBtn = $('.delete-file')
-    if (deleteFileBtn.length) {
-        deleteFileBtn.on('click', function() {
-            let _this = $(this);
-            let answer = confirm("Are you sure ?");
-            if (!answer) {
-                return;
-            }
-            let path = _this.data('path');
-            let name = _this.data('name');
-            $.ajax({
-                type: 'DELETE',
-                url: `/api/path/${path}/name/${name}`,
-                success: function (response) {
-                    console.log(response);
-                    get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
-                    // window.location.reload();
-                },
-                error: function (jqXHR, textStatus, errorThrown){
-                    console.log(jqXHR, textStatus, errorThrown);
-                    get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
-                }
-            });
-        });
-    }
-
-    let formCreateDirectories = $('#form-create-directories');
-    if (formCreateDirectories.length) {
-        formCreateDirectories.on('submit', function(e) {
-            e.preventDefault();
-            let answer = confirm("Are you sure ?");
-            if (!answer) {
-                return;
-            }
-            const regex = new RegExp(`/admin/media-manager/\?`, 'g');
-            let currentPath = window.location.pathname.replaceAll(regex, '');
-            console.log(currentPath);
-            if (currentPath === "") {
-                currentPath = "storage";
-            }
-            let directoriesNames = $('#directories-names').val().trim();
-            if (directoriesNames === "") {
-                get_alert_box({class: 'alert-warning', message: "Empty inputs !!", icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
-                return;
-            }
-            directoriesNames = directoriesNames.split(';').map(function(dirName){
-                return dirName.trim().replaceAll(/ +/gi, ' ');
-            });
-            $.ajax({
-                method: 'POST',
-                url: '/api/directories',
-                data: {directoriesNames, currentPath},
-                success: function (response) {
-                    console.log(response);
-                    get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
-                    // window.location.reload();
-                },
-                error: function (jqXHR, textStatus, errorThrown){
-                    console.log(jqXHR, textStatus, errorThrown);
-                    get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
-                }
-            });
-        });
-    }
-
-    let emptyTrashBtn = $('.btn-empty-trash');
-    if (emptyTrashBtn.length) {
-        emptyTrashBtn.on('click', function() {
-            $.ajax({
-                type: 'DELETE',
-                url: `/api/directories/storage/trash`,
-                success: function (response) {
-                    console.log(response);
-                    get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
-                    // window.location.reload();
-                },
-                error: function (jqXHR, textStatus, errorThrown){
-                    console.log(jqXHR, textStatus, errorThrown);
-                    get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
-                }
-            });
-        });
-    }
-
-    let show_password_btn = $('.show-password');
-    if (show_password_btn.length) {
-        show_password_btn.on('click', function() {
-            let input_password = $(this).siblings('input');
-            let type = input_password.attr('type') === 'text' ? 'password' : 'text';
-            input_password.attr('type', type);
-        });
-    }
-
 }
 
 function fillPostAssetsModal(postAssets){
@@ -278,4 +111,166 @@ function getDomClass(status) {
     return classes[status];
 }
 
-export { initDarkMode, initEvents, shortenTextIfLongByLength, getDomClass };
+function initBlogEvents() {
+
+    $(document).on('focusout', '.input-to-slugify', function () {
+        let postTitle = $(this).val();
+        let postSlug = string_to_slug(postTitle)
+        // let postSlug = slugify(postTitle, {
+        //     // replacement: '-',  // replace spaces with replacement character, defaults to `-`
+        //     // remove: undefined, // remove characters that match regex, defaults to `undefined`
+        //     lower: true,      // convert to lower case, defaults to `false`
+        //     strict: true,     // strip special characters except replacement, defaults to `false`
+        //     // locale: 'vi',      // language code of the locale to use
+        //     trim: true         // trim leading and trailing replacement chars, defaults to `true`
+        // });
+        $('.input-slug').val(postSlug);
+    });
+
+    let imageElement = document.getElementById('image')
+    if (imageElement) {
+        imageElement.onchange = (event) => {
+            if (event.target.files.length > 0) {
+                let src = URL.createObjectURL(event.target.files[0]);
+                let preview = document.getElementById("image-preview");
+                preview.src = src;
+
+                // initImageCropper();
+            }
+        };
+    }
+
+    let viewPostAssetsBtn = $('.btn-view-post-assets')
+    if (viewPostAssetsBtn.length) {
+        viewPostAssetsBtn.on('click', function() {
+
+            if (!postAssets || !postAssets.length) {
+                $.ajax({
+                    type: 'GET',
+                    url: `/api/posts/${$('#post-slug').val()}/assets`,
+                    success: function (response) {
+                        postAssets = response.post_assets;
+                        fillPostAssetsModal(postAssets);
+                    }
+                });
+            } else {
+                fillPostAssetsModal(postAssets);
+            }
+        });
+    }
+}
+
+function initExport() {
+    let btnExport = $('.btn-export');
+    if (btnExport.length) {
+        btnExport.on('click', function () {
+            let tablesNames = null;
+            if (!$('#export-all-tables').prop('checked')) {
+                tablesNames = '';
+                document.querySelectorAll('#tables .table-item').forEach(function (e) {
+                    if (e.checked) {
+                        tablesNames += e.closest('tr').querySelector('.table-name').innerText + ' ';
+                    }
+                });
+                tablesNames = tablesNames.trim();
+            }
+            let dontCreateTables = $('#do-not-create-tables').prop('checked');
+            let queryString = `
+            ${tablesNames ? 'tables=' + tablesNames : ''}
+            &
+            ${dontCreateTables ? 'dontCreateTables=1' : ''}`;
+            window.open('/admin/export-db?' + queryString);
+        });
+    }
+}
+
+
+function initMediaManagerEvent() {
+
+    let deleteFileBtn = $('.delete-file')
+    if (deleteFileBtn.length) {
+        deleteFileBtn.on('click', function() {
+            let _this = $(this);
+            if (!confirm("Are you sure ?")) {
+                return;
+            }
+            let path = _this.data('path');
+            let name = _this.data('name');
+            $.ajax({
+                type: 'DELETE',
+                url: `/api/path/${path}/name/${name}`,
+                success: function (response) {
+                    console.log(response);
+                    get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                    // window.location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown){
+                    console.log(jqXHR, textStatus, errorThrown);
+                    get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                }
+            });
+        });
+    }
+
+    let formCreateDirectories = $('#form-create-directories');
+    if (formCreateDirectories.length) {
+        formCreateDirectories.on('submit', function(e) {
+            e.preventDefault();
+            if (!confirm("Are you sure ?")) {
+                return;
+            }
+            const regex = new RegExp(`/admin/media-manager/\?`, 'g');
+            let currentPath = window.location.pathname.replaceAll(regex, '');
+            console.log(currentPath);
+            if (currentPath === "") {
+                currentPath = "storage";
+            }
+            let directoriesNames = $('#directories-names').val().trim();
+            if (directoriesNames === "") {
+                get_alert_box({class: 'alert-warning', message: "Empty inputs !!", icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                return;
+            }
+            directoriesNames = directoriesNames.split(';').map(function(dirName){
+                return dirName.trim().replaceAll(/ +/gi, ' ');
+            });
+            $.ajax({
+                method: 'POST',
+                url: '/api/directories',
+                data: {directoriesNames, currentPath},
+                success: function (response) {
+                    console.log(response);
+                    get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                    // window.location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown){
+                    console.log(jqXHR, textStatus, errorThrown);
+                    get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                }
+            });
+        });
+    }
+
+    let emptyTrashBtn = $('.btn-empty-trash');
+    if (emptyTrashBtn.length) {
+        emptyTrashBtn.on('click', function() {
+            if (!confirm("Are you sure ?")) {
+                return;
+            }
+            $.ajax({
+                type: 'DELETE',
+                url: `/api/directories/storage/trash`,
+                success: function (response) {
+                    console.log(response);
+                    get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                    // window.location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown){
+                    console.log(jqXHR, textStatus, errorThrown);
+                    get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                }
+            });
+        });
+    }
+}
+
+export { initDarkMode, initAjaxEvents, shortenTextIfLongByLength, getDomClass, initBlogEvents, initExport, initMediaManagerEvent };
