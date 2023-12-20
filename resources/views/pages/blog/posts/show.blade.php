@@ -53,14 +53,9 @@
                             <div class="post-content mt-3">
                                 {!! $post->content !!}
                             </div>
-                            <div class="post-actions mt-5">
-                                <button id="btn-like-post" class="btn btn-like-post tc-blue-dark-2-bg tc-blue-dark-1-bg-hover"
-                                        data-slug="{{ $post->slug }}"
-                                        data-like data-state><i class="fa-solid fa-thumbs-up me-2"></i>Like Post</button>
-                            </div>
                             <div class="report-actions highlight-box mt-5 px-3 py-2">
-                                <p class="m-0">If you noticed a tpyo, grammatical errours or have an idea for the next article,
-                                    Feel free to send me an <a href="/contact">email</a>.</p>
+                                <p class="m-0">If you noticed a tpyo, bug <i class="fa-solid fa-bug"></i> or have an idea <i class="fa-solid fa-lightbulb"></i> for the next article,
+                                    Feel free to email me at : hi@drissboumlik.com</p>
                             </div>
                         </div>
                     </div>
