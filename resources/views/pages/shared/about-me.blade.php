@@ -38,7 +38,6 @@
                         <div class="body">
                             <div class="body-container"></div>
                         </div>
-                        <div class="footer"></div>
                     </div>
                     <div class="ide-section output-wrapper d-flex hidden-small">
                         <div class="header">
@@ -55,7 +54,6 @@
                                 <div class="lines"></div>
                             </div>
                         </div>
-                        <div class="footer"></div>
                     </div>
                 </div>
             </div>
