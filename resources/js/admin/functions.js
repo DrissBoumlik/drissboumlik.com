@@ -182,6 +182,13 @@ function initExport() {
             window.open('/admin/export-db?' + queryString);
         });
     }
+
+    let btnExportAll = $('#export-all-tables');
+    if (btnExportAll.length) {
+        btnExportAll.on('click', function() {
+            $('.table-item').prop('checked', this.checked)
+        });
+    }
 }
 
 

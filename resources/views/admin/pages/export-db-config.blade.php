@@ -55,7 +55,7 @@
                 <td>{{ $table->count }}</td>
                 <td class="text-center">
                     <div class="form-check form-switch form-check-inline">
-                        <input class="form-check-input table-item" type="checkbox" name="tables[]" checked>
+                        <input class="form-check-input table-item" type="checkbox" name="tables[]">
                     </div>
 {{--                    <input type="checkbox" class="form-check-input table-item" name="tables[]">--}}
                 </td>
