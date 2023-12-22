@@ -194,30 +194,27 @@ function initExport() {
 
 function initMediaManagerEvent() {
 
-    let deleteFileBtn = $('.delete-file')
-    if (deleteFileBtn.length) {
-        deleteFileBtn.on('click', function() {
-            let _this = $(this);
-            if (!confirm("Are you sure ?")) {
-                return;
+    $(document).on('click', '.delete-file', function() {
+        let _this = $(this);
+        if (!confirm("Are you sure ?")) {
+            return;
+        }
+        let path = _this.data('path');
+        let name = _this.data('name');
+        $.ajax({
+            type: 'DELETE',
+            url: `/api/path/${path}/name/${name}`,
+            success: function (response) {
+                console.log(response);
+                get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                // window.location.reload();
+            },
+            error: function (jqXHR, textStatus, errorThrown){
+                console.log(jqXHR, textStatus, errorThrown);
+                get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
             }
-            let path = _this.data('path');
-            let name = _this.data('name');
-            $.ajax({
-                type: 'DELETE',
-                url: `/api/path/${path}/name/${name}`,
-                success: function (response) {
-                    console.log(response);
-                    get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
-                    // window.location.reload();
-                },
-                error: function (jqXHR, textStatus, errorThrown){
-                    console.log(jqXHR, textStatus, errorThrown);
-                    get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
-                }
-            });
         });
-    }
+    });
 
     let formCreateDirectories = $('#form-create-directories');
     if (formCreateDirectories.length) {
