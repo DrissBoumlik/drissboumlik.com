@@ -196,24 +196,25 @@ function initMediaManagerEvent() {
     $(document).on('click', '.copy-file', function() {
 
         let operation = this.getAttribute('data-action');
-        let filename = this.getAttribute('data-name');
-        let filepath = this.getAttribute('data-path');
+        let media_name = this.getAttribute('data-name');
+        let media_path = this.getAttribute('data-path');
 
         let modal = `
             <div class="modal modal-operation-details" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title capitalize-first-letter">${operation} file : ${filename}</h5>
+                            <h5 class="modal-title capitalize-first-letter">${operation} file : ${media_name}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form id="file-operation" class="file-operation">
                                 <input type="hidden" name="operation" value="${operation}" />
+                                <input type="hidden" name="media_name" value="${media_name}" />
                                 <div class="mb-3">
                                     <label for="src-path" class="form-label">Source :</label>
                                     <input type="text" class="form-control" id="src-path" name="src-path"
-                                            readonly value="${filepath}">
+                                            readonly value="${media_path}">
                                 </div>
                                 <div class="mb-3">
                                     <label for="dest-path" class="form-label">Dest :</label>
