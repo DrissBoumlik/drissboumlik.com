@@ -284,7 +284,8 @@ function initMediaManagerEvent() {
 
 function displayMedias(pathname = null) {
     if (!pathname) {
-        pathname = window.location.pathname.replace('/admin/media-manager/', '')
+        const regex = new RegExp(`/admin/media-manager/\?`, 'g');
+        pathname = window.location.pathname.replace(regex, '')
         if (pathname.startsWith('/')) pathname = pathname.replace('/', '')
     } else {
         window.history.pushState(null,null, `/admin/media-manager/${pathname}`);
