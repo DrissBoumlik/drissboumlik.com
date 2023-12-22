@@ -48,32 +48,36 @@ class FileManagerController extends Controller
 
     public function copyMedia(Request $request)
     {
-        $operation = $request->get('operation');
-        $media_name = $request->get('media_name');
-        $src_path = $request->get('src-path');
-        $dest_path = 'storage/' . $request->get('dest-path');
 
-        $msg = 'Nor file or a directory';
-        File::ensureDirectoryExists($dest_path);
-        $dest_path = "$dest_path/$media_name";
-        if (File::isDirectory($src_path)) {
-            File::copyDirectory($src_path, $dest_path);
-            $msg = 'Directory copied';
-            if ($operation === 'move') {
-                File::deleteDirectory($src_path);
-                $msg = 'Directory moved';
+        try {
+            $operation = $request->get('operation');
+            $media_name = $request->get('media_name');
+            $src_path = $request->get('src-path');
+            $dest_path = 'storage/' . $request->get('dest-path');
+            $msg = 'Not file or directory !!';
+            File::ensureDirectoryExists($dest_path);
+            $dest_path = "$dest_path/$media_name";
+            if (File::isDirectory($src_path)) {
+                File::copyDirectory($src_path, $dest_path);
+                $msg = 'Directory copied';
+                if ($operation === 'move') {
+                    File::deleteDirectory($src_path);
+                    $msg = 'Directory moved';
+                }
+                $msg .= ' successfully';
+            } elseif (File::isFile($src_path)) {
+                File::copy($src_path, $dest_path);
+                $msg = 'File copied';
+                if ($operation === 'move') {
+                    File::delete($src_path);
+                    $msg = 'File moved';
+                }
+                $msg .= ' successfully';
             }
-            $msg .= ' successfully';
-        } elseif (File::isFile($src_path)) {
-            File::copy($src_path, $dest_path);
-            $msg = 'File copied';
-            if ($operation === 'move') {
-                File::delete($src_path);
-                $msg = 'File moved';
-            }
-            $msg .= ' successfully';
+            return ['msg' => $msg];
+        } catch (\Exception $e) {
+            return response()->json(['msg' => $e->getMessage()], 404);
         }
-        return ['msg' => $msg];
     }
 
     public function createDirectories(Request $request)
