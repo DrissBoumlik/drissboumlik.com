@@ -8,17 +8,22 @@ use Illuminate\Support\Facades\File;
 
 class FileManagerController extends Controller
 {
-    public function index(Request $request, $path = 'storage')
+    public function index(Request $request)
     {
         $data = new \stdClass();
         $data->title = 'Media Manager | Admin Panel';
+        return view('admin.pages.file-manager', ['data' => $data]);
+    }
 
+    public function getMedias(Request $request, $path = 'storage')
+    {
+        $data = new \stdClass();
         $data->path = substr($path, strrpos($path, '/') + 1, strlen($path));
         $data->previous_path = null;
         $data->breadcrumb = array_reduce(explode('/', $path), function($acc, $segment) {
-            $acc['href'] .= "/$segment";
+            $acc['href'] .= "$segment/";
             $href = $acc['href'];
-            $acc['breadcrumb'] .= "<li class='breadcrumb-item capitalize-first-letter'><a href='/admin/media-manager$href'>$segment</a></li>";
+            $acc['breadcrumb'] .= "<li class='breadcrumb-item capitalize-first-letter'><a href='#' class='media-link' data-href='$href'>$segment</a></li>";
             return $acc;
         }, ['href' => '', 'breadcrumb' => '']);
         if (str_contains($path, '/')) {
@@ -28,11 +33,17 @@ class FileManagerController extends Controller
             $path_splitted = explode(DIRECTORY_SEPARATOR, $dir);
             return (object) ['path' => $dir, 'name' => $path_splitted[count($path_splitted) - 1]];
         }, File::directories($path));
+        $files = array_map(function($file) {
+            $file->_pathname = $file->getPathname();
+            $file->_filename = $file->getFilename();
+            $file->_mimeType = File::mimeType($file);
+            return $file;
+        }, File::files($path));
         $data->content = [
             'directories' => $dirs,
-            'files' => File::files($path),
+            'files' => $files,
         ];
-        return view('admin.pages.file-manager', ['data' => $data]);
+        return ['data' => $data];
     }
 
     public function createDirectories(Request $request)

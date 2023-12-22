@@ -278,6 +278,74 @@ function initMediaManagerEvent() {
             });
         });
     }
+
+    $(document).on('click', '.media-link', function(e) {
+        e.preventDefault();
+        displayMedias(this.getAttribute('data-href'));
+    });
 }
 
-export { initDarkMode, initAjaxEvents, shortenTextIfLongByLength, getDomClass, initBlogEvents, initExport, initMediaManagerEvent };
+function displayMedias(pathname = null) {
+    if (!pathname) {
+        pathname = window.location.pathname.replace('/admin/media-manager/', '')
+        if (pathname.startsWith('/')) pathname = pathname.replace('/', '')
+    } else {
+        window.history.pushState(null,null, `/admin/media-manager/${pathname}`);
+    }
+    console.log(pathname);
+    $.ajax({
+        type: 'GET',
+        url: `/api/medias/${pathname}`,
+        success: function (response) {
+            let data = response.data;
+            $('#previous-path').attr('href', `/admin/media-manager/${data.previous_path || ''}`)
+                .attr('data-href', data.previous_path);
+            $('#breadcrumb').html(data.breadcrumb.breadcrumb);
+
+            let directoriesDOM = '<div class="col-12"><div class="text-center p-5">No directories found</div></div>';
+            if(data.content.directories && data.content.directories.length) {
+                directoriesDOM = '';
+                data.content.directories.forEach(function(dir) {
+                    directoriesDOM += `<div class="col-6 col-sm-4 col-md-3 mb-4 media-item-wrapper">
+                                        <div class="directory media-item mb-2">
+                                            <a href="#" class="media-item-link media-link" data-href="${dir.path}" class="media-item-link">
+                                                <div class="directory-icon w-100 h-100"><i class="fa-solid fa-folder-open"></i></div>
+                                                <div class="directory-name w-100 h-100">
+                                                    <span title="${dir.name}" class="capitalize-first-letter">${dir.name}</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <button type="submit" class="btn btn-outline-danger w-100 delete-file"
+                                                data-name="${dir.name}" data-path="${dir.path}">Delete</button>
+                                    </div>`;
+                });
+            }
+            $('#directories').html(directoriesDOM)
+
+            let filesDOM = '<div class="col-12"><div class="text-center p-5">No files found</div></div>';
+            if(data.content.files && data.content.files.length) {
+                filesDOM = '';
+                data.content.files.forEach(function(file) {
+                    filesDOM += `<div class="col-6 col-sm-4 col-md-3 mb-4 media-item-wrapper">
+                                    <div class="file media-item mb-2">
+                                        <a href="/${file._pathname }" class="media-item-link" data-href="${file._pathname}" target="_blank" class="media-item-link">`;
+                    if (file._mimeType.includes('image')) {
+                        filesDOM += `<div class="file-image h-100">
+                                        <img src="/${file._pathname}" class="img-fluid w-100 h-100" alt="${file._filename}"/>
+                                    </div>`;
+                    } else {
+                        filesDOM+= `<div class="file-icon w-100 h-100"><i class="fa-solid fa-file"></i></div>
+                                    <div class="file-name w-100 h-100">
+                                        <span title="${file._filename}" class="capitalize-first-letter">${file._filename}</span>
+                                    </div>`;
+                    }
+                    filesDOM += `</a></div><button type="submit" class="btn btn-outline-danger w-100 delete-file"
+                                data-name="${file._filename}" data-path="${file._pathname}">Delete</button></div>`;
+                });
+            }
+            $('#files').html(filesDOM);
+        }
+    });
+}
+
+export { initDarkMode, initAjaxEvents, shortenTextIfLongByLength, getDomClass, initBlogEvents, initExport, initMediaManagerEvent, displayMedias };

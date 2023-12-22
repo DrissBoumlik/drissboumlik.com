@@ -45,6 +45,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::post('/visitors', [ApiVisitorController::class, 'index']);
             Route::post('/messages', [ApiMessageController::class, 'index']);
             Route::get('/posts/{slug}/assets', [ApiPostController::class, 'getPostAssets']);
+            Route::get('/medias/{path?}', [FileManagerController::class, 'getMedias'])->where('path', '.*');
         });
         Route::post('/get-in-touch', [ContactController::class, 'getInTouch']);
         Route::get('/{table}/columns', [ToolController::class, 'getTableColumns']);
