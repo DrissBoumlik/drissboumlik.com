@@ -194,6 +194,79 @@ function initExport() {
 
 function initMediaManagerEvent() {
 
+    $(document).on('click', '.copy-file', function() {
+
+        let operation = this.getAttribute('data-action');
+        let filename = this.getAttribute('data-name');
+        let filepath = this.getAttribute('data-path');
+
+        let modal = `
+            <div class="modal modal-operation-details" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title capitalize-first-letter">${operation} file : ${filename}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="file-operation" class="file-operation">
+                                <input type="hidden" name="operation" value="${operation}" />
+                                <div class="mb-3">
+                                    <label for="src-path" class="form-label">Source :</label>
+                                    <input type="text" class="form-control" id="src-path" name="src-path"
+                                            readonly value="${filepath}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="dest-path" class="form-label">Dest :</label>
+                                    <div class="input-group mb-3">
+                                      <span class="input-group-text" id="basic-addon3">storage/</span>
+                                        <input type="text" class="form-control" id="dest-path" name="dest-path"
+                                                aria-describedby="basic-addon3">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-secondary me-1 mb-3 w-100">
+                                        Proceed
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-backdrop fade show"></div>`;
+        $('body').append(modal);
+        let modalOperationDetails = $('.modal-operation-details');
+        $('.btn-close').add('.modal-operation-details').on('click', function(e) {
+            if (e.target != modalOperationDetails[0] && e.target != $('.btn-close')[0]) {
+                return;
+            }
+            modalOperationDetails.remove();
+            $('.modal-backdrop').remove();
+        });
+        modalOperationDetails.show()
+    });
+
+    $(document).on('submit', '.file-operation', function(e) {
+        e.preventDefault();
+        let data = $(this).serializeArray();
+        console.log(data);
+        $.ajax({
+            method: 'POST',
+            url: '/api/media/copy',
+            data: data,
+            success: function (response) {
+                console.log(response);
+                get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                // window.location.reload();
+            },
+            error: function (jqXHR, textStatus, errorThrown){
+                console.log(jqXHR, textStatus, errorThrown);
+                get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+            }
+        });
+    });
+
     $(document).on('click', '.delete-file', function() {
         let _this = $(this);
         if (!confirm("Are you sure ?")) {
@@ -313,8 +386,14 @@ function displayMedias(pathname = null) {
                                                 </div>
                                             </a>
                                         </div>
-                                        <button type="submit" class="btn btn-outline-danger w-100 delete-file"
-                                                data-name="${dir.name}" data-path="${dir.path}">Delete</button>
+                                        <div class="action-btns">
+                                        <button type="submit" class="btn btn-outline-info w-100 copy-file" title="Copy File"
+                                                data-name="${dir.name}" data-action="copy" data-path="${dir.path}"><i class="fa-solid fa-copy"></i></button>
+                                        <button type="submit" class="btn btn-outline-info w-100 copy-file" title="Move File"
+                                                data-name="${dir.name}" data-action="move" data-path="${dir.path}"><i class="fa-solid fa-file-export"></i></button>
+                                        <button type="submit" class="btn btn-outline-danger w-100 delete-file" title="Delete File"
+                                                data-name="${dir.name}" data-path="${dir.path}"><i class="fa-solid fa-trash"></i></button>
+                                    </div>
                                     </div>`;
                 });
             }
@@ -337,8 +416,14 @@ function displayMedias(pathname = null) {
                                         <span title="${file._filename}" class="capitalize-first-letter">${file._filename}</span>
                                     </div>`;
                     }
-                    filesDOM += `</a></div><button type="submit" class="btn btn-outline-danger w-100 delete-file"
-                                data-name="${file._filename}" data-path="${file._pathname}">Delete</button></div>`;
+                    filesDOM += `</a></div><div class="action-btns">
+                                        <button type="submit" class="btn btn-outline-info w-100 copy-file" title="Copy File"
+                                                data-name="${file._filename}" data-action="copy" data-path="${file._pathname}"><i class="fa-solid fa-copy"></i></button>
+                                        <button type="submit" class="btn btn-outline-info w-100 copy-file" title="Move File"
+                                                data-name="${file._filename}" data-action="move" data-path="${file._pathname}"><i class="fa-solid fa-file-export"></i></button>
+                                        <button type="submit" class="btn btn-outline-danger w-100 delete-file" title="Delete File"
+                                                data-name="${file._filename}" data-path="${file._pathname}"><i class="fa-solid fa-trash"></i></button>
+                                    </div></div>`;
                 });
             }
             $('#files').html(filesDOM);

@@ -46,6 +46,33 @@ class FileManagerController extends Controller
         return ['data' => $data];
     }
 
+    public function copyMedia(Request $request)
+    {
+        $operation = $request->get('operation');
+        $src_path = $request->get('src-path');
+        $dest_path = 'storage/' . $request->get('dest-path');
+
+        File::ensureDirectoryExists($dest_path);
+        if (File::isDirectory($src_path)) {
+            File::copyDirectory($src_path, $dest_path);
+            $msg = 'Directory copied';
+            if ($operation === 'move') {
+                File::deleteDirectory($src_path);
+                $msg = 'Directory moved';
+            }
+            $msg .= ' successfully';
+        } elseif (File::isFile($src_path)) {
+            File::copy($src_path, $dest_path);
+            $msg = 'File copied';
+            if ($operation === 'move') {
+                File::delete($src_path);
+                $msg = 'File moved';
+            }
+            $msg .= ' successfully';
+        }
+        return ['msg' => $msg];
+    }
+
     public function createDirectories(Request $request)
     {
         try {
