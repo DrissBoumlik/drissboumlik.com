@@ -259,6 +259,7 @@ function initMediaManagerEvent() {
                 console.log(response);
                 get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
                 // window.location.reload();
+                displayMedias();
             },
             error: function (jqXHR, textStatus, errorThrown){
                 console.log(jqXHR, textStatus, errorThrown);
@@ -281,6 +282,7 @@ function initMediaManagerEvent() {
                 console.log(response);
                 get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
                 // window.location.reload();
+                displayMedias();
             },
             error: function (jqXHR, textStatus, errorThrown){
                 console.log(jqXHR, textStatus, errorThrown);
@@ -318,6 +320,7 @@ function initMediaManagerEvent() {
                     console.log(response);
                     get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
                     // window.location.reload();
+                    displayMedias();
                 },
                 error: function (jqXHR, textStatus, errorThrown){
                     console.log(jqXHR, textStatus, errorThrown);
