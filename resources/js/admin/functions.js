@@ -1,6 +1,5 @@
 // import 'bootstrap';
 import {get_alert_box, get_loader, getCookie, toggleDarkMode} from "../shared/functions";
-import { initSelect2 } from "../shared/plugins-use";
 
 function string_to_slug(str) {
     str = str.replace(/^\s+|\s+$/g, ''); // trim
@@ -44,7 +43,7 @@ function initAjaxEvents() {
         }
     });
     $( document ).on( "ajaxComplete", function(event, jqxhr, settings) {
-        let loader = $('.spinner-border');
+        let loader = $('.spinner-global');
         if (loader.length) {
             loader.remove();
         }
@@ -363,7 +362,16 @@ function displayMedias(pathname = null) {
     } else {
         window.history.pushState(null,null, `/admin/media-manager/${pathname}`);
     }
-    console.log(pathname);
+    let spinner = `<div class="col-12 text-center p-5">
+                    <div class="spinner-border" role="status"
+                         style="width: 3rem; height: 3rem;
+                         border-color: var(--tc-grey-dark) transparent var(--tc-grey-dark) var(--tc-grey-dark);" >
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>`;
+    $('#files').html(spinner);
+    $('#directories').html(spinner)
+
     $.ajax({
         type: 'GET',
         url: `/api/medias/${pathname}`,

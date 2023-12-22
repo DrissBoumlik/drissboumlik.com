@@ -25,11 +25,11 @@ function toggleDarkMode(element, classes, cookieData) {
 }
 
 function get_loader() {
-    let loader = $('.spinner-border');
+    let loader = $('.spinner-global');
     if (loader.length) {
         loader.remove();
     }
-    loader = `<div class="spinner-border" role="status"
+    loader = `<div class="spinner-global spinner-border" role="status"
                                 style="width: 3rem; height: 3rem; position: fixed; bottom: 1rem; right: 1rem;
                                 border-color: var(--tc-grey-dark) transparent var(--tc-grey-dark) var(--tc-grey-dark);" >
                             <span class="visually-hidden">Loading...</span>
