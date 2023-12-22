@@ -113,11 +113,13 @@ class FileManagerController extends Controller
             if (File::isDirectory($path)) {
                 File::copyDirectory($path, "$trash/$name");
                 File::deleteDirectory($path);
+                $msg = 'Directory deleted successfully';
             } elseif (File::isFile($path)) {
                 File::copy($path, "$trash/$name");
                 File::delete($path);
+                $msg = 'File deleted successfully';
             }
-            return ['msg' => 'Deleted successfully'];
+            return ['msg' => $msg];
         } catch (\Throwable $e) {
             return response()->json(['msg' => $e->getMessage()], 404);
         }
