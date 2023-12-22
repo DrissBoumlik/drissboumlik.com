@@ -225,7 +225,7 @@ function initMediaManagerEvent() {
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-secondary me-1 mb-3 w-100">
+                                    <button type="submit" class="btn tc-blue-dark-1-outline tc-blue-dark-1-bg-hover me-1 mb-3 w-100">
                                         Proceed
                                     </button>
                                 </div>
@@ -399,13 +399,13 @@ function displayMedias(pathname = null) {
                                             </a>
                                         </div>
                                         <div class="action-btns">
-                                        <button type="submit" class="btn btn-outline-info w-100 copy-file" title="Copy File"
-                                                data-name="${dir.name}" data-action="copy" data-path="${dir.path}"><i class="fa-solid fa-copy"></i></button>
-                                        <button type="submit" class="btn btn-outline-info w-100 copy-file" title="Move File"
-                                                data-name="${dir.name}" data-action="move" data-path="${dir.path}"><i class="fa-solid fa-file-export"></i></button>
-                                        <button type="submit" class="btn btn-outline-danger w-100 delete-file" title="Delete File"
-                                                data-name="${dir.name}" data-path="${dir.path}"><i class="fa-solid fa-trash"></i></button>
-                                    </div>
+                                            <button type="submit" class="btn tc-blue-outline tc-blue-bg-hover w-100 copy-file" title="Copy File"
+                                                    data-name="${dir.name}" data-action="copy" data-path="${dir.path}"><i class="fa-solid fa-copy"></i></button>
+                                            <button type="submit" class="btn tc-green-light-outline tc-green-light-bg-hover w-100 copy-file" title="Move File"
+                                                    data-name="${dir.name}" data-action="move" data-path="${dir.path}"><i class="fa-solid fa-file-export"></i></button>
+                                            <button type="submit" class="btn btn-outline-danger w-100 delete-file" title="Delete File"
+                                                    data-name="${dir.name}" data-path="${dir.path}"><i class="fa-solid fa-trash"></i></button>
+                                        </div>
                                     </div>`;
                 });
             }
@@ -429,9 +429,9 @@ function displayMedias(pathname = null) {
                                     </div>`;
                     }
                     filesDOM += `</a></div><div class="action-btns">
-                                        <button type="submit" class="btn btn-outline-info w-100 copy-file" title="Copy File"
+                                        <button type="submit" class="btn tc-blue-outline tc-blue-bg-hover w-100 copy-file" title="Copy File"
                                                 data-name="${file._filename}" data-action="copy" data-path="${file._pathname}"><i class="fa-solid fa-copy"></i></button>
-                                        <button type="submit" class="btn btn-outline-info w-100 copy-file" title="Move File"
+                                        <button type="submit" class="btn tc-green-light-outline tc-green-light-bg-hover w-100 copy-file" title="Move File"
                                                 data-name="${file._filename}" data-action="move" data-path="${file._pathname}"><i class="fa-solid fa-file-export"></i></button>
                                         <button type="submit" class="btn btn-outline-danger w-100 delete-file" title="Delete File"
                                                 data-name="${file._filename}" data-path="${file._pathname}"><i class="fa-solid fa-trash"></i></button>
