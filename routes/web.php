@@ -45,14 +45,14 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::post('/visitors', [ApiVisitorController::class, 'index']);
             Route::post('/messages', [ApiMessageController::class, 'index']);
             Route::get('/posts/{slug}/assets', [ApiPostController::class, 'getPostAssets']);
+            Route::get('/{table}/columns', [ToolController::class, 'getTableColumns']);
+            Route::post('/stats', [ToolController::class, 'getTableColumnStats']);
             Route::get('/medias/{path?}', [FileManagerController::class, 'getMedias'])->where('path', '.*');
+            Route::delete('/path/{path}/name/{name}', [FileManagerController::class, 'deleteFile'])->where('path', '.*');
+            Route::post('/directories', [FileManagerController::class, 'createDirectories']);
+            Route::delete('/directories/{path}', [FileManagerController::class, 'emptyDirectory'])->where('path', '.*');
         });
         Route::post('/get-in-touch', [ContactController::class, 'getInTouch']);
-        Route::get('/{table}/columns', [ToolController::class, 'getTableColumns']);
-        Route::post('/stats', [ToolController::class, 'getTableColumnStats']);
-        Route::delete('/path/{path}/name/{name}', [FileManagerController::class, 'deleteFile'])->where('path', '.*');
-        Route::post('/directories', [FileManagerController::class, 'createDirectories']);
-        Route::delete('/directories/{path}', [FileManagerController::class, 'emptyDirectory'])->where('path', '.*');
         Route::post('/blog/{slug}/{value}', [BlogController::class, 'likePost']);
     });
 
