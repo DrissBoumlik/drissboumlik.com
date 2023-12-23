@@ -107,8 +107,11 @@ class FileManagerController extends Controller
     public function uploadMedia(Request $request)
     {
         try {
-            $files = $request->file('files');
             $path = $request->get('path');
+            if ($path === 'storage/trash') {
+                throw new \Exception("You're uploading to the Trash <i class='fa-solid fa-trash'></i>");
+            }
+            $files = $request->file('files');
             $path = str_replace('storage/', '', $path);
             foreach ($files as $file) {
                 $filename = $file->getClientOriginalName();
