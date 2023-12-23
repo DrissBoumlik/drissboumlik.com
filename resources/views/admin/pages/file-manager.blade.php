@@ -50,11 +50,18 @@
                     <button class="btn btn-outline-danger btn-empty-trash"><i class="fa fa-fw fa-trash me-1"></i>Empty Trash</button>
                 </div>
             </div>
-            <div class="block-header block-header-default br-0">
-                <form id="form-create-directories">
+            <div class="block-header block-header-default br-0 flex-column flex-wrap gap-2">
+                <form id="form-create-directories" class="w-100">
                     <div class="input-group">
                         <input type="text" class="form-control" id="directories-names" name="directories-names" placeholder="Separate names by ;" required>
                         <button type="submit" class="btn btn-outline-success"><i class="fa fa-fw fa-folder-plus me-1"></i>New Directory</button>
+                    </div>
+                </form>
+                <form id="form-upload-files" class="w-100" enctype="multipart/form-data">
+                <div class="mb-3">
+                        <label class="form-label" for="upload-files">File Input</label>
+                        <input class="form-control" type="file" id="upload-files" name="files[]" multiple>
+                        <button type="submit" class="btn btn-outline-success"><i class="fa fa-fw fa-upload me-1"></i>Upload</button>
                     </div>
                 </form>
             </div>
@@ -62,6 +69,7 @@
                 <ol class="breadcrumb breadcrumb-alt" id="breadcrumb">
 
                 </ol>
+                <input type="hidden" id="current-path">
             </div>
             <div class="block-content block-content-full">
                 <div class="container-fluid">

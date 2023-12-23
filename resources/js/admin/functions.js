@@ -260,7 +260,6 @@ function initMediaManagerEvent() {
             success: function (response) {
                 console.log(response);
                 get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
-                // window.location.reload();
                 displayMedias();
             },
             error: function (jqXHR, textStatus, errorThrown){
@@ -283,7 +282,6 @@ function initMediaManagerEvent() {
             success: function (response) {
                 console.log(response);
                 get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
-                // window.location.reload();
                 displayMedias();
             },
             error: function (jqXHR, textStatus, errorThrown){
@@ -292,6 +290,33 @@ function initMediaManagerEvent() {
             }
         });
     });
+
+    let formUploadFiles = $('#form-upload-files');
+    formUploadFiles.on('submit', function(e) {
+        e.preventDefault();
+        let form = document.getElementById('form-upload-files');
+        let data = new FormData(form);
+        let currentPath = $('#current-path').val();
+        data.append('path', currentPath);
+        $.ajax({
+            method: 'POST',
+            url: '/api/media',
+            data: data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (response) {
+                console.log(response);
+                get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                displayMedias();
+            },
+            error: function (jqXHR, textStatus, errorThrown){
+                console.log(jqXHR, textStatus, errorThrown);
+                get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+            }
+        });
+    });
+
 
     let formCreateDirectories = $('#form-create-directories');
     if (formCreateDirectories.length) {
@@ -302,7 +327,6 @@ function initMediaManagerEvent() {
             }
             const regex = new RegExp(`/admin/media-manager/\?`, 'g');
             let currentPath = window.location.pathname.replaceAll(regex, '');
-            console.log(currentPath);
             if (currentPath === "") {
                 currentPath = "storage";
             }
@@ -321,7 +345,6 @@ function initMediaManagerEvent() {
                 success: function (response) {
                     console.log(response);
                     get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
-                    // window.location.reload();
                     displayMedias();
                 },
                 error: function (jqXHR, textStatus, errorThrown){
@@ -344,7 +367,6 @@ function initMediaManagerEvent() {
                 success: function (response) {
                     console.log(response);
                     get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
-                    // window.location.reload();
                 },
                 error: function (jqXHR, textStatus, errorThrown){
                     console.log(jqXHR, textStatus, errorThrown);
@@ -383,6 +405,7 @@ function displayMedias(pathname = null) {
         url: `/api/medias/${pathname}`,
         success: function (response) {
             let data = response.data;
+            $('#current-path').val(data.current_path);
             $('#previous-path').attr('href', `/admin/media-manager/${data.previous_path || ''}`)
                 .attr('data-href', data.previous_path);
             $('#breadcrumb').html(data.breadcrumb.breadcrumb);

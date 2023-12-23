@@ -47,6 +47,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::get('/posts/{slug}/assets', [ApiPostController::class, 'getPostAssets']);
             Route::get('/{table}/columns', [ToolController::class, 'getTableColumns']);
             Route::post('/stats', [ToolController::class, 'getTableColumnStats']);
+            Route::post('/media', [FileManagerController::class, 'uploadMedia']);
             Route::post('/media/copy', [FileManagerController::class, 'copyMedia']);
             Route::get('/medias/{path?}', [FileManagerController::class, 'getMedias'])->where('path', '.*');
             Route::delete('/path/{path}/name/{name}', [FileManagerController::class, 'deleteFile'])->where('path', '.*');

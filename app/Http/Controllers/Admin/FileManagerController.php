@@ -20,6 +20,7 @@ class FileManagerController extends Controller
         $data = new \stdClass();
         $data->path = substr($path, strrpos($path, '/') + 1, strlen($path));
         $data->previous_path = null;
+        $data->current_path = $path;
         $data->breadcrumb = array_reduce(explode('/', $path), function($acc, $segment) {
             $acc['href'] .= "$segment/";
             $href = $acc['href'];
@@ -97,11 +98,27 @@ class FileManagerController extends Controller
                 }
                 return ['msg' => "Directories created : $count"];
             }
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             return response()->json(['msg' => $e->getMessage()], 404);
         }
     }
 
+
+    public function uploadMedia(Request $request)
+    {
+        try {
+            $files = $request->file('files');
+            $path = $request->get('path');
+            $path = str_replace('storage/', '', $path);
+            foreach ($files as $file) {
+                $filename = $file->getClientOriginalName();
+                $file->storeAs($path, $filename, 'public');
+            }
+            return ['msg' => 'Uploaded successfully'];
+        } catch (\Throwable $e) {
+            return response()->json(['msg' => $e->getMessage()], 404);
+        }
+    }
     public function emptyDirectory(Request $request, $path)
     {
         try {
@@ -109,7 +126,7 @@ class FileManagerController extends Controller
                 return ['msg' => 'Trash Emptied successfully'];
             }
             return response()->json(['msg' => 'Issue with the process or Directory not found'], 404);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             return response()->json(['msg' => $e->getMessage()], 404);
         }
     }
