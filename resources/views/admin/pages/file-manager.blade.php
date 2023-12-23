@@ -57,11 +57,12 @@
                         <button type="submit" class="btn btn-outline-success"><i class="fa fa-fw fa-folder-plus me-1"></i>New Directory</button>
                     </div>
                 </form>
+                <hr style="border-top: 2px solid var(--tc-blue); width: 100%" />
                 <form id="form-upload-files" class="w-100" enctype="multipart/form-data">
                 <div class="mb-3">
                         <label class="form-label" for="upload-files">File Input</label>
-                        <input class="form-control" type="file" id="upload-files" name="files[]" multiple>
-                        <button type="submit" class="btn btn-outline-success"><i class="fa fa-fw fa-upload me-1"></i>Upload</button>
+                        <input class="form-control" type="file" id="upload-files" name="files[]" multiple required>
+                        <button type="submit" class="btn btn-outline-success w-100 mt-2"><i class="fa fa-fw fa-upload me-1"></i>Upload</button>
                     </div>
                 </form>
             </div>
