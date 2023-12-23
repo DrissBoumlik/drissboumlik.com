@@ -294,6 +294,9 @@ function initMediaManagerEvent() {
     let formUploadFiles = $('#form-upload-files');
     formUploadFiles.on('submit', function(e) {
         e.preventDefault();
+        if (!confirm("Are you sure ?")) {
+            return;
+        }
         let form = document.getElementById('form-upload-files');
         let data = new FormData(form);
         let currentPath = $('#current-path').val();
