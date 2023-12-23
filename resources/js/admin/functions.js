@@ -193,11 +193,11 @@ function initExport() {
 
 function initMediaManagerEvent() {
 
-    $(document).on('click', '.copy-file', function() {
+    $(document).on('click', '.file-operation', function() {
 
         let operation = this.getAttribute('data-action');
         let media_name = this.getAttribute('data-name');
-        let media_path = this.getAttribute('data-path');
+        let media_path = this.getAttribute('data-path').replace('\\', '/');
 
         let modal = `
             <div class="modal modal-operation-details" tabindex="-1">
@@ -208,8 +208,7 @@ function initMediaManagerEvent() {
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="file-operation" class="file-operation">
-                                <input type="hidden" name="operation" value="${operation}" />
+                            <form id="file-operation-form" class="file-operation-form">
                                 <input type="hidden" name="media_name" value="${media_name}" />
                                 <div class="mb-3">
                                     <label for="src-path" class="form-label">Source :</label>
@@ -224,10 +223,9 @@ function initMediaManagerEvent() {
                                                 aria-describedby="basic-addon3">
                                     </div>
                                 </div>
-                                <div class="mb-3">
-                                    <button type="submit" class="btn tc-blue-dark-1-outline tc-blue-dark-1-bg-hover me-1 mb-3 w-100">
-                                        Proceed
-                                    </button>
+                                <div class="mb-3 d-flex column-gap-2">
+                                    <button type="submit" value="copy" class="btn tc-blue-dark-1-outline tc-blue-dark-1-bg-hover w-100 btn-submit"><i class="fa-solid fa-copy me-2"></i>Copy</button>
+                                    <button type="submit" value="move" class="btn tc-red-light-outline tc-red-light-bg-hover w-100 btn-submit"><i class="fa-solid fa-file-export me-2"></i>Move</button>
                                 </div>
                             </form>
                         </div>
@@ -247,9 +245,13 @@ function initMediaManagerEvent() {
         modalOperationDetails.show()
     });
 
-    $(document).on('submit', '.file-operation', function(e) {
+    $(document).on('submit', '.file-operation-form', function(e) {
         e.preventDefault();
+        if (!confirm("Are you sure ?")) {
+            return;
+        }
         let data = $(this).serializeArray();
+        data.push({name: 'operation', value: e.originalEvent.submitter.value});
         console.log(data);
         $.ajax({
             method: 'POST',
@@ -269,10 +271,10 @@ function initMediaManagerEvent() {
     });
 
     $(document).on('click', '.delete-file', function() {
-        let _this = $(this);
         if (!confirm("Are you sure ?")) {
             return;
         }
+        let _this = $(this);
         let path = _this.data('path');
         let name = _this.data('name');
         $.ajax({
@@ -399,10 +401,8 @@ function displayMedias(pathname = null) {
                                             </a>
                                         </div>
                                         <div class="action-btns">
-                                            <button type="submit" class="btn tc-blue-outline tc-blue-bg-hover w-100 copy-file" title="Copy File"
-                                                    data-name="${dir.name}" data-action="copy" data-path="${dir.path}"><i class="fa-solid fa-copy"></i></button>
-                                            <button type="submit" class="btn tc-green-light-outline tc-green-light-bg-hover w-100 copy-file" title="Move File"
-                                                    data-name="${dir.name}" data-action="move" data-path="${dir.path}"><i class="fa-solid fa-file-export"></i></button>
+                                            <button type="submit" class="btn btn-outline-info w-100 file-operation" title="Copy File"
+                                                    data-name="${dir.name}" data-action="copy" data-path="${dir.path}"><i class="fa-solid fa-file"></i></button>
                                             <button type="submit" class="btn btn-outline-danger w-100 delete-file" title="Delete File"
                                                     data-name="${dir.name}" data-path="${dir.path}"><i class="fa-solid fa-trash"></i></button>
                                         </div>
@@ -429,10 +429,8 @@ function displayMedias(pathname = null) {
                                     </div>`;
                     }
                     filesDOM += `</a></div><div class="action-btns">
-                                        <button type="submit" class="btn tc-blue-outline tc-blue-bg-hover w-100 copy-file" title="Copy File"
-                                                data-name="${file._filename}" data-action="copy" data-path="${file._pathname}"><i class="fa-solid fa-copy"></i></button>
-                                        <button type="submit" class="btn tc-green-light-outline tc-green-light-bg-hover w-100 copy-file" title="Move File"
-                                                data-name="${file._filename}" data-action="move" data-path="${file._pathname}"><i class="fa-solid fa-file-export"></i></button>
+                                        <button type="submit" class="btn btn-outline-info w-100 file-operation" title="Copy File"
+                                                data-name="${file._filename}" data-action="copy" data-path="${file._pathname}"><i class="fa-solid fa-file"></i></button>
                                         <button type="submit" class="btn btn-outline-danger w-100 delete-file" title="Delete File"
                                                 data-name="${file._filename}" data-path="${file._pathname}"><i class="fa-solid fa-trash"></i></button>
                                     </div></div>`;

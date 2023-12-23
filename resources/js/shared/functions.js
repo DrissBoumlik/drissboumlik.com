@@ -49,7 +49,7 @@ function get_alert_box(params, removeLoader = true) {
     }
     let alert_element = `
         <div data-notify="container" class="col-11 col-sm-4 alert ${params.class} alert-dismissible animated fadeIn" role="alert" data-notify-position="bottom-right"
-            style="display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 1033; bottom: 20px; right: 20px; animation-iteration-count: 1;">
+            style="display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 1060; bottom: 20px; right: 20px; animation-iteration-count: 1;">
             <p class="mb-0">
                 <span data-notify="icon">${params.icon}</span>
                 <span data-notify="title"></span>

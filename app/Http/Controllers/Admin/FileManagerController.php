@@ -53,10 +53,14 @@ class FileManagerController extends Controller
             $operation = $request->get('operation');
             $media_name = $request->get('media_name');
             $src_path = $request->get('src-path');
-            $dest_path = 'storage/' . $request->get('dest-path');
+            $dest_path = $request->get('dest-path');
+            $dest_path = $dest_path ? "storage/$dest_path" : "storage";
             $msg = 'Not file or directory !!';
             File::ensureDirectoryExists($dest_path);
             $dest_path = "$dest_path/$media_name";
+            if ($src_path === $dest_path) {
+                throw new \Exception("You copy/move to the same path !");
+            }
             if (File::isDirectory($src_path)) {
                 File::copyDirectory($src_path, $dest_path);
                 $msg = 'Directory copied';
@@ -75,7 +79,7 @@ class FileManagerController extends Controller
                 $msg .= ' successfully';
             }
             return ['msg' => $msg];
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             return response()->json(['msg' => $e->getMessage()], 404);
         }
     }
