@@ -36,16 +36,6 @@ return (object) [
             ]
         ],
         (object) [
-            "image" => "ehm.webp",
-            "content" => "<p><span class='underline'>Full Stack</span><br>Laravel</p>",
-            "name" => "EHM portal",
-            "description" => "showcase portal for the EHM (Elite Harvest Morocco) services.",
-            "links" => (object) [
-                "repository" => null,
-                "website" => "https://projects.drissboumlik.com/ehm.ma/public"
-            ]
-        ],
-        (object) [
             "image" => "amdl.webp",
             "content" => "<p><span class='underline'>CMS</span><br>Wordpress | Bootstrap | jQuery </p>",
             "name" => "AMDL portal",
@@ -94,6 +84,17 @@ return (object) [
                 "repository" => "https://github.com/DrissBoumlik/CSS-Mastering-Animations_couse-files",
                 "website" => "https://www.udemy.com/course/css-mastering-animations"
             ]
+        ],
+        (object) [
+            "image" => "ehm.webp",
+            "content" => "<p><span class='underline'>Full Stack</span><br>Laravel</p>",
+            "name" => "EHM portal",
+            "description" => "showcase portal for the EHM (Elite Harvest Morocco) services.",
+            "links" => (object) [
+                "repository" => null,
+                "website" => "https://projects.drissboumlik.com/ehm.ma/public"
+            ],
+            "hidden" => true
         ],
         (object) [
             "image" => "circet-gestion-ie.webp",
