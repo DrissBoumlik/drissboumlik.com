@@ -5,5 +5,12 @@
     &:nth-child(n + 2)
         margin-top: 1rem
 
-.charts canvas
-    min-height: 500px !important
+.charts .chart-container
+    border: 1px solid var(--tc-grey)
+    border-radius: 5px
+    padding: 0
+    @media (min-width: 768px)
+        padding: 1rem
+    canvas
+        min-height: 500px !important
+        max-width: 100% !important

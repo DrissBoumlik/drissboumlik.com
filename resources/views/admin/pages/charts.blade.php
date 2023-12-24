@@ -47,9 +47,9 @@
     <div class="content">
         <!-- Dynamic Table Responsive -->
         <div class="block block-rounded">
-            <div class="block-content block-content-full">
+            <div class="block-content block-content-full p-md-3 py-2 px-1">
                 <div class="container-fluid charts">
-                    <div class="row chart-section">
+                    <div class="row chart-section py-3 px-1">
                         <h3>Stats by Field</h3>
                         <div class="column-selection col-6">
                             <label class="form-label" for="columns-list">Select column</label>
@@ -73,10 +73,10 @@
                             </select>
                         </div>
                         <div class="col-12 mt-4">
-                            <canvas id="myChart"></canvas>
+                            <div class="chart-container"><canvas id="myChart"></canvas></div>
                         </div>
                     </div>
-                    <div class="row chart-section">
+                    <div class="row chart-section py-3 px-1">
                         <h3>Stats by Year</h3>
                         <div class="column-selection col-6">
                             <label class="form-label" for="columns-list2">Select column</label>
@@ -108,7 +108,7 @@
                             </select>
                         </div>
                         <div class="col-12 mt-4">
-                            <canvas id="myChart2"></canvas>
+                            <div class="chart-container"><canvas id="myChart2"></canvas></div>
                         </div>
                     </div>
                 </div>
