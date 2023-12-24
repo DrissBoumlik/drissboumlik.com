@@ -77,26 +77,6 @@ return (object) [
             ]
         ],
         (object) [
-            "image" => "circet-gestion-ie.webp",
-            "content" => "<p><span class='underline'>Full Stack</span><br>Laravel | Ajax | Sass | Bootstrap</p>",
-            "name" => "Tasks management system",
-            "description" => "a management system for organizing, tracking, and prioritizing call center agents tasks.",
-            "links" => (object) [
-                "repository" => null,
-                "website" => "https://projects.drissboumlik.com/gestion-ie/public"
-            ]
-        ],
-        (object) [
-            "image" => "circet-gestion-ca.webp",
-            "content" => "<p><span class='underline'>Full Stack</span><br>Laravel | Ajax | Sass | Bootstrap</p>",
-            "name" => "Production Statistics Management System",
-            "description" => "a system for collecting, analyzing, and managing data related to the production processes for call center agents.",
-            "links" => (object) [
-                "repository" => null,
-                "website" => "https://projects.drissboumlik.com/gestion-ca/public"
-            ]
-        ],
-        (object) [
             "image" => "sdgs.webp",
             "content" => "<p><span class='underline'>Contribution</span><br>Laravel</p>",
             "links" => (object) [
@@ -114,6 +94,28 @@ return (object) [
                 "repository" => "https://github.com/DrissBoumlik/CSS-Mastering-Animations_couse-files",
                 "website" => "https://www.udemy.com/course/css-mastering-animations"
             ]
+        ],
+        (object) [
+            "image" => "circet-gestion-ie.webp",
+            "content" => "<p><span class='underline'>Full Stack</span><br>Laravel | Ajax | Sass | Bootstrap</p>",
+            "name" => "Tasks management system",
+            "description" => "a management system for organizing, tracking, and prioritizing call center agents tasks.",
+            "links" => (object) [
+                "repository" => null,
+                "website" => "https://projects.drissboumlik.com/gestion-ie/public"
+            ],
+            "hidden" => true
+        ],
+        (object) [
+            "image" => "circet-gestion-ca.webp",
+            "content" => "<p><span class='underline'>Full Stack</span><br>Laravel | Ajax | Sass | Bootstrap</p>",
+            "name" => "Production Statistics Management System",
+            "description" => "a system for collecting, analyzing, and managing data related to the production processes for call center agents.",
+            "links" => (object) [
+                "repository" => null,
+                "website" => "https://projects.drissboumlik.com/gestion-ca/public"
+            ],
+            "hidden" => true
         ],
         (object) [
             "image" => "rae.ma.webp",
