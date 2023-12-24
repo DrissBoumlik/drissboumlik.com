@@ -100,7 +100,12 @@ function initChartByYear(params) {
 
             if (params.visitsChart) { params.visitsChart.destroy(); }
             let _labels =["January","February","March","April","May","June","July", "August","September","October","November","December"];
-            params.visitsChart = makeChart({ctx: params.ctx, labels: _labels, datasets: _datasets, title: `Visits of ${params.yearSelected}`});
+            params.visitsChart = makeChart({
+                ctx: params.ctx,
+                labels: _labels,
+                datasets: _datasets,
+                title: `Visits of ${params.yearSelected}`
+            });
         }
     });
 }
@@ -167,11 +172,16 @@ function getColumnStats(params) {
             let _data = responseData.map(a => a.visits);
             if (params.visitsChart) { params.visitsChart.destroy(); }
 
-            params.visitsChart = makeChart({ctx: params.ctx, title: `Visits by ${params.columnSelected}`, labels: _labels, datasets: [{
+            params.visitsChart = makeChart({
+                ctx: params.ctx,
+                title: `Visits by ${params.columnSelected}`,
+                labels: _labels,
+                datasets: [{
                     label: `Visits nb by ${params.columnSelected}`,
                     data: _data,
                     borderWidth: 1
-                }]});
+                }]
+            });
         }
     });
 }
@@ -184,6 +194,8 @@ function makeChart(params) {
             datasets: params.datasets
         },
         options: {
+            responsive: params.responsive || true,
+            maintainAspectRatio: params.maintainAspectRatio || false,
             plugins: {
                 title: {
                     display: true,
