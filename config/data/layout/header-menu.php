@@ -12,18 +12,13 @@ return [
         "target" => "_self"
     ],
     (object) [
-        "title" => "testimonials",
-        "slug" => "testimonials",
+        "title" => "services",
+        "slug" => "services",
         "target" => "_self"
     ],
     (object) [
         "title" => "blog",
         "slug" => "blog",
-        "target" => "_self"
-    ],
-    (object) [
-        "title" => "tags",
-        "slug" => "tags",
         "target" => "_self"
     ],
     (object) [

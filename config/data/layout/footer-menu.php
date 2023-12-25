@@ -15,6 +15,10 @@ return [
         "slug" => "/blog"
     ],
     (object) [
+        "title" => "tags",
+        "slug" => "/tags",
+    ],
+    (object) [
         "title" => "community",
         "slug" => "/community"
     ],
