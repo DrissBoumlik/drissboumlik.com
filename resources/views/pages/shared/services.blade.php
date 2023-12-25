@@ -7,7 +7,9 @@
                 <div class="service-box w-100">
                     <a href="{{ $service->link }}" >
                     <div class="service-icon">
-                        {!! $service->icon !!}
+                        <img src='{{ asset("/assets/img/services/compressed/$service->img.webp") }}'
+                             data-src='{{ asset("/assets/img/services/$service->img.svg") }}'
+                            width="300" height="300"  alt="" class="img-fluid lazyload">
                     </div>
                     <div class="service-title">
                         <span>{{ $service->text }}</span>
