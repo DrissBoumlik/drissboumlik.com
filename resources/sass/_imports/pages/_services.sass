@@ -1,6 +1,48 @@
 
 .page
-    .services
+    .services .service
         p
             font-size: 20px
             margin-bottom: 1rem
+
+    .services
+        .row.service-row
+            position: relative
+            align-items: center
+            margin-bottom: 2rem
+        .service-description
+            position: relative
+            z-index: 1
+            .service-title
+                margin-bottom: .5rem
+            p
+                line-height: 2.1rem
+            .read-more
+                margin-top: 10px
+                a
+                    padding: 5px 10px
+                    border-radius: 50px
+                    color: $tc-blue
+                    background-color: transparent
+                    box-shadow: 0 0 0 0 $tc-blue
+                    transition: color 0.1s linear, background-color 0.1s linear, box-shadow 0.1s linear
+                    &:hover
+                        //color: $tc-white
+                        //background-color: $tc-blue
+                        box-shadow: 0 0 10px 0 $tc-blue
+        .service-img
+            transform: translate(50%, -40%) scale(.7)
+            position: absolute
+            top: 0
+            right: 0
+            z-index: 0
+            opacity: 0.2
+            @media (min-width: 768px)
+                position: relative
+                top: unset
+                left: unset
+                opacity: 1
+                z-index: 1
+                transform: translate(0, 0) scale(1)
+            img
+                object-fit: cover

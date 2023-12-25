@@ -83,13 +83,20 @@ class PageController extends Controller
         return view('pages.privacy-policy', ['data' => $data]);
     }
 
-    public function getService(Request $request, $service)
+    public function services(Request $request)
     {
         $data = pageSetup('Services | Driss Boumlik', 'services', true, true);
-        $service = getServicesById($service);
-        if (!$service) {
+        $data->services = getServices();
+        return view("pages.services.index", ['data' => $data]);
+    }
+
+    public function getService(Request $request, $service)
+    {
+        $serviceObj = getServicesById($service);
+        if (!$serviceObj) {
             return redirect('/not-found');
         }
-        return view('pages.services.index', ['data' => $data, 'service' => $service]);
+        $data = pageSetup("$serviceObj->text | Services | Driss Boumlik", 'services', true, true);
+        return view("pages.services.partials.$service", ['data' => $data, 'service' => $serviceObj]);
     }
 }
