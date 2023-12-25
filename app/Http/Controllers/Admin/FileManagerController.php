@@ -47,6 +47,22 @@ class FileManagerController extends Controller
         return ['data' => $data];
     }
 
+    public function renameMedia(Request $request)
+    {
+        try {
+            $old_name = trim($request->get('old_name'));
+            $new_name = trim($request->get('new_name'));
+            if (!$new_name || !$old_name) {
+                throw new \Exception("Names should not be empty!!");
+            }
+            $path = trim($request->get('path'));
+            File::move("$path/$old_name", "$path/$new_name");
+            return ['msg' => 'Renamed successfully !'];
+        } catch (\Throwable $e) {
+            return response()->json(['msg' => $e->getMessage()], 404);
+        }
+    }
+
     public function copyMedia(Request $request)
     {
 

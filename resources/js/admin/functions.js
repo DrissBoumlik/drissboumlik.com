@@ -383,6 +383,48 @@ function initMediaManagerEvent() {
         e.preventDefault();
         displayMedias(this.getAttribute('data-href'));
     });
+
+    $(document).on('mousedown', '.media-name', function(e) {
+        this.setAttribute('contenteditable', true)
+    });
+    $(document).on('focusout', '.media-name', function(e) {
+        this.setAttribute('contenteditable', false)
+    });
+    $(document).on('keydown', '.media-name', function(e) {
+        if (e.key === 'Enter') {
+            if (!confirm("Are you sure ?")) {
+                return;
+            }
+            this.setAttribute('contenteditable', false)
+            let new_name = this.innerText.trim();
+            let old_name = this.getAttribute('data-media-name').trim();
+            if (old_name === '' || new_name === '') {
+                get_alert_box({class: 'alert-danger', message: "Names should not be empty", icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                this.innerText = old_name;
+                return;
+            }
+            let data = {
+                new_name: new_name,
+                old_name: old_name,
+                path: $('#current-path').val(),
+            }
+
+            $.ajax({
+                method: 'POST',
+                url: '/api/media/rename',
+                data: data,
+                success: function (response) {
+                    console.log(response);
+                    get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                    displayMedias();
+                },
+                error: function (jqXHR, textStatus, errorThrown){
+                    console.log(jqXHR, textStatus, errorThrown);
+                    get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                }
+            });
+        }
+    });
 }
 
 function displayMedias(pathname = null) {
@@ -414,17 +456,18 @@ function displayMedias(pathname = null) {
             $('#breadcrumb').html(data.breadcrumb.breadcrumb);
 
             let directoriesDOM = '<div class="col-12"><div class="text-center p-5">No directories found</div></div>';
-            if(data.content.directories && data.content.directories.length) {
+            if(data?.content?.directories && data?.content?.directories?.length) {
                 directoriesDOM = '';
                 data.content.directories.forEach(function(dir) {
                     directoriesDOM += `<div class="col-6 col-sm-4 col-md-3 mb-4 media-item-wrapper">
                                         <div class="directory media-item mb-2">
                                             <a href="#" class="media-item-link media-link" data-href="${dir.path}" class="media-item-link">
                                                 <div class="directory-icon w-100 h-100"><i class="fa-solid fa-folder-open"></i></div>
-                                                <div class="directory-name w-100 h-100">
-                                                    <span title="${dir.name}" class="capitalize-first-letter">${dir.name}</span>
-                                                </div>
                                             </a>
+                                            <div class="directory-name w-100 h-100">
+                                                <span title="${dir.name}" class="media-name capitalize-first-letter"
+                                                    data-media-name="${dir.name}">${dir.name}</span>
+                                            </div>
                                         </div>
                                         <div class="action-btns">
                                             <button type="submit" class="btn btn-outline-info w-100 file-operation" title="Copy File"
@@ -438,7 +481,7 @@ function displayMedias(pathname = null) {
             $('#directories').html(directoriesDOM)
 
             let filesDOM = '<div class="col-12"><div class="text-center p-5">No files found</div></div>';
-            if(data.content.files && data.content.files.length) {
+            if(data?.content?.files && data?.content?.files?.length) {
                 filesDOM = '';
                 data.content.files.forEach(function(file) {
                     filesDOM += `<div class="col-6 col-sm-4 col-md-3 mb-4 media-item-wrapper">
@@ -449,12 +492,13 @@ function displayMedias(pathname = null) {
                                         <img src="/${file._pathname}" class="img-fluid w-100 h-100" alt="${file._filename}"/>
                                     </div>`;
                     } else {
-                        filesDOM+= `<div class="file-icon w-100 h-100"><i class="fa-solid fa-file"></i></div>
-                                    <div class="file-name w-100 h-100">
-                                        <span title="${file._filename}" class="capitalize-first-letter">${file._filename}</span>
-                                    </div>`;
+                        filesDOM+= `<div class="file-icon w-100 h-100"><i class="fa-solid fa-file"></i></div>`;
                     }
-                    filesDOM += `</a></div><div class="action-btns">
+                    filesDOM += `</a><div class="file-name w-100">
+                                        <span title="${file._filename}" class="media-name capitalize-first-letter"
+                                            data-media-name="${file._filename}">${file._filename}</span>
+                                    </div>`;
+                    filesDOM += `</div><div class="action-btns">
                                         <button type="submit" class="btn btn-outline-info w-100 file-operation" title="Copy File"
                                                 data-name="${file._filename}" data-action="copy" data-path="${file._pathname}"><i class="fa-solid fa-file"></i></button>
                                         <button type="submit" class="btn btn-outline-danger w-100 delete-file" title="Delete File"

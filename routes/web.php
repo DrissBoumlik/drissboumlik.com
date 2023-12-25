@@ -49,6 +49,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::post('/stats', [ToolController::class, 'getTableColumnStats']);
             Route::post('/media', [FileManagerController::class, 'uploadMedia']);
             Route::post('/media/copy', [FileManagerController::class, 'copyMedia']);
+            Route::post('/media/rename', [FileManagerController::class, 'renameMedia']);
             Route::get('/medias/{path?}', [FileManagerController::class, 'getMedias'])->where('path', '.*');
             Route::delete('/path/{path}/name/{name}', [FileManagerController::class, 'deleteFile'])->where('path', '.*');
             Route::post('/directories', [FileManagerController::class, 'createDirectories']);
