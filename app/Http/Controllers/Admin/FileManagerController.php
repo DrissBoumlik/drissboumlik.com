@@ -149,7 +149,7 @@ class FileManagerController extends Controller
             return response()->json(['msg' => $e->getMessage()], 404);
         }
     }
-    public function deleteFile(Request $request, $path, $name)
+    public function deleteMedia(Request $request, $path, $name)
     {
         try {
             $trash = 'storage/trash';
