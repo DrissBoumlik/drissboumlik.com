@@ -12,13 +12,6 @@
             <div class="section py-5">
                 <div class="container">
                     <div class="row service-row">
-                        <div class="col-md-5 pe-5">
-                            <div class="service-img">
-                                <img src="{{ asset('/assets/img/services/compressed/ui-ux.webp') }}" alt="UI/UX Design"
-                                     data-src="{{ asset('/assets/img/services/ui-ux.svg') }}"
-                                     class="img-fluid w-100 lazyload" width="300" height="300" loading="lazy">
-                            </div>
-                        </div>
                         <div class="col-12 col-md-7">
                             <div class="service-description ui-ux">
                                 <h4 class="service-title">UI/UX Design</h4>
@@ -30,8 +23,22 @@
                                 <div class="read-more"><a href="/services/ui-ux">Read More</a></div>
                             </div>
                         </div>
+                        <div class="col-md-5 pe-5">
+                            <div class="service-img">
+                                <img src="{{ asset('/assets/img/services/compressed/ui-ux.webp') }}" alt="UI/UX Design"
+                                     data-src="{{ asset('/assets/img/services/ui-ux.svg') }}"
+                                     class="img-fluid w-100 lazyload" width="300" height="300" loading="lazy">
+                            </div>
+                        </div>
                     </div>
                     <div class="row service-row">
+                        <div class="col-md-5 ps-5">
+                            <div class="service-img">
+                                <img src="{{ asset('/assets/img/services/compressed/webdev.webp') }}" alt="Web Development"
+                                     data-src="{{ asset('/assets/img/services/webdev.svg') }}"
+                                     class="img-fluid w-100 lazyload" width="300" height="300" loading="lazy">
+                            </div>
+                        </div>
                         <div class="col-12 col-md-7">
                             <div class="service-description webdev">
                                 <h4 class="service-title">Web Development</h4>
@@ -43,22 +50,8 @@
                                 <div class="read-more"><a href="/services/webdev">Read More</a></div>
                             </div>
                         </div>
-                        <div class="col-md-5 ps-5">
-                            <div class="service-img">
-                                <img src="{{ asset('/assets/img/services/compressed/webdev.webp') }}" alt="Web Development"
-                                     data-src="{{ asset('/assets/img/services/webdev.svg') }}"
-                                     class="img-fluid w-100 lazyload" width="300" height="300" loading="lazy">
-                            </div>
-                        </div>
                     </div>
                     <div class="row service-row">
-                        <div class="col-md-5 pe-5">
-                            <div class="service-img">
-                                <img src="{{ asset('/assets/img/services/compressed/workshops.webp') }}" alt="Workshops"
-                                     data-src="{{ asset('/assets/img/services/workshops.svg') }}"
-                                     class="img-fluid w-100 lazyload" width="300" height="300" loading="lazy">
-                            </div>
-                        </div>
                         <div class="col-12 col-md-7">
                             <div class="service-description workshops">
                                 <h4 class="service-title">Workshops</h4>
@@ -69,6 +62,13 @@
                                     enhance your skills or an organization seeking team development, I customize the content to ensure
                                     relevance and maximum impact...</p>
                                 <div class="read-more"><a href="/services/workshops">Read More</a></div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 pe-5">
+                            <div class="service-img">
+                                <img src="{{ asset('/assets/img/services/compressed/workshops.webp') }}" alt="Workshops"
+                                     data-src="{{ asset('/assets/img/services/workshops.svg') }}"
+                                     class="img-fluid w-100 lazyload" width="300" height="300" loading="lazy">
                             </div>
                         </div>
                     </div>
