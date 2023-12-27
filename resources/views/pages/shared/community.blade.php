@@ -16,9 +16,9 @@
                 </div>
             </div>
             <div class="col-md-5 col-sm-10 col-11">
-                <div class="img-wrapper">
-                    <img class="img-fluid w-100 lazyload" src="{{ asset('/assets/img/work/compressed/teacodema.webp') }}"
-                         data-src="{{ asset('/assets/img/work/teacodema.webp') }}"
+                <div class="img-wrapper community-img">
+                    <img class="img-fluid w-100 lazyload" src="{{ asset('/assets/img/teacode/compressed/teacodema.webp') }}"
+                         data-src="{{ asset('/assets/img/teacode/teacodema.webp') }}"
                          alt="" width="200" height="100" loading="lazy">
                 </div>
             </div>
