@@ -7,7 +7,7 @@
 
 @section('content')
     @include('layout.menu', ['headerMenu' => $data->headerMenu])
-    <div class="container-fluid p-0">
+    <div class="container-fluid p-0 home">
         @include('pages.shared.about-me', ['socialLinks' => $data->socialLinks])
         <div class="sections">
             <div class="section py-5">
