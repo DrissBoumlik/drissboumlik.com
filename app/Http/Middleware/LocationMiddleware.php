@@ -23,6 +23,8 @@ class LocationMiddleware
 //        $ip = '48.188.144.248';
         $currentUserInfo = Location::get($ip);
         if ($currentUserInfo) {
+            $currentUserInfo->ref_source = $request->get('ref_src');
+            $currentUserInfo->ref_medium = $request->get('ref_mdm');
             $route = $request->decodedPath();
             $currentUserInfo->url = $route === '/' ? 'Home' : "/$route";
             $visitor = Visitor::where('ip', $ip)->orderBy('updated_at', 'desc')->first();

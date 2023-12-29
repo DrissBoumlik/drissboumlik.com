@@ -26,5 +26,7 @@ class Visitor extends Model
         'timezone',
         'driver',
         'url',
+        'ref_source',
+        'ref_medium',
     ];
 }

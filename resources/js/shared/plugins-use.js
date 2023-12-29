@@ -401,6 +401,8 @@ function initDatatable() {
                 { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
                 { data: 'ip', name: 'ip', title: 'IP', className: 'text-center'},
                 { data: 'url', name: 'url', title: 'URL', className: 'text-left'},
+                { data: 'ref_source', name: 'ref_source', title: 'Source', className: 'text-left'},
+                { data: 'ref_medium', name: 'ref_medium', title: 'Medium', className: 'text-left'},
                 { data: 'updated_at', name: 'updated_at', title: 'updated @', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
                         let updated_at_for_humans = moment(row.updated_at).fromNow();
