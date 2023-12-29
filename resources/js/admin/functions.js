@@ -58,9 +58,11 @@ function fillPostAssetsModal(postAssets){
             let link_original = post_asset.link.replace('--compressed', '');
             gallery += `<div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-5" style="height: 150px">
                         <div class="post-content-asset h-100 overflow-hidden" style="border-radius: 5px">
+                            <a href="${link_original}" target="_blank">
                             <img src="${post_asset.link}" class="img-fluid w-100 h-100 lazyload"
                                  data-src="${link_original}"
                                  style="object-fit: fill; object-position: top center" alt=""></div>
+                            </a>
                         <a href="${post_asset.link}" target="_blank">
                             <span class="fs-sm">${post_asset.filename}</span></a>
                     </div>`;
