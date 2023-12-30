@@ -467,7 +467,7 @@ function displayMedias(pathname = null) {
                                                 <div class="directory-icon w-100 h-100"><i class="fa-solid fa-folder-open"></i></div>
                                             </a>
                                             <div class="directory-name w-100 h-100">
-                                                <span title="${dir.name}" class="media-name capitalize-first-letter"
+                                                <span title="${dir.name}" class="media-name"
                                                     data-media-name="${dir.name}">${dir.name}</span>
                                             </div>
                                         </div>
@@ -497,7 +497,7 @@ function displayMedias(pathname = null) {
                         filesDOM+= `<div class="file-icon w-100 h-100"><i class="fa-solid fa-file"></i></div>`;
                     }
                     filesDOM += `</a><div class="file-name w-100">
-                                        <span title="${file._filename}" class="media-name capitalize-first-letter"
+                                        <span title="${file._filename}" class="media-name"
                                             data-media-name="${file._filename}">${file._filename}</span>
                                     </div>`;
                     filesDOM += `</div><div class="action-btns">
