@@ -87,7 +87,7 @@ class PageController extends Controller
     {
         $data = pageSetup('Services | Driss Boumlik', 'services', true, true);
         $data->services = getServices();
-        return view("pages.services.index", ['data' => $data]);
+        return view("pages.services", ['data' => $data]);
     }
 
     public function getService(Request $request, $service)

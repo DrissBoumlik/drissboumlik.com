@@ -5,7 +5,7 @@
             @foreach($services->data as $service)
             <div class="col-sm-6 col-md-4 col-12">
                 <div class="service-box w-100">
-                    <a href="{{ $service->link }}" >
+                    <a href="/services#{{ $service->id }}" >
                     <div class="service-icon">
                         <img src='{{ asset("/assets/img/services/compressed/$service->img.webp") }}'
                              data-src='{{ asset("/assets/img/services/$service->img.svg") }}'
