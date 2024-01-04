@@ -85,9 +85,9 @@
                         <div class="year-selection col-6">
                             <label class="form-label" for="years-list2">Select Year</label>
                             <select class="form-select" name="years-list2" id="years-list2">
-                                <option value="2022">2022</option>
-                                <option value="2023" selected>2023</option>
-                                <option value="2024">2024</option>
+                                @for($year = 2022; $year <= 2030; $year++)
+                                <option value="{{ $year }}" {{ now()->year === $year ? 'selected' : ''}}>{{ $year }}</option>
+                                @endfor
                             </select>
                         </div>
                         <div class="page-selection col-6 mt-3">
