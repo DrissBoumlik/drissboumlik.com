@@ -35,7 +35,7 @@ class TagController extends Controller
     public function edit(Request $request, $slug)
     {
         $data = new \stdClass();
-        $tag = Tag::withTrashed()->whereSlug($slug)->first();
+        $tag = Tag::withTrashed()->withCount('posts')->whereSlug($slug)->first();
         $data->title = "Edit | $tag->name | Admin Panel";
         $tag = (object) (new TagResource($tag))->resolve();
         return view('admin.blog.tags.edit', ['data' => $data, 'tag' => $tag]);

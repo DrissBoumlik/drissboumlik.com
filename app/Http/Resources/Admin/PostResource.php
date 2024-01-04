@@ -22,7 +22,6 @@ class PostResource extends JsonResource
             'short_title' => shortenTextIfLongByLength($this->title, 20),
             'slug' => $this->slug,
             'excerpt' => $this->excerpt,
-            'content_raw' => $this->content_raw,
             'content' => $this->content,
             'cover' => $this->cover,
             'cover_compressed' => $this->cover ? "$coverSplitted[0]--compressed.webp" : $this->cover,

@@ -67,7 +67,7 @@ class BlogController extends Controller
 
     public function getPosts(Request $request)
     {
-        $result = $this->postService->preparePosts(Post::with('author'));
+        $result = $this->postService->preparePosts(Post::with('author', 'tags'));
         $data = pageSetup('Blog | Driss Boumlik', 'Blog', true, true);
         $result['data'] = $data;
         return view('pages.blog.posts.index', $result);
@@ -114,7 +114,7 @@ class BlogController extends Controller
             return redirect('/not-found');
         }
 
-        $result = $this->postService->preparePosts($tag->posts()->with('author'));
+        $result = $this->postService->preparePosts($tag->posts()->with('author', 'tags'));
         $data = pageSetup("Tags : $tag->name | Blog", "<a href='/tags'>All tags</a> <i class='fa-solid fa-angle-right mx-1'></i> $tag->name", true, true);
         $result['data'] = $data;
         return view('pages.blog.posts.index', $result);
@@ -128,7 +128,7 @@ class BlogController extends Controller
             if (!\Auth::check()){
                 $query->where('status', 2); // Published Posts
             }
-        })->orderBy('updated_at', 'desc')->paginate(self::TAGS_PER_PAGE)));
+        })->withCount('posts')->orderBy('updated_at', 'desc')->paginate(self::TAGS_PER_PAGE)));
         $tags = $tags_data->resolve();
 
         return view('pages.blog.tags.index', ['data' => $data, 'tags' => $tags, 'tags_data' => $tags_data]);

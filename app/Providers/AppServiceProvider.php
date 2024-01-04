@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Database\Eloquent\Model;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Model::shouldBestrict(! $this->app->isProduction());
         \Str::macro('readDuration', function(...$text) {
             $totalWords = str_word_count(implode(" ", $text));
             $minutesToRead = round($totalWords / 200);
