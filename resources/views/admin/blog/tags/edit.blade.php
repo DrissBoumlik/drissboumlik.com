@@ -39,6 +39,9 @@
                     <div class="row items-push">
                         <div class="col-md-6 offset-md-3">
                             <div class="mb-4">
+                                <label class="form-label" for="example-static-input-plain">Posts tagged with this tag : {{ $tag->posts_count }}</label>
+                            </div>
+                            <div class="mb-4">
                                 <label class="form-label" for="tag-name">Name</label>
                                 <input type="text" class="form-control input-to-slugify" id="tag-name" name="name"
                                     placeholder="Tag Name" value="{{ $tag->name }}" required>
