@@ -1,5 +1,5 @@
 import {getDomClass, shortenTextIfLongByLength} from "../admin/functions";
-import { getCookie } from "./functions";
+import {get_alert_box, getCookie} from "./functions";
 
 function initChart() {
     if ($('.charts').length === 0) {
@@ -398,6 +398,17 @@ function initDatatable() {
             method: 'POST',
             url: '/api/visitors',
             columns: [
+                { data: 'id', name: 'id', title: 'Actions', className: 'text-center',
+                    render: function (data, type, row, params) {
+                        return `
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm js-bs-tooltip-enabled display-visitor-details">
+                                <i class="fa fs-3 fa-eye"></i>
+                            </button>
+                        </div>
+                    `;
+                    }
+                },
                 { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
                 { data: 'ip', name: 'ip', title: 'IP', className: 'text-center'},
                 { data: 'url', name: 'url', title: 'URL', className: 'text-left'},
@@ -426,7 +437,121 @@ function initDatatable() {
                 { data: 'driver', name: 'driver', title: 'driver', className: 'fw-semibold fs-sm'},
             ]
         };
-        configDT(params);
+        let visitorsDataTable = configDT(params);
+        $('#visitors').on('click', '.display-visitor-details', function(e) {
+            const $row = $(this).closest('tr');
+            const data = visitorsDataTable.row( $row ).data();
+            let created_at = moment(data.updated_at)
+            let modal = `
+            <div class="modal modal-visitor-details" tabindex="-1">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">${data.countryName}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <form id="form-visitor" data-visitor-id="${data.id}">
+                                    <div class="row">
+                                        <div class="col-12 col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="country-name">Country</label>
+                                                <input type="text" class="form-control" id="country-name" name="countryName"
+                                                    value="${data.countryName}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label" for="country-code">Country Code</label>
+                                                <input type="text" class="form-control" id="country-code" name="countryCode"
+                                                    value="${data.countryCode}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label" for="region-name">Region</label>
+                                                <input type="text" class="form-control" id="region-name" name="regionName"
+                                                    value="${data.regionName}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label" for="city-name">City</label>
+                                                <input type="text" class="form-control" id="city-name" name="cityName"
+                                                    value="${data.cityName}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">IP : ${data.ip}</label>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">URL : ${data.url}</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Source : ${data.ref_source}</label>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Medium : ${data.ref_medium}</label>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Created @ : ${created_at.format('Y-M-D hh:mm')} / ${created_at.fromNow()}</label>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Zip Code : ${data.zipCode}</label>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Latitude : ${data.latitude}</label>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Logitude : ${data.longitude}</label>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">TimeZone : ${data.timezone}</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-outline-info w-100">Update</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-backdrop fade show"></div>`;
+            $('#page-container').append(modal);
+            let modalVisitorDetails = $('.modal-visitor-details');
+            $('.btn-close').add('.modal-visitor-details').on('click', function(e) {
+                if (e.target != modalVisitorDetails[0] && e.target != $('.btn-close')[0]) {
+                    return;
+                }
+                modalVisitorDetails.remove();
+                $('.modal-backdrop').remove();
+            });
+            modalVisitorDetails.show()
+
+            $(document).off('submit', '#form-visitor').on('submit', '#form-visitor', function(e) {
+                e.preventDefault();
+                if (!confirm("Are you sure ?")) {
+                    return;
+                }
+                let _this = $(this);
+                let data = _this.serializeArray();
+                console.log(data);
+                $.ajax({
+                    type: 'PUT',
+                    url: `/api/visitors/${_this.data('visitor-id')}`,
+                    data: data,
+                    success: function(response) {
+                        console.log(response);
+                        visitorsDataTable.ajax.reload(null, false);
+                        get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                    },
+                    error: function (jqXHR, textStatus, errorThrown){
+                        console.log(jqXHR, textStatus, errorThrown);
+                        get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                    }
+                });
+            });
+
+        });
     }
     if ($('#messages').length) {
         let params = {
@@ -496,7 +621,7 @@ function initDatatable() {
                 </div>
             </div>
             <div class="modal-backdrop fade show"></div>`;
-            $('body').append(modal);
+            $('#page-container').append(modal);
             let modalEmailDetails = $('.modal-email-details');
             $('.btn-close').add('.modal-email-details').on('click', function(e) {
                 if (e.target != modalEmailDetails[0] && e.target != $('.btn-close')[0]) {

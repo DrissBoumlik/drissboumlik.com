@@ -18,4 +18,14 @@ class VisitorController extends Controller
         }
         return DataTables::eloquent($visitors)->make(true);
     }
+
+    public function update(Request $request, Visitor $visitor)
+    {
+        try {
+            $visitor->update($request->only(["countryName", "countryCode", "regionName", "cityName"]));
+            return ['msg' => "Updated Successfully !"];
+        } catch (\Throwable $e) {
+            return response()->json(['msg' => $e->getMessage()], 404);
+        }
+    }
 }

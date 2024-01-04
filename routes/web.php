@@ -43,6 +43,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::post('/posts', [ApiPostController::class, 'index']);
             Route::post('/tags', [ApiTagController::class, 'index']);
             Route::post('/visitors', [ApiVisitorController::class, 'index']);
+            Route::put('/visitors/{visitor}', [ApiVisitorController::class, 'update']);
             Route::post('/messages', [ApiMessageController::class, 'index']);
             Route::get('/posts/{slug}/assets', [ApiPostController::class, 'getPostAssets']);
             Route::get('/{table}/columns', [ToolController::class, 'getTableColumns']);
