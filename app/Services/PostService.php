@@ -14,7 +14,7 @@ class PostService
 
     public function getLatestFeaturedPosts()
     {
-        $posts = Post::where('featured', true)->where('status', 2); // Published Posts
+        $posts = Post::with('author', 'tags')->where('featured', true)->where('status', 2); // Published Posts
         return (new PostCollection($posts->orderBy('updated_at', 'desc')->take(self::LATEST_FEATURED_POSTS_COUNT)->get()))->resolve();
     }
 
