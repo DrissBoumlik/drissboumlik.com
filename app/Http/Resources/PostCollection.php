@@ -15,15 +15,17 @@ class PostCollection extends ResourceCollection
     public function toArray($request)
     {
         return $this->resource->map(function ($item, $key) {
+            $coverSplitted = $item->cover ? explode('.webp', $item->cover) : null;
             return (object) [
                 'author_id' => $item->author_id,
                 'title' => $item->title,
                 'short_title' => shortenTextIfLongByLength($item->title, 20),
                 'slug' => $item->slug,
                 'excerpt' => $item->excerpt ?? \Str::words($item->content, 20),
-                'short_excerpt' => shortenTextIfLongByLength($item->excerpt ?? $this->content, 100),
+                'short_excerpt' => shortenTextIfLongByLength($item->excerpt ?? $item->content, 100),
                 'content' => $item->content,
                 'cover' => $item->cover,
+                'cover_compressed' => $item->cover ? "$coverSplitted[0]--compressed.webp" : $item->cover,
                 'description' => $item->description,
                 'status' => $item->status,
                 'featured' => $item->featured,
