@@ -27,7 +27,7 @@ class PostCollection extends ResourceCollection
                 'cover' => $item->cover,
                 'cover_compressed' => $item->cover ? "$coverSplitted[0]--compressed.webp" : $item->cover,
                 'description' => $item->description,
-                'status' => $item->status,
+                'published' => $item->published,
                 'featured' => $item->featured,
                 'likes' => $item->likes,
                 'views' => $item->views,

@@ -33,7 +33,7 @@ class BlogController extends Controller
         }
         $data->results_posts = \DB::table('posts');
         if (!\Auth::check()){
-            $data->results_posts = $data->results_posts->where('status', 2); // Published Posts
+            $data->results_posts = $data->results_posts->where('published', true); // Published Posts
         }
         $data->results_posts = $data->results_posts->whereNull('deleted_at')
             ->where(function ($query) use ($term) {
@@ -50,7 +50,7 @@ class BlogController extends Controller
                             ->join('post_tag as pt', 't.id', '=', 'pt.tag_id')
                             ->join('posts as p', 'p.id', '=', 'pt.post_id')
                             ->whereNull('p.deleted_at')
-                            ->where('p.status', '=', 2);
+                            ->where('p.published', true);
         }
         $data->results = $data->results->where(function ($query) use ($term) {
             $query->where('name', 'like', $term)
@@ -77,7 +77,7 @@ class BlogController extends Controller
     {
         $post = Post::where('slug', $slug);
         if (!\Auth::check()){
-            $post = $post->where('status', 2); // Published Posts
+            $post = $post->where('published', true);
         }
         $post = $post->first();
         if ($post === null) {
@@ -126,7 +126,7 @@ class BlogController extends Controller
 
         $tags_data = (new TagWithPaginationCollection(Tag::whereHas('posts', function($query) {
             if (!\Auth::check()){
-                $query->where('status', 2); // Published Posts
+                $query->where('published', true);
             }
         })->withCount('posts')->orderBy('updated_at', 'desc')->paginate(self::TAGS_PER_PAGE)));
         $tags = $tags_data->resolve();

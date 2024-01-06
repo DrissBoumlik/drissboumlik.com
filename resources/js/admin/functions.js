@@ -104,11 +104,10 @@ function shortenTextIfLongByLength(text, length, end = '...'){
 }
 
 function getDomClass(status) {
-    let classes = [
-        {'value' : 0, 'class' : 'bg-gray text-gray-dark', 'text' : 'Draft'},
-        {'value' : 1, 'class' : 'bg-warning-light text-warning', 'text' : 'Pending'},
-        {'value' : 2, 'class' : 'bg-success-light text-success', 'text' : 'Published'},
-    ]
+    let classes = {
+        0: {'value' : 0, 'class' : 'bg-gray text-gray-dark', 'text' : 'Draft'},
+        1: {'value' : 1, 'class' : 'bg-success-light text-success', 'text' : 'Published'},
+    }
     return classes[status];
 }
 

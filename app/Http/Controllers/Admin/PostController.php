@@ -37,7 +37,6 @@ class PostController extends Controller
         $data->tags = Tag::select("name", "id")->get();
 
         $data->title = 'New Post | Admin Panel';
-        $data->postsStatus = getPostStatus();
         return view('admin.blog.posts.create', ['data' => $data]);
     }
 
@@ -50,10 +49,10 @@ class PostController extends Controller
                 "content" => $request->post_content,
                 "excerpt" => $request->excerpt,
                 "description" => $request->description,
-                "status" => $request->status,
-                "featured" => $request->featured,
+                "published" => $request->has('published'),
+                "featured" => $request->has('featured'),
                 'author_id' => \Auth::user()->id,
-                'published_at' => ($request->status === "2" ? ($request->published_at ?? now()) : null),
+                'published_at' => ($request->has('published') ? ($request->published_at ?? now()) : null),
             ];
             $image_file = $request->file('cover');
             $this->mediaService->processPostCover($data, $image_file, $request->slug, "blog/posts/$request->slug");
@@ -85,7 +84,6 @@ class PostController extends Controller
         $data->tags = Tag::select("name", "id")->get();
         $post_tag_ids = $post->tags->pluck('id');
 
-//        $post->status = $post->getDomClass();
         if ($post->cover) {
             $assets_path = "storage/blog/posts/$post->slug/assets";
         }
@@ -96,7 +94,6 @@ class PostController extends Controller
         });
 
         $data->title = "Edit | $post->title | Admin Panel";
-        $data->postsStatus = getPostStatus();
         return view('admin.blog.posts.edit', ['data' => $data, 'post' => $post]);
     }
 
@@ -115,10 +112,10 @@ class PostController extends Controller
                 "content" => $request->post_content,
                 "excerpt" => $request->post_excerpt,
                 "description" => $request->description,
-                "status" => $request->status,
+                "published" => $request->has('published'),
                 "featured" => $request->has('featured'),
                 'author_id' => \Auth::user()->id,
-                'published_at' => ($request->status === "2" ? ($request->published_at ?? now()) : null),
+                'published_at' => ($request->has('published') ? ($request->published_at ?? now()) : null),
                 'views' => $request->views ?? $post->views
             ];
             $image_file = $request->file('cover');

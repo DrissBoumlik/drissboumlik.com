@@ -304,10 +304,10 @@ function initDatatable() {
                     render: function (data, type, row, params) {
                         return `<span data-bs-toggle="tooltip" title="${row.title}">${shortenTextIfLongByLength(row.title,20)}</span>`;
                     }},
-                { data: 'status', name: 'status', title: 'Status',
+                { data: 'published', name: 'published', title: 'published',
                     render: function (data, type, row, params) {
-                        let status = getDomClass(row.status);
-                        return `<span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill ${status.class}">${status.text}</span`;
+                        let published = getDomClass(row.published);
+                        return `<span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill ${published.class}">${published.text}</span`;
                     }},
                 { data: 'featured', name: 'featured', title: 'Featured', className: 'fs-sm',
                     render: function (data, type, row, params) {

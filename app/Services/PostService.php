@@ -14,7 +14,7 @@ class PostService
 
     public function getLatestFeaturedPosts()
     {
-        $posts = Post::with('author', 'tags')->where('featured', true)->where('status', 2); // Published Posts
+        $posts = Post::with('author', 'tags')->where('featured', true)->where('published', true); // Published Posts
         return (new PostCollection($posts->orderBy('updated_at', 'desc')->take(self::LATEST_FEATURED_POSTS_COUNT)->get()))->resolve();
     }
 
@@ -22,7 +22,7 @@ class PostService
     public function preparePosts($posts)
     {
         if (!\Auth::check()) {
-            $posts = $posts->where('status', 2); // Published Posts
+            $posts = $posts->where('published', true);
         }
         $posts_data = (object) (new PostWithPaginationCollection($posts
             ->orderBy('created_at', 'desc')

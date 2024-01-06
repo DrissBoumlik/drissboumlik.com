@@ -26,7 +26,7 @@ class PostCollection extends ResourceCollection
                 'content' => $item->content,
 //            'image' => $item->image,
                 'description' => $item->description,
-                'status' => $item->getDomClass(),
+                'published' => $this->published,
                 'featured' => $item->featured,
                 'likes' => $item->likes,
                 'views' => $item->views,

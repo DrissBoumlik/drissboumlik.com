@@ -28,7 +28,7 @@ class PostResource extends JsonResource
             'cover' => $this->cover,
             'cover_compressed' => $this->cover ? "$coverSplitted[0]--compressed.webp" : $this->cover,
             'description' => $this->description,
-            'status' => $this->status,
+            'published' => $this->published,
             'featured' => $this->featured,
             'likes' => $this->likes,
             'views' => $this->views,

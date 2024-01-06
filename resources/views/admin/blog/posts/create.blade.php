@@ -91,18 +91,14 @@
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="status">Status</label>
-                                <select class="js-select2 form-select" id="status"
-                                    name="status" style="width: 100%;" data-placeholder="Choose many..">
-                                    <!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                    @foreach($data->postsStatus as $key => $status)
-                                        <option value="{{ $key }}">{{ ucfirst($status) }}</option>
-                                    @endforeach
-                                </select>
+                                <div class="form-check form-switch form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="published" name="published">
+                                    <label class="form-check-label" for="published">Published</label>
+                                </div>
                             </div>
                             <div class="mb-4">
                                 <div class="form-check form-switch form-check-inline">
-                                    <input class="form-check-input" type="checkbox" value="" id="featured" name="featured" checked>
+                                    <input class="form-check-input" type="checkbox" value="" id="featured" name="featured">
                                     <label class="form-check-label" for="featured">Featured</label>
                                 </div>
                             </div>
