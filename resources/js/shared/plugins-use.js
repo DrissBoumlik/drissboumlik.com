@@ -422,6 +422,7 @@ function initDatatable() {
                     }
                 },
                 { data: 'countryCode', name: 'countryCode', title: 'Country Code', className: 'fw-semibold fs-sm'},
+                { data: 'currencyCode', name: 'currencyCode', title: 'Currency Code', className: 'fw-semibold fs-sm'},
                 { data: 'countryName', name: 'countryName', title: 'Country Name', className: 'fw-semibold fs-sm'},
                 { data: 'regionName', name: 'regionName', title: 'Region Name', className: 'fw-semibold fs-sm'},
                 { data: 'cityName', name: 'cityName', title: 'City Name', className: 'fw-semibold fs-sm'},
