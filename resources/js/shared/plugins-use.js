@@ -304,7 +304,7 @@ function initDatatable() {
                     render: function (data, type, row, params) {
                         return `<span data-bs-toggle="tooltip" title="${row.title}">${shortenTextIfLongByLength(row.title,20)}</span>`;
                     }},
-                { data: 'published', name: 'published', title: 'published',
+                { data: 'published', name: 'published', title: 'Published',
                     render: function (data, type, row, params) {
                         let published = getDomClass(row.published);
                         return `<span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill ${published.class}">${published.text}</span`;
@@ -316,7 +316,7 @@ function initDatatable() {
                 }},
                 { data: 'views', name: 'views', title: '<i class="fa-solid fa-eye"></i>', className: 'text-center'},
                 { data: 'likes', name: 'likes', title: '<i class="fa-solid fa-thumbs-up"></i>', className: 'text-center'},
-                { data: 'tags_count', name: 'tags_count', title: 'tags', className: 'text-center', searchable: false},
+                { data: 'tags_count', name: 'tags_count', title: 'Tags', className: 'text-center', searchable: false},
                 { data: 'published_at', name: 'published_at', title: 'Published @', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
                         let published_at_for_humans = row.published_at ? moment(row.published_at).fromNow() : '------';
@@ -377,7 +377,7 @@ function initDatatable() {
                     }
                 },
                 { data: 'posts_count', name: 'posts_count', title: 'Posts', className: 'fw-semibold fs-sm', searchable: false},
-                { data: 'created_at', name: 'created_at', title: 'created @', className: 'text-center fs-sm',
+                { data: 'created_at', name: 'created_at', title: 'Created @', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
                         let created_at_for_humans = moment(row.created_at).fromNow();
                         let created_at_formatted = moment(row.created_at).format('Y-M-D hh:mm');
@@ -414,7 +414,7 @@ function initDatatable() {
                 { data: 'url', name: 'url', title: 'URL', className: 'text-left'},
                 { data: 'ref_source', name: 'ref_source', title: 'Source', className: 'text-left'},
                 { data: 'ref_medium', name: 'ref_medium', title: 'Medium', className: 'text-left'},
-                { data: 'updated_at', name: 'updated_at', title: 'updated @', className: 'text-center fs-sm',
+                { data: 'updated_at', name: 'updated_at', title: 'Updated @', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
                         let updated_at_for_humans = moment(row.updated_at).fromNow();
                         let updated_at_formatted = moment(row.updated_at).format('Y-M-D hh:mm');
@@ -426,16 +426,16 @@ function initDatatable() {
                 { data: 'countryName', name: 'countryName', title: 'Country Name', className: 'fw-semibold fs-sm'},
                 { data: 'regionName', name: 'regionName', title: 'Region Name', className: 'fw-semibold fs-sm'},
                 { data: 'cityName', name: 'cityName', title: 'City Name', className: 'fw-semibold fs-sm'},
-                { data: 'latitude', name: 'latitude', title: 'latitude', className: 'fw-semibold fs-sm'},
-                { data: 'longitude', name: 'longitude', title: 'longitude', className: 'fw-semibold fs-sm'},
+                { data: 'latitude', name: 'latitude', title: 'Latitude', className: 'fw-semibold fs-sm'},
+                { data: 'longitude', name: 'longitude', title: 'Longitude', className: 'fw-semibold fs-sm'},
                 { data: 'regionCode', name: 'regionCode', title: 'Region Code', className: 'fw-semibold fs-sm'},
                 { data: 'zipCode', name: 'zipCode', title: 'Zip Code', className: 'fw-semibold fs-sm'},
                 { data: 'isoCode', name: 'isoCode', title: 'Iso Code', className: 'fw-semibold fs-sm'},
                 { data: 'postalCode', name: 'postalCode', title: 'Postal Code', className: 'fw-semibold fs-sm'},
                 { data: 'metroCode', name: 'metroCode', title: 'Metro Code', className: 'fw-semibold fs-sm'},
                 { data: 'areaCode', name: 'areaCode', title: 'Area Code', className: 'fw-semibold fs-sm'},
-                { data: 'timezone', name: 'timezone', title: 'timezone', className: 'fw-semibold fs-sm'},
-                { data: 'driver', name: 'driver', title: 'driver', className: 'fw-semibold fs-sm'},
+                { data: 'timezone', name: 'timezone', title: 'Timezone', className: 'fw-semibold fs-sm'},
+                { data: 'driver', name: 'driver', title: 'Driver', className: 'fw-semibold fs-sm'},
             ]
         };
         let visitorsDataTable = configDT(params);
@@ -580,7 +580,7 @@ function initDatatable() {
                         return data.substring(0, 30) + '...';
                     }
                 },
-                { data: 'created_at', name: 'created_at', title: 'created @', className: 'text-center fs-sm',
+                { data: 'created_at', name: 'created_at', title: 'Created @', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
                         let created_at_for_humans = moment(row.created_at).fromNow();
                         let created_at_formatted = moment(row.created_at).format('Y-M-D hh:mm');
@@ -684,6 +684,30 @@ function configDT(params) {
             if (params.onComplete) {
                 params.onComplete(settings, json);
             }
+            this.find('thead').prepend('<tr id="search-row"></tr>');
+            this.api().columns().every(function (index) {
+                let column = this;
+                let dataTitle = column.dataSrc();
+                let title = params.columns[index].title;
+                console.log(dataTitle)
+                console.log(title)
+                console.log('----')
+                // Create input element
+                let headerSearchItem = `<th><input id="${dataTitle}" title="${dataTitle}" placeholder="${dataTitle}" type="search" class="form-control"></th>`;
+                $('#search-row').append(headerSearchItem);
+                let input = document.getElementById(dataTitle);
+
+                // Event listener for user input
+                let start = undefined;
+                input.addEventListener('input', (e) => {
+                    clearTimeout(start);
+                    start = setTimeout(function () {
+                        if (column.search() !== this.value) {
+                            column.search(input.value).draw();
+                        }
+                    }, 1000 );
+                });
+            });
         }
     });
     $('.btn-refresh').on('click', function (e) {
