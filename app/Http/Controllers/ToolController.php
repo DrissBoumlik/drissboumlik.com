@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class ToolController extends Controller
 {
+    public function getPixel(Request $request)
+    {
+        return redirect('/assets/img/mixte/pixel.png');
+    }
+
     public function export_db(Request $request)
     {
         $tables = $request->get('tables');
