@@ -535,7 +535,6 @@ function initDatatable() {
                 }
                 let _this = $(this);
                 let data = _this.serializeArray();
-                console.log(data);
                 $.ajax({
                     type: 'PUT',
                     url: `/api/visitors/${_this.data('visitor-id')}`,
@@ -689,11 +688,8 @@ function configDT(params) {
                 let column = this;
                 let dataTitle = column.dataSrc();
                 let title = params.columns[index].title;
-                console.log(dataTitle)
-                console.log(title)
-                console.log('----')
                 // Create input element
-                let headerSearchItem = `<th><input id="${dataTitle}" title="${dataTitle}" placeholder="${dataTitle}" type="search" class="form-control"></th>`;
+                let headerSearchItem = `<th><input id="${dataTitle}" title="${dataTitle}" placeholder="${dataTitle}" type="search" class="form-control form-control-sm"></th>`;
                 $('#search-row').append(headerSearchItem);
                 let input = document.getElementById(dataTitle);
 

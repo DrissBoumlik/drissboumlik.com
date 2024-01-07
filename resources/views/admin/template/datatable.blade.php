@@ -45,7 +45,7 @@
             </div>
             @yield('custom-dom')
             <div class="block-content block-content-full">
-                <div class="table-responsive">
+                <div class="table-responsive tc-scroll">
                     @yield('list')
                 </div>
             </div>
