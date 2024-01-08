@@ -688,8 +688,12 @@ function configDT(params) {
                 let column = this;
                 let dataTitle = column.dataSrc();
                 let title = params.columns[index].title;
+                if (title.toLowerCase() === "actions") {
+                    $('#search-row').append('<th></th>');
+                    return;
+                }
                 // Create input element
-                let headerSearchItem = `<th><input id="${dataTitle}" title="${dataTitle}" placeholder="${dataTitle}" type="search" class="form-control form-control-sm"></th>`;
+                let headerSearchItem = `<th><input id="${dataTitle}" title="${dataTitle}" placeholder="${dataTitle.toUpperCase()}" type="search" style="min-width: 100px" class="form-control form-control-sm"></th>`;
                 $('#search-row').append(headerSearchItem);
                 let input = document.getElementById(dataTitle);
 
