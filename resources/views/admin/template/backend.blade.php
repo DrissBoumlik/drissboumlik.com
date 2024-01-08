@@ -2,10 +2,10 @@
 <html lang="{{ config('app.locale') }}">
 
 <head>
-    @include('admin.template.frontend-sections.meta')
+    @include('admin.template.backend-sections.meta')
 
     @yield('pre-header-assets')
-    @include('admin.template.frontend-sections.assets')
+    @include('admin.template.backend-sections.assets')
     @yield('post-header-assets')
 </head>
 

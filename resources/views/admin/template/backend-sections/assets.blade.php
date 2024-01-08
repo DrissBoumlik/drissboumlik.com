@@ -1,21 +1,30 @@
 
-
 <!-- Icons -->
+<!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
 <link rel="shortcut icon" href="{{ asset('/assets/img/me/circle-256.ico') }}">
-<link rel="icon" sizes="192x192" type="image/png" href="{{ asset('/assets/img/me/circle-256.ico') }}">
+<link rel="icon" type="image/png" sizes="192x192" href="{{ asset('/assets/img/me/circle-256.ico') }}">
 <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/assets/img/me/circle-256.ico') }}">
+<!-- END Icons -->
 
-<!-- Modules -->
+<!-- Stylesheets -->
+<!-- OneUI framework -->
 @yield('css')
-<link href="{{ asset('/template/css/main.css') }}" rel="stylesheet">
-@yield('css-after')
+@vite(['resources/sass/externals.sass'])
+@vite(['resources/sass/admin/app.sass'])
+@vite(['resources/template/sass/main.scss'])
+{{-- <link rel="stylesheet" id="css-main" href="/template/assets/css/oneui.min.css"> --}}
 
-<!-- Alternatively, you can also include a specific color theme after the main stylesheet to alter the default color theme of the template -->
-{{-- @vite(['resources/sass/main.scss', 'resources/sass/oneui/themes/amethyst.scss', 'resources/js/oneui/app.js']) --}}
+<!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
+<!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/amethyst.min.css"> -->
+<!-- END Stylesheets -->
+<!--
+OneUI JS
 
-{{-- <script src="{{ asset('/js/oneui/app.js') }}"></script> --}}
-
-<script src="{{ asset('/template/assets/js/oneui.app.min.js') }}"></script>
-<script src={{ asset("/template/assets/js/lib/jquery.min.js") }}></script>
+Core libraries and functionality
+webpack is putting everything together at assets/_js/main/app.js
+-->
+@vite(['resources/template/assets/js/oneui.app.min.js'])
+<script src="{{ asset('/plugins/jquery/jquery-3.7.1.js') }}"></script>
 @yield('js')
-<script defer src="{{ asset('/js/admin/app.js') }}"></script>
+<script src="{{ asset('/template/assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+@vite(['resources/js/admin/app.js'])
