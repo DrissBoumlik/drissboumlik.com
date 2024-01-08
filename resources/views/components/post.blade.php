@@ -2,7 +2,7 @@
     <div class="post-cover">
         <img src="/{{ $post->cover_compressed }}" alt="{{ $post->title }}"
              data-src="/{{ $post->cover }}"
-             class="img-fluid lazyload" loading="lazy" />
+             class="img-fluid lazyload" loading="lazy" width="500" height="350" />
     </div>
     <div class="post-data">
         <div class="post-title mb-1">

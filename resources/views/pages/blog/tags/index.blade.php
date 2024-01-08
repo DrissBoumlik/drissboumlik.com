@@ -22,7 +22,7 @@
                                     <div class="tag-item">
                                         <div class="tag-cover">
                                             <img src="/{{ $tag->cover_compressed }}" alt="{{ $tag->name }}"
-                                                 data-src="/{{ $tag->cover }}"
+                                                 data-src="/{{ $tag->cover }}" width="300" height="250"
                                                  class="img-fluid lazyload" loading="lazy" />
                                         </div>
                                         <div class="tag-text">

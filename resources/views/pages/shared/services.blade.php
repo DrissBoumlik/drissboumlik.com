@@ -9,7 +9,7 @@
                     <div class="service-icon">
                         <img src='{{ asset("/assets/img/services/compressed/$service->img.webp") }}'
                              data-src='{{ asset("/assets/img/services/$service->img.svg") }}'
-                            width="300" height="300"  alt="" class="img-fluid lazyload">
+                            width="300" height="300" alt="{{ $service->text }}" class="img-fluid lazyload">
                     </div>
                     <div class="service-title">
                         <span>{{ $service->text }}</span>

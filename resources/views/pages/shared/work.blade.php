@@ -10,7 +10,7 @@
                                 <div class="work-image-cover">
                                     <img src="{{ asset('/assets/img/work/compressed/' . $workItem->image) }}" alt="{{ $workItem->name }}"
                                          data-src="{{ asset('/assets/img/work/' . $workItem->image) }}"
-                                         class="img-fluid lazyload" loading="lazy" />
+                                         class="img-fluid lazyload" loading="lazy" width="300" height="250" />
                                 </div>
                                 @isset($workItem->links)
                                     <div class="work-links">

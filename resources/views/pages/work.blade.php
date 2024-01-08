@@ -20,7 +20,7 @@
                                             <div class="work-image-cover">
                                                 <img src="{{ asset('/assets/img/work/compressed/' . $workItem->image) }}" alt="{{ $workItem->name }}"
                                                      data-src="{{ asset('/assets/img/work/' . $workItem->image) }}"
-                                                     class="img-fluid lazyload"/>
+                                                     class="img-fluid lazyload" width="300" height="250" />
                                             </div>
                                             <div class="work-data">
                                                 <div class="work-txt">
