@@ -76,18 +76,6 @@
                                 <label class="form-label" for="description">Description</label>
                                 <textarea class="form-control" id="description" name="description" rows="4" placeholder="Post description..">{{ $post->description }}</textarea>
                             </div>
-                            <div class="d-flex align-items-center column-gap-2">
-                                <div class="mb-4 w-100">
-                                    <label class="form-label" for="published_at">Published at</label>
-                                    <input type="text" class="js-flatpickr form-control" id="published_at" name="published_at" value="{{ $post->published_at }}" data-enable-time="true" data-time_24hr="true">
-                                </div>
-                                <div class="w-100">
-                                    <div class="form-check form-switch form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="published" name="published" {{ $post->published == 0 ? '' : 'checked' }} >
-                                        <label class="form-check-label" for="published">Published</label>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="timestamps d-flex align-items-center column-gap-2">
                                 <div class="mb-4 w-100">
                                     <label class="form-label" for="updated_at">Updated at</label>
@@ -123,7 +111,18 @@
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="post-views">Views</label>
-                                <input type="text" class="form-control" id="post-views" name="views" placeholder="Post views" value="{{ $post->views }}">
+                                <input type="number" class="form-control" id="post-views" name="views" min="0"
+                                       placeholder="Post views" value="{{ $post->views }}">
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="published_at">Published at</label>
+                                <input type="text" class="js-flatpickr form-control" id="published_at" name="published_at" value="{{ $post->published_at }}" data-enable-time="true" data-time_24hr="true">
+                            </div>
+                            <div class="mb-4">
+                                <div class="form-check form-switch form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="published" name="published" {{ $post->published == 0 ? '' : 'checked' }} >
+                                    <label class="form-check-label" for="published">Published</label>
+                                </div>
                             </div>
                             <div class="mb-4">
                                 <div class="form-check form-switch form-check-inline">

@@ -72,10 +72,6 @@
                                 <label class="form-label" for="description">Description</label>
                                 <textarea class="form-control" id="description" name="description" rows="4" placeholder="Post description.."></textarea>
                             </div>
-                            <div class="">
-                                <label class="form-label" for="published_at">Published at</label>
-                                <input type="text" class="js-flatpickr form-control" id="published_at" name="published_at" value="{{ now() }}" data-enable-time="true" data-time_24hr="true">
-                            </div>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-4">
@@ -89,6 +85,10 @@
                                         <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="published_at">Published at</label>
+                                <input type="text" class="js-flatpickr form-control" id="published_at" name="published_at" value="{{ now() }}" data-enable-time="true" data-time_24hr="true">
                             </div>
                             <div class="mb-4">
                                 <div class="form-check form-switch form-check-inline">
