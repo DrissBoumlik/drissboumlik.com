@@ -128,13 +128,21 @@ function initContactFormEvent () {
                 success: function (response) {
                     $('#contact-form-response').remove()
                     $(_this).after(`<div id="contact-form-response" class="tc-alert tc-alert-ok text-center"> ${response.icon} ${response.message}</div>`);
-                    setTimeout(() => $('#contact-form-response').remove(), 5000);
+                    // setTimeout(() => $('#contact-form-response').remove(), 5000);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
+                    let response = jqXHR.responseJSON;
                     $('#contact-form-response').remove()
-                    let errors = jqXHR.responseJSON.errors;
+                    if (response.class && response.icon) {
+                        $(_this).after(`<div id="contact-form-response" class="tc-alert ${response.class} text-center"> ${response.icon} ${response.message}</div>`);
+                    }
+                    let errors = response.errors;
+                    data.forEach(function (item, key) {
+                        $(`#error-${item.name}`).remove();
+                    });
                     for (let errorKey in errors) {
                         let messages = errors[errorKey];
+                        $(`#error-${errorKey}`).remove();
                         $(`#form-${errorKey}`).after(`<div id="error-${errorKey}" class="tc-alert tc-alert-error">This field is required.</div>`);
                     }
                 }

@@ -17,6 +17,10 @@
                         <textarea class="form-control" id="form-body" rows="3" name="body" placeholder="" required maxlength="1000"></textarea>
                         <label for="form-body">Message</label>
                     </div>
+                    <div class="form-floating mb-3">
+                        <!-- Google Recaptcha -->
+                        <div id="form-g-recaptcha-response" class="g-recaptcha w-100" data-sitekey={{ config('services.recaptcha.key') }}></div>
+                    </div>
                     <button type="submit" class="btn tc-blue-dark-2-bg tc-blue-bg-hover w-100">Send</button>
                 </form>
             </div>

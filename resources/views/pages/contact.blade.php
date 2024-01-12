@@ -1,6 +1,7 @@
 @extends('layout.page-content-wide')
 
 @section('post-header-assets')
+    <script async src="https://www.google.com/recaptcha/api.js"></script>
     @vite(['resources/js/pages/contact.js'])
 @endsection
 
@@ -31,6 +32,10 @@
                                     <div class="form-floating mb-3">
                                         <textarea class="form-control" id="form-body" rows="3" name="body" placeholder="" required maxlength="1000"></textarea>
                                         <label for="form-body">Message</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <!-- Google Recaptcha -->
+                                        <div id="form-g-recaptcha-response" class="g-recaptcha w-100" data-sitekey={{ config('services.recaptcha.key') }}></div>
                                     </div>
                                     <div class="btns d-flex gap-2">
                                         <button type="submit" class="btn tc-blue-dark-2-bg tc-blue-bg-hover w-100">Send</button>
