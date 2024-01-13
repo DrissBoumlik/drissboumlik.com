@@ -9,7 +9,7 @@
         .row.service-row
             position: relative
             align-items: center
-            margin-bottom: 2rem
+            margin-bottom: 3rem
         .service-description
             position: relative
             z-index: 1
@@ -32,6 +32,8 @@
                         //background-color: $tc-blue
                         box-shadow: 0 0 10px 0 $tc-blue
         .service-img
+            display: flex
+            justify-content: center
             transform: translate(50%, -40%) scale(.7)
             position: absolute
             top: 0
@@ -47,3 +49,6 @@
                 transform: translate(0, 0) scale(1)
             img
                 object-fit: cover
+                max-width: 100%
+                @media (min-width: 768px)
+                    max-width: 250px

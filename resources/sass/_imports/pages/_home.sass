@@ -1,10 +1,24 @@
 
 
 .services
+    .service-box-container
+        width: 100%
+        .service-img
+            max-width: 250px
+        @media (min-width: 576px)
+            width: 50%
+            .service-img
+                max-width: 250px
+        @media (min-width: 768px)
+            width: 33%
+        @media (min-width: 992px)
+            width: 30%
     .service-box
         border-radius: 5px
         padding: 0.5rem
         text-align: center
+        display: flex
+        justify-content: center
         *
             color: $tc-blue-dark-2
         .service-icon

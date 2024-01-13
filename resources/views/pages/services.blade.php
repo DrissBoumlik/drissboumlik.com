@@ -29,7 +29,7 @@
                             </div>
                         </div>
                         @if($loop->index % 2 === 0)
-                        <div class="col-md-5 pe-5">
+                        <div class="col-md-5 ps-5">
                             <div class="service-img">
                                 <img src='{{ asset("/assets/img/services/compressed/$service->img.webp") }}' alt="{{ $service->text }}"
                                      data-src='{{ asset("/assets/img/services/$service->img.svg") }}'
