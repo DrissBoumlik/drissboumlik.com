@@ -42,7 +42,9 @@
         },
         "files": [
             "app/Helpers/Helpers.php",
-            "app/Helpers/Blog/Helpers.php"
+            "app/Helpers/Blog/Helpers.php",
+            "app/Helpers/Data/Helpers.php",
+            "app/Helpers/Layout/Helpers.php"
         ]
     },
     "autoload-dev": {
