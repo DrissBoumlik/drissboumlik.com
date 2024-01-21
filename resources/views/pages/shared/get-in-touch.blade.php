@@ -2,8 +2,8 @@
     <div class="container">
         @include('components.headline', ['headline' => 'Get in Touch'])
         <div class="row">
-            <div class="col-12 col-lg-6 offset-lg-3">
-                <form id="contact-form" class="mb-4">
+            <div class="col-12 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+                <form id="contact-form" class="mb-3">
                     @csrf
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="form-name" placeholder="" name="name" autocomplete="on" required />
