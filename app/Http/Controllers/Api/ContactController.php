@@ -32,7 +32,7 @@ class ContactController extends Controller
 
             return response()->json(['message' => 'Message sent successfully', 'class' => 'tc-alert-ok', 'icon' => '<i class="fa fa-fw fa-circle-check tc-blue"></i>'], 200);
         } catch (\Throwable $e) {
-            return response()->json(['message' => $e->getMessage(), 'class' => 'tc-red-light', 'icon' => '<i class="fa fa-fw fa-times-circle tc-red-light"></i>'], 400);
+            return response()->json(['message' => 'Something went wrong, Please try again!', 'class' => 'tc-red-light', 'icon' => '<i class="fa fa-fw fa-times-circle tc-red-light"></i>'], 400);
         }
     }
 

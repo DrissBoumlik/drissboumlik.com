@@ -127,7 +127,7 @@ function initContactFormEvent () {
                 data: data,
                 success: function (response) {
                     $('#contact-form-response').remove()
-                    $(_this).after(`<div id="contact-form-response" class="tc-alert tc-alert-ok text-center"> ${response.icon} ${response.message}</div>`);
+                    $(_this).after(`<div id="contact-form-response" class="tc-alert ${response.class} text-center"> ${response.icon} ${response.message}</div>`);
                     // setTimeout(() => $('#contact-form-response').remove(), 5000);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
@@ -143,7 +143,7 @@ function initContactFormEvent () {
                     for (let errorKey in errors) {
                         let messages = errors[errorKey];
                         $(`#error-${errorKey}`).remove();
-                        $(`#form-${errorKey}`).after(`<div id="error-${errorKey}" class="tc-alert tc-alert-error">This field is required.</div>`);
+                        $(`#form-${errorKey}`).after(`<div id="error-${errorKey}" class="tc-alert tc-alert-error">${messages || 'This field is required.'}</div>`);
                     }
                 }
             });
