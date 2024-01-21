@@ -15,4 +15,4 @@
 @vite(['resources/sass/externals.sass'])
 @vite(['resources/sass/app.sass'])
 <script src="{{ asset('/plugins/particles/particles.min.js') }}"></script>
-@vite(['resources/js/app.js'])
+@vite(['resources/js/app.js', 'resources/js/pages/subscription.js'])

@@ -35,6 +35,7 @@ export default defineConfig({
                 'resources/js/pages/carousel.js',
                 'resources/js/pages/auth.js',
                 'resources/js/pages/blog.js',
+                'resources/js/pages/subscription.js',
                 'resources/js/pages/tooltip.js',
                 'resources/js/pages/contact.js',
                 'resources/template/assets/js/oneui.app.min.js',

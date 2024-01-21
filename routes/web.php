@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\Api\TagController as ApiTagController;
 use App\Http\Controllers\Admin\Api\VisitorController as ApiVisitorController;
 use App\Http\Controllers\Admin\Api\MessageController as ApiMessageController;
 use App\Http\Controllers\Api\ContactController;
+use App\Http\Controllers\Api\SubscriberController as ApiSubscriberController;
 // use App\Http\Controllers\ToolController;
 
 /*
@@ -58,6 +59,8 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
         });
         Route::post('/get-in-touch', [ContactController::class, 'getInTouch']);
         Route::post('/blog/{slug}/{value}', [BlogController::class, 'likePost']);
+        Route::post('/subscribers', [ApiSubscriberController::class, 'subscribe']);
+        Route::put('/subscribers/{uuid}', [ApiSubscriberController::class, 'update']);
     });
 
     Route::prefix('admin')->group(function () {
@@ -112,10 +115,8 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
     });
 
     Route::middleware('location')->group(function () {
-//    Route::post('/subscribers', [SubscriberController::class, 'subscribe']);
-//    Route::put('/subscribers/{uuid}', [SubscriberController::class, 'update']);
-//    Route::get('/subscribers/{uuid}', [SubscriberController::class, 'show']);
-//    Route::get('/subscribers/verify/{token}', [SubscriberController::class, 'verifySubscribtion']);
+        Route::get('/subscribers/{uuid}', [SubscriberController::class, 'show']);
+        Route::get('/subscribers/verify/{token}', [SubscriberController::class, 'verifySubscribtion']);
         Route::get('/tags', [BlogController::class, 'getTags']);
         Route::get('/tags/{slug}', [BlogController::class, 'getPostsBytag']);
         Route::get('/blog', [BlogController::class, 'getPosts']);

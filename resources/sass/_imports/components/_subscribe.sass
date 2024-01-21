@@ -1,0 +1,20 @@
+.subscribe-wrapper
+    .section-header
+        margin-bottom: 3rem !important
+    .section-title
+        color: $tc-white
+    .section-title-line
+        background-color: $tc-white
+        border-top-color: $tc-white
+    input.form-control
+        color: $tc-black
+        &:focus, &::placeholder
+            color: $tc-black
+
+body.dark-mode
+    .subscribe-wrapper
+        //border-top: 1px solid $tc-blue
+        //background-color: $tc-blue-dark-5
+        input.form-control, input.form-control:focus, input.form-control::placeholder
+            color: #595C5F
+            background-color: $tc-white
