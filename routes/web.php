@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\VisitorController;
 use App\Http\Controllers\Admin\MessageController;
-use App\Http\Controllers\Admin\SubscriberController as AdminSubscriberController;
+//use App\Http\Controllers\Admin\SubscriberController as AdminSubscriberController;
 use App\Http\Controllers\Admin\FileManagerController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
@@ -16,16 +16,16 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\ToolController;
-use App\Http\Controllers\SubscriberController;
+//use App\Http\Controllers\SubscriberController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\Api\PostController as ApiPostController;
 use App\Http\Controllers\Admin\Api\TagController as ApiTagController;
 use App\Http\Controllers\Admin\Api\VisitorController as ApiVisitorController;
 use App\Http\Controllers\Admin\Api\MessageController as ApiMessageController;
-use App\Http\Controllers\Admin\Api\SubscriberController as AdminApiSubscriberController;
+//use App\Http\Controllers\Admin\Api\SubscriberController as AdminApiSubscriberController;
 use App\Http\Controllers\Api\ContactController;
-use App\Http\Controllers\Api\SubscriberController as ApiSubscriberController;
+//use App\Http\Controllers\Api\SubscriberController as ApiSubscriberController;
 // use App\Http\Controllers\ToolController;
 
 /*
@@ -48,7 +48,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::post('/visitors', [ApiVisitorController::class, 'index']);
             Route::put('/visitors/{visitor}', [ApiVisitorController::class, 'update']);
             Route::post('/messages', [ApiMessageController::class, 'index']);
-            Route::post('/subscriptions', [AdminApiSubscriberController::class, 'index']);
+//            Route::post('/subscriptions', [AdminApiSubscriberController::class, 'index']);
             Route::get('/posts/{slug}/assets', [ApiPostController::class, 'getPostAssets']);
             Route::get('/{table}/columns', [ToolController::class, 'getTableColumns']);
             Route::post('/stats', [ToolController::class, 'getTableColumnStats']);
@@ -62,8 +62,8 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
         });
         Route::post('/get-in-touch', [ContactController::class, 'getInTouch']);
         Route::post('/blog/{slug}/{value}', [BlogController::class, 'likePost']);
-        Route::post('/subscribers', [ApiSubscriberController::class, 'subscribe']);
-        Route::put('/subscribers/{uuid}', [ApiSubscriberController::class, 'update']);
+//        Route::post('/subscribers', [ApiSubscriberController::class, 'subscribe']);
+//        Route::put('/subscribers/{uuid}', [ApiSubscriberController::class, 'update']);
     });
 
     Route::prefix('admin')->group(function () {
@@ -105,7 +105,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::post('/tags', [TagController::class, 'store']);
 
             Route::get('/messages', [MessageController::class, 'index']);
-            Route::get('/subscriptions', [AdminSubscriberController::class, 'index']);
+//            Route::get('/subscriptions', [AdminSubscriberController::class, 'index']);
 
             Route::get('/visitors', [VisitorController::class, 'index']);
             Route::get('/visitors/charts', [VisitorController::class, 'charts']);
@@ -119,8 +119,8 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
     });
 
     Route::middleware('location')->group(function () {
-        Route::get('/subscribers/{uuid}', [SubscriberController::class, 'show']);
-        Route::get('/subscribers/verify/{token}', [SubscriberController::class, 'verifySubscribtion']);
+//        Route::get('/subscribers/{uuid}', [SubscriberController::class, 'show']);
+//        Route::get('/subscribers/verify/{token}', [SubscriberController::class, 'verifySubscribtion']);
         Route::get('/tags', [BlogController::class, 'getTags']);
         Route::get('/tags/{slug}', [BlogController::class, 'getPostsBytag']);
         Route::get('/blog', [BlogController::class, 'getPosts']);
