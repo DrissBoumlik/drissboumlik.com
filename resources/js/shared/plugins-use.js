@@ -633,6 +633,42 @@ function initDatatable() {
             modalEmailDetails.show()
         });
     }
+    if ($('#subscriptions').length) {
+        let params = {
+            first_time: true,
+            id: '#subscriptions',
+            method: 'POST',
+            url: '/api/subscriptions',
+            columns: [
+                { data: 'id', name: 'id', title: 'Actions', className: 'text-center',
+                    render: function (data, type, row, params) {
+                        return `
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm js-bs-tooltip-enabled display-email-details">
+                                <i class="fa fs-3 fa-eye"></i>
+                            </button>
+                        </div>
+                    `;
+                    }
+                },
+                { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
+                { data: 'subscription_id', name: 'subscription_id',title: 'Subscription Id', className: 'text-center' },
+                { data: 'email', name: 'email', title: 'Email', className: 'text-center' },
+                { data: 'first_name', name: 'first_name', title: 'First Name', className: 'text-center' },
+                { data: 'last_name', name: 'last_name', title: 'Last Name', className: 'text-center' },
+                { data: 'subscribed_at', name: 'subscribed_at', title: 'Subscribed At', className: 'text-center' },
+                { data: 'token_verification', name: 'token_verification', title: 'Token Verification', className: 'text-center '},
+                { data: 'created_at', name: 'created_at', title: 'Created @', className: 'text-center fs-sm',
+                    render: function(data, type, row, params) {
+                        let created_at_for_humans = moment(row.created_at).fromNow();
+                        let created_at_formatted = moment(row.created_at).format('Y-M-D hh:mm');
+                        return `<span title="${created_at_formatted}">${created_at_for_humans}<br/>${created_at_formatted}</span>`;
+                    }
+                },
+            ]
+        };
+        let subscriptionsDataTable = configDT(params);
+    }
 }
 
 function configDT(params) {
