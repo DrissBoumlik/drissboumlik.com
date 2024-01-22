@@ -7,3 +7,9 @@
 .col-xl-0
     @media (min-width: 1200px)
         margin-left: 0
+
+.form-floating > .form-control:focus ~ label::after,
+.form-floating > .form-control:not(:placeholder-shown) ~ label::after,
+.form-floating > .form-control-plaintext ~ label::after,
+.form-floating > .form-select ~ label::after
+    background-color: transparent
