@@ -40,9 +40,9 @@
                 <tr>
                     <td class="header"
                         style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; padding: 25px 0; text-align: center;">
-                        <a target="_blank" rel="noopener noreferrer" href="http://localhost:8000"
+                        <a target="_blank" rel="noopener noreferrer" href="{{ \URL::to('/') }}"
                            style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3d4852; font-size: 19px; font-weight: bold; text-decoration: none; display: inline-block;">
-                            TeaCode
+                            Driss Boumlik
                         </a>
                     </td>
                 </tr>
@@ -110,7 +110,7 @@
                                         If you did not request a subscription, no further action is required.</p>
                                     <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">
                                         Regards,<br>
-                                        TeaCode</p>
+                                        Driss Boumlik</p>
 
 
                                     <table class="subcopy" width="100%" cellpadding="0" cellspacing="0"
@@ -152,7 +152,7 @@
                                 <td class="content-cell" align="center"
                                     style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100vw; padding: 32px;">
                                     <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; line-height: 1.5em; margin-top: 0; color: #b0adc5; font-size: 12px; text-align: center;">
-                                        © 2022 TeaCode. All rights reserved.</p>
+                                        © 2021 - {{ now()->year }} Driss Boumlik | All rights reserved.</p>
 
                                 </td>
                             </tr>

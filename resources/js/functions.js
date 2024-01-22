@@ -94,29 +94,52 @@ function initBanner() {
     });
 }
 
-function initSubscribeForm() {
-    $(document).on('submit', '.form-subscribe', function (e) {
+function initSubscriptionUpdateForm () {
+    $(document).on('submit', '.subscribe-update-form', function(e) {
         e.preventDefault();
+        let _this = this;
+        let data = $(_this).serializeArray();
+        $('#subscribe-form-response').remove();
+        $(_this).after(`<div id="subscribe-form-response" class="tc-alert tc-alert-ok text-center"><i class="fa-solid fa-spinner spinClockWise"></i> Sending...</div>`);
         $.ajax({
-            method: 'POST',
-            url: '/subscribers',
-            data: {'subscriber_email' : $('#subscriber-email').val()},
+            method: 'PUT',
+            url: `/api/${_this.getAttribute('data-action')}`,
+            data: data,
             success: function (response) {
-                let subscribe_response = $('#form-subscribe-response');
-                // let options = {
-                //     icon: 'fa fa-fw fa-circle-check me-1', from: 'bottom', message: 'Thank you for subscribing<br/>A confirmation email has been sent!',
-                //     allow_dismiss: true, showProgressbar: true, delay: 10000,
-                // }
-                // One.helpers('jq-notify', options);
-                subscribe_response
-                    .html(response.message)
-                    .removeClass(subscribe_response.attr('data-class'))
-                    .addClass(response.class)
-                    .attr('data-class', response.class)
-                    .removeAttr('hidden');
+                console.log(response);
+                $('#subscribe-form-response').remove();
+                $(_this).after(`<div id="subscribe-form-response" class="tc-alert ${response.class} text-center"> ${response.icon} ${response.message}</div>`);
+                window.location.href = response.next_url;
             },
             error: function (jqXHR, textStatus, errorThrown){
                 console.log(jqXHR, textStatus, errorThrown);
+                let response = jqXHR.responseJSON;
+                $('#subscribe-form-response').remove();
+                $(_this).after(`<div id="subscribe-form-response" class="tc-alert ${response.class} text-center"> ${response.icon} ${response.message}</div>`);
+            }
+        });
+    });
+}
+function initSubscriptionForm() {
+    $(document).on('submit', '.subscribe-form', function (e) {
+        e.preventDefault();
+        let _this = this;
+        $('#subscribe-form-response').remove();
+        $(_this).after(`<div id="subscribe-form-response" class="tc-alert tc-alert-ok tc-white text-center"><i class="fa-solid fa-spinner spinClockWise"></i> Sending...</div>`);
+        $.ajax({
+            method: 'POST',
+            url: '/api/subscribers',
+            data: {'subscriber_email' : $('#subscriber-email').val()},
+            success: function (response) {
+                console.log(response);
+                $('#subscribe-form-response').remove();
+                $(_this).after(`<div id="subscribe-form-response" class="tc-alert ${response.class} text-center"> ${response.icon} ${response.message}</div>`);
+            },
+            error: function (jqXHR, textStatus, errorThrown){
+                console.log(jqXHR, textStatus, errorThrown);
+                let response = jqXHR.responseJSON;
+                $('#subscribe-form-response').remove();
+                $(_this).after(`<div id="subscribe-form-response" class="tc-alert ${response.class} text-center"> ${response.icon} ${response.message}</div>`);
             }
         });
     });
@@ -197,4 +220,4 @@ function initBlogSearch() {
 }
 
 
-export { drawText, initParticlesJS, initSlider, initDarkMode, initAjaxEvents, initTooltip, initAuth, initBlogSearch };
+export { drawText, initParticlesJS, initSlider, initDarkMode, initAjaxEvents, initTooltip, initAuth, initBlogSearch, initSubscriptionForm, initSubscriptionUpdateForm };
