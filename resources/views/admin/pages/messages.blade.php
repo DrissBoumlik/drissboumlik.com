@@ -21,5 +21,5 @@
 @endsection
 
 @section('list')
-    <table id="messages" class="visitors table table-bordered table-striped table-vcenter js-dataTable-responsive"></table>
+    <table id="messages" class="messages table table-bordered table-striped table-vcenter js-dataTable-responsive"></table>
 @endsection
