@@ -79,3 +79,12 @@ if (!function_exists('shortenTextIfLongByLength')) {
         return strlen($text) < $length ? $text : \Str::limit($text, $length);
     }
 }
+
+if (!function_exists('cache_data')) {
+    function cache_data($key, $callback, $expiration = 3600, $forget = false) {
+        if ($forget) {
+            Illuminate\Support\Facades\Cache::forget($key);
+        }
+        return Illuminate\Support\Facades\Cache::remember($key, $expiration, $callback);
+    }
+}
