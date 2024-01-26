@@ -1,0 +1,71 @@
+.layout-content {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+hr {
+    margin: 2rem 0;
+}
+
+.post {
+    margin-bottom: 2rem;
+}
+
+.post .post-cover {
+    max-width: 100%;
+    height: 250px;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.post .title {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-bottom: 1rem;
+}
+
+.post .title a {
+    text-decoration: unset;
+}
+
+.post .title a:hover {
+    text-decoration: underline;
+}
+
+.post .summary {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.post .summary .post-link a {
+    text-decoration: unset;
+}
+.post .summary .post-link:hover a {
+    text-decoration: underline;
+}
+
+.post .post-link {
+    margin: 0.5rem 0 0 0;
+}
+
+.post .description {
+    margin: 1rem 0 0 0;
+}
+
+.post .published-info {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: #666;
+}
+
+img {
+    max-width: 100%;
+}

@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Feed\Feedable;
+use Spatie\Feed\FeedItem;
 
-class Post extends Model
+class Post extends Model implements Feedable
 {
     use HasFactory, SoftDeletes;
 
@@ -39,4 +41,23 @@ class Post extends Model
         })->where('id', '!=', $this->id)->take($take)->get();
     }
 
+    public function getAllFeedItems()
+    {
+        return self::where('published', true)->orderBy('published_at')->get();
+    }
+
+    public function toFeedItem(): FeedItem
+    {
+        $summary = "<img src='/$this->cover' class='post-cover' alt='$this->title' />
+                    <p class='description'>$this->excerpt</p>
+                    <p class='post-link'><a href='/blog/$this->slug'>Read More...</a></p>";
+        return FeedItem::create([
+                'id' => $this->id,
+                'title' => $this->title,
+                'summary' => $summary,
+                'updated' => $this->published_at,
+                'link' => "/blog/$this->slug",
+                'authorName' => "Driss Boumlik",
+            ]);
+    }
 }

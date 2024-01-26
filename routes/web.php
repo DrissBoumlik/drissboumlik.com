@@ -154,6 +154,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
         Route::get('privacy-policy', [PageController::class, 'privacyPolicy']);
 
         Route::get('pixel', [ToolController::class, 'getPixel']);
+        Route::feeds();
         // External
         Route::get('/not-found', [GotoController::class, 'not_found']);
         Route::get('/{link}', [GotoController::class, 'goto']);
