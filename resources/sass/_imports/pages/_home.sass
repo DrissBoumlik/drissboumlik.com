@@ -38,7 +38,9 @@
 
 .get-in-touch
     .form-control
-        border-color: $tc-blue
+        background-color: $tc-grey-light
+        border-color: transparent transparent $tc-blue transparent
+        border-radius: 0
     textarea.form-control
         height: 200px
         min-height: 150px
@@ -76,9 +78,11 @@ body.dark-mode
     .skill-icon i
         color: $tc-white
 
-    .get-in-touch .form-floating
-        > label
+    .get-in-touch
+        .form-floating > label
             color: $tc-white
+        .form-control
+            background-color: $tc-blue-dark-5
 
     .services .service-box *
         color: $tc-white
