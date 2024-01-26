@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\PostResource;
-use App\Http\Resources\PostWithPaginationCollection;
 use App\Http\Resources\SearchWithPaginationCollection;
 use App\Http\Resources\TagWithPaginationCollection;
 use App\Models\Post;
@@ -29,7 +28,8 @@ class BlogController extends Controller
         if (!$term) {
             return redirect('/blog');
         }
-        $data = cache_data("search-data-$term", function() use ($term) {
+        $key = "search-data-$term" . (\Auth::check() ? '-with-unpublished' : '');
+        $data = cache_data($key, function() use ($term) {
             $data = pageSetup("Search: $term | Blog", "Search results for : $term", true, true);
             $data->term = $term;
             if ($term) {
@@ -74,7 +74,8 @@ class BlogController extends Controller
 
     public function getPosts(Request $request)
     {
-        $result = cache_data('posts-data', function() {
+        $key = "posts-data-" . (\Auth::check() ? '-with-unpublished' : '');
+        $result = cache_data($key, function() {
             $result = $this->postService->preparePosts(Post::with('author', 'tags'));
             $data = pageSetup('Blog | Driss Boumlik', 'Blog', true, true);
             $result['data'] = $data;
@@ -85,26 +86,27 @@ class BlogController extends Controller
 
     public function getPost(Request $request, $slug)
     {
-        $data = cache_data('post-data', function() use ($request, $slug) {
-            $post = Post::where('slug', $slug);
-            if (!\Auth::check()){
-                $post = $post->where('published', true);
+        $post = Post::where('slug', $slug);
+        if (!\Auth::check()){
+            $post = $post->where('published', true);
+        }
+        $post = $post->first();
+        if ($post === null) {
+            return redirect('/not-found');
+        }
+        $ip = $request->ip();
+        $visitor = Visitor::where('ip', $ip)
+            ->where('url', "/blog/$slug")
+            ->orderBy('updated_at', 'desc')->first();
+        if ($visitor) {
+            $timeSinceLastVisit = now()->diffInRealSeconds($visitor->updated_at);
+            $timeSinceLastVisitMinValue = 7200; $aboutToVisit = 1;
+            if ($timeSinceLastVisit > $timeSinceLastVisitMinValue || $timeSinceLastVisit < $aboutToVisit) {
+                $post->increment('views', 1);
             }
-            $post = $post->first();
-            if ($post === null) {
-                return redirect('/not-found');
-            }
-            $ip = $request->ip();
-            $visitor = Visitor::where('ip', $ip)
-                ->where('url', "/blog/$slug")
-                ->orderBy('updated_at', 'desc')->first();
-            if ($visitor) {
-                $timeSinceLastVisit = now()->diffInRealSeconds($visitor->updated_at);
-                $timeSinceLastVisitMinValue = 7200; $aboutToVisit = 1;
-                if ($timeSinceLastVisit > $timeSinceLastVisitMinValue || $timeSinceLastVisit < $aboutToVisit) {
-                    $post->increment('views', 1);
-                }
-            }
+        }
+        $key = "post-data-$slug" . (\Auth::check() ? '-with-unpublished' : '');
+        $data = cache_data($key, function() use ($post) {
             $data = pageSetup("$post->title | Blog", 'Latest Articles', true, true);
             $data->post = (object)(new PostResource($post))->resolve();
             return $data;
@@ -122,12 +124,12 @@ class BlogController extends Controller
 
     public function getPostsByTag(Request $request, $slug)
     {
-        $result = cache_data('posts-tag-data', function() use ($slug) {
-            $tag = Tag::where('slug', $slug)->first();
-            if ($tag == null) {
-                return redirect('/not-found');
-            }
-
+        $tag = Tag::where('slug', $slug)->first();
+        if ($tag == null) {
+            return redirect('/not-found');
+        }
+        $key = "posts-tag-data-$slug" . (\Auth::check() ? '-with-unpublished' : '');
+        $result = cache_data($key, function() use ($tag) {
             $result = $this->postService->preparePosts($tag->posts()->with('author', 'tags'));
             $data = pageSetup("Tags : $tag->name | Blog", "<a href='/tags'>All tags</a> <i class='fa-solid fa-angle-right mx-1'></i> $tag->name", true, true);
             $result['data'] = $data;
@@ -138,7 +140,8 @@ class BlogController extends Controller
 
     public function getTags(Request $request)
     {
-        $data = cache_data('tags-data', function() {
+        $key = 'tags-data' . (\Auth::check() ? '-with-unpublished' : '');
+        $data = cache_data($key, function() {
             $data = pageSetup('Tags | Blog', 'Tags', true, true);
 
             $data->tags_data = (new TagWithPaginationCollection(Tag::whereHas('posts', function($query) {
