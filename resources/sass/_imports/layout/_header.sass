@@ -1,12 +1,10 @@
-.menu
-    position: relative
-    @media (min-width: 576px)
-        position: sticky
+.header-menu.menu
+    position: sticky
     top: 0
     z-index: 9999
     backdrop-filter: blur(4px)
 
-.header-menu-wrapper .header-menu
+.header-menu-wrapper .header-menu-container
     .header-menu-item, .header-menu-item:active
         margin: 0.5rem 0.3rem !important
         @media (min-width: 576px)
@@ -18,7 +16,12 @@
             color: $tc-blue-dark-2
 
 body.dark-mode
-    .header-menu-wrapper .header-menu
+    .header-menu-wrapper .header-menu-container
         .header-menu-item, .header-menu-item:active
             a, i
+                color: $tc-white
+        .header-menu-item
+            &:after
+                background-color: $tc-white
+            a, a *
                 color: $tc-white

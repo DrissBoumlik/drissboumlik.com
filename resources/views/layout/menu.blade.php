@@ -1,9 +1,9 @@
-<div class="menu nav-scroller py-2">
+<div class="header-menu menu nav-scroller py-2">
     <div class="container">
         <div class="menu-blocks d-flex align-items-center">
             <nav class="nav d-flex justify-content-center flex-grow-1">
                 <div class="header-menu-wrapper menu-wrapper">
-                    <ul class="header-menu list-group list-group-horizontal">
+                    <ul class="header-menu-container list-group list-group-horizontal">
                         @foreach ($headerMenu as $link)
                             <li class="header-menu-item menu-item list-group-item animated-underline {{ request()->is($link->slug) ? 'active' : '' }}">
                                 <a href="{{ \URL::to($link->slug) }}" rel="noopener" target="{{ $link->target ?? '_self' }}"
@@ -22,7 +22,7 @@
             </nav>
             @auth
             <div class="header-menu-wrapper login-menu-items flex-grow-2">
-                <ul class="header-menu list-group list-group-horizontal">
+                <ul class="header-menu-container list-group list-group-horizontal">
                     <li class="header-menu-item menu-item list-group-item animated-underline">
                         <a href="/admin" rel="noopener" aria-label="Admin Panel">
                             <i class="fa-solid fa-gear"></i>
