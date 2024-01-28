@@ -1233,7 +1233,7 @@ token  treeview-part   entry-name  ext-pps:before,   token  treeview-part   entr
 "
 >
 
-    <select class="js-select2 form-select js-select2-enabled select2-hidden-accessible" id="tags-list" name="tags[]" style="width: 100%;" data-placeholder="Choose many.." multiple="" data-select2-id="tags-list" tabindex="-1" aria-hidden="true">
+    <select class="js-select2 tc-red-light tc-alert-ok tc-orange-red form-select js-select2-enabled select2-hidden-accessible" id="tags-list" name="tags[]" style="width: 100%;" data-placeholder="Choose many.." multiple="" data-select2-id="tags-list" tabindex="-1" aria-hidden="true">
         <option></option>
         <!-- Required for data-placeholder attribute to work with Select2 plugin -->
         <option value="1" selected="" data-select2-id="2">.net</option>
