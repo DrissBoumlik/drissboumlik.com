@@ -2,9 +2,6 @@
 
 namespace App\Services;
 
-use App\Http\Resources\PostCollection;
-use App\Http\Resources\PostWithPaginationCollection;
-use App\Models\Post;
 
 class MediaService
 {
