@@ -8,6 +8,7 @@ use App\Http\Resources\TagWithPaginationCollection;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Models\Visitor;
+use App\Services\CacheService;
 use App\Services\PostService;
 use Illuminate\Http\Request;
 
@@ -16,10 +17,12 @@ class BlogController extends Controller
     private const TAGS_PER_PAGE = 20;
     private const SEARCH_PER_PAGE = 10; // 5x2
     private PostService $postService;
+    private CacheService $cacheService;
 
-    public function __construct(PostService $postService)
+    public function __construct(PostService $postService, CacheService $cacheService)
     {
         $this->postService = $postService;
+        $this->cacheService = $cacheService;
     }
 
     public function search(Request $request)
@@ -29,7 +32,7 @@ class BlogController extends Controller
             return redirect('/blog');
         }
         $key = "search-data-$term" . (\Auth::check() ? '-with-unpublished' : '');
-        $data = cache_data($key, function() use ($term) {
+        $data = $this->cacheService->cache_data($key, function() use ($term) {
             $data = pageSetup("Search: $term | Blog", "Search results for : $term", true, true);
             $data->term = $term;
             if ($term) {
@@ -68,19 +71,19 @@ class BlogController extends Controller
             $data->results = ((object) (new SearchWithPaginationCollection($data->results))->resolve())->items;
             unset($data->results_posts);
             return $data;
-        }, 3600, $request->has('forget'));
+        }, null, $request->has('forget'));
         return view('pages.blog.search', ['data' => $data]);
     }
 
     public function getPosts(Request $request)
     {
         $key = "posts-data-" . (\Auth::check() ? '-with-unpublished' : '');
-        $result = cache_data($key, function() {
+        $result = $this->cacheService->cache_data($key, function() {
             $result = $this->postService->preparePosts(Post::with('author', 'tags'));
             $data = pageSetup('Blog | Driss Boumlik', 'Blog', true, true);
             $result['data'] = $data;
             return $result;
-        }, 3600, $request->has('forget'));
+        }, null, $request->has('forget'));
         return view('pages.blog.posts.index', $result);
     }
 
@@ -106,11 +109,11 @@ class BlogController extends Controller
             }
         }
         $key = "post-data-$slug" . (\Auth::check() ? '-with-unpublished' : '');
-        $data = cache_data($key, function() use ($post) {
+        $data = $this->cacheService->cache_data($key, function() use ($post) {
             $data = pageSetup("$post->title | Blog", 'Latest Articles', true, true);
             $data->post = (object)(new PostResource($post))->resolve();
             return $data;
-        }, 3600, $request->has('forget'));
+        }, null, $request->has('forget'));
 
         return view('pages.blog.posts.show', ['data' => $data, 'post' => $data->post]);
     }
@@ -129,19 +132,19 @@ class BlogController extends Controller
             return redirect('/not-found');
         }
         $key = "posts-tag-data-$slug" . (\Auth::check() ? '-with-unpublished' : '');
-        $result = cache_data($key, function() use ($tag) {
+        $result = $this->cacheService->cache_data($key, function() use ($tag) {
             $result = $this->postService->preparePosts($tag->posts()->with('author', 'tags'));
             $data = pageSetup("Tags : $tag->name | Blog", "<a href='/tags'>All tags</a> <i class='fa-solid fa-angle-right mx-1'></i> $tag->name", true, true);
             $result['data'] = $data;
             return $result;
-        }, 3600, $request->has('forget'));
+        }, null, $request->has('forget'));
         return view('pages.blog.posts.index', $result);
     }
 
     public function getTags(Request $request)
     {
         $key = 'tags-data' . (\Auth::check() ? '-with-unpublished' : '');
-        $data = cache_data($key, function() {
+        $data = $this->cacheService->cache_data($key, function() {
             $data = pageSetup('Tags | Blog', 'Tags', true, true);
 
             $data->tags_data = (new TagWithPaginationCollection(Tag::whereHas('posts', function($query) {
@@ -151,7 +154,7 @@ class BlogController extends Controller
             })->withCount('posts')->orderBy('updated_at', 'desc')->paginate(self::TAGS_PER_PAGE)));
             $data->tags = $data->tags_data->resolve();
             return $data;
-        }, 3600, $request->has('forget'));
+        }, null, $request->has('forget'));
 
         return view('pages.blog.tags.index', ['data' => $data, 'tags' => $data->tags, 'tags_data' => $data->tags_data]);
     }

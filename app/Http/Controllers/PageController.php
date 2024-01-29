@@ -2,10 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\CacheService;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    private CacheService $cacheService;
+
+    public function __construct(CacheService $cacheService)
+    {
+        $this->cacheService = $cacheService;
+    }
+
+
     public function home(Request $request, $var = null)
     {
         $baseUrl = $request->getBaseUrl();
@@ -15,7 +24,7 @@ class PageController extends Controller
         if ($var) {
             return redirect('/not-found');
         }
-        $data = cache_data('home-data', function() {
+        $data = $this->cacheService->cache_data('home-data', function() {
             $data = pageSetup('Home | Driss Boumlik', null, true, true, true);
             $data->socialLinksCommunity = getSocialLinksCommunity();
             $data->sections = [];
@@ -24,7 +33,7 @@ class PageController extends Controller
             $data->sections['services'] = getServices();
             $data->sections['testimonials'] = getTestimonials();
             return $data;
-        }, 3600, $request->has('forget'));
+        }, null, $request->has('forget'));
 //        $data->posts = $this->postService->getLatestFeaturedPosts();
 
         return view('pages.home', ['data' => $data]);
@@ -35,9 +44,10 @@ class PageController extends Controller
         $data = pageSetup('About me | Driss Boumlik', 'about me', true, true, true);
         return view('pages.about', ['data' => $data]);
     }
+
     public function resume(Request $request)
     {
-        $data = cache_data('resume-data', function() {
+        $data = $this->cacheService->cache_data('resume-data', function() {
             $data = pageSetup('Resume | Driss Boumlik', 'resume', true, true);
 
             $data->sections = [];
@@ -54,29 +64,29 @@ class PageController extends Controller
                 return $item;
             }, $data->sections['experiences']->data);
             return $data;
-        }, 3600, $request->has('forget'));
+        }, null, $request->has('forget'));
 
         return view('pages.resume', ['data' => $data]);
     }
 
     public function testimonials(Request $request)
     {
-        $data = cache_data('testimonials-data', function() {
+        $data = $this->cacheService->cache_data('testimonials-data', function() {
             $data = pageSetup('Testimonials | Driss Boumlik', 'testimonials', true, true);
             $data->testimonials = getTestimonials();
             return $data;
-        }, 3600, $request->has('forget'));
+        }, null, $request->has('forget'));
 
         return view('pages.testimonials', ['data' => $data]);
     }
 
     public function work(Request $request)
     {
-        $data = cache_data('work-data', function() {
+        $data = $this->cacheService->cache_data('work-data', function() {
             $data = pageSetup('Work | Driss Boumlik', 'work', true, true);
             $data->work = getWork();
             return $data;
-        }, 3600, $request->has('forget'));
+        }, null, $request->has('forget'));
         return view('pages.work', ['data' => $data]);
     }
 
@@ -94,11 +104,11 @@ class PageController extends Controller
 
     public function services(Request $request)
     {
-        $data = cache_data('services-data', function() {
+        $data = $this->cacheService->cache_data('services-data', function() {
             $data = pageSetup('Services | Driss Boumlik', 'services', true, true);
             $data->services = getServices();
             return $data;
-        }, 3600, $request->has('forget'));
+        }, null, $request->has('forget'));
         return view("pages.services", ['data' => $data]);
     }
 
