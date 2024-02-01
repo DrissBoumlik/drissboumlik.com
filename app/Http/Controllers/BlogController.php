@@ -31,7 +31,8 @@ class BlogController extends Controller
         if (!$term) {
             return redirect('/blog');
         }
-        $key = "search-data-$term" . (\Auth::check() ? '-with-unpublished' : '');
+        $page = $request->get('page');
+        $key = "search-data-$term-$page" . (\Auth::check() ? '-with-unpublished' : '');
         $data = $this->cacheService->cache_data($key, function() use ($term) {
             $data = pageSetup("Search: $term | Blog", "Search results for : $term", true, true);
             $data->term = $term;
@@ -77,7 +78,8 @@ class BlogController extends Controller
 
     public function getPosts(Request $request)
     {
-        $key = "posts-data-" . (\Auth::check() ? '-with-unpublished' : '');
+        $page = $request->get('page');
+        $key = "posts-data-$page" . (\Auth::check() ? '-with-unpublished' : '');
         $result = $this->cacheService->cache_data($key, function() {
             $result = $this->postService->preparePosts(Post::with('author', 'tags'));
             $data = pageSetup('Blog | Driss Boumlik', 'Blog', true, true);
@@ -131,7 +133,8 @@ class BlogController extends Controller
         if ($tag == null) {
             return redirect('/not-found');
         }
-        $key = "posts-tag-data-$slug" . (\Auth::check() ? '-with-unpublished' : '');
+        $page = $request->get('page');
+        $key = "posts-tag-data-$slug-$page" . (\Auth::check() ? '-with-unpublished' : '');
         $result = $this->cacheService->cache_data($key, function() use ($tag) {
             $result = $this->postService->preparePosts($tag->posts()->with('author', 'tags'));
             $data = pageSetup("Tags : $tag->name | Blog", "<a href='/tags'>All tags</a> <i class='fa-solid fa-angle-right mx-1'></i> $tag->name", true, true);
