@@ -11,7 +11,9 @@
             </a>
         </div>
         <div class="post-metadata">
+        @if($post->published_at_short_format)
             {{ $post->published_at_short_format }}
+        @else <span class="tc-orange-red">Not Published</span> @endif
         </div>
         @if ($post->tags)
             <div class="post-tags">
