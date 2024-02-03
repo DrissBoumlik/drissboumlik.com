@@ -13,9 +13,14 @@
         &:hover
             box-shadow: 0 0.2rem 1rem #d8dee6
             transform: translateY(-2px)
-        .post-title *
-            color: $tc-blue-dark-1
-            font-size: 1.25rem
+        .post-title
+            .post-title-content
+                text-overflow: ellipsis
+                white-space: nowrap
+                overflow: hidden
+            *
+                color: $tc-blue-dark-1
+                font-size: 1.25rem
         .post-metadata
             font-family: Harmattan, serif
             font-size: 1.3rem

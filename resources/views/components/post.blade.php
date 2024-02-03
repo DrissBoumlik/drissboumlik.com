@@ -7,7 +7,7 @@
     <div class="post-data">
         <div class="post-title mb-1">
             <a href="/blog/{{ $post->slug }}" class="text-dark text-decoration-none">
-                <h3 class="font-weight-bolder">{{ $post->title }}</h3>
+                <h3 class="font-weight-bolder post-title-content" title={{ $post->title}}>{{ $post->title }}</h3>
             </a>
         </div>
         <div class="post-metadata">
