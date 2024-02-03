@@ -139,6 +139,7 @@ class BlogController extends Controller
             $result = $this->postService->preparePosts($tag->posts()->with('author', 'tags'));
             $data = pageSetup("Tags : $tag->name | Blog", "<a href='/tags'>All tags</a> <i class='fa-solid fa-angle-right mx-1'></i> $tag->name", true, true);
             $result['data'] = $data;
+            $result['tag'] = $tag;
             return $result;
         }, null, $request->has('forget'));
         return view('pages.blog.posts.index', $result);
