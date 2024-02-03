@@ -79,6 +79,9 @@ class PostController extends Controller
     {
         $data = new \stdClass();
         $post = Post::withTrashed()->with(['tags', 'author'])->whereSlug($slug)->first();
+        if ($post === null) {
+            return redirect("/admin/posts")->with(['response' => ['message' => 'Post not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
+        }
         $post = (object) (new PostResource($post))->resolve();
 
         $data->tags = Tag::select("name", "id")->get();
@@ -101,6 +104,9 @@ class PostController extends Controller
     {
         try {
             $post = Post::withTrashed()->where('slug', $slug)->first();
+            if ($post === null) {
+                return redirect("/admin/posts")->with(['response' => ['message' => 'Post not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
+            }
 
             if ($request->has('destroy')) {
                 return $this->destroy($post);
@@ -149,13 +155,12 @@ class PostController extends Controller
     private function destroy($post)
     {
         try {
-            if ($post) {
-                \DB::table('post_tag')->where('post_id', $post->id)->delete();
-                $deleted = $post->forceDelete();
-                return redirect("/admin/posts")->with(['response' => ['message' => 'Post deleted successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
-            } else {
+            if ($post === null) {
                 return redirect("/admin/posts")->with(['response' => ['message' => 'Post not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
             }
+            \DB::table('post_tag')->where('post_id', $post->id)->delete();
+            $deleted = $post->forceDelete();
+            return redirect("/admin/posts")->with(['response' => ['message' => 'Post deleted successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
         } catch (\Throwable $e) {
             return redirect("/admin/posts")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
        }

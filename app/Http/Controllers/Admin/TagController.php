@@ -36,6 +36,9 @@ class TagController extends Controller
     {
         $data = new \stdClass();
         $tag = Tag::withTrashed()->withCount('posts')->whereSlug($slug)->first();
+        if ($tag === null) {
+            return redirect("/admin/tags")->with(['response' => ['message' => 'Tag not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
+        }
         $data->title = "Edit | $tag->name | Admin Panel";
         $tag = (object) (new TagResource($tag))->resolve();
         return view('admin.blog.tags.edit', ['data' => $data, 'tag' => $tag]);
@@ -63,6 +66,9 @@ class TagController extends Controller
     {
         try {
             $tag = Tag::withTrashed()->where('slug', $slug)->first();
+            if ($tag === null) {
+                return redirect("/admin/tags")->with(['response' => ['message' => 'Tag not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
+            }
 
             if ($request->has('destroy')) {
                 return $this->destroy($tag);
@@ -91,13 +97,12 @@ class TagController extends Controller
     private function destroy($tag)
     {
         try {
-            if ($tag) {
-                \DB::table('post_tag')->where('tag_id', $tag->id)->delete();
-                $deleted = $tag->forceDelete();
-                return redirect("/admin/tags")->with(['response' => ['message' => 'Tag deleted successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
-            } else {
+            if ($tag === null) {
                 return redirect("/admin/tags")->with(['response' => ['message' => 'Tag not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
             }
+            \DB::table('post_tag')->where('tag_id', $tag->id)->delete();
+            $deleted = $tag->forceDelete();
+            return redirect("/admin/tags")->with(['response' => ['message' => 'Tag deleted successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
         } catch (\Throwable $e) {
             return redirect("/admin/tags")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
         }
