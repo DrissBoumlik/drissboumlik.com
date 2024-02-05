@@ -46,7 +46,7 @@
         <div class="block block-rounded">
             <div class="block-header block-header-default">
                 <div class="block-content p-0 d-flex justify-content-between">
-                    <a onclick="history.pushState(null, null, window.location.href);" class="btn btn-outline-info">
+                    <a onclick="location.reload(true);;" class="btn btn-outline-info">
                         <i class="fa fa-fw fa-redo me-1"></i>Reload</a>
                 </div>
             </div>
