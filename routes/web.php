@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\VisitorController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\SubscriberController as AdminSubscriberController;
+use App\Http\Controllers\Admin\SitemapController as AdminSitemapController;
 use App\Http\Controllers\Admin\FileManagerController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
@@ -110,7 +111,8 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::get('/visitors', [VisitorController::class, 'index']);
             Route::get('/visitors/charts', [VisitorController::class, 'charts']);
 
-            Route::get('/generate-sitemap', [SitemapController::class, 'generateSitemap']);
+            Route::get('/sitemap', [AdminSitemapController::class, 'index']);
+            Route::get('/generate-sitemap', [AdminSitemapController::class, 'generateSitemap']);
             Route::get('/export-db/config', [ToolController::class , 'exportDbConfig']);
             Route::get('/export-db', [ToolController::class , 'export_db']);
 
