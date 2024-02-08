@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 
 class ToolController extends Controller
@@ -54,28 +55,4 @@ class ToolController extends Controller
         return view('admin.pages.export-db-config', ['data' => $data]);
     }
 
-    public function getTableColumns(Request $request, $table)
-    {
-        return \DB::getSchemaBuilder()->getColumnListing($table);
-    }
-
-    public function getTableColumnStats(Request $request)
-    {
-        $table = $request->get('table');
-        $column = $request->get('column');
-        $year = $request->get('year');
-        $perPage = $request->get('perPage') ?? 20;
-        if ($year) {
-            return \DB::table($table)
-                ->select($column, \DB::raw("month(updated_at) as month"), \DB::raw("count($column) as visits"))
-                ->whereYear('updated_at', $year)
-                ->orderby('visits', 'desc')
-                ->groupBy($column, 'month')->paginate($perPage);
-        }
-
-        return \DB::table($table)
-            ->select($column, \DB::raw("count($column) as visits"))
-            ->orderby('visits', 'desc')
-            ->groupBy($column)->paginate($perPage);
-    }
 }

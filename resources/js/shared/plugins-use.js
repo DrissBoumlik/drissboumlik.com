@@ -58,8 +58,8 @@ function initChartByYearEvents(defaultValue = 'countryName') {
 function initChartByYear(params) {
     $.ajax({
         type: 'POST',
-        url: `/api/stats?page=${params.page}`,
-        data: {table: 'visitors', column: params.columnSelected, year: params.yearSelected, perPage: params.perPage},
+        url: `${import.meta.env.VITE_APP_WS_URL}/api/visitors/stats`,
+        data: {column: params.columnSelected, year: params.yearSelected, perPage: params.perPage, page: params.page, client_name: import.meta.env.VITE_APP_NAME},
         success: function(response) {
             if (params.page === 1) {
                 let html = '';
@@ -69,7 +69,7 @@ function initChartByYear(params) {
                 params.pagesList.html(html);
             }
             let _datasets = [];
-            if (response.data.length === 0) {
+            if (response?.data?.length === 0) {
                 _datasets.push({
                     label: 'NO DATA FOUND',
                     data: null,
@@ -116,7 +116,7 @@ function initChartByField(defaultValue = 'countryName') {
     }
     $.ajax({
         type: 'GET',
-        url: '/api/visitors/columns',
+        url: `${import.meta.env.VITE_APP_WS_URL}/api/visitors/columns`,
         success: function(response) {
             let html = '';
             response.forEach(function(k,i) {
@@ -155,8 +155,8 @@ function initChartByField(defaultValue = 'countryName') {
 function getColumnStats(params) {
     $.ajax({
         type: 'POST',
-        url: `/api/stats?page=${params.page}`,
-        data: {table: 'visitors', column: params.columnSelected, perPage: params.perPage},
+        url: `${import.meta.env.VITE_APP_WS_URL}/api/visitors/stats`,
+        data: {column: params.columnSelected, perPage: params.perPage, page: params.page, client_name: import.meta.env.VITE_APP_NAME},
         success: function(response) {
 
             if (params.page === 1) {
@@ -394,9 +394,10 @@ function initDatatable() {
     if ($('#visitors').length) {
         let params = {
             first_time: true,
+            client_name: import.meta.env.VITE_APP_NAME,
             id: '#visitors',
             method: 'POST',
-            url: '/api/visitors',
+            url: `${import.meta.env.VITE_APP_WS_URL}/api/visitors/datatable`,
             columns: [
                 { data: 'id', name: 'id', title: 'Actions', className: 'text-center',
                     render: function (data, type, row, params) {
@@ -534,10 +535,12 @@ function initDatatable() {
                     return;
                 }
                 let _this = $(this);
-                let data = _this.serializeArray();
+                let data = {};
+                _this.serializeArray().forEach((item, key) => data[item.name] = item.value);
+                data = {...data, visitor_id: _this.data('visitor-id'), client_name: import.meta.env.VITE_APP_NAME};
                 $.ajax({
                     type: 'PUT',
-                    url: `/api/visitors/${_this.data('visitor-id')}`,
+                    url: `${import.meta.env.VITE_APP_WS_URL}/api/visitors`,
                     data: data,
                     success: function(response) {
                         console.log(response);
@@ -711,6 +714,7 @@ function configDT(params) {
             data: function(data) {
                 data._token = $('meta[name="csrf-token"]').attr('content');
                 data.first_time = params.first_time;
+                data.client_name = params.client_name;
             }
         },
         columns: params.columns,

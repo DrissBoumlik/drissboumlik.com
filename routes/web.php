@@ -22,7 +22,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\Api\PostController as ApiPostController;
 use App\Http\Controllers\Admin\Api\TagController as ApiTagController;
-use App\Http\Controllers\Admin\Api\VisitorController as ApiVisitorController;
 use App\Http\Controllers\Admin\Api\MessageController as ApiMessageController;
 use App\Http\Controllers\Admin\Api\SubscriberController as AdminApiSubscriberController;
 use App\Http\Controllers\Api\ContactController;
@@ -46,13 +45,10 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
         Route::middleware('auth')->group(function () {
             Route::post('/posts', [ApiPostController::class, 'index']);
             Route::post('/tags', [ApiTagController::class, 'index']);
-            Route::post('/visitors', [ApiVisitorController::class, 'index']);
-            Route::put('/visitors/{visitor}', [ApiVisitorController::class, 'update']);
             Route::post('/messages', [ApiMessageController::class, 'index']);
             Route::post('/subscriptions', [AdminApiSubscriberController::class, 'index']);
             Route::get('/posts/{slug}/assets', [ApiPostController::class, 'getPostAssets']);
             Route::get('/{table}/columns', [ToolController::class, 'getTableColumns']);
-            Route::post('/stats', [ToolController::class, 'getTableColumnStats']);
             Route::post('/media', [FileManagerController::class, 'uploadMedia']);
             Route::post('/media/copy', [FileManagerController::class, 'copyMedia']);
             Route::post('/media/rename', [FileManagerController::class, 'renameMedia']);
