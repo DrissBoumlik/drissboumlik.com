@@ -32,7 +32,7 @@
                 <form action="/admin/profile" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row push">
-                        <div class="col-lg-6 offset-lg-3">
+                        <div class="col-12 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
                             <div class="mb-4">
                                 <label class="form-label" for="one-profile-edit-name">Name</label>
                                 <input type="text" class="form-control" id="one-profile-edit-name" name="name" placeholder="Enter your name.." value="{{ $user->name }}">
@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                             <div class="mb-4">
-                                <button type="submit" class="btn btn-alt-primary">Update</button>
+                                <button type="submit" class="btn btn-alt-primary w-100">Update</button>
                             </div>
                         </div>
                     </div>
