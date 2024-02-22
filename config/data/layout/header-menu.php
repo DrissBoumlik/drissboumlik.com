@@ -9,6 +9,12 @@ return [
     (object) [
         "title" => "work",
         "slug" => "work",
+        "target" => "_self",
+        "hidden" => true
+    ],
+    (object) [
+        "title" => "testimonials",
+        "slug" => "/testimonials",
         "target" => "_self"
     ],
     (object) [
