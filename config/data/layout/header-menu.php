@@ -14,7 +14,7 @@ return [
     ],
     (object) [
         "title" => "testimonials",
-        "slug" => "/testimonials",
+        "slug" => "testimonials",
         "target" => "_self"
     ],
     (object) [
