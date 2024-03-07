@@ -7,12 +7,10 @@
 @section('headline')
     <div class="d-flex flex-column align-items-center justify-content-center">
         <h1 class="header-txt">{!! $data->headline !!}
-            @auth
-                @isset($tag)
-                    <span class="fs-5"><a href="/admin/tags/edit/{{ $tag->slug }}" target="_blank">
-                        <i class="fa fa-fw fa-pencil tc-grey-dark"></i></a></span>
-                @endisset
-            @endauth
+            @if(\Auth::check() && isset($tag))
+                <span class="fs-5"><a href="/admin/tags/edit/{{ $tag->slug }}" target="_blank">
+                    <i class="fa fa-fw fa-pencil tc-grey-dark"></i></a></span>
+            @endif
         </h1>
     </div>
 @endsection
