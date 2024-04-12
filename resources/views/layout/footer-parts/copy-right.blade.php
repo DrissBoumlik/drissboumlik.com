@@ -1,4 +1,4 @@
-<div class="copy-right-wrapper container w-100 py-4">
+<div class="copy-right-wrapper container m-auto w-full py-6">
     <div class="row">
         <div class="col-lg-6 offset-lg-3 col-12 copyright-txt mb-2">
             <div class="copy-right">

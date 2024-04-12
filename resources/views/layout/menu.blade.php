@@ -1,13 +1,13 @@
 <div class="header-menu menu nav-scroller py-2">
     <div class="container">
-        <div class="menu-blocks d-flex align-items-center">
-            <nav class="nav d-flex justify-content-center flex-grow-1">
+        <div class="menu-blocks flex items-center">
+            <nav class="nav flex flex-wrap justify-center grow">
                 <div class="header-menu-wrapper menu-wrapper">
-                    <ul class="header-menu-container list-group list-group-horizontal">
+                    <ul class="header-menu-container list-group flex flex-row">
                         @foreach ($headerMenu as $link)
                             <li class="header-menu-item menu-item list-group-item animated-underline {{ request()->is($link->slug) ? 'active' : '' }}">
                                 <a href="{{ \URL::to($link->slug) }}" rel="noopener" target="{{ $link->target ?? '_self' }}"
-                                   aria-label="{{ $link->title }}" class="text-capitalize">
+                                   aria-label="{{ $link->title }}" class="capitalize">
                                     {!! $link->title !!}
                                 </a>
                             </li>

@@ -1,5 +1,5 @@
 <div class="social-icons-wrapper">
-    <ul class="list-group list-group-horizontal align-items-start">
+    <ul class="list-group list-group-horizontal items-start">
         @foreach ($socialLinks as $socialLink)
             <li class="list-group-item border-0 py-0 px-2">
                 <a href="{{ $socialLink->link }}" target="{{ $socialLink->target ?? '_blank' }}" rel="noopener"
