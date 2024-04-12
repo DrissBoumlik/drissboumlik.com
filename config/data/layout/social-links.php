@@ -19,12 +19,6 @@ return [
         "title" => "Follow me on github"
     ],
     (object) [
-        "icon" => "<i class='fa-brands fa-facebook-f'></i>",
-        "link" => "/facebook",
-        "title" => "facebook",
-        "hidden" => true
-    ],
-    (object) [
         "icon" => "<i class='fa-brands fa-discord'></i>",
         "link" => "/discord",
         "title" => "Find me on discord"
@@ -36,16 +30,9 @@ return [
         "hidden" => true
     ],
     (object) [
-        "icon" => "<i class='fa-brands fa-instagram'></i>",
-        "link" => "/instagram",
-        "title" => "instagram",
-        "hidden" => true
-    ],
-    (object) [
-        "icon" => "<i class='fa-brands fa-twitter'></i>",
+        "icon" => "<i class='fa-brands fa-x-twitter'></i>",
         "link" => "/twitter",
-        "title" => "twitter",
-        "hidden" => true
+        "title" => "twitter"
     ],
     (object) [
         "icon" => "<i class='fa-solid fa-calendar-days'></i>",
