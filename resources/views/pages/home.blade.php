@@ -17,9 +17,9 @@
             {{-- <div class="section py-5">
                 @include('pages.shared.work', ['work' => $data->sections['work']])
             </div> --}}
-            <div class="section py-5">
-                @include('pages.shared.techs', ['techs' => $data->sections['techs']])
-            </div>
+{{--            <div class="section py-5">--}}
+{{--                @include('pages.shared.techs', ['techs' => $data->sections['techs']])--}}
+{{--            </div>--}}
             {{--            <div class="section">--}}
             {{--                @include('pages.home.sections.posts')--}}
             {{--            </div>--}}
