@@ -19,18 +19,19 @@
         /*}*/
         .page-content-headline {
             margin-top: 1rem;
-            margin-bottom: 5rem;
+            margin-bottom: 4rem;
             line-height: 1.4;
         }
         .profile-name {
-            background: -webkit-linear-gradient(45deg, #00437D, #1DA1F2 80%);
+            background-image: linear-gradient(to bottom, #00437D 20%, #1DA1F2 80%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: bold;
-            font-size: 2.5rem;
+            font-size: 3rem;
         }
         .profile-link {
             padding: 0 1rem;
+            font-size: 1.3rem;
         }
         .profile-link:first-child {
             padding-left: 0;
@@ -76,11 +77,11 @@
             <div class="row">
                 <div class="col-md-8 offset-md-2">
                     <h2 class="text-center font-weight-bolder page-content-headline"
-                    >Senior PHP (Laravel) Developer<br/>@ Interaction Design Foundation</h2>
+                    >Hi Yulia & Hiring Team</h2>
                     <h3>Who am I ?</h3>
                     <p>I'm <a href="/about" target="_blank">Driss Boumlik</a>, 34 years old, a developer from Sale, Morocco (near Rabat).
                         I like to build & share things that add value or make positive impact.
-                        checkout our <a href="/community" target="_blank">community</a>
+                        checkout our <a href="/community" target="_blank">community</a>.
                     <p>
                         I currently work a full time job, and not that actively searching for a job.
                         However, when I saw
@@ -95,7 +96,8 @@
                         I learned HTML & CSS later on my own by building a template and integrating it in WordPress.<br/>
                         After my graduation I had an experience as a trainer, I taught kids the basics of programming using
                         Lego EV3 mindstorms & Scratch, by the way I was invited to talk about this a year ago, you can
-                        watch the recording here : <a href="https://www.youtube.com/watch?v=EpV5GA-kPos" target="_blank">link</a>.<br/>
+                        watch the recording
+                        <a href="https://youtu.be/EpV5GA-kPos?t=1303" target="_blank">video</a>.<br/>
                         I started working as a contractor afterward with few companies using php/laravel & WordPress, where I learned so much.
                         and I decided to get a full time job and I did around the end of 2019, and after 4,5 months,
                         corona kicked in and the world switched to work remotely, and since then, we never went back to working
@@ -105,7 +107,8 @@
                          - social media (why deleted)
                          - work culture / video vtt (reflect / resonate with me)
                          - IxDF community (rabat) / proximity
-                         -
+                         - About page (mission and how to contribute / what the future hold for us)
+                         - calendar & planning
                          -->
                     </p>
 
