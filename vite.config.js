@@ -32,7 +32,7 @@ export default defineConfig({
                 'resources/js/admin/pages/datatable.js',
                 'resources/js/app.js',
                 'resources/js/pages/code-animation.js',
-                'resources/sass/pages/idf.sass',
+                'resources/sass/idf.sass',
                 'resources/js/pages/idf.js',
                 'resources/js/pages/carousel.js',
                 'resources/js/pages/auth.js',
