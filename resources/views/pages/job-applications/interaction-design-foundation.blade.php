@@ -66,7 +66,7 @@
                         and I decided to get a full time job and I did around the end of 2019, and after 4,5 months,
                         corona kicked in and the world switched to work remotely, and since then, we never went back to working
                         onsite except for an optional day per week.
-                        <br/><span style="color: red">Not finished</span>
+                        <div style="color: red; font-size: 2rem;">Not finished</div>
                     </p>
 
                     <h3 id="why-me">Why me ?</h3>
@@ -134,7 +134,7 @@
 
                     <h4>Planning</h4>
                     <p>
-                        I would like to share with you how I spend my time,
+                        I would like to share with you how I spend my time, ?????
                         <a href="{{ asset('/assets/idf/calendar.png') }}" target="_blank">
                             <img src="{{ asset('/assets/idf/calendar.png') }}" class="img-fluid" alt="">
                         </a>
