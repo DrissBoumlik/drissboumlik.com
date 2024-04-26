@@ -49,7 +49,7 @@
                         I currently work a full time job, and not that actively searching for a job.
                         However, when I saw
                         <a href="https://www.interaction-design.org/about/careers/senior-php-laravel-developer" target="_blank">this job posting</a>
-                        and specially the video on the <a href="https://www.interaction-design.org/about/careers/how-to-apply">how to apply page</a>
+                        and specially the video on the <a href="https://www.interaction-design.org/about/careers/how-to-apply" target="_blank">how to apply page</a>
                         I had to apply since this sounds like a dream job and a once in a lifetime opportunity.
                         That being said, let's get to my story and why I think we are a great fit for each other.
                     </p>
