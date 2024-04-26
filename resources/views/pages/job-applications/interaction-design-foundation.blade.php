@@ -1,45 +1,7 @@
 @extends('layout.app')
 
 @section('post-header-assets')
-    <style>
-        p {
-            font-size: 1.1rem !important;
-            margin-bottom: 0.5rem;
-        }
-        h3 {
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        h4 {
-            margin-top: 2rem;
-            margin-bottom: 0.7rem;
-        }
-        /*.headline-wrapper h2 {*/
-        /*    line-height: 1.4;*/
-        /*}*/
-        .page-content-headline {
-            margin-top: 1rem;
-            margin-bottom: 4rem;
-            line-height: 1.4;
-        }
-        .profile-name {
-            background-image: linear-gradient(to bottom, #00437D 20%, #1DA1F2 80%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: bold;
-            font-size: 3rem;
-        }
-        .profile-link {
-            padding: 0 1rem;
-            font-size: 1.3rem;
-        }
-        .profile-link:first-child {
-            padding-left: 0;
-        }
-        .profile-link:not(:first-child) {
-            border-left: 1px solid #1DA1F2;
-        }
-    </style>
+    @vite(['resources/sass/idf.sass', 'resources/js/pages/idf.js'])
 @endsection
 
 
@@ -53,7 +15,7 @@
                     <div class="col-md-8 offset-md-2">
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="profile-data">
-                                <div class="profile-name">Driss Boumlik</div>
+                                <div class="profile-name" id="profile-name">Driss Boumlik</div>
                                 <div class="profile-links d-flex">
                                     <div class="github profile-link"><a href="https://github.com/drissboumlik" target="_blank">
                                             <i class="fa-brands fa-github"></i> Github</a></div>
@@ -62,7 +24,8 @@
                                 </div>
                             </div>
                             <div class="profile-image">
-                                <img src="/assets/img/me/circle-256.png" alt="">
+                                <img src="{{ asset('/assets/img/me/circle-256.png') }}" alt="Profile Image"
+                                    width="100" height="100">
                             </div>
                         </div>
                     </div>
@@ -86,6 +49,7 @@
                         I currently work a full time job, and not that actively searching for a job.
                         However, when I saw
                         <a href="https://www.interaction-design.org/about/careers/senior-php-laravel-developer" target="_blank">this job posting</a>
+                        and specially the video on the <a href="https://www.interaction-design.org/about/careers/how-to-apply">how to apply page</a>
                         I had to apply since this sounds like a dream job and a once in a lifetime opportunity.
                         That being said, let's get to my story and why I think we are a great fit for each other.
                     </p>
@@ -103,30 +67,24 @@
                         corona kicked in and the world switched to work remotely, and since then, we never went back to working
                         onsite except for an optional day per week.
                         <br/><span style="color: red">Not finished</span>
-                        <!-- TODO: Talk about
-                         - social media (why deleted)
-                         - work culture / video vtt (reflect / resonate with me)
-                         - IxDF community (rabat) / proximity
-                         - About page (mission and how to contribute / what the future hold for us)
-                         - calendar & planning
-                         -->
                     </p>
 
-                    <h3>Why me ?</h3>
+                    <h3 id="why-me">Why me ?</h3>
                     <p>
-                        I am the go-to php/laravel guy at my current job.
-                        I also love to experiment and discover new things to add value & make others developers lives better and better.
+                        I am the go-to php/laravel guy at my current job, don't have all the answers 😅
+                        but I know pretty much how to find them.
+                        I also love to experiment and discover new things to add value & make others developers lives better.
                         I like to improve the development environment.
                         Here is a little bit more about that:
                     </p>
-                    <h4>Laravel</h4>
+                    <h4>Laravel & git</h4>
                     <p>
-                        - I Suggested Laravel at my current job. An internal framework was used before,
+                        - I Suggested Laravel & git at my current job. An internal php framework & svn were used before,
                         It may sound wired, but I fell in love with laravel because of C#, C# has great developer experience,
                         and I saw the same thing in laravel eloquent & collections and how it was readable and friendly,
                         and how quick it is to just write some code and boom, you have a fullstack running application
-                        with many things out of the box (authentication, permissions, templates ...)
-                        <br/><span style="color: red">Not finished</span>
+                        with many things out of the box (authentication, permissions, templates ...).<br/>
+                        Currently I'm trying to convince them to use docker and something else for the frontend side.
                     </p>
                     <h4>Automation</h4>
                     <p>
@@ -154,7 +112,7 @@
                     <h4>Environment</h4>
                     <p>
                         - As developers, we use the terminal on a daily basis, and we have a few commands that we always use.
-                        so i created a list of aliases to make it easy and quick to type these commands and not forgetting them
+                        so I created a list of aliases to make it easy and quick to type these commands and not forgetting them
                         in the same time.
                         checkout <a href="https://github.com/DrissBoumlik/desktop-config/blob/master/terminal/cmder/user_aliases.cmd" target="_blank">cmder</a>
                         & <a href="https://github.com/DrissBoumlik/desktop-config/blob/master/terminal/zsh/.zshrc" target="_blank">bash</a> aliases.
@@ -172,6 +130,14 @@
                         a healthy community environment where we help each other,
                         and I achieved that, thanks to >= 1.6k members and these amazing
                         <a target="_blank" href="http://community.drissboumlik.com/p/contributors#contributors">contributors</a>.
+                    </p>
+
+                    <h4>Planning</h4>
+                    <p>
+                        I would like to share with you how I spend my time,
+                        <a href="{{ asset('/assets/idf/calendar.png') }}" target="_blank">
+                            <img src="{{ asset('/assets/idf/calendar.png') }}" class="img-fluid" alt="">
+                        </a>
                     </p>
 
                     <h4>Funny stuff</h4>
@@ -212,6 +178,41 @@
                         <a target="_blank" href="https://www.goodreads.com/review/list/170245827-driss?view=covers">books</a>.
                     </p>
 
+                    <h3>About the <a target="_blank" href="https://www.interaction-design.org/about/careers/how-to-apply"
+                        class="text-decoration-underline">how to apply video</a></h3>
+                    <p>
+                        Let me tell you how I ended up watching the video 3 times.<br/>
+                        When I visited the how to apply page, I pressed play to watch the video, and in the very first minute
+                        I heard this:
+                    </p>
+                    <div class="report-actions highlight-box px-3 py-2">
+                        <p class="m-0">
+                            We <span class="fst-italic">live and breathe our values</span>, and they form the basis of our
+                            <span class="fst-italic">work culture</span>.<br/>
+                            What this means is that our values are not just nice words that we put onto our website.<br/>
+                            They actually reflect and shape the way we behave.<br/>
+                        </p>
+                    </div>
+                    <p>
+                        the first thing that popped up in my mind was: "I want to work with these people !"
+                    </p>
+                    <p>
+                        and then a question kicked in: "Do I really want to work with them ?, I think the answer is in
+                        the rest of the video!", and watched the whole 17min and I felt like if I was setting with you guys
+                        and talking to each other just like you said:
+                    </p>
+                    <div class="report-actions highlight-box px-3 py-2">
+                        <p class="m-0">
+                            The more our cultures and values resonate with you, the more likely you will love working with us!<br/>
+                            So, please use this video as a sort of a conversational partner and continuously ask yourself,
+                            how <span class="fst-italic">you</span> would fit into the culture.
+                        </p>
+                    </div>
+
+                    <p>
+                        With that been said, I think I would make a good fit, and I hope you <a href="#why-me">think</a> the same as well.
+                    </p>
+
                     <h3>What the future holds</h3>
                     <p></p>
 
@@ -228,5 +229,17 @@
 
     </div>
 
-    @include('layout.footer', ['footerMenu' => $data->footerMenu])
+
+    <footer class="page-footer">
+        <div class="container-fluid p-0 footer text-center">
+            <div class="copy-right-wrapper container w-100 py-4">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3 col-12 owner">
+                        <p>Made with <span class="heart-icon"><i class="fa-solid fa-heart"></i></span> by <span class="bold">Driss Boumlik</span></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </footer>
 @endsection
