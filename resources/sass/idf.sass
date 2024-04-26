@@ -25,31 +25,32 @@ h4
     margin-top: 1rem
     margin-bottom: 4rem
     line-height: 1.4
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%)
 
 .profile-name
-    /*background-image: linear-gradient(to bottom, #00437D 20%, #1DA1F2 80%)*/
-    /*-webkit-background-clip: text*/
-    /*-webkit-text-fill-color: transparent*/
+    background-image: linear-gradient(to top, #00437D 20%, #1DA1F2 80%)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
     color: var(--tc-blue) !important
     font-weight: bold
     font-size: 3.4rem
     line-height: 3.4rem
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%)
-    font-family: Harmattan
-
-.profile-name *
-    color: var(--tc-blue) !important
+    //clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%)
+    font-family: Harmattan, serif
+    *
+        color: var(--tc-blue) !important
 
 .profile-link
     padding: 0 1rem
     font-size: 1.3rem
-
-.profile-link:first-child
-    padding-left: 0
-
-.profile-link:not(:first-child)
-    border-left: 1px solid #1DA1F2
-
+    &:first-child
+        padding-left: 0
+    &:not(:first-child)
+        border-left: 1px solid #1DA1F2
+    a
+        display: flex
+        align-items: center
+        gap: 5px
 .profile-image img
     height: 130px
     width: 130px
@@ -65,8 +66,8 @@ body.dark-mode .report-actions
     padding: 0.5rem 1rem
     border-left: 4px solid var(--tc-blue-dark-1)
     p
-        font-size: 1rem
-        line-height: 1.5rem
+        font-size: 1.3rem !important
+        line-height: 1.8rem
 
 @media (max-width: 576px)
     .profile-name

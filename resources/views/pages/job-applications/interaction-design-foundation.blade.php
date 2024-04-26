@@ -39,8 +39,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h2 class="text-center font-weight-bolder page-content-headline"
-                    >Hi Yulia & Hiring Team</h2>
+                    <h2 class="text-center font-weight-bolder page-content-headline">
+                        <span id="greeting" class="d-block">Hi Yulia & Hiring Team 👋</span></h2>
                     <h3>Who am I ?</h3>
                     <p>I'm <a href="/about" target="_blank">Driss Boumlik</a>, 34 years old, a developer from Sale, Morocco (near Rabat).
                         I like to build & share things that add value or make positive impact.
@@ -187,34 +187,48 @@
                     </p>
                     <div class="report-actions highlight-box px-3 py-2">
                         <p class="m-0">
-                            We <span class="fst-italic">live and breathe our values</span>, and they form the basis of our
-                            <span class="fst-italic">work culture</span>.<br/>
-                            What this means is that our values are not just nice words that we put onto our website.<br/>
-                            They actually reflect and shape the way we behave.<br/>
+                            We <span class="fst-italic tc-blue">live and breathe our values</span>, and they form the
+                            <span class="fst-italic tc-blue">basis</span> of our
+                            <span class="fst-italic tc-blue">work culture</span>, What this means is that our values are
+                            <span class="fst-italic tc-blue">not just nice words</span> that we put onto our website,
+                            They actually reflect and shape the way we <span class="fst-italic tc-blue">behave</span>.<br/>
                         </p>
                     </div>
                     <p>
-                        the first thing that popped up in my mind was: "I want to work with these people !"
+                        - The first thing that popped up in my mind was: "I want to work with these people !"
                     </p>
                     <p>
-                        and then a question kicked in: "Do I really want to work with them ?, I think the answer is in
+                        , And then a question kicked in: "Do I really want to work with them ?, I think the answer is in
                         the rest of the video!", and watched the whole 17min and I felt like if I was setting with you guys
                         and talking to each other just like you said:
                     </p>
                     <div class="report-actions highlight-box px-3 py-2">
                         <p class="m-0">
-                            The more our cultures and values resonate with you, the more likely you will love working with us!<br/>
-                            So, please use this video as a sort of a conversational partner and continuously ask yourself,
-                            how <span class="fst-italic">you</span> would fit into the culture.
+                            The more our cultures and values <span class="fst-italic tc-blue">resonate</span> with you,
+                            the more likely you will <span class="fst-italic tc-blue">love working</span> with us!<br/>
+                            So, please use this video as a sort of,
+                            <span class="fst-italic tc-blue">a conversational partner</span>
+                            and <span class="fst-italic tc-blue">continuously ask yourself</span>,
+                            how you would fit into the culture.
                         </p>
                     </div>
-
                     <p>
-                        With that been said, I think I would make a good fit, and I hope you <a href="#why-me">think</a> the same as well.
+                        And the idea of <span>"We always say that failure is an event, not an identity"</span> & <span>"fail forward"</span>
+                        just hit me so hard, because I've dealt with many people & specially students & freshmen who failed in their first job
+                        or had difficulties to cop with the industry challenges, and tried to help them & mentor them in way to overcome
+                        these obstacles.
+                    </p>
+                    <p>
+                        With that been said, I do believe in your core values, from
+                        <span class="fst-italic tc-blue">"A culture of short-term execution that enables long-term thinking"</span>
+                        to the <span class="fst-italic tc-blue">culture of grit</span>, & I think I would make a good fit,
+                        and I hope you <a href="#why-me">think</a> the same as well.
                     </p>
 
                     <h3>What the future holds</h3>
-                    <p></p>
+                    <p>
+                        ?????
+                    </p>
 
                     <hr class="my-5"/>
                     <p>
