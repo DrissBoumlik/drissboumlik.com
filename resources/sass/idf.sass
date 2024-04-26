@@ -18,6 +18,14 @@ h4
     margin-top: 2rem
     margin-bottom: 0.7rem
 
+
+.keyword
+    font-style: italic
+    color: var(--tc-blue)
+
+a
+    text-decoration: underline
+
 /*.headline-wrapper h2 */
 /*    line-height: 1.4*/
 /**/
@@ -47,10 +55,14 @@ h4
         padding-left: 0
     &:not(:first-child)
         border-left: 1px solid #1DA1F2
+    i
+        color: var(--tc-blue-dark-2)
     a
         display: flex
         align-items: center
         gap: 5px
+        text-decoration: none
+        color: var(--tc-blue-dark-2)
 .profile-image img
     height: 130px
     width: 130px
@@ -72,6 +84,9 @@ h4
         line-height: 1.8rem
 
 body.dark-mode
+    .profile-link
+        a
+            color: var(--tc-white)
     .report-actions
         background-color: var(--tc-blue-dark-4)
 

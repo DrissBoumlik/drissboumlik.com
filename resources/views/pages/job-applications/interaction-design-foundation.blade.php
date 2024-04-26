@@ -24,8 +24,8 @@
                                 </div>
                             </div>
                             <div class="profile-image">
-                                <img src="{{ asset('/assets/img/me/circle-256.png') }}" alt="Profile Image"
-                                    width="100" height="100">
+                                <img src="{{ asset('/assets/img/me/circle-256_2.png') }}" alt="Profile Image"
+                                    width="100" height="100" class="img-fluid">
                             </div>
                         </div>
                     </div>
@@ -38,35 +38,42 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-8 offset-md-2">
+                <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
                     <h2 class="text-center font-weight-bolder page-content-headline">
                         <span id="greeting" class="d-block">Hi Yulia & Hiring Team 👋</span></h2>
+
+                    <h3>TLDR;</h3>
+                    <div class="tldr">
+                        <audio controls class="w-100 audio-player" id="audio-player">
+                            <source src="" type="audio/mp3">
+                        </audio>
+                    </div>
+
                     <h3>Who am I ?</h3>
                     <p>I'm <a href="/about" target="_blank">Driss Boumlik</a>, 34 years old, a developer from Sale, Morocco (near Rabat).
                         I like to build & share things that add value or make positive impact.
-                        checkout our <a href="/community" target="_blank">community</a>.
+                        I love solving problems 🧠, helping beginner developers 💻 and ... more ツ.
                     <p>
                         I currently work a full time job, and not that actively searching for a job.
                         However, when I saw
                         <a href="https://www.interaction-design.org/about/careers/senior-php-laravel-developer" target="_blank">this job posting</a>
-                        and specially the video on the <a href="https://www.interaction-design.org/about/careers/how-to-apply" target="_blank">how to apply page</a>
+                        and especially the video on the <a href="https://www.interaction-design.org/about/careers/how-to-apply" target="_blank">how to apply page</a>
                         I had to apply since this sounds like a dream job and a once in a lifetime opportunity.
                         That being said, let's get to my story and why I think we are a great fit for each other.
                     </p>
 
                     <h3>My story</h3>
                     <p>
-                        I started my journey in programming back at the university where I learned Algorithmic, C, Assembly, Java & C# ... .
-                        I learned HTML & CSS later on my own by building a template and integrating it in WordPress.<br/>
-                        After my graduation I had an experience as a trainer, I taught kids the basics of programming using
-                        Lego EV3 mindstorms & Scratch, by the way I was invited to talk about this a year ago, you can
-                        watch the recording
-                        <a href="https://youtu.be/EpV5GA-kPos?t=1303" target="_blank">video</a>.<br/>
-                        I started working as a contractor afterward with few companies using php/laravel & WordPress, where I learned so much.
-                        and I decided to get a full time job and I did around the end of 2019, and after 4,5 months,
-                        corona kicked in and the world switched to work remotely, and since then, we never went back to working
+                        I started my journey in programming back at the university where I learned Algorithmics, C, Assembly, Java & C# and other technologies.
+                        I learned HTML, CSS, Javascript & Bootstap later on my own by building a template and integrating it in WordPress.<br/>
+                        After my graduation I had 2 internships and quickly switched to full time trainer, as I had an amazing experience teaching kids the basics of programming using
+                        <a href="https://education.lego.com/en-us" target="_blank">Lego EV3 mindstorms</a> & <a href="https://scratch.mit.edu/" target="_blank">Scratch</a>,
+                        and a year ago, I was invited to talk about it, you can watch the recording <a href="https://youtu.be/EpV5GA-kPos?t=1303" target="_blank">video</a>.<br/>
+                        I started working as a freelance contractor afterward with few companies using php/laravel & WordPress, where I learned so much,
+                        then I decided to get a full time job and I did around the end of 2019, after 4/5 months,
+                        corona kicked in and the world switched to work remotely, since then, we never went back to working
                         onsite except for an optional day per week.
-                        <div style="color: red; font-size: 2rem;">Not finished</div>
+                        .........
                     </p>
 
                     <h3 id="why-me">Why me ?</h3>
@@ -77,31 +84,31 @@
                         I like to improve the development environment.
                         Here is a little bit more about that:
                     </p>
-                    <h4>Laravel & git</h4>
+                    <h4>Laravel & Git</h4>
                     <p>
-                        - I Suggested Laravel & git at my current job. An internal php framework & svn were used before,
+                        - I Suggested Laravel & Git at my current job. An internal php framework & svn were used before,
                         It may sound wired, but I fell in love with laravel because of C#, C# has great developer experience,
-                        and I saw the same thing in laravel eloquent & collections and how it was readable and friendly,
+                        and I saw the same thing in laravel especially eloquent & collections and how it was readable and friendly,
                         and how quick it is to just write some code and boom, you have a fullstack running application
-                        with many things out of the box (authentication, permissions, templates ...).<br/>
+                        with many things out of the box (authentication, permissions, templates ... and what not).<br/>
                         Currently I'm trying to convince them to use docker and something else for the frontend side.
                     </p>
                     <h4>Automation</h4>
                     <p>
                         - I joined a team working on a project started 6 months before I came,
                         we were testing apis with <a href="https://www.postman.com/" target="_blank">postman</a>,
-                        and most of the apis required us to be authenticated,
+                        and most of the apis required authentication,
                         so you need to hit the login api, copy the token from the response and paste it in the headers of
-                        the api you want to test. the problem is that you're testing and oops!!, you need to login again
+                        the api you want to test, the problem was that while you're testing, oops!!, you need to login again
                         because the token expires after 30 minutes, and our request to extend to token life was not accepted.
                         so I took some time to dig a little bit in postman documentation, and found that I can write some script
                         before and after sending a request.
-                        so I wrote a script that hits the login api every 30 min and copies the token paste it in a variable shared for all apis,
-                        so we can focus only on testing the apis.
+                        so I wrote a script that hits the login api every 30 min and copies the token, paste it in a variable shared for all apis,
+                        so we can focus only on testing those apis.
                     </p>
                     <p>
                         - In my current job, we have few teams working on many projects (most of them are laravel based),
-                        and we have an internal server where we deploy our client apps for testing.
+                        and we have an internal server where we deploy our clients apps for testing.
                         but for our clients, the method to update the apps on their side is a bit different,
                         we should send a zip file containing the new changes made on the app code.
                         in order to do so, we use git to fetch the updated files since the last zip,
@@ -126,10 +133,11 @@
 
                     <h4>Community</h4>
                     <p>
-                        At the end of 2020 I created a community with a goal in mind to help moroccan developers and build
+                        At the end of 2020 I created a <a href="/community" target="_blank">community</a>
+                        with a goal in mind to help moroccan developers and build
                         a healthy community environment where we help each other,
-                        and I achieved that, thanks to >= 1.6k members and these amazing
-                        <a target="_blank" href="http://community.drissboumlik.com/p/contributors#contributors">contributors</a>.
+                        and I achieved that, thanks to >= 1.6k members and especially these amazing
+                        <a target="_blank" href="https://community.drissboumlik.com/p/contributors#contributors">contributors</a>.
                     </p>
 
                     <h4>Planning</h4>
@@ -148,7 +156,7 @@
                         I mean, who doesn't love a method that smooths out complexity faster than coffee on a Monday morning?"
                     </p>
                     <p>
-                        - I'm not an expert on css but I solved a few <a href="https://cssbattle.dev/player/drissboumlik" target="_blank">challenges</a> in
+                        - I'm not an expert on css but I solved few <a href="https://cssbattle.dev/player/drissboumlik" target="_blank">challenges</a> in
                         <a href="https://cssbattle.dev/" target="_blank">cssbattle.dev</a>, and my colleagues always make a joke
                         about how I don't know how to center a div (famous css joke !).
                     </p>
@@ -157,7 +165,7 @@
                     <ul>
                         <li>I follow many people & companies on X (Formerly Twitter).</li>
                         <li>I subscribe to a few people and repositories on GitHub to stay up to date.</li>
-                        <li>I watch conferences recordings, so I can know new things like <a target="_blank" href="https://frankenphp.dev/">Franken Php</a>.</li>
+                        <li>I watch conferences recordings, so I can know about new things like <a target="_blank" href="https://frankenphp.dev/">Franken Php</a>.</li>
                         <li>I follow a few YouTube steamers.</li>
                         <li>I listen to a few <a target="_blank" href="https://castbox.fm/cl/360626">podcasts</a>.</li>
                         <li>I use apps like <a target="_blank" href="https://feedly.com/">feedly</a>.</li>
@@ -187,41 +195,39 @@
                     </p>
                     <div class="report-actions highlight-box px-3 py-2">
                         <p class="m-0">
-                            We <span class="fst-italic tc-blue">live and breathe our values</span>, and they form the
-                            <span class="fst-italic tc-blue">basis</span> of our
-                            <span class="fst-italic tc-blue">work culture</span>, What this means is that our values are
-                            <span class="fst-italic tc-blue">not just nice words</span> that we put onto our website,
-                            They actually reflect and shape the way we <span class="fst-italic tc-blue">behave</span>.<br/>
+                            We <span class="keyword">live and breathe our values</span>, and they form the
+                            <span class="keyword">basis</span> of our
+                            <span class="keyword">work culture</span>, What this means is that our values are
+                            <span class="keyword">not just nice words</span> that we put onto our website,
+                            They actually reflect and shape the way we <span class="keyword">behave</span>.<br/>
                         </p>
                     </div>
                     <p>
-                        - The first thing that popped up in my mind was: "I want to work with these people !"
-                    </p>
-                    <p>
-                        , And then a question kicked in: "Do I really want to work with them ?, I think the answer is in
-                        the rest of the video!", and watched the whole 17min and I felt like if I was setting with you guys
+                        - The first thing that popped up in my mind was: <span class="fst-italic">"I want to work with these people !"</span>,
+						then a question kicked in: <span class="fst-italic">"Do I really want to work with them ?, I think the answer is in
+                        the rest of the video!"</span>, and watched the whole 17min and I felt like if I was setting with you guys
                         and talking to each other just like you said:
                     </p>
                     <div class="report-actions highlight-box px-3 py-2">
                         <p class="m-0">
-                            The more our cultures and values <span class="fst-italic tc-blue">resonate</span> with you,
-                            the more likely you will <span class="fst-italic tc-blue">love working</span> with us!<br/>
+                            The more our cultures and values <span class="keyword">resonate</span> with you,
+                            the more likely you will <span class="keyword">love working</span> with us!<br/>
                             So, please use this video as a sort of,
-                            <span class="fst-italic tc-blue">a conversational partner</span>
-                            and <span class="fst-italic tc-blue">continuously ask yourself</span>,
+                            <span class="keyword">a conversational partner</span>
+                            and <span class="keyword">continuously ask yourself</span>,
                             how you would fit into the culture.
                         </p>
                     </div>
                     <p>
                         And the idea of <span>"We always say that failure is an event, not an identity"</span> & <span>"fail forward"</span>
-                        just hit me so hard, because I've dealt with many people & specially students & freshmen who failed in their first job
-                        or had difficulties to cop with the industry challenges, and tried to help them & mentor them in way to overcome
+                        just hit me so hard, because I've dealt with many people, especially students & freshmen who failed in their first job
+                        or had difficulties to cop with the industry challenges, and tried to help them & mentor them in a way to overcome
                         these obstacles.
                     </p>
                     <p>
-                        With that been said, I do believe in your core values, from
-                        <span class="fst-italic tc-blue">"A culture of short-term execution that enables long-term thinking"</span>
-                        to the <span class="fst-italic tc-blue">culture of grit</span>, & I think I would make a good fit,
+                        With that been said, I do believe in your core values, simply because we share most of them, from
+                        <span class="keyword">"A culture of short-term execution that enables long-term thinking"</span>
+                        to the <span class="keyword">culture of grit</span>, & I think I would make a good fit,
                         and I hope you <a href="#why-me">think</a> the same as well.
                     </p>
 
