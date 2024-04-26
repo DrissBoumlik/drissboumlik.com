@@ -157,6 +157,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
 
         Route::get('pixel', [ToolController::class, 'getPixel']);
         Route::feeds();
+        Route::get('job-application-senior-php-laravel-developer-ixdf', [\App\Http\Controllers\JobApplicationController::class, 'interactionDesignFoundation']);
         // External
         Route::get('/not-found', [GotoController::class, 'not_found']);
         Route::get('/{link}', [GotoController::class, 'goto']);
