@@ -3,12 +3,15 @@ body
 
 h1, h2, h3, h4
     font-weight: bold
+    hyphens: auto
 ul
-    font-size: 1.3rem
+    font-size: 1.4rem
+    margin-left: .5rem
 p
     font-size: 1.4rem !important
     line-height: 2rem
     margin-bottom: 0.5rem
+    hyphens: auto
 
 h3
     margin-top: 2.5rem
@@ -18,13 +21,17 @@ h4
     margin-top: 2rem
     margin-bottom: 0.7rem
 
+a
+    text-decoration: underline
 
 .keyword
     font-style: italic
     color: var(--tc-blue)
 
-a
-    text-decoration: underline
+.keyword-2
+    font-style: italic
+    color: var(--tc-blue-dark-1)
+
 
 /*.headline-wrapper h2 */
 /*    line-height: 1.4*/
@@ -34,6 +41,14 @@ a
     margin-bottom: 4rem
     line-height: 1.4
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%)
+    letter-spacing: 2px
+$val: 1px
+$val2: 5px
+.img-container
+    margin: 1rem 0
+    img
+        border-radius: 5px
+        box-shadow: -1*$val -1*$val $val2 rgba(177, 177, 177, 0.5), $val $val $val2 rgba(177, 177, 177, 0.5), -1*$val $val $val2 rgba(177, 177, 177, 0.5), $val -1*$val $val2 rgba(177, 177, 177, 0.5)
 
 .profile-name
     background-image: linear-gradient(to top, #00437D 20%, #1DA1F2 80%)
@@ -79,9 +94,6 @@ a
     border-radius: 0
     padding: 0.5rem 1rem
     border-left: 4px solid var(--tc-blue-dark-1)
-    p
-        font-size: 1.3rem !important
-        line-height: 1.8rem
 
 body.dark-mode
     .profile-link
@@ -89,7 +101,8 @@ body.dark-mode
             color: var(--tc-white)
     .report-actions
         background-color: var(--tc-blue-dark-4)
-
+    //.keyword-2
+    //    color: var(--tc-grey-dark)
 @media (max-width: 576px)
     .profile-name
         font-size: 2.9rem

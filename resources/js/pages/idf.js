@@ -24,11 +24,13 @@ $(function () {
         gsap.fromTo(
             ourText.chars,
             {
-                y: 100,
+                // y: 100,
+                scale: 2.5,
                 opacity: 0
             },
             {
-                y: 0,
+                // y: 0,
+                scale: 1,
                 opacity: 1,
                 stagger: 0.05,
                 duration: 1.3,

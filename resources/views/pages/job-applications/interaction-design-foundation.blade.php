@@ -12,7 +12,7 @@
             <div id="particles-js" class="particles-js"></div>
             <div class="container headline-wrapper">
                 <div class="row">
-                    <div class="col-md-8 offset-md-2">
+                    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="profile-data">
                                 <div class="profile-name" id="profile-name">Driss Boumlik</div>
@@ -42,149 +42,170 @@
                     <h2 class="text-center font-weight-bolder page-content-headline">
                         <span id="greeting" class="d-block">Hi Yulia & Hiring Team 👋</span></h2>
 
-                    <h3>TLDR;</h3>
+                    <h3>TLDR;</h3> REMOVE
                     <div class="tldr">
-                        <audio controls class="w-100 audio-player" id="audio-player">
+                        <audio controls preload
+                               class="w-100 audio-player" id="audio-player">
                             <source src="" type="audio/mp3">
+                            Your browser does not support the audio tag.
                         </audio>
                     </div>
 
+					<p style="margin-top: 2rem; color:red">
+					THIS application  should be a response to : <br/>
+					Write an application to us which includes a few paragraphs on why you want to put your heart, mind and hard work into this particular job.
+					</p>
+
+                    <h3>First things first ...</h3>
+                    <p>According to the
+                        <a href="https://www.interaction-design.org/about/careers/how-to-apply" target="_blank">video</a>
+                        I confirm that :
+                    </p>
+                    <div class="report-actions highlight-box px-3 py-2">
+                        <p class="m-0">
+                            I want to help make a dent in the universe 🍀🍀🍀.</p>
+                    </div>
+                    <p>(Find more about this at the bottom of the page)</p>
+
                     <h3>Who am I ?</h3>
-                    <p>I'm <a href="/about" target="_blank">Driss Boumlik</a>, 34 years old, a developer from Sale, Morocco (near Rabat).
-                        I like to build & share things that add value or make positive impact.
+                    <p>I'm <a href="https://drissboumlik.com/about" target="_blank">Driss Boumlik</a>, 34 years old,
+                        a developer from Sale, Morocco (near Rabat).
+                        I like to build and share things that add value or make positive impact.
                         I love solving problems 🧠, helping beginner developers 💻 and ... more ツ.
+                    </p>
                     <p>
                         I currently work a full time job, and not that actively searching for a job.
                         However, when I saw
                         <a href="https://www.interaction-design.org/about/careers/senior-php-laravel-developer" target="_blank">this job posting</a>
                         and especially the video on the <a href="https://www.interaction-design.org/about/careers/how-to-apply" target="_blank">how to apply page</a>
-                        I had to apply since this sounds like a dream job and a once in a lifetime opportunity.
+                        I had to apply since this sounds like a great opportunity.
                         That being said, let's get to my story and why I think we are a great fit for each other.
                     </p>
 
                     <h3>My story</h3>
                     <p>
-                        I started my journey in programming back at the university where I learned Algorithmics, C, Assembly, Java & C# and other technologies.
-                        I learned HTML, CSS, Javascript & Bootstap later on my own by building a template and integrating it in WordPress.<br/>
-                        After my graduation I had 2 internships and quickly switched to full time trainer, as I had an amazing experience teaching kids the basics of programming using
-                        <a href="https://education.lego.com/en-us" target="_blank">Lego EV3 mindstorms</a> & <a href="https://scratch.mit.edu/" target="_blank">Scratch</a>,
-                        and a year ago, I was invited to talk about it, you can watch the recording <a href="https://youtu.be/EpV5GA-kPos?t=1303" target="_blank">video</a>.<br/>
-                        I started working as a freelance contractor afterward with few companies using php/laravel & WordPress, where I learned so much,
-                        then I decided to get a full time job and I did around the end of 2019, after 4/5 months,
-                        corona kicked in and the world switched to work remotely, since then, we never went back to working
-                        onsite except for an optional day per week.
-                        .........
+                        I started my journey in programming back at the university where I learned Algorithmic, C, Assembly, Java and C#.
+                        I learned HTML, CSS, Javascript and Bootstrap later on my own.<br/>
+                        After my graduation I had 2 internships then I switched to full time trainer, as I had an amazing
+                        experience teaching kids the basics of programming using
+                        <a href="https://education.lego.com/en-us" target="_blank">Lego EV3 mindstorms</a> and
+                        <a href="https://scratch.mit.edu/" target="_blank">Scratch</a>,
+                        and a year ago, I was invited to talk about it, you can watch the recording <a href="https://youtu.be/EpV5GA-kPos?t=1303" target="_blank">video</a>.
+                    </p>
+                    <div class="img-container">
+                        <figure>
+                            <img src="{{ asset('/assets/idf/coding-for-kids.jpg') }}" class="img-fluid" alt="Lego EV3 Mindstorms Session">
+                            <figcaption class="text-center mt-1">Lego EV3 Mindstorms Session.</figcaption>
+                        </figure>
+                   </div>
+                    <p>
+                        I started working as a freelance contractor afterward with few companies using PHP/Laravel and WordPress, where I learned so much,
+                        then I decided to get a full time job and I did around the end of 2019,
+                        which was a great experience because I learned to be a team player among other things,
+                        after 4/5 months corona kicked in and the world switched to work remotely.
                     </p>
 
                     <h3 id="why-me">Why me ?</h3>
                     <p>
                         I am the go-to php/laravel guy at my current job, don't have all the answers 😅
                         but I know pretty much how to find them.
-                        I also love to experiment and discover new things to add value & make others developers lives better.
+                        I also love to experiment and discover new things to add value and make others developers lives better.
                         I like to improve the development environment.
                         Here is a little bit more about that:
                     </p>
-                    <h4>Laravel & Git</h4>
-                    <p>
-                        - I Suggested Laravel & Git at my current job. An internal php framework & svn were used before,
-                        It may sound wired, but I fell in love with laravel because of C#, C# has great developer experience,
-                        and I saw the same thing in laravel especially eloquent & collections and how it was readable and friendly,
-                        and how quick it is to just write some code and boom, you have a fullstack running application
-                        with many things out of the box (authentication, permissions, templates ... and what not).<br/>
-                        Currently I'm trying to convince them to use docker and something else for the frontend side.
-                    </p>
-                    <h4>Automation</h4>
-                    <p>
-                        - I joined a team working on a project started 6 months before I came,
-                        we were testing apis with <a href="https://www.postman.com/" target="_blank">postman</a>,
-                        and most of the apis required authentication,
-                        so you need to hit the login api, copy the token from the response and paste it in the headers of
-                        the api you want to test, the problem was that while you're testing, oops!!, you need to login again
-                        because the token expires after 30 minutes, and our request to extend to token life was not accepted.
-                        so I took some time to dig a little bit in postman documentation, and found that I can write some script
-                        before and after sending a request.
-                        so I wrote a script that hits the login api every 30 min and copies the token, paste it in a variable shared for all apis,
-                        so we can focus only on testing those apis.
-                    </p>
-                    <p>
-                        - In my current job, we have few teams working on many projects (most of them are laravel based),
-                        and we have an internal server where we deploy our clients apps for testing.
-                        but for our clients, the method to update the apps on their side is a bit different,
-                        we should send a zip file containing the new changes made on the app code.
-                        in order to do so, we use git to fetch the updated files since the last zip,
-                        generate the sql files in case of new database migrations, and compile the js/css files in the public directory.
-                        so I wrote a <a href="https://github.com/DrissBoumlik/patch-generator/blob/master/build.sh" target="_blank">bash script</a>
-                        to automate the process.
-                    </p>
-                    <h4>Environment</h4>
-                    <p>
-                        - As developers, we use the terminal on a daily basis, and we have a few commands that we always use.
-                        so I created a list of aliases to make it easy and quick to type these commands and not forgetting them
-                        in the same time.
-                        checkout <a href="https://github.com/DrissBoumlik/desktop-config/blob/master/terminal/cmder/user_aliases.cmd" target="_blank">cmder</a>
-                        & <a href="https://github.com/DrissBoumlik/desktop-config/blob/master/terminal/zsh/.zshrc" target="_blank">bash</a> aliases.
-                    </p>
-                    <p>
-                        - Another thing, since I work mostly on windows, and working on projects with different php versions,
-                        I came up with a solution which allowed me to switch php versions on windows with one command.
-                        you can read about it here :
-                        <a href="https://drissboumlik.com/blog/switch-php-version-on-windows-with-one-command" target="_blank">link</a>.
-                    </p>
+                    <ul>
+                        <li> {{--Laravel & Git--}}
+                            I Suggested Laravel and Git at my current job. An internal php framework and svn were used before.<br/>
+                            Currently I'm trying to convince them to use docker and something else for the frontend side.
+                        </li>
+                        <li> {{--Automation--}}
+                            I joined a team working on a project started 6 months before I came,
+                            I wrote a script which refreshes the auth token automatically,
+                            so we can focus only on testing those apis, which helped the team.
+                            and few years after, I met a colleague who told me he still
+                            has the script and use it for similar cases 🎊🎊🎊.
+                        </li>
+                        <li>
+                            I wrote a <a href="https://github.com/DrissBoumlik/patch-generator/blob/master/build.sh" target="_blank">bash script</a>
+                            to automate the process of patch generation every time the client needed new updates for the applications.
+                        </li>
+                        <li> {{--Environment--}}
+                            I created a list of aliases to make it easy and quick to type most used commands,
+                            checkout <a href="https://github.com/DrissBoumlik/desktop-config/blob/master/terminal/cmder/user_aliases.cmd" target="_blank">cmder</a>
+                            and <a href="https://github.com/DrissBoumlik/desktop-config/blob/master/terminal/zsh/.zshrc" target="_blank">bash</a>.
+                        </li>
+                        <li>
+                            Another thing, since I work mostly on windows, and working on projects with different php versions,
+                            I came up with a solution which allowed me to switch php versions on windows with one command.
+                            you can read about it here :
+                            <a href="https://drissboumlik.com/blog/switch-php-version-on-windows-with-one-command" target="_blank">link</a>.
+                        </li>
+                    </ul>
 
+                    <h4>Contribution</h4>
+                    <p>
+                        I did some digging on the website and other IxDF links,
+                        and I found the <a href="https://www.interaction-design.org/about" target="_blank">about</a> page
+                        where you talk about your mission, which I really appreciate,
+                        I also found that you have published some public packages
+                        on <a target="_blank" href="https://github.com/InteractionDesignFoundation">github</a> and
+                        <a target="_blank" href="https://packagist.org/users/IxDF/">packagist</a>, and I really liked it
+                        because it means that not only you're providing a good experience and quality content for learners
+                        with affordable price, but you're also creating stuff that benefits the open source community,
+                        and that gives me another reason to wanting to join you.
+                    </p>
                     <h4>Community</h4>
                     <p>
-                        At the end of 2020 I created a <a href="/community" target="_blank">community</a>
-                        with a goal in mind to help moroccan developers and build
-                        a healthy community environment where we help each other,
+                        The idea of community, sharing knowledge, helping others, adding value, all these things
+                        pushed me to host some workshops and create a
+                        <a href="https://drissboumlik.com//community" target="_blank">community</a>
+                        at the end of 2020 with a goal in mind to help moroccan developers and build
+                        a healthy environment conducive to learning where we help each other,
                         and I achieved that, thanks to >= 1.6k members and especially these amazing
                         <a target="_blank" href="https://community.drissboumlik.com/p/contributors#contributors">contributors</a>.
                     </p>
+                    <div class="img-container">
+                        <figure>
+                            <img src="{{ asset('/assets/idf/workshops.jpg') }}" class="img-fluid" alt="Introduction to HTML & CSS">
+                            <figcaption class="text-center mt-1">Web dev workshop</figcaption>
+                        </figure>
+                    </div>
 
-                    <h4>Planning</h4>
+                    <h3>What the future holds</h3> LINKEDIN ANSWER
+                    <h4>Upcoming Months/Years ...</h4> REMOVE ?
                     <p>
-                        I would like to share with you how I spend my time, ?????
-                        <a href="{{ asset('/assets/idf/calendar.png') }}" target="_blank">
-                            <img src="{{ asset('/assets/idf/calendar.png') }}" class="img-fluid" alt="">
-                        </a>
+                        First of all, I do understand the importance of a great design and great user experience,
+                        and how it can make a difference for people.
                     </p>
-
-                    <h4>Funny stuff</h4>
-                    <p>
-                        - My colleagues always ask my this question:
-                        "why do you use <a href="https://laravel.com/docs/11.x/collections#method-flatten" target="_blank">flatten</a>
-                        collection method ?"<br/>
-                        I mean, who doesn't love a method that smooths out complexity faster than coffee on a Monday morning?"
-                    </p>
-                    <p>
-                        - I'm not an expert on css but I solved few <a href="https://cssbattle.dev/player/drissboumlik" target="_blank">challenges</a> in
-                        <a href="https://cssbattle.dev/" target="_blank">cssbattle.dev</a>, and my colleagues always make a joke
-                        about how I don't know how to center a div (famous css joke !).
-                    </p>
-
-                    <h3>Stay updated</h3>
                     <ul>
-                        <li>I follow many people & companies on X (Formerly Twitter).</li>
-                        <li>I subscribe to a few people and repositories on GitHub to stay up to date.</li>
-                        <li>I watch conferences recordings, so I can know about new things like <a target="_blank" href="https://frankenphp.dev/">Franken Php</a>.</li>
-                        <li>I follow a few YouTube steamers.</li>
-                        <li>I listen to a few <a target="_blank" href="https://castbox.fm/cl/360626">podcasts</a>.</li>
-                        <li>I use apps like <a target="_blank" href="https://feedly.com/">feedly</a>.</li>
-                        <li>I open Reddit, but not that much.</li>
+                        <li>Optimize images and multimedia content for faster loading without compromising quality.</li>
+                        <li>optimize the performance and scalability of our platform, minimizing load times and
+                            enhancing responsiveness across different devices.</li>
+                        <li>ensuring smooth navigation and fast loading times for users worldwide.</li>
+                        <li>Through proactive monitoring and analysis, we can identify and address performance bottlenecks,
+                            ensuring a reliable and efficient platform that meets the evolving needs of our global user base.</li>
+                        <li>Continuously monitor and analyze platform metrics to identify areas for improvement and implement
+                            solutions to enhance the overall performance and reliability of our services.</li>
+                        <li>Use microservices architecture to decouple and independently scale different components of the platform.</li>
                     </ul>
+                    ?????
 
-                    <h3>Non-Hard Skills</h3>
+
+                    <h3>After work-hours</h3>
                     <p>
-                        - I do like to exchange, share, learn new things, different ways of thinking, have interesting & deep
-                        conversations and challenge my opinions in order to argue & adapt.
+                        as you can see in my <a href="{{ asset('/assets/idf/calendar.png') }}" target="_blank">calendar</a>,
+                        each day I have something to do:
+                        ????????? UPDATE calendar image
                     </p>
-                    <p>
-                        - If am not in front of my laptop, I play soccer twice a week in reality, and everyday
-                        <a target="_blank" href="https://rawg.io/@cartouche/games">virtually</a>,
-                        otherwise I watch <a target="_blank" href="https://anilist.co/user/cartouche/animelist">anime</a> and tv
-                        <a target="_blank" href="https://trakt.tv/users/cartouche01/progress">shows</a>,
-                        listen to <a target="_blank" href="https://castbox.fm/cl/360626">podcasts</a> or read
-                        <a target="_blank" href="https://www.goodreads.com/review/list/170245827-driss?view=covers">books</a>.
-                    </p>
+                    <ul>
+                        <li>I take a ride on my bike.</li>
+                        <li>I play a soccer game with some friends.</li>
+                        <li>I read a book.</li>
+                        <li>I spend some time on <a target="_blank" href="https://www.leetcode.com/">LeetCode</a>.</li>
+                        <li>I host an event for the <a target="_blank" href="https://drissboumlik.com/community">community</a>.</li>
+                        <li>I host a <a target="_blank" href="https://community.drissboumlik.com#mock-interview">mock interview</a>
+                            (in case someone applied).</li>
+                    </ul>
 
                     <h3>About the <a target="_blank" href="https://www.interaction-design.org/about/careers/how-to-apply"
                         class="text-decoration-underline">how to apply video</a></h3>
@@ -203,9 +224,9 @@
                         </p>
                     </div>
                     <p>
-                        - The first thing that popped up in my mind was: <span class="fst-italic">"I want to work with these people !"</span>,
-						then a question kicked in: <span class="fst-italic">"Do I really want to work with them ?, I think the answer is in
-                        the rest of the video!"</span>, and watched the whole 17min and I felt like if I was setting with you guys
+                        - The first thing that popped up in my mind was: <span class="keyword-2">"I want to work with these people !"</span>,
+						then a question kicked in: <span class="keyword-2">"Do I really want to work with them ?, I think the answer is in
+                        the rest of the video!"</span>, and I watched the whole 17min and I felt like if I was setting with you guys
                         and talking to each other just like you said:
                     </p>
                     <div class="report-actions highlight-box px-3 py-2">
@@ -219,27 +240,25 @@
                         </p>
                     </div>
                     <p>
-                        And the idea of <span>"We always say that failure is an event, not an identity"</span> & <span>"fail forward"</span>
-                        just hit me so hard, because I've dealt with many people, especially students & freshmen who failed in their first job
-                        or had difficulties to cop with the industry challenges, and tried to help them & mentor them in a way to overcome
+                        And the idea of <span class="keyword">"We always say that failure is an event, not an identity"</span>
+                        and <span class="keyword">"fail forward"</span>
+                        just hit me so hard, because I've dealt with many people, especially students and freshmen who failed in their first job
+                        or had difficulties to cop with the industry challenges, and tried to help them and mentor them in a way to overcome
                         these obstacles.
                     </p>
                     <p>
-                        With that been said, I do believe in your core values, simply because we share most of them, from
+                        So YES, I do believe in these core values, from
                         <span class="keyword">"A culture of short-term execution that enables long-term thinking"</span>
-                        to the <span class="keyword">culture of grit</span>, & I think I would make a good fit,
-                        and I hope you <a href="#why-me">think</a> the same as well.
-                    </p>
-
-                    <h3>What the future holds</h3>
-                    <p>
-                        ?????
+                        to the <span class="keyword">"culture of grit"</span>, With that been said,
+                        I hope this answers the
+                        <span class="keyword">"why you want to put your heart, mind and hard work into this particular job."</span>
+                        and I hope you <a href="#why-me">think</a> I'm a good fit.
                     </p>
 
                     <hr class="my-5"/>
                     <p>
                         That's not all, there is more, but I hope I already convinced you enough to start a conversation.
-                        I am looking forward to your response & feedback!
+                        I am looking forward to your response and feedback!
                     </p>
                 </div>
             </div>
@@ -249,17 +268,16 @@
 
     </div>
 
-
     <footer class="page-footer">
         <div class="container-fluid p-0 footer text-center">
-            <div class="copy-right-wrapper container w-100 py-4">
+            <div class="copy-right-wrapper container w-100 py-3">
                 <div class="row">
                     <div class="col-lg-6 offset-lg-3 col-12 owner">
                         <p>Made with <span class="heart-icon"><i class="fa-solid fa-heart"></i></span> by <span class="bold">Driss Boumlik</span></p>
                     </div>
                 </div>
             </div>
-
         </div>
     </footer>
+
 @endsection
