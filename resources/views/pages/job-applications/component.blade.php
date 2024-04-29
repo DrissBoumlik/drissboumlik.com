@@ -1,4 +1,3 @@
-
 <div id="about" class="about section-wrapper py-md-5rem py-3rem">
     <div class="section about-header">
         <div id="particles-js" class="particles-js"></div>
@@ -9,9 +8,11 @@
                         <div class="profile-data">
                             <div class="profile-name" id="profile-name">Driss Boumlik</div>
                             <div class="profile-links d-flex">
-                                <div class="github profile-link"><a href="https://github.com/drissboumlik" target="_blank">
+                                <div class="github profile-link">
+                                    <a href="https://github.com/drissboumlik" target="_blank">
                                         <i class="fa-brands fa-github"></i> Github</a></div>
-                                <div class="twitter profile-link"><a href="https://twitter.com/drissboumlik" target="_blank">
+                                <div class="twitter profile-link">
+                                    <a href="https://twitter.com/drissboumlik" target="_blank">
                                         <i class="fa-brands fa-x-twitter"></i> Twitter</a></div>
                             </div>
                         </div>
@@ -54,8 +55,10 @@
                 <p>
                     I currently work a full time job, and not that actively searching for a job.
                     However, when I saw
-                    <a href="https://www.interaction-design.org/about/careers/senior-php-laravel-developer" target="_blank">this job posting</a>
-                    and especially the video on the <a href="https://www.interaction-design.org/about/careers/how-to-apply" target="_blank">how to apply page</a>
+                    <a href="https://www.interaction-design.org/about/careers/senior-php-laravel-developer"
+                        target="_blank">this job posting</a> and especially the video on the
+                    <a href="https://www.interaction-design.org/about/careers/how-to-apply" target="_blank">how to
+                        apply page</a>
                     I had to apply since this sounds like a great opportunity and a productive work environment
                     to work in.
                     That being said, let's get to my story and why I think we are a great fit for each other.
@@ -63,7 +66,8 @@
 
                 <h3>My story</h3>
                 <p>
-                    I started my journey in programming back at the university where I learned Algorithmic, C, Assembly, Java and C#.
+                    I started my journey in programming back at the university where I learned Algorithmic, C, Assembly,
+                    Java and C#.
                     I learned HTML, CSS, Javascript and Bootstrap later on my own.<br/>
                     After my graduation, I had 2 internships then I switched to full time trainer, as I had an amazing
                     experience teaching kids the basics of programming using
@@ -98,15 +102,18 @@
                     <li>
                         I joined a team working on a project started 6 months before I came,
                         deadlines were tight, so I wrote a script which refreshes the auth token automatically,
-                        so we can focus only on testing Apis, which helped the team reduce some manual "wasting-time" processes.
+                        so we can focus only on testing Apis, which helped the team reduce some manual "wasting-time"
+                        processes.
                     </li>
                     <li>
-                        I Suggested Laravel and Git at my current job. An internal PHP framework and SVN were used before.
+                        I Suggested Laravel and Git at my current job. An internal PHP framework and SVN were used
+                        before.
                         Currently, I'm trying to convince them to use docker and something else for the frontend side.
                     </li>
                     <li>
                         I created a list of bash
-                        <a href="https://github.com/DrissBoumlik/desktop-config/blob/master/terminal/zsh/.zshrc" target="_blank">aliases</a>
+                        <a href="https://github.com/DrissBoumlik/desktop-config/blob/master/terminal/zsh/.zshrc"
+                           target="_blank">aliases</a>
                         which helped few team members, You can read about it
                         <a href="https://drissboumlik.com/blog/how-cmder-made-my-life-easier-part-2" target="_blank">here</a>.
                     </li>
@@ -114,7 +121,8 @@
                         Since I work on projects with different PHP versions on windows,
                         I came up with a solution which allowed me to switch php versions on windows with one command.
                         You can read about it
-                        <a href="https://drissboumlik.com/blog/switch-php-version-on-windows-with-one-command" target="_blank">here</a>.
+                        <a href="https://drissboumlik.com/blog/switch-php-version-on-windows-with-one-command"
+                           target="_blank">here</a>.
                     </li>
                 </ul>
 
@@ -148,25 +156,21 @@
                 </div>
 
 
-                <h3>After work-hours</h3>
-                <p>
-                    As you can see in my <a href="assets/idf/calendar.png" target="_blank">calendar</a>,
-                    each day I have something to do:
-                </p>
+                <h3>After <a href="assets/idf/calendar.png" target="_blank">work-hours</a></h3>
                 <ul>
                     <li>I take a ride on my bike.</li>
                     <li>I read a book.</li>
                     <li>I spend some time on <a target="_blank" href="https://www.leetcode.com/">LeetCode</a>.</li>
-                    <li>I host an event for the <a target="_blank" href="https://drissboumlik.com/community">community</a>.</li>
-                    <li>I host a <a target="_blank" href="https://community.drissboumlik.com#mock-interview">mock interview</a>
-                        (in case someone applied).</li>
+                    <li>I host events for the community or a
+                        <a target="_blank" href="https://community.drissboumlik.com#mock-interview">mock interview</a>
+                        (in case someone applied).
+                    </li>
                 </ul>
 
                 <h3>About the <a target="_blank" href="https://www.interaction-design.org/about/careers/how-to-apply"
                                  class="text-decoration-underline">how to apply video</a></h3>
                 <p>
-                    I started watching video, and in the very first minute
-                    I heard this:
+                    I started watching the video, and in the very first minute I heard this:
                 </p>
                 <div class="report-actions highlight-box px-3 py-2">
                     <p class="m-0">
@@ -179,9 +183,9 @@
                 </div>
                 <p>
                     The first thing that popped up in my head was: <span class="keyword-2">"I want to work with these people !"</span>,
-                    then a question kicked in: <span class="keyword-2">"Do I really want to ?, I think the answer is in
-                        the rest of the video!"</span>, I ended up watching the video, twice, and I felt like if I was sitting with you guys
-                    and talking to each other just like you said:
+                    then I paused, because a question kicked in: <span class="keyword-2">"Do I really want to ?, I think the answer is in
+                        the rest of the video!"</span>, so I ended up watching the entire video, twice, and I felt like
+                    if I was sitting with you guys and talking to each other just like you said:
                 </p>
                 <div class="report-actions highlight-box px-3 py-2">
                     <p class="m-0">
@@ -194,21 +198,22 @@
                     </p>
                 </div>
                 <p>
-                    <span class="keyword">"We always say that failure is an event, not an identity"</span>
+                    - <span class="keyword">"We always say that failure is an event, not an identity"</span>
                     and <span class="keyword">"fail forward"</span>
                     these words are spot on, and just hit me so hard, because I've dealt with many people,
-                    especially students and freshmen who failed in their first job
-                    or had difficulties to cope with the industry challenges, and tried to help them and mentor them in a way to overcome
-                    these obstacles.
+                    especially new graduate who failed in their first job
+                    or had difficulties to cope with the industry challenges, and tried to help them and mentor them in
+                    a way to overcome these obstacles.
                 </p>
                 <p>
                     So YES, I do believe in these core values, from
                     <span class="keyword">"A culture of short-term execution that enables long-term thinking"</span>
-                    to the <span class="keyword">"culture of grit"</span>,
+                    to the <span class="keyword">"culture of grit"</span>.
                 </p>
                 <p>
                     With that being said, I hope this answers the
-                    <span class="keyword">"why you want to put your heart, mind and hard work into this particular job."</span>
+                    <span
+                        class="keyword">"why you want to put your heart, mind and hard work into this particular job."</span>
                     and I hope you <a href="#why-me">think</a> I'm a good fit.
                 </p>
 
@@ -230,7 +235,8 @@
         <div class="copy-right-wrapper container w-100 py-3">
             <div class="row">
                 <div class="col-lg-6 offset-lg-3 col-12 owner">
-                    <p>Made with <span class="heart-icon"><i class="fa-solid fa-heart"></i></span> by <span class="bold">Driss Boumlik</span></p>
+                    <p>Made with <span class="heart-icon"><i class="fa-solid fa-heart"></i></span>
+                        by <span class="bold">Driss Boumlik</span></p>
                 </div>
             </div>
         </div>
