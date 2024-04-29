@@ -114,30 +114,23 @@
                         Here is a little bit more about that:
                     </p>
                     <ul>
-                        <li> {{--Laravel & Git--}}
-                            I Suggested Laravel and Git at my current job. An internal php framework and svn were used before.<br/>
-                            Currently I'm trying to convince them to use docker and something else for the frontend side.
-                        </li>
                         <li> {{--Automation--}}
                             I joined a team working on a project started 6 months before I came,
                             I wrote a script which refreshes the auth token automatically,
                             so we can focus only on testing those apis, which helped the team.
-                            and few years after, I met a colleague who told me he still
-                            has the script and use it for similar cases 🎊🎊🎊.
                         </li>
-                        <li>
-                            I wrote a <a href="https://github.com/DrissBoumlik/patch-generator/blob/master/build.sh" target="_blank">bash script</a>
-                            to automate the process of a patch generation every time the client needed new updates for the applications.
-                            (was kind of manual on the client side)
+                        <li> {{--Laravel & Git--}}
+                            I Suggested Laravel and Git at my current job. An internal php framework and svn were used before.
+                            Currently, I'm trying to convince them to use docker and something else for the frontend side.
                         </li>
                         <li> {{--Environment--}}
-                            I created a list of
+                            I created a list of bash
                             <a href="https://github.com/DrissBoumlik/desktop-config/blob/master/terminal/zsh/.zshrc" target="_blank">aliases</a>
-                            to make it easy and quick to type most used commands, You can read about it
+                            which helped few team members, You can read about it
                             <a href="https://drissboumlik.com/blog/how-cmder-made-my-life-easier-part-2" target="_blank">here</a>.
                         </li>
                         <li>
-                            Another thing, I work on projects with different php versions (mostly on windows),
+                            Another thing, I work on projects with different php versions on windows,
                             I came up with a solution which allowed me to switch php versions on windows with one command.
                             you can read about it
                             <a href="https://drissboumlik.com/blog/switch-php-version-on-windows-with-one-command" target="_blank">here</a>.
@@ -152,14 +145,14 @@
                         I also found that you have published some public packages
                         on <a target="_blank" href="https://github.com/InteractionDesignFoundation">github</a> and
                         <a target="_blank" href="https://packagist.org/users/IxDF/">packagist</a>, and I really liked it
-                        because it means that not only you're providing a good experience and quality content for learners
-                        with affordable price, but you're also creating stuff that benefits the open source community,
+                        because it means that not only you're providing the best expertise and quality content for learners
+                        with affordable prices, but you're also creating what benefits the open source community,
                         and that gives me another reason to wanting to join you.
                     </p>
                     <h4>Community</h4>
                     <p>
-                        The idea of community, sharing knowledge, helping others, adding value, all these things
-                        pushed me to host some workshops and create a
+                        The idea of contributing, sharing knowledge, helping others, adding value, all these things
+                        pushed me to host many online & in-person workshops and create a
                         <a href="https://drissboumlik.com//community" target="_blank">community</a>
                         at the end of 2020 with a goal in mind to help moroccan developers and build
                         a healthy environment conducive to learning where we help each other,
@@ -173,24 +166,6 @@
                         </figure>
                     </div>
 
-                    <h3>What the future holds</h3> WAITING LINKEDIN ANSWER ????
-                    <h4>Upcoming Months/Years ...</h4> REMOVE ????
-                    <p>
-                        First of all, I do understand the importance of a great design and great user experience,
-                        and how it can make a difference for people.
-                    </p>
-                    <ul>
-                        <li>Optimize images and multimedia content for faster loading without compromising quality.</li>
-                        <li>optimize the performance and scalability of our platform, minimizing load times and
-                            enhancing responsiveness across different devices.</li>
-                        <li>ensuring smooth navigation and fast loading times for users worldwide.</li>
-                        <li>Through proactive monitoring and analysis, we can identify and address performance bottlenecks,
-                            ensuring a reliable and efficient platform that meets the evolving needs of our global user base.</li>
-                        <li>Continuously monitor and analyze platform metrics to identify areas for improvement and implement
-                            solutions to enhance the overall performance and reliability of our services.</li>
-                        <li>Use microservices architecture to decouple and independently scale different components of the platform.</li>
-                    </ul>
-
 
                     <h3>After work-hours</h3>
                     <p>
@@ -199,7 +174,6 @@
                     </p>
                     <ul>
                         <li>I take a ride on my bike.</li>
-                        <li>I play a soccer game with some friends.</li>
                         <li>I read a book.</li>
                         <li>I spend some time on <a target="_blank" href="https://www.leetcode.com/">LeetCode</a>.</li>
                         <li>I host an event for the <a target="_blank" href="https://drissboumlik.com/community">community</a>.</li>
@@ -210,8 +184,7 @@
                     <h3>About the <a target="_blank" href="https://www.interaction-design.org/about/careers/how-to-apply"
                         class="text-decoration-underline">how to apply video</a></h3>
                     <p>
-                        Let me tell you how I ended up watching the video 3 times.<br/>
-                        When I visited the how to apply page, I pressed play to watch the video, and in the very first minute
+                        I started watching video, and in the very first minute
                         I heard this:
                     </p>
                     <div class="report-actions highlight-box px-3 py-2">
@@ -224,9 +197,9 @@
                         </p>
                     </div>
                     <p>
-                        - The first thing that popped up in my mind was: <span class="keyword-2">"I want to work with these people !"</span>,
-						then a question kicked in: <span class="keyword-2">"Do I really want to work with them ?, I think the answer is in
-                        the rest of the video!"</span>, and I watched the whole 17min and I felt like if I was setting with you guys
+                        The first thing that popped up in my mind was: <span class="keyword-2">"I want to work with these people !"</span>,
+						then a question kicked in: <span class="keyword-2">"Do I really want to ?, I think the answer is in
+                        the rest of the video!"</span>, I ended up watching the video, twice, and I felt like if I was setting with you guys
                         and talking to each other just like you said:
                     </p>
                     <div class="report-actions highlight-box px-3 py-2">
@@ -240,17 +213,19 @@
                         </p>
                     </div>
                     <p>
-                        And the idea of <span class="keyword">"We always say that failure is an event, not an identity"</span>
+                        <span class="keyword">"We always say that failure is an event, not an identity"</span>
                         and <span class="keyword">"fail forward"</span>
-                        just hit me so hard, because I've dealt with many people, especially students and freshmen who failed in their first job
+                        these words are spot on, and just hit me so hard, because I've dealt with many people, especially students and freshmen who failed in their first job
                         or had difficulties to cop with the industry challenges, and tried to help them and mentor them in a way to overcome
                         these obstacles.
                     </p>
                     <p>
                         So YES, I do believe in these core values, from
                         <span class="keyword">"A culture of short-term execution that enables long-term thinking"</span>
-                        to the <span class="keyword">"culture of grit"</span>, With that been said,
-                        I hope this answers the
+                        to the <span class="keyword">"culture of grit"</span>,
+                    </p>
+                    <p>
+                        With that been said, I hope this answers the
                         <span class="keyword">"why you want to put your heart, mind and hard work into this particular job."</span>
                         and I hope you <a href="#why-me">think</a> I'm a good fit.
                     </p>
