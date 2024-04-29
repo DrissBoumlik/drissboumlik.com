@@ -116,8 +116,8 @@
                     </figure>
                 </div>
                 <p>
-                    I started working as a freelance contractor afterward with a few companies
-                    using PHP/Laravel and WordPress, where I learned so much,
+                    I worked as a freelance contractor afterward with several companies,
+                    using mostly PHP/Laravel, and Angular for only a few projects, where I learned so much,
                     then I decided to get a full time job and I did around the end of 2019,
                     which was a great experience because I learned to be a team player among other things,
                     after 4/5 months corona kicked in and the world switched to work remotely.
@@ -202,7 +202,7 @@
                 </ul>
 
                 <h3>About the <a target="_blank" href="https://www.interaction-design.org/about/careers/how-to-apply"
-                                 class="text-decoration-underline">how to apply video</a></h3>
+                                class="text-decoration-underline">how to apply video</a></h3>
                 <p>
                     I started watching the video, and in the very first minute I heard this:
                 </p>
