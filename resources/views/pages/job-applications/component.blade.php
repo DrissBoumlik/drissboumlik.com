@@ -71,7 +71,7 @@
                 </p>
                 <div class="report-actions highlight-box px-3 py-2">
                     <p class="m-0">
-                        I want to help make a dent in the universe 🍀🍀🍀.</p>
+                        I want to help make a <span class="tc-blue fw-bold">dent in the universe</span> 🍀🍀🍀.</p>
                 </div>
                 <p>(Find more about this at the bottom of the page)</p>
 
