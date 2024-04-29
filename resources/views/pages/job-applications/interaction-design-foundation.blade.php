@@ -42,9 +42,9 @@
                     <h2 class="text-center font-weight-bolder page-content-headline">
                         <span id="greeting" class="d-block">Hi Yulia & Hiring Team 👋</span></h2>
 
-                    <h3>First things first ...</h3>
+                    <h3>First things first...</h3>
                     <p>According to the
-                        <a href="https://www.interaction-design.org/about/careers/how-to-apply" target="_blank">video</a>
+                        <a href="https://www.interaction-design.org/about/careers/how-to-apply" target="_blank">video</a>,
                         I confirm that :
                     </p>
                     <div class="report-actions highlight-box px-3 py-2">
@@ -56,7 +56,7 @@
                     <h3>Who am I ?</h3>
                     <p>I'm <a href="https://drissboumlik.com/about" target="_blank">Driss Boumlik</a>, 34 years old,
                         a developer from Sale, Morocco (near Rabat).
-                        I like to build and share things that add value or make positive impact.
+                        I like to build and share things that add value or make a positive impact.
                         I love solving problems 🧠, helping beginner developers 💻 and ... more ツ.
                     </p>
                     <p>
@@ -72,11 +72,12 @@
                     <p>
                         I started my journey in programming back at the university where I learned Algorithmic, C, Assembly, Java and C#.
                         I learned HTML, CSS, Javascript and Bootstrap later on my own.<br/>
-                        After my graduation I had 2 internships then I switched to full time trainer, as I had an amazing
+                        After my graduation, I had 2 internships then I switched to full time trainer, as I had an amazing
                         experience teaching kids the basics of programming using
-                        <a href="https://education.lego.com/en-us" target="_blank">Lego EV3 mindstorms</a> and
+                        <a href="https://education.lego.com/en-us" target="_blank">Lego EV3 Mindstorms</a> and
                         <a href="https://scratch.mit.edu/" target="_blank">Scratch</a>,
-                        and a year ago, I was invited to talk about it, you can watch the recording <a href="https://youtu.be/EpV5GA-kPos?t=1303" target="_blank">video</a>.
+                        and a year ago, I was invited to talk about it, you can watch the recording
+                        <a href="https://youtu.be/EpV5GA-kPos?t=1303" target="_blank">here</a>.
                     </p>
                     <div class="img-container">
                         <figure>
@@ -85,7 +86,8 @@
                         </figure>
                    </div>
                     <p>
-                        I started working as a freelance contractor afterward with few companies using PHP/Laravel and WordPress, where I learned so much,
+                        I started working as a freelance contractor afterward with a few companies
+                        using PHP/Laravel and WordPress, where I learned so much,
                         then I decided to get a full time job and I did around the end of 2019,
                         which was a great experience because I learned to be a team player among other things,
                         after 4/5 months corona kicked in and the world switched to work remotely.
@@ -93,7 +95,7 @@
 
                     <h3 id="why-me">Why me ?</h3>
                     <p>
-                        I am the go-to php/laravel guy at my current job, don't have all the answers 😅
+                        I am the go-to PHP/Laravel guy at my current job, don't have all the answers 😅
                         but I know pretty much how to find them.
                         I also love to experiment and discover new things to add value and make others developers lives better.
                         I like to improve the development environment.
@@ -103,10 +105,10 @@
                         <li> {{--Automation--}}
                             I joined a team working on a project started 6 months before I came,
                             I wrote a script which refreshes the auth token automatically,
-                            so we can focus only on testing those apis, which helped the team.
+                            so we can focus only on testing those Apis, which helped the team.
                         </li>
                         <li> {{--Laravel & Git--}}
-                            I Suggested Laravel and Git at my current job. An internal php framework and svn were used before.
+                            I Suggested Laravel and Git at my current job. An internal PHP framework and SVN were used before.
                             Currently, I'm trying to convince them to use docker and something else for the frontend side.
                         </li>
                         <li> {{--Environment--}}
@@ -116,9 +118,9 @@
                             <a href="https://drissboumlik.com/blog/how-cmder-made-my-life-easier-part-2" target="_blank">here</a>.
                         </li>
                         <li>
-                            Another thing, I work on projects with different php versions on windows,
+                            Since I work on projects with different PHP versions on windows,
                             I came up with a solution which allowed me to switch php versions on windows with one command.
-                            you can read about it
+                            You can read about it
                             <a href="https://drissboumlik.com/blog/switch-php-version-on-windows-with-one-command" target="_blank">here</a>.
                         </li>
                     </ul>
@@ -129,20 +131,20 @@
                         and I found the <a href="https://www.interaction-design.org/about" target="_blank">about</a> page
                         where you talk about your mission, which I really appreciate,
                         I also found that you have published some public packages
-                        on <a target="_blank" href="https://github.com/InteractionDesignFoundation">github</a> and
-                        <a target="_blank" href="https://packagist.org/users/IxDF/">packagist</a>, and I really liked it
+                        on <a target="_blank" href="https://github.com/InteractionDesignFoundation">Github</a> and
+                        <a target="_blank" href="https://packagist.org/users/IxDF/">Packagist</a>, and I really liked it
                         because it means that not only you're providing the best expertise and quality content for learners
                         with affordable prices, but you're also creating what benefits the open source community,
-                        and that gives me another reason to wanting to join you.
+                        and that gives me another reason for wanting to join you.
                     </p>
                     <h4>Community</h4>
                     <p>
                         The idea of contributing, sharing knowledge, helping others, adding value, all these things
-                        pushed me to host many online & in-person workshops and create a
+                        pushed me to host in-person workshops, create a
                         <a href="https://drissboumlik.com//community" target="_blank">community</a>
-                        at the end of 2020 with a goal in mind to help moroccan developers and build
-                        a healthy environment conducive to learning where we help each other,
-                        and I achieved that, thanks to >= 1.6k members and especially these amazing
+                        at the end of 2020 with a goal in mind to help Moroccan developers and build
+                        a healthy environment conducive to learning,
+                        where we hosted more than 117 online events, thanks to +1.6k members and especially these amazing
                         <a target="_blank" href="https://community.drissboumlik.com/p/contributors#contributors">contributors</a>.
                     </p>
                     <div class="img-container">
@@ -185,7 +187,7 @@
                     <p>
                         The first thing that popped up in my head was: <span class="keyword-2">"I want to work with these people !"</span>,
 						then a question kicked in: <span class="keyword-2">"Do I really want to ?, I think the answer is in
-                        the rest of the video!"</span>, I ended up watching the video, twice, and I felt like if I was setting with you guys
+                        the rest of the video!"</span>, I ended up watching the video, twice, and I felt like if I was sitting with you guys
                         and talking to each other just like you said:
                     </p>
                     <div class="report-actions highlight-box px-3 py-2">
@@ -201,8 +203,9 @@
                     <p>
                         <span class="keyword">"We always say that failure is an event, not an identity"</span>
                         and <span class="keyword">"fail forward"</span>
-                        these words are spot on, and just hit me so hard, because I've dealt with many people, especially students and freshmen who failed in their first job
-                        or had difficulties to cop with the industry challenges, and tried to help them and mentor them in a way to overcome
+                        these words are spot on, and just hit me so hard, because I've dealt with many people,
+                        especially students and freshmen who failed in their first job
+                        or had difficulties to cope with the industry challenges, and tried to help them and mentor them in a way to overcome
                         these obstacles.
                     </p>
                     <p>
@@ -211,7 +214,7 @@
                         to the <span class="keyword">"culture of grit"</span>,
                     </p>
                     <p>
-                        With that been said, I hope this answers the
+                        With that being said, I hope this answers the
                         <span class="keyword">"why you want to put your heart, mind and hard work into this particular job."</span>
                         and I hope you <a href="#why-me">think</a> I'm a good fit.
                     </p>
