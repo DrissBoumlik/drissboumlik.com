@@ -78,6 +78,10 @@
                 </p>
                 <div class="img-container">
                     <figure>
+                        <img src="assets/idf/coding-for-kids-2.jpg" class="img-fluid" alt="Lego EV3 Mindstorms Presentation">
+                        <figcaption class="text-center mt-1">Lego EV3 Mindstorms Presentation.</figcaption>
+                    </figure>
+                    <figure>
                         <img src="assets/idf/coding-for-kids.jpg" class="img-fluid" alt="Lego EV3 Mindstorms Session">
                         <figcaption class="text-center mt-1">Lego EV3 Mindstorms Session.</figcaption>
                     </figure>
