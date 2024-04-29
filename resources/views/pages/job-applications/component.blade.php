@@ -120,16 +120,16 @@
                     <li>
                         Since I work on projects with different PHP versions on windows,
                         I came up with a solution which allowed me to switch php versions on windows with one command.
-                        You can read about it
+                        I wrote about it
                         <a href="https://drissboumlik.com/blog/switch-php-version-on-windows-with-one-command"
-                           target="_blank">here</a>.
+                            target="_blank">here</a>.
                     </li>
                 </ul>
 
                 <h4>Contribution</h4>
                 <p>
                     I did some digging on the website and other IxDF links,
-                    and I found the <a href="https://www.interaction-design.org/about" target="_blank">about</a> page
+                    and I found the <a href="https://www.interaction-design.org/about#mission-statement" target="_blank">about</a> page
                     where you talk about your mission, which I really appreciate and want to contribute to,
                     I also found that you have published some public packages
                     on <a target="_blank" href="https://github.com/InteractionDesignFoundation">Github</a> and
@@ -142,7 +142,7 @@
                 <p>
                     The idea of contributing, sharing knowledge, helping others, adding value, all these things
                     pushed me to host in-person workshops, create a
-                    <a href="https://drissboumlik.com//community" target="_blank">community</a>
+                    <a href="https://drissboumlik.com/community" target="_blank">community</a>
                     at the end of 2020 with a goal in mind to help Moroccan developers and build
                     a healthy environment conducive to learning,
                     where we hosted more than 120 online events, thanks to +1.6k members and especially these amazing
