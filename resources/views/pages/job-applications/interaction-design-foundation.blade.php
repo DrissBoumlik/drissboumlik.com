@@ -24,7 +24,7 @@
                                 </div>
                             </div>
                             <div class="profile-image">
-                                <img src="{{ asset('/assets/img/me/circle-256_2.png') }}" alt="Profile Image"
+                                <img src="assets/img/me/circle-256_2.png" alt="Profile Image"
                                     width="100" height="100" class="img-fluid">
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                     </p>
                     <div class="img-container">
                         <figure>
-                            <img src="{{ asset('/assets/idf/coding-for-kids.jpg') }}" class="img-fluid" alt="Lego EV3 Mindstorms Session">
+                            <img src="assets/idf/coding-for-kids.jpg" class="img-fluid" alt="Lego EV3 Mindstorms Session">
                             <figcaption class="text-center mt-1">Lego EV3 Mindstorms Session.</figcaption>
                         </figure>
                    </div>
@@ -127,18 +127,20 @@
                         </li>
                         <li>
                             I wrote a <a href="https://github.com/DrissBoumlik/patch-generator/blob/master/build.sh" target="_blank">bash script</a>
-                            to automate the process of patch generation every time the client needed new updates for the applications.
+                            to automate the process of a patch generation every time the client needed new updates for the applications.
+                            (was kind of manual on the client side)
                         </li>
                         <li> {{--Environment--}}
-                            I created a list of aliases to make it easy and quick to type most used commands,
-                            checkout <a href="https://github.com/DrissBoumlik/desktop-config/blob/master/terminal/cmder/user_aliases.cmd" target="_blank">cmder</a>
-                            and <a href="https://github.com/DrissBoumlik/desktop-config/blob/master/terminal/zsh/.zshrc" target="_blank">bash</a>.
+                            I created a list of
+                            <a href="https://github.com/DrissBoumlik/desktop-config/blob/master/terminal/zsh/.zshrc" target="_blank">aliases</a>
+                            to make it easy and quick to type most used commands, You can read about it
+                            <a href="https://drissboumlik.com/blog/how-cmder-made-my-life-easier-part-2" target="_blank">here</a>.
                         </li>
                         <li>
-                            Another thing, since I work mostly on windows, and working on projects with different php versions,
+                            Another thing, I work on projects with different php versions (mostly on windows),
                             I came up with a solution which allowed me to switch php versions on windows with one command.
-                            you can read about it here :
-                            <a href="https://drissboumlik.com/blog/switch-php-version-on-windows-with-one-command" target="_blank">link</a>.
+                            you can read about it
+                            <a href="https://drissboumlik.com/blog/switch-php-version-on-windows-with-one-command" target="_blank">here</a>.
                         </li>
                     </ul>
 
@@ -166,13 +168,13 @@
                     </p>
                     <div class="img-container">
                         <figure>
-                            <img src="{{ asset('/assets/idf/workshops.jpg') }}" class="img-fluid" alt="Introduction to HTML & CSS">
-                            <figcaption class="text-center mt-1">Web dev workshop</figcaption>
+                            <img src="assets/idf/workshops.jpg" class="img-fluid" alt="Web Development Workshop">
+                            <figcaption class="text-center mt-1">Web Development Workshop.</figcaption>
                         </figure>
                     </div>
 
-                    <h3>What the future holds</h3> LINKEDIN ANSWER
-                    <h4>Upcoming Months/Years ...</h4> REMOVE ?
+                    <h3>What the future holds</h3> WAITING LINKEDIN ANSWER ????
+                    <h4>Upcoming Months/Years ...</h4> REMOVE ????
                     <p>
                         First of all, I do understand the importance of a great design and great user experience,
                         and how it can make a difference for people.
@@ -188,14 +190,12 @@
                             solutions to enhance the overall performance and reliability of our services.</li>
                         <li>Use microservices architecture to decouple and independently scale different components of the platform.</li>
                     </ul>
-                    ?????
 
 
                     <h3>After work-hours</h3>
                     <p>
-                        as you can see in my <a href="{{ asset('/assets/idf/calendar.png') }}" target="_blank">calendar</a>,
+                        As you can see in my <a href="assets/idf/calendar.png" target="_blank">calendar</a>,
                         each day I have something to do:
-                        ????????? UPDATE calendar image
                     </p>
                     <ul>
                         <li>I take a ride on my bike.</li>
@@ -232,7 +232,7 @@
                     <div class="report-actions highlight-box px-3 py-2">
                         <p class="m-0">
                             The more our cultures and values <span class="keyword">resonate</span> with you,
-                            the more likely you will <span class="keyword">love working</span> with us!<br/>
+                            the more likely you will <span class="keyword">love working</span> with us!
                             So, please use this video as a sort of,
                             <span class="keyword">a conversational partner</span>
                             and <span class="keyword">continuously ask yourself</span>,
