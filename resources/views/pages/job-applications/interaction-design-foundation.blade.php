@@ -42,20 +42,6 @@
                     <h2 class="text-center font-weight-bolder page-content-headline">
                         <span id="greeting" class="d-block">Hi Yulia & Hiring Team 👋</span></h2>
 
-                    <h3>TLDR;</h3> REMOVE
-                    <div class="tldr">
-                        <audio controls preload
-                               class="w-100 audio-player" id="audio-player">
-                            <source src="" type="audio/mp3">
-                            Your browser does not support the audio tag.
-                        </audio>
-                    </div>
-
-					<p style="margin-top: 2rem; color:red">
-					THIS application  should be a response to : <br/>
-					Write an application to us which includes a few paragraphs on why you want to put your heart, mind and hard work into this particular job.
-					</p>
-
                     <h3>First things first ...</h3>
                     <p>According to the
                         <a href="https://www.interaction-design.org/about/careers/how-to-apply" target="_blank">video</a>
@@ -197,7 +183,7 @@
                         </p>
                     </div>
                     <p>
-                        The first thing that popped up in my mind was: <span class="keyword-2">"I want to work with these people !"</span>,
+                        The first thing that popped up in my head was: <span class="keyword-2">"I want to work with these people !"</span>,
 						then a question kicked in: <span class="keyword-2">"Do I really want to ?, I think the answer is in
                         the rest of the video!"</span>, I ended up watching the video, twice, and I felt like if I was setting with you guys
                         and talking to each other just like you said:
