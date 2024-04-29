@@ -7,13 +7,42 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="profile-data">
                             <div class="profile-name" id="profile-name">Driss Boumlik</div>
-                            <div class="profile-links d-flex">
-                                <div class="github profile-link">
-                                    <a href="https://github.com/drissboumlik" target="_blank">
-                                        <i class="fa-brands fa-github"></i> Github</a></div>
-                                <div class="twitter profile-link">
-                                    <a href="https://twitter.com/drissboumlik" target="_blank">
-                                        <i class="fa-brands fa-x-twitter"></i> Twitter</a></div>
+                            <div class="social-icons mt-3">
+                                <div class="social-icons-wrapper">
+                                    <ul class="social-icons-items list-group list-group-horizontal align-items-start">
+                                        <li class="social-icon-item list-group-item border-0">
+                                            <a href="https://github.com/drissboumlik" target="_blank" rel="noopener"
+                                               aria-label="Follow me on github" data-toggle="tooltip"
+                                               data-placement="top" class="text-decoration-none"
+                                               data-bs-original-title="Follow me on github">
+                                                <span class="social-icon"><i class="fa-brands fa-github"></i></span>
+                                            </a>
+                                        </li>
+                                        <li class="social-icon-item list-group-item border-0">
+                                            <a href="https://linkedin.com/in/drissboumlik" target="_self"
+                                               rel="noopener" aria-label="Get in touch" data-toggle="tooltip"
+                                               data-placement="top" class="text-decoration-none"
+                                               data-bs-original-title="Get in touch">
+                                                <span class="social-icon"><i class="fa-brands fa-linkedin"></i></span>
+                                            </a>
+                                        </li>
+                                        <li class="social-icon-item list-group-item border-0">
+                                            <a href="https://discordapp.com/users/156878784019038208" target="_blank"
+                                               rel="noopener" aria-label="Find me on discord" data-toggle="tooltip"
+                                               data-placement="top" class="text-decoration-none"
+                                               data-bs-original-title="Find me on discord">
+                                                    <span class="social-icon"><i
+                                                            class="fa-brands fa-discord"></i></span></a></li>
+                                        <li class="social-icon-item list-group-item border-0">
+                                            <a href="https://twitter.com/drissboumlik" target="_blank" rel="noopener"
+                                               aria-label="twitter" data-toggle="tooltip" data-placement="top"
+                                               class="text-decoration-none"
+                                               data-bs-original-title="twitter">
+                                                    <span class="social-icon"><i
+                                                            class="fa-brands fa-x-twitter"></i></span></a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                         <div class="profile-image">
@@ -149,7 +178,8 @@
                     <a href="https://drissboumlik.com/community" target="_blank">community</a>
                     at the end of 2020 with a goal in mind to help Moroccan developers and build
                     a healthy environment conducive to learning,
-                    where we hosted more than 120 online events, thanks to +1.6k members and especially these amazing
+                    where we hosted more than 120 <a href="https://www.youtube.com/@TeaCodema/videos" target="_blank">online</a>
+                    events, thanks to +1.6k members and especially these amazing
                     <a target="_blank" href="https://community.drissboumlik.com/p/contributors#contributors">contributors</a>.
                 </p>
                 <div class="img-container">

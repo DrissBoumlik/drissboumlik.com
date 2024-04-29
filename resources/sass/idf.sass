@@ -64,22 +64,18 @@ $val2: 5px
     font-family: Harmattan, serif
     *
         color: var(--tc-blue) !important
+.social-icons-items
+    margin: 0
+    .social-icon-item
+        padding-right: 0.5rem
+        padding-left: 0.5rem
+        &:first-child
+            padding-left: 0
+        &:last-child
+            padding-right: 0
 
-.profile-link
-    padding: 0 1rem
-    font-size: 1.3rem
-    &:first-child
-        padding-left: 0
-    &:not(:first-child)
-        border-left: 1px solid #1DA1F2
-    i
-        color: var(--tc-blue-dark-2)
-    a
-        display: flex
-        align-items: center
-        gap: 5px
-        text-decoration: none
-        color: var(--tc-blue-dark-2)
+
+
 .profile-image img
     height: 130px
     width: 130px
