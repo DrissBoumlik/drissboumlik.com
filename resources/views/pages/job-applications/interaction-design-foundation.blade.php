@@ -64,7 +64,8 @@
                         However, when I saw
                         <a href="https://www.interaction-design.org/about/careers/senior-php-laravel-developer" target="_blank">this job posting</a>
                         and especially the video on the <a href="https://www.interaction-design.org/about/careers/how-to-apply" target="_blank">how to apply page</a>
-                        I had to apply since this sounds like a great opportunity.
+                        I had to apply since this sounds like a great opportunity and a productive work environment
+                        to work in.
                         That being said, let's get to my story and why I think we are a great fit for each other.
                     </p>
 
@@ -144,7 +145,7 @@
                         <a href="https://drissboumlik.com//community" target="_blank">community</a>
                         at the end of 2020 with a goal in mind to help Moroccan developers and build
                         a healthy environment conducive to learning,
-                        where we hosted more than 117 online events, thanks to +1.6k members and especially these amazing
+                        where we hosted more than 120 online events, thanks to +1.6k members and especially these amazing
                         <a target="_blank" href="https://community.drissboumlik.com/p/contributors#contributors">contributors</a>.
                     </p>
                     <div class="img-container">
