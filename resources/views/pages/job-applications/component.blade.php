@@ -193,7 +193,9 @@
                 <h3>After <a href="assets/idf/calendar.png" target="_blank">work-hours</a></h3>
                 <ul>
                     <li>I take a ride on my bike.</li>
-                    <li>I read a book.</li>
+                    <li>I read a <a href="https://www.goodreads.com/review/list/170245827-driss?view=covers"
+                                    target="_blank">book</a> or listen to
+                        <a href="https://castbox.fm/cl/360626" target="_blank">podcats</a>.</li>
                     <li>I spend some time on <a target="_blank" href="https://www.leetcode.com/">LeetCode</a>.</li>
                     <li>I host events for the community or a
                         <a target="_blank" href="https://community.drissboumlik.com#mock-interview">mock interview</a>
