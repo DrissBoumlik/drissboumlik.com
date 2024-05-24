@@ -7,7 +7,7 @@
 @endsection
 
 @section('headline')
-    <div class="d-flex flex-column align-items-center justify-content-center">
+    <div class="flex flex-col items-center justify-center">
         <h1 class="header-txt post-title capitalize-first-letter">{!! $post->title !!}</h1>
     </div>
 @endsection
@@ -18,8 +18,8 @@
             <div class="section">
                 <div class="container">
                     <div class="row">
-                        <div class="col-12 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2 mb-4 post">
-                            <div class="post-meta-data d-flex flex-column align-items-center">
+                        <div class="w-full lg:w-2/3 lg:mx-auto xl:w-2/3 xl:mx-auto mb-4 post">
+                            <div class="post-meta-data flex flex-col items-center">
                                 @auth
                                     <div class="admin-area mb-2">
                                         <span class="me-4"><i class="fa fa-eye"></i> {{ $post->views }}</span>
@@ -55,8 +55,8 @@
                             <div class="post-content mt-3">
                                 {!! $post->content !!}
                             </div>
-                            <div class="report-actions highlight-box mt-5 px-3 py-2">
-                                <p class="m-0">If you noticed a tpyo, bug <i class="fa-solid fa-bug"></i> or have an idea <i class="fa-solid fa-lightbulb"></i> for the next article,
+                            <div class="report-actions highlight-box mt-12 px-3 py-2">
+                                <p>If you noticed a tpyo, bug <i class="fa-solid fa-bug"></i> or have an idea <i class="fa-solid fa-lightbulb"></i> for the next article,
                                     Feel free to email me at hi@drissboumlik.com</p>
                             </div>
                         </div>

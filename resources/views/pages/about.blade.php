@@ -1,19 +1,19 @@
 @extends('layout.page-content-wide')
 
 @section('headline')
-    <div class="d-flex flex-column align-items-center justify-content-center">
+    <div class="flex flex-col items-center justify-center">
         <h1 class="header-txt">{!! $data->headline !!}</h1>
     </div>
 @endsection
 
 @section('page-content')
     <div class="container-fluid">
-        <div class="section py-5">
-            <div class="py-5" id="about">
+        <div class="section py-12">
+            <div class="py-12" id="about">
                 <div class="about-page about">
                     <div class="container">
-                        <div class="row align-items-center justify-content-center">
-                            <div class="col-lg-6 col-md-7 col-12 about-me-txt">
+                        <div class="row items-center justify-center">
+                            <div class="w-full md:w-7/12 lg:w-1/2 about-me-txt">
                                 <p>I'm <span class="fw-bold tc-blue">Driss Boumlik</span>, from Morocco, I code, blog, speak, teach, mentor ...
                                     and other stuff usually not in the same order.</p>
                                 <p>I like to build & share things that add value or make positive impact.</p>
@@ -25,9 +25,9 @@
                                     <a target="_blank" href="https://www.goodreads.com/review/list/170245827-driss?view=covers" rel="noopener">books</a>.</p>
                                 <p>Checkout my <a href="/resume">resume</a> and reach me through : <a href="mailto:hi@drissboumlik.com">hi@drissboumlik.com</a></p>
                             </div>
-                            <div class="col-lg-6 col-md-5 col-11">
+                            <div class="w-11/12 md:w-5/12 lg:w-1/2">
                                 <div class="img-wrapper">
-                                    <img class="img-fluid w-100 lazyload" src="{{ asset('/assets/img/activities/compressed/coding-challenges.webp') }}"
+                                    <img class="img-fluid w-full lazyload" src="{{ asset('/assets/img/activities/compressed/coding-challenges.webp') }}"
                                          data-src="{{ asset('/assets/img/activities/coding-challenges.svg') }}"
                                          alt="" width="300" height="300" loading="lazy">
                                 </div>

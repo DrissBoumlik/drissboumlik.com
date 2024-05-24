@@ -207,12 +207,12 @@ function initBlogSearch() {
         });
         search_blog_form_wrapper.on('click', function (event) {
             if (event.target === this) {
-                search_blog_form_wrapper.addClass('d-none');
+                search_blog_form_wrapper.addClass('hidden');
             }
         });
 
         $('.display-search-form').on('click', function() {
-            search_blog_form_wrapper.removeClass('d-none').addClass('show');
+            search_blog_form_wrapper.removeClass('hidden').addClass('show');
             $('.search-blog-input').focus();
         });
     }

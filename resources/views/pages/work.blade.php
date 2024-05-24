@@ -1,7 +1,7 @@
 @extends('layout.page-content-wide')
 
 @section('headline')
-    <div class="d-flex flex-column align-items-center justify-content-center">
+    <div class="flex flex-col items-center justify-center">
         <h1 class="header-txt">{!! $data->work->header !!}</h1>
     </div>
 @endsection

@@ -1,9 +1,26 @@
 // @import '~bootstrap/scss/bootstrap'
 // @import 'bootstrap'
+@import "./_imports/custom/tw"
 
 @tailwind base
 @tailwind components
 @tailwind utilities
+
+@layer utilities
+    .btn
+        @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center
+        @apply inline-block px-3 py-1.5 font-normal text-base leading-6 text-current bg-transparent
+        @apply border border-transparent rounded shadow-inner focus:outline-none focus:ring-2 focus:ring-opacity-50
+        @apply transition duration-150 ease-in-out hover:border-transparent disabled:opacity-65
+//    .form-floating
+//        @apply relative
+//        > .form-control
+//            @apply border border-gray-300 rounded-md py-3 px-2 w-full focus:outline-none
+//            &:focus + label
+//                @apply scale-85 translate-y--2 translate-x-15
+//        > label
+//            @apply absolute top-0 left-0 py-3 px-2 text-gray-600 transition-all pointer-events-none
+
 
 @import 'owl.carousel/dist/assets/owl.carousel.css'
 @import 'owl.carousel/dist/assets/owl.theme.default.css'

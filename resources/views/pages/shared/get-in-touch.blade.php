@@ -1,8 +1,8 @@
-<div class="get-in-touch py-5" id="get-in-touch">
+<div class="get-in-touch py-12" id="get-in-touch">
     <div class="container">
         @include('components.headline', ['headline' => 'Get in Touch'])
         <div class="row">
-            <div class="col-12 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+            <div class="w-full md:w-8/12 lg:w-8/12 xl:w-6/12 mx-auto">
                 <form id="contact-form" class="mb-3">
                     @csrf
                     <div class="form-floating mb-3">
@@ -19,9 +19,9 @@
                     </div>
                     <div class="form-floating mb-3">
                         <!-- Google Recaptcha -->
-                        <div id="form-g-recaptcha-response" class="g-recaptcha w-100" data-sitekey={{ config('services.recaptcha.key') }}></div>
+                        <div id="form-g-recaptcha-response" class="g-recaptcha w-full" data-sitekey={{ config('services.recaptcha.key') }}></div>
                     </div>
-                    <button type="submit" class="btn tc-blue-dark-2-bg tc-blue-bg-hover w-100">Send</button>
+                    <button type="submit" class="btn tc-blue-dark-2-bg tc-blue-bg-hover w-full">Send</button>
                 </form>
             </div>
         </div>

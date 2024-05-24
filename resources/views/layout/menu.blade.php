@@ -5,7 +5,8 @@
                 <div class="header-menu-wrapper menu-wrapper">
                     <ul class="header-menu-container list-group flex flex-row">
                         @foreach ($headerMenu as $link)
-                            <li class="header-menu-item menu-item list-group-item animated-underline {{ request()->is($link->slug) ? 'active' : '' }}">
+                            <li class="header-menu-item menu-item list-group-item animated-underline
+                                    {{ request()->is($link->slug) ? 'active' : '' }}">
                                 <a href="{{ \URL::to($link->slug) }}" rel="noopener" target="{{ $link->target ?? '_self' }}"
                                    aria-label="{{ $link->title }}" class="capitalize">
                                     {!! $link->title !!}

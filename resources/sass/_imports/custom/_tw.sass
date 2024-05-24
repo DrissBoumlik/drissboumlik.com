@@ -1,11 +1,114 @@
 .container
     margin: auto
+    padding-left: calc(1.5rem * 0.5)
+    padding-right: calc(1.5rem * 0.5)
+.row
+    display: flex
+    flex-wrap: wrap
+    //margin-top: 0
+    margin-right: calc(-.5 * 1.5rem)
+    margin-left: calc(-.5 * 1.5rem)
+    > *
+        flex-shrink: 0
+        //width: 100%
+        max-width: 100%
+        padding-right: calc(1.5rem * .5)
+        padding-left: calc(1.5rem * .5)
+        //margin-top: 0
+hr
+    margin: 1rem 0
 .list-group
     width: 100%
+    display: flex
     flex-wrap: wrap
     justify-content: center
     align-items: center
     padding-left: 0
     margin-bottom: 0
+    border-radius: .375rem
 .list-group-horizontal
     flex-direction: row
+
+.input-group
+    position: relative
+    display: flex
+    flex-wrap: wrap
+    align-items: stretch
+    width: 100%
+
+    > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback)
+        margin-left: calc(1px * -1)
+        border-top-left-radius: 0
+        border-bottom-left-radius: 0
+
+    &:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating),
+    &:not(.has-validation)>.dropdown-toggle:nth-last-child(n+3),
+    &:not(.has-validation)>.form-floating:not(:last-child)>.form-control,
+    &:not(.has-validation)>.form-floating:not(:last-child)>.form-select
+        border-top-right-radius: 0
+        border-bottom-right-radius: 0
+
+    > .form-control, > .form-select, > .form-floating
+        position: relative
+        flex: 1 1 auto
+        width: 1%
+        min-width: 0
+
+
+.input-group-text
+    display: flex
+    align-items: center
+    padding: .375rem .75rem
+    font-size: 1rem
+    font-weight: 400
+    line-height: 1.5
+    color: #212529
+    text-align: center
+    white-space: nowrap
+    background-color: #f8f9fa
+    border: 1px solid #dee2e6
+    border-radius: .375rem
+.form-control
+    display: block
+    width: 100%
+    padding: .375rem .75rem
+    font-size: 1rem
+    font-weight: 400
+    line-height: 1.5
+    color: #212529
+    appearance: none
+    background-color: #fff
+    background-clip: padding-box
+    border: 1px solid #dee2e6
+    border-radius: .375rem
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
+
+.get-in-touch
+    .form-floating
+        position: relative
+        > .form-control
+            padding: 1rem .75rem
+            line-height: 1.25
+            &:not(textarea)
+                height: calc(3.5rem + 1px)
+                min-height: calc(3.5rem + 1px)
+            &:focus
+                padding-top: 1.625rem
+                padding-bottom: .625rem
+                ~ label
+                    transform: scale(.85) translateY(-.5rem) translate(.15rem)
+        > label
+            position: absolute
+            top: 0
+            left: 0
+            z-index: 2
+            height: 100%
+            padding: 1rem .75rem
+            overflow: hidden
+            text-align: start
+            text-overflow: ellipsis
+            white-space: nowrap
+            pointer-events: none
+            border: 1px solid transparent
+            transform-origin: 0 0
+            transition: opacity .1s ease-in-out, transform .1s ease-in-out

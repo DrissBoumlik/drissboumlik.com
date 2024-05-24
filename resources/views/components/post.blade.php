@@ -1,4 +1,4 @@
-<div class="post h-100">
+<div class="post h-full">
     <div class="post-cover">
         <img src="/{{ $post->cover_compressed }}" alt="{{ $post->title }}"
              data-src="/{{ $post->cover }}"
@@ -18,7 +18,7 @@
         @if ($post->tags)
             <div class="post-tags">
                 @foreach ($post->tags as $tag)
-                    <div class="post-tag d-inline-block">
+                    <div class="post-tag inline-block">
                         <i class="fa-solid fa-tag fs-small"></i><a class="ms-1" href="/tags/{{ $tag->slug }}"><span>{{ $tag->name }}</span></a>
                     </div>
                 @endforeach

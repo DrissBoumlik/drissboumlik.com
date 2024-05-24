@@ -4,9 +4,9 @@
 
     <div class="container p-0">
 
-        <div class="_404 d-flex align-items-center justify-content-center" style="height: 90vh">
-            <div class="row my-5 w-100">
-                <div class="col-lg-8 offset-lg-2 col-12">
+        <div class="_404 flex items-center justify-center" style="height: 90vh">
+            <div class="row my-12 w-full">
+                <div class="w-full lg:w-2/3 lg:ml-1/6">
                     <div class="not-found-container">
                         <div class="not-found-bar">
                             <span></span>

@@ -1,12 +1,12 @@
-<div class="skills py-5">
+<div class="skills py-12">
     <div class="container">
         @include('components.headline', ['headline' => $techs->header])
         <div class="row">
             @foreach($techs->data as $c)
-                <div class="col-4 col-sm-3 col-md-2 skill-item-wrapper">
+                <div class="w-1/3 sm:w-1/4 md:w-1/6 skill-item-wrapper">
                     <div class="skill-item">
                         <div class="skill-icon">{!! $c->icon !!}</div>
-                        <div class="skill-text text-capitalize">{{ $c->name }}</div>
+                        <div class="skill-text capitalize">{{ $c->name }}</div>
                     </div>
                 </div>
             @endforeach

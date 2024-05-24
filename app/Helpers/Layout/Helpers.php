@@ -39,7 +39,15 @@ if (!function_exists('getFooterMenu')) {
     {
         $footerMenu = config('data.layout.footer-menu');
         if (!$withHidden) {
-            $footerMenu = array_filter($footerMenu, static fn($item) => !isset($item->hidden) || !$item->hidden);
+            $footerMenu = array_filter($footerMenu, function($item) {
+                $item->slugified_title = \Str::slug($item->title);
+                return !isset($item->hidden) || !$item->hidden;
+            });
+        } else {
+            $footerMenu = array_map(function($item) {
+                $item->slugified_title = \Str::slug($item->title);
+                return $item;
+            }, $footerMenu);
         }
         return $footerMenu;
     }

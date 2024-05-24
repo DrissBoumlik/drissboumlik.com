@@ -5,7 +5,7 @@
 @endsection
 
 @section('headline')
-    <div class="d-flex flex-column align-items-center justify-content-center">
+    <div class="flex flex-col items-center justify-center">
         <h1 class="header-txt">{!! $data->headline !!}
             @if(\Auth::check() && isset($tag))
                 <span class="fs-5"><a href="/admin/tags/edit/{{ $tag->slug }}" target="_blank">
@@ -17,29 +17,29 @@
 
 @section('page-content')
     <div class="container-fluid p-0">
-        <div class="posts section py-5">
-            <div class="py-5" id="posts">
+        <div class="posts section py-12">
+            <div class="py-12" id="posts">
                 <div class="section posts">
                     <div class="container">
                         <div class="row">
                             @foreach ($posts as $post)
-                                <div class="col-12 col-md-8 offset-md-2 col-lg-6 col-lg-0 col-xl-6 col-xl-0 mb-4">
+                                <div class="w-full md:w-1/2 mb-4">
                                     @include('components.post', ['post' => $post])
                                 </div>
                             @endforeach
                             @if (!count($posts))
-                                <div class="col-12">
-                                    <div class="message-wrapper d-flex justify-content-center align-items-center"
+                                <div class="w-full">
+                                    <div class="message-wrapper flex justify-center items-center"
                                          style="min-height: 300px">
-                                        <h3 class="text-uppercase">No posts found <i class="fa-solid fa-sad-cry"></i>!</h3>
+                                        <h3 class="uppercase">No posts found <i class="fa-solid fa-sad-cry"></i>!</h3>
                                     </div>
                                 </div>
                             @endif
                             @if(count($posts) && $posts_data->lastPage() > 1)
-                            <div class="col-12 col-md-8 offset-md-2
-                                        col-lg-8 offset-lg-2 col-xl-6 offset-xl-3
-                                        mt-5">
-                                <div class="pagination-wrapper justify-content-center">
+                            <div class="w-full md:w-2/3 md:ml-auto md:mr-auto
+                                        lg:w-2/3 lg:ml-auto lg:mr-auto
+                                        xl:w-1/2 xl:ml-auto xl:mr-auto mt-12">
+                                <div class="pagination-wrapper justify-center">
                                     {{ $posts_data->onEachSide(5)->links() }}
                                 </div>
                             </div>

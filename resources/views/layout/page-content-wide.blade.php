@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <div id="page-wide" class="page page-wide container-fluid {{ $py_0 ?? 'py-5' }} {{ $px_0 ?? 'px-2' }}">
+    <div id="page-wide" class="page page-wide container-fluid {{ $py_0 ?? 'py-12' }} {{ $px_0 ?? 'px-2' }}">
         @yield('page-content')
     </div>
     @yield('addons')

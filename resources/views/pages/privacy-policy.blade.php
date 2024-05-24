@@ -1,19 +1,19 @@
 @extends('layout.page-content-wide')
 
 @section('headline')
-    <div class="d-flex flex-column align-items-center justify-content-center">
+    <div class="flex flex-col items-center justify-center">
         <h1 class="header-txt">{!! $data->headline !!}</h1>
     </div>
 @endsection
 
 @section('page-content')
     <div class="container-fluid">
-        <div class="privacy-policy section py-5">
-            <div class="py-5" id="privacy-policy">
+        <div class="privacy-policy section py-12">
+            <div class="py-12" id="privacy-policy">
                 <div class="testimonials">
                     <div class="container">
                         <div class="row">
-                            <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+                            <div class="w-full md:w-5/6 md:ml-1/12 lg:w-2/3 lg:ml-1/6">
                                 <h4 class="block-title-header mt-0 mb-4">Privacy Policy</h4>
                                 <p class="block-content">Last Updated: 11/20/2023</p>
 

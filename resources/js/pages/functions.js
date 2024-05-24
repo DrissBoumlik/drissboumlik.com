@@ -49,12 +49,12 @@ function editor() {
 }
 
 function reRun(btn = null){
-    $('.body-loading').removeClass('d-none');
-    $('.about-code .output-wrapper .body-container .lines').addClass('d-none');
+    $('.body-loading').removeClass('hidden');
+    $('.about-code .output-wrapper .body-container .lines').addClass('hidden');
     setTimeout(() => {
         if (btn) btn.attr('disabled', false);
-        $('.body-loading').addClass('d-none');
-        $('.about-code .output-wrapper .body-container .lines').removeClass('d-none');
+        $('.body-loading').addClass('hidden');
+        $('.about-code .output-wrapper .body-container .lines').removeClass('hidden');
         output();
     }, 1000);
     if (btn) btn.removeClass('pushed').attr('disabled', true);

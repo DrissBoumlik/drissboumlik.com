@@ -1,8 +1,8 @@
-<div class="community py-5">
+<div class="community py-12">
     <div class="container">
         @include('components.headline', ['headline' => 'community'])
-        <div class="row align-items-center">
-            <div class="col-md-7 col-sm-12">
+        <div class="row items-center">
+            <div class="md:w-7/12 sm:w-full">
                 <div class="community-description">
                     <p>The <a href="/community" target="_blank">TeaCode Community</a> is a community where Moroccan developers help each other and
                         evolve in an environment conducive to learning.</p>
@@ -15,9 +15,9 @@
                     @include('addons.social-links', ['socialLinks' => $socialLinks])
                 </div>
             </div>
-            <div class="col-md-5 col-sm-10 col-11">
+            <div class="md:w-5/12 sm:w-10/12 w-11/12">
                 <div class="img-wrapper community-img">
-                    <img class="img-fluid w-100 lazyload" src="{{ asset('/assets/img/teacode/compressed/teacodema.webp') }}"
+                    <img class="w-full lazyload" src="{{ asset('/assets/img/teacode/compressed/teacodema.webp') }}"
                          data-src="{{ asset('/assets/img/teacode/teacodema.webp') }}"
                          alt="" width="200" height="100" loading="lazy">
                 </div>
