@@ -24,7 +24,7 @@
                                     <div class="admin-area mb-2">
                                         <span class="me-4"><i class="fa fa-eye"></i> {{ $post->views }}</span>
                                         <span class="me-4"><i class="fa fa-thumbs-up"></i> {{ $post->likes }}</span>
-                                        <span class="fs-5"><a href="/admin/posts/edit/{{ $post->slug }}" target="_blank">
+                                        <span><a href="/admin/posts/edit/{{ $post->slug }}" target="_blank">
                                             <i class="fa fa-fw fa-pencil"></i> Edit</a></span>
                                     </div>
                                 @endauth
