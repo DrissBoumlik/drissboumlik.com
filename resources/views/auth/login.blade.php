@@ -6,10 +6,10 @@
 
 @section('content')
     <div class="container-fluid auth-box">
-        <section class="vh-100">
-            <div class="container d-flex justify-content-center align-items-center h-100">
-                <div class="row d-flex justify-content-center align-items-center w-100">
-                    <div class="col-lg-6 col-md-10 login-block">
+        <section class="h-screen">
+            <div class="container flex justify-center items-center h-full">
+                <div class="flex flex-row justify-center items-center w-full">
+                    <div class="lg:w-1/2 md:w-5/6 w-full login-block">
                         <form class="login-form" method="POST" action="{{ route('login') }}">
                             @csrf
                             <!-- Email input -->
@@ -48,8 +48,8 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-lg-6 col-md-2 img-block">
-                        <img src="{{ asset('/assets/img/activities/workshops.svg') }}" alt="" class="auth-img img-fluid w-100" width="300" height="300" loading="lazy">
+                    <div class="lg:w-1/2 md:w-1/6 img-block">
+                        <img src="{{ asset('/assets/img/activities/workshops.svg') }}" alt="" class="auth-img max-w-full h-auto w-full" width="300" height="300" loading="lazy">
                     </div>
                 </div>
             </div>
