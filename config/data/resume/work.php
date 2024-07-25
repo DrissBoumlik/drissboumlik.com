@@ -11,7 +11,7 @@ return (object) [
             "featured" => true,
             "links" => (object) [
                 "repository" => null,
-                "website" => "https://drissboumlik.github.io/grinta-front/"
+                "website" => "https://drissboumlik.github.io/grinta-front-dist/"
             ]
         ],
         (object) [

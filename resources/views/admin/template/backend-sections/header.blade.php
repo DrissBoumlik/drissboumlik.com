@@ -4,21 +4,7 @@
     <div class="content-header">
         <!-- Left Section -->
         <div class="d-flex align-items-center">
-            <!-- Toggle Sidebar -->
-            <!-- Layout API, functionality initialized in Template._uiApiLayout()-->
-            <button type="button" class="btn btn-sm btn-alt-secondary me-2 d-lg-none" data-toggle="layout" data-action="sidebar_toggle">
-                <i class="fa fa-fw fa-bars"></i>
-            </button>
-            <!-- END Toggle Sidebar -->
-
-            <!-- Toggle Mini Sidebar -->
-            <!-- Layout API, functionality initialized in Template._uiApiLayout()-->
-            <button type="button" class="btn btn-sm btn-alt-secondary me-2 d-none d-lg-inline-block" data-toggle="layout" data-action="sidebar_mini_toggle">
-                <i class="fa fa-fw fa-ellipsis-v"></i>
-            </button>
-            <!-- END Toggle Mini Sidebar -->
-
-
+            @include('admin.addons.toggle-sidebar')
         </div>
         <!-- END Left Section -->
 
@@ -26,7 +12,7 @@
         <div class="d-flex align-items-center">
             @include('admin.addons.darkmode')
             <!-- User Dropdown -->
-            <div class="dropdown d-inline-block ms-2">
+            <div class="dropdown d-inline-block mx-2">
                 <button type="button" class="btn btn-sm btn-alt-secondary d-flex align-items-center" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="rounded-circle" src="{{ asset('/assets/img/me/circle-256.png') }}" alt="Header Avatar" width="20" height="20" loading="lazy">
                     <span class="d-none d-sm-inline-block ms-2">{{ \Auth::user()->name }}</span>
@@ -49,12 +35,7 @@
                 </div>
             </div>
             <!-- END User Dropdown -->
-            <!-- Toggle Sidebar -->
-            <!-- Layout API, functionality initialized in Template._uiApiLayout()-->
-            <button type="button" class="btn btn-sm btn-alt-secondary ms-2" data-toggle="layout" data-action="sidebar_toggle">
-                <i class="fa fa-fw fa-bars"></i>
-            </button>
-            <!-- END Toggle Sidebar -->
+            @include('admin.addons.toggle-sidebar')
 
         </div>
         <!-- END Right Section -->

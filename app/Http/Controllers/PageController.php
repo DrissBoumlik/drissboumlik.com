@@ -28,7 +28,7 @@ class PageController extends Controller
             $data = pageSetup('Home | Driss Boumlik', null, true, true, true);
             $data->socialLinksCommunity = getSocialLinksCommunity();
             $data->sections = [];
-            $data->sections['techs'] = getTechs();
+//            $data->sections['techs'] = getTechs();
             // $data->sections['work'] = getWork(onlyFeatured: true);
             $data->sections['services'] = getServices();
             $data->sections['testimonials'] = getTestimonials();
