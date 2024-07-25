@@ -239,6 +239,7 @@ function initPostEditor() {
             { text: 'Yaml', value: 'yaml' },
             { text: 'SQL', value: 'sql' },
 
+            { text: 'Batch', value: 'batch' },
             { text: 'HTML/XML', value: 'markup' },
             { text: 'CSS', value: 'css' },
             { text: 'JavaScript', value: 'javascript' },
