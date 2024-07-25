@@ -8,7 +8,7 @@
 
 @section('headline')
     <div class="d-flex flex-column align-items-center justify-content-center">
-        <h1 class="header-txt post-title capitalize-first-letter">{!! $post->title !!}</h1>
+        <h1 class="header-txt post-title capitalize-first-letter text-center">{!! $post->title !!}</h1>
     </div>
 @endsection
 
