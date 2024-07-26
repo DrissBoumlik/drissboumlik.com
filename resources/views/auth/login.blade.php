@@ -33,7 +33,7 @@
                                 </span>
                                 @enderror
                             </div>
-                            <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="flex justify-between items-center mb-2">
                                 <!-- Checkbox -->
                                 <div class="form-check">
                                     <input class="form-check-input me-2" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} />
@@ -48,7 +48,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="lg:w-1/2 md:w-1/6 img-block">
+                    <div class="lg:w-1/2 md:w-1/6 w-full img-block">
                         <img src="{{ asset('/assets/img/activities/workshops.svg') }}" alt="" class="auth-img max-w-full h-auto w-full" width="300" height="300" loading="lazy">
                     </div>
                 </div>
