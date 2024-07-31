@@ -1,4 +1,5 @@
 <div class="
+toolbar toolbar-item
 gist Box-body
 wp-block-image gist-meta
 gist-data
