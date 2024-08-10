@@ -79,3 +79,9 @@ if (!function_exists('shortenTextIfLongByLength')) {
         return strlen($text) < $length ? $text : \Str::limit($text, $length);
     }
 }
+
+if (!function_exists('isGuest')) {
+    function isGuest ($guestView = true) {
+        return !\Auth::check() || $guestView;
+    }
+}

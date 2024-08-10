@@ -23,14 +23,28 @@
             @auth
             <div class="header-menu-wrapper login-menu-items flex-grow-2">
                 <ul class="header-menu-container list-group list-group-horizontal">
-                    <li class="header-menu-item menu-item list-group-item animated-underline">
-                        <a href="/admin" rel="noopener" aria-label="Admin Panel">
-                            <i class="fa-solid fa-gear"></i>
-                        </a>
-                    </li>
-                    <li class="header-menu-item menu-item list-group-item animated-underline">
-                        @include('components.logout-button', ['logout_btn' => '<i class="fa-solid fa-power-off"></i>', 'link_classes' => ''])
-                    </li>
+                    @if (isGuest(session()->get('guest-view')))
+                        <li class="header-menu-item menu-item list-group-item animated-underline">
+                            <a href="?guest-view=-1&forget" rel="noopener" aria-label="Admin View" title="Back to Admin view">
+                                <i class="fa-solid fa-eye-slash"></i>
+                            </a>
+                        </li>
+                    @else
+                        <li class="header-menu-item menu-item list-group-item animated-underline">
+                            <a href="?guest-view=1&forget" rel="noopener" aria-label="Guest View" title="Switch to Guest view">
+                                <i class="fa-solid fa-eye"></i>
+                            </a>
+                        </li>
+
+                        <li class="header-menu-item menu-item list-group-item animated-underline">
+                            <a href="/admin" rel="noopener" aria-label="Admin Panel">
+                                <i class="fa-solid fa-gear"></i>
+                            </a>
+                        </li>
+                        <li class="header-menu-item menu-item list-group-item animated-underline">
+                            @include('components.logout-button', ['logout_btn' => '<i class="fa-solid fa-power-off"></i>', 'link_classes' => ''])
+                        </li>
+                    @endif
                 </ul>
             </div>
             @endauth

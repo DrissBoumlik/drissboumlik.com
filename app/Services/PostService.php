@@ -11,6 +11,10 @@ class PostService
     private const LATEST_FEATURED_POSTS_COUNT = 4;
     private const POSTS_PER_PAGE = 10;
 
+    public function publishedOnly($query)
+    {
+        return $query->where('published', true);
+    }
 
     public function getLatestFeaturedPosts()
     {
@@ -19,10 +23,10 @@ class PostService
     }
 
 
-    public function preparePosts($posts)
+    public function preparePosts($posts, $guestView = false)
     {
-        if (!\Auth::check()) {
-            $posts = $posts->where('published', true);
+        if (isGuest($guestView)) {
+            $posts = $this->publishedOnly($posts);
         }
         $posts_data = (object) (new PostWithPaginationCollection($posts
             ->orderBy('created_at', 'desc')
