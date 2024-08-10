@@ -24,7 +24,6 @@ class BlogController extends Controller
     {
         $this->postService = $postService;
         $this->cacheService = $cacheService;
-        $this->guestView = $this->handleGuestView(request());
     }
 
     private function handleGuestView(Request $request)
@@ -44,6 +43,7 @@ class BlogController extends Controller
 
     public function search(Request $request)
     {
+        $this->guestView = $this->handleGuestView($request);
         $term = $request->get('term');
         if (!$term) {
             return redirect('/blog');
@@ -95,6 +95,7 @@ class BlogController extends Controller
 
     public function getPosts(Request $request)
     {
+        $this->guestView = $this->handleGuestView($request);
         $page = $request->get('page');
         $key = $this->cacheService->getCachedFullKey("posts-data-$page", $this->guestView);
         $result = $this->cacheService->cache_data($key, function() {
@@ -108,6 +109,7 @@ class BlogController extends Controller
 
     public function getPost(Request $request, $slug)
     {
+        $this->guestView = $this->handleGuestView($request);
         $post = Post::where('slug', $slug);
         if (isGuest($this->guestView)) {
             $post = $this->postService->publishedOnly($post);
@@ -139,6 +141,7 @@ class BlogController extends Controller
 
     public function likePost(Request $request, $slug, int $value)
     {
+        $this->guestView = $this->handleGuestView($request);
         $post = Post::where('slug', $slug)->first();
         $post->increment('likes', $value);
         return ['post' => $post];
@@ -146,6 +149,7 @@ class BlogController extends Controller
 
     public function getPostsByTag(Request $request, $slug)
     {
+        $this->guestView = $this->handleGuestView($request);
         $tag = Tag::where('slug', $slug)->first();
         if ($tag == null) {
             return redirect('/not-found');
@@ -164,7 +168,7 @@ class BlogController extends Controller
 
     public function getTags(Request $request)
     {
-        dd(session()->get('guest-view'));
+        $this->guestView = $this->handleGuestView($request);
         $key = $this->cacheService->getCachedFullKey('tags-data', $this->guestView);
         $data = $this->cacheService->cache_data($key, function() {
             $data = pageSetup('Tags | Blog', 'Tags', true, true);
