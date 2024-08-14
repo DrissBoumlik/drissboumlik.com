@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\VisitorController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\SubscriberController as AdminSubscriberController;
 use App\Http\Controllers\Admin\SitemapController as AdminSitemapController;
+use App\Http\Controllers\Admin\PageController as AdminPageController ;
+use App\Http\Controllers\Admin\ToolController as AdminToolController;
 use App\Http\Controllers\Admin\FileManagerController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
@@ -51,8 +53,8 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::post('/messages', [ApiMessageController::class, 'index']);
             Route::post('/subscriptions', [AdminApiSubscriberController::class, 'index']);
             Route::get('/posts/{slug}/assets', [ApiPostController::class, 'getPostAssets']);
-            Route::get('/{table}/columns', [ToolController::class, 'getTableColumns']);
-            Route::post('/stats', [ToolController::class, 'getTableColumnStats']);
+            Route::get('/{table}/columns', [AdminToolController::class, 'getTableColumns']);
+            Route::post('/stats', [AdminToolController::class, 'getTableColumnStats']);
             Route::post('/media', [FileManagerController::class, 'uploadMedia']);
             Route::post('/media/copy', [FileManagerController::class, 'copyMedia']);
             Route::post('/media/rename', [FileManagerController::class, 'renameMedia']);
@@ -62,7 +64,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::delete('/directories/{path}', [FileManagerController::class, 'emptyDirectory'])->where('path', '.*');
         });
         Route::post('/get-in-touch', [ContactController::class, 'getInTouch']);
-        Route::post('/blog/{slug}/{value}', [BlogController::class, 'likePost']);
+//        Route::post('/blog/{slug}/{value}', [BlogController::class, 'likePost']);
 //        Route::post('/subscribers', [ApiSubscriberController::class, 'subscribe']);
 //        Route::put('/subscribers/{uuid}', [ApiSubscriberController::class, 'update']);
     });
@@ -80,41 +82,34 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
 
 
         Route::middleware('auth')->group(function () {
-            // Profile
-            // Route::get('profile', [AdminController::class, 'profile'])->name('profile');
-            // Route::post('profile', [AdminController::class, 'updateProfile'])->name('profile.update');
             // Auth
             Route::post('/logout', [LoginController::class , 'logout'])->name('logout');
             // Profile
             Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
             Route::post('profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
-            // Tools
-            // Route::get('/export-db', [ToolController::class , 'export_db']);
-
             // Blog
             Route::get('/posts', [PostController::class, 'index']);
             Route::get('/posts/create', [PostController::class, 'create']);
             Route::post('/posts', [PostController::class, 'store']);
             Route::get('/posts/edit/{slug}', [PostController::class, 'edit']);
             Route::put('/posts/{slug}', [PostController::class, 'update']);
-//            Route::post('/api/posts', [PostController::class, 'api_store']); // Testing cropper js
-
             Route::get('/tags', [TagController::class, 'index']);
             Route::get('/tags/create', [TagController::class, 'create']);
             Route::get('/tags/edit/{slug}', [TagController::class, 'edit']);
             Route::put('/tags/{slug}', [TagController::class, 'update']);
             Route::post('/tags', [TagController::class, 'store']);
 
-            Route::get('/messages', [MessageController::class, 'index']);
-            Route::get('/subscriptions', [AdminSubscriberController::class, 'index']);
+            Route::get('/messages', [AdminPageController::class, 'messages']);
+            Route::get('/subscriptions', [AdminPageController::class, 'subscriptions']);
 
-            Route::get('/visitors', [VisitorController::class, 'index']);
-            Route::get('/visitors/charts', [VisitorController::class, 'charts']);
+            Route::get('/visitors', [AdminPageController::class, 'visitors']);
+            Route::get('/visitors/charts', [AdminPageController::class, 'visitorsCharts']);
 
-            Route::get('/sitemap', [AdminSitemapController::class, 'index']);
-            Route::get('/generate-sitemap', [AdminSitemapController::class, 'generateSitemap']);
-            Route::get('/export-db/config', [ToolController::class , 'exportDbConfig']);
-            Route::get('/export-db', [ToolController::class , 'export_db']);
+            // Tools
+            Route::get('/sitemap', [AdminPageController::class, 'sitemap']);
+            Route::get('/generate-sitemap', [AdminToolController::class, 'generateSitemap']);
+            Route::get('/export-db/config', [AdminToolController::class , 'exportDbConfig']);
+            Route::get('/export-db', [AdminToolController::class , 'export_db']);
 
             Route::get('media-manager/{path?}', [FileManagerController::class, 'index'])->where('path', '.*');
         });
@@ -128,31 +123,16 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
         Route::get('/blog', [BlogController::class, 'getPosts']);
         Route::get('/blog/{slug}', [BlogController::class, 'getPost']);
     //    Route::post('/blog/like/{slug}/{unlike?}', [BlogController::class, 'likePost']);
-        // Route::get('blog/{slug}', [PostController::class, 'show']);
-
-        // Route::get('/tags/{tag}', [PostController::class, 'getPostsByTag']);
-
-        // Search Blog
         Route::get('/search', [BlogController::class, 'search']);
 
-        // SiteMap
         Route::get('/sitemap', [SitemapController::class, 'sitemap']);
-
-    //    Route::redirect('/', '/resume');
         Route::get('/', [PageController::class, 'home']);
-        // About
         Route::get('about', [PageController::class, 'about']);
-        // Resume
         Route::get('resume', [PageController::class, 'resume']);
-        // Testimonials
         Route::get('testimonials', [PageController::class, 'testimonials']);
-        // Work
         Route::get('work', [PageController::class, 'work']);
-        // Contact
         Route::get('contact', [PageController::class, 'contact']);
-        // Services
         Route::get('services', [PageController::class, 'services']);
-        // Privacy policy
         Route::get('privacy-policy', [PageController::class, 'privacyPolicy']);
 
         Route::get('pixel', [ToolController::class, 'getPixel']);
