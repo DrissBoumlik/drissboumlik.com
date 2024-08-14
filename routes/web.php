@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\Api\PostController as ApiPostController;
 use App\Http\Controllers\Admin\Api\TagController as ApiTagController;
 use App\Http\Controllers\Admin\Api\VisitorController as ApiVisitorController;
 use App\Http\Controllers\Admin\Api\MessageController as ApiMessageController;
+use App\Http\Controllers\Admin\Api\SharedController as AdminApiSharedController;
 use App\Http\Controllers\Admin\Api\SubscriberController as AdminApiSubscriberController;
 use App\Http\Controllers\Api\ContactController;
 //use App\Http\Controllers\Api\SubscriberController as ApiSubscriberController;
@@ -50,8 +51,8 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::post('/tags', [ApiTagController::class, 'index']);
             Route::post('/visitors', [ApiVisitorController::class, 'index']);
             Route::put('/visitors/{visitor}', [ApiVisitorController::class, 'update']);
-            Route::post('/messages', [ApiMessageController::class, 'index']);
-            Route::post('/subscriptions', [AdminApiSubscriberController::class, 'index']);
+            Route::post('/messages', [AdminApiSharedController::class, 'messages']);
+            Route::post('/subscriptions', [AdminApiSharedController::class, 'subscriptions']);
             Route::get('/posts/{slug}/assets', [ApiPostController::class, 'getPostAssets']);
             Route::get('/{table}/columns', [AdminToolController::class, 'getTableColumns']);
             Route::post('/stats', [AdminToolController::class, 'getTableColumnStats']);
