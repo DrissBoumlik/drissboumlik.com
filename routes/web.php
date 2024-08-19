@@ -50,7 +50,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
         Route::middleware('auth')->group(function () {
             Route::post('/posts', [ApiPostController::class, 'index']);
             Route::post('/tags', [ApiTagController::class, 'index']);
-            Route::post('/visitors', [AdminDatatableController::class, 'index']);
+            Route::post('/visitors', [AdminDatatableController::class, 'visitors']);
             Route::put('/visitors/{visitor}', [AdminCRUDController::class, 'updateVisitor']);
             Route::post('/messages', [AdminDatatableController::class, 'messages']);
             Route::post('/subscriptions', [AdminDatatableController::class, 'subscriptions']);
