@@ -73,6 +73,12 @@ if (!function_exists('filterHiddenItems')) {
     }
 }
 
+if (!function_exists('filterActiveRecords')) {
+    function filterActiveRecords ($query) {
+        return $query->where('active', true);
+    }
+}
+
 if (!function_exists('shortenTextIfLongByLength')) {
     function shortenTextIfLongByLength($text, $length)
     {

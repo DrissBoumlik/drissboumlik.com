@@ -42,6 +42,18 @@ class DatatableController extends Controller
         return $this->toDatatable($visitors, true);
     }
 
+    public function testimonials(Request $request)
+    {
+        $testimonials = Testimonial::query();
+        $is_first_time = $request->has('first_time');
+        if ($is_first_time) {
+            $testimonials = $testimonials
+                ->orderBy('active', 'desc')
+                ->orderBy('id', 'desc');
+        }
+        return $this->toDatatable($testimonials, true);
+    }
+
     private function toDatatable($data, $withTrashed = true)
     {
         if ($withTrashed) {

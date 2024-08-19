@@ -21,6 +21,13 @@ class PageController extends Controller
         return view('admin.pages.subscriptions', ['data' => $data]);
     }
 
+    public function testimonials(Request $request)
+    {
+        $data = new \stdClass();
+        $data->title = 'Testimonials | Admin Panel';
+        return view('admin.pages.testimonials', ['data' => $data]);
+    }
+
     public function visitors(Request $request)
     {
         $data = new \stdClass();

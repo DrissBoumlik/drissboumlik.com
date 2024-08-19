@@ -52,8 +52,10 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::post('/tags', [ApiTagController::class, 'index']);
             Route::post('/visitors', [AdminDatatableController::class, 'visitors']);
             Route::put('/visitors/{visitor}', [AdminCRUDController::class, 'updateVisitor']);
+            Route::put('/testimonials/{testimonial}', [AdminCRUDController::class, 'updateTestimonial']);
             Route::post('/messages', [AdminDatatableController::class, 'messages']);
             Route::post('/subscriptions', [AdminDatatableController::class, 'subscriptions']);
+            Route::post('/testimonials', [AdminDatatableController::class, 'testimonials']);
             Route::get('/posts/{slug}/assets', [ApiPostController::class, 'getPostAssets']);
             Route::get('/{table}/columns', [AdminToolController::class, 'getTableColumns']);
             Route::post('/stats', [AdminToolController::class, 'getTableColumnStats']);
@@ -103,6 +105,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
 
             Route::get('/messages', [AdminPageController::class, 'messages']);
             Route::get('/subscriptions', [AdminPageController::class, 'subscriptions']);
+            Route::get('/testimonials', [AdminPageController::class, 'testimonials']);
 
             Route::get('/visitors', [AdminPageController::class, 'visitors']);
             Route::get('/visitors/charts', [AdminPageController::class, 'visitorsCharts']);

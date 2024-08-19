@@ -18,4 +18,16 @@ class CRUDController extends Controller
             return response()->json(['msg' => $e->getMessage()], 404);
         }
     }
+
+    public function updateTestimonial(Request $request, Testimonial $testimonial)
+    {
+        try {
+            $active = $request->get("active");
+            $request->merge(["active" => ($active && $active == "on")]);
+            $testimonial->update($request->only(["content", "author", "position", "active"]));
+            return ['msg' => "Updated Successfully !"];
+        } catch (\Throwable $e) {
+            return response()->json(['msg' => $e->getMessage()], 404);
+        }
+    }
 }

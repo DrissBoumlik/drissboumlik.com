@@ -670,6 +670,139 @@ function initDatatable() {
         };
         let subscriptionsDataTable = configDT(params);
     }
+
+    if ($('#testimonials').length) {
+        let params = {
+            first_time: true,
+            id: '#testimonials',
+            method: 'POST',
+            url: '/api/testimonials',
+            columns: [
+                { data: 'id', name: 'id', title: 'Actions', className: 'text-center',
+                    render: function (data, type, row, params) {
+                        return `
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm js-bs-tooltip-enabled display-testimonials-details">
+                                <i class="fa fs-3 fa-eye"></i>
+                            </button>
+                        </div>
+                    `;
+                    }
+                },
+                { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
+                { data: 'author', name: 'author', title: 'Author', className: 'text-center'},
+                { data: 'content', name: 'content', title: 'Content', className: 'text-center',
+                    render: function(data, type, row) {
+                        var div = document.createElement('div');
+                        div.innerHTML = row.content.substring(0, 100) + "...";
+                        return div.innerHTML;
+                    }
+                },
+                { data: 'image', name: 'image', title: 'Image', className: 'text-center',
+                    render: function (data, type, row) {
+                        return `<div class="square-60 m-auto"><img class="img-fluid" src="/assets/img/people/${row.image}" /></div>`;
+                    }
+                },
+                { data: 'position', name: 'position', title: 'Position', className: 'text-center'},
+                { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
+                    render: function (data, type, row) {
+                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
+                }}
+            ]
+        };
+        let testimonialsDataTable = configDT(params);
+        $('#testimonials').on('click', '.display-testimonials-details', function(e) {
+            const $row = $(this).closest('tr');
+            const data = testimonialsDataTable.row( $row ).data();
+            let created_at = moment(data.updated_at)
+            let modal = `
+            <div class="modal modal-testimonials-details" tabindex="-1">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">${data.author}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <form id="form-testimonials" data-testimonials-id="${data.id}">
+                                    <div class="row">
+                                        <div class="col-12 col-md-8">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="author">Author</label>
+                                                <input type="text" class="form-control" id="author" name="author"
+                                                    value="${data.author}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label" for="position">Position</label>
+                                                <input type="text" class="form-control" id="position" name="position"
+                                                    value="${data.position}">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-4">
+                                            <div class="mb-3">
+                                                <div class="img-container"><img class="img-fluid br-5px d-block m-auto"
+                                                    src="/assets/img/people/${data.image}" /></div>
+                                            </div>
+                                            <div class="mb-3 form-check form-switch">
+                                              <label class="form-check-label" for="active">Active</label>
+                                              <input class="form-check-input" type="checkbox" ${ data.active ? "checked" : "" } id="active" name="active">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="content">Content</label>
+                                                <textarea class="form-control" id="content" name="content" rows="7"
+                                                    placeholder="Textarea content..">${data.content}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-outline-info w-100">Update</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-backdrop fade show"></div>`;
+            $('#page-container').append(modal);
+            let modalTestimonialsDetails = $('.modal-testimonials-details');
+            $('.btn-close').add('.modal-testimonials-details').on('click', function(e) {
+                if (e.target != modalTestimonialsDetails[0] && e.target != $('.btn-close')[0]) {
+                    return;
+                }
+                modalTestimonialsDetails.remove();
+                $('.modal-backdrop').remove();
+            });
+            modalTestimonialsDetails.show()
+
+            $(document).off('submit', '#form-testimonials').on('submit', '#form-testimonials', function(e) {
+                e.preventDefault();
+                if (!confirm("Are you sure ?")) {
+                    return;
+                }
+                let _this = $(this);
+                let data = _this.serializeArray();
+                $.ajax({
+                    type: 'PUT',
+                    url: `/api/testimonials/${_this.data('testimonials-id')}`,
+                    data: data,
+                    success: function(response) {
+                        console.log(response);
+                        testimonialsDataTable.ajax.reload(null, false);
+                        get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                    },
+                    error: function (jqXHR, textStatus, errorThrown){
+                        console.log(jqXHR, textStatus, errorThrown);
+                        get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                    }
+                });
+            });
+
+        });
+    }
 }
 
 function configDT(params) {

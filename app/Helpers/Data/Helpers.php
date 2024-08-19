@@ -86,10 +86,14 @@ if (!function_exists('getNonITExperiences')) {
 if (!function_exists('getTestimonials')) {
     function getTestimonials($withHidden = false)
     {
-        $testimonials = config('data.resume.testimonials');
+        $testimonials = (object) [
+            "header" => "testimonials",
+            "data" => \DB::table('testimonials'),
+        ]; // config('data.resume.testimonials');
         if (!$withHidden) {
-            $testimonials->data = filterHiddenItems($testimonials->data);
+            $testimonials->data = filterActiveRecords($testimonials->data);
         }
+        $testimonials->data = $testimonials->data->get()->toArray();
         return $testimonials;
     }
 }
