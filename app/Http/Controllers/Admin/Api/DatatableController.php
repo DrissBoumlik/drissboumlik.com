@@ -48,7 +48,7 @@ class DatatableController extends Controller
         $is_first_time = $request->has('first_time');
         if ($is_first_time) {
             $testimonials = $testimonials
-                ->orderBy('active', 'desc')
+                ->orderBy('hidden', 'asc')
                 ->orderBy('id', 'desc');
         }
         return $this->toDatatable($testimonials, true);

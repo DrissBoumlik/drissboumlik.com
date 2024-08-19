@@ -706,7 +706,7 @@ function initDatatable() {
                 { data: 'position', name: 'position', title: 'Position', className: 'text-center'},
                 { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
                     render: function (data, type, row) {
-                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
+                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.hidden ? 'bg-danger' : 'bg-success' }"></div>`;
                 }}
             ]
         };
@@ -746,7 +746,7 @@ function initDatatable() {
                                             </div>
                                             <div class="mb-3 form-check form-switch">
                                               <label class="form-check-label" for="active">Active</label>
-                                              <input class="form-check-input" type="checkbox" ${ data.active ? "checked" : "" } id="active" name="active">
+                                              <input class="form-check-input" type="checkbox" ${ data.hidden ? "" : "checked" } id="active" name="active">
                                             </div>
                                         </div>
                                         <div class="col-12">

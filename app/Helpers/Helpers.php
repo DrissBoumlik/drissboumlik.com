@@ -73,9 +73,9 @@ if (!function_exists('filterHiddenItems')) {
     }
 }
 
-if (!function_exists('filterActiveRecords')) {
-    function filterActiveRecords ($query) {
-        return $query->where('active', true);
+if (!function_exists('filterHiddenRecordsOut')) {
+    function filterHiddenRecordsOut($query) {
+        return $query->where('hidden', false);
     }
 }
 

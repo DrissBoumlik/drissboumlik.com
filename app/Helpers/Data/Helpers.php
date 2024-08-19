@@ -91,7 +91,7 @@ if (!function_exists('getTestimonials')) {
             "data" => \DB::table('testimonials'),
         ]; // config('data.resume.testimonials');
         if (!$withHidden) {
-            $testimonials->data = filterActiveRecords($testimonials->data);
+            $testimonials->data = filterHiddenRecordsOut($testimonials->data);
         }
         $testimonials->data = $testimonials->data->get()->toArray();
         return $testimonials;
