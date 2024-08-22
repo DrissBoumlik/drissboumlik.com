@@ -695,7 +695,7 @@ function initDatatable() {
                     render: function(data, type, row) {
                         var div = document.createElement('div');
                         div.innerHTML = row.content.substring(0, 100) + "...";
-                        return div.innerHTML;
+                        return div.innerText;
                     }
                 },
                 { data: 'image', name: 'image', title: 'Image', className: 'text-center',
@@ -704,7 +704,7 @@ function initDatatable() {
                     }
                 },
                 { data: 'position', name: 'position', title: 'Position', className: 'text-center'},
-                { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
+                { data: 'hidden', name: 'hidden', title: 'Active', className: 'fs-sm',
                     render: function (data, type, row) {
                         return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.hidden ? 'bg-danger' : 'bg-success' }"></div>`;
                 }}
