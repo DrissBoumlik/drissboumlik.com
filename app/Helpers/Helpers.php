@@ -75,7 +75,10 @@ if (!function_exists('filterHiddenItems')) {
 
 if (!function_exists('filterHiddenRecordsOut')) {
     function filterHiddenRecordsOut($query) {
-        return $query->where('hidden', false);
+        return $query->where(function ($query) {
+            $query->where('hidden', false)
+                ->orWhere('hidden', null);
+        });
     }
 }
 
