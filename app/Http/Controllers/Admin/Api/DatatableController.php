@@ -19,7 +19,7 @@ class DatatableController extends Controller
         if ($is_first_time) {
             $messages = $messages->orderBy('id', 'desc');
         }
-        return $this->toDatatable($messages, true);
+        return $this->toDatatable($messages, false);
     }
 
     public function subscriptions(Request $request)
@@ -29,7 +29,7 @@ class DatatableController extends Controller
         if ($is_first_time) {
             $subscriptions = $subscriptions->orderBy('id', 'desc');
         }
-        return $this->toDatatable($subscriptions, true);
+        return $this->toDatatable($subscriptions, false);
     }
 
     public function visitors(Request $request)
@@ -39,7 +39,7 @@ class DatatableController extends Controller
         if ($is_first_time) {
             $visitors = $visitors->orderBy('id', 'desc');
         }
-        return $this->toDatatable($visitors, true);
+        return $this->toDatatable($visitors, false);
     }
 
     public function testimonials(Request $request)
@@ -67,11 +67,11 @@ class DatatableController extends Controller
         return $this->toDatatable($projects, false);
     }
 
-    private function toDatatable($data, $withTrashed = true)
+    private function toDatatable($data, $withoutTrashed = true)
     {
-        if ($withTrashed) {
-            $data = $data->withTrashed();
+        if ($withoutTrashed) {
+            $data = $data->whereNull('deleted_at');
         }
-        return DataTables::eloquent($data)->make(true);
+        return datatables($data)->make(true);
     }
 }
