@@ -12,27 +12,27 @@
             <div class="section py-5">
                 <div class="container">
                     @foreach($data->services->data as $service)
-                    <div class="row service-row" id="{{ $service->id }}">
+                    <div class="row service-row" id="{{ $service->slug }}">
                         @if($loop->index % 2 !== 0)
                         <div class="col-md-5 pe-5">
                             <div class="service-img">
-                                <img src='{{ asset("/assets/img/services/compressed/$service->img.webp") }}' alt="{{ $service->text }}"
-                                     data-src='{{ asset("/assets/img/services/$service->img.svg") }}'
+                                <img src='{{ asset("/assets/img/services/compressed/$service->image.webp") }}' alt="{{ $service->title }}"
+                                     data-src='{{ asset("/assets/img/services/$service->image.svg") }}'
                                      class="img-fluid w-100 lazyload" width="300" height="300" loading="lazy">
                             </div>
                         </div>
                         @endif
                         <div class="col-12 col-md-7">
                             <div class="service-description ui-ux">
-                                <h4 class="service-title">{{ $service->text }}</h4>
+                                <h4 class="service-title">{{ $service->title }}</h4>
                                 <p>{{ $service->description }}</p>
                             </div>
                         </div>
                         @if($loop->index % 2 === 0)
                         <div class="col-md-5 ps-5">
                             <div class="service-img">
-                                <img src='{{ asset("/assets/img/services/compressed/$service->img.webp") }}' alt="{{ $service->text }}"
-                                     data-src='{{ asset("/assets/img/services/$service->img.svg") }}'
+                                <img src='{{ asset("/assets/img/services/compressed/$service->image.webp") }}' alt="{{ $service->title }}"
+                                     data-src='{{ asset("/assets/img/services/$service->image.svg") }}'
                                      class="img-fluid w-100 lazyload" width="300" height="300" loading="lazy">
                             </div>
                         </div>

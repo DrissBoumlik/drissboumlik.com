@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Message;
+use App\Models\Service;
 use App\Models\Subscriber;
 use App\Models\Testimonial;
 use App\Models\Visitor;
@@ -65,6 +66,18 @@ class DatatableController extends Controller
                 ->orderBy('id', 'desc');
         }
         return $this->toDatatable($projects, false);
+    }
+
+    public function services(Request $request)
+    {
+        $services = Service::query();
+        $is_first_time = $request->has('first_time');
+        if ($is_first_time) {
+            $services = $services
+                ->orderBy('hidden', 'asc')
+                ->orderBy('id', 'desc');
+        }
+        return $this->toDatatable($services, false);
     }
 
     private function toDatatable($data, $withoutTrashed = true)

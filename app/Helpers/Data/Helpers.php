@@ -117,10 +117,15 @@ if (!function_exists('getTechs')) {
 if (!function_exists('getServices')) {
     function getServices($withHidden = false)
     {
-        $services = config('data.components.services');
+        $services = (object) [
+            "header" => "services",
+            "data" => \DB::table('services'),
+        ]; // config('data.components.services');
         if (!$withHidden) {
-            $services->data = array_filter($services->data, static fn($item) => !isset($item->hidden) || !$item->hidden);
+            $services->data = filterHiddenRecordsOut($services->data);
+                // array_filter($services->data, static fn($item) => !isset($item->hidden) || !$item->hidden);
         }
+        $services->data = $services->data->get()->toArray();
         return $services;
     }
 }

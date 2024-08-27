@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Service;
 use App\Models\Testimonial;
 use App\Models\Visitor;
 use Illuminate\Http\Request;
@@ -39,6 +40,18 @@ class CRUDController extends Controller
             $featured = $request->has("featured") && ($request->get("featured") === 'on');
             $request->merge(["hidden" => !$active, "featured" => $featured]);
             $project->update($request->only(["role", "title", "description", "featured", "links", "hidden"]));
+            return ['msg' => "Updated Successfully !"];
+        } catch (\Throwable $e) {
+            return response()->json(['msg' => $e->getMessage()], 404);
+        }
+    }
+
+    public function updateService(Request $request, Service $service)
+    {
+        try {
+            $active = $request->get("active");
+            $request->merge(["hidden" => !$active]);
+            $service->update($request->only(['slug', 'title', 'icon', 'link', 'description', 'hidden']));
             return ['msg' => "Updated Successfully !"];
         } catch (\Throwable $e) {
             return response()->json(['msg' => $e->getMessage()], 404);

@@ -968,6 +968,160 @@ function initDatatable() {
 
         });
     }
+
+
+    if ($('#services').length) {
+        let params = {
+            first_time: true,
+            id: '#services',
+            method: 'POST',
+            url: '/api/services',
+            columns: [
+                { data: 'id', name: 'id', title: 'Actions', className: 'text-center',
+                    render: function (data, type, row, params) {
+                        return `
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm js-bs-tooltip-enabled display-services-details">
+                                <i class="fa fs-3 fa-eye"></i>
+                            </button>
+                        </div>
+                    `;
+                    }
+                },
+                { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
+                { data: 'slug', name: 'slug', title: 'Slug', className: 'text-center'},
+                { data: 'title', name: 'title', title: 'Title', className: 'text-center'},
+                { data: 'description', name: 'description', title: 'Description', className: 'text-center',
+                    render: function (data, type, row) {
+                        return data.substring(0, 30) + '...';
+                    }
+                },
+                { data: 'image', name: 'image', title: 'Image', className: 'text-center',
+                    render: function (data, type, row) {
+                        return `<div class="square-60 m-auto"><img class="img-fluid" src="/assets/img/services/${row.image}.svg" /></div>`;
+                    }
+                },
+                { data: 'icon', name: 'icon', title: 'Icon', className: 'text-center',
+                    render: function (data, type, row) {
+                        var div = document.createElement('div');
+                        div.innerHTML = row.icon;
+                        return div.innerText;
+                    }
+                },
+                { data: 'link', name: 'link', title: 'Link', className: 'text-left',
+                    render: function (data, type, row) {
+                        return `<a href="${row.link}" target="_blank">${row.link}</a>`;
+                }},
+                { data: 'hidden', name: 'hidden', title: 'Active', className: 'fs-sm',
+                    render: function (data, type, row) {
+                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.hidden ? 'bg-danger' : 'bg-success' }"></div>`;
+                    }},
+            ]
+        };
+        let servicesDataTable = configDT(params);
+
+        $('#services').on('click', '.display-services-details', function(e) {
+            const $row = $(this).closest('tr');
+            const data = servicesDataTable.row( $row ).data();
+            let created_at = moment(data.updated_at)
+            let modal = `
+            <div class="modal modal-services-details" tabindex="-1">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">${data.title}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <form id="form-services" data-services-id="${data.id}">
+                                    <div class="row">
+                                        <div class="col-12 col-md-8">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="role">Slug</label>
+                                                <input type="text" class="form-control" id="slug" name="slug"
+                                                    value="${data.slug || ''}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label" for="title">Title</label>
+                                                <input type="text" class="form-control" id="title" name="title"
+                                                    value="${data.title || ''}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label" for="repository">Link</label>
+                                                <input type="text" class="form-control" id="link" name="link"
+                                                    value="${data.link || ''}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label" for="repository">Icon</label>
+                                                <input type="text" class="form-control" id="icon" name="icon"
+                                                    value="${data.icon || ''}">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-4">
+                                            <div class="mb-3">
+                                                <div class="img-container"><img class="img-fluid br-5px d-block m-auto"
+                                                    src="/assets/img/services/${data.image}.svg" /></div>
+                                            </div>
+                                            <div class="mb-3 form-check form-switch">
+                                              <label class="form-check-label" for="active">Active</label>
+                                              <input class="form-check-input" type="checkbox" ${ data.hidden ? "" : "checked" } id="active" name="active">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="description">Description</label>
+                                                <textarea class="form-control" id="description" name="description" rows="4"
+                                                    placeholder="Textarea content..">${data.description || ''}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-outline-info w-100">Update</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-backdrop fade show"></div>`;
+            $('#page-container').append(modal);
+            let modalServicesDetails = $('.modal-services-details');
+            $('.btn-close').add('.modal-services-details').on('click', function(e) {
+                if (e.target != modalServicesDetails[0] && e.target != $('.btn-close')[0]) {
+                    return;
+                }
+                modalServicesDetails.remove();
+                $('.modal-backdrop').remove();
+            });
+            modalServicesDetails.show();
+
+            $(document).off('submit', '#form-services').on('submit', '#form-services', function(e) {
+                e.preventDefault();
+                if (!confirm("Are you sure ?")) {
+                    return;
+                }
+                let _this = $(this);
+                let data = _this.serializeArray();
+                $.ajax({
+                    type: 'PUT',
+                    url: `/api/services/${_this.data('services-id')}`,
+                    data: data,
+                    success: function(response) {
+                        console.log(response);
+                        servicesDataTable.ajax.reload(null, false);
+                        get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                    },
+                    error: function (jqXHR, textStatus, errorThrown){
+                        console.log(jqXHR, textStatus, errorThrown);
+                        get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                    }
+                });
+            });
+
+        });
+    }
 }
 
 function configDT(params) {
