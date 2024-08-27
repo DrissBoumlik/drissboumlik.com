@@ -37,7 +37,7 @@
                 </div>
                 <div class="row mt-5">
                     <div class="col-12">
-                        <div class="see-more"><a href="/work" class="btn tc-blue-dark-2-bg tc-blue-bg-hover br-50px">See
+                        <div class="see-more"><a href="/projects" class="btn tc-blue-dark-2-bg tc-blue-bg-hover br-50px">See
                                 More</a></div>
                     </div>
                 </div>
