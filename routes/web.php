@@ -53,9 +53,11 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::post('/visitors', [AdminDatatableController::class, 'visitors']);
             Route::put('/visitors/{visitor}', [AdminCRUDController::class, 'updateVisitor']);
             Route::put('/testimonials/{testimonial}', [AdminCRUDController::class, 'updateTestimonial']);
+            Route::put('/projects/{project}', [AdminCRUDController::class, 'updateProject']);
             Route::post('/messages', [AdminDatatableController::class, 'messages']);
             Route::post('/subscriptions', [AdminDatatableController::class, 'subscriptions']);
             Route::post('/testimonials', [AdminDatatableController::class, 'testimonials']);
+            Route::post('/projects', [AdminDatatableController::class, 'projects']);
             Route::get('/posts/{slug}/assets', [ApiPostController::class, 'getPostAssets']);
             Route::get('/{table}/columns', [AdminToolController::class, 'getTableColumns']);
             Route::post('/stats', [AdminToolController::class, 'getTableColumnStats']);
@@ -106,6 +108,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::get('/messages', [AdminPageController::class, 'messages']);
             Route::get('/subscriptions', [AdminPageController::class, 'subscriptions']);
             Route::get('/testimonials', [AdminPageController::class, 'testimonials']);
+            Route::get('/projects', [AdminPageController::class, 'projects']);
 
             Route::get('/visitors', [AdminPageController::class, 'visitors']);
             Route::get('/visitors/charts', [AdminPageController::class, 'visitorsCharts']);
@@ -135,7 +138,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
         Route::get('about', [PageController::class, 'about']);
         Route::get('resume', [PageController::class, 'resume']);
         Route::get('testimonials', [PageController::class, 'testimonials']);
-        Route::get('work', [PageController::class, 'work']);
+        Route::get('projects', [PageController::class, 'projects']);
         Route::get('contact', [PageController::class, 'contact']);
         Route::get('services', [PageController::class, 'services']);
         Route::get('privacy-policy', [PageController::class, 'privacyPolicy']);

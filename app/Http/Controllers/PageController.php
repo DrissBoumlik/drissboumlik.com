@@ -54,7 +54,7 @@ class PageController extends Controller
             $data->sections['experiences'] = getExperiences();
             $data->sections['competences'] = getSkills();
             $data->sections['education'] = getEducation();
-            $data->sections['work'] = getWork(onlyFeatured: true);
+            $data->sections['projects'] = getProjects(onlyFeatured: true);
 //        $data->sections['certificates'] = getCertificates();
             $data->sections['passion'] = getPassion();
             $data->sections['non_it_experiences'] = getNonITExperiences();
@@ -80,14 +80,14 @@ class PageController extends Controller
         return view('pages.testimonials', ['data' => $data]);
     }
 
-    public function work(Request $request)
+    public function projects(Request $request)
     {
-        $data = $this->cacheService->cache_data('work-data', function() {
-            $data = pageSetup('Work | Driss Boumlik', 'work', true, true);
-            $data->work = getWork();
+        $data = $this->cacheService->cache_data('projects-data', function() {
+            $data = pageSetup('Projects | Driss Boumlik', 'projects', true, true);
+            $data->projects = getProjects();
             return $data;
         }, null, $request->has('forget'));
-        return view('pages.work', ['data' => $data]);
+        return view('pages.projects', ['data' => $data]);
     }
 
     public function contact(Request $request)

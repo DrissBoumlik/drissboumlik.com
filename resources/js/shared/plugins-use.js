@@ -803,6 +803,171 @@ function initDatatable() {
 
         });
     }
+
+    if ($('#projects').length) {
+        let params = {
+            first_time: true,
+            id: '#projects',
+            method: 'POST',
+            url: '/api/projects',
+            columns: [
+                { data: 'id', name: 'id', title: 'Actions', className: 'text-center',
+                    render: function (data, type, row, params) {
+                        return `
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm js-bs-tooltip-enabled display-projects-details">
+                                <i class="fa fs-3 fa-eye"></i>
+                            </button>
+                        </div>
+                    `;
+                    }
+                },
+                { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
+                { data: 'role', name: 'role', title: 'Role', className: 'text-center',
+                    render: function (data, type, row) {
+                        var div = document.createElement('div');
+                        div.innerHTML = row.role;
+                        return div.innerText;
+                }},
+                { data: 'title', name: 'title', title: 'Title', className: 'text-center'},
+                { data: 'description', name: 'description', title: 'Description', className: 'text-center'},
+                { data: 'image', name: 'image', title: 'Image', className: 'text-center',
+                    render: function (data, type, row) {
+                        return `<div class="square-60 m-auto"><img class="img-fluid" src="/assets/img/work/${row.image}" /></div>`;
+                    }
+                },
+                { data: 'links', name: 'links', title: 'Links', className: 'text-left',
+                    render: function (data, type, row) {
+                        console.log(data);
+                        let dom = '---';
+                        if (row.links) {
+                            dom = '<div class="d-flex gap-2 flex-column">';
+                            if (row.links.repository) {
+                                dom += `<div><a href="${row.links.repository}">Repository <i class="fa-solid fa-up-right-from-square"></i></a></div>`;
+                            }
+                            if (row.links.website) {
+                                dom += `<div><a href="${row.links.website}">Website <i class="fa-solid fa-up-right-from-square"></i></a></div>`;
+                            }
+                            dom += '</div>';
+                        }
+                        return dom;
+                }},
+                { data: 'hidden', name: 'hidden', title: 'Active', className: 'fs-sm',
+                    render: function (data, type, row) {
+                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.hidden ? 'bg-danger' : 'bg-success' }"></div>`;
+                }},
+                { data: 'featured', name: 'featured', title: 'Featured', className: 'fs-sm',
+                    render: function (data, type, row) {
+                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.featured ? 'bg-success' : 'bg-danger' }"></div>`;
+                }},
+            ]
+        };
+        let projectsDataTable = configDT(params);
+        $('#projects').on('click', '.display-projects-details', function(e) {
+            const $row = $(this).closest('tr');
+            const data = projectsDataTable.row( $row ).data();
+            let created_at = moment(data.updated_at)
+            let modal = `
+            <div class="modal modal-projects-details" tabindex="-1">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">${data.title}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <form id="form-projects" data-projects-id="${data.id}">
+                                    <div class="row">
+                                        <div class="col-12 col-md-8">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="role">Role</label>
+                                                <input type="text" class="form-control" id="role" name="role"
+                                                    value="${data.role || ''}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label" for="title">Title</label>
+                                                <input type="text" class="form-control" id="title" name="title"
+                                                    value="${data.title || ''}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label" for="repository">Repository</label>
+                                                <input type="text" class="form-control" id="repository" name="links[repository]"
+                                                    value="${data.links.repository || ''}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label" for="website">Website</label>
+                                                <input type="text" class="form-control" id="website" name="links[website]"
+                                                    value="${data.links.website || ''}">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-4">
+                                            <div class="mb-3">
+                                                <div class="img-container"><img class="img-fluid br-5px d-block m-auto"
+                                                    src="/assets/img/work/${data.image}" /></div>
+                                            </div>
+                                            <div class="mb-3 form-check form-switch">
+                                              <label class="form-check-label" for="active">Active</label>
+                                              <input class="form-check-input" type="checkbox" ${ data.hidden ? "" : "checked" } id="active" name="active">
+                                            </div>
+                                            <div class="mb-3 form-check form-switch">
+                                              <label class="form-check-label" for="featured">Featured</label>
+                                              <input class="form-check-input" type="checkbox" ${ data.featured ? "checked" : "" } id="featured" name="featured">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="description">Description</label>
+                                                <textarea class="form-control" id="description" name="description" rows="4"
+                                                    placeholder="Textarea content..">${data.description || ''}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-outline-info w-100">Update</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-backdrop fade show"></div>`;
+            $('#page-container').append(modal);
+            let modalProjectsDetails = $('.modal-projects-details');
+            $('.btn-close').add('.modal-projects-details').on('click', function(e) {
+                if (e.target != modalProjectsDetails[0] && e.target != $('.btn-close')[0]) {
+                    return;
+                }
+                modalProjectsDetails.remove();
+                $('.modal-backdrop').remove();
+            });
+            modalProjectsDetails.show();
+            $(document).off('submit', '#form-projects').on('submit', '#form-projects', function(e) {
+                e.preventDefault();
+                if (!confirm("Are you sure ?")) {
+                    return;
+                }
+                let _this = $(this);
+                let data = _this.serializeArray();
+                $.ajax({
+                    type: 'PUT',
+                    url: `/api/projects/${_this.data('projects-id')}`,
+                    data: data,
+                    success: function(response) {
+                        console.log(response);
+                        projectsDataTable.ajax.reload(null, false);
+                        get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                    },
+                    error: function (jqXHR, textStatus, errorThrown){
+                        console.log(jqXHR, textStatus, errorThrown);
+                        get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                    }
+                });
+            });
+
+        });
+    }
 }
 
 function configDT(params) {

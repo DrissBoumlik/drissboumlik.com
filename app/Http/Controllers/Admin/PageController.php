@@ -28,6 +28,13 @@ class PageController extends Controller
         return view('admin.pages.testimonials', ['data' => $data]);
     }
 
+    public function projects(Request $request)
+    {
+        $data = new \stdClass();
+        $data->title = 'Projects | Admin Panel';
+        return view('admin.pages.projects', ['data' => $data]);
+    }
+
     public function visitors(Request $request)
     {
         $data = new \stdClass();

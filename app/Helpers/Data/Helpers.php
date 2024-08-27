@@ -11,16 +11,21 @@ if (!function_exists('getExperiences')) {
     }
 }
 
-if (!function_exists('getWork')) {
-    function getWork($withHidden = false, $onlyFeatured = false)
+if (!function_exists('getProjects')) {
+    function getProjects($withHidden = false, $onlyFeatured = false)
     {
-        $work = config('data.resume.work');
+        $work = (object) [
+            "header" => "projects",
+            "data" => \App\Models\Project::query(),
+        ]; // config('data.resume.work');
         if (!$withHidden) {
-            $work->data = filterHiddenItems($work->data);
+            $work->data = filterHiddenRecordsOut($work->data);
         }
         if ($onlyFeatured) {
-            $work->data = array_filter($work->data, static fn($item) => isset($item->featured) && $item->featured);
+            $work->data = $work->data->where('featured', true);
+                // array_filter($work->data, static fn($item) => isset($item->featured) && $item->featured);
         }
+        $work->data = $work->data->get();
         return $work;
     }
 }

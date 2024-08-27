@@ -104,6 +104,12 @@
                     </a>
                 </li>
                 <li class="nav-main-item">
+                    <a class="nav-main-link{{ request()->is('admin/projects') ? ' active' : '' }}" href="/admin/projects">
+                        <i class="nav-main-link-icon fa fa-fw fa-briefcase"></i>
+                        <span class="nav-main-link-name">Projects</span>
+                    </a>
+                </li>
+                <li class="nav-main-item">
                     <a class="nav-main-link{{ request()->is('admin/testimonials') ? ' active' : '' }}" href="/admin/testimonials">
                         <i class="nav-main-link-icon fa fa-fw fa-comments"></i>
                         <span class="nav-main-link-name">Testimonials</span>

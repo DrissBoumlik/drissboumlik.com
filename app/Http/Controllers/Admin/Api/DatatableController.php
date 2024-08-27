@@ -8,7 +8,7 @@ use App\Models\Subscriber;
 use App\Models\Testimonial;
 use App\Models\Visitor;
 use Illuminate\Http\Request;
-use Yajra\DataTables\Facades\DataTables;
+use App\Models\Project;
 
 class DatatableController extends Controller
 {
@@ -51,7 +51,20 @@ class DatatableController extends Controller
                 ->orderBy('hidden', 'asc')
                 ->orderBy('id', 'desc');
         }
-        return $this->toDatatable($testimonials, true);
+        return $this->toDatatable($testimonials, false);
+    }
+
+    public function projects(Request $request)
+    {
+        $projects = Project::query();
+        $is_first_time = $request->has('first_time');
+        if ($is_first_time) {
+            $projects = $projects
+                ->orderBy('hidden', 'asc')
+                ->orderBy('featured', 'asc')
+                ->orderBy('id', 'desc');
+        }
+        return $this->toDatatable($projects, false);
     }
 
     private function toDatatable($data, $withTrashed = true)

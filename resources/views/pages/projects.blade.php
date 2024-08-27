@@ -2,7 +2,7 @@
 
 @section('headline')
     <div class="d-flex flex-column align-items-center justify-content-center">
-        <h1 class="header-txt">{!! $data->work->header !!}</h1>
+        <h1 class="header-txt">{!! $data->projects->header !!}</h1>
     </div>
 @endsection
 
@@ -14,32 +14,34 @@
                     <div class="container">
                         <div class="work-items">
                             <div class="row">
-                                @foreach ($data->work->data as $workItem)
+                                @foreach ($data->projects->data as $projectItem)
                                     <div class="col-12 col-md-6">
                                         <div class="work-box box mb-4">
                                             <div class="work-image-cover">
-                                                <img src="{{ asset('/assets/img/work/compressed/' . $workItem->image) }}" alt="{{ $workItem->name }}"
-                                                     data-src="{{ asset('/assets/img/work/' . $workItem->image) }}"
-                                                     class="img-fluid lazyload" width="300" height="250" />
+                                                <img
+                                                    src="{{ asset('/assets/img/work/compressed/' . $projectItem->image) }}"
+                                                    alt="{{ $projectItem->title }}"
+                                                    data-src="{{ asset('/assets/img/work/' . $projectItem->image) }}"
+                                                    class="img-fluid lazyload" width="300" height="250"/>
                                             </div>
                                             <div class="work-data">
                                                 <div class="work-txt">
-                                                    <div class="work-name">{{ $workItem->name }}</div>
-                                                    <div class="work-description">{{ $workItem->description }}</div>
+                                                    <div class="work-name">{{ $projectItem->title }}</div>
+                                                    <div class="work-description">{{ $projectItem->description }}</div>
                                                 </div>
-                                                @isset($workItem->links)
+                                                @isset($projectItem->links)
                                                     <div class="work-links">
-                                                        @isset($workItem->links->repository)
+                                                        @isset($projectItem->links->repository)
                                                             <div class="work-link">
-                                                                <a href="{{ $workItem->links->repository }}"
+                                                                <a href="{{ $projectItem->links->repository }}"
                                                                    target="_blank" rel="noopener">
                                                                     <i class="fa-brands fa-github"></i>
                                                                 </a>
                                                             </div>
                                                         @endisset
-                                                        @isset($workItem->links->website)
+                                                        @isset($projectItem->links->website)
                                                             <div class="work-link">
-                                                                <a href="{{ $workItem->links->website }}"
+                                                                <a href="{{ $projectItem->links->website }}"
                                                                    target="_blank" rel="noopener">
                                                                     <i class="fa-solid fa-globe"></i>
                                                                 </a>

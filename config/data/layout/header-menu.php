@@ -7,8 +7,8 @@ return [
         "target" => "_self"
     ],
     (object) [
-        "title" => "work",
-        "slug" => "work",
+        "title" => "projects",
+        "slug" => "projects",
         "target" => "_self",
         "hidden" => true
     ],
