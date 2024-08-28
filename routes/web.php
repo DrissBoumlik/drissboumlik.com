@@ -55,11 +55,13 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::put('/testimonials/{testimonial}', [AdminCRUDController::class, 'updateTestimonial']);
             Route::put('/projects/{project}', [AdminCRUDController::class, 'updateProject']);
             Route::put('/services/{service}', [AdminCRUDController::class, 'updateService']);
+            Route::put('/menus/{menu}', [AdminCRUDController::class, 'updateMenu']);
             Route::post('/messages', [AdminDatatableController::class, 'messages']);
             Route::post('/subscriptions', [AdminDatatableController::class, 'subscriptions']);
             Route::post('/testimonials', [AdminDatatableController::class, 'testimonials']);
             Route::post('/projects', [AdminDatatableController::class, 'projects']);
             Route::post('/services', [AdminDatatableController::class, 'services']);
+            Route::post('/menus', [AdminDatatableController::class, 'menus']);
             Route::get('/posts/{slug}/assets', [ApiPostController::class, 'getPostAssets']);
             Route::get('/{table}/columns', [AdminToolController::class, 'getTableColumns']);
             Route::post('/stats', [AdminToolController::class, 'getTableColumnStats']);
@@ -112,6 +114,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::get('/testimonials', [AdminPageController::class, 'testimonials']);
             Route::get('/projects', [AdminPageController::class, 'projects']);
             Route::get('/services', [AdminPageController::class, 'services']);
+            Route::get('/menus', [AdminPageController::class, 'menus']);
 
             Route::get('/visitors', [AdminPageController::class, 'visitors']);
             Route::get('/visitors/charts', [AdminPageController::class, 'visitorsCharts']);

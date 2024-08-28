@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Menu;
 use App\Models\Message;
 use App\Models\Service;
 use App\Models\Subscriber;
@@ -78,6 +79,18 @@ class DatatableController extends Controller
                 ->orderBy('id', 'desc');
         }
         return $this->toDatatable($services, false);
+    }
+
+    public function menus(Request $request)
+    {
+        $menus = Menu::query();
+        $is_first_time = $request->has('first_time');
+        if ($is_first_time) {
+            $menus = $menus
+                ->orderBy('hidden', 'asc')
+                ->orderBy('id', 'desc');
+        }
+        return $this->toDatatable($menus, false);
     }
 
     private function toDatatable($data, $withoutTrashed = true)

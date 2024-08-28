@@ -25,8 +25,7 @@ class PageController extends Controller
             return redirect('/not-found');
         }
         $data = $this->cacheService->cache_data('home-data', function() {
-            $data = pageSetup('Home | Driss Boumlik', null, true, true, true);
-            $data->socialLinksCommunity = getSocialLinksCommunity();
+            $data = pageSetup('Home | Driss Boumlik', null, true, true, true, true);
             $data->sections = [];
 //            $data->sections['techs'] = getTechs();
             // $data->sections['work'] = getWork(onlyFeatured: true);

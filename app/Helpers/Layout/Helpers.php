@@ -1,59 +1,59 @@
 <?php
 
 if (!function_exists('getSocialLinks')) {
-    function getSocialLinks($withHidden = false)
+    function getSocialLinks($menus, $withHidden = false)
     {
-        $socialLinks = config('data.layout.social-links');
-        if (!$withHidden) {
-            $socialLinks = array_filter($socialLinks, static fn($item) => !isset($item->hidden) || !$item->hidden);
-        }
-        return $socialLinks;
+        return getMenuByType($menus, 'social', $withHidden);
     }
 }
 
 if (!function_exists('getSocialLinksCommunity')) {
-    function getSocialLinksCommunity($withHidden = false)
+    function getSocialLinksCommunity($menus, $withHidden = false)
     {
-        $socialLinksCommunity =config('data.layout.social-links-community');
-        if (!$withHidden) {
-            $socialLinksCommunity = array_filter($socialLinksCommunity, static fn ($item) => !isset($item->hidden) || !$item->hidden);
-        }
-        return $socialLinksCommunity;
+        return getMenuByType($menus, 'social-community', $withHidden);
     }
 }
 
 if (!function_exists('getHeaderMenu')) {
-    function getHeaderMenu($withHidden = false)
+    function getHeaderMenu($menus, $withHidden = false)
     {
-        $headerMenu = config('data.layout.header-menu');
-        if (!$withHidden) {
-            $headerMenu = array_filter($headerMenu, static fn($item) => !isset($item->hidden) || !$item->hidden);
-        }
-        return $headerMenu;
-
+        return getMenuByType($menus,'header', $withHidden);
     }
 }
 
 if (!function_exists('getFooterMenu')) {
-    function getFooterMenu($withHidden = false)
+    function getFooterMenu($menus, $withHidden = false)
     {
-        $footerMenu = config('data.layout.footer-menu');
-        if (!$withHidden) {
-            $footerMenu = array_filter($footerMenu, static fn($item) => !isset($item->hidden) || !$item->hidden);
-        }
-        return $footerMenu;
+        return getMenuByType($menus,'footer', $withHidden);
+    }
+}
+
+if (!function_exists('getMenus')) {
+    function getMenus ($filters) {
+        $menus = \DB::table('menus')->whereIn('type', $filters)->get();
+        return $menus;
+    }
+}
+
+if (!function_exists('getMenuByType')) {
+    function getMenuByType ($menus, $type, $withHidden) {
+        return $menus->filter(function($menuItem) use ($type, $withHidden) {
+            return ($menuItem->type === $type) && ($withHidden || !$menuItem->hidden);
+        });
     }
 }
 
 if (!function_exists('pageSetup')) {
-    function pageSetup($title, $headline, $headerMenu = false, $footerMenu = false, $socialLinks = false)
+    function pageSetup($title, $headline, $headerMenu = false, $footerMenu = false, $socialLinks = false, $socialLinksCommunity = false)
     {
         $data = new \stdClass();
         $data->title = $title;
         $data->headline = $headline;
-        $data->headerMenu = $headerMenu ? getHeaderMenu() : null;
-        $data->footerMenu = $footerMenu ? getFooterMenu() : null;
-        $data->socialLinks = $socialLinks ? getSocialLinks() : null;
+        $menus = getMenus(['header', 'footer', 'social', 'social-community']);
+        $data->headerMenu = $headerMenu ? getHeaderMenu($menus) : null;
+        $data->footerMenu = $footerMenu ? getFooterMenu($menus) : null;
+        $data->socialLinks = $socialLinks ? getSocialLinks($menus) : null;
+        $data->socialLinksCommunity = $socialLinksCommunity ? getSocialLinksCommunity($menus) : null;
         return $data;
     }
 }

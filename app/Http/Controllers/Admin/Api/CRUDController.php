@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Menu;
 use App\Models\Project;
 use App\Models\Service;
 use App\Models\Testimonial;
@@ -52,6 +53,18 @@ class CRUDController extends Controller
             $active = $request->get("active");
             $request->merge(["hidden" => !$active]);
             $service->update($request->only(['slug', 'title', 'icon', 'link', 'description', 'hidden']));
+            return ['msg' => "Updated Successfully !"];
+        } catch (\Throwable $e) {
+            return response()->json(['msg' => $e->getMessage()], 404);
+        }
+    }
+
+    public function updateMenu(Request $request, Menu $menu)
+    {
+        try {
+            $active = $request->get("active");
+            $request->merge(["hidden" => !$active]);
+            $menu->update($request->only(['text', 'title', 'slug', 'target', 'link', 'icon', 'type', 'hidden']));
             return ['msg' => "Updated Successfully !"];
         } catch (\Throwable $e) {
             return response()->json(['msg' => $e->getMessage()], 404);
