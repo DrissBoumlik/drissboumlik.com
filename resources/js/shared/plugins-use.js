@@ -1141,10 +1141,22 @@ function initDatatable() {
                 },
                 { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
                 { data: 'slug', name: 'slug', title: 'Slug', className: 'text-center'},
-                { data: 'text', name: 'text', title: 'Text', className: 'text-center'},
-                { data: 'title', name: 'title', title: 'Title', className: 'text-center'},
-                { data: 'target', name: 'target', title: 'Target', className: 'text-center'},
-                { data: 'type', name: 'type', title: 'Type', className: 'text-center'},
+                { data: 'text', name: 'text', title: 'Text', className: 'text-center',
+                    render: function (data, type, row) {
+                        var div = document.createElement('div');
+                        div.innerHTML = row.text;
+                        return div.innerText;
+                    }
+                },
+                { data: 'title', name: 'title', title: 'Title', className: 'text-center',
+                    render: function (data, type, row) {
+                        var div = document.createElement('div');
+                        div.innerHTML = row.title;
+                        return div.innerText;
+                    }
+                },
+                { data: 'target', name: 'target', title: 'Target', className: 'text-center', domElement: 'select', columnToGroupBy: 'target'},
+                { data: 'type', name: 'type', title: 'Type', className: 'text-center', domElement: 'select', columnToGroupBy: 'type'},
                 { data: 'icon', name: 'icon', title: 'Icon', className: 'text-center',
                     render: function (data, type, row) {
                         var div = document.createElement('div');
@@ -1156,7 +1168,7 @@ function initDatatable() {
                     render: function (data, type, row) {
                         return `<a href="${row.link}" target="_blank">${row.link}</a>`;
                     }},
-                { data: 'hidden', name: 'hidden', title: 'Active', className: 'fs-sm',
+                { data: 'hidden', name: 'hidden', title: 'Active', className: 'fs-sm', inputType: 'select',
                     render: function (data, type, row) {
                         return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.hidden ? 'bg-danger' : 'bg-success' }"></div>`;
                     }},
@@ -1210,8 +1222,11 @@ function initDatatable() {
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label" for="repository">Target</label>
-                                                <input type="text" class="form-control" id="target" name="target"
-                                                    value="${data.target || ''}">
+                                                <select id="target" name="target" class="form-control">
+                                                    <option value="_self">Target</option>
+                                                    <option value="_self" ${data.target == '_self' ? 'selected' : ''}>_self</option>
+                                                    <option value="_blank" ${data.target == '_blank' ? 'selected' : ''}>_blank</option>
+                                                </select>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label" for="repository">Type</label>
@@ -1324,26 +1339,58 @@ function configDT(params) {
             this.api().columns().every(function (index) {
                 let column = this;
                 let dataTitle = column.dataSrc();
-                let title = params.columns[index].title;
+                let currentColumn = params.columns[index];
+                let title = currentColumn.title;
                 if (title.toLowerCase() === "actions") {
                     $('#search-row').append('<th></th>');
                     return;
                 }
                 // Create input element
-                let headerSearchItem = `<th><input id="${dataTitle}" title="${dataTitle}" placeholder="${dataTitle.toUpperCase()}" type="search" style="min-width: 100px" class="form-control form-control-sm"></th>`;
-                $('#search-row').append(headerSearchItem);
-                let input = document.getElementById(dataTitle);
-
-                // Event listener for user input
-                let start = undefined;
-                input.addEventListener('input', (e) => {
-                    clearTimeout(start);
-                    start = setTimeout(function () {
-                        if (column.search() !== this.value) {
-                            column.search(input.value).draw();
+                if (currentColumn.domElement === "select" || currentColumn.data === 'hidden') {
+                    let items = Object.keys(Object.groupBy(json.data, function (item) {
+                        if (currentColumn.data === 'hidden') {
+                            return item.hidden;
                         }
-                    }, 1000 );
-                });
+                        return item[currentColumn.columnToGroupBy];
+                    }));
+                    let domSelectOptions = `<option value="">${dataTitle.toUpperCase()}</option>`;
+                    items.forEach(function(type) {
+                        domSelectOptions += `<option value="${type}">${type}</option>`;
+                    });
+                    let headerSearchItem = `<th><select id="${dataTitle}" title="${dataTitle}"
+                                                            placeholder="${dataTitle.toUpperCase()}" type="search"
+                                                            style="min-width: 100px" class="form-control form-control-sm"
+                                                            >${domSelectOptions}</select></th>`;
+                    $('#search-row').append(headerSearchItem);
+                    let select = document.getElementById(dataTitle);
+                    // Event listener for user input
+                    let start = undefined;
+                    select.addEventListener('change', (e) => {
+                        clearTimeout(start);
+                        start = setTimeout(function () {
+                            if (column.search() !== this.value) {
+                                column.search(select.value).draw();
+                            }
+                        }, 1000 );
+                    });
+                } else {
+                    let headerSearchItem = `<th><input id="${dataTitle}" title="${dataTitle}"
+                                                            placeholder="${dataTitle.toUpperCase()}" type="search"
+                                                            style="min-width: 100px" class="form-control form-control-sm"></th>`;
+                    $('#search-row').append(headerSearchItem);
+                    let input = document.getElementById(dataTitle);
+
+                    // Event listener for user input
+                    let start = undefined;
+                    input.addEventListener('input', (e) => {
+                        clearTimeout(start);
+                        start = setTimeout(function () {
+                            if (column.search() !== this.value) {
+                                column.search(input.value).draw();
+                            }
+                        }, 1000 );
+                    });
+                }
             });
         }
     });
