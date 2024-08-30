@@ -54,10 +54,16 @@ class ToolController extends Controller
     {
         $data = new \stdClass();
         $data->title = 'Export DB | Admin Panel';
-        $data->tables = collect(\DB::getSchemaBuilder()->getTables())->map(function ($table) {
-            $table['count'] = \DB::table($table['name'])->count();
-            return (object) $table;
-        });
+        $data->tables = \DB::table('information_schema.tables')
+            ->select('table_name', 'table_rows')
+            ->where('table_schema', \DB::getDatabaseName())
+            ->get()
+            ->map(function ($table) {
+                return (object) [
+                    'name' => $table->table_name,
+                    'count' => $table->table_rows
+                ];
+            });
         return view('admin.pages.export-db-config', ['data' => $data]);
     }
 
