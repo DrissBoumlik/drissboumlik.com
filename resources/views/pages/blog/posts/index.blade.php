@@ -7,7 +7,7 @@
 @section('headline')
     <div class="d-flex flex-column align-items-center justify-content-center">
         <h1 class="header-txt">{!! $data->headline !!}
-            @if(\Auth::check() && isset($tag))
+            @if(! isGuest(session()->get('guest-view')) && isset($tag))
                 <span class="fs-5"><a href="/admin/tags/edit/{{ $tag->slug }}" target="_blank">
                     <i class="fa fa-fw fa-pencil tc-grey-dark"></i></a></span>
             @endif

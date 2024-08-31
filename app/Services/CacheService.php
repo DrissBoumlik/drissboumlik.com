@@ -7,6 +7,11 @@ class CacheService
 {
     private const CACHE_EXPIRATION = 3600 * 24 * 30 * 6; // 6 months
 
+    public function getCachedFullKey($key, $guestView = false)
+    {
+        return $key . (! isGuest($guestView) ? '-with-unpublished' : '');
+    }
+
     public function cache_data($key, $callback, $expiration = self::CACHE_EXPIRATION, $forget = false) {
         if ($forget) {
             Cache::forget($key);

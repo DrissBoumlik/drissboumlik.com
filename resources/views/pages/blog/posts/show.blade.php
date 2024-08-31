@@ -20,14 +20,14 @@
                     <div class="row">
                         <div class="col-12 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2 mb-4 post">
                             <div class="post-meta-data d-flex flex-column align-items-center">
-                                @auth
+                                @if(! isGuest(session()->get('guest-view')))
                                     <div class="admin-area mb-2">
                                         <span class="me-4"><i class="fa fa-eye"></i> {{ $post->views }}</span>
                                         <span class="me-4"><i class="fa fa-thumbs-up"></i> {{ $post->likes }}</span>
                                         <span><a href="/admin/posts/edit/{{ $post->slug }}" target="_blank">
                                             <i class="fa fa-fw fa-pencil"></i> Edit</a></span>
                                     </div>
-                                @endauth
+                                @endif
                                 <div class="post-date mb-2">
                                     @if($post->published_at)
                                         <div class="published_date">
