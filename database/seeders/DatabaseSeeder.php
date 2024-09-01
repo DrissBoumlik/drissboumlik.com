@@ -38,6 +38,8 @@ class DatabaseSeeder extends Seeder
                         "text" => $item->title,
                         "title" => $item->title,
                         "slug" => $item->slug ?? \Str::slug($item->title),
+                        "link" => $item->link ?? $item->slug,
+                        "icon" => $item->icon ?? null,
                         "target" => $item->target ?? "_self",
                         "active" => !isset($item->hidden) || !$item->hidden,
                         "type" => $configFile,
