@@ -1,7 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Here is where you get to know who is Driss Boumlik.">
-<meta name="keywords" content="teacode, teacodema, javascript, php, laravel, discord, html, css, learn, programming, nodejs, web, development, programmers, developers, bugs, debug, debugging, programmer, coding, developer, bug, code, webdesign, software">
+<meta name="description" content="{{ $data->page_description ?? 'Here is where you get to know who is Driss Boumlik'}}">
 <meta name="author" content="Driss Boumlik">
 {{-- <meta http-equiv="refresh" content="60"> --}}
 {{-- <meta name="robots" content="index, follow"> --}}
@@ -22,3 +21,18 @@
 
 <link rel="icon" type="image/x-icon" href="{{ asset('/assets/img/me/icon.ico') }}">
 <link rel="apple-touch-icon" href="{{ asset('/assets/img/me/icon.ico') }}">
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "{{ $data->page_type ?? "Home Page" }}",
+      "name": "{{ $data->page_title ?? "HOME" }}",
+      "headline": "{{ $data->page_title ?? "HOME" }}",
+      "description": "{{ $data->page_description ?? 'Here is where you get to know who is Driss Boumlik'}}",
+      "image": "{{ asset('/assets/img/me/icon.ico') }}",
+      "author": {
+        "@type": "Person",
+        "name": "Driss Boumlik"
+      },
+      "datePublished": "{{ $data->publication_date ?? '2023-01-01' }}"
+    }
+</script>

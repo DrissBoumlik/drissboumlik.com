@@ -133,6 +133,8 @@ class BlogController extends Controller
         $data = $this->cacheService->cache_data($key, function() use ($post) {
             $data = pageSetup("$post->title | Blog", 'Latest Articles', true, true);
             $data->post = (object)(new PostResource($post))->resolve();
+            $data->page_description = $data->post->description;
+            $data->publication_date = ($data->post->published_at ?? $data->post->updated_at)->toDateString();
             return $data;
         }, null, $request->has('forget'));
 

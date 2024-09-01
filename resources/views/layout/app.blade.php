@@ -12,7 +12,7 @@
 
         @yield('post-header-assets')
 
-        <title>{{ $data->title ?? 'Driss Boumlik' }}</title>
+        <title>{{ $data->page_title ?? 'Driss Boumlik' }}</title>
     </head>
     <body class="antialiased {{ $mode . '-mode' }}">
         {{-- @include('addons.google-tag-manager-body') --}}
