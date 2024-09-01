@@ -16,8 +16,8 @@ class Post extends Model implements Feedable
 
     protected $fillable = [
         'author_id', 'title', 'slug', 'excerpt',
-        'content','cover','description','published',
-        'featured','likes','views', 'published_at',
+        'content', 'cover', 'description', 'published',
+        'featured', 'active', 'likes', 'views', 'published_at',
     ];
 
     protected $casts = [

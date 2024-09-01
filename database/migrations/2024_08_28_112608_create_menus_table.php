@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('link')->nullable();
             $table->string('icon')->nullable();
             $table->string('type')->nullable();
-            $table->boolean('hidden')->nullable();
+            $table->boolean('active')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

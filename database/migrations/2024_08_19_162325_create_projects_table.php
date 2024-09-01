@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->json('links')->nullable();
-            $table->boolean('featured')->nullable();
-            $table->boolean('hidden')->nullable();
+            $table->boolean('featured')->default(false);
+            $table->boolean('active')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

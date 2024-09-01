@@ -23,8 +23,9 @@ class CreatePostsTable extends Migration
             $table->text('excerpt')->nullable();
             $table->string('cover')->nullable();
             $table->text('description')->nullable();
-            $table->boolean('published')->default(false)->nullable();
-            $table->boolean('featured')->default(false)->nullable();
+            $table->boolean('published')->default(false);
+            $table->boolean('featured')->default(false);
+            $table->boolean('active')->default(false);
             $table->unsignedInteger('likes')->default(0)->nullable();
             $table->unsignedInteger('views')->default(0)->nullable();
             $table->timestamp('published_at')->nullable();
