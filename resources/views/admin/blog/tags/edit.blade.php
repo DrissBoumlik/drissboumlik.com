@@ -37,9 +37,9 @@
                     @method('put')
                     @csrf
                     <div class="row items-push">
-                        <div class="col-md-6 offset-md-3">
+                        <div class="col-md-8 offset-md-2 col-12">
                             <div class="mb-4">
-                                <label class="form-label" for="example-static-input-plain">Posts tagged with this tag : {{ $tag->posts_count }}</label>
+                                <label class="form-label" for="example-static-input-plain">Posts tagged : {{ $tag->posts_count }}</label>
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="tag-name">Name</label>
@@ -75,7 +75,7 @@
                                          alt="photo" width="200" height="100" loading="lazy">
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-between column-gap-2">
+                            <div class="d-flex justify-content-between column-gap-2 flex-wrap flex-md-nowrap">
                                 <button type="submit" class="btn btn-success me-1 mb-3 w-100">
                                     <i class="fa fa-fw fa-edit me-1"></i>Update</button>
                                 @if($tag->deleted)

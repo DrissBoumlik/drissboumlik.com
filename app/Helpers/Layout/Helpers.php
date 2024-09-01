@@ -57,7 +57,7 @@ if (!function_exists('pageSetup')) {
         $data = new \stdClass();
         $data->page_title = $title;
         $data->headline = $headline;
-        $menus = getMenus(['header', 'footer', 'social', 'social-community']);
+        $menus = getMenus(['header', 'footer', 'social-links', 'social-community-links']);
         $data->headerMenu = $headerMenu ? getHeaderMenu($menus) : null;
         $data->footerMenu = $footerMenu ? getFooterMenu($menus) : null;
         $data->socialLinks = $socialLinks ? getSocialLinks($menus) : null;

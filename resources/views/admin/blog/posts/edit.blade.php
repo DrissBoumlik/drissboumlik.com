@@ -5,13 +5,9 @@
 {{--    <link rel="stylesheet" href="/template/assets/js/plugins/cropperjs/cropper.min.css">--}}
     <link href="{{ asset('/template/assets/js/plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/template/assets/js/plugins/flatpickr/flatpickr.min.css') }}" rel="stylesheet" />
-{{--    <link rel="stylesheet" href="{{ asset('/vendor/laraberg/css/laraberg.css') }}">--}}
 {{--    <link rel="stylesheet" href="/template/assets/js/plugins/simplemde/simplemde.min.css">--}}
 @endsection
 @section('js')
-{{--    <script src="{{ asset('/vendor/laraberg/js/react.production.min.js') }}"></script>--}}
-{{--    <script src="{{ asset('/vendor/laraberg/js/react-dom.production.min.js') }}"></script>--}}
-{{--    <script src="{{ asset('/vendor/laraberg/js/laraberg.js') }}"></script>--}}
 {{--    <script src="/template/assets/js/plugins/cropperjs/cropper.min.js"></script>--}}
     <script src="{{ asset('/template/assets/js/plugins/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('/template/assets/js/plugins/flatpickr/flatpickr.min.js') }}"></script>
@@ -70,7 +66,7 @@
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="post_excerpt">Excerpt</label>
-                                <textarea id="post_excerpt" class="form-control laraberg-textarea" name="post_excerpt" placeholder="Post excerpt.." rows="4" >{{ $post->excerpt }}</textarea>
+                                <textarea id="post_excerpt" class="form-control" name="post_excerpt" placeholder="Post excerpt.." rows="4" >{{ $post->excerpt }}</textarea>
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="description">Description</label>
@@ -161,7 +157,7 @@
                                 {{-- <textarea class="js-simplemde" id="simplemde" name="post_body">{{ old('post_body') }}</textarea> --}}
                                 <textarea id="post_body" class="form-control" name="post_content" placeholder="Post content.." hidden>{!! $post->content !!}</textarea>
                             </div>
-                            <div class="d-flex justify-content-between column-gap-2">
+                            <div class="d-flex justify-content-between column-gap-2 flex-wrap flex-md-nowrap">
                                 <button type="submit" class="btn btn-success me-1 mb-3 w-100">
                                     <i class="fa fa-fw fa-edit me-1"></i>Update</button>
                                 <a href="/blog/{{ $post->slug }}" target="_blank" class="btn btn-dark me-1 mb-3 w-100">

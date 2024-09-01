@@ -5,12 +5,8 @@
 {{--    <link rel="stylesheet" href="{{ asset('/template/assets/js/plugins/cropperjs/cropper.min.css') }}">--}}
     <link href="{{ asset('/template/assets/js/plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/template/assets/js/plugins/flatpickr/flatpickr.min.css') }}" rel="stylesheet" />
-{{--    <link rel="stylesheet" href="{{ asset('/vendor/laraberg/css/laraberg.css') }}">--}}
 @endsection
 @section('js')
-{{--    <script src="{{ asset('/vendor/laraberg/js/react.production.min.js') }}"></script>--}}
-{{--    <script src="{{ asset('/vendor/laraberg/js/react-dom.production.min.js') }}"></script>--}}
-{{--    <script src="{{ asset('/vendor/laraberg/js/laraberg.js') }}"></script>--}}
 {{--    <script src="/template/assets/js/plugins/cropperjs/cropper.min.js"></script>--}}
     <script src="{{ asset('/template/assets/js/plugins/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('/template/assets/js/plugins/flatpickr/flatpickr.min.js') }}"></script>
@@ -98,7 +94,7 @@
                             </div>
                             <div class="mb-4">
                                 <div class="form-check form-switch form-check-inline">
-                                    <input class="form-check-input" type="checkbox" value="" id="featured" name="featured">
+                                    <input class="form-check-input" type="checkbox" id="featured" name="featured">
                                     <label class="form-check-label" for="featured">Featured</label>
                                 </div>
                             </div>
