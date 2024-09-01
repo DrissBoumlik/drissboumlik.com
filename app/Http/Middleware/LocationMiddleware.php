@@ -21,8 +21,7 @@ class LocationMiddleware
         $ip = $request->ip();
 //        $ip = '105.158.165.210';
 //        $ip = '48.188.144.248';
-        $currentUserInfo = Location::get($ip);
-        if ($currentUserInfo) {
+        if ($ip !== '127.0.0.1' && $currentUserInfo = Location::get($ip)) {
             $currentUserInfo->ref_source = $request->get('ref_src');
             $currentUserInfo->ref_medium = $request->get('ref_mdm');
             $route = $request->decodedPath();
