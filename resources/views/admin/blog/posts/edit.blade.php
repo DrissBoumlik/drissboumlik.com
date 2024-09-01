@@ -166,6 +166,13 @@
                                     <i class="fa fa-fw fa-edit me-1"></i>Update</button>
                                 <a href="/blog/{{ $post->slug }}" target="_blank" class="btn btn-dark me-1 mb-3 w-100">
                                     <i class="fa fa-fw fa-eye me-1"></i>View</a>
+                                @if($post->deleted)
+                                    <button type="submit" class="btn btn-secondary me-1 mb-3 w-100" name="restore">
+                                        <i class="fa fa-fw fa-rotate-left me-1"></i> Restore</button>
+                                @else
+                                    <button type="submit" class="btn btn-warning me-1 mb-3 w-100" name="delete">
+                                        <i class="fa fa-fw fa-trash me-1"></i> Delete</button>
+                                @endif
                                 <button type="submit" class="btn btn-danger me-1 mb-3 w-100" name="destroy">
                                     <i class="fa fa-fw fa-trash me-1"></i>Hard Delete</button>
                             </div>

@@ -106,8 +106,10 @@ class PostController extends Controller
                 return redirect("/admin/posts")->with(['response' => ['message' => 'Post not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
             }
 
-            if ($request->has('destroy')) {
-                return $this->destroy($post);
+            if ($request->has('destroy') || $request->has('delete')) {
+                return $this->destroy($post, $request);
+            } elseif ($request->has('restore')) {
+                $post->restore();
             }
 
             $data = [
@@ -128,11 +130,6 @@ class PostController extends Controller
             $this->mediaService->processPostsAssets($request->file('post-assets'), "blog/posts/$request->slug/assets", $request->has('append-to-post-assets'));
             $post->update($data);
 
-            if ($request->has('active')) {
-                $post->restore();
-            } else {
-                $post->delete();
-            }
             \DB::table('post_tag')->where('post_id', $post->id)->delete();
             if ($request->has('tags')) {
                 $post_tag = [];
@@ -151,14 +148,18 @@ class PostController extends Controller
         }
     }
 
-    private function destroy($post)
+    private function destroy($post, $request)
     {
         try {
             if ($post === null) {
                 return redirect("/admin/posts")->with(['response' => ['message' => 'Post not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
             }
+            if ($request->has('delete')) {
+                $post->delete();
+                return redirect("/admin/posts/edit/$post->slug")->with(['response' => ['message' => 'Post deleted successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
+            }
             \DB::table('post_tag')->where('post_id', $post->id)->delete();
-            $deleted = $post->forceDelete();
+            $post->forceDelete();
             return redirect("/admin/posts")->with(['response' => ['message' => 'Post deleted successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
         } catch (\Throwable $e) {
             return redirect("/admin/posts")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);

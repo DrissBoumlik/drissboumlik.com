@@ -68,8 +68,10 @@ class TagController extends Controller
                 return redirect("/admin/tags")->with(['response' => ['message' => 'Tag not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
             }
 
-            if ($request->has('destroy')) {
-                return $this->destroy($tag);
+            if ($request->has('destroy') || $request->has('delete')) {
+                return $this->destroy($tag, $request);
+            } elseif ($request->has('restore')) {
+                $tag->restore();
             }
 
             $data = [
@@ -82,25 +84,24 @@ class TagController extends Controller
             $image_file = $request->file('cover');
             $this->mediaService->processPostCover($data, $image_file, $request->slug ?? $tag->slug, "blog/tags/$request->slug");
             $tag->update($data);
-            if ($request->has('active')) {
-                $tag->restore();
-            } else {
-                $tag->delete();
-            }
             return redirect("/admin/tags/edit/$tag->slug")->with(['response' => ['message' => 'Tag updated successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
         } catch (\Throwable $e) {
             return redirect("/admin/tags/edit/$tag->slug")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
         }
     }
 
-    private function destroy($tag)
+    private function destroy($tag, $request)
     {
         try {
             if ($tag === null) {
                 return redirect("/admin/tags")->with(['response' => ['message' => 'Tag not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
             }
+            if ($request->has('delete')) {
+                $tag->delete();
+                return redirect("/admin/tags/edit/$tag->slug")->with(['response' => ['message' => 'Tag deleted successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
+            }
             \DB::table('post_tag')->where('tag_id', $tag->id)->delete();
-            $deleted = $tag->forceDelete();
+            $tag->forceDelete();
             return redirect("/admin/tags")->with(['response' => ['message' => 'Tag deleted successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
         } catch (\Throwable $e) {
             return redirect("/admin/tags")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
