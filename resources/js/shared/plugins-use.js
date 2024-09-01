@@ -336,9 +336,9 @@ function initDatatable() {
                         let updated_at_formatted = moment(row.updated_at).format('Y-M-D hh:mm');
                         return `<span title="${updated_at_formatted}">${updated_at_for_humans}<br/>${updated_at_formatted}</span>`;
                     }},
-                { data: 'deleted_at', name: 'deleted_at', title: 'Active', className: 'fs-sm',
+                { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
                     render: function (data, type, row, params) {
-                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${!row.deleted_at ? 'bg-success' : 'bg-danger' }"></div>`;
+                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
                 }},
             ]
         };
@@ -384,9 +384,9 @@ function initDatatable() {
                         let created_at_formatted = moment(row.created_at).format('Y-M-D hh:mm');
                         return `<span title="${created_at_formatted}">${created_at_for_humans}<br/>${created_at_formatted}</span>`;
                 }},
-                { data: 'deleted_at', name: 'deleted_at', title: 'Active', className: 'fs-sm',
+                { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
                     render: function (data, type, row, params) {
-                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${!row.deleted_at ? 'bg-success' : 'bg-danger' }"></div>`;
+                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
                 }},
             ]
         };
@@ -704,9 +704,9 @@ function initDatatable() {
                     }
                 },
                 { data: 'position', name: 'position', title: 'Position', className: 'text-center'},
-                { data: 'hidden', name: 'hidden', title: 'Active', className: 'fs-sm',
+                { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
                     render: function (data, type, row) {
-                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.hidden ? 'bg-danger' : 'bg-success' }"></div>`;
+                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
                 }}
             ]
         };
@@ -746,7 +746,7 @@ function initDatatable() {
                                             </div>
                                             <div class="mb-3 form-check form-switch">
                                               <label class="form-check-label" for="active">Active</label>
-                                              <input class="form-check-input" type="checkbox" ${ data.hidden ? "" : "checked" } id="active" name="active">
+                                              <input class="form-check-input" type="checkbox" ${ data.active ? "checked" : "" } id="active" name="active">
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -851,9 +851,9 @@ function initDatatable() {
                         }
                         return dom;
                 }},
-                { data: 'hidden', name: 'hidden', title: 'Active', className: 'fs-sm',
+                { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
                     render: function (data, type, row) {
-                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.hidden ? 'bg-danger' : 'bg-success' }"></div>`;
+                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
                 }},
                 { data: 'featured', name: 'featured', title: 'Featured', className: 'fs-sm', domElement: 'select', columnToGroupBy: 'featured',
                     render: function (data, type, row) {
@@ -907,7 +907,7 @@ function initDatatable() {
                                             </div>
                                             <div class="mb-3 form-check form-switch">
                                               <label class="form-check-label" for="active">Active</label>
-                                              <input class="form-check-input" type="checkbox" ${ data.hidden ? "" : "checked" } id="active" name="active">
+                                              <input class="form-check-input" type="checkbox" ${ data.active ? "checked" : "" } id="active" name="active">
                                             </div>
                                             <div class="mb-3 form-check form-switch">
                                               <label class="form-check-label" for="featured">Featured</label>
@@ -1009,9 +1009,9 @@ function initDatatable() {
                     render: function (data, type, row) {
                         return `<a href="${row.link}" target="_blank">${row.link}</a>`;
                 }},
-                { data: 'hidden', name: 'hidden', title: 'Active', className: 'fs-sm',
+                { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
                     render: function (data, type, row) {
-                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.hidden ? 'bg-danger' : 'bg-success' }"></div>`;
+                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
                     }},
             ]
         };
@@ -1062,7 +1062,7 @@ function initDatatable() {
                                             </div>
                                             <div class="mb-3 form-check form-switch">
                                               <label class="form-check-label" for="active">Active</label>
-                                              <input class="form-check-input" type="checkbox" ${ data.hidden ? "" : "checked" } id="active" name="active">
+                                              <input class="form-check-input" type="checkbox" ${ data.active ? "checked" : "" } id="active" name="active">
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -1168,9 +1168,9 @@ function initDatatable() {
                     render: function (data, type, row) {
                         return `<a href="${row.link}" target="_blank">${row.link}</a>`;
                     }},
-                { data: 'hidden', name: 'hidden', title: 'Active', className: 'fs-sm', inputType: 'select',
+                { data: 'active', name: 'active', title: 'Active', className: 'fs-sm', inputType: 'select',
                     render: function (data, type, row) {
-                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.hidden ? 'bg-danger' : 'bg-success' }"></div>`;
+                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
                     }},
             ]
         };
@@ -1235,7 +1235,7 @@ function initDatatable() {
                                             </div>
                                             <div class="mb-3 form-check form-switch">
                                               <label class="form-check-label" for="active">Active</label>
-                                              <input class="form-check-input" type="checkbox" ${ data.hidden ? "" : "checked" } id="active" name="active">
+                                              <input class="form-check-input" type="checkbox" ${ data.active ? "checked" : "" } id="active" name="active">
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -1346,10 +1346,10 @@ function configDT(params) {
                     return;
                 }
                 // Create input element
-                if (currentColumn.domElement === "select" || currentColumn.data === 'hidden') {
+                if (currentColumn.domElement === "select" || currentColumn.data === 'active') {
                     let items = Object.keys(Object.groupBy(json.data, function (item) {
-                        if (currentColumn.data === 'hidden') {
-                            return item.hidden;
+                        if (currentColumn.data === 'active') {
+                            return item.active;
                         }
                         return item[currentColumn.columnToGroupBy];
                     }));

@@ -24,7 +24,8 @@ class TagResource extends JsonResource
             "cover" => $this->cover,
             'cover_compressed' => $this->cover ? "$coverSplitted[0]--compressed.webp" : $this->cover,
             "created_at" => $this->created_at,
-            'active' => $this->deleted_at == null,
+            'active' => $this->active,
+            'deleted' => $this->deleted_at !== null,
             "posts_count" => $this->posts_count,
         ];
     }

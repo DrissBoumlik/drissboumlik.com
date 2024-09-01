@@ -50,7 +50,7 @@ class DatatableController extends Controller
         $is_first_time = $request->has('first_time');
         if ($is_first_time) {
             $testimonials = $testimonials
-                ->orderBy('hidden', 'asc')
+                ->orderBy('active', 'asc')
                 ->orderBy('id', 'desc');
         }
         return $this->toDatatable($testimonials, false);
@@ -62,7 +62,7 @@ class DatatableController extends Controller
         $is_first_time = $request->has('first_time');
         if ($is_first_time) {
             $projects = $projects
-                ->orderBy('hidden', 'asc')
+                ->orderBy('active', 'asc')
                 ->orderBy('featured', 'asc')
                 ->orderBy('id', 'desc');
         }
@@ -75,7 +75,7 @@ class DatatableController extends Controller
         $is_first_time = $request->has('first_time');
         if ($is_first_time) {
             $services = $services
-                ->orderBy('hidden', 'asc')
+                ->orderBy('active', 'asc')
                 ->orderBy('id', 'desc');
         }
         return $this->toDatatable($services, false);
@@ -87,7 +87,7 @@ class DatatableController extends Controller
         $is_first_time = $request->has('first_time');
         if ($is_first_time) {
             $menus = $menus
-                ->orderBy('hidden', 'asc')
+                ->orderBy('active', 'asc')
                 ->orderBy('id', 'desc');
         }
         return $this->toDatatable($menus, false);

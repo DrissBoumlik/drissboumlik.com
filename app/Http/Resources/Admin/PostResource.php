@@ -10,7 +10,7 @@ class PostResource extends JsonResource
      * Transform the resource into an array.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
+     * @return object
      */
     public function toArray($request)
     {
@@ -36,7 +36,8 @@ class PostResource extends JsonResource
             'created_at' => $this->created_at,
             'tags' => $this->tags,
 //            'author' => $this->author,
-            'active' => $this->deleted_at == null,
+            'active' => $this->active,
+            'deleted' => $this->deleted_at !== null,
         ];
     }
 }

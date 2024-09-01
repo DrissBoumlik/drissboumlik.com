@@ -25,9 +25,9 @@ class CRUDController extends Controller
     public function updateTestimonial(Request $request, Testimonial $testimonial)
     {
         try {
-            $active = $request->get("active");
-            $request->merge(["hidden" => !$active]);
-            $testimonial->update($request->only(["content", "author", "position", "hidden"]));
+            $active = $request->has("active") && $request->get("active") === 'on';
+            $request->merge(["active" => $active]);
+            $testimonial->update($request->only(["content", "author", "position", "active"]));
             return ['msg' => "Updated Successfully !"];
         } catch (\Throwable $e) {
             return response()->json(['msg' => $e->getMessage()], 404);
@@ -37,10 +37,10 @@ class CRUDController extends Controller
     public function updateProject(Request $request, Project $project)
     {
         try {
-            $active = $request->get("active");
-            $featured = $request->has("featured") && ($request->get("featured") === 'on');
-            $request->merge(["hidden" => !$active, "featured" => $featured]);
-            $project->update($request->only(["role", "title", "description", "featured", "links", "hidden"]));
+            $active = $request->has("active") && $request->get("active") === 'on';
+            $featured = $request->has("featured") && $request->get("featured") === 'on';
+            $request->merge(["active" => $active, 'featured' => $featured]);
+            $project->update($request->only(["role", "title", "description", "featured", "links", "active"]));
             return ['msg' => "Updated Successfully !"];
         } catch (\Throwable $e) {
             return response()->json(['msg' => $e->getMessage()], 404);
@@ -50,9 +50,9 @@ class CRUDController extends Controller
     public function updateService(Request $request, Service $service)
     {
         try {
-            $active = $request->get("active");
-            $request->merge(["hidden" => !$active]);
-            $service->update($request->only(['slug', 'title', 'icon', 'link', 'description', 'hidden']));
+            $active = $request->has("active") && $request->get("active") === 'on';
+            $request->merge(["active" => $active]);
+            $service->update($request->only(['slug', 'title', 'icon', 'link', 'description', 'active']));
             return ['msg' => "Updated Successfully !"];
         } catch (\Throwable $e) {
             return response()->json(['msg' => $e->getMessage()], 404);
@@ -62,9 +62,9 @@ class CRUDController extends Controller
     public function updateMenu(Request $request, Menu $menu)
     {
         try {
-            $active = $request->get("active");
-            $request->merge(["hidden" => !$active]);
-            $menu->update($request->only(['text', 'title', 'slug', 'target', 'link', 'icon', 'type', 'hidden']));
+            $active = $request->has("active") && $request->get("active") === 'on';
+            $request->merge(["active" => $active]);
+            $menu->update($request->only(['text', 'title', 'slug', 'target', 'link', 'icon', 'type', 'active']));
             return ['msg' => "Updated Successfully !"];
         } catch (\Throwable $e) {
             return response()->json(['msg' => $e->getMessage()], 404);

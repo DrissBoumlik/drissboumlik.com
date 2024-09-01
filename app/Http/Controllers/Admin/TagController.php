@@ -52,6 +52,7 @@ class TagController extends Controller
                 "slug" => $request->slug,
                 "description" => $request->description,
                 "color" => $request->color,
+                "active" => $request->has('active'),
             ];
             $image_file = $request->file('cover');
             $this->mediaService->processPostCover($data, $image_file, $request->slug, "blog/tags/$request->slug");
@@ -79,6 +80,7 @@ class TagController extends Controller
                 "slug" => $request->slug,
                 "description" => $request->description,
                 "color" => $request->color,
+                "active" => $request->has('active'),
             ];
             $image_file = $request->file('cover');
             $this->mediaService->processPostCover($data, $image_file, $request->slug ?? $tag->slug, "blog/tags/$request->slug");

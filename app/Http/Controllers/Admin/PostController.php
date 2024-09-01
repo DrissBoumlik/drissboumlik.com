@@ -51,6 +51,7 @@ class PostController extends Controller
                 "description" => $request->description,
                 "published" => $request->has('published'),
                 "featured" => $request->has('featured'),
+                "active" => $request->has('active'),
                 'author_id' => \Auth::user()->id,
                 'published_at' => ($request->has('published') ? ($request->published_at ?? now()) : null),
             ];
@@ -120,6 +121,7 @@ class PostController extends Controller
                 "description" => $request->description,
                 "published" => $request->has('published'),
                 "featured" => $request->has('featured'),
+                'active' => $request->has('active'),
                 'author_id' => \Auth::user()->id,
                 'published_at' => ($request->has('published') ? ($request->published_at ?? now()) : null),
                 'views' => $request->views ?? $post->views

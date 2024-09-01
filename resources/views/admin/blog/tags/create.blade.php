@@ -57,6 +57,12 @@
                                        placeholder="Tag color">
                             </div>
                             <div class="mb-4">
+                                <div class="form-check form-switch form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="active" name="active" >
+                                    <label class="form-check-label" for="active">Active</label>
+                                </div>
+                            </div>
+                            <div class="mb-4">
                                 <label class="form-label" for="image">Image</label>
                                 <input type="file" id="image" name="cover" class="form-control" />
                                 <div class="mt-2">
