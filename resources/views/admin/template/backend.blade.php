@@ -7,6 +7,7 @@
     @yield('pre-header-assets')
     @include('admin.template.backend-sections.assets')
     @yield('post-header-assets')
+    <title>{{ $data->page_title ?? 'Admin Panel' }}</title>
 </head>
 
 <body>

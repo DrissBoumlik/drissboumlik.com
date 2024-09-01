@@ -43,6 +43,14 @@ if (!function_exists('getMenuByType')) {
     }
 }
 
+if (!function_exists('adminPageSetup')) {
+    function adminPageSetup ($title) {
+        $data = new \stdClass();
+        $data->page_title = $title;
+        return $data;
+    }
+}
+
 if (!function_exists('pageSetup')) {
     function pageSetup($title, $headline, $headerMenu = false, $footerMenu = false, $socialLinks = false, $socialLinksCommunity = false)
     {

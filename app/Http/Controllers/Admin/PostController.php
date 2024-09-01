@@ -25,18 +25,16 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
-        $data = new \stdClass();
-        $data->title = 'Posts | Admin Panel';
+        $data = adminPageSetup('Posts | Admin Panel');
 
         return view('admin.blog.posts.index', ['data' => $data]);
     }
 
     public function create(Request $request)
     {
-        $data = new \stdClass();
+        $data = adminPageSetup('New Post | Admin Panel');
         $data->tags = Tag::select("name", "id")->get();
 
-        $data->title = 'New Post | Admin Panel';
         return view('admin.blog.posts.create', ['data' => $data]);
     }
 
@@ -78,13 +76,13 @@ class PostController extends Controller
 
     public function edit(Request $request, $slug)
     {
-        $data = new \stdClass();
         $post = Post::withTrashed()->with(['tags', 'author'])->whereSlug($slug)->first();
         if ($post === null) {
             return redirect("/admin/posts")->with(['response' => ['message' => 'Post not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
         }
         $post = (object) (new PostResource($post))->resolve();
 
+        $data = adminPageSetup("Edit | $post->title | Admin Panel");
         $data->tags = Tag::select("name", "id")->get();
         $post_tag_ids = $post->tags->pluck('id');
 
@@ -97,7 +95,6 @@ class PostController extends Controller
             return $tag;
         });
 
-        $data->title = "Edit | $post->title | Admin Panel";
         return view('admin.blog.posts.edit', ['data' => $data, 'post' => $post]);
     }
 
