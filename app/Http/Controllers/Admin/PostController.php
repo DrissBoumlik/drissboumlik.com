@@ -41,6 +41,12 @@ class PostController extends Controller
     public function store(Request $request)
     {
         try {
+            if ($request->slug && Post::where('slug', $request->slug)->exists()) {
+                return redirect("/admin/posts/create")->with(['response' => [
+                    'message' => 'A Post with same slug already exists !',
+                    'class' => 'alert-warning',
+                    'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
+            }
             $data = [
                 "title" => $request->title,
                 "slug" => $request->slug,

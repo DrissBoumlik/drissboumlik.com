@@ -44,6 +44,12 @@ class TagController extends Controller
     public function store(Request $request)
     {
         try {
+            if ($request->slug && Tag::where('slug', $request->slug)->exists()) {
+                return redirect("/admin/tags/create")->with(['response' => [
+                    'message' => 'A Tag with same slug already exists !',
+                    'class' => 'alert-warning',
+                    'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
+            }
             $data = [
                 "name" => $request->name,
                 "slug" => $request->slug,
