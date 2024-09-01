@@ -1,10 +1,10 @@
 <?php
 
 if (!function_exists('getExperiences')) {
-    function getExperiences($withHidden = false)
+    function getExperiences($activeOnly = true)
     {
         $experiences = config('data.resume.experiences');
-        if (!$withHidden) {
+        if ($activeOnly) {
             $experiences->data = filterHiddenItems($experiences->data);
         }
         return $experiences;
@@ -12,14 +12,14 @@ if (!function_exists('getExperiences')) {
 }
 
 if (!function_exists('getProjects')) {
-    function getProjects($withHidden = false, $onlyFeatured = false)
+    function getProjects($activeOnly = true, $onlyFeatured = false)
     {
         $work = (object) [
             "header" => "projects",
             "data" => \App\Models\Project::query(),
         ]; // config('data.resume.work');
-        if (!$withHidden) {
-            $work->data = filterHiddenRecordsOut($work->data);
+        if ($activeOnly) {
+            $work->data = activeItemsOnly($work->data);
         }
         if ($onlyFeatured) {
             $work->data = $work->data->where('featured', true);
@@ -31,10 +31,10 @@ if (!function_exists('getProjects')) {
 }
 
 if (!function_exists('getCertificates')) {
-    function getCertificates($withHidden = false)
+    function getCertificates($activeOnly = true)
     {
         $certificates = config('data.resume.certificates');
-        if (!$withHidden) {
+        if ($activeOnly) {
             $certificates->data = filterHiddenItems($certificates->data);
         }
         return $certificates;
@@ -42,10 +42,10 @@ if (!function_exists('getCertificates')) {
 }
 
 if (!function_exists('getSkills')) {
-    function getSkills($withHidden = false)
+    function getSkills($activeOnly = true)
     {
         $competences = (array) config('data.resume.skills');
-        if (!$withHidden) {
+        if ($activeOnly) {
             $competences = array_map(function ($competenceGroup) {
                 $competenceGroup->items = filterHiddenItems($competenceGroup->items);
                 return $competenceGroup;
@@ -56,10 +56,10 @@ if (!function_exists('getSkills')) {
 }
 
 if (!function_exists('getEducation')) {
-    function getEducation($withHidden = false)
+    function getEducation($activeOnly = true)
     {
         $education = config('data.resume.education');
-        if (!$withHidden) {
+        if ($activeOnly) {
             $education->data = filterHiddenItems($education->data);
         }
         return $education;
@@ -67,10 +67,10 @@ if (!function_exists('getEducation')) {
 }
 
 if (!function_exists('getPassion')) {
-    function getPassion($withHidden = false)
+    function getPassion($activeOnly = true)
     {
         $passion = config('data.resume.passion');
-        if (!$withHidden) {
+        if ($activeOnly) {
             $passion->data = filterHiddenItems($passion->data);
         }
         return $passion;
@@ -78,10 +78,10 @@ if (!function_exists('getPassion')) {
 }
 
 if (!function_exists('getNonITExperiences')) {
-    function getNonITExperiences($withHidden = false)
+    function getNonITExperiences($activeOnly = true)
     {
         $non_it_experiences = config('data.resume.non-it-experiences');
-        if (!$withHidden) {
+        if ($activeOnly) {
             $non_it_experiences->data = filterHiddenItems($non_it_experiences->data);
         }
         return $non_it_experiences;
@@ -89,14 +89,14 @@ if (!function_exists('getNonITExperiences')) {
 }
 
 if (!function_exists('getTestimonials')) {
-    function getTestimonials($withHidden = false)
+    function getTestimonials($activeOnly = true)
     {
         $testimonials = (object) [
             "header" => "testimonials",
             "data" => \DB::table('testimonials'),
         ]; // config('data.resume.testimonials');
-        if (!$withHidden) {
-            $testimonials->data = filterHiddenRecordsOut($testimonials->data);
+        if ($activeOnly) {
+            $testimonials->data = activeItemsOnly($testimonials->data);
         }
         $testimonials->data = $testimonials->data->get()->toArray();
         return $testimonials;
@@ -104,10 +104,10 @@ if (!function_exists('getTestimonials')) {
 }
 
 if (!function_exists('getTechs')) {
-    function getTechs($withHidden = false)
+    function getTechs($activeOnly = true)
     {
         $techs = config('data.components.techs');
-        if (!$withHidden) {
+        if ($activeOnly) {
             $techs->data = array_filter($techs->data, static fn ($item) => !isset($item->hidden) || !$item->hidden);
         }
         return $techs;
@@ -115,14 +115,14 @@ if (!function_exists('getTechs')) {
 }
 
 if (!function_exists('getServices')) {
-    function getServices($withHidden = false)
+    function getServices($activeOnly = true)
     {
         $services = (object) [
             "header" => "services",
             "data" => \DB::table('services'),
         ]; // config('data.components.services');
-        if (!$withHidden) {
-            $services->data = filterHiddenRecordsOut($services->data);
+        if ($activeOnly) {
+            $services->data = activeItemsOnly($services->data);
                 // array_filter($services->data, static fn($item) => !isset($item->hidden) || !$item->hidden);
         }
         $services->data = $services->data->get()->toArray();

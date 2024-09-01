@@ -1,30 +1,30 @@
 <?php
 
 if (!function_exists('getSocialLinks')) {
-    function getSocialLinks($menus, $withHidden = false)
+    function getSocialLinks($menus, $activeOnly = true)
     {
-        return getMenuByType($menus, 'social', $withHidden);
+        return getMenuByType($menus, 'social', $activeOnly);
     }
 }
 
 if (!function_exists('getSocialLinksCommunity')) {
-    function getSocialLinksCommunity($menus, $withHidden = false)
+    function getSocialLinksCommunity($menus, $activeOnly = true)
     {
-        return getMenuByType($menus, 'social-community', $withHidden);
+        return getMenuByType($menus, 'social-community', $activeOnly);
     }
 }
 
 if (!function_exists('getHeaderMenu')) {
-    function getHeaderMenu($menus, $withHidden = false)
+    function getHeaderMenu($menus, $activeOnly = true)
     {
-        return getMenuByType($menus,'header', $withHidden);
+        return getMenuByType($menus,'header', $activeOnly);
     }
 }
 
 if (!function_exists('getFooterMenu')) {
-    function getFooterMenu($menus, $withHidden = false)
+    function getFooterMenu($menus, $activeOnly = true)
     {
-        return getMenuByType($menus,'footer', $withHidden);
+        return getMenuByType($menus,'footer', $activeOnly);
     }
 }
 
@@ -36,9 +36,9 @@ if (!function_exists('getMenus')) {
 }
 
 if (!function_exists('getMenuByType')) {
-    function getMenuByType ($menus, $type, $withHidden) {
-        return $menus->filter(function($menuItem) use ($type, $withHidden) {
-            return ($menuItem->type === $type) && ($withHidden || !$menuItem->hidden);
+    function getMenuByType ($menus, $type, $activeOnly) {
+        return $menus->filter(function($menuItem) use ($type, $activeOnly) {
+            return ($menuItem->type === $type) && (!$activeOnly || $menuItem->active);
         });
     }
 }
