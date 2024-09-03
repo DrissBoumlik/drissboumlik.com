@@ -25,7 +25,7 @@ class PageController extends Controller
             return redirect('/not-found');
         }
         $data = $this->cacheService->cache_data('home-data', function() {
-            $data = pageSetup('Home | Driss Boumlik', null, true, true, true, true);
+            $data = pageSetup('Home | Driss Boumlik', null, ['header', 'footer', 'social', 'community']);
             $data->sections = [];
 //            $data->sections['techs'] = getTechs();
             // $data->sections['work'] = getWork(onlyFeatured: true);
@@ -40,14 +40,14 @@ class PageController extends Controller
 
     public function about(Request $request)
     {
-        $data = pageSetup('About me | Driss Boumlik', 'about me', true, true, true);
+        $data = pageSetup('About me | Driss Boumlik', 'about me', ['header', 'footer', 'social']);
         return view('pages.about', ['data' => $data]);
     }
 
     public function resume(Request $request)
     {
         $data = $this->cacheService->cache_data('resume-data', function() {
-            $data = pageSetup('Resume | Driss Boumlik', 'resume', true, true);
+            $data = pageSetup('Resume | Driss Boumlik', 'resume', ['header', 'footer']);
 
             $data->sections = [];
             $data->sections['experiences'] = getExperiences();
@@ -73,6 +73,7 @@ class PageController extends Controller
         $data = $this->cacheService->cache_data('testimonials-data', function() {
             $data = pageSetup('Testimonials | Driss Boumlik', 'testimonials', true, true);
             $data->testimonials = getTestimonials();
+            $data = pageSetup('Testimonials | Driss Boumlik', 'testimonials', ['header', 'footer']);
             return $data;
         }, null, $request->has('forget'));
 
@@ -84,6 +85,7 @@ class PageController extends Controller
         $data = $this->cacheService->cache_data('projects-data', function() {
             $data = pageSetup('Projects | Driss Boumlik', 'projects', true, true);
             $data->projects = getProjects();
+            $data = pageSetup('Projects | Driss Boumlik', 'projects', ['header', 'footer']);
             return $data;
         }, null, $request->has('forget'));
         return view('pages.projects', ['data' => $data]);
@@ -91,13 +93,13 @@ class PageController extends Controller
 
     public function contact(Request $request)
     {
-        $data = pageSetup('Contact | Driss Boumlik', 'contact', true, true);
+        $data = pageSetup('Contact | Driss Boumlik', 'contact', ['header', 'footer']);
         return view('pages.contact', ['data' => $data]);
     }
 
     public function privacyPolicy(Request $request)
     {
-        $data = pageSetup('Privacy Policy | Driss Boumlik', 'privacy policy', true, true);
+        $data = pageSetup('Privacy Policy | Driss Boumlik', 'privacy policy', ['header', 'footer']);
         return view('pages.privacy-policy', ['data' => $data]);
     }
 
@@ -106,6 +108,7 @@ class PageController extends Controller
         $data = $this->cacheService->cache_data('services-data', function() {
             $data = pageSetup('Services | Driss Boumlik', 'services', true, true);
             $data->services = getServices();
+            $data = pageSetup('Services | Driss Boumlik', 'services', ['header', 'footer']);
             return $data;
         }, null, $request->has('forget'));
         return view("pages.services", ['data' => $data]);

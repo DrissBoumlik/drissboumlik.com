@@ -1155,8 +1155,13 @@ function initDatatable() {
                         return div.innerText;
                     }
                 },
-                { data: 'target', name: 'target', title: 'Target', className: 'text-center', domElement: 'select', columnToGroupBy: 'target'},
-                { data: 'type', name: 'type', title: 'Type', className: 'text-center', domElement: 'select', columnToGroupBy: 'type'},
+                { data: 'target', name: 'target', title: 'Target', className: 'text-center', domElement: 'select'},
+                { data: 'menu_type_id', name: 'menu_type_id', title: 'Type', className: 'text-center',
+                    domElement: 'select', optionTextField: 'type_name',
+                    render: function (data, type, row) {
+                        return row.type_name;
+                    }
+                },
                 { data: 'icon', name: 'icon', title: 'Icon', className: 'text-center',
                     render: function (data, type, row) {
                         var div = document.createElement('div');
@@ -1176,10 +1181,32 @@ function initDatatable() {
         };
         let MenusDataTable = configDT(params);
 
+        let menuTypesItems = [];
+        // api to fetch menu types for select option
+        $.ajax({
+            type: 'POST',
+            url: '/api/menu-types?api',
+            data: {},
+            success: function(response) {
+                console.log(response);
+                menuTypesItems = response.data;
+            },
+            error: function (jqXHR, textStatus, errorThrown){
+                console.log(jqXHR, textStatus, errorThrown);
+            }
+        });
+
         $('#menus').on('click', '.display-menus-details', function(e) {
             const $row = $(this).closest('tr');
             const data = MenusDataTable.row( $row ).data();
+            let dataFilteredCount = MenusDataTable.rows().data().toArray().filter(function (rowData) {
+                return data.type_name === rowData.type_name;
+            }).length;
             let created_at = moment(data.updated_at)
+            let menuTypesOptions = '';
+            menuTypesItems.forEach(function (item) {
+                menuTypesOptions += `<option value="${item.id}" ${data.menu_type_id === item.id ? "selected" : ""}>${item.name}</option>`;
+            });
             let modal = `
             <div class="modal modal-menus-details" tabindex="-1">
                 <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -1267,6 +1294,7 @@ function initDatatable() {
                 }
                 let _this = $(this);
                 let data = _this.serializeArray();
+                data.push({ name: "menu_type", value: _this.data('menus-type') }) ;
                 $.ajax({
                     type: 'PUT',
                     url: `/api/menus/${_this.data('menus-id')}`,
@@ -1274,6 +1302,123 @@ function initDatatable() {
                     success: function(response) {
                         console.log(response);
                         MenusDataTable.ajax.reload(null, false);
+                        get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                    },
+                    error: function (jqXHR, textStatus, errorThrown){
+                        console.log(jqXHR, textStatus, errorThrown);
+                        get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                    }
+                });
+            });
+
+        });
+    }
+
+    if ($('#menu-types').length) {
+        let params = {
+            first_time: true,
+            id: '#menu-types',
+            method: 'POST',
+            url: '/api/menu-types',
+            columns: [
+                { data: 'id', name: 'id', title: 'Actions', className: 'text-center',
+                    render: function (data, type, row, params) {
+                        return `
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm js-bs-tooltip-enabled display-menuTypes-details">
+                                <i class="fa fs-3 fa-eye"></i>
+                            </button>
+                        </div>
+                    `;
+                    }
+                },
+                { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
+                { data: 'name', name: 'name', title: 'Name', className: 'text-center'},
+                { data: 'slug', name: 'slug', title: 'Slug', className: 'text-center'},
+                { data: 'description', name: 'description', title: 'Description', className: 'text-center'},
+                { data: 'active', name: 'active', title: 'Active', className: 'fs-sm', inputType: 'select',
+                    render: function (data, type, row) {
+                        return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
+                    }},
+            ]
+        };
+        let MenuTypesDataTable = configDT(params);
+
+        $('#menu-types').on('click', '.display-menuTypes-details', function(e) {
+            const $row = $(this).closest('tr');
+            const data = MenuTypesDataTable.row( $row ).data();
+            let created_at = moment(data.updated_at)
+            let modal = `
+            <div class="modal modal-menuTypes-details" tabindex="-1">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">${data.name}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <form id="form-menuTypes" data-menu-types-id="${data.id}">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="name">Name</label>
+                                                <input type="text" class="form-control" id="name" name="name"
+                                                    value="${data.name || ''}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label" for="slug">Slug</label>
+                                                <input type="text" class="form-control" id="slug" name="slug"
+                                                    value="${data.slug || ''}">
+                                            </div>
+                                            <div class="mb-3 form-check form-switch">
+                                              <label class="form-check-label" for="active">Active</label>
+                                              <input class="form-check-input" type="checkbox" ${ data.active ? "checked" : "" } id="active" name="active">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="description">Description</label>
+                                                <textarea class="form-control" id="description" name="description" rows="4"
+                                                    placeholder="Textarea content..">${data.description || ''}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-outline-info w-100">Update</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-backdrop fade show"></div>`;
+            $('#page-container').append(modal);
+            let modalMenuTypesDetails = $('.modal-menuTypes-details');
+            $('.btn-close').add('.modal-menuTypes-details').on('click', function(e) {
+                if (e.target != modalMenuTypesDetails[0] && e.target != $('.btn-close')[0]) {
+                    return;
+                }
+                modalMenuTypesDetails.remove();
+                $('.modal-backdrop').remove();
+            });
+            modalMenuTypesDetails.show();
+
+            $(document).off('submit', '#form-menuTypes').on('submit', '#form-menuTypes', function(e) {
+                e.preventDefault();
+                if (!confirm("Are you sure ?")) {
+                    return;
+                }
+                let _this = $(this);
+                let data = _this.serializeArray();
+                $.ajax({
+                    type: 'PUT',
+                    url: `/api/menu-types/${_this.data('menu-types-id')}`,
+                    data: data,
+                    success: function(response) {
+                        console.log(response);
+                        MenuTypesDataTable.ajax.reload(null, false);
                         get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
                     },
                     error: function (jqXHR, textStatus, errorThrown){

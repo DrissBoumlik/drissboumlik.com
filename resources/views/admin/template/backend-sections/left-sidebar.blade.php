@@ -152,7 +152,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-main-item{{ request()->is(['admin/menus', 'admin/sitemap', 'admin/export-db/config']) ? ' open' : '' }}">
+                <li class="nav-main-item{{ request()->is(['admin/menus', 'admin/menu-types', 'admin/sitemap', 'admin/export-db/config']) ? ' open' : '' }}">
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                         <i class="nav-main-link-icon fa fa-fw fa-sitemap"></i>
                         <span class="nav-main-link-name">Site Management</span>
@@ -162,6 +162,12 @@
                             <a class="nav-main-link{{ request()->is('admin/menus') ? ' active' : '' }}" href="/admin/menus">
                                 <i class="nav-main-link-icon fa fa-fw fa-bars"></i>
                                 <span class="nav-main-link-name">Menus</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->is('admin/menu-types') ? ' active' : '' }}" href="/admin/menu-types">
+                                <i class="nav-main-link-icon fa fa-fw fa-bars"></i>
+                                <span class="nav-main-link-name">Menu Types</span>
                             </a>
                         </li>
                         <li class="nav-main-item">

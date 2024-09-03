@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
+use App\Models\MenuType;
 use App\Models\Message;
 use App\Models\Service;
 use App\Models\Subscriber;
@@ -83,7 +84,8 @@ class DatatableController extends Controller
 
     public function menus(Request $request)
     {
-        $menus = Menu::query();
+        $menus = Menu::join('menu_types', 'menu_types.id', '=', 'menus.menu_type_id')
+                    ->select('menus.*', 'menu_types.name as type_name');
         $is_first_time = $request->has('first_time');
         if ($is_first_time) {
             $menus = $menus
@@ -91,6 +93,21 @@ class DatatableController extends Controller
                 ->orderBy('id', 'desc');
         }
         return $this->toDatatable($menus, false);
+    }
+
+    public function menuTypes(Request $request)
+    {
+        $menuTypes = MenuType::withCount('menus');
+        $is_first_time = $request->has('first_time');
+        if ($is_first_time) {
+            $menuTypes = $menuTypes
+                ->orderBy('active', 'asc')
+                ->orderBy('id', 'desc');
+        }
+        if ($request->has('api')) {
+            return ["data" => $menuTypes->get()];
+        }
+        return $this->toDatatable($menuTypes, false);
     }
 
     private function toDatatable($data, $withoutTrashed = true)
