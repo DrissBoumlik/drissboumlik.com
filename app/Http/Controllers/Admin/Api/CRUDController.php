@@ -49,10 +49,12 @@ class CRUDController extends Controller
 
     public function updateService(Request $request, Service $service)
     {
+    public function updateMenuType(Request $request, MenuType $menuType)
+    {
         try {
             $active = $request->has("active") && $request->get("active") === 'on';
             $request->merge(["active" => $active]);
-            $service->update($request->only(['slug', 'title', 'icon', 'link', 'description', 'active']));
+            $menuType->update($request->only(['name', 'slug', 'description', 'active']));
             return ['msg' => "Updated Successfully !"];
         } catch (\Throwable $e) {
             return response()->json(['msg' => $e->getMessage()], 404);
@@ -62,9 +64,21 @@ class CRUDController extends Controller
     public function updateMenu(Request $request, Menu $menu)
     {
         try {
+            $order = $request->get('order');
+            $menu_type_id = $request->get('menu_type');
+            if (is_numeric($order)) {
+                $itemToChangeOrderWith = Menu::withTrashed()->where('order', $order)
+                                                ->where('menu_type_id', $menu_type_id)->first();
+                if ($itemToChangeOrderWith) {
+                    $itemToChangeOrderWith->order = $menu->order;
+                    $itemToChangeOrderWith->update();
+                }
+            }
+
             $active = $request->has("active") && $request->get("active") === 'on';
             $request->merge(["active" => $active]);
-            $menu->update($request->only(['text', 'title', 'slug', 'target', 'link', 'icon', 'type', 'active']));
+            $request->merge(["menu_type_id" => $request->get('menu-type')]);
+            $menu->update($request->only(['text', 'title', 'slug', 'target', 'link', 'icon', 'menu_type_id', 'active', 'order']));
             return ['msg' => "Updated Successfully !"];
         } catch (\Throwable $e) {
             return response()->json(['msg' => $e->getMessage()], 404);

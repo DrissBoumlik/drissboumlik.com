@@ -1140,6 +1140,7 @@ function initDatatable() {
                     }
                 },
                 { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
+                { data: 'order', name: 'order', title: 'Order', className: 'text-center'},
                 { data: 'slug', name: 'slug', title: 'Slug', className: 'text-center'},
                 { data: 'text', name: 'text', title: 'Text', className: 'text-center',
                     render: function (data, type, row) {
@@ -1217,16 +1218,16 @@ function initDatatable() {
                         </div>
                         <div class="modal-body">
                             <div class="container-fluid">
-                                <form id="form-menus" data-menus-id="${data.id}">
+                                <form id="form-menus" data-menus-id="${data.id}" data-menus-type="${data.menu_type_id}">
                                     <div class="row">
                                         <div class="col-12 col-md-6">
                                             <div class="mb-3">
-                                                <label class="form-label" for="role">Slug</label>
+                                                <label class="form-label" for="slug">Slug</label>
                                                 <input type="text" class="form-control" id="slug" name="slug"
                                                     value="${data.slug || ''}">
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label" for="title">Text</label>
+                                                <label class="form-label" for="text">Text</label>
                                                 <input type="text" class="form-control" id="text" name="text"
                                                     value="${data.text || ''}">
                                             </div>
@@ -1236,7 +1237,7 @@ function initDatatable() {
                                                     value="${data.title || ''}">
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label" for="repository">Icon</label>
+                                                <label class="form-label" for="icon">Icon</label>
                                                 <input type="text" class="form-control" id="icon" name="icon"
                                                     value="${data.icon || ''}">
                                             </div>
@@ -1248,7 +1249,7 @@ function initDatatable() {
                                                     value="${data.link || ''}">
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label" for="repository">Target</label>
+                                                <label class="form-label" for="target">Target</label>
                                                 <select id="target" name="target" class="form-control">
                                                     <option value="_self">Target</option>
                                                     <option value="_self" ${data.target == '_self' ? 'selected' : ''}>_self</option>
@@ -1256,9 +1257,15 @@ function initDatatable() {
                                                 </select>
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label" for="repository">Type</label>
-                                                <input type="text" class="form-control" id="type" name="type"
-                                                    value="${data.type || ''}">
+                                                <label class="form-label" for="menu-type">Type</label>
+                                                <select id="menu-type" name="menu-type" class="form-control">
+                                                    ${menuTypesOptions}
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                              <label class="form-label" for="order">Order</label>
+                                              <input class="form-control" type="number" value="${ data.order }"
+                                                min="1" max="${dataFilteredCount}" id="order" name="order">
                                             </div>
                                             <div class="mb-3 form-check form-switch">
                                               <label class="form-check-label" for="active">Active</label>

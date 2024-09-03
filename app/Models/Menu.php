@@ -10,5 +10,11 @@ class Menu extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = [ 'text', 'title', 'slug', 'target', 'link', 'icon', 'type', 'active' ];
+    protected $fillable = [ 'text', 'title', 'slug', 'target', 'link', 'icon', 'menu_type_id', 'active', 'order' ];
+
+    public function menuType()
+    {
+        return $this->belongsTo(MenuType::class);
+    }
+
 }

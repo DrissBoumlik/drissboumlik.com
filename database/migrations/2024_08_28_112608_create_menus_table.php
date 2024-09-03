@@ -19,8 +19,9 @@ return new class extends Migration
             $table->string('target')->nullable();
             $table->string('link')->nullable();
             $table->string('icon')->nullable();
-            $table->string('type')->nullable();
+            $table->tinyInteger('order')->nullable();
             $table->boolean('active')->default(false);
+            $table->foreignId('menu_type_id')->references('id')->on('menu_types');
             $table->timestamps();
             $table->softDeletes();
         });

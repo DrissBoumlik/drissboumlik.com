@@ -7,10 +7,10 @@ if (!function_exists('getSocialLinks')) {
     }
 }
 
-if (!function_exists('getSocialLinksCommunity')) {
-    function getSocialLinksCommunity($menus, $activeOnly = true)
+if (!function_exists('getCommunityLinks')) {
+    function getCommunityLinks($menus, $activeOnly = true)
     {
-        return getMenuByType($menus, 'social-community', $activeOnly);
+        return getMenuByType($menus, 'community', $activeOnly);
     }
 }
 
@@ -29,8 +29,21 @@ if (!function_exists('getFooterMenu')) {
 }
 
 if (!function_exists('getMenus')) {
-    function getMenus ($filters) {
-        $menus = \DB::table('menus')->whereIn('type', $filters)->get();
+    function getMenus ($filters, $activeOnly = true) {
+        $filters = implode('|', $filters);
+
+        $menus = \DB::table('menus')
+            ->join('menu_types', 'menu_types.id', '=', 'menus.menu_type_id')
+            ->whereRaw("menu_types.slug REGEXP '$filters'");
+
+        if ($activeOnly) {
+            $menus = $menus->where('menus.active', true);
+        }
+
+        $menus = $menus->orderBy('order', 'asc')
+            ->select(['text', 'title', 'menus.slug', 'target', 'link',
+                'icon', 'menus.active', 'menu_types.name as menu_type_name', 'menu_types.slug as menu_type_slug'])
+            ->get();
         return $menus;
     }
 }
@@ -38,8 +51,8 @@ if (!function_exists('getMenus')) {
 if (!function_exists('getMenuByType')) {
     function getMenuByType ($menus, $type, $activeOnly) {
         return $menus->filter(function($menuItem) use ($type, $activeOnly) {
-            return ($menuItem->type === $type) && (!$activeOnly || $menuItem->active);
-        });
+            return (str_contains($menuItem->menu_type_slug, $type)) && (!$activeOnly || $menuItem->active);
+        })->toArray();
     }
 }
 
@@ -52,16 +65,20 @@ if (!function_exists('adminPageSetup')) {
 }
 
 if (!function_exists('pageSetup')) {
-    function pageSetup($title, $headline, $headerMenu = false, $footerMenu = false, $socialLinks = false, $socialLinksCommunity = false)
+    function pageSetup($title, $headline, $menu_filters = [])
     {
         $data = new \stdClass();
         $data->page_title = $title;
         $data->headline = $headline;
-        $menus = getMenus(['header', 'footer', 'social-links', 'social-community-links']);
-        $data->headerMenu = $headerMenu ? getHeaderMenu($menus) : null;
-        $data->footerMenu = $footerMenu ? getFooterMenu($menus) : null;
-        $data->socialLinks = $socialLinks ? getSocialLinks($menus) : null;
-        $data->socialLinksCommunity = $socialLinksCommunity ? getSocialLinksCommunity($menus) : null;
+        $menus = getMenus($menu_filters);
+        $headerMenu = getHeaderMenu($menus);
+        $data->headerMenu = count($headerMenu) ? $headerMenu : null;
+        $footerMenu = getFooterMenu($menus);
+        $data->footerMenu = count($footerMenu) ? $footerMenu : null;
+        $socialLinks = getSocialLinks($menus);
+        $data->socialLinks = count($socialLinks) ? $socialLinks : null;
+        $communityLinks = getCommunityLinks($menus);
+        $data->communityLinks = count($communityLinks) ? $communityLinks : null;
         return $data;
     }
 }
