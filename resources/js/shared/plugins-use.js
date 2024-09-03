@@ -305,18 +305,18 @@ function initDatatable() {
                     render: function (data, type, row, params) {
                         return `<span data-bs-toggle="tooltip" title="${row.title}">${shortenTextIfLongByLength(row.title,20)}</span>`;
                     }},
-                { data: 'published', name: 'published', title: 'Published', domElement: 'select', columnToGroupBy: 'published',
+                { data: 'published', name: 'published', title: 'Published', domElement: 'select',
                     render: function (data, type, row, params) {
                         let published = getDomClass(row.published);
                         return `<span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill ${published.class}">${published.text}</span`;
                     }},
-                { data: 'featured', name: 'featured', title: 'Featured', className: 'fs-sm', domElement: 'select', columnToGroupBy: 'featured',
+                { data: 'featured', name: 'featured', title: 'Featured', className: 'fs-sm', domElement: 'select',
                     render: function (data, type, row, params) {
                         return `<div class="item item-tiny item-circle mx-auto mb-3
                         ${row.featured ? 'bg-success' : 'bg-danger' }"></div>`;
                 }},
-                { data: 'views', name: 'views', title: '<i class="fa-solid fa-eye"></i>', className: 'text-center'},
-                { data: 'likes', name: 'likes', title: '<i class="fa-solid fa-thumbs-up"></i>', className: 'text-center'},
+                { data: 'views', name: 'views', title: 'Views', className: 'text-center'},
+                { data: 'likes', name: 'likes', title: 'Likes', className: 'text-center'},
                 { data: 'tags_count', name: 'tags_count', title: 'Tags', className: 'text-center', searchable: false},
                 { data: 'published_at', name: 'published_at', title: 'Published @', className: 'text-center fs-sm',
                     render: function(data, type, row, params) {
@@ -1519,19 +1519,35 @@ function configDT(params) {
                 }
                 // Create input element
                 if (currentColumn.domElement === "select" || currentColumn.data === 'active') {
-                    let items = Object.keys(Object.groupBy(json.data, function (item) {
+                    let items = json.data.map( function (item) {
+                        let _item = {};
                         if (currentColumn.data === 'active') {
-                            return item.active;
+                            _item.active = item.active;
+                        } else {
+                            _item[currentColumn.data] = item[currentColumn.data] ;
                         }
-                        return item[currentColumn.columnToGroupBy];
-                    }));
-                    let domSelectOptions = `<option value="">${dataTitle.toUpperCase()}</option>`;
-                    items.forEach(function(type) {
-                        domSelectOptions += `<option value="${type}">${type}</option>`;
+                        if (currentColumn.optionTextField) {
+                            _item[currentColumn.optionTextField] = item[currentColumn.optionTextField];
+                        }
+                        return _item;
+                    }).reduce((acc, current) => {
+                        let exists = acc.find(item => {
+                            return item[currentColumn.data] === current[currentColumn.data]
+                        });
+                        if (!exists) {
+                            acc.push(current);
+                        }
+                        return acc;
+                    }, []);
+                    let domSelectOptions = `<option value="">${title}</option>`;
+
+                    items.forEach(function(item) {
+                        domSelectOptions += `<option value="${item[currentColumn.data]}">${item[currentColumn.optionTextField || currentColumn.data]}</option>`;
                     });
-                    let headerSearchItem = `<th><select id="${dataTitle}" title="${dataTitle}"
-                                                            placeholder="${dataTitle.toUpperCase()}" type="search"
-                                                            style="min-width: 100px" class="form-control form-control-sm"
+                    let headerSearchItem = `<th><select id="${dataTitle}" title="${title}"
+                                                            placeholder="${title}" type="search"
+                                                            style="min-width: 100px"
+                                                            class="form-control form-control-sm text-center"
                                                             >${domSelectOptions}</select></th>`;
                     $('#search-row').append(headerSearchItem);
                     let select = document.getElementById(dataTitle);
@@ -1546,9 +1562,10 @@ function configDT(params) {
                         }, 1000 );
                     });
                 } else {
-                    let headerSearchItem = `<th><input id="${dataTitle}" title="${dataTitle}"
-                                                            placeholder="${dataTitle.toUpperCase()}" type="search"
-                                                            style="min-width: 100px" class="form-control form-control-sm"></th>`;
+                    let headerSearchItem = `<th><input id="${dataTitle}" title="${title}"
+                                                            placeholder="${title}" type="search"
+                                                            style="min-width: 100px"
+                                                            class="form-control form-control-sm text-center"></th>`;
                     $('#search-row').append(headerSearchItem);
                     let input = document.getElementById(dataTitle);
 
