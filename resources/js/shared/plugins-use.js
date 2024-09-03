@@ -999,6 +999,7 @@ function initDatatable() {
                     }
                 },
                 { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
+                { data: 'order', name: 'order', title: 'Order', className: 'text-center'},
                 { data: 'slug', name: 'slug', title: 'Slug', className: 'text-center'},
                 { data: 'title', name: 'title', title: 'Title', className: 'text-center'},
                 { data: 'description', name: 'description', title: 'Description', className: 'text-center',
@@ -1033,6 +1034,7 @@ function initDatatable() {
         $('#services').on('click', '.display-services-details', function(e) {
             const $row = $(this).closest('tr');
             const data = servicesDataTable.row( $row ).data();
+            let dataFilteredCount = servicesDataTable.rows().data().toArray().length;
             let created_at = moment(data.updated_at)
             let modal = `
             <div class="modal modal-services-details" tabindex="-1">
@@ -1048,7 +1050,7 @@ function initDatatable() {
                                     <div class="row">
                                         <div class="col-12 col-md-8">
                                             <div class="mb-3">
-                                                <label class="form-label" for="role">Slug</label>
+                                                <label class="form-label" for="slug">Slug</label>
                                                 <input type="text" class="form-control" id="slug" name="slug"
                                                     value="${data.slug || ''}">
                                             </div>
@@ -1058,12 +1060,12 @@ function initDatatable() {
                                                     value="${data.title || ''}">
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label" for="repository">Link</label>
+                                                <label class="form-label" for="link">Link</label>
                                                 <input type="text" class="form-control" id="link" name="link"
                                                     value="${data.link || ''}">
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label" for="repository">Icon</label>
+                                                <label class="form-label" for="icon">Icon</label>
                                                 <input type="text" class="form-control" id="icon" name="icon"
                                                     value="${data.icon || ''}">
                                             </div>
@@ -1072,6 +1074,11 @@ function initDatatable() {
                                             <div class="mb-3">
                                                 <div class="img-container"><img class="img-fluid br-5px d-block m-auto"
                                                     src="/assets/img/services/${data.image}.svg" /></div>
+                                            </div>
+                                            <div class="mb-3">
+                                              <label class="form-label" for="order">Order</label>
+                                              <input class="form-control" type="number" value="${ data.order }"
+                                                min="1" max="${dataFilteredCount}" id="order" name="order">
                                             </div>
                                             <div class="mb-3 form-check form-switch">
                                               <label class="form-check-label" for="active">Active</label>

@@ -125,7 +125,7 @@ if (!function_exists('getServices')) {
             $services->data = activeItemsOnly($services->data);
                 // array_filter($services->data, static fn($item) => !isset($item->hidden) || !$item->hidden);
         }
-        $services->data = $services->data->get()->toArray();
+        $services->data = $services->data->orderBy('order', 'asc')->get()->toArray();
         return $services;
     }
 }
