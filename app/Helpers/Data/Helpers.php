@@ -25,7 +25,7 @@ if (!function_exists('getProjects')) {
             $projects->data = $projects->data->where('featured', true);
                 // array_filter($work->data, static fn($item) => isset($item->featured) && $item->featured);
         }
-        $projects->data = $projects->data->get();
+        $projects->data = $projects->data->orderBy('order', 'asc')->get();
         return $projects;
     }
 }

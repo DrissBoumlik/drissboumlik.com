@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->json('links')->nullable();
             $table->boolean('featured')->default(false);
+            $table->tinyInteger('order')->nullable();
             $table->boolean('active')->default(false);
             $table->timestamps();
             $table->softDeletes();

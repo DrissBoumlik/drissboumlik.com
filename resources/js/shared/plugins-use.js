@@ -829,6 +829,7 @@ function initDatatable() {
                     }
                 },
                 { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
+                { data: 'order', name: 'order', title: 'Order', className: 'text-center'},
                 { data: 'role', name: 'role', title: 'Role', className: 'text-center',
                     render: function (data, type, row) {
                         var div = document.createElement('div');
@@ -844,7 +845,6 @@ function initDatatable() {
                 },
                 { data: 'links', name: 'links', title: 'Links', className: 'text-left',
                     render: function (data, type, row) {
-                        console.log(data);
                         let dom = '---';
                         if (row.links) {
                             dom = '<div class="d-flex gap-2 flex-column">';
@@ -862,7 +862,7 @@ function initDatatable() {
                     render: function (data, type, row) {
                         return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
                 }},
-                { data: 'featured', name: 'featured', title: 'Featured', className: 'fs-sm', domElement: 'select', columnToGroupBy: 'featured',
+                { data: 'featured', name: 'featured', title: 'Featured', className: 'fs-sm', domElement: 'select',
                     render: function (data, type, row) {
                         return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.featured ? 'bg-success' : 'bg-danger' }"></div>`;
                 }},
@@ -872,13 +872,14 @@ function initDatatable() {
         $('#projects').on('click', '.display-projects-details', function(e) {
             const $row = $(this).closest('tr');
             const data = projectsDataTable.row( $row ).data();
+            let dataFilteredCount = projectsDataTable.rows().data().toArray().length;
             let created_at = moment(data.updated_at)
             let modal = `
             <div class="modal modal-projects-details" tabindex="-1">
                 <div class="modal-dialog modal-lg modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">${data.title}</h5>
+                            <h5 class="modal-title">${data.title || data.role}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -911,6 +912,11 @@ function initDatatable() {
                                             <div class="mb-3">
                                                 <div class="img-container"><img class="img-fluid br-5px d-block m-auto"
                                                     src="/assets/img/work/${data.image}" /></div>
+                                            </div>
+                                            <div class="mb-3">
+                                              <label class="form-label" for="order">Order</label>
+                                              <input class="form-control" type="number" value="${ data.order }"
+                                                min="1" max="${dataFilteredCount}" id="order" name="order">
                                             </div>
                                             <div class="mb-3 form-check form-switch">
                                               <label class="form-check-label" for="active">Active</label>

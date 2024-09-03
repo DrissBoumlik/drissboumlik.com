@@ -46,10 +46,19 @@ class CRUDController extends Controller
     public function updateProject(Request $request, Project $project)
     {
         try {
+            $order = $request->get('order');
+            if (is_numeric($order)) {
+                $itemToChangeOrderWith = Project::where('order', $order)->first();
+                if ($itemToChangeOrderWith) {
+                    $itemToChangeOrderWith->order = $project->order;
+                    $itemToChangeOrderWith->update();
+                }
+            }
+
             $active = $request->has("active") && $request->get("active") === 'on';
             $featured = $request->has("featured") && $request->get("featured") === 'on';
             $request->merge(["active" => $active, 'featured' => $featured]);
-            $project->update($request->only(["role", "title", "description", "featured", "links", "active"]));
+            $project->update($request->only(["role", "title", "description", "featured", "links", "active", "order"]));
             return ['msg' => "Updated Successfully !"];
         } catch (\Throwable $e) {
             return response()->json(['msg' => $e->getMessage()], 404);
