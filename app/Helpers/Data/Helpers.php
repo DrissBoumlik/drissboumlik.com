@@ -14,19 +14,19 @@ if (!function_exists('getExperiences')) {
 if (!function_exists('getProjects')) {
     function getProjects($activeOnly = true, $onlyFeatured = false)
     {
-        $work = (object) [
+        $projects = (object) [
             "header" => "projects",
             "data" => \App\Models\Project::query(),
         ]; // config('data.resume.work');
         if ($activeOnly) {
-            $work->data = activeItemsOnly($work->data);
+            $projects->data = activeItemsOnly($projects->data);
         }
         if ($onlyFeatured) {
-            $work->data = $work->data->where('featured', true);
+            $projects->data = $projects->data->where('featured', true);
                 // array_filter($work->data, static fn($item) => isset($item->featured) && $item->featured);
         }
-        $work->data = $work->data->get();
-        return $work;
+        $projects->data = $projects->data->get();
+        return $projects;
     }
 }
 

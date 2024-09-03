@@ -1,29 +1,29 @@
-<div class="py-5" id="work">
-    <div class="section work">
+<div class="py-5" id="projects">
+    <div class="section projects">
         <div class="container">
             @include('components.headline', ['headline' => $projects->header])
             <div class="container">
                 <div class="row">
                     @foreach ($projects->data as $projectItem)
                         <div class="col-12 col-md-6 col-lg-4">
-                            <div class="work-box box mb-4">
-                                <div class="work-image-cover">
+                            <div class="project-box box mb-4">
+                                <div class="project-image-cover">
                                     <img src="{{ asset('/assets/img/work/compressed/' . $projectItem->image) }}"
                                          alt="{{ $projectItem->title }}"
                                          data-src="{{ asset('/assets/img/work/' . $projectItem->image) }}"
                                          class="img-fluid lazyload" loading="lazy" width="300" height="250"/>
                                 </div>
                                 @isset($projectItem->links)
-                                    <div class="work-links">
+                                    <div class="project-links">
                                         @isset($projectItem->links->repository)
-                                            <div class="work-link">
+                                            <div class="project-link">
                                                 <a href="{{ $projectItem->links->repository }}" target="_blank">
                                                     <i class="fa-brands fa-github"></i>
                                                 </a>
                                             </div>
                                         @endisset
                                         @isset($projectItem->links->website)
-                                            <div class="work-link">
+                                            <div class="project-link">
                                                 <a href="{{ $projectItem->links->website }}" target="_blank">
                                                     <i class="fa-solid fa-globe"></i>
                                                 </a>

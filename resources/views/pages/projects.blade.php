@@ -8,31 +8,31 @@
 
 @section('page-content')
     <div class="container-fluid p-0">
-        <div class="work-page work section py-5">
-            <div class="py-5" id="work">
-                <div class="section work">
+        <div class="projects-page projects section py-5">
+            <div class="py-5" id="projects">
+                <div class="section projects">
                     <div class="container">
-                        <div class="work-items">
+                        <div class="projects-items">
                             <div class="row">
                                 @foreach ($data->projects->data as $projectItem)
                                     <div class="col-12 col-md-6">
-                                        <div class="work-box box mb-4">
-                                            <div class="work-image-cover">
+                                        <div class="project-box box mb-4">
+                                            <div class="project-image-cover">
                                                 <img
                                                     src="{{ asset('/assets/img/work/compressed/' . $projectItem->image) }}"
                                                     alt="{{ $projectItem->title }}"
                                                     data-src="{{ asset('/assets/img/work/' . $projectItem->image) }}"
                                                     class="img-fluid lazyload" width="300" height="250"/>
                                             </div>
-                                            <div class="work-data">
-                                                <div class="work-txt">
-                                                    <div class="work-name">{{ $projectItem->title }}</div>
-                                                    <div class="work-description">{{ $projectItem->description }}</div>
+                                            <div class="project-data">
+                                                <div class="project-txt">
+                                                    <div class="project-name">{{ $projectItem->title }}</div>
+                                                    <div class="project-description">{{ $projectItem->description }}</div>
                                                 </div>
                                                 @isset($projectItem->links)
-                                                    <div class="work-links">
+                                                    <div class="project-links">
                                                         @isset($projectItem->links->repository)
-                                                            <div class="work-link">
+                                                            <div class="project-link">
                                                                 <a href="{{ $projectItem->links->repository }}"
                                                                    target="_blank" rel="noopener">
                                                                     <i class="fa-brands fa-github"></i>
@@ -40,7 +40,7 @@
                                                             </div>
                                                         @endisset
                                                         @isset($projectItem->links->website)
-                                                            <div class="work-link">
+                                                            <div class="project-link">
                                                                 <a href="{{ $projectItem->links->website }}"
                                                                    target="_blank" rel="noopener">
                                                                     <i class="fa-solid fa-globe"></i>
