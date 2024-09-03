@@ -715,7 +715,7 @@ function initDatatable() {
         $('#testimonials').on('click', '.display-testimonials-details', function(e) {
             const $row = $(this).closest('tr');
             const data = testimonialsDataTable.row( $row ).data();
-            let dataFilteredCount = testimonialsDataTable.rows().data().toArray().length;
+            let dataFilteredCount = testimonialsDataTable.ajax.json().recordsTotal;
             let created_at = moment(data.updated_at)
             let modal = `
             <div class="modal modal-testimonials-details" tabindex="-1">
@@ -872,7 +872,7 @@ function initDatatable() {
         $('#projects').on('click', '.display-projects-details', function(e) {
             const $row = $(this).closest('tr');
             const data = projectsDataTable.row( $row ).data();
-            let dataFilteredCount = projectsDataTable.rows().data().toArray().length;
+            let dataFilteredCount = projectsDataTable.ajax.json().recordsTotal;
             let created_at = moment(data.updated_at)
             let modal = `
             <div class="modal modal-projects-details" tabindex="-1">
@@ -1034,7 +1034,7 @@ function initDatatable() {
         $('#services').on('click', '.display-services-details', function(e) {
             const $row = $(this).closest('tr');
             const data = servicesDataTable.row( $row ).data();
-            let dataFilteredCount = servicesDataTable.rows().data().toArray().length;
+            let dataFilteredCount = servicesDataTable.ajax.json().recordsTotal;
             let created_at = moment(data.updated_at)
             let modal = `
             <div class="modal modal-services-details" tabindex="-1">
