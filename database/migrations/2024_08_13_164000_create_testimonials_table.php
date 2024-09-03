@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('content')->nullable();
             $table->string('author')->nullable();
             $table->string('position')->nullable();
+            $table->tinyInteger('order')->nullable();
             $table->boolean('active')->default(false);
             $table->timestamps();
             $table->softDeletes();

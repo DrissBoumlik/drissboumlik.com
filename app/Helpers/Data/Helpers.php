@@ -98,7 +98,7 @@ if (!function_exists('getTestimonials')) {
         if ($activeOnly) {
             $testimonials->data = activeItemsOnly($testimonials->data);
         }
-        $testimonials->data = $testimonials->data->get()->toArray();
+        $testimonials->data = $testimonials->data->orderBy('order', 'asc')->get()->toArray();
         return $testimonials;
     }
 }

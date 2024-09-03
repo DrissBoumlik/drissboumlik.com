@@ -690,6 +690,7 @@ function initDatatable() {
                     }
                 },
                 { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
+                { data: 'order', name: 'order', title: 'Order', className: 'text-center'},
                 { data: 'author', name: 'author', title: 'Author', className: 'text-center'},
                 { data: 'content', name: 'content', title: 'Content', className: 'text-center',
                     render: function(data, type, row) {
@@ -714,6 +715,7 @@ function initDatatable() {
         $('#testimonials').on('click', '.display-testimonials-details', function(e) {
             const $row = $(this).closest('tr');
             const data = testimonialsDataTable.row( $row ).data();
+            let dataFilteredCount = testimonialsDataTable.rows().data().toArray().length;
             let created_at = moment(data.updated_at)
             let modal = `
             <div class="modal modal-testimonials-details" tabindex="-1">
@@ -743,6 +745,11 @@ function initDatatable() {
                                             <div class="mb-3">
                                                 <div class="img-container"><img class="img-fluid br-5px d-block m-auto"
                                                     src="/assets/img/people/${data.image}" /></div>
+                                            </div>
+                                            <div class="mb-3">
+                                              <label class="form-label" for="order">Order</label>
+                                              <input class="form-control" type="number" value="${ data.order }"
+                                                min="1" max="${dataFilteredCount}" id="order" name="order">
                                             </div>
                                             <div class="mb-3 form-check form-switch">
                                               <label class="form-check-label" for="active">Active</label>
