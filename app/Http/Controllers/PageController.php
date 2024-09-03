@@ -70,10 +70,11 @@ class PageController extends Controller
 
     public function testimonials(Request $request)
     {
-        $data = $this->cacheService->cache_data('testimonials-data', function() {
-            $data = pageSetup('Testimonials | Driss Boumlik', 'testimonials', true, true);
-            $data->testimonials = getTestimonials();
+        $this->guestView = handleGuestView($request);
+        $key = $this->cacheService->getCachedFullKey("testimonials-data", '-with-non-active', $this->guestView);
+        $data = $this->cacheService->cache_data($key, function() {
             $data = pageSetup('Testimonials | Driss Boumlik', 'testimonials', ['header', 'footer']);
+            $data->testimonials = getTestimonials(isGuest($this->guestView));
             return $data;
         }, null, $request->has('forget'));
 
@@ -82,10 +83,11 @@ class PageController extends Controller
 
     public function projects(Request $request)
     {
-        $data = $this->cacheService->cache_data('projects-data', function() {
-            $data = pageSetup('Projects | Driss Boumlik', 'projects', true, true);
-            $data->projects = getProjects();
+        $this->guestView = handleGuestView($request);
+        $key = $this->cacheService->getCachedFullKey("projects-data", '-with-non-active', $this->guestView);
+        $data = $this->cacheService->cache_data($key, function() {
             $data = pageSetup('Projects | Driss Boumlik', 'projects', ['header', 'footer']);
+            $data->projects = getProjects(isGuest($this->guestView));
             return $data;
         }, null, $request->has('forget'));
         return view('pages.projects', ['data' => $data]);
@@ -105,10 +107,11 @@ class PageController extends Controller
 
     public function services(Request $request)
     {
-        $data = $this->cacheService->cache_data('services-data', function() {
-            $data = pageSetup('Services | Driss Boumlik', 'services', true, true);
-            $data->services = getServices();
+        $this->guestView = handleGuestView($request);
+        $key = $this->cacheService->getCachedFullKey("services-data", '-with-non-active', $this->guestView);
+        $data = $this->cacheService->cache_data($key, function() {
             $data = pageSetup('Services | Driss Boumlik', 'services', ['header', 'footer']);
+            $data->services = getServices(isGuest($this->guestView));
             return $data;
         }, null, $request->has('forget'));
         return view("pages.services", ['data' => $data]);

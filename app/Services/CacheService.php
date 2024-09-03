@@ -7,9 +7,9 @@ class CacheService
 {
     private const CACHE_EXPIRATION = 3600 * 24 * 30 * 6; // 6 months
 
-    public function getCachedFullKey($key, $guestView = false)
+    public function getCachedFullKey($key, $key_suffix, $guestView = false)
     {
-        return $key . (! isGuest($guestView) ? '-with-unpublished' : '');
+        return $key . (! isGuest($guestView) ? $key_suffix : '');
     }
 
     public function cache_data($key, $callback, $expiration = self::CACHE_EXPIRATION, $forget = false) {

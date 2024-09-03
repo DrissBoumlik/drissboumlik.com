@@ -138,3 +138,20 @@ if (!function_exists('getServicesById')) {
         return count($service) ? $service[0] : null;
     }
 }
+
+if (!function_exists('handleGuestView')) {
+    function handleGuestView($request)
+    {
+        $guestView = $request->get('guest-view');
+        if ($guestView) {
+            $guestView = $guestView === '1';
+
+            $existingValue = session()->get('guest-view');
+            if ($existingValue !== $guestView) {
+                session()->put('guest-view', $guestView);
+                $request->merge(['forget' => null]);
+            }
+        }
+        return session()->get('guest-view');
+    }
+}
