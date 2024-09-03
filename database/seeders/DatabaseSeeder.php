@@ -27,12 +27,21 @@ class DatabaseSeeder extends Seeder
 
     private function seedMenus()
     {
-        $configFiles = [ 'header-menu', 'footer-menu', 'social-links', 'social-links-community' ];
+        $configFiles = [ 'header-menu', 'footer-menu', 'social-links', 'community-links' ];
 
+        \Schema::disableForeignKeyConstraints();
         \App\Models\Menu::truncate();
+        \App\Models\MenuType::truncate();
+        \Schema::enableForeignKeyConstraints();
         foreach ($configFiles as $configFile) {
             $data = config("data.layout.$configFile");
-            foreach ($data as $item) {
+            $menuType = \App\Models\MenuType::create([
+                "name" => \Str::headline($configFile),
+                "slug" => $configFile,
+                "description" => "",
+                "active" => 1,
+            ]);
+            foreach ($data as $index => $item) {
                 try {
                     $_item = [
                         "text" => $item->title,
@@ -42,7 +51,8 @@ class DatabaseSeeder extends Seeder
                         "icon" => $item->icon ?? null,
                         "target" => $item->target ?? "_self",
                         "active" => !isset($item->hidden) || !$item->hidden,
-                        "type" => $configFile,
+                        "menu_type_id" => $menuType->id,
+                        'order' => $index + 1,
                     ];
                     \App\Models\Menu::insert($_item);
                 } catch (\Throwable $e) {
@@ -57,7 +67,7 @@ class DatabaseSeeder extends Seeder
         $data = config("data.components.services")->data;
 
         \App\Models\Service::truncate();
-        foreach ($data as $item) {
+        foreach ($data as $index => $item) {
             try {
                 \App\Models\Service::insert([
                     'slug' => $item->id,
@@ -67,6 +77,7 @@ class DatabaseSeeder extends Seeder
                     'link' => $item->link,
                     'description' => $item->description,
                     "active" => !isset($item->hidden) || !$item->hidden,
+                    'order' => $index + 1,
                 ]);
             } catch (\Exception $e) {
                 dd($item, $e->getMessage());
@@ -79,7 +90,7 @@ class DatabaseSeeder extends Seeder
         $data = config("data.resume.testimonials")->data;
 
         \App\Models\Testimonial::truncate();
-        foreach ($data as $item) {
+        foreach ($data as $index => $item) {
             try {
                 \App\Models\Testimonial::insert([
                     'content' => $item->content,
@@ -87,6 +98,7 @@ class DatabaseSeeder extends Seeder
                     'image' => $item->icon,
                     'position' => $item->position,
                     "active" => !isset($item->hidden) || !$item->hidden,
+                    'order' => $index + 1,
                 ]);
             } catch (\Exception $e) {
                 dd($item, $e->getMessage());
@@ -99,7 +111,7 @@ class DatabaseSeeder extends Seeder
         $data = config("data.resume.work")->data;
 
         \App\Models\Project::truncate();
-        foreach ($data as $item) {
+        foreach ($data as $index => $item) {
             try {
                 \App\Models\Project::insert([
                     'role' => $item->content,
@@ -109,6 +121,7 @@ class DatabaseSeeder extends Seeder
                     'links' => json_encode($item->links),
                     'image' => $item->image,
                     "active" => !isset($item->hidden) || !$item->hidden,
+                    'order' => $index + 1,
                 ]);
             } catch (\Exception $e) {
                 dd($item, $e->getLine(), $e->getMessage());
