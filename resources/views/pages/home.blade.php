@@ -24,7 +24,7 @@
             {{--                @include('pages.home.sections.posts')--}}
             {{--            </div>--}}
             <div class="section py-5">
-                @include('pages.shared.community', ['socialLinks' => $data->socialLinksCommunity])
+                @include('pages.shared.community', ['socialLinks' => $data->communityLinks])
             </div>
             <div class="section py-5">
                 @include('pages.shared.testimonials', ['testimonials' => $data->sections['testimonials']])
