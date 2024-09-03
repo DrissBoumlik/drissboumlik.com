@@ -19,7 +19,7 @@ class GotoController extends Controller
 
     public function not_found(Request $request)
     {
-        $data = pageSetup('Page Not Found | Driss Boumlik', 'Page Not Found', true, true);
+        $data = pageSetup('Page Not Found | Driss Boumlik', 'Page Not Found', ['header', 'footer']);
         return view('errors.404', ['data' => $data]);
     }
 }

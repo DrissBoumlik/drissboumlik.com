@@ -37,7 +37,7 @@ class BlogController extends Controller
         $page = $request->get('page');
         $key = $this->cacheService->getCachedFullKey("search-data-$term-$page", '-with-unpublished', $this->guestView);
         $data = $this->cacheService->cache_data($key, function() use ($term) {
-            $data = pageSetup("Search: $term | Blog", "Search results for : $term", true, true);
+            $data = pageSetup("Search: $term | Blog", "Search results for : $term", ['header', 'footer']);
             $data->term = $term;
             if ($term) {
                 $term = "%$term%";
@@ -86,7 +86,7 @@ class BlogController extends Controller
         $key = $this->cacheService->getCachedFullKey("posts-data-$page", '-with-unpublished', $this->guestView);
         $result = $this->cacheService->cache_data($key, function() {
             $result = $this->postService->preparePosts(Post::with('author', 'tags'), $this->guestView);
-            $data = pageSetup('Blog | Driss Boumlik', 'Blog', true, true);
+            $data = pageSetup('Blog | Driss Boumlik', 'Blog', ['header', 'footer']);
             $result['data'] = $data;
             return $result;
         }, null, $request->has('forget'));
@@ -117,7 +117,7 @@ class BlogController extends Controller
         }
         $key = $this->cacheService->getCachedFullKey("post-data-$slug", '-with-unpublished', $this->guestView);
         $data = $this->cacheService->cache_data($key, function() use ($post) {
-            $data = pageSetup("$post->title | Blog", 'Latest Articles', true, true);
+            $data = pageSetup("$post->title | Blog", 'Latest Articles', ['header', 'footer']);
             $data->post = (object)(new PostResource($post))->resolve();
             $data->page_description = $data->post->description;
             $data->publication_date = ($data->post->published_at ?? $data->post->updated_at)->toDateString();
@@ -146,7 +146,7 @@ class BlogController extends Controller
         $key = $this->cacheService->getCachedFullKey("posts-tag-data-$slug-$page", '-with-unpublished', $this->guestView);
         $result = $this->cacheService->cache_data($key, function() use ($tag) {
             $result = $this->postService->preparePosts($tag->posts()->with('author', 'tags'), $this->guestView);
-            $data = pageSetup("Tags : $tag->name | Blog", "<a href='/tags'>All tags</a> <i class='fa-solid fa-angle-right mx-1'></i> $tag->name", true, true);
+            $data = pageSetup("Tags : $tag->name | Blog", "<a href='/tags'>All tags</a> <i class='fa-solid fa-angle-right mx-1'></i> $tag->name", ['header', 'footer']);
             $result['data'] = $data;
             $result['tag'] = $tag;
             return $result;
@@ -159,7 +159,7 @@ class BlogController extends Controller
         $this->guestView = handleGuestView($request);
         $key = $this->cacheService->getCachedFullKey('tags-data', '-with-unpublished', $this->guestView);
         $data = $this->cacheService->cache_data($key, function() {
-            $data = pageSetup('Tags | Blog', 'Tags', true, true);
+            $data = pageSetup('Tags | Blog', 'Tags', ['header', 'footer']);
 
             $data->tags_data = (new TagWithPaginationCollection(Tag::whereHas('posts', function($query) {
                 if (isGuest($this->guestView)){
