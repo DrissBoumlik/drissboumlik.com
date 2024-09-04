@@ -1,15 +1,9 @@
-import * as bootstrap from 'bootstrap';
 import $ from 'jquery';
 window.$ = window.jQuery = $;
 import { toggleDarkMode } from "./shared/functions";
 import particlesJson from '../plugins/particles/particles.min.json';
 
-function initTooltip() {
-    let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
-    tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl)
-    })
-}
+
 function drawText() {
     let text = `
        /$$           /$$
@@ -42,33 +36,6 @@ function initParticlesJS() {
     }
 }
 
-function initSlider() {
-    let params = {
-        loop: true,
-        dots: false,
-        // margin: 10,
-        // nav: true,
-        // freeDrag: true,
-        autoplay: true,
-        smartSpeed: 500,
-        autoplayTimeout: 3000,
-        // autoplaySpeed: 3000,
-        autoplayHoverPause: true,
-        slideTransition: 'linear',
-        responsive: {
-            0: {
-                items: 1
-            },
-            768: {
-                items: 2
-            },
-            1000: {
-                items: 2
-            },
-        }
-    };
-    jQuery('.owl-carousel').owlCarousel(params);
-}
 
 function initDarkMode() {
     $(document).on('click', '.toggle-dark-mode', function () {
@@ -94,56 +61,7 @@ function initBanner() {
     });
 }
 
-function initSubscriptionUpdateForm () {
-    $(document).on('submit', '.subscribe-update-form', function(e) {
-        e.preventDefault();
-        let _this = this;
-        let data = $(_this).serializeArray();
-        $('#subscribe-form-response').remove();
-        $(_this).after(`<div id="subscribe-form-response" class="tc-alert tc-alert-ok text-center"><i class="fa-solid fa-spinner spinClockWise"></i> Sending...</div>`);
-        $.ajax({
-            method: 'PUT',
-            url: `/api/${_this.getAttribute('data-action')}`,
-            data: data,
-            success: function (response) {
-                console.log(response);
-                $('#subscribe-form-response').remove();
-                $(_this).after(`<div id="subscribe-form-response" class="tc-alert ${response.class} text-center"> ${response.icon} ${response.message}</div>`);
-                window.location.href = response.next_url;
-            },
-            error: function (jqXHR, textStatus, errorThrown){
-                console.log(jqXHR, textStatus, errorThrown);
-                let response = jqXHR.responseJSON;
-                $('#subscribe-form-response').remove();
-                $(_this).after(`<div id="subscribe-form-response" class="tc-alert ${response.class} text-center"> ${response.icon} ${response.message}</div>`);
-            }
-        });
-    });
-}
-function initSubscriptionForm() {
-    $(document).on('submit', '.subscribe-form', function (e) {
-        e.preventDefault();
-        let _this = this;
-        $('#subscribe-form-response').remove();
-        $(_this).after(`<div id="subscribe-form-response" class="tc-alert tc-alert-ok tc-white text-center"><i class="fa-solid fa-spinner spinClockWise"></i> Sending...</div>`);
-        $.ajax({
-            method: 'POST',
-            url: '/api/subscribers',
-            data: {'subscriber_email' : $('#subscriber-email').val()},
-            success: function (response) {
-                console.log(response);
-                $('#subscribe-form-response').remove();
-                $(_this).after(`<div id="subscribe-form-response" class="tc-alert ${response.class} text-center"> ${response.icon} ${response.message}</div>`);
-            },
-            error: function (jqXHR, textStatus, errorThrown){
-                console.log(jqXHR, textStatus, errorThrown);
-                let response = jqXHR.responseJSON;
-                $('#subscribe-form-response').remove();
-                $(_this).after(`<div id="subscribe-form-response" class="tc-alert ${response.class} text-center"> ${response.icon} ${response.message}</div>`);
-            }
-        });
-    });
-}
+
 function initLikePostBtn() {
     let likePostBtn = $('#btn-like-post');
     if (likePostBtn.length) {
@@ -183,41 +101,5 @@ function initLikePostBtn() {
     }
 }
 
-function initAuth() {
-    let show_password_btn = $('.show-password');
-    if (show_password_btn.length) {
-        show_password_btn.on('click', function() {
-            let input_password = $(this).siblings('input');
-            let type = input_password.attr('type') === 'text' ? 'password' : 'text';
-            input_password.attr('type', type);
-        });
-    }
-}
 
-function initBlogSearch() {
-
-    let search_blog_form_wrapper = $('.search-blog-form-wrapper');
-    if (search_blog_form_wrapper.length) {
-        $(window).keydown(function (event) {
-            if (event.ctrlKey && (event.key === 'k' || event.key === 'K')) {
-                event.preventDefault();
-                search_blog_form_wrapper.removeClass('d-none').addClass('show');
-                $('.search-blog-input').focus();
-            }
-        });
-        search_blog_form_wrapper.on('click', function (event) {
-            if (event.target === this) {
-                search_blog_form_wrapper.addClass('d-none');
-            }
-        });
-
-        $('.display-search-form').on('click', function() {
-            search_blog_form_wrapper.removeClass('d-none').addClass('show');
-            $('.search-blog-input').focus();
-        });
-    }
-
-}
-
-
-export { drawText, initParticlesJS, initSlider, initDarkMode, initAjaxEvents, initTooltip, initAuth, initBlogSearch, initSubscriptionForm, initSubscriptionUpdateForm };
+export { drawText, initParticlesJS, initDarkMode, initAjaxEvents };

@@ -1,4 +1,3 @@
-import {initPostEditor} from "../shared/plugins-use";
 
 
 function setCookie(name, value) {
@@ -21,7 +20,6 @@ function toggleDarkMode(element, classes, cookieData) {
         element.removeClass(classes.darkmode).addClass(classes.lightmode);
         setCookie(cookieData.name, cookieData.lightmodeValue);
     }
-    initPostEditor();
 }
 
 function get_loader() {
