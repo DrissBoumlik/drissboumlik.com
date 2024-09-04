@@ -15,7 +15,7 @@
         "laravel/framework": "^10.10",
         "laravel/tinker": "^2.8",
         "laravel/ui": "^4.2",
-        "spatie/db-dumper": "^3.3",
+        "spatie/db-dumper": "^3.6",
         "spatie/image": "^2.2",
         "spatie/laravel-feed": "^4.3",
         "spatie/laravel-sitemap": "^6.2",
