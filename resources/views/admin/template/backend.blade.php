@@ -11,24 +11,24 @@
 </head>
 
 <body>
-  <!-- Page Container -->
-  <div id="page-container" class="sidebar-o  enable-page-overlay side-scroll {{ $theme == 'dark-mode' ? 'page-header-dark dark-mode sidebar-dark' : 'light-mode' }}">
+    <!-- Page Container -->
+    <div id="page-container" class="sidebar-o enable-page-overlay side-scroll {{ $theme == 'dark-mode' ? 'page-header-dark dark-mode sidebar-dark' : 'light-mode' }}">
 
 
-      @include('admin.template.backend-sections.left-sidebar')
+        @include('admin.template.backend-sections.left-sidebar')
 
 
-      @include('admin.template.backend-sections.header')
+        @include('admin.template.backend-sections.header')
 
-    <!-- Main Container -->
-    <main id="main-container">
-      @yield('content')
-    </main>
-    <!-- END Main Container -->
+        <!-- Main Container -->
+        <main id="main-container">
+            @yield('content')
+        </main>
+        <!-- END Main Container -->
 
-  @include('admin.template.backend-sections.footer')
-  </div>
-  <!-- END Page Container -->
+        @include('admin.template.backend-sections.footer')
+    </div>
+    <!-- END Page Container -->
 </body>
 
 </html>

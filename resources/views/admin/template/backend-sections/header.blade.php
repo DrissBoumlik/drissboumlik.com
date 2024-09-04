@@ -10,6 +10,7 @@
 
         <!-- Right Section -->
         <div class="d-flex align-items-center">
+            @include('admin.addons.toggle-header')
             @include('admin.addons.darkmode')
             <!-- User Dropdown -->
             <div class="dropdown d-inline-block mx-2">
