@@ -14,11 +14,13 @@ $(function () {
                     });
                     tablesNames = tablesNames.trim();
                 }
-                let dontCreateTables = $('#do-not-create-tables').prop('checked');
-                let queryString = `
-        ${tablesNames ? 'tables=' + tablesNames : ''}
-        &
-        ${dontCreateTables ? 'dontCreateTables=1' : ''}`;
+                let dontCreateTables = $('#dont-create-tables').prop('checked');
+                let dontExportData = $('#dont-export-data').prop('checked');
+                let queryString = `${tablesNames ? 'tables=' + tablesNames : ''}
+                                            &
+                                            ${dontExportData ? 'dont-export-data=1' : ''}
+                                            &
+                                            ${dontCreateTables ? 'dont-create-tables=1' : ''}`;
                 window.open('/admin/export-db?' + queryString);
             });
         }

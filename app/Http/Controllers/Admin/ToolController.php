@@ -21,21 +21,22 @@ class ToolController extends Controller
     public function export_db(Request $request)
     {
         $tables = $request->get('tables');
-        $dontCreateTables = $request->has('dontCreateTables');
+        $dontCreateTables = $request->has('dont-create-tables');
+        $dontExportData = $request->has('dont-export-data');
         $now = date("Y-m-d_h-i");
         $db_name = env('DB_DATABASE');
         $filename = $db_name . "_exported_at_$now.sql";
         $dumpPath = database_path("dumps/$filename");
         $dumpDB = \Spatie\DbDumper\Databases\MySql::create();
-        if (env('APP_ENV') === 'local') {
-            $dumpDB = $dumpDB->setDumpBinaryPath('C:\xampp-8.1\mysql\bin');
-        }
         $dumpDB = $dumpDB
             ->setDbName($db_name)
             ->setUserName(env('DB_USERNAME'))
             ->setPassword(env('DB_PASSWORD'));
         if ($dontCreateTables) {
             $dumpDB = $dumpDB->doNotCreateTables();
+        }
+        if ($dontExportData) {
+            $dumpDB = $dumpDB->doNotDumpData();
         }
         if ($tables) {
             $tables = explode(' ', $request->get('tables'));

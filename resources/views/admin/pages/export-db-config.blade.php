@@ -31,8 +31,12 @@
     <div class="block-content block-content-full">
         <div class="export-db-config">
             <div class="form-check form-block">
-                <input class="form-check-input" type="checkbox" value="" id="do-not-create-tables" name="do-not-create-tables">
-                <label class="form-check-label" for="do-not-create-tables">Don't create tables</label>
+                <input class="form-check-input" type="checkbox" value="" id="dont-create-tables" name="dont-create-tables">
+                <label class="form-check-label" for="dont-create-tables">Don't create tables</label>
+            </div>
+            <div class="form-check form-block">
+                <input class="form-check-input" type="checkbox" value="" id="dont-export-data" name="dont-export-data">
+                <label class="form-check-label" for="dont-export-data">Don't export data</label>
             </div>
             <div class="form-check form-block">
                 <input class="form-check-input" type="checkbox" value="" id="export-all-tables" name="export-all-tables">
