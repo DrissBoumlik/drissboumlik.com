@@ -11,25 +11,6 @@ if (!function_exists('getExperiences')) {
     }
 }
 
-if (!function_exists('getProjects')) {
-    function getProjects($activeOnly = true, $onlyFeatured = false)
-    {
-        $projects = (object) [
-            "header" => "projects",
-            "data" => \App\Models\Project::query(),
-        ]; // config('data.resume.work');
-        if ($activeOnly) {
-            $projects->data = activeItemsOnly($projects->data);
-        }
-        if ($onlyFeatured) {
-            $projects->data = $projects->data->where('featured', true);
-                // array_filter($work->data, static fn($item) => isset($item->featured) && $item->featured);
-        }
-        $projects->data = $projects->data->orderBy('order', 'asc')->get();
-        return $projects;
-    }
-}
-
 if (!function_exists('getCertificates')) {
     function getCertificates($activeOnly = true)
     {
@@ -88,21 +69,6 @@ if (!function_exists('getNonITExperiences')) {
     }
 }
 
-if (!function_exists('getTestimonials')) {
-    function getTestimonials($activeOnly = true)
-    {
-        $testimonials = (object) [
-            "header" => "testimonials",
-            "data" => \DB::table('testimonials'),
-        ]; // config('data.resume.testimonials');
-        if ($activeOnly) {
-            $testimonials->data = activeItemsOnly($testimonials->data);
-        }
-        $testimonials->data = $testimonials->data->orderBy('order', 'asc')->get()->toArray();
-        return $testimonials;
-    }
-}
-
 if (!function_exists('getTechs')) {
     function getTechs($activeOnly = true)
     {
@@ -111,31 +77,6 @@ if (!function_exists('getTechs')) {
             $techs->data = array_filter($techs->data, static fn ($item) => !isset($item->hidden) || !$item->hidden);
         }
         return $techs;
-    }
-}
-
-if (!function_exists('getServices')) {
-    function getServices($activeOnly = true)
-    {
-        $services = (object) [
-            "header" => "services",
-            "data" => \DB::table('services'),
-        ]; // config('data.components.services');
-        if ($activeOnly) {
-            $services->data = activeItemsOnly($services->data);
-                // array_filter($services->data, static fn($item) => !isset($item->hidden) || !$item->hidden);
-        }
-        $services->data = $services->data->orderBy('order', 'asc')->get()->toArray();
-        return $services;
-    }
-}
-
-if (!function_exists('getServicesById')) {
-    function getServicesById($item_id)
-    {
-        $services = config('data.components.services');
-        $service = array_values(array_filter($services->data, static fn($item) => $item->id === $item_id));
-        return count($service) ? $service[0] : null;
     }
 }
 

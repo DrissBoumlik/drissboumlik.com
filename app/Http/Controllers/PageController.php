@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\CacheService;
+use App\Services\DataService;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -27,13 +28,15 @@ class PageController extends Controller
         $data = $this->cacheService->cache_data('home-data', function() {
             $data = pageSetup('Home | Driss Boumlik', null, ['header', 'footer', 'social', 'community']);
             $data->sections = [];
-//            $data->sections['techs'] = getTechs();
-            // $data->sections['work'] = getWork(onlyFeatured: true);
-            $data->sections['services'] = getServices();
-            $data->sections['testimonials'] = getTestimonials();
+            $data->sections['services'] = DataService::fetchFromDbTable("services", "Service", [
+                                                'slug', 'title', 'icon', 'image', 'link',
+                                                'description', 'active', 'order'
+                                            ]);
+            $data->sections['testimonials'] = DataService::fetchFromDbTable("testimonials", "Testimonial", [
+                                                    'image', 'content', 'author', 'position', 'active', 'order'
+                                                ]);
             return $data;
         }, null, $request->has('forget'));
-//        $data->posts = $this->postService->getLatestFeaturedPosts();
 
         return view('pages.home', ['data' => $data]);
     }
@@ -53,15 +56,20 @@ class PageController extends Controller
             $data->sections['experiences'] = getExperiences();
             $data->sections['competences'] = getSkills();
             $data->sections['education'] = getEducation();
-            $data->sections['projects'] = getProjects(onlyFeatured: true);
 //        $data->sections['certificates'] = getCertificates();
             $data->sections['passion'] = getPassion();
             $data->sections['non_it_experiences'] = getNonITExperiences();
-            $data->sections['testimonials'] = getTestimonials();
             $data->sections['experiences']->data = array_map(function($item) {
                 $item->duration = calculateDate($item->start_date, $item->end_date);
                 return $item;
             }, $data->sections['experiences']->data);
+
+            $data->sections['projects'] = DataService::fetchFromDbTable("projects", "Project",
+                                                    [ 'image', 'role', 'title', 'description',
+                                                        'featured', 'links', 'active', 'order' ],
+                                                    callback: fn($data) => $data->where('featured', true));
+            $data->sections['testimonials'] = DataService::fetchFromDbTable("testimonials", "Testimonial",
+                                                    [ 'image', 'content', 'author', 'position', 'active', 'order' ]);
             return $data;
         }, null, $request->has('forget'));
 
@@ -74,7 +82,10 @@ class PageController extends Controller
         $key = $this->cacheService->getCachedFullKey("testimonials-data", '-with-non-active', $this->guestView);
         $data = $this->cacheService->cache_data($key, function() {
             $data = pageSetup('Testimonials | Driss Boumlik', 'testimonials', ['header', 'footer']);
-            $data->testimonials = getTestimonials(isGuest($this->guestView));
+            $data->testimonials = DataService::fetchFromDbTable("testimonials", "Testimonial",
+                                        [ 'image', 'content', 'author', 'position', 'active', 'order' ],
+                                        isGuest($this->guestView));
+
             return $data;
         }, null, $request->has('forget'));
 
@@ -87,7 +98,10 @@ class PageController extends Controller
         $key = $this->cacheService->getCachedFullKey("projects-data", '-with-non-active', $this->guestView);
         $data = $this->cacheService->cache_data($key, function() {
             $data = pageSetup('Projects | Driss Boumlik', 'projects', ['header', 'footer']);
-            $data->projects = getProjects(isGuest($this->guestView));
+            $data->projects = DataService::fetchFromDbTable("projects", "Project",
+                                    [ 'image', 'role', 'title', 'description',
+                                        'featured', 'links', 'active', 'order' ],
+                                    isGuest($this->guestView));
             return $data;
         }, null, $request->has('forget'));
         return view('pages.projects', ['data' => $data]);
@@ -111,7 +125,9 @@ class PageController extends Controller
         $key = $this->cacheService->getCachedFullKey("services-data", '-with-non-active', $this->guestView);
         $data = $this->cacheService->cache_data($key, function() {
             $data = pageSetup('Services | Driss Boumlik', 'services', ['header', 'footer']);
-            $data->services = getServices(isGuest($this->guestView));
+            $data->services = DataService::fetchFromDbTable("services", "Service",
+                [ 'slug', 'title', 'icon', 'image', 'link', 'description', 'active', 'order' ],
+                isGuest($this->guestView));
             return $data;
         }, null, $request->has('forget'));
         return view("pages.services", ['data' => $data]);

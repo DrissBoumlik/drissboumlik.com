@@ -28,26 +28,6 @@ if (!function_exists('getFooterMenu')) {
     }
 }
 
-if (!function_exists('getMenus')) {
-    function getMenus ($filters, $activeOnly = true) {
-        $filters = implode('|', $filters);
-
-        $menus = \DB::table('menus')
-            ->join('menu_types', 'menu_types.id', '=', 'menus.menu_type_id')
-            ->whereRaw("menu_types.slug REGEXP '$filters'");
-
-        if ($activeOnly) {
-            $menus = $menus->where('menus.active', true);
-        }
-
-        $menus = $menus->orderBy('order', 'asc')
-            ->select(['text', 'title', 'menus.slug', 'target', 'link',
-                'icon', 'menus.active', 'menu_types.name as menu_type_name', 'menu_types.slug as menu_type_slug'])
-            ->get();
-        return $menus;
-    }
-}
-
 if (!function_exists('getMenuByType')) {
     function getMenuByType ($menus, $type, $activeOnly) {
         return $menus->filter(function($menuItem) use ($type, $activeOnly) {
@@ -65,12 +45,12 @@ if (!function_exists('adminPageSetup')) {
 }
 
 if (!function_exists('pageSetup')) {
-    function pageSetup($title, $headline, $menu_filters = [])
+    function pageSetup($title, $headline, $menu_type_filters = [])
     {
         $data = new \stdClass();
         $data->page_title = $title;
         $data->headline = $headline;
-        $menus = getMenus($menu_filters);
+        $menus = \App\Services\DataService::getMenus($menu_type_filters);
         $headerMenu = getHeaderMenu($menus);
         $data->headerMenu = count($headerMenu) ? $headerMenu : null;
         $footerMenu = getFooterMenu($menus);
