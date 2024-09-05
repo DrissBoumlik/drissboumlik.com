@@ -9,11 +9,9 @@
         <!-- END Left Section -->
 
         <!-- Right Section -->
-        <div class="d-flex align-items-center">
-            @include('admin.addons.toggle-header')
-            @include('admin.addons.darkmode')
+        <div class="d-flex align-items-center gap-2">
             <!-- User Dropdown -->
-            <div class="dropdown d-inline-block mx-2">
+            <div class="dropdown d-inline-block">
                 <button type="button" class="btn btn-sm btn-alt-secondary d-flex align-items-center" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="rounded-circle" src="{{ asset('/assets/img/me/circle-256.png') }}" alt="Header Avatar" width="20" height="20" loading="lazy">
                     <span class="d-none d-sm-inline-block ms-2">{{ \Auth::user()->name }}</span>
@@ -36,6 +34,8 @@
                 </div>
             </div>
             <!-- END User Dropdown -->
+            @include('admin.addons.toggle-header')
+            @include('admin.addons.darkmode')
             @include('admin.addons.toggle-sidebar')
 
         </div>
