@@ -12,25 +12,24 @@
         @include('pages.shared.about-me', ['socialLinks' => $data->socialLinks])
         <div class="sections">
             <div class="section py-5">
-                @include('pages.shared.services', ['services' => $data->sections['services']])
-            </div>
-            {{-- <div class="section py-5">
-                @include('pages.shared.work', ['work' => $data->sections['work']])
-            </div> --}}
-{{--            <div class="section py-5">--}}
-{{--                @include('pages.shared.techs', ['techs' => $data->sections['techs']])--}}
-{{--            </div>--}}
-            {{--            <div class="section">--}}
-            {{--                @include('pages.home.sections.posts')--}}
-            {{--            </div>--}}
-            <div class="section py-5">
-                @include('pages.shared.community', ['socialLinks' => $data->communityLinks])
+                <section>
+                    @include('pages.shared.services', ['services' => $data->sections['services']])
+                </section>
             </div>
             <div class="section py-5">
-                @include('pages.shared.testimonials', ['testimonials' => $data->sections['testimonials']])
+                <section>
+                    @include('pages.shared.community', ['socialLinks' => $data->communityLinks])
+                </section>
             </div>
             <div class="section py-5">
-                @include('pages.shared.get-in-touch')
+                <section>
+                    @include('pages.shared.testimonials', ['testimonials' => $data->sections['testimonials']])
+                </section>
+            </div>
+            <div class="section py-5">
+                <section>
+                    @include('pages.shared.get-in-touch')
+                </section>
             </div>
         </div>
     </div>

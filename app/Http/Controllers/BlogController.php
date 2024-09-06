@@ -120,6 +120,8 @@ class BlogController extends Controller
             $data = pageSetup("$post->title | Blog", 'Latest Articles', ['header', 'footer']);
             $data->post = (object)(new PostResource($post))->resolve();
             $data->page_description = $data->post->description;
+            $data->page_image = \URL::to($data->post->cover);
+            $data->page_url = \URL::to('/blog/' . $data->post->slug);
             $data->publication_date = ($data->post->published_at ?? $data->post->updated_at)->toDateString();
             return $data;
         }, null, $request->has('forget'));
