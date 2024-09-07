@@ -25,7 +25,9 @@ class PageController extends Controller
         if ($var) {
             return redirect('/not-found');
         }
-        $data = $this->cacheService->cache_data('home-data', function() {
+        $this->guestView = isGuest(handleGuestView($request));
+        $key = $this->cacheService->getCachedFullKey("home-data", '-with-non-active', $this->guestView);
+        $data = $this->cacheService->cache_data($key, function() {
             $data = pageSetup('Home | Driss Boumlik', null, ['header', 'footer', 'social', 'community']);
             $data->sections = [];
             $data->sections['services'] = DataService::fetchFromDbTable("services", "Service", [
@@ -49,7 +51,9 @@ class PageController extends Controller
 
     public function resume(Request $request)
     {
-        $data = $this->cacheService->cache_data('resume-data', function() {
+        $this->guestView = isGuest(handleGuestView($request));
+        $key = $this->cacheService->getCachedFullKey("resume-data", '-with-non-active', $this->guestView);
+        $data = $this->cacheService->cache_data($key, function() {
             $data = pageSetup('Resume | Driss Boumlik', 'resume', ['header', 'footer']);
 
             $data->sections = [];
