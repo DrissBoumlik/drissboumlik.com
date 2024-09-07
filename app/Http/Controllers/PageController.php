@@ -31,10 +31,10 @@ class PageController extends Controller
             $data->sections['services'] = DataService::fetchFromDbTable("services", "Service", [
                                                 'slug', 'title', 'icon', 'image', 'link',
                                                 'description', 'active', 'order'
-                                            ]);
+                                            ], $this->guestView);
             $data->sections['testimonials'] = DataService::fetchFromDbTable("testimonials", "Testimonial", [
                                                     'image', 'content', 'author', 'position', 'active', 'order'
-                                                ]);
+                                                ], $this->guestView);
             return $data;
         }, null, $request->has('forget'));
 
@@ -64,12 +64,14 @@ class PageController extends Controller
                 return $item;
             }, $data->sections['experiences']->data);
 
+            $callback = $this->guestView ? fn($data) => $data->where('featured', true) : null;
             $data->sections['projects'] = DataService::fetchFromDbTable("projects", "Project",
                                                     [ 'image', 'role', 'title', 'description',
-                                                        'featured', 'links', 'active', 'order' ],
-                                                    callback: fn($data) => $data->where('featured', true));
+                                                        'featured', 'links', 'active', 'order' ], $this->guestView,
+                                                    callback: $callback);
             $data->sections['testimonials'] = DataService::fetchFromDbTable("testimonials", "Testimonial",
-                                                    [ 'image', 'content', 'author', 'position', 'active', 'order' ]);
+                                                    [ 'image', 'content', 'author', 'position', 'active', 'order' ],
+                                                    $this->guestView);
             return $data;
         }, null, $request->has('forget'));
 
@@ -78,13 +80,13 @@ class PageController extends Controller
 
     public function testimonials(Request $request)
     {
-        $this->guestView = handleGuestView($request);
+        $this->guestView = isGuest(handleGuestView($request));
         $key = $this->cacheService->getCachedFullKey("testimonials-data", '-with-non-active', $this->guestView);
         $data = $this->cacheService->cache_data($key, function() {
             $data = pageSetup('Testimonials | Driss Boumlik', 'testimonials', ['header', 'footer']);
             $data->testimonials = DataService::fetchFromDbTable("testimonials", "Testimonial",
                                         [ 'image', 'content', 'author', 'position', 'active', 'order' ],
-                                        isGuest($this->guestView));
+                                        $this->guestView);
 
             return $data;
         }, null, $request->has('forget'));
@@ -94,14 +96,14 @@ class PageController extends Controller
 
     public function projects(Request $request)
     {
-        $this->guestView = handleGuestView($request);
+        $this->guestView = isGuest(handleGuestView($request));
         $key = $this->cacheService->getCachedFullKey("projects-data", '-with-non-active', $this->guestView);
         $data = $this->cacheService->cache_data($key, function() {
             $data = pageSetup('Projects | Driss Boumlik', 'projects', ['header', 'footer']);
             $data->projects = DataService::fetchFromDbTable("projects", "Project",
                                     [ 'image', 'role', 'title', 'description',
                                         'featured', 'links', 'active', 'order' ],
-                                    isGuest($this->guestView));
+                                    $this->guestView);
             return $data;
         }, null, $request->has('forget'));
         return view('pages.projects', ['data' => $data]);
@@ -121,13 +123,13 @@ class PageController extends Controller
 
     public function services(Request $request)
     {
-        $this->guestView = handleGuestView($request);
+        $this->guestView = isGuest(handleGuestView($request));
         $key = $this->cacheService->getCachedFullKey("services-data", '-with-non-active', $this->guestView);
         $data = $this->cacheService->cache_data($key, function() {
             $data = pageSetup('Services | Driss Boumlik', 'services', ['header', 'footer']);
             $data->services = DataService::fetchFromDbTable("services", "Service",
                 [ 'slug', 'title', 'icon', 'image', 'link', 'description', 'active', 'order' ],
-                isGuest($this->guestView));
+                $this->guestView);
             return $data;
         }, null, $request->has('forget'));
         return view("pages.services", ['data' => $data]);

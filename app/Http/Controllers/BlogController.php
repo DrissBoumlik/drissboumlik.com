@@ -29,7 +29,7 @@ class BlogController extends Controller
 
     public function search(Request $request)
     {
-        $this->guestView = handleGuestView($request);
+        $this->guestView = isGuest(handleGuestView($request));
         $term = $request->get('term');
         if (!$term) {
             return redirect('/blog');
@@ -43,7 +43,7 @@ class BlogController extends Controller
                 $term = "%$term%";
             }
             $data->results_posts = \DB::table('posts');
-            if (isGuest($this->guestView)){
+            if ($this->guestView) {
                 $data->results_posts = $this->postService->publishedOnly($data->results_posts);
             }
             $data->results_posts = $data->results_posts->whereNull('deleted_at')
@@ -95,9 +95,9 @@ class BlogController extends Controller
 
     public function getPost(Request $request, $slug)
     {
-        $this->guestView = handleGuestView($request);
+        $this->guestView = isGuest(handleGuestView($request));
         $post = Post::where('slug', $slug);
-        if (isGuest($this->guestView)) {
+        if ($this->guestView) {
             $post = $this->postService->publishedOnly($post);
         }
         $post = $post->first();
@@ -131,7 +131,6 @@ class BlogController extends Controller
 
     public function likePost(Request $request, $slug, int $value)
     {
-        $this->guestView = handleGuestView($request);
         $post = Post::where('slug', $slug)->first();
         $post->increment('likes', $value);
         return ['post' => $post];
@@ -158,13 +157,13 @@ class BlogController extends Controller
 
     public function getTags(Request $request)
     {
-        $this->guestView = handleGuestView($request);
+        $this->guestView = isGuest(handleGuestView($request));
         $key = $this->cacheService->getCachedFullKey('tags-data', '-with-unpublished', $this->guestView);
         $data = $this->cacheService->cache_data($key, function() {
             $data = pageSetup('Tags | Blog', 'Tags', ['header', 'footer']);
 
             $data->tags_data = (new TagWithPaginationCollection(Tag::whereHas('posts', function($query) {
-                if (isGuest($this->guestView)){
+                if ($this->guestView) {
                     $this->postService->publishedOnly($query);
                 }
             })->withCount('posts')->orderBy('updated_at', 'desc')->paginate(self::TAGS_PER_PAGE)));

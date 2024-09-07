@@ -86,7 +86,6 @@ if (!function_exists('handleGuestView')) {
         $guestView = $request->get('guest-view');
         if ($guestView) {
             $guestView = $guestView === '1';
-
             $existingValue = session()->get('guest-view');
             if ($existingValue !== $guestView) {
                 session()->put('guest-view', $guestView);
