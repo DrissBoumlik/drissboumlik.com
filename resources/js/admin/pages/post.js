@@ -1,5 +1,6 @@
 import { initFlatpickr, initSelect2 } from "../../shared/helpers";
 import {getCookie} from "@/shared/functions";
+import {string_to_slug} from "@/admin/functions";
 
 $(function () {
     try {

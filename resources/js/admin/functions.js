@@ -64,4 +64,4 @@ function getDomClass(status) {
 }
 
 
-export { initDarkMode, initAjaxEvents, shortenTextIfLongByLength, getDomClass };
+export { initDarkMode, initAjaxEvents, shortenTextIfLongByLength, getDomClass, string_to_slug };
