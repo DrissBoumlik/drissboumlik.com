@@ -16,8 +16,8 @@
                         @if($loop->index % 2 !== 0)
                         <div class="col-md-5 pe-5">
                             <div class="service-img">
-                                <img src='{{ asset("/assets/img/services/compressed/$service->image.webp") }}' alt="{{ $service->title }}"
-                                     data-src='{{ asset("/assets/img/services/$service->image.svg") }}'
+                                <img src='{{ asset("/" . $service->image->compressed) }}' alt="{{ $service->title }}"
+                                     data-src='{{ asset("/" . $service->image->original) }}'
                                      class="img-fluid w-100 lazyload" width="300" height="300" loading="lazy">
                             </div>
                         </div>
@@ -31,8 +31,8 @@
                         @if($loop->index % 2 === 0)
                         <div class="col-md-5 ps-5">
                             <div class="service-img">
-                                <img src='{{ asset("/assets/img/services/compressed/$service->image.webp") }}' alt="{{ $service->title }}"
-                                     data-src='{{ asset("/assets/img/services/$service->image.svg") }}'
+                                <img src='{{ asset("/" . $service->image->compressed) }}' alt="{{ $service->title }}"
+                                     data-src='{{ asset("/" . $service->image->original) }}'
                                      class="img-fluid w-100 lazyload" width="300" height="300" loading="lazy">
                             </div>
                         </div>

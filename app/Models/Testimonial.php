@@ -11,4 +11,6 @@ class Testimonial extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [ 'image', 'content', 'author', 'position', 'active', 'order' ];
+
+    protected $casts = [ "image" => "object" ];
 }

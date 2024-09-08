@@ -8,9 +8,9 @@
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="project-box box mb-4">
                                 <div class="project-image-cover">
-                                    <img src="{{ asset('/assets/img/work/compressed/' . $projectItem->image) }}"
+                                    <img src="{{ asset('/' . $projectItem->image->compressed) }}"
                                          alt="{{ $projectItem->title }}"
-                                         data-src="{{ asset('/assets/img/work/' . $projectItem->image) }}"
+                                         data-src="{{ asset('/' . $projectItem->image->original) }}"
                                          class="img-fluid lazyload" loading="lazy" width="300" height="250"/>
                                 </div>
                                 @isset($projectItem->links)

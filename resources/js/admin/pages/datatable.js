@@ -429,7 +429,7 @@ $(function () {
                     },
                     { data: 'image', name: 'image', title: 'Image', className: 'text-center',
                         render: function (data, type, row) {
-                            return `<div class="square-60 m-auto"><img class="img-fluid" src="/assets/img/people/${row.image}" /></div>`;
+                            return `<div class="square-60 m-auto"><img class="img-fluid" src="/${row.image.original}" /></div>`;
                         }
                     },
                     { data: 'position', name: 'position', title: 'Position', className: 'text-center'},
@@ -472,7 +472,7 @@ $(function () {
                                     <div class="col-12 col-md-4">
                                         <div class="mb-3">
                                             <div class="img-container"><img class="img-fluid br-5px d-block m-auto"
-                                                src="/assets/img/people/${data.image}" /></div>
+                                                src="/${data.image.original}" /></div>
                                         </div>
                                         <div class="mb-3">
                                           <label class="form-label" for="order">Order</label>
@@ -568,7 +568,7 @@ $(function () {
                     { data: 'description', name: 'description', title: 'Description', className: 'text-center'},
                     { data: 'image', name: 'image', title: 'Image', className: 'text-center',
                         render: function (data, type, row) {
-                            return `<div class="square-60 m-auto"><img class="img-fluid" src="/assets/img/work/${row.image}" /></div>`;
+                            return `<div class="square-60 m-auto"><img class="img-fluid" src="/${row.image.original}" /></div>`;
                         }
                     },
                     { data: 'links', name: 'links', title: 'Links', className: 'text-left',
@@ -639,7 +639,7 @@ $(function () {
                                     <div class="col-12 col-md-4">
                                         <div class="mb-3">
                                             <div class="img-container"><img class="img-fluid br-5px d-block m-auto"
-                                                src="/assets/img/work/${data.image}" /></div>
+                                                src="/${data.image.original}" /></div>
                                         </div>
                                         <div class="mb-3">
                                           <label class="form-label" for="order">Order</label>
@@ -737,7 +737,7 @@ $(function () {
                     },
                     { data: 'image', name: 'image', title: 'Image', className: 'text-center',
                         render: function (data, type, row) {
-                            return `<div class="square-60 m-auto"><img class="img-fluid" src="/assets/img/services/${row.image}.svg" /></div>`;
+                            return `<div class="square-60 m-auto"><img class="img-fluid" src="/${row.image.original}" /></div>`;
                         }
                     },
                     { data: 'icon', name: 'icon', title: 'Icon', className: 'text-center',
@@ -801,7 +801,7 @@ $(function () {
                                     <div class="col-12 col-md-4">
                                         <div class="mb-3">
                                             <div class="img-container"><img class="img-fluid br-5px d-block m-auto"
-                                                src="/assets/img/services/${data.image}.svg" /></div>
+                                                src="/${data.image.original}" /></div>
                                         </div>
                                         <div class="mb-3">
                                           <label class="form-label" for="order">Order</label>

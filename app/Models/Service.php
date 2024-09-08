@@ -12,4 +12,5 @@ class Service extends Model
 
     protected $fillable = [ 'slug', 'title', 'icon', 'image', 'link', 'description', 'active', 'order' ];
 
+    protected $casts = [ "image" => "object" ];
 }

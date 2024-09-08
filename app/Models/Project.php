@@ -12,5 +12,5 @@ class Project extends Model
 
     protected $fillable = [ 'image', 'role', 'title', 'description', 'featured', 'links', 'active', 'order' ];
 
-    protected $casts = [ "links" => "object" ];
+    protected $casts = [ "links" => "object", "image" => "object" ];
 }
