@@ -22,6 +22,7 @@ class Post extends Model implements Feedable
 
     protected $casts = [
         'published_at' => 'datetime',
+        "cover" => "object",
     ];
 
     public function tags(): BelongsToMany
@@ -48,7 +49,7 @@ class Post extends Model implements Feedable
 
     public function toFeedItem(): FeedItem
     {
-        $summary = "<img src='/$this->cover' class='post-cover' alt='$this->title' />
+        $summary = "<img src='/{$this->cover->original}' class='post-cover' alt='$this->title' />
                     <p class='description'>$this->excerpt</p>
                     <p class='post-link'><a href='/blog/$this->slug'>Read More...</a></p>";
         return FeedItem::create([

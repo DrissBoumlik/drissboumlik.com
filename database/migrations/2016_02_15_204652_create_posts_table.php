@@ -21,7 +21,7 @@ class CreatePostsTable extends Migration
             $table->string('slug')->unique();
             $table->longText('content');
             $table->text('excerpt')->nullable();
-            $table->string('cover')->nullable();
+            $table->json('cover')->nullable();
             $table->text('description')->nullable();
             $table->boolean('published')->default(false);
             $table->boolean('featured')->default(false);

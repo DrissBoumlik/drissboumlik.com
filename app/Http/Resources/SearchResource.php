@@ -18,7 +18,7 @@ class SearchResource extends JsonResource
             'title' => $this->title,
             'short_title' => shortenTextIfLongByLength($this->title, 30),
             'link' => $this->link,
-            'cover' => $this->cover,
+            'cover' => json_decode($this->cover),
             'type' => $this->type,
         ];
     }

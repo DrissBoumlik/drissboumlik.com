@@ -22,8 +22,9 @@
                                     <div class="search-result-item">
                                         <a href="{{ $result->link }}" class="search-result-link text-decoration-none">
                                             <div class="search-result-cover">
-                                                <img src="/{{ $result->cover }}" alt="{{ $result->short_title }}"
-                                                     class="img-fluid" loading="lazy" />
+                                                <img src="/{{ $result->cover->compressed }}" alt="{{ $result->short_title }}"
+                                                     data-src="/{{ $result->cover->original }}"
+                                                     class="img-fluid lazyload" loading="lazy" />
                                             </div>
                                             <div class="search-result-text p-3 text-center">
                                                 <div class="font-weight-bolder search-result-link-text">{!! $result->type !!} {{ $result->short_title }}</div>

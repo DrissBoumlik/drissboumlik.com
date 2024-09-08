@@ -10,12 +10,11 @@ class PostResource extends JsonResource
      * Transform the resource into an array.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return object
+     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
     {
-        $coverSplitted = $this->cover ? explode('.webp', $this->cover) : null;
-        return (object) [
+        return [
             'id' => $this->id,
             'author_id' => $this->author_id,
             'title' => $this->title,
@@ -24,7 +23,6 @@ class PostResource extends JsonResource
             'excerpt' => $this->excerpt,
             'content' => $this->content,
             'cover' => $this->cover,
-            'cover_compressed' => $this->cover ? "$coverSplitted[0]--compressed.webp" : $this->cover,
             'description' => $this->description,
             'published' => $this->published,
             'featured' => $this->featured,

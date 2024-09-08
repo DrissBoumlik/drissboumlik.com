@@ -1,7 +1,7 @@
 <div class="post h-100">
     <div class="post-cover">
-        <img src="/{{ $post->cover_compressed }}" alt="{{ $post->title }}"
-             data-src="/{{ $post->cover }}"
+        <img src="/{{ $post->cover->compressed }}" alt="{{ $post->title }}"
+             data-src="/{{ $post->cover->original }}"
              class="img-fluid lazyload" loading="lazy" width="500" height="350" />
     </div>
     <div class="post-data">

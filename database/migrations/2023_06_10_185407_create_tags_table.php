@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->text('description')->nullable();
-            $table->string('cover')->nullable();
+            $table->json('cover')->nullable();
             $table->string('color')->nullable();
             $table->boolean('active')->default(false);
             $table->timestamps();

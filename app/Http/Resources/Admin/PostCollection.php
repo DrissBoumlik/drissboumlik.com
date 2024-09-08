@@ -24,7 +24,6 @@ class PostCollection extends ResourceCollection
                 'slug' => $item->slug,
                 'excerpt' => $item->excerpt,
                 'content' => $item->content,
-//            'image' => $item->image,
                 'description' => $item->description,
                 'published' => $this->published,
                 'featured' => $item->featured,
@@ -41,7 +40,6 @@ class PostCollection extends ResourceCollection
                 'updated_at_for_humans' => $item->updated_at->diffForHumans(),
                 'tags' => $item->tags->pluck('name')->toArray(), // $item->tags,
                 'tags_count' => $item->tags_count,
-//            'author' => $item->author,
                 'active' => $item->deleted_at == null,
             ];
         });

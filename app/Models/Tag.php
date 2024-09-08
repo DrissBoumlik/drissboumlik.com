@@ -13,6 +13,7 @@ class Tag extends Model
 
     protected $fillable = ['name', 'slug', 'description', 'cover', 'color', 'active'];
 
+    protected $casts = [ "cover" => "object" ];
     public function posts(): BelongsToMany
     {
         return $this->belongsToMany(Post::class);

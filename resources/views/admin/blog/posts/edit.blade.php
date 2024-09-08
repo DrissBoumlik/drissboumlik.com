@@ -136,8 +136,8 @@
                                 <label class="form-label" for="image">Cover</label>
                                 <input type="file" id="image" name="cover" class="form-control" />
                                 <div class="mt-2">
-                                    <img id="image-preview" class="image-preview img-fluid w-100 lazyload" src="{{ $post->cover ? "/$post->cover_compressed" : asset('/assets/img/blog/default-post.webp') }}"
-                                         data-src="{{ $post->cover ? "/$post->cover" : asset('/assets/img/blog/default-post.webp') }}"
+                                    <img id="image-preview" class="image-preview img-fluid w-100 lazyload" src="{{ $post->cover ? "/" . $post->cover->compressed : asset('/assets/img/blog/default-post.webp') }}"
+                                         data-src="{{ $post->cover ? "/" . $post->cover->original : asset('/assets/img/blog/default-post.webp') }}"
                                          alt="photo" width="200" height="100" loading="lazy">
                                 </div>
                             </div>
