@@ -870,6 +870,7 @@ $(function () {
 
 
         if ($('#menus').length) {
+            let menuTypesCounts = {};
             let params = {
                 first_time: true,
                 id: '#menus',
@@ -926,7 +927,16 @@ $(function () {
                         render: function (data, type, row) {
                             return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
                         }},
-                ]
+                ],
+                onComplete: function (settings, json) {
+                    json.data.forEach(function (item) {
+                        if (! menuTypesCounts[item.type_name]) {
+                            menuTypesCounts[item.type_name] = 1;
+                        } else {
+                            menuTypesCounts[item.type_name] += 1;
+                        }
+                    });
+                }
             };
             let MenusDataTable = configDT(params);
 
@@ -948,9 +958,7 @@ $(function () {
             $('#menus').on('click', '.display-menus-details', function(e) {
                 const $row = $(this).closest('tr');
                 const data = MenusDataTable.row( $row ).data();
-                let dataFilteredCount = MenusDataTable.rows().data().toArray().filter(function (rowData) {
-                    return data.type_name === rowData.type_name;
-                }).length;
+                let dataFilteredCount = menuTypesCounts[data.type_name];
                 let created_at = moment(data.updated_at)
                 let menuTypesOptions = '';
                 menuTypesItems.forEach(function (item) {
