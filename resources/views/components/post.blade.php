@@ -1,7 +1,8 @@
 <div class="post h-100">
     <div class="post-cover">
-        <img src="/{{ $post->cover->compressed }}" alt="{{ $post->title }}"
-             data-src="/{{ $post->cover->original }}"
+        <img src="{{ $post->cover ? "/" . $post->cover->compressed : asset('/assets/img/blog/default-post.webp') }}"
+             alt="{{ $post->title }}"
+             data-src="{{ $post->cover ? "/" . $post->cover->original : asset('/assets/img/blog/default-post.webp') }}"
              class="img-fluid lazyload" loading="lazy" width="500" height="350" />
     </div>
     <div class="post-data">
