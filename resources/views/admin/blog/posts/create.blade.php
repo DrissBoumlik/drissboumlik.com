@@ -117,11 +117,19 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="">
-                                <label class="form-label" for="post_body">Content</label>
-                                <!-- SimpleMDE Container -->
-                                {{-- <textarea class="js-simplemde" id="simplemde" name="post_body">{{ old('post_body') }}</textarea> --}}
-                                <textarea id="post_body" class="form-control" name="post_content" placeholder="Post content.." hidden>Post content..</textarea>
+                            <div class="block block-rounded block-bordered block-mode-hidden">
+                                <div class="block-header block-header-default">
+                                    <h3 class="block-title"><label class="form-label" for="post_body">Content</label></h3>
+                                    <div class="block-options">
+                                        <button type="button" class="btn-block-option" data-toggle="block-option" data-action="fullscreen_toggle"><i class="si si-size-fullscreen"></i></button>
+                                        <button type="button" class="btn-block-option" data-toggle="block-option" data-action="content_toggle"><i class="si si-arrow-up"></i></button>
+                                    </div>
+                                </div>
+                                <div class="block-content p-0">
+                                    <!-- SimpleMDE Container -->
+                                    {{-- <textarea class="js-simplemde" id="simplemde" name="post_body">{{ old('post_body') }}</textarea> --}}
+                                    <textarea id="post_body" class="form-control" name="post_content" placeholder="Post content.." hidden>Post content..</textarea>
+                                </div>
                             </div>
                         </div>
                         <div class="col-12 d-flex justify-content-between">

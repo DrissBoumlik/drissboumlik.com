@@ -70,7 +70,7 @@
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="description">Description</label>
-                                <textarea class="form-control" id="description" name="description" rows="4" placeholder="Post description..">{{ $post->description }}</textarea>
+                                <textarea class="form-control" id="description" name="description" placeholder="Post description.." rows="4" >{{ $post->description }}</textarea>
                             </div>
                             <div class="timestamps d-flex align-items-center column-gap-2">
                                 <div class="mb-4 w-100">
@@ -151,11 +151,19 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="mb-4">
-                                <label class="form-label" for="post_body">Content</label>
-                                <!-- SimpleMDE Container -->
-                                {{-- <textarea class="js-simplemde" id="simplemde" name="post_body">{{ old('post_body') }}</textarea> --}}
-                                <textarea id="post_body" class="form-control" name="post_content" placeholder="Post content.." hidden>{!! $post->content !!}</textarea>
+                            <div class="block block-rounded block-bordered block-mode-hidden">
+                                <div class="block-header block-header-default">
+                                    <h3 class="block-title"><label class="form-label" for="post_body">Content</label></h3>
+                                    <div class="block-options">
+                                        <button type="button" class="btn-block-option" data-toggle="block-option" data-action="fullscreen_toggle"><i class="si si-size-fullscreen"></i></button>
+                                        <button type="button" class="btn-block-option" data-toggle="block-option" data-action="content_toggle"><i class="si si-arrow-up"></i></button>
+                                    </div>
+                                </div>
+                                <div class="block-content p-0">
+                                    <!-- SimpleMDE Container -->
+                                    {{-- <textarea class="js-simplemde" id="simplemde" name="post_body">{{ old('post_body') }}</textarea> --}}
+                                    <textarea id="post_body" class="form-control" name="post_content" placeholder="Post content.." hidden>{!! $post->content !!}</textarea>
+                                </div>
                             </div>
                             <div class="d-flex justify-content-between column-gap-2 flex-wrap flex-md-nowrap">
                                 <button type="submit" class="btn btn-success me-1 mb-3 w-100">
