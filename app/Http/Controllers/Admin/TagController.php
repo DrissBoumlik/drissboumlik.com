@@ -58,7 +58,9 @@ class TagController extends Controller
                 "active" => $request->has('active'),
             ];
             $image_file = $request->file('cover');
-            $this->mediaService->processPostCover($data, $image_file, $request->slug, "blog/tags/$request->slug");
+            if ($image_file) {
+                $data['cover'] = $this->mediaService->processAsset("blog/tags/$request->slug", $request->slug, $image_file);
+            }
             $tag = Tag::create($data);
             return redirect("/admin/tags/edit/$tag->slug")->with(['response' => ['message' => 'Tag store successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
         } catch (\Throwable $e) {
@@ -88,7 +90,9 @@ class TagController extends Controller
                 "active" => $request->has('active'),
             ];
             $image_file = $request->file('cover');
-            $this->mediaService->processPostCover($data, $image_file, $request->slug ?? $tag->slug, "blog/tags/$request->slug");
+            if ($image_file) {
+                $data['cover'] = $this->mediaService->processAsset("blog/tags/$request->slug", $request->slug ?? $tag->slug, $image_file);
+            }
             $tag->update($data);
             return redirect("/admin/tags/edit/$tag->slug")->with(['response' => ['message' => 'Tag updated successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
         } catch (\Throwable $e) {

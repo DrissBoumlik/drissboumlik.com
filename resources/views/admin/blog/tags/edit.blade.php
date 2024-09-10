@@ -70,8 +70,8 @@
                                 <label class="form-label" for="image">Image</label>
                                 <input type="file" id="image" name="cover" class="form-control" />
                                 <div class="mt-2">
-                                    <img id="image-preview" class="image-preview img-fluid lazyload" src="{{ $tag->cover ? "/$tag->cover_compressed" : asset('/assets/img/blog/default-tag.webp') }}"
-                                         data-src="{{ $tag->cover ? "/$tag->cover" : asset('/assets/img/blog/default-tag.webp') }}"
+                                    <img id="image-preview" class="image-preview img-fluid lazyload" src="{{ $tag->cover ? "/" . $tag->cover->compressed : asset('/assets/img/blog/default-tag.webp') }}"
+                                         data-src="{{ $tag->cover ? "/" . $tag->cover->original : asset('/assets/img/blog/default-tag.webp') }}"
                                          alt="photo" width="200" height="100" loading="lazy">
                                 </div>
                             </div>

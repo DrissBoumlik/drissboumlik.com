@@ -28,7 +28,6 @@ class PostResource extends JsonResource
             'featured' => $this->featured,
             'likes' => $this->likes,
             'views' => $this->views,
-            'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'published_at' => $this->published_at,
             'created_at' => $this->created_at,

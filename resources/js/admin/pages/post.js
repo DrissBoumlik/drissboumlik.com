@@ -7,7 +7,6 @@ $(function () {
         initPostEditor();
         try { initSelect2(); } catch (e) {}
 
-        let postAssets = null;
         $(document).on('focusout', '.input-to-slugify', function () {
             let postTitle = $(this).val();
             let postSlug = string_to_slug(postTitle)
@@ -37,20 +36,16 @@ $(function () {
 
         let viewPostAssetsBtn = $('.btn-view-post-assets')
         if (viewPostAssetsBtn.length) {
-            viewPostAssetsBtn.on('click', function() {
-
-                if (!postAssets || !postAssets.length) {
-                    $.ajax({
-                        type: 'GET',
-                        url: `/api/posts/${$('#post-slug').val()}/assets`,
-                        success: function (response) {
-                            postAssets = response.post_assets;
-                            fillPostAssetsModal(postAssets);
-                        }
-                    });
-                } else {
-                    fillPostAssetsModal(postAssets);
-                }
+            viewPostAssetsBtn.on('click', function () {
+                let post_slug = $('#post-slug').val();
+                $.ajax({
+                    type: 'GET',
+                    url: `/api/posts/${post_slug}/assets`,
+                    success: function (response) {
+                        let postAssets = response.post_assets;
+                        fillPostAssetsModal(postAssets);
+                    }
+                });
             });
         }
 
@@ -106,10 +101,10 @@ function initPostEditor() {
 
 function fillPostAssetsModal(postAssets){
     let gallery = `<div class="col-12"><div class="text-center p-5">No assets found</div></div>`;
-    if (postAssets && postAssets.length) {
+    if (postAssets && postAssets.hasOwnProperty("compressed")) {
         gallery = '';
-        postAssets.forEach(function (post_asset) {
-            let link_original = post_asset.link.replace('--compressed', '');
+        postAssets.compressed.forEach(function (post_asset) {
+            let link_original = post_asset.link.replace('compressed/', '');
             gallery += `<div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-5" style="height: 150px">
                             <div class="post-content-asset h-100 overflow-hidden" style="border-radius: 5px">
                                 <a href="${link_original}" target="_blank">

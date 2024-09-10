@@ -10,19 +10,17 @@ class TagResource extends JsonResource
      * Transform the resource into an array.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return object
+     * @return object|array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
     {
-        $coverSplitted = $this->cover ? explode('.webp', $this->cover) : null;
-        return (object) [
+        return [
             "id" => $this->id,
             "name" => $this->name,
             "slug" => $this->slug,
             "description" => $this->description,
             "color" => $this->color,
             "cover" => $this->cover,
-            'cover_compressed' => $this->cover ? "$coverSplitted[0]--compressed.webp" : $this->cover,
             "created_at" => $this->created_at,
             'active' => $this->active,
             'deleted' => $this->deleted_at !== null,

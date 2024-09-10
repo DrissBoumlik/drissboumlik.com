@@ -86,3 +86,11 @@ if (!function_exists('isGuest')) {
         return !\Auth::check() || $guestView;
     }
 }
+
+if (!function_exists('makeDirectory')) {
+    function makeDirectory ($path) {
+        if (!\File::isDirectory($path)) {
+            \File::makeDirectory($path);
+        }
+    }
+}

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Admin\PostCollection;
 use App\Http\Resources\Admin\PostResource;
 use App\Models\Post;
 use App\Services\MediaService;
@@ -60,8 +59,13 @@ class PostController extends Controller
                 'published_at' => ($request->has('published') ? ($request->published_at ?? now()) : null),
             ];
             $image_file = $request->file('cover');
-            $this->mediaService->processPostCover($data, $image_file, $request->slug, "blog/posts/$request->slug");
-            $this->mediaService->processPostsAssets($request->file('post-assets'), "blog/posts/$request->slug/assets", false);
+            if ($image_file) {
+                $data['cover'] = $this->mediaService->processAsset("blog/posts/$request->slug", $request->slug, $image_file);
+            }
+            $postAssets = $request->file('post-assets');
+            if ($postAssets) {
+                $this->mediaService->processAssets($postAssets, "blog/posts/$request->slug/assets", "post_asset", false);
+            }
             $post = Post::create($data);
             if ($request->has('tags')) {
                 $post_tag = [];
@@ -87,7 +91,6 @@ class PostController extends Controller
             return redirect("/admin/posts")->with(['response' => ['message' => 'Post not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
         }
         $post = (object) (new PostResource($post))->resolve();
-
         $data = adminPageSetup("Edit | $post->title | Admin Panel");
         $data->tags = Tag::select("name", "id")->get();
         $post_tag_ids = $post->tags->pluck('id');
@@ -132,8 +135,13 @@ class PostController extends Controller
                 'views' => $request->views ?? $post->views
             ];
             $image_file = $request->file('cover');
-            $this->mediaService->processPostCover($data, $image_file, $request->slug ?? $post->slug, "blog/posts/$request->slug");
-            $this->mediaService->processPostsAssets($request->file('post-assets'), "blog/posts/$request->slug/assets", $request->has('append-to-post-assets'));
+            if ($image_file) {
+                $data['cover'] = $this->mediaService->processAsset("blog/posts/$request->slug", $request->slug ?? $post->slug, $image_file);
+            }
+            $postAssets = $request->file('post-assets');
+            if ($postAssets) {
+                $this->mediaService->processAssets($postAssets, "blog/posts/$request->slug/assets", "post_asset", $request->has('append-to-post-assets'));
+            }
             $post->update($data);
 
             \DB::table('post_tag')->where('post_id', $post->id)->delete();
