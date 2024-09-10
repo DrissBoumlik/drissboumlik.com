@@ -105,7 +105,7 @@ function initPostEditor() {
 
 function fillPostAssetsModal(postAssets){
     let gallery = `<div class="col-12"><div class="text-center p-5">No assets found</div></div>`;
-    if (postAssets && postAssets.hasOwnProperty("compressed")) {
+    if (postAssets && postAssets.hasOwnProperty("compressed") && postAssets.compressed.length) {
         gallery = '';
         postAssets.compressed.forEach(function (post_asset) {
             let link_original = post_asset.link.replace('compressed/', '');
@@ -129,7 +129,7 @@ function fillPostAssetsModal(postAssets){
                         <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Post Assets: ${postAssets.length} images</h5>
+                                    <h5 class="modal-title">Post Assets: ${postAssets.compressed.length} images</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
