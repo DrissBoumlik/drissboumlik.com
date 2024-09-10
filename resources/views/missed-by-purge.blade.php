@@ -6,6 +6,7 @@ gist-data
 gist
 gist-file
 comparison-list
+tox-tinymce
 title
 octotree_toggle
 minibutton
