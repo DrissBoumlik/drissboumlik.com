@@ -49,14 +49,15 @@ class Post extends Model implements Feedable
 
     public function toFeedItem(): FeedItem
     {
-        $summary = "<img src='/{$this->cover->original}' class='post-cover' alt='$this->title' />
+        $post_cover = $this->cover ? "/" . $this->cover->original : '/assets/img/blog/default-post.webp';
+        $summary = "<img src='$post_cover' class='post-cover' alt='$this->title' />
                     <p class='description'>$this->excerpt</p>
                     <p class='post-link'><a href='/blog/$this->slug'>Read More...</a></p>";
         return FeedItem::create([
                 'id' => $this->id,
                 'title' => $this->title,
                 'summary' => $summary,
-                'updated' => $this->published_at,
+                'updated' => $this->published_at ?? $this->updated_at,
                 'link' => "/blog/$this->slug",
                 'authorName' => "Driss Boumlik",
             ]);

@@ -33,9 +33,9 @@ class PostResource extends JsonResource
             'updated_at' => $this->updated_at,
             'updated_at_formatted' => $this->updated_at?->diffForHumans(),
             'updated_at_short_format' => $this->updated_at?->format('F d, Y'),
-            'published_at' => $this->published_at,
-            'published_at_formatted' => $this->published_at?->diffForHumans(),
-            'published_at_short_format' => $this->published_at?->format('F d, Y'),
+            'published_at' => $this->published ? $this->published_at : null,
+            'published_at_formatted' => $this->published ? $this->published_at?->diffForHumans() : null,
+            'published_at_short_format' => $this->published ? $this->published_at?->format('F d, Y') : null,
             'tags' => $this->tags,
         ];
     }

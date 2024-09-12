@@ -22,8 +22,9 @@
                                     <div class="search-result-item">
                                         <a href="{{ $result->link }}" class="search-result-link text-decoration-none">
                                             <div class="search-result-cover">
-                                                <img src="/{{ $result->cover->compressed }}" alt="{{ $result->short_title }}"
-                                                     data-src="/{{ $result->cover->original }}"
+                                                <img src="{{ $result->cover ? "/" . $result->cover->compressed : asset('/assets/img/blog/default-post.webp') }}"
+                                                     data-src="{{ $result->cover ? "/" . $result->cover->original : asset('/assets/img/blog/default-post.webp') }}"
+                                                     alt="{{ $result->short_title }}"
                                                      class="img-fluid lazyload" loading="lazy" />
                                             </div>
                                             <div class="search-result-text p-3 text-center">
