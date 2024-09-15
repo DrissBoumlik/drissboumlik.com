@@ -119,10 +119,14 @@ class BlogController extends Controller
         $data = $this->cacheService->cache_data($key, function() use ($post) {
             $data = pageSetup("$post->title | Blog", 'Latest Articles', ['header', 'footer']);
             $data->post = (object)(new PostResource($post))->resolve();
-            $data->page_description = $data->post->description;
-            $data->page_image = \URL::to($data->post->cover?->original ?? "/assets/img/blog/default-post.webp");
-            $data->page_url = \URL::to('/blog/' . $data->post->slug);
-            $data->publication_date = ($data->post->published_at ?? $data->post->updated_at)->toDateString();
+            $data->page_data = (object) [
+                "page_title" => $data->post->title,
+                "page_description" => $data->post->description ?? $data->post->excerpt,
+                "page_type" => "Article",
+                "page_image" => \URL::to($data->post->cover?->original ?? "/assets/img/blog/default-post.webp"),
+                "page_url" => \URL::to('/blog/' . $data->post->slug),
+                "publication_date" => ($data->post->published_at ?? $data->post->updated_at)->toDateString(),
+            ];
             return $data;
         }, null, $request->has('forget'));
 
