@@ -275,7 +275,7 @@ $(function () {
                         },
                         error: function (jqXHR, textStatus, errorThrown){
                             console.log(jqXHR, textStatus, errorThrown);
-                            get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                            get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.message, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
                         }
                     });
                 });
@@ -531,7 +531,7 @@ $(function () {
                         },
                         error: function (jqXHR, textStatus, errorThrown){
                             console.log(jqXHR, textStatus, errorThrown);
-                            get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                            get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.message, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
                         }
                     });
                 });
@@ -701,7 +701,7 @@ $(function () {
                         },
                         error: function (jqXHR, textStatus, errorThrown){
                             console.log(jqXHR, textStatus, errorThrown);
-                            get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                            get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.message, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
                         }
                     });
                 });
@@ -860,7 +860,7 @@ $(function () {
                         },
                         error: function (jqXHR, textStatus, errorThrown){
                             console.log(jqXHR, textStatus, errorThrown);
-                            get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                            get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.message, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
                         }
                     });
                 });
@@ -1069,7 +1069,7 @@ $(function () {
                         },
                         error: function (jqXHR, textStatus, errorThrown){
                             console.log(jqXHR, textStatus, errorThrown);
-                            get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                            get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.message, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
                         }
                     });
                 });
@@ -1186,7 +1186,7 @@ $(function () {
                         },
                         error: function (jqXHR, textStatus, errorThrown){
                             console.log(jqXHR, textStatus, errorThrown);
-                            get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                            get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.message, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
                         }
                     });
                 });
@@ -1239,6 +1239,12 @@ function configDT(params) {
             data: function(data) {
                 data._token = $('meta[name="csrf-token"]').attr('content');
                 data.first_time = params.first_time;
+            }
+            , error: function (jqXHR, textStatus, errorThrown) {
+                get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.message, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                if (jqXHR.responseJSON.message.toLowerCase().includes("csrf")) {
+                    location.reload(true);
+                }
             }
         },
         columns: params.columns,
