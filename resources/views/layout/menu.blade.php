@@ -22,8 +22,8 @@
                     </div>
                 </nav>
                 @auth
-                    <div class="header-menu-wrapper login-menu-items flex-grow-2">
-                        <ul class="header-menu-container list-group list-group-horizontal">
+                    <div class="header-menu-wrapper auth-menu-items flex-grow-2">
+                        <ul class="header-menu-container list-group">
                             @if (isGuest(session()->get('guest-view')))
                                 <li class="header-menu-item menu-item list-group-item animated-underline">
                                     <a href="?guest-view=-1&forget" rel="noopener" aria-label="Admin View" title="Back to Admin view">
@@ -38,7 +38,7 @@
                                 </li>
 
                                 <li class="header-menu-item menu-item list-group-item animated-underline">
-                                    <a href="/admin" rel="noopener" aria-label="Admin Panel">
+                                    <a href="/admin" rel="noopener" aria-label="Admin Panel" title="Admin Panel">
                                         <i class="fa-solid fa-gear"></i>
                                     </a>
                                 </li>
