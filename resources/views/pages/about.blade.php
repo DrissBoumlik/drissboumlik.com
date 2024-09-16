@@ -8,9 +8,9 @@
 
 @section('page-content')
     <div class="container-fluid">
-        <div class="section py-5">
+        <div class="about-page about section py-5">
             <div class="py-5" id="about">
-                <div class="about-page about">
+                <div class="section">
                     <div class="container">
                         <div class="row align-items-center justify-content-center">
                             <div class="col-lg-6 col-md-7 col-12 about-me-txt">
