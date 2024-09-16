@@ -19,7 +19,7 @@
                     <div class="container">
                         <div class="row align-items-center justify-content-center">
                             <div class="col-lg-6 col-md-7 col-12">
-                                <form id="contact-form" class="mb-3 mb-md-0">
+                                <form id="contact-form" class="contact-form mb-3 mb-md-0">
                                     @csrf
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="form-name" placeholder="" name="name" autocomplete="off" required />
