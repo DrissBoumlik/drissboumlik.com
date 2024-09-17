@@ -38,6 +38,13 @@ class BlogController extends Controller
         $key = $this->cacheService->getCachedFullKey("search-data-$term-$page", '-with-unpublished', $this->guestView);
         $data = $this->cacheService->cache_data($key, function() use ($term) {
             $data = pageSetup("Search: $term | Blog", "Search results for : $term", ['header', 'footer']);
+            $data->page_data = (object) [
+                "page_title" => "Blog",
+                "page_description" => "Articles about programming, tips and trick",
+                "page_type" => "Blog",
+                "page_image" => \URL::to("/assets/img/blog/default-post.webp"),
+                "page_url" => \URL::to("/blog"),
+            ];
             $data->term = $term;
             if ($term) {
                 $term = "%$term%";
@@ -87,6 +94,13 @@ class BlogController extends Controller
         $result = $this->cacheService->cache_data($key, function() {
             $result = $this->postService->preparePosts(Post::with('author', 'tags'), $this->guestView);
             $data = pageSetup('Blog | Driss Boumlik', 'Blog', ['header', 'footer']);
+            $data->page_data = (object) [
+                "page_title" => "Blog",
+                "page_description" => "Articles about programming, tips and trick",
+                "page_type" => "Blog",
+                "page_image" => \URL::to("/assets/img/blog/default-post.webp"),
+                "page_url" => \URL::to("/blog"),
+            ];
             $result['data'] = $data;
             return $result;
         }, null, $request->has('forget'));
@@ -122,7 +136,7 @@ class BlogController extends Controller
             $data->page_data = (object) [
                 "page_title" => $data->post->title,
                 "page_description" => $data->post->description ?? $data->post->excerpt,
-                "page_type" => "Article",
+                "page_type" => "Blog",
                 "page_image" => \URL::to($data->post->cover?->original ?? "/assets/img/blog/default-post.webp"),
                 "page_url" => \URL::to('/blog/' . $data->post->slug),
                 "publication_date" => ($data->post->published_at ?? $data->post->updated_at)->toDateString(),
@@ -151,7 +165,17 @@ class BlogController extends Controller
         $key = $this->cacheService->getCachedFullKey("posts-tag-data-$slug-$page", '-with-unpublished', $this->guestView);
         $result = $this->cacheService->cache_data($key, function() use ($tag) {
             $result = $this->postService->preparePosts($tag->posts()->with('author', 'tags'), $this->guestView);
-            $data = pageSetup("Tags : $tag->name | Blog", "<a href='/tags'>All tags</a> <i class='fa-solid fa-angle-right mx-1'></i> $tag->name", ['header', 'footer']);
+            $data = pageSetup("Tags : $tag->name | Blog",
+                "<a href='/tags'>All tags</a> <i class='fa-solid fa-angle-right mx-1'></i> $tag->name",
+                ['header', 'footer']);
+            $data->page_data = (object) [
+                "page_title" => "Blog",
+                "page_description" => "Articles about programming, tips and trick",
+                "page_type" => "Blog",
+                "page_image" => \URL::to("/assets/img/blog/default-post.webp"),
+                "page_url" => \URL::to("/blog"),
+            ];
+
             $result['data'] = $data;
             $result['tag'] = $tag;
             return $result;
@@ -165,6 +189,13 @@ class BlogController extends Controller
         $key = $this->cacheService->getCachedFullKey('tags-data', '-with-unpublished', $this->guestView);
         $data = $this->cacheService->cache_data($key, function() {
             $data = pageSetup('Tags | Blog', 'Tags', ['header', 'footer']);
+            $data->page_data = (object) [
+                "page_title" => "Blog",
+                "page_description" => "Articles about programming, tips and trick",
+                "page_type" => "Blog",
+                "page_image" => \URL::to("/assets/img/blog/default-post.webp"),
+                "page_url" => \URL::to("/tags"),
+            ];
 
             $data->tags_data = (new TagWithPaginationCollection(Tag::whereHas('posts', function($query) {
                 if ($this->guestView) {

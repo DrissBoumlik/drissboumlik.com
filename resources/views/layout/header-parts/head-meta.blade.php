@@ -28,7 +28,7 @@
 <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "{{ $data->page_data?->page_type ?? "Home Page" }}",
+      "@type": "{{ $data->page_data?->page_type ?? "https://schema.org" }}",
       "name": "{{ $data->page_data?->page_title ?? "HOME" }}",
       "headline": "{{ $data->page_data?->page_title ?? "HOME" }}",
       "description": "{{ $data->page_data?->page_description ?? 'Here is where you get to know who is Driss Boumlik'}}",
