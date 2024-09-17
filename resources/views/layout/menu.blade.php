@@ -26,13 +26,14 @@
                         <ul class="header-menu-container list-group">
                             @if (isGuest(session()->get('guest-view')))
                                 <li class="header-menu-item menu-item list-group-item animated-underline">
-                                    <a href="?guest-view=-1&forget" rel="noopener" aria-label="Admin View" title="Back to Admin view">
+                                    <a href="?{{ http_build_query(request()->merge([ "guest-view" => -1, "forget" => true ])->query()) }}"
+                                        rel="noopener" aria-label="Admin View" title="Back to Admin view">
                                         <i class="fa-solid fa-eye-slash"></i>
                                     </a>
                                 </li>
                             @else
                                 <li class="header-menu-item menu-item list-group-item animated-underline">
-                                    <a href="?guest-view=1&forget" rel="noopener" aria-label="Guest View" title="Switch to Guest view">
+                                    <a href="?{{ http_build_query(request()->merge([ "guest-view" => 1, "forget" => true ])->query()) }}" rel="noopener" aria-label="Guest View" title="Switch to Guest view">
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
                                 </li>
