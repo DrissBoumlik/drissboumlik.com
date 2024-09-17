@@ -5,7 +5,15 @@ $(function () {
         if (show_password_btn.length) {
             show_password_btn.on('click', function () {
                 let input_password = $(this).siblings('input');
-                let type = input_password.attr('type') === 'text' ? 'password' : 'text';
+                let type, icon;
+                if (input_password.attr('type') === 'text') {
+                    type = 'password';
+                    icon = "<i class='fa-solid fa-eye'></i>";
+                } else {
+                    type = 'text';
+                    icon = "<i class='fa-solid fa-eye-slash'></i>";
+                }
+                $(this).html(icon);
                 input_password.attr('type', type);
             });
         }
