@@ -8,7 +8,7 @@ $(function () {
         initAjaxEvents();
 
         $(document).on('click', '.toggle-header', function () {
-            $('.toggle-header').toggleClass('btn-alt-secondary tc-black-bg')
+            $('.toggle-header').toggleClass('btn-alt-secondary tc-blue-dark-2-bg')
             setTimeout(() => $('#page-container').toggleClass('page-header-fixed'), 1000);
         })
 
