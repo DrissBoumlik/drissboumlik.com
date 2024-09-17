@@ -36,16 +36,15 @@
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
                                 </li>
-
-                                <li class="header-menu-item menu-item list-group-item animated-underline">
-                                    <a href="/admin" rel="noopener" aria-label="Admin Panel" title="Admin Panel">
-                                        <i class="fa-solid fa-gear"></i>
-                                    </a>
-                                </li>
-                                <li class="header-menu-item menu-item list-group-item animated-underline">
-                                    @include('components.logout-button', ['logout_btn' => '<i class="fa-solid fa-power-off"></i>', 'link_classes' => ''])
-                                </li>
                             @endif
+                            <li class="header-menu-item menu-item list-group-item animated-underline">
+                                <a href="/admin" rel="noopener" aria-label="Admin Panel" title="Admin Panel">
+                                    <i class="fa-solid fa-gear"></i>
+                                </a>
+                            </li>
+                            <li class="header-menu-item menu-item list-group-item animated-underline">
+                                @include('components.logout-button', ['logout_btn' => '<i class="fa-solid fa-power-off"></i>', 'link_classes' => ''])
+                            </li>
                         </ul>
                     </div>
                 @endauth
