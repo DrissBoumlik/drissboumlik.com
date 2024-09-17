@@ -50,6 +50,17 @@ $(function () {
         }
 
         initFlatpickr();
+
+        $(document).on('click', '.btn-action', function (e) {
+            e.preventDefault();
+
+            if (!confirm("Are you sure ?")) {
+                return;
+            }
+
+            $(this).closest('form').submit();
+        });
+
     } catch (error) {
         // console.log(error);
     }
