@@ -48,7 +48,7 @@
                                 <div class="img-wrapper">
                                     <img class="img-fluid w-100 lazyload" src="{{ asset('/assets/img/activities/compressed/hangouts.webp') }}"
                                          data-src="{{ asset('/assets/img/activities/hangouts.svg') }}"
-                                         alt="" width="300" height="300" loading="lazy">
+                                         alt="Contact Me" width="300" height="300" loading="lazy">
                                 </div>
                             </div>
                         </div>

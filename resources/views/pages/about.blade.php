@@ -29,7 +29,7 @@
                                 <div class="img-wrapper">
                                     <img class="img-fluid w-100 lazyload" src="{{ asset('/assets/img/activities/compressed/coding-challenges.webp') }}"
                                          data-src="{{ asset('/assets/img/activities/coding-challenges.svg') }}"
-                                         alt="" width="300" height="300" loading="lazy">
+                                         alt="Coding Challenge" width="300" height="300" loading="lazy">
                                 </div>
                             </div>
                         </div>

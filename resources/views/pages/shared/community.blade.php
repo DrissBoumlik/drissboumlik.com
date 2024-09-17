@@ -19,7 +19,7 @@
                 <div class="img-wrapper community-img">
                     <img class="img-fluid w-100 lazyload" src="{{ asset('/assets/img/teacode/compressed/teacodema.webp') }}"
                          data-src="{{ asset('/assets/img/teacode/teacodema.webp') }}"
-                         alt="" width="200" height="100" loading="lazy">
+                         alt="TeaCode Community" width="200" height="100" loading="lazy">
                 </div>
             </div>
         </div>
