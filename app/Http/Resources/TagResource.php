@@ -14,7 +14,6 @@ class TagResource extends JsonResource
      */
     public function toArray($request)
     {
-        $coverSplitted = $this->cover ? explode('.webp', $this->cover) : null;
         return (object) [
             "id" => $this->id,
             "name" => $this->name,
@@ -22,7 +21,6 @@ class TagResource extends JsonResource
             "description" => $this->description,
             "color" => $this->color,
             "cover" => $this->cover,
-            'cover_compressed' => $this->cover ? "$coverSplitted[0]--compressed.webp" : $this->cover,
             "created_at" => $this->created_at,
             'active' => $this->deleted_at == null,
             "posts_count" => $this->posts_count,

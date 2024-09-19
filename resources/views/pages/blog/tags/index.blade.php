@@ -21,8 +21,8 @@
                                 <div class="col-12 col-md-6 col-lg-4 mb-4">
                                     <div class="tag-item">
                                         <div class="tag-cover">
-                                            <img src="/{{ $tag->cover_compressed }}" alt="{{ $tag->name }}"
-                                                 data-src="/{{ $tag->cover }}" width="300" height="250"
+                                            <img src="{{ $tag->cover ? "/" . $tag->cover->compressed : asset('/assets/img/blog/default-post.webp') }}" alt="{{ $tag->name }}"
+                                                 data-src="{{ $tag->cover ? "/" . $tag->cover->original : asset('/assets/img/blog/default-post.webp') }}" width="300" height="250"
                                                  class="img-fluid lazyload" loading="lazy" />
                                         </div>
                                         <div class="tag-text">
