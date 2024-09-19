@@ -62,3 +62,34 @@ if (!function_exists('pageSetup')) {
         return $data;
     }
 }
+
+if (!function_exists('getJsonLD')) {
+    function getJsonLD ($data, $options = JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) {
+        $jsonld = json_encode($data, $options);
+        if (! $jsonld) {
+            return getDefaultJsonLD();
+        }
+        return $jsonld;
+    }
+}
+
+if (!function_exists('getDefaultJsonLD')) {
+    function getDefaultJsonLD () {
+        $image = \URL::to('/assets/img/me/icon.ico');
+        return <<<JSONLD
+                 {
+                  "@context": "https://schema.org",
+                  "@type": "https://schema.org",
+                  "name": "HOME",
+                  "headline": "HOME",
+                  "description": "Here is where you get to know who is Driss Boumlik",
+                  "image": "$image",
+                  "author": {
+                    "@type": "Person",
+                    "name": "Driss Boumlik"
+                  },
+                  "datePublished": "2023-01-01"
+                }
+            JSONLD;
+    }
+}

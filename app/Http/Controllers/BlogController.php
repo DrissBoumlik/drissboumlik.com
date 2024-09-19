@@ -45,6 +45,20 @@ class BlogController extends Controller
                 "page_image" => \URL::to("/assets/img/blog/default-post.webp"),
                 "page_url" => \URL::to("/blog"),
             ];
+            $jsonld = [
+                "@context" => "https://schema.org",
+                "@type" => "Blog",
+                "name" => "Blog",
+                "headline" => "Blog",
+                "description" => "Articles about programming, tips and trick",
+                "image" => $data->page_data->page_image,
+                "author" => [
+                    "@type" => "Person",
+                    "name" => "Driss Boumlik",
+                ]
+            ];
+            $data->page_data->jsonld = getJsonLD($jsonld);
+
             $data->term = $term;
             if ($term) {
                 $term = "%$term%";
@@ -101,6 +115,21 @@ class BlogController extends Controller
                 "page_image" => \URL::to("/assets/img/blog/default-post.webp"),
                 "page_url" => \URL::to("/blog"),
             ];
+
+            $jsonld = [
+                "@context" => "https://schema.org",
+                "@type" => "Blog",
+                "name" => "Blog",
+                "headline" => "Blog",
+                "description" => "Articles about programming, tips and trick",
+                "image" => $data->page_data->page_image,
+                "author" => [
+                    "@type" => "Person",
+                    "name" => "Driss Boumlik",
+                ]
+            ];
+            $data->page_data->jsonld = getJsonLD($jsonld);
+
             $result['data'] = $data;
             return $result;
         }, null, $request->has('forget'));
@@ -141,6 +170,22 @@ class BlogController extends Controller
                 "page_url" => \URL::to('/blog/' . $data->post->slug),
                 "publication_date" => ($data->post->published_at ?? $data->post->updated_at)->toDateString(),
             ];
+
+            $jsonld = [
+                "@context" => "https://schema.org",
+                "@type" => "Blog",
+                "name" => $data->post->title,
+                "headline" => $data->post->title,
+                "description" => $data->page_data->description ?? $data->post->excerpt,
+                "image" => $data->page_data->page_image,
+                "author" => [
+                    "@type" => "Person",
+                    "name" => "Driss Boumlik",
+                ],
+                "datePublished" => $data->page_data->publication_date,
+            ];
+            $data->page_data->jsonld = getJsonLD($jsonld);
+
             return $data;
         }, null, $request->has('forget'));
 
@@ -175,6 +220,19 @@ class BlogController extends Controller
                 "page_image" => \URL::to("/assets/img/blog/default-post.webp"),
                 "page_url" => \URL::to("/blog"),
             ];
+            $jsonld = [
+                "@context" => "https://schema.org",
+                "@type" => "Blog",
+                "name" => "Blog",
+                "headline" => "Blog",
+                "description" => "Articles about programming, tips and trick",
+                "image" => $data->page_data->page_image,
+                "author" => [
+                    "@type" => "Person",
+                    "name" => "Driss Boumlik",
+                ]
+            ];
+            $data->page_data->jsonld = getJsonLD($jsonld);
 
             $result['data'] = $data;
             $result['tag'] = $tag;
@@ -196,6 +254,19 @@ class BlogController extends Controller
                 "page_image" => \URL::to("/assets/img/blog/default-post.webp"),
                 "page_url" => \URL::to("/tags"),
             ];
+            $jsonld = [
+                "@context" => "https://schema.org",
+                "@type" => "Blog",
+                "name" => "Blog",
+                "headline" => "Blog",
+                "description" => "Articles about programming, tips and trick",
+                "image" => $data->page_data->page_image,
+                "author" => [
+                    "@type" => "Person",
+                    "name" => "Driss Boumlik",
+                ]
+            ];
+            $data->page_data->jsonld = getJsonLD($jsonld);
 
             $data->tags_data = (new TagWithPaginationCollection(Tag::whereHas('posts', function($query) {
                 if ($this->guestView) {

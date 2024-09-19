@@ -26,17 +26,5 @@
 <link rel="icon" type="image/x-icon" href="{{ asset('/assets/img/me/icon.ico') }}">
 <link rel="apple-touch-icon" href="{{ asset('/assets/img/me/icon.ico') }}">
 <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "{{ $data->page_data?->page_type ?? "https://schema.org" }}",
-      "name": "{{ $data->page_data?->page_title ?? "HOME" }}",
-      "headline": "{{ $data->page_data?->page_title ?? "HOME" }}",
-      "description": "{{ $data->page_data?->page_description ?? 'Here is where you get to know who is Driss Boumlik'}}",
-      "image": "{{ $data->page_data?->page_image ?? asset('/assets/img/me/icon.ico') }}",
-      "author": {
-        "@type": "Person",
-        "name": "Driss Boumlik"
-      },
-      "datePublished": "{{ $data->page_data?->publication_date ?? '2023-01-01' }}"
-    }
+    {!! $data->page_data?->jsonld ?? getDefaultJsonLD() !!}
 </script>

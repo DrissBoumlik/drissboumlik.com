@@ -46,6 +46,26 @@ class PageController extends Controller
     public function about(Request $request)
     {
         $data = pageSetup('About me | Driss Boumlik', 'about me', ['header', 'footer', 'social']);
+        $data->page_data = (object) [
+            "page_title" => "About",
+            "page_description" => "About me",
+            "page_type" => "AboutPage",
+            "page_url" => \URL::to("/about"),
+        ];
+
+        $jsonld = [
+            "@context" => "https://schema.org",
+            "@type" => "AboutPage",
+            "name" => "About",
+            "headline" => "About",
+            "description" => "About me",
+            "author" => [
+                "@type" => "Person",
+                "name" => "Driss Boumlik"
+            ]
+        ];
+        $data->page_data->jsonld = getJsonLD($jsonld);
+
         return view('pages.about', ['data' => $data]);
     }
 
@@ -55,6 +75,29 @@ class PageController extends Controller
         $key = $this->cacheService->getCachedFullKey("resume-data", '-with-non-active', $this->guestView);
         $data = $this->cacheService->cache_data($key, function() {
             $data = pageSetup('Resume | Driss Boumlik', 'resume', ['header', 'footer']);
+            $data->page_data = (object) [
+                "page_title" => "Resume",
+                "page_description" => "Resume",
+                "page_type" => "Person",
+                "page_url" => \URL::to("/resume"),
+            ];
+            $jsonld = [
+                "@context" => "https://schema.org",
+                "@type" => "Person",
+                "name" => "Driss Boumlik",
+                "jobTitle" => "Software Developer",
+                "description" => "Experienced software developer with a background in web development and a
+                            strong focus on building scalable applications.",
+                "url" => "https://drissboumlik.com/resume",
+                "email" => "hi@drissboumlik.com",
+                "sameAs" => [
+                    "https://www.linkedin.com/in/drissboumlik",
+                    "https://github.com/drissboumlik",
+                    "https://twitter.com/drissboumlik"
+                ],
+                "knowsAbout" => [ "PHP", "Laravel", "JavaScript", "Typescript", "Angular" ],
+            ];
+            $data->page_data->jsonld = getJsonLD($jsonld);
 
             $data->sections = [];
             $data->sections['experiences'] = getExperiences();
@@ -88,6 +131,26 @@ class PageController extends Controller
         $key = $this->cacheService->getCachedFullKey("testimonials-data", '-with-non-active', $this->guestView);
         $data = $this->cacheService->cache_data($key, function() {
             $data = pageSetup('Testimonials | Driss Boumlik', 'testimonials', ['header', 'footer']);
+            $data->page_data = (object) [
+                "page_title" => "Testimonials",
+                "page_description" => "What others say about me",
+                "page_type" => "Recommendation",
+                "page_url" => \URL::to("/testimonials"),
+            ];
+
+            $jsonld = [
+                "@context" => "https://schema.org",
+                "@type" => "Recommendation",
+                "name" => "Testimonials",
+                "headline" => "Testimonials",
+                "description" => "What others say about me",
+                "author" => [
+                    "@type" => "Person",
+                    "name" => "Driss Boumlik",
+                ]
+            ];
+            $data->page_data->jsonld = getJsonLD($jsonld);
+
             $data->testimonials = DataService::fetchFromDbTable("testimonials", "Testimonial",
                                         [ 'image', 'content', 'author', 'position', 'active', 'order' ],
                                         $this->guestView);
@@ -104,6 +167,25 @@ class PageController extends Controller
         $key = $this->cacheService->getCachedFullKey("projects-data", '-with-non-active', $this->guestView);
         $data = $this->cacheService->cache_data($key, function() {
             $data = pageSetup('Projects | Driss Boumlik', 'projects', ['header', 'footer']);
+            $data->page_data = (object) [
+                "page_title" => "Projects",
+                "page_description" => "Projects I built",
+                "page_type" => "CreativeWork",
+                "page_url" => \URL::to("/about"),
+            ];
+            $jsonld = [
+                "@context" => "https://schema.org",
+                "@type" => "CreativeWork",
+                "name" => "Projects",
+                "headline" => "Projects",
+                "description" => "Projects I built",
+                "author" => [
+                    "@type" => "Person",
+                    "name" => "Driss Boumlik",
+                ]
+            ];
+            $data->page_data->jsonld = getJsonLD($jsonld);
+
             $data->projects = DataService::fetchFromDbTable("projects", "Project",
                                     [ 'image', 'role', 'title', 'description',
                                         'featured', 'links', 'active', 'order' ],
@@ -116,12 +198,50 @@ class PageController extends Controller
     public function contact(Request $request)
     {
         $data = pageSetup('Contact | Driss Boumlik', 'contact', ['header', 'footer']);
+        $data->page_data = (object) [
+            "page_title" => "Contact",
+            "page_description" => "Contact me",
+            "page_type" => "ContactPage",
+            "page_url" => \URL::to("/contact"),
+        ];
+        $jsonld = [
+            "@context" => "https://schema.org",
+            "@type" => "ContactPage",
+            "name" => "Contact",
+            "headline" => "Contact",
+            "description" => "Contact me",
+            "author" => [
+                "@type" => "Person",
+                "name" => "Driss Boumlik",
+            ]
+        ];
+        $data->page_data->jsonld = getJsonLD($jsonld);
+
+
         return view('pages.contact', ['data' => $data]);
     }
 
     public function privacyPolicy(Request $request)
     {
         $data = pageSetup('Privacy Policy | Driss Boumlik', 'privacy policy', ['header', 'footer']);
+        $data->page_data = (object) [
+            "page_title" => "Privacy Policy",
+            "page_description" => "Privacy Policy",
+            "page_type" => "WebPage",
+            "page_url" => \URL::to("/privacy-policy"),
+        ];
+        $jsonld = [
+            "@context" => "https://schema.org",
+            "@type" => "WebPage",
+            "name" => "Privacy Policy",
+            "headline" => "Privacy Policy",
+            "description" => "Privacy Policy",
+            "author" => [
+                "@type" => "Person",
+                "name" => "Driss Boumlik",
+            ]
+        ];
+        $data->page_data->jsonld = getJsonLD($jsonld);
         return view('pages.privacy-policy', ['data' => $data]);
     }
 
@@ -131,6 +251,19 @@ class PageController extends Controller
         $key = $this->cacheService->getCachedFullKey("services-data", '-with-non-active', $this->guestView);
         $data = $this->cacheService->cache_data($key, function() {
             $data = pageSetup('Services | Driss Boumlik', 'services', ['header', 'footer']);
+            $data->page_data = (object) [
+                "page_title" => "Services",
+                "page_description" => "Services",
+                "page_type" => "ProfessionalService",
+                "page_url" => \URL::to("/services"),
+            ];
+            $jsonld = [
+                "@context" => "https://schema.org",
+                "@type" => "ProfessionalService",
+                "name" => "Services",
+                "description" => "Services",
+            ];
+            $data->page_data->jsonld = getJsonLD($jsonld);
             $data->services = DataService::fetchFromDbTable("services", "Service",
                 [ 'slug', 'title', 'icon', 'image', 'link', 'description', 'active', 'order' ],
                 $this->guestView);
