@@ -87,6 +87,23 @@ if (!function_exists('isGuest')) {
     }
 }
 
+if (!function_exists('handleGuestView')) {
+    function handleGuestView($request)
+    {
+        $guestView = $request->get('guest-view');
+        if ($guestView) {
+            $guestView = $guestView === '1';
+            $existingValue = session()->get('guest-view');
+            if ($existingValue !== $guestView) {
+                session()->put('guest-view', $guestView);
+                $request->merge(['forget' => null]);
+            }
+        }
+        return session()->get('guest-view');
+    }
+}
+
+
 if (!function_exists('makeDirectory')) {
     function makeDirectory ($path) {
         if (!\File::isDirectory($path)) {

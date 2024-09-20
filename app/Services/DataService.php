@@ -49,4 +49,68 @@ class DataService
         return $query->where('active', true);
     }
 
+    public static function getExperiences($activeOnly = true)
+    {
+        $experiences = config('data.resume.experiences');
+        if ($activeOnly) {
+            $experiences->data = filterHiddenItems($experiences->data);
+        }
+        return $experiences;
+    }
+
+    public static function getSkills($activeOnly = true)
+    {
+        $competences = (array) config('data.resume.skills');
+        if ($activeOnly) {
+            $competences = array_map(function ($competenceGroup) {
+                $competenceGroup->items = filterHiddenItems($competenceGroup->items);
+                return $competenceGroup;
+            }, $competences);
+        }
+        return (object) $competences;
+    }
+
+    public static function getEducation($activeOnly = true)
+    {
+        $education = config('data.resume.education');
+        if ($activeOnly) {
+            $education->data = filterHiddenItems($education->data);
+        }
+        return $education;
+    }
+    public static function getPassion($activeOnly = true)
+    {
+        $passion = config('data.resume.passion');
+        if ($activeOnly) {
+            $passion->data = filterHiddenItems($passion->data);
+        }
+        return $passion;
+    }
+
+    public static function getNonITExperiences($activeOnly = true)
+    {
+        $non_it_experiences = config('data.resume.non-it-experiences');
+        if ($activeOnly) {
+            $non_it_experiences->data = filterHiddenItems($non_it_experiences->data);
+        }
+        return $non_it_experiences;
+    }
+
+    public static function getCertificates($activeOnly = true)
+    {
+        $certificates = config('data.resume.certificates');
+        if ($activeOnly) {
+            $certificates->data = filterHiddenItems($certificates->data);
+        }
+        return $certificates;
+    }
+
+    public static function getTechs($activeOnly = true)
+    {
+        $techs = config('data.components.techs');
+        if ($activeOnly) {
+            $techs->data = array_filter($techs->data, static fn ($item) => !isset($item->hidden) || !$item->hidden);
+        }
+        return $techs;
+    }
 }

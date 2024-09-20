@@ -29,14 +29,15 @@ class PageController extends Controller
         $key = $this->cacheService->getCachedFullKey("home-data", '-with-non-active', $this->guestView);
         $data = $this->cacheService->cache_data($key, function() {
             $data = pageSetup('Home | Driss Boumlik', null, ['header', 'footer', 'social', 'community']);
-            $data->sections = [];
-            $data->sections['services'] = DataService::fetchFromDbTable("services", "Service", [
-                                                'slug', 'title', 'icon', 'image', 'link',
-                                                'description', 'active', 'order'
-                                            ], $this->guestView);
-            $data->sections['testimonials'] = DataService::fetchFromDbTable("testimonials", "Testimonial", [
-                                                    'image', 'content', 'author', 'position', 'active', 'order'
-                                                ], $this->guestView);
+            $data->sections = [
+                'services' => DataService::fetchFromDbTable("services", "Service", [
+                                                            'slug', 'title', 'icon', 'image', 'link',
+                                                            'description', 'active', 'order'
+                                                        ], $this->guestView),
+                'testimonials' => DataService::fetchFromDbTable("testimonials", "Testimonial", [
+                                                            'image', 'content', 'author', 'position', 'active', 'order'
+                                                        ], $this->guestView),
+            ];
             return $data;
         }, null, $request->has('forget'));
 
@@ -99,26 +100,27 @@ class PageController extends Controller
             ];
             $data->page_data->jsonld = getJsonLD($jsonld);
 
-            $data->sections = [];
-            $data->sections['experiences'] = getExperiences();
-            $data->sections['competences'] = getSkills();
-            $data->sections['education'] = getEducation();
-//        $data->sections['certificates'] = getCertificates();
-            $data->sections['passion'] = getPassion();
-            $data->sections['non_it_experiences'] = getNonITExperiences();
+            $callback = $this->guestView ? fn($data) => $data->where('featured', true) : null;
+            $data->sections = [
+                'experiences' => DataService::getExperiences(),
+                'competences' => DataService::getSkills(),
+                'education' => DataService::getEducation(),
+                'passion' => DataService::getPassion(),
+                'non_it_experiences' => DataService::getNonITExperiences(),
+                'projects' => DataService::fetchFromDbTable("projects", "Project",
+                                                [ 'image', 'role', 'title', 'description',
+                                                    'featured', 'links', 'active', 'order' ], $this->guestView,
+                                                callback: $callback),
+                'testimonials' => DataService::fetchFromDbTable("testimonials", "Testimonial",
+                                                [ 'image', 'content', 'author', 'position', 'active', 'order' ],
+                                                $this->guestView)
+            ];
+            // $data->sections['certificates'] = getCertificates();
             $data->sections['experiences']->data = array_map(function($item) {
                 $item->duration = calculateDate($item->start_date, $item->end_date);
                 return $item;
             }, $data->sections['experiences']->data);
 
-            $callback = $this->guestView ? fn($data) => $data->where('featured', true) : null;
-            $data->sections['projects'] = DataService::fetchFromDbTable("projects", "Project",
-                                                    [ 'image', 'role', 'title', 'description',
-                                                        'featured', 'links', 'active', 'order' ], $this->guestView,
-                                                    callback: $callback);
-            $data->sections['testimonials'] = DataService::fetchFromDbTable("testimonials", "Testimonial",
-                                                    [ 'image', 'content', 'author', 'position', 'active', 'order' ],
-                                                    $this->guestView);
             return $data;
         }, null, $request->has('forget'));
 
