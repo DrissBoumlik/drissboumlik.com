@@ -107,7 +107,7 @@ class PageController extends Controller
                 'education' => DataService::getEducation(),
                 'passion' => DataService::getPassion(),
                 'non_it_experiences' => DataService::getNonITExperiences(),
-                'projects' => DataService::fetchFromDbTable("projects", "Project",
+                'projects' => DataService::fetchFromDbTable("work", "Project",
                                                 [ 'image', 'role', 'title', 'description',
                                                     'featured', 'links', 'active', 'order' ], $this->guestView,
                                                 callback: $callback),
@@ -168,9 +168,9 @@ class PageController extends Controller
         $this->guestView = isGuest(handleGuestView($request));
         $key = $this->cacheService->getCachedFullKey("projects-data", '-with-non-active', $this->guestView);
         $data = $this->cacheService->cache_data($key, function() {
-            $data = pageSetup('Projects | Driss Boumlik', 'projects', ['header', 'footer']);
+            $data = pageSetup('Work | Driss Boumlik', 'work', ['header', 'footer']);
             $data->page_data = (object) [
-                "page_title" => "Projects",
+                "page_title" => "Work",
                 "page_description" => "Projects I built",
                 "page_type" => "CreativeWork",
                 "page_url" => \URL::to("/about"),
@@ -178,8 +178,8 @@ class PageController extends Controller
             $jsonld = [
                 "@context" => "https://schema.org",
                 "@type" => "CreativeWork",
-                "name" => "Projects",
-                "headline" => "Projects",
+                "name" => "Work",
+                "headline" => "Work",
                 "description" => "Projects I built",
                 "author" => [
                     "@type" => "Person",
@@ -188,7 +188,7 @@ class PageController extends Controller
             ];
             $data->page_data->jsonld = getJsonLD($jsonld);
 
-            $data->projects = DataService::fetchFromDbTable("projects", "Project",
+            $data->projects = DataService::fetchFromDbTable("work", "Project",
                                     [ 'image', 'role', 'title', 'description',
                                         'featured', 'links', 'active', 'order' ],
                                     $this->guestView);

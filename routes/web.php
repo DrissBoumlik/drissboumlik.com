@@ -147,7 +147,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
         Route::get('about', [PageController::class, 'about']);
         Route::get('resume', [PageController::class, 'resume']);
         Route::get('testimonials', [PageController::class, 'testimonials']);
-        Route::get('projects', [PageController::class, 'projects']);
+        Route::get('work', [PageController::class, 'projects']);
         Route::get('contact', [PageController::class, 'contact']);
         Route::get('services', [PageController::class, 'services']);
         Route::get('privacy-policy', [PageController::class, 'privacyPolicy']);

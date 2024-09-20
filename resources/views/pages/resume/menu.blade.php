@@ -15,7 +15,7 @@
         <li class="list-group-item" title="Education" data-toggle="tooltip" data-placement="left">
             <a href="#education"><i class="fa-solid fa-user-graduate"></i></a>
         </li>
-        <li class="list-group-item" title="Projects" data-toggle="tooltip" data-placement="left">
+        <li class="list-group-item" title="Work" data-toggle="tooltip" data-placement="left">
             <a href="#projects"><i class="fa-solid fa-briefcase"></i></a>
         </li>
         <li class="list-group-item" title="Passion" data-toggle="tooltip" data-placement="left">
