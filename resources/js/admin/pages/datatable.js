@@ -11,63 +11,63 @@ $(function () {
                 method: 'POST',
                 url: '/api/posts',
                 columns: [
-                    { data: 'id', name: 'id', title: 'Actions', className: 'text-center',
+                    { data: 'id', name: 'id', title: 'Actions' ,
                         render: function (data, type, row, params) {
-                            return `
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
-                            <a href="/blog/${row.slug}" target="_blank" class="link-dark">
-                                <i class="fa fa-fw fa-eye"></i>
-                            </a>
-                        </button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
-                            <a href="/admin/posts/edit/${row.slug}" target="_blank" class="link-dark">
-                                <i class="fa fa-fw fa-pencil-alt"></i>
-                            </a>
-                        </button>
-                    </div>
-                `;
-                        }},
-                    { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
+                            return `<div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
+                                            <a href="/blog/${row.slug}" target="_blank" class="link-dark">
+                                                <i class="fa fa-fw fa-eye"></i>
+                                            </a>
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
+                                            <a href="/admin/posts/edit/${row.slug}" target="_blank" class="link-dark">
+                                                <i class="fa fa-fw fa-pencil-alt"></i>
+                                            </a>
+                                        </button>
+                                    </div>`;
+                    }},
+                    { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
+                        render: function (data, type, row, params) {
+                            return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
+                    }},
+                    { data: 'id', name: 'id', title: 'ID' },
                     { data: 'title', name: 'title', title: 'Title', className: 'fw-semibold fs-sm',
                         render: function (data, type, row, params) {
-                            return `<span data-bs-toggle="tooltip" title="${row.title}">${shortenTextIfLongByLength(row.title,20)}</span>`;
-                        }},
-                    { data: 'published', name: 'published', title: 'Published', domElement: 'select',
+                            return `<span data-bs-toggle="tooltip" title="${row.title}">
+                                        ${shortenTextIfLongByLength(row.title,20)}</span>`;
+                    }},
+                    { data: 'published', name: 'published', title: 'Published' , domElement: 'select',
                         render: function (data, type, row, params) {
                             let published = getDomClass(row.published);
-                            return `<span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill ${published.class}">${published.text}</span`;
-                        }},
+                            return `<span class="fs-xs fw-semibold d-inline-block py-1 px-3
+                                                rounded-pill ${published.class}">${published.text}</span`;
+                    }},
                     { data: 'featured', name: 'featured', title: 'Featured', className: 'fs-sm', domElement: 'select',
                         render: function (data, type, row, params) {
                             return `<div class="item item-tiny item-circle mx-auto mb-3
-                    ${row.featured ? 'bg-success' : 'bg-danger' }"></div>`;
-                        }},
-                    { data: 'views', name: 'views', title: 'Views', className: 'text-center'},
-                    { data: 'likes', name: 'likes', title: 'Likes', className: 'text-center'},
-                    { data: 'tags_count', name: 'tags_count', title: 'Tags', className: 'text-center', searchable: false},
-                    { data: 'published_at', name: 'published_at', title: 'Published @', className: 'text-center fs-sm',
+                                                ${row.featured ? 'bg-success' : 'bg-danger' }"></div>`;
+                    }},
+                    { data: 'views', name: 'views', title: 'Views' },
+                    { data: 'likes', name: 'likes', title: 'Likes' },
+                    { data: 'tags_count', name: 'tags_count', title: 'Tags' , searchable: false},
+                    { data: 'published_at', name: 'published_at', title: 'Published @', className: 'fs-sm',
                         render: function(data, type, row, params) {
                             let published_at_for_humans = row.published_at ? moment(row.published_at).fromNow() : '------';
                             let published_at_formatted = row.published_at ? moment(row.published_at).format('Y-M-D hh:mm') : '------';
                             return `<span title="${published_at_formatted}">${published_at_for_humans}<br/>${published_at_formatted}</span>`;
-                        }},
-                    { data: 'created_at', name: 'created_at', title: 'Created @', className: 'text-center fs-sm',
+                    }},
+                    { data: 'created_at', name: 'created_at', title: 'Created @', className: 'fs-sm',
                         render: function(data, type, row, params) {
                             let created_at_for_humans = moment(row.created_at).fromNow();
                             let created_at_formatted = moment(row.created_at).format('Y-M-D hh:mm');
                             return `<span title="${created_at_formatted}">${created_at_for_humans}<br/>${created_at_formatted}</span>`;
-                        }},
-                    { data: 'updated_at', name: 'updated_at', title: 'Updated @', className: 'text-center fs-sm',
+                    }},
+                    { data: 'updated_at', name: 'updated_at', title: 'Updated @', className: 'fs-sm',
                         render: function(data, type, row, params) {
                             let updated_at_for_humans = moment(row.updated_at).fromNow();
                             let updated_at_formatted = moment(row.updated_at).format('Y-M-D hh:mm');
                             return `<span title="${updated_at_formatted}">${updated_at_for_humans}<br/>${updated_at_formatted}</span>`;
-                        }},
-                    { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
-                        render: function (data, type, row, params) {
-                            return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
-                        }},
+                    }},
                 ]
             };
             configDT(params);
@@ -79,43 +79,42 @@ $(function () {
                 method: 'POST',
                 url: '/api/tags',
                 columns: [
-                    { data: 'id', name: 'id', title: 'Actions', className: 'text-center',
+                    { data: 'id', name: 'id', title: 'Actions' ,
                         render: function (data, type, row, params) {
-                            return `
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
-                            <a href="/tags/${row.slug}" target="_blank" class="link-dark">
-                                <i class="fa fa-fw fa-eye"></i>
-                            </a>
-                        </button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
-                            <a href="/admin/tags/edit/${row.slug}" target="_blank" class="link-dark">
-                                <i class="fa fa-fw fa-pencil-alt"></i>
-                            </a>
-                        </button>
-                    </div>
-                `;
-                        }},
-                    { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
+                            return `<div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
+                                            <a href="/tags/${row.slug}" target="_blank" class="link-dark">
+                                                <i class="fa fa-fw fa-eye"></i>
+                                            </a>
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit Client" data-bs-original-title="Edit Client">
+                                            <a href="/admin/tags/edit/${row.slug}" target="_blank" class="link-dark">
+                                                <i class="fa fa-fw fa-pencil-alt"></i>
+                                            </a>
+                                        </button>
+                                    </div>`;
+                    }},
+                    { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
+                        render: function (data, type, row, params) {
+                            return `<div class="item item-tiny item-circle mx-auto mb-3
+                                                ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
+                    }},
+                    { data: 'id', name: 'id', title: 'ID' },
                     { data: 'name', name: 'name', title: 'Name', className: 'fw-semibold fs-sm'},
                     { data: 'slug', name: 'slug', title: 'Slug', className: 'fw-semibold fs-sm'},
                     { data: 'color', name: 'color', title: 'Color', className: 'fw-semibold fs-sm',
                         render: function(data, type, row, params) {
                             return `<div class="item item-tiny item-circle mx-auto mb-3"
-                         style="background-color: ${row.color}"></div>`;
+                                    style="background-color: ${row.color}"></div>`;
                         }
                     },
                     { data: 'posts_count', name: 'posts_count', title: 'Posts', className: 'fw-semibold fs-sm', searchable: false},
-                    { data: 'created_at', name: 'created_at', title: 'Created @', className: 'text-center fs-sm',
+                    { data: 'created_at', name: 'created_at', title: 'Created @', className: 'fs-sm',
                         render: function(data, type, row, params) {
                             let created_at_for_humans = moment(row.created_at).fromNow();
                             let created_at_formatted = moment(row.created_at).format('Y-M-D hh:mm');
                             return `<span title="${created_at_formatted}">${created_at_for_humans}<br/>${created_at_formatted}</span>`;
-                        }},
-                    { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
-                        render: function (data, type, row, params) {
-                            return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
-                        }},
+                    }},
                 ]
             };
             configDT(params);
@@ -127,7 +126,7 @@ $(function () {
                 method: 'POST',
                 url: '/api/visitors',
                 columns: [
-                    { data: 'id', name: 'id', title: 'Actions', className: 'text-center',
+                    { data: 'id', name: 'id', title: 'Actions' ,
                         render: function (data, type, row, params) {
                             return `
                     <div class="btn-group">
@@ -138,12 +137,12 @@ $(function () {
                 `;
                         }
                     },
-                    { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
-                    { data: 'ip', name: 'ip', title: 'IP', className: 'text-center'},
+                    { data: 'id', name: 'id', title: 'ID' },
+                    { data: 'ip', name: 'ip', title: 'IP' },
                     { data: 'url', name: 'url', title: 'URL', className: 'text-left'},
                     { data: 'ref_source', name: 'ref_source', title: 'Source', className: 'text-left'},
                     { data: 'ref_medium', name: 'ref_medium', title: 'Medium', className: 'text-left'},
-                    { data: 'updated_at', name: 'updated_at', title: 'Updated @', className: 'text-center fs-sm',
+                    { data: 'updated_at', name: 'updated_at', title: 'Updated @', className: 'fs-sm',
                         render: function(data, type, row, params) {
                             let updated_at_for_humans = moment(row.updated_at).fromNow();
                             let updated_at_formatted = moment(row.updated_at).format('Y-M-D hh:mm');
@@ -269,7 +268,6 @@ $(function () {
                         url: `/api/visitors/${_this.data('visitor-id')}`,
                         data: data,
                         success: function(response) {
-                            console.log(response);
                             visitorsDataTable.ajax.reload(null, false);
                             get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
                         },
@@ -289,7 +287,7 @@ $(function () {
                 method: 'POST',
                 url: '/api/messages',
                 columns: [
-                    { data: 'id', name: 'id', title: 'Actions', className: 'text-center',
+                    { data: 'id', name: 'id', title: 'Actions' ,
                         render: function (data, type, row, params) {
                             return `
                     <div class="btn-group">
@@ -300,15 +298,15 @@ $(function () {
                 `;
                         }
                     },
-                    { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
-                    { data: 'name', name: 'name', title: 'Name', className: 'text-center'},
-                    { data: 'email', name: 'email', title: 'Email', className: 'text-center'},
-                    { data: 'body', name: 'body', title: 'Body', className: 'text-center',
+                    { data: 'id', name: 'id', title: 'ID' },
+                    { data: 'name', name: 'name', title: 'Name' },
+                    { data: 'email', name: 'email', title: 'Email' },
+                    { data: 'body', name: 'body', title: 'Body' ,
                         render: function(data, type, row, params) {
                             return data.substring(0, 30) + '...';
                         }
                     },
-                    { data: 'created_at', name: 'created_at', title: 'Created @', className: 'text-center fs-sm',
+                    { data: 'created_at', name: 'created_at', title: 'Created @', className: 'fs-sm',
                         render: function(data, type, row, params) {
                             let created_at_for_humans = moment(row.created_at).fromNow();
                             let created_at_formatted = moment(row.created_at).format('Y-M-D hh:mm');
@@ -369,7 +367,7 @@ $(function () {
                 method: 'POST',
                 url: '/api/subscriptions',
                 columns: [
-                    { data: 'id', name: 'id', title: 'Actions', className: 'text-center',
+                    { data: 'id', name: 'id', title: 'Actions' ,
                         render: function (data, type, row, params) {
                             return `
                     <div class="btn-group">
@@ -380,14 +378,14 @@ $(function () {
                 `;
                         }
                     },
-                    { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
-                    { data: 'subscription_id', name: 'subscription_id',title: 'Subscription Id', className: 'text-center' },
-                    { data: 'email', name: 'email', title: 'Email', className: 'text-center' },
-                    { data: 'first_name', name: 'first_name', title: 'First Name', className: 'text-center' },
-                    { data: 'last_name', name: 'last_name', title: 'Last Name', className: 'text-center' },
-                    { data: 'subscribed_at', name: 'subscribed_at', title: 'Subscribed At', className: 'text-center' },
-                    { data: 'token_verification', name: 'token_verification', title: 'Token Verification', className: 'text-center '},
-                    { data: 'created_at', name: 'created_at', title: 'Created @', className: 'text-center fs-sm',
+                    { data: 'id', name: 'id', title: 'ID' },
+                    { data: 'subscription_id', name: 'subscription_id',title: 'Subscription Id'  },
+                    { data: 'email', name: 'email', title: 'Email'  },
+                    { data: 'first_name', name: 'first_name', title: 'First Name'  },
+                    { data: 'last_name', name: 'last_name', title: 'Last Name'  },
+                    { data: 'subscribed_at', name: 'subscribed_at', title: 'Subscribed At'  },
+                    { data: 'token_verification', name: 'token_verification', title: 'Token Verification' },
+                    { data: 'created_at', name: 'created_at', title: 'Created @', className: 'fs-sm',
                         render: function(data, type, row, params) {
                             let created_at_for_humans = moment(row.created_at).fromNow();
                             let created_at_formatted = moment(row.created_at).format('Y-M-D hh:mm');
@@ -406,37 +404,36 @@ $(function () {
                 method: 'POST',
                 url: '/api/testimonials',
                 columns: [
-                    { data: 'id', name: 'id', title: 'Actions', className: 'text-center',
+                    { data: 'id', name: 'id', title: 'Actions' ,
                         render: function (data, type, row, params) {
-                            return `
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm js-bs-tooltip-enabled display-testimonials-details">
-                            <i class="fa fs-3 fa-eye"></i>
-                        </button>
-                    </div>
-                `;
+                            return `<div class="btn-group">
+                                        <button type="button" class="btn btn-sm js-bs-tooltip-enabled display-testimonials-details">
+                                            <i class="fa fs-3 fa-eye"></i>
+                                        </button>
+                                    </div>`;
                         }
                     },
-                    { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
-                    { data: 'order', name: 'order', title: 'Order', className: 'text-center'},
-                    { data: 'author', name: 'author', title: 'Author', className: 'text-center'},
-                    { data: 'content', name: 'content', title: 'Content', className: 'text-center',
+                    { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
+                        render: function (data, type, row) {
+                            return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
+                    }},
+                    { data: 'id', name: 'id', title: 'ID' },
+                    { data: 'order', name: 'order', title: 'Order' },
+                    { data: 'author', name: 'author', title: 'Author' },
+                    { data: 'content', name: 'content', title: 'Content' ,
                         render: function(data, type, row) {
                             var div = document.createElement('div');
                             div.innerHTML = row.content.substring(0, 100) + "...";
                             return div.innerText;
                         }
                     },
-                    { data: 'image', name: 'image', title: 'Image', className: 'text-center',
+                    { data: 'image', name: 'image', title: 'Image' ,
                         render: function (data, type, row) {
-                            return `<div class="square-60 m-auto"><img class="img-fluid" src="/${row.image.original}" /></div>`;
+                            return `<div class="square-60 m-auto">
+                                        <img class="img-fluid" src="/${row.image.original}" /></div>`;
                         }
                     },
-                    { data: 'position', name: 'position', title: 'Position', className: 'text-center'},
-                    { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
-                        render: function (data, type, row) {
-                            return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
-                        }}
+                    { data: 'position', name: 'position', title: 'Position' },
                 ]
             };
             let testimonialsDataTable = configDT(params);
@@ -525,7 +522,6 @@ $(function () {
                         url: `/api/testimonials/${_this.data('testimonials-id')}`,
                         data: data,
                         success: function(response) {
-                            console.log(response);
                             testimonialsDataTable.ajax.reload(null, false);
                             get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
                         },
@@ -545,28 +541,30 @@ $(function () {
                 method: 'POST',
                 url: '/api/projects',
                 columns: [
-                    { data: 'id', name: 'id', title: 'Actions', className: 'text-center',
+                    { data: 'id', name: 'id', title: 'Actions' ,
                         render: function (data, type, row, params) {
-                            return `
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm js-bs-tooltip-enabled display-projects-details">
-                            <i class="fa fs-3 fa-eye"></i>
-                        </button>
-                    </div>
-                `;
+                            return `<div class="btn-group">
+                                        <button type="button" class="btn btn-sm js-bs-tooltip-enabled display-projects-details">
+                                            <i class="fa fs-3 fa-eye"></i>
+                                        </button>
+                                    </div>`;
                         }
                     },
-                    { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
-                    { data: 'order', name: 'order', title: 'Order', className: 'text-center'},
-                    { data: 'role', name: 'role', title: 'Role', className: 'text-center',
+                    { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
+                        render: function (data, type, row) {
+                            return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
+                    }},
+                    { data: 'id', name: 'id', title: 'ID' },
+                    { data: 'order', name: 'order', title: 'Order' },
+                    { data: 'role', name: 'role', title: 'Role' ,
                         render: function (data, type, row) {
                             var div = document.createElement('div');
                             div.innerHTML = row.role;
                             return div.innerText;
-                        }},
-                    { data: 'title', name: 'title', title: 'Title', className: 'text-center'},
-                    { data: 'description', name: 'description', title: 'Description', className: 'text-center'},
-                    { data: 'image', name: 'image', title: 'Image', className: 'text-center',
+                    }},
+                    { data: 'title', name: 'title', title: 'Title' },
+                    { data: 'description', name: 'description', title: 'Description' },
+                    { data: 'image', name: 'image', title: 'Image' ,
                         render: function (data, type, row) {
                             return `<div class="square-60 m-auto"><img class="img-fluid" src="/${row.image.original}" /></div>`;
                         }
@@ -585,15 +583,11 @@ $(function () {
                                 dom += '</div>';
                             }
                             return dom;
-                        }},
-                    { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
-                        render: function (data, type, row) {
-                            return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
-                        }},
+                    }},
                     { data: 'featured', name: 'featured', title: 'Featured', className: 'fs-sm', domElement: 'select',
                         render: function (data, type, row) {
                             return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.featured ? 'bg-success' : 'bg-danger' }"></div>`;
-                        }},
+                    }},
                 ]
             };
             let projectsDataTable = configDT(params);
@@ -695,7 +689,6 @@ $(function () {
                         url: `/api/projects/${_this.data('projects-id')}`,
                         data: data,
                         success: function(response) {
-                            console.log(response);
                             projectsDataTable.ajax.reload(null, false);
                             get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
                         },
@@ -715,46 +708,44 @@ $(function () {
                 method: 'POST',
                 url: '/api/services',
                 columns: [
-                    { data: 'id', name: 'id', title: 'Actions', className: 'text-center',
+                    { data: 'id', name: 'id', title: 'Actions' ,
                         render: function (data, type, row, params) {
-                            return `
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm js-bs-tooltip-enabled display-services-details">
-                            <i class="fa fs-3 fa-eye"></i>
-                        </button>
-                    </div>
-                `;
+                            return `<div class="btn-group">
+                                        <button type="button" class="btn btn-sm js-bs-tooltip-enabled display-services-details">
+                                            <i class="fa fs-3 fa-eye"></i>
+                                        </button>
+                                    </div>`;
                         }
                     },
-                    { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
-                    { data: 'order', name: 'order', title: 'Order', className: 'text-center'},
-                    { data: 'slug', name: 'slug', title: 'Slug', className: 'text-center'},
-                    { data: 'title', name: 'title', title: 'Title', className: 'text-center'},
-                    { data: 'description', name: 'description', title: 'Description', className: 'text-center',
+                    { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
+                        render: function (data, type, row) {
+                            return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
+                    }},
+                    { data: 'id', name: 'id', title: 'ID' },
+                    { data: 'order', name: 'order', title: 'Order' },
+                    { data: 'slug', name: 'slug', title: 'Slug' },
+                    { data: 'title', name: 'title', title: 'Title' },
+                    { data: 'description', name: 'description', title: 'Description' ,
                         render: function (data, type, row) {
                             return data.substring(0, 30) + '...';
                         }
                     },
-                    { data: 'image', name: 'image', title: 'Image', className: 'text-center',
+                    { data: 'image', name: 'image', title: 'Image' ,
                         render: function (data, type, row) {
                             return `<div class="square-60 m-auto"><img class="img-fluid" src="/${row.image.original}" /></div>`;
                         }
                     },
-                    { data: 'icon', name: 'icon', title: 'Icon', className: 'text-center',
+                    { data: 'icon', name: 'icon', title: 'Icon' ,
                         render: function (data, type, row) {
                             var div = document.createElement('div');
                             div.innerHTML = row.icon;
                             return div.innerText;
                         }
                     },
-                    { data: 'link', name: 'link', title: 'Link', className: 'text-left',
+                    { data: 'link', name: 'link', title: 'Link' ,
                         render: function (data, type, row) {
                             return `<a href="${row.link}" target="_blank">${row.link}</a>`;
-                        }},
-                    { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
-                        render: function (data, type, row) {
-                            return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
-                        }},
+                    }},
                 ]
             };
             let servicesDataTable = configDT(params);
@@ -854,7 +845,6 @@ $(function () {
                         url: `/api/services/${_this.data('services-id')}`,
                         data: data,
                         success: function(response) {
-                            console.log(response);
                             servicesDataTable.ajax.reload(null, false);
                             get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
                         },
@@ -877,56 +867,54 @@ $(function () {
                 method: 'POST',
                 url: '/api/menus',
                 columns: [
-                    { data: 'id', name: 'id', title: 'Actions', className: 'text-center',
+                    { data: 'id', name: 'id', title: 'Actions' ,
                         render: function (data, type, row, params) {
-                            return `
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm js-bs-tooltip-enabled display-menus-details">
-                            <i class="fa fs-3 fa-eye"></i>
-                        </button>
-                    </div>
-                `;
+                            return `<div class="btn-group">
+                                        <button type="button" class="btn btn-sm js-bs-tooltip-enabled display-menus-details">
+                                            <i class="fa fs-3 fa-eye"></i>
+                                        </button>
+                                    </div>`;
                         }
                     },
-                    { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
-                    { data: 'order', name: 'order', title: 'Order', className: 'text-center'},
-                    { data: 'slug', name: 'slug', title: 'Slug', className: 'text-center'},
-                    { data: 'text', name: 'text', title: 'Text', className: 'text-center',
+                    { data: 'active', name: 'active', title: 'Active', className: 'fs-sm', inputType: 'select',
+                        render: function (data, type, row) {
+                            return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
+                    }},
+                    { data: 'id', name: 'id', title: 'ID' },
+                    { data: 'order', name: 'order', title: 'Order' },
+                    { data: 'slug', name: 'slug', title: 'Slug' },
+                    { data: 'text', name: 'text', title: 'Text' ,
                         render: function (data, type, row) {
                             var div = document.createElement('div');
                             div.innerHTML = row.text;
                             return div.innerText;
                         }
                     },
-                    { data: 'title', name: 'title', title: 'Title', className: 'text-center',
+                    { data: 'title', name: 'title', title: 'Title' ,
                         render: function (data, type, row) {
                             var div = document.createElement('div');
                             div.innerHTML = row.title;
                             return div.innerText;
                         }
                     },
-                    { data: 'target', name: 'target', title: 'Target', className: 'text-center', domElement: 'select'},
-                    { data: 'menu_type_id', name: 'menu_type_id', title: 'Type', className: 'text-center',
+                    { data: 'target', name: 'target', title: 'Target' , domElement: 'select'},
+                    { data: 'menu_type_id', name: 'menu_type_id', title: 'Type' ,
                         domElement: 'select', optionTextField: 'type_name',
                         render: function (data, type, row) {
                             return row.type_name;
                         }
                     },
-                    { data: 'icon', name: 'icon', title: 'Icon', className: 'text-center',
+                    { data: 'icon', name: 'icon', title: 'Icon' ,
                         render: function (data, type, row) {
                             var div = document.createElement('div');
                             div.innerHTML = row.icon;
                             return div.innerText;
                         }
                     },
-                    { data: 'link', name: 'link', title: 'Link', className: 'text-left',
+                    { data: 'link', name: 'link', title: 'Link' ,
                         render: function (data, type, row) {
                             return `<a href="${row.link}" target="_blank">${row.link}</a>`;
-                        }},
-                    { data: 'active', name: 'active', title: 'Active', className: 'fs-sm', inputType: 'select',
-                        render: function (data, type, row) {
-                            return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
-                        }},
+                    }},
                 ],
                 onComplete: function (settings, json) {
                     json.data.forEach(function (item) {
@@ -947,7 +935,6 @@ $(function () {
                 url: '/api/menu-types?api',
                 data: {},
                 success: function(response) {
-                    console.log(response);
                     menuTypesItems = response.data;
                 },
                 error: function (jqXHR, textStatus, errorThrown){
@@ -1063,7 +1050,6 @@ $(function () {
                         url: `/api/menus/${_this.data('menus-id')}`,
                         data: data,
                         success: function(response) {
-                            console.log(response);
                             MenusDataTable.ajax.reload(null, false);
                             get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
                         },
@@ -1084,25 +1070,24 @@ $(function () {
                 method: 'POST',
                 url: '/api/menu-types',
                 columns: [
-                    { data: 'id', name: 'id', title: 'Actions', className: 'text-center',
+                    { data: 'id', name: 'id', title: 'Actions' ,
                         render: function (data, type, row, params) {
-                            return `
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm js-bs-tooltip-enabled display-menuTypes-details">
-                            <i class="fa fs-3 fa-eye"></i>
-                        </button>
-                    </div>
-                `;
+                            return `<div class="btn-group">
+                                        <button type="button" class="btn btn-sm js-bs-tooltip-enabled
+                                                                        display-menuTypes-details">
+                                            <i class="fa fs-3 fa-eye"></i>
+                                        </button>
+                                    </div>`;
                         }
                     },
-                    { data: 'id', name: 'id', title: 'ID', className: 'text-center'},
-                    { data: 'name', name: 'name', title: 'Name', className: 'text-center'},
-                    { data: 'slug', name: 'slug', title: 'Slug', className: 'text-center'},
-                    { data: 'description', name: 'description', title: 'Description', className: 'text-center'},
                     { data: 'active', name: 'active', title: 'Active', className: 'fs-sm', inputType: 'select',
                         render: function (data, type, row) {
                             return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
-                        }},
+                    }},
+                    { data: 'id', name: 'id', title: 'ID' },
+                    { data: 'name', name: 'name', title: 'Name' },
+                    { data: 'slug', name: 'slug', title: 'Slug' },
+                    { data: 'description', name: 'description', title: 'Description' },
                 ]
             };
             let MenuTypesDataTable = configDT(params);
@@ -1180,7 +1165,6 @@ $(function () {
                         url: `/api/menu-types/${_this.data('menu-types-id')}`,
                         data: data,
                         success: function(response) {
-                            console.log(response);
                             MenuTypesDataTable.ajax.reload(null, false);
                             get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
                         },
@@ -1253,7 +1237,7 @@ function configDT(params) {
             if (params.onComplete) {
                 params.onComplete(settings, json);
             }
-            this.find('thead').prepend('<tr id="search-row"></tr>');
+            this.find('thead').prepend('<tr id="search-row" class="search-row"></tr>');
             this.api().columns().every(function (index) {
                 let column = this;
                 let dataTitle = column.dataSrc();
