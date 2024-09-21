@@ -25,7 +25,7 @@
                                        target="_blank">mentor</a> ...
                                     and other stuff usually not in the same order.</p>
                                 <p>I like to build & share things that add value or make positive impact.</p>
-                                <p>If am not in front of my laptop, I play soccer <i class="fa-solid fa-futbol"></i> once
+                                <p>If am not in front of my laptop, I play soccer once
                                     a week in reality, and everyday
                                     <a target="_blank" href="https://rawg.io/@cartouche/games" rel="noopener">virtually</a>,
                                     otherwise I watch <a target="_blank" href="https://anilist.co/user/cartouche/animelist"
