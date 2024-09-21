@@ -87,7 +87,8 @@ function initPostEditor() {
             { text: 'Sass', value: 'sass' },
             { text: 'Yaml', value: 'yaml' },
             { text: 'SQL', value: 'sql' },
-
+            { text: 'Powershell', value: 'powershell' },
+            { text: 'DOS', value: 'dos' },
             { text: 'Batch', value: 'batch' },
             { text: 'HTML/XML', value: 'markup' },
             { text: 'CSS', value: 'css' },
