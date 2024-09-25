@@ -156,6 +156,7 @@ class PageController extends Controller
             $data->testimonials = DataService::fetchFromDbTable("testimonials", "Testimonial",
                                         [ 'image', 'content', 'author', 'position', 'active', 'order' ],
                                         $this->guestView);
+            $data->testimonials->data = $data->testimonials->data->shuffle();
 
             return $data;
         }, null, $request->has('forget'));
