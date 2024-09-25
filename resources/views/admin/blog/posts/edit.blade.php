@@ -2,17 +2,13 @@
 
 @section('css')
     <!-- Page JS Plugins CSS -->
-{{--    <link rel="stylesheet" href="/template/assets/js/plugins/cropperjs/cropper.min.css">--}}
     <link href="{{ asset('/template/assets/js/plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/template/assets/js/plugins/flatpickr/flatpickr.min.css') }}" rel="stylesheet" />
-{{--    <link rel="stylesheet" href="/template/assets/js/plugins/simplemde/simplemde.min.css">--}}
+
 @endsection
 @section('js')
-{{--    <script src="/template/assets/js/plugins/cropperjs/cropper.min.js"></script>--}}
     <script src="{{ asset('/template/assets/js/plugins/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('/template/assets/js/plugins/flatpickr/flatpickr.min.js') }}"></script>
-
-{{--    <script src="/template/assets/js/plugins/simplemde/simplemde.min.js"></script>--}}
     <script src="{{ asset('/plugins/tinymce/tinymce.min.js') }}"></script>
 @endsection
 

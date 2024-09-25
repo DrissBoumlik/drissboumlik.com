@@ -8,8 +8,10 @@
                         <div class="progress mb-4">
                             <div id="{{ $tech->id }}" class="progress-bar delay padding-left"
                                 style="width: {{ $tech->value }}%"
-                                title="{{ $tech->name }}" aria-label="{{ $tech->name }}" aria-labelledby="{{ $tech->name }}"
-                                role="progressbar" aria-valuenow="{{ $tech->value }}" aria-valuemin="0" aria-valuemax="100">
+                                title="{{ $tech->name }}" aria-label="{{ $tech->name }}"
+                                 aria-labelledby="{{ $tech->name }}"
+                                role="progressbar" aria-valuenow="{{ $tech->value }}" aria-valuemin="0"
+                                 aria-valuemax="100">
                                 <div class="progress-bar-text">
                                     <span>{{ $tech->name }}</span>
                                     <span class="mx-1">-</span>
@@ -32,7 +34,8 @@
                         <div class="progress mb-4">
                             <div id="{{ $lang->id }}" class="progress-bar delay padding-left"
                                 style="width: {{ $lang->value }}%"
-                                title="{{ $lang->name }}" aria-label="{{ $lang->name }}" aria-labelledby="{{ $lang->name }}"
+                                title="{{ $lang->name }}" aria-label="{{ $lang->name }}"
+                                 aria-labelledby="{{ $lang->name }}"
                                 role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100">
                                 <div class="progress-bar-text">
                                     <span>{{ $lang->name }}</span>
@@ -56,7 +59,8 @@
                         <div class="progress mb-4">
                             <div id="{{ $addSkill->id }}" class="progress-bar delay padding-left"
                                 style="width: {{ $addSkill->value }}%"
-                                title="{{ $addSkill->name }}" aria-label="{{ $addSkill->name }}" aria-labelledby="{{ $addSkill->name }}"
+                                title="{{ $addSkill->name }}" aria-label="{{ $addSkill->name }}"
+                                 aria-labelledby="{{ $addSkill->name }}"
                                 role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100">
                                 <div class="progress-bar-text">
                                     <span>{{ $addSkill->name }}</span>

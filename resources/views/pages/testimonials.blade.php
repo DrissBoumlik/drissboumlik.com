@@ -31,7 +31,8 @@
                                                              width="60" height="60" loading="lazy">
                                                     </div>
                                                     <div class="author-name">
-                                                        <span>{!! $testimonial->author !!}<br/>{!! $testimonial->position !!}</span>
+                                                        <span>{!! $testimonial->author !!}
+                                                            <br/>{!! $testimonial->position !!}</span>
                                                     </div>
                                                 </div>
                                             </div>

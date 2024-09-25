@@ -22,13 +22,16 @@
                                     <div class="search-result-item">
                                         <a href="{{ $result->link }}" class="search-result-link text-decoration-none">
                                             <div class="search-result-cover">
-                                                <img src="{{ $result->cover ? "/" . $result->cover->compressed : asset('/assets/img/blog/default-post.webp') }}"
-                                                     data-src="{{ $result->cover ? "/" . $result->cover->original : asset('/assets/img/blog/default-post.webp') }}"
+                                                <img src="{{ $result->cover ? "/" . $result->cover->compressed
+                                                                    : asset('/assets/img/blog/default-post.webp') }}"
+                                                     data-src="{{ $result->cover ? "/" . $result->cover->original
+                                                                    : asset('/assets/img/blog/default-post.webp') }}"
                                                      alt="{{ $result->short_title }}"
                                                      class="img-fluid lazyload" loading="lazy" />
                                             </div>
                                             <div class="search-result-text p-3 text-center">
-                                                <div class="font-weight-bolder search-result-link-text">{!! $result->type !!} {{ $result->short_title }}</div>
+                                                <div class="font-weight-bolder search-result-link-text">
+                                                    {!! $result->type !!} {{ $result->short_title }}</div>
                                             </div>
                                         </a>
                                     </div>
@@ -38,7 +41,8 @@
                                 <div class="col-12">
                                     <div class="message-wrapper d-flex justify-content-center align-items-center"
                                          style="min-height: 300px">
-                                        <h3 class="text-uppercase">Nothing found for {{ $data->term }} <i class="fa-solid fa-sad-cry"></i>!</h3>
+                                        <h3 class="text-uppercase">Nothing found for {{ $data->term }}
+                                            <i class="fa-solid fa-sad-cry"></i>!</h3>
                                     </div>
                                 </div>
                             @endif

@@ -8,7 +8,8 @@
             </div>
         </div>
         <div class="col-lg-6 offset-lg-3 col-12 owner">
-            <p>Made with <span class="heart-icon"><i class="fa-solid fa-heart"></i></span> by <span class="bold">Driss Boumlik</span></p>
+            <p>Made with <span class="heart-icon"><i class="fa-solid fa-heart"></i></span> by
+                <span class="bold">Driss Boumlik</span></p>
         </div>
     </div>
 </div>

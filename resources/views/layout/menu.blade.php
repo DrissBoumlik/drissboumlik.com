@@ -6,7 +6,8 @@
                     <div class="header-menu-wrapper menu-wrapper">
                         <ul class="header-menu-container list-group list-group-horizontal">
                             @foreach ($headerMenu as $link)
-                                <li class="header-menu-item menu-item list-group-item animated-underline {{ request()->is($link->slug) ? 'active' : '' }}">
+                                <li class="header-menu-item menu-item list-group-item animated-underline
+                                        {{ request()->is($link->slug) ? 'active' : '' }}">
                                     <a href="{{ \URL::to($link->slug) }}" rel="noopener" target="{{ $link->target ?? '_self' }}"
                                        aria-label="{{ $link->title }}" class="text-capitalize">
                                         {!! $link->title !!}
@@ -33,7 +34,8 @@
                                 </li>
                             @else
                                 <li class="header-menu-item menu-item list-group-item animated-underline">
-                                    <a href="?{{ http_build_query(request()->merge([ "guest-view" => 1, "forget" => true ])->query()) }}" rel="noopener" aria-label="Guest View" title="Switch to Guest view">
+                                    <a href="?{{ http_build_query(request()->merge([ "guest-view" => 1, "forget" => true ])->query()) }}"
+                                       rel="noopener" aria-label="Guest View" title="Switch to Guest view">
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
                                 </li>
@@ -44,7 +46,8 @@
                                 </a>
                             </li>
                             <li class="header-menu-item menu-item list-group-item animated-underline">
-                                @include('components.logout-button', ['logout_btn' => '<i class="fa-solid fa-power-off"></i>', 'link_classes' => ''])
+                                @include('components.logout-button',
+                                        ['logout_btn' => '<i class="fa-solid fa-power-off"></i>', 'link_classes' => ''])
                             </li>
                         </ul>
                     </div>

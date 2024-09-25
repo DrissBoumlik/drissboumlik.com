@@ -10,7 +10,8 @@
                                 <div class="content">
                                     <h2 class="function text-capitalize">{{ $experience->job }}</h2>
                                     <h2 class="where text-uppercase">{{ $experience->company }}</h2>
-                                    <div class="experience-period"><i class="fa-solid fa-calendar-days"></i> {{ $experience->period }} |
+                                    <div class="experience-period">
+                                        <i class="fa-solid fa-calendar-days"></i> {{ $experience->period }} |
                                         {!! $experience->duration !!}
                                     </div>
                                     @if ($experience->content)
