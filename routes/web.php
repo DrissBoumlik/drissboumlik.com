@@ -53,7 +53,8 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::post('/tags', [ApiTagController::class, 'index']);
             Route::post('/visitors', [AdminDatatableController::class, 'visitors']);
             Route::put('/visitors/{visitor}', [AdminCRUDController::class, 'updateVisitor']);
-            Route::put('/testimonials/{testimonial}', [AdminCRUDController::class, 'updateTestimonial']);
+            Route::put('/testimonials/{testimonial}', [AdminApiPortfolioController::class, 'updateTestimonial']);
+            Route::post('/testimonials', [AdminApiPortfolioController::class, 'storeTestimonial']);
             Route::put('/projects/{project}', [AdminApiPortfolioController::class, 'updateProject']);
             Route::post('/projects', [AdminApiPortfolioController::class, 'storeProject']);
             Route::put('/services/{service}', [AdminCRUDController::class, 'updateService']);
@@ -61,7 +62,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::put('/menu-types/{menuType}', [AdminCRUDController::class, 'updateMenuType']);
             Route::post('/messages', [AdminDatatableController::class, 'messages']);
             Route::post('/subscriptions', [AdminDatatableController::class, 'subscriptions']);
-            Route::post('/testimonials', [AdminDatatableController::class, 'testimonials']);
+            Route::post('/testimonials/list', [AdminDatatableController::class, 'testimonials']);
             Route::post('/projects/list', [AdminDatatableController::class, 'projects']);
             Route::post('/services', [AdminDatatableController::class, 'services']);
             Route::post('/menus', [AdminDatatableController::class, 'menus']);

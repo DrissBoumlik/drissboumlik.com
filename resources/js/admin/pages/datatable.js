@@ -402,7 +402,7 @@ $(function () {
                 first_time: true,
                 id: '#testimonials',
                 method: 'POST',
-                url: '/api/testimonials',
+                url: '/api/testimonials/list',
                 columns: [
                     { data: 'id', name: 'id', title: 'Actions' ,
                         render: function (data, type, row, params) {
@@ -430,7 +430,7 @@ $(function () {
                     { data: 'image', name: 'image', title: 'Image' ,
                         render: function (data, type, row) {
                             return `<div class="square-60 m-auto">
-                                        <img class="img-fluid" src="/${row.image.original}" /></div>`;
+                                        <img class="img-fluid" src="/${row.image?.original}" /></div>`;
                         }
                     },
                     { data: 'position', name: 'position', title: 'Position' },
@@ -441,7 +441,6 @@ $(function () {
                 const $row = $(this).closest('tr');
                 const data = testimonialsDataTable.row( $row ).data();
                 let dataFilteredCount = testimonialsDataTable.ajax.json().recordsTotal;
-                let created_at = moment(data.updated_at)
                 let modal = `
         <div class="modal modal-testimonials-details" tabindex="-1">
             <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -469,7 +468,7 @@ $(function () {
                                     <div class="col-12 col-md-4">
                                         <div class="mb-3">
                                             <div class="img-container"><img class="img-fluid br-5px d-block m-auto"
-                                                src="/${data.image.original}" /></div>
+                                                src="/${data.image?.original}" /></div>
                                         </div>
                                         <div class="mb-3">
                                           <label class="form-label" for="order">Order</label>
@@ -488,8 +487,12 @@ $(function () {
                                                 placeholder="Textarea content..">${data.content}</textarea>
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-12 d-flex justify-content-between gap-2 flex-wrap flex-md-nowrap">
                                         <button type="submit" class="btn btn-outline-info w-100">Update</button>
+                                        ${data.deleted_at ?
+                                            '<button type="submit" class="btn btn-outline-secondary w-100" name="restore">Restore</button>'
+                                            : '<button type="submit" class="btn btn-outline-warning w-100" name="delete">Delete</button>'
+                                        }
                                     </div>
                                 </div>
                             </form>
@@ -517,6 +520,8 @@ $(function () {
                     }
                     let _this = $(this);
                     let data = _this.serializeArray();
+                    let action = e.originalEvent.submitter.getAttribute("name");
+                    data.push({name: action, value: true});
                     $.ajax({
                         type: 'PUT',
                         url: `/api/testimonials/${_this.data('testimonials-id')}`,
@@ -532,6 +537,96 @@ $(function () {
                     });
                 });
 
+            });
+
+            $(document).on('click', '.btn-new', function(e) {
+                let dataFilteredCount = testimonialsDataTable.ajax.json().recordsTotal + 1;
+                let modal = `
+        <div class="modal modal-testimonials-details" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">New Testimonial</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <form id="form-testimonials">
+                                <div class="row">
+                                    <div class="col-12 col-md-8">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="author">Author</label>
+                                            <input type="text" class="form-control" id="author" name="author" >
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="position">Position</label>
+                                            <input type="text" class="form-control" id="position" name="position" >
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="mb-3">
+                                            <div class="img-container"><img class="img-fluid br-5px d-block m-auto" /></div>
+                                        </div>
+                                        <div class="mb-3">
+                                          <label class="form-label" for="order">Order</label>
+                                          <input class="form-control" type="number"
+                                            min="1" max="${dataFilteredCount}" id="order" name="order">
+                                        </div>
+                                        <div class="mb-3 form-check form-switch">
+                                          <label class="form-check-label" for="active">Active</label>
+                                          <input class="form-check-input" type="checkbox" id="active" name="active">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="content">Content</label>
+                                            <textarea class="form-control" id="content" name="content" rows="7"
+                                                placeholder="Content.."></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-outline-info w-100">Update</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop fade show"></div>`;
+                $('#page-container').append(modal);
+                let modalTestimonialsDetails = $('.modal-testimonials-details');
+                $('.btn-close').add('.modal-projects-details').on('click', function(e) {
+                    if (e.target != modalTestimonialsDetails[0] && e.target != $('.btn-close')[0]) {
+                        return;
+                    }
+                    modalTestimonialsDetails.remove();
+                    $('.modal-backdrop').remove();
+                });
+                modalTestimonialsDetails.show();
+                $(document).off('submit', '#form-testimonials').on('submit', '#form-testimonials', function(e) {
+                    e.preventDefault();
+                    if (!confirm("Are you sure ?")) {
+                        return;
+                    }
+                    let _this = $(this);
+                    let data = _this.serializeArray();
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/api/testimonials',
+                        data: data,
+                        success: function(response) {
+                            projectsDataTable.ajax.reload(null, false);
+                            get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                        },
+                        error: function (jqXHR, textStatus, errorThrown){
+                            console.log(jqXHR, textStatus, errorThrown);
+                            get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.message, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                        }
+                    });
+                });
             });
         }
         if ($('#projects').length) {
