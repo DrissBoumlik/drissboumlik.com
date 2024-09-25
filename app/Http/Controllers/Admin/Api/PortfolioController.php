@@ -33,9 +33,9 @@ class PortfolioController extends Controller
             $active = $request->has("active") && $request->get("active") === 'on';
             $request->merge(["active" => $active]);
             $testimonial->update($request->only(["content", "author", "position", "active", "order"]));
-            return ['msg' => "Updated Successfully !"];
+            return ['message' => "Updated Successfully !"];
         } catch (\Throwable $e) {
-            return response()->json(['msg' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage()], 404);
         }
     }
 
@@ -51,9 +51,9 @@ class PortfolioController extends Controller
             $active = $request->has("active") && $request->get("active") === 'on';
             $request->merge(["active" => $active]);
             Testimonial::create($request->only(["content", "author", "position", "active", "order"]));
-            return ['msg' => "Stored Successfully !"];
+            return ['message' => "Stored Successfully !"];
         } catch (\Throwable $e) {
-            return response()->json(['msg' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage()], 404);
         }
     }
 
@@ -82,9 +82,9 @@ class PortfolioController extends Controller
             $featured = $request->has("featured") && $request->get("featured") === 'on';
             $request->merge(["active" => $active, 'featured' => $featured]);
             $project->update($request->only(["role", "title", "description", "featured", "links", "active", "order"]));
-            return ['msg' => "Updated Successfully !"];
+            return ['message' => "Updated Successfully !"];
         } catch (\Throwable $e) {
-            return response()->json(['msg' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage()], 404);
         }
     }
 
@@ -92,16 +92,16 @@ class PortfolioController extends Controller
     {
         try {
             if ($item === null) {
-                return response()->json(['msg' => 'Item not found'], 404);
+                return response()->json(['message' => 'Item not found'], 404);
             }
             if ($request->has('delete')) {
                 $item->update(['active' => false]);
                 $item->delete();
-                return response()->json(['msg' => 'Item deleted successfully'], 200);
+                return response()->json(['message' => 'Item deleted successfully'], 200);
             }
-//            $project->forceDelete();
+//            $item->forceDelete();
         } catch (\Throwable $e) {
-            return response()->json(['msg' => $e->getMessage()], 422);
+            return response()->json(['message' => $e->getMessage()], 422);
         }
     }
 
@@ -118,9 +118,9 @@ class PortfolioController extends Controller
             $featured = $request->has("featured") && $request->get("featured") === 'on';
             $request->merge(["active" => $active, 'featured' => $featured]);
             Project::create($request->only(["role", "title", "description", "featured", "links", "active", "order"]));
-            return ['msg' => "Stored Successfully !"];
+            return ['message' => "Stored Successfully !"];
         } catch (\Throwable $e) {
-            return response()->json(['msg' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage()], 404);
         }
     }
 }

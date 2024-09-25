@@ -17,9 +17,9 @@ class CRUDController extends Controller
     {
         try {
             $visitor->update($request->only(["countryName", "countryCode", "regionName", "cityName"]));
-            return ['msg' => "Updated Successfully !"];
+            return ['message' => "Updated Successfully !"];
         } catch (\Throwable $e) {
-            return response()->json(['msg' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage()], 404);
         }
     }
 
@@ -38,9 +38,9 @@ class CRUDController extends Controller
             $active = $request->has("active") && $request->get("active") === 'on';
             $request->merge(["active" => $active]);
             $service->update($request->only(['slug', 'title', 'icon', 'link', 'description', 'active', 'order']));
-            return ['msg' => "Updated Successfully !"];
+            return ['message' => "Updated Successfully !"];
         } catch (\Throwable $e) {
-            return response()->json(['msg' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage()], 404);
         }
     }
 
@@ -50,9 +50,9 @@ class CRUDController extends Controller
             $active = $request->has("active") && $request->get("active") === 'on';
             $request->merge(["active" => $active]);
             $menuType->update($request->only(['name', 'slug', 'description', 'active']));
-            return ['msg' => "Updated Successfully !"];
+            return ['message' => "Updated Successfully !"];
         } catch (\Throwable $e) {
-            return response()->json(['msg' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage()], 404);
         }
     }
 

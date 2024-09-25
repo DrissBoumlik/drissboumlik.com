@@ -97,9 +97,9 @@ $(function () {
                                     <div class="col-12 d-flex justify-content-between gap-2 flex-wrap flex-md-nowrap">
                                         <button type="submit" class="btn btn-outline-info w-100">Update</button>
                                         ${data.deleted_at ?
-                    '<button type="submit" class="btn btn-outline-secondary w-100" name="restore">Restore</button>'
-                    : '<button type="submit" class="btn btn-outline-warning w-100" name="delete">Delete</button>'
-                }
+                                            '<button type="submit" class="btn btn-outline-secondary w-100" name="restore">Restore</button>'
+                                            : '<button type="submit" class="btn btn-outline-warning w-100" name="delete">Delete</button>'
+                                        }
                                     </div>
                                 </div>
                             </form>
@@ -135,7 +135,7 @@ $(function () {
                         data: data,
                         success: function(response) {
                             testimonialsDataTable.ajax.reload(null, false);
-                            get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                            get_alert_box({class: 'alert-info', message: response.message, icon: '<i class="fa-solid fa-check-circle"></i>'});
                         },
                         error: function (jqXHR, textStatus, errorThrown){
                             console.log(jqXHR, textStatus, errorThrown);
@@ -226,7 +226,7 @@ $(function () {
                         data: data,
                         success: function(response) {
                             projectsDataTable.ajax.reload(null, false);
-                            get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                            get_alert_box({class: 'alert-info', message: response.message, icon: '<i class="fa-solid fa-check-circle"></i>'});
                         },
                         error: function (jqXHR, textStatus, errorThrown){
                             console.log(jqXHR, textStatus, errorThrown);
@@ -361,10 +361,9 @@ $(function () {
                                     <div class="col-12 d-flex justify-content-between gap-2 flex-wrap flex-md-nowrap">
                                         <button type="submit" class="btn btn-outline-info w-100">Update</button>
                                         ${data.deleted_at ?
-                    '<button type="submit" class="btn btn-outline-secondary w-100" name="restore">Restore</button>'
-                    : '<button type="submit" class="btn btn-outline-warning w-100" name="delete">Delete</button>'
-                }
-
+                                            '<button type="submit" class="btn btn-outline-secondary w-100" name="restore">Restore</button>'
+                                            : '<button type="submit" class="btn btn-outline-warning w-100" name="delete">Delete</button>'
+                                        }
                                     </div>
                                 </div>
                             </form>
@@ -399,7 +398,7 @@ $(function () {
                         data: data,
                         success: function(response) {
                             projectsDataTable.ajax.reload(null, false);
-                            get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                            get_alert_box({class: 'alert-info', message: response.message, icon: '<i class="fa-solid fa-check-circle"></i>'});
                         },
                         error: function (jqXHR, textStatus, errorThrown){
                             console.log(jqXHR, textStatus, errorThrown);
@@ -502,7 +501,7 @@ $(function () {
                         data: data,
                         success: function(response) {
                             projectsDataTable.ajax.reload(null, false);
-                            get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                            get_alert_box({class: 'alert-info', message: response.message, icon: '<i class="fa-solid fa-check-circle"></i>'});
                         },
                         error: function (jqXHR, textStatus, errorThrown){
                             console.log(jqXHR, textStatus, errorThrown);
@@ -657,7 +656,7 @@ $(function () {
                         data: data,
                         success: function(response) {
                             servicesDataTable.ajax.reload(null, false);
-                            get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                            get_alert_box({class: 'alert-info', message: response.message, icon: '<i class="fa-solid fa-check-circle"></i>'});
                         },
                         error: function (jqXHR, textStatus, errorThrown){
                             console.log(jqXHR, textStatus, errorThrown);
