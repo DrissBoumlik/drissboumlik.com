@@ -25,7 +25,7 @@
                         <div id="form-g-recaptcha-response" class="g-recaptcha w-100"
                              data-sitekey={{ config('services.recaptcha.key') }}></div>
                     </div>
-                    <button type="submit" class="btn tc-blue-dark-2-bg tc-blue-bg-hover w-100">Send</button>
+                    <button type="submit" class="btn tc-blue-dark-2-bg tc-blue-bg-hover w-100 br-50px">Send</button>
                 </form>
             </div>
         </div>
