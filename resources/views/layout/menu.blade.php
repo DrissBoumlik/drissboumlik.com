@@ -25,6 +25,12 @@
                 @auth
                     <div class="header-menu-wrapper auth-menu-items flex-grow-2">
                         <ul class="header-menu-container list-group">
+                            <li class="header-menu-item menu-item list-group-item animated-underline">
+                                <a href="?{{ http_build_query(request()->merge([ "forget" => true ])->query()) }}"
+                                    aria-label="Reload" title="Reload" id="hard-reload">
+                                    <i class="fa-solid fa-rotate-right"></i>
+                                </a>
+                            </li>
                             @if (isGuest(session()->get('guest-view')))
                                 <li class="header-menu-item menu-item list-group-item animated-underline">
                                     <a href="?{{ http_build_query(request()->merge([ "guest-view" => -1, "forget" => true ])->query()) }}"
