@@ -29,7 +29,12 @@ export default defineConfig({
                 'resources/js/admin/pages/post.js',
                 'resources/js/admin/pages/export-db.js',
                 'resources/js/admin/pages/media-manager.js',
-                'resources/js/admin/pages/datatable.js',
+
+                'resources/js/admin/pages/menu.js',
+                'resources/js/admin/pages/portfolio.js',
+                'resources/js/admin/pages/user-interaction.js',
+                'resources/js/admin/pages/blog.js',
+
                 'resources/js/app.js',
                 'resources/js/pages/code-animation.js',
                 'resources/js/pages/carousel.js',

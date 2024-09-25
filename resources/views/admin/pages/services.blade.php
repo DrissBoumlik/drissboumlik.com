@@ -1,5 +1,9 @@
 @extends('admin.template.datatable')
 
+@section('post-header-assets')
+    @vite(['resources/js/admin/pages/portfolio.js'])
+@endsection
+
 @section('list-title')
     Services list
 @endsection

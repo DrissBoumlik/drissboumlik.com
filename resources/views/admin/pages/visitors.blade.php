@@ -1,5 +1,8 @@
 @extends('admin.template.datatable')
 
+@section('post-header-assets')
+    @vite(['resources/js/admin/pages/user-interaction.js'])
+@endsection
 
 @section('list-title')
     Visitors list

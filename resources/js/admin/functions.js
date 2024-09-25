@@ -1,5 +1,5 @@
 // import 'bootstrap';
-import { get_loader, toggleDarkMode } from "../shared/functions";
+import {get_alert_box, get_loader, toggleDarkMode} from "../shared/functions";
 import { initPostEditor } from "../admin/pages/post";
 
 function string_to_slug(str) {
@@ -63,5 +63,141 @@ function getDomClass(status) {
     return classes[status];
 }
 
+function configDT(params) {
+    let table = new DataTable(params.id, {
+        pageLength: 50,
+        lengthMenu: [5, 10, 25, 50, 75, 100, 200],
+        language: {
+            // select: {
+            //     style: 'single',
+            //     info: false
+            // },
+            // sWrapper: "dataTables_wrapper dt-bootstrap5",
+            // sFilterInput: "form-control form-control-sm",
+            // sLengthSelect: "form-select form-select-sm",
+            // lengthMenu: "_MENU_",
+            // search: "_INPUT_",
+            // searchPlaceholder: "Search..",
+            // info: "Page <strong>_PAGE_</strong> of <strong>_PAGES_</strong>",
+            fnInfoCallback: function( settings, start, end, max, total, pre ) {
+                return `${start} <i class="fa-solid fa-arrow-right-long"></i> ${end} | ${total} (Total : ${max})`;
+            },
+            paginate: {
+                first: '<i class="fa fa-angle-double-left"></i>',
+                previous: '<i class="fa fa-angle-left"></i>',
+                next: '<i class="fa fa-angle-right"></i>',
+                last: '<i class="fa fa-angle-double-right"></i>'
+            },
+            pagingType: "full_numbers",
+            pageLength: 5,
+        },
+        searching: true,
+        responsive: true,
+        pagingType: 'full_numbers', //'full',
+        // autoWidth: true,
+        processing: true,
+        serverSide: true,
+        ajax: {
+            type: params.method,
+            url: params.url,
+            data: function(data) {
+                data._token = $('meta[name="csrf-token"]').attr('content');
+                data.first_time = params.first_time;
+            }
+            , error: function (jqXHR, textStatus, errorThrown) {
+                get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.message, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                if (jqXHR.responseJSON.message.toLowerCase().includes("csrf")) {
+                    location.reload(true);
+                }
+            }
+        },
+        columns: params.columns,
+        initComplete: function (settings, json) {
+            delete params.first_time;
+            if (params.onComplete) {
+                params.onComplete(settings, json);
+            }
+            this.find('thead').prepend('<tr id="search-row" class="search-row"></tr>');
+            this.api().columns().every(function (index) {
+                let column = this;
+                let dataTitle = column.dataSrc();
+                let currentColumn = params.columns[index];
+                let title = currentColumn.title;
+                if (title.toLowerCase() === "actions") {
+                    $('#search-row').append('<th></th>');
+                    return;
+                }
+                // Create input element
+                if (currentColumn.domElement === "select" || currentColumn.data === 'active') {
+                    let items = json.data.map( function (item) {
+                        let _item = {};
+                        if (currentColumn.data === 'active') {
+                            _item.active = item.active;
+                        } else {
+                            _item[currentColumn.data] = item[currentColumn.data] ;
+                        }
+                        if (currentColumn.optionTextField) {
+                            _item[currentColumn.optionTextField] = item[currentColumn.optionTextField];
+                        }
+                        return _item;
+                    }).reduce((acc, current) => {
+                        let exists = acc.find(item => {
+                            return item[currentColumn.data] === current[currentColumn.data]
+                        });
+                        if (!exists) {
+                            acc.push(current);
+                        }
+                        return acc;
+                    }, []);
+                    let domSelectOptions = `<option value="">${title}</option>`;
 
-export { initDarkMode, initAjaxEvents, shortenTextIfLongByLength, getDomClass, string_to_slug };
+                    items.forEach(function(item) {
+                        domSelectOptions += `<option value="${item[currentColumn.data]}">${item[currentColumn.optionTextField || currentColumn.data]}</option>`;
+                    });
+                    let headerSearchItem = `<th><select id="${dataTitle}" title="${title}"
+                                                            placeholder="${title}" type="search"
+                                                            style="min-width: 100px"
+                                                            class="form-control form-control-sm text-center"
+                                                            >${domSelectOptions}</select></th>`;
+                    $('#search-row').append(headerSearchItem);
+                    let select = document.getElementById(dataTitle);
+                    // Event listener for user input
+                    let start = undefined;
+                    select.addEventListener('change', (e) => {
+                        clearTimeout(start);
+                        start = setTimeout(function () {
+                            if (column.search() !== this.value) {
+                                column.search(select.value).draw();
+                            }
+                        }, 1000 );
+                    });
+                } else {
+                    let headerSearchItem = `<th><input id="${dataTitle}" title="${title}"
+                                                            placeholder="${title}" type="search"
+                                                            style="min-width: 100px"
+                                                            class="form-control form-control-sm text-center"></th>`;
+                    $('#search-row').append(headerSearchItem);
+                    let input = document.getElementById(dataTitle);
+
+                    // Event listener for user input
+                    let start = undefined;
+                    input.addEventListener('input', (e) => {
+                        clearTimeout(start);
+                        start = setTimeout(function () {
+                            if (column.search() !== this.value) {
+                                column.search(input.value).draw();
+                            }
+                        }, 1000 );
+                    });
+                }
+            });
+        }
+    });
+    $('.btn-refresh').on('click', function (e) {
+        table.ajax.reload(null, false);
+    });
+    return table;
+}
+
+
+export { initDarkMode, initAjaxEvents, shortenTextIfLongByLength, getDomClass, string_to_slug, configDT };
