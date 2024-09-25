@@ -22,7 +22,7 @@ class DatatableController extends Controller
         if ($is_first_time) {
             $messages = $messages->orderBy('id', 'desc');
         }
-        return $this->toDatatable($messages, false);
+        return $this->toDatatable($messages);
     }
 
     public function subscriptions(Request $request)
@@ -32,7 +32,7 @@ class DatatableController extends Controller
         if ($is_first_time) {
             $subscriptions = $subscriptions->orderBy('id', 'desc');
         }
-        return $this->toDatatable($subscriptions, false);
+        return $this->toDatatable($subscriptions);
     }
 
     public function visitors(Request $request)
@@ -42,7 +42,7 @@ class DatatableController extends Controller
         if ($is_first_time) {
             $visitors = $visitors->orderBy('id', 'desc');
         }
-        return $this->toDatatable($visitors, false);
+        return $this->toDatatable($visitors);
     }
 
     public function testimonials(Request $request)
@@ -54,7 +54,7 @@ class DatatableController extends Controller
                 ->orderBy('active', 'asc')
                 ->orderBy('id', 'desc');
         }
-        return $this->toDatatable($testimonials, false);
+        return $this->toDatatable($testimonials);
     }
 
     public function projects(Request $request)
@@ -67,7 +67,7 @@ class DatatableController extends Controller
                 ->orderBy('featured', 'asc')
                 ->orderBy('id', 'desc');
         }
-        return $this->toDatatable($projects, false);
+        return $this->toDatatable($projects);
     }
 
     public function services(Request $request)
@@ -79,7 +79,7 @@ class DatatableController extends Controller
                 ->orderBy('active', 'asc')
                 ->orderBy('id', 'desc');
         }
-        return $this->toDatatable($services, false);
+        return $this->toDatatable($services);
     }
 
     public function menus(Request $request)
@@ -92,7 +92,7 @@ class DatatableController extends Controller
                 ->orderBy('active', 'asc')
                 ->orderBy('id', 'desc');
         }
-        return $this->toDatatable($menus, false);
+        return $this->toDatatable($menus);
     }
 
     public function menuTypes(Request $request)
@@ -107,13 +107,13 @@ class DatatableController extends Controller
         if ($request->has('api')) {
             return ["data" => $menuTypes->get()];
         }
-        return $this->toDatatable($menuTypes, false);
+        return $this->toDatatable($menuTypes);
     }
 
-    private function toDatatable($data, $withoutTrashed = true)
+    private function toDatatable($data, $withTrashed = true)
     {
-        if ($withoutTrashed) {
-            $data = $data->whereNull('deleted_at');
+        if ($withTrashed) {
+            $data = $data->withTrashed();
         }
         return datatables($data)->make(true);
     }
