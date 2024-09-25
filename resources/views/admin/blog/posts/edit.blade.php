@@ -162,19 +162,19 @@
                                     <textarea id="post_body" class="form-control" name="post_content" placeholder="Post content.." hidden>{!! $post->content !!}</textarea>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-between column-gap-2 flex-wrap flex-md-nowrap">
-                                <button type="submit" class="btn-action btn btn-success me-1 mb-3 w-100">
+                            <div class="d-flex justify-content-between gap-2 flex-wrap flex-md-nowrap">
+                                <button type="submit" class="btn-action btn btn-success w-100">
                                     <i class="fa fa-fw fa-edit me-1"></i>Update</button>
-                                <a href="/blog/{{ $post->slug }}" target="_blank" class="btn btn-dark me-1 mb-3 w-100">
+                                <a href="/blog/{{ $post->slug }}" target="_blank" class="btn btn-dark w-100">
                                     <i class="fa fa-fw fa-eye me-1"></i>View</a>
                                 @if($post->deleted)
-                                    <button type="submit" class="btn-action btn btn-secondary me-1 mb-3 w-100" name="restore">
+                                    <button type="submit" class="btn-action btn btn-secondary w-100" name="restore">
                                         <i class="fa fa-fw fa-rotate-left me-1"></i> Restore</button>
                                 @else
-                                    <button type="submit" class="btn-action btn btn-warning me-1 mb-3 w-100" name="delete">
+                                    <button type="submit" class="btn-action btn btn-warning w-100" name="delete">
                                         <i class="fa fa-fw fa-trash me-1"></i> Delete</button>
                                 @endif
-                                <button type="submit" class="btn-action btn btn-danger me-1 mb-3 w-100" name="destroy">
+                                <button type="submit" class="btn-action btn btn-danger w-100" name="destroy">
                                     <i class="fa fa-fw fa-trash me-1"></i>Hard Delete</button>
                             </div>
                         </div>
