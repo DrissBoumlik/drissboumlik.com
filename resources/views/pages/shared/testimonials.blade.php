@@ -16,8 +16,9 @@
                                     </div>
                                     <div class="testimonial-author">
                                         <div class="owl-carousel-img author-image square-50 overflow-hidden">
-                                            <img src="{{ asset('/' . $testimonial->image->original) }}"
-                                                 class="d-block rounded-circle w-100 h-100" alt="{{ $testimonial->author }}"
+                                            <img src="{{ asset('/' . $testimonial->image?->original) }}"
+                                                 class="d-block rounded-circle w-100 h-100"
+                                                 alt="{{ $testimonial->author }}"
                                                  width="60" height="60" loading="lazy">
                                         </div>
                                         <div class="author-name">
