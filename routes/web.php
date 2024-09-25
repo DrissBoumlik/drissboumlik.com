@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\Api\DatatableController as AdminDatatableControll
 use App\Http\Controllers\Admin\Api\SubscriberController as AdminApiSubscriberController;
 use App\Http\Controllers\Admin\Api\CRUDController as AdminCRUDController;
 use App\Http\Controllers\Admin\Api\PortfolioController as AdminApiPortfolioController;
+use App\Http\Controllers\Admin\Api\MenuController as AdminApiMenuController;
 use App\Http\Controllers\Api\ContactController;
 //use App\Http\Controllers\Api\SubscriberController as ApiSubscriberController;
 // use App\Http\Controllers\ToolController;
@@ -58,14 +59,15 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::put('/projects/{project}', [AdminApiPortfolioController::class, 'updateProject']);
             Route::post('/projects', [AdminApiPortfolioController::class, 'storeProject']);
             Route::put('/services/{service}', [AdminCRUDController::class, 'updateService']);
-            Route::put('/menus/{menu}', [AdminCRUDController::class, 'updateMenu']);
+            Route::put('/menus/{menu}', [AdminApiMenuController::class, 'updateMenu']);
+            Route::post('/menus', [AdminApiMenuController::class, 'storeMenu']);
             Route::put('/menu-types/{menuType}', [AdminCRUDController::class, 'updateMenuType']);
             Route::post('/messages', [AdminDatatableController::class, 'messages']);
             Route::post('/subscriptions', [AdminDatatableController::class, 'subscriptions']);
             Route::post('/testimonials/list', [AdminDatatableController::class, 'testimonials']);
             Route::post('/projects/list', [AdminDatatableController::class, 'projects']);
             Route::post('/services', [AdminDatatableController::class, 'services']);
-            Route::post('/menus', [AdminDatatableController::class, 'menus']);
+            Route::post('/menus/list', [AdminDatatableController::class, 'menus']);
             Route::post('/menu-types', [AdminDatatableController::class, 'menuTypes']);
             Route::get('/posts/{slug}/assets', [ApiPostController::class, 'getPostAssets']);
             Route::get('/{table}/columns', [AdminToolController::class, 'getTableColumns']);

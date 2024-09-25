@@ -10,7 +10,7 @@ $(function () {
                 first_time: true,
                 id: '#menus',
                 method: 'POST',
-                url: '/api/menus',
+                url: '/api/menus/list',
                 columns: [
                     { data: 'id', name: 'id', title: 'Actions' ,
                         render: function (data, type, row, params) {
@@ -91,7 +91,6 @@ $(function () {
                 const $row = $(this).closest('tr');
                 const data = MenusDataTable.row( $row ).data();
                 let dataFilteredCount = menuTypesCounts[data.type_name];
-                let created_at = moment(data.updated_at)
                 let menuTypesOptions = '';
                 menuTypesItems.forEach(function (item) {
                     menuTypesOptions += `<option value="${item.id}" ${data.menu_type_id === item.id ? "selected" : ""}>${item.name}</option>`;
@@ -139,7 +138,6 @@ $(function () {
                                         <div class="mb-3">
                                             <label class="form-label" for="target">Target</label>
                                             <select id="target" name="target" class="form-control">
-                                                <option value="_self">Target</option>
                                                 <option value="_self" ${data.target == '_self' ? 'selected' : ''}>_self</option>
                                                 <option value="_blank" ${data.target == '_blank' ? 'selected' : ''}>_blank</option>
                                             </select>
@@ -160,8 +158,12 @@ $(function () {
                                           <input class="form-check-input" type="checkbox" ${ data.active ? "checked" : "" } id="active" name="active">
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-12 d-flex justify-content-between gap-2 flex-wrap flex-md-nowrap">
                                         <button type="submit" class="btn btn-outline-info w-100">Update</button>
+                                        ${data.deleted_at ?
+                                            '<button type="submit" class="btn btn-outline-secondary w-100" name="restore">Restore</button>'
+                                            : '<button type="submit" class="btn btn-outline-warning w-100" name="delete">Delete</button>'
+                                        }
                                     </div>
                                 </div>
                             </form>
@@ -190,13 +192,125 @@ $(function () {
                     let _this = $(this);
                     let data = _this.serializeArray();
                     data.push({ name: "menu_type", value: _this.data('menus-type') }) ;
+                    let action = e.originalEvent.submitter.getAttribute("name");
+                    data.push({name: action, value: true});
                     $.ajax({
                         type: 'PUT',
                         url: `/api/menus/${_this.data('menus-id')}`,
                         data: data,
                         success: function(response) {
                             MenusDataTable.ajax.reload(null, false);
-                            get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                            get_alert_box({class: 'alert-info', message: response.message, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                        },
+                        error: function (jqXHR, textStatus, errorThrown){
+                            console.log(jqXHR, textStatus, errorThrown);
+                            get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.message, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                        }
+                    });
+                });
+
+            });
+
+            $(document).on('click', '.btn-new', function(e) {
+                let dataFilteredCount = MenusDataTable.ajax.json().recordsTotal + 1; // menuTypesCounts[data.type_name];
+                let menuTypesOptions = '';
+                menuTypesItems.forEach(function (item) {
+                    menuTypesOptions += `<option value="${item.id}">${item.name}</option>`;
+                });
+                let modal = `
+        <div class="modal modal-menus-details" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">New Menu item</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <form id="form-menus">
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="slug">Slug</label>
+                                            <input type="text" class="form-control" id="slug" name="slug" >
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="text">Text</label>
+                                            <input type="text" class="form-control" id="text" name="text" >
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="title">Title</label>
+                                            <input type="text" class="form-control" id="title" name="title" >
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="icon">Icon</label>
+                                            <input type="text" class="form-control" id="icon" name="icon" >
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="repository">Link</label>
+                                            <input type="text" class="form-control" id="link" name="link" >
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="target">Target</label>
+                                            <select id="target" name="target" class="form-control">
+                                                <option value="_self">_self</option>
+                                                <option value="_blank">_blank</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="menu-type">Type</label>
+                                            <select id="menu-type" name="menu-type" class="form-control">
+                                                ${menuTypesOptions}
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                          <label class="form-label" for="order">Order</label>
+                                          <input class="form-control" type="number"
+                                            min="1" max="${dataFilteredCount}" id="order" name="order">
+                                        </div>
+                                        <div class="mb-3 form-check form-switch">
+                                          <label class="form-check-label" for="active">Active</label>
+                                          <input class="form-check-input" type="checkbox" id="active" name="active">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-outline-info w-100">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop fade show"></div>`;
+                $('#page-container').append(modal);
+                let modalMenusDetails = $('.modal-menus-details');
+                $('.btn-close').add('.modal-menus-details').on('click', function(e) {
+                    if (e.target != modalMenusDetails[0] && e.target != $('.btn-close')[0]) {
+                        return;
+                    }
+                    modalMenusDetails.remove();
+                    $('.modal-backdrop').remove();
+                });
+                modalMenusDetails.show();
+
+                $(document).off('submit', '#form-menus').on('submit', '#form-menus', function(e) {
+                    e.preventDefault();
+                    if (!confirm("Are you sure ?")) {
+                        return;
+                    }
+                    let _this = $(this);
+                    let data = _this.serializeArray();
+                    $.ajax({
+                        type: 'POST',
+                        url: '/api/menus',
+                        data: data,
+                        success: function(response) {
+                            MenusDataTable.ajax.reload(null, false);
+                            get_alert_box({class: 'alert-info', message: response.message, icon: '<i class="fa-solid fa-check-circle"></i>'});
                         },
                         error: function (jqXHR, textStatus, errorThrown){
                             console.log(jqXHR, textStatus, errorThrown);
@@ -311,7 +425,7 @@ $(function () {
                         data: data,
                         success: function(response) {
                             MenuTypesDataTable.ajax.reload(null, false);
-                            get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                            get_alert_box({class: 'alert-info', message: response.message, icon: '<i class="fa-solid fa-check-circle"></i>'});
                         },
                         error: function (jqXHR, textStatus, errorThrown){
                             console.log(jqXHR, textStatus, errorThrown);
