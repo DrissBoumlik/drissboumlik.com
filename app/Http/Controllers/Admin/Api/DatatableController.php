@@ -15,6 +15,7 @@ use App\Models\Project;
 
 class DatatableController extends Controller
 {
+    //region User Interaction
     public function messages(Request $request)
     {
         $messages = Message::query();
@@ -44,15 +45,15 @@ class DatatableController extends Controller
         }
         return $this->toDatatable($visitors);
     }
+    //endregion
 
+    //region Portfolio
     public function testimonials(Request $request)
     {
         $testimonials = Testimonial::query();
         $is_first_time = $request->has('first_time');
         if ($is_first_time) {
-            $testimonials = $testimonials
-                ->orderBy('active', 'asc')
-                ->orderBy('id', 'desc');
+            $testimonials = $this->defaultOrderBy($testimonials);
         }
         return $this->toDatatable($testimonials);
     }
@@ -62,10 +63,8 @@ class DatatableController extends Controller
         $projects = Project::query();
         $is_first_time = $request->has('first_time');
         if ($is_first_time) {
-            $projects = $projects
-                ->orderBy('active', 'asc')
-                ->orderBy('featured', 'asc')
-                ->orderBy('id', 'desc');
+            $projects = $this->defaultOrderBy($projects)
+                            ->orderBy('featured', 'asc');
         }
         return $this->toDatatable($projects);
     }
@@ -75,13 +74,13 @@ class DatatableController extends Controller
         $services = Service::query();
         $is_first_time = $request->has('first_time');
         if ($is_first_time) {
-            $services = $services
-                ->orderBy('active', 'asc')
-                ->orderBy('id', 'desc');
+            $services = $this->defaultOrderBy($services);
         }
         return $this->toDatatable($services);
     }
+    //endregion
 
+    //region Menus
     public function menus(Request $request)
     {
         $menus = Menu::join('menu_types', 'menu_types.id', '=', 'menus.menu_type_id')
@@ -109,11 +108,21 @@ class DatatableController extends Controller
         }
         return $this->toDatatable($menuTypes);
     }
+    //endregion
+
+    private function defaultOrderBy($data)
+    {
+        return $data->orderBy('active', 'asc')
+                    ->orderBy('id', 'desc');
+    }
 
     private function toDatatable($data, $withTrashed = true)
     {
-        if ($withTrashed) {
-            $data = $data->withTrashed();
+        try {
+            if ($withTrashed) {
+                $data = $data->withTrashed();
+            }
+        } catch (\Throwable $e) {
         }
         return datatables($data)->make(true);
     }
