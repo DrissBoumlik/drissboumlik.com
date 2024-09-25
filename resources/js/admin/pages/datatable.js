@@ -539,7 +539,7 @@ $(function () {
                 first_time: true,
                 id: '#projects',
                 method: 'POST',
-                url: '/api/projects',
+                url: '/api/projects/list',
                 columns: [
                     { data: 'id', name: 'id', title: 'Actions' ,
                         render: function (data, type, row, params) {
@@ -566,7 +566,7 @@ $(function () {
                     { data: 'description', name: 'description', title: 'Description' },
                     { data: 'image', name: 'image', title: 'Image' ,
                         render: function (data, type, row) {
-                            return `<div class="square-60 m-auto"><img class="img-fluid" src="/${row.image.original}" /></div>`;
+                            return `<div class="square-60 m-auto"><img class="img-fluid" src="/${row.image?.original}" /></div>`;
                         }
                     },
                     { data: 'links', name: 'links', title: 'Links', className: 'text-left',
@@ -574,11 +574,11 @@ $(function () {
                             let dom = '---';
                             if (row.links) {
                                 dom = '<div class="d-flex gap-2 flex-column">';
-                                if (row.links.repository) {
-                                    dom += `<div><a href="${row.links.repository}">Repository <i class="fa-solid fa-up-right-from-square"></i></a></div>`;
+                                if (row.links?.repository) {
+                                    dom += `<div><a href="${row.links?.repository}">Repository <i class="fa-solid fa-up-right-from-square"></i></a></div>`;
                                 }
-                                if (row.links.website) {
-                                    dom += `<div><a href="${row.links.website}">Website <i class="fa-solid fa-up-right-from-square"></i></a></div>`;
+                                if (row.links?.website) {
+                                    dom += `<div><a href="${row.links?.website}">Website <i class="fa-solid fa-up-right-from-square"></i></a></div>`;
                                 }
                                 dom += '</div>';
                             }
@@ -622,18 +622,18 @@ $(function () {
                                         <div class="mb-3">
                                             <label class="form-label" for="repository">Repository</label>
                                             <input type="text" class="form-control" id="repository" name="links[repository]"
-                                                value="${data.links.repository || ''}">
+                                                value="${data.links?.repository || ''}">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="website">Website</label>
                                             <input type="text" class="form-control" id="website" name="links[website]"
-                                                value="${data.links.website || ''}">
+                                                value="${data.links?.website || ''}">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="mb-3">
                                             <div class="img-container"><img class="img-fluid br-5px d-block m-auto"
-                                                src="/${data.image.original}" /></div>
+                                                src="/${data.image?.original}" /></div>
                                         </div>
                                         <div class="mb-3">
                                           <label class="form-label" for="order">Order</label>
@@ -656,8 +656,13 @@ $(function () {
                                                 placeholder="Textarea content..">${data.description || ''}</textarea>
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-12 d-flex justify-content-between gap-2 flex-wrap flex-md-nowrap">
                                         <button type="submit" class="btn btn-outline-info w-100">Update</button>
+                                        ${data.deleted_at ?
+                                            '<button type="submit" class="btn btn-outline-secondary w-100" name="restore">Restore</button>'
+                                            : '<button type="submit" class="btn btn-outline-warning w-100" name="delete">Delete</button>'
+                                        }
+
                                     </div>
                                 </div>
                             </form>
@@ -684,6 +689,8 @@ $(function () {
                     }
                     let _this = $(this);
                     let data = _this.serializeArray();
+                    let action = e.originalEvent.submitter.getAttribute("name");
+                    data.push({name: action, value: true});
                     $.ajax({
                         type: 'PUT',
                         url: `/api/projects/${_this.data('projects-id')}`,
@@ -699,6 +706,108 @@ $(function () {
                     });
                 });
 
+            });
+
+            $(document).on('click', '.btn-new', function(e) {
+                let dataFilteredCount = projectsDataTable.ajax.json().recordsTotal + 1;
+                let modal = `
+        <div class="modal modal-projects-details" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">New Project</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <form id="form-projects">
+                                <div class="row">
+                                    <div class="col-12 col-md-8">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="role">Role</label>
+                                            <input type="text" class="form-control" id="role" name="role">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="title">Title</label>
+                                            <input type="text" class="form-control" id="title" name="title">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="repository">Repository</label>
+                                            <input type="text" class="form-control" id="repository" name="links[repository]">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="website">Website</label>
+                                            <input type="text" class="form-control" id="website" name="links[website]">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="mb-3">
+                                            <div class="img-container"><img class="img-fluid br-5px d-block m-auto" /></div>
+                                        </div>
+                                        <div class="mb-3">
+                                          <label class="form-label" for="order">Order</label>
+                                          <input class="form-control" type="number"
+                                            min="1" max="${dataFilteredCount}" id="order" name="order">
+                                        </div>
+                                        <div class="mb-3 form-check form-switch">
+                                          <label class="form-check-label" for="active">Active</label>
+                                          <input class="form-check-input" type="checkbox" id="active" name="active">
+                                        </div>
+                                        <div class="mb-3 form-check form-switch">
+                                          <label class="form-check-label" for="featured">Featured</label>
+                                          <input class="form-check-input" type="checkbox" id="featured" name="featured">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="description">Description</label>
+                                            <textarea class="form-control" id="description" name="description" rows="4"
+                                                placeholder="Textarea content.."></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-outline-info w-100">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop fade show"></div>`;
+                $('#page-container').append(modal);
+                let modalProjectsDetails = $('.modal-projects-details');
+                $('.btn-close').add('.modal-projects-details').on('click', function(e) {
+                    if (e.target != modalProjectsDetails[0] && e.target != $('.btn-close')[0]) {
+                        return;
+                    }
+                    modalProjectsDetails.remove();
+                    $('.modal-backdrop').remove();
+                });
+                modalProjectsDetails.show();
+                $(document).off('submit', '#form-projects').on('submit', '#form-projects', function(e) {
+                    e.preventDefault();
+                    if (!confirm("Are you sure ?")) {
+                        return;
+                    }
+                    let _this = $(this);
+                    let data = _this.serializeArray();
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/api/projects',
+                        data: data,
+                        success: function(response) {
+                            projectsDataTable.ajax.reload(null, false);
+                            get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                        },
+                        error: function (jqXHR, textStatus, errorThrown){
+                            console.log(jqXHR, textStatus, errorThrown);
+                            get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.message, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                        }
+                    });
+                });
             });
         }
         if ($('#services').length) {
