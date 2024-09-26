@@ -3,11 +3,7 @@
 namespace App\Http\Controllers\Admin\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Menu;
 use App\Models\MenuType;
-use App\Models\Project;
-use App\Models\Service;
-use App\Models\Testimonial;
 use App\Models\Visitor;
 use Illuminate\Http\Request;
 
@@ -17,27 +13,6 @@ class CRUDController extends Controller
     {
         try {
             $visitor->update($request->only(["countryName", "countryCode", "regionName", "cityName"]));
-            return ['message' => "Updated Successfully !"];
-        } catch (\Throwable $e) {
-            return response()->json(['message' => $e->getMessage()], 404);
-        }
-    }
-
-    public function updateService(Request $request, Service $service)
-    {
-        try {
-            $order = $request->get('order');
-            if (is_numeric($order)) {
-                $itemToChangeOrderWith = Service::withTrashed()->where('order', $order)->first();
-                if ($itemToChangeOrderWith) {
-                    $itemToChangeOrderWith->order = $service->order;
-                    $itemToChangeOrderWith->update();
-                }
-            }
-
-            $active = $request->has("active") && $request->get("active") === 'on';
-            $request->merge(["active" => $active]);
-            $service->update($request->only(['slug', 'title', 'icon', 'link', 'description', 'active', 'order']));
             return ['message' => "Updated Successfully !"];
         } catch (\Throwable $e) {
             return response()->json(['message' => $e->getMessage()], 404);

@@ -23,7 +23,7 @@ $(function () {
                     { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
                         render: function (data, type, row) {
                             return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
-                        }},
+                    }},
                     { data: 'id', name: 'id', title: 'ID' },
                     { data: 'order', name: 'order', title: 'Order' },
                     { data: 'author', name: 'author', title: 'Author' },
@@ -255,7 +255,7 @@ $(function () {
                     { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
                         render: function (data, type, row) {
                             return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
-                        }},
+                    }},
                     { data: 'id', name: 'id', title: 'ID' },
                     { data: 'order', name: 'order', title: 'Order' },
                     { data: 'role', name: 'role', title: 'Role' ,
@@ -263,7 +263,7 @@ $(function () {
                             var div = document.createElement('div');
                             div.innerHTML = row.role;
                             return div.innerText;
-                        }},
+                    }},
                     { data: 'title', name: 'title', title: 'Title' },
                     { data: 'description', name: 'description', title: 'Description' },
                     { data: 'image', name: 'image', title: 'Image' ,
@@ -285,11 +285,11 @@ $(function () {
                                 dom += '</div>';
                             }
                             return dom;
-                        }},
+                    }},
                     { data: 'featured', name: 'featured', title: 'Featured', className: 'fs-sm', domElement: 'select',
                         render: function (data, type, row) {
                             return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.featured ? 'bg-success' : 'bg-danger' }"></div>`;
-                        }},
+                    }},
                 ]
             };
             let projectsDataTable = configDT(params);
@@ -516,7 +516,7 @@ $(function () {
                 first_time: true,
                 id: '#services',
                 method: 'POST',
-                url: '/api/services',
+                url: '/api/services/list',
                 columns: [
                     { data: 'id', name: 'id', title: 'Actions' ,
                         render: function (data, type, row, params) {
@@ -530,7 +530,7 @@ $(function () {
                     { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
                         render: function (data, type, row) {
                             return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
-                        }},
+                    }},
                     { data: 'id', name: 'id', title: 'ID' },
                     { data: 'order', name: 'order', title: 'Order' },
                     { data: 'slug', name: 'slug', title: 'Slug' },
@@ -555,7 +555,7 @@ $(function () {
                     { data: 'link', name: 'link', title: 'Link' ,
                         render: function (data, type, row) {
                             return `<a href="${row.link}" target="_blank">${row.link}</a>`;
-                        }},
+                    }},
                 ]
             };
             let servicesDataTable = configDT(params);
@@ -564,7 +564,6 @@ $(function () {
                 const $row = $(this).closest('tr');
                 const data = servicesDataTable.row( $row ).data();
                 let dataFilteredCount = servicesDataTable.ajax.json().recordsTotal;
-                let created_at = moment(data.updated_at)
                 let modal = `
         <div class="modal modal-services-details" tabindex="-1">
             <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -621,8 +620,12 @@ $(function () {
                                                 placeholder="Textarea content..">${data.description || ''}</textarea>
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-12 d-flex justify-content-between gap-2 flex-wrap flex-md-nowrap">
                                         <button type="submit" class="btn btn-outline-info w-100">Update</button>
+                                        ${data.deleted_at ?
+                                            '<button type="submit" class="btn btn-outline-secondary w-100" name="restore">Restore</button>'
+                                            : '<button type="submit" class="btn btn-outline-warning w-100" name="delete">Delete</button>'
+                                        }
                                     </div>
                                 </div>
                             </form>
@@ -650,6 +653,8 @@ $(function () {
                     }
                     let _this = $(this);
                     let data = _this.serializeArray();
+                    let action = e.originalEvent.submitter.getAttribute("name");
+                    data.push({name: action, value: true});
                     $.ajax({
                         type: 'PUT',
                         url: `/api/services/${_this.data('services-id')}`,
@@ -665,6 +670,105 @@ $(function () {
                     });
                 });
 
+            });
+
+            $(document).on('click', '.btn-new', function(e) {
+                let dataFilteredCount = servicesDataTable.ajax.json().recordsTotal + 1;
+                let modal = `
+        <div class="modal modal-services-details" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">New Service</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <form id="form-services">
+                                <div class="row">
+                                    <div class="col-12 col-md-8">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="slug">Slug</label>
+                                            <input type="text" class="form-control" id="slug" name="slug">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="title">Title</label>
+                                            <input type="text" class="form-control" id="title" name="title">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="link">Link</label>
+                                            <input type="text" class="form-control" id="link" name="link">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="icon">Icon</label>
+                                            <input type="text" class="form-control" id="icon" name="icon">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="mb-3">
+                                            <div class="img-container"><img class="img-fluid br-5px d-block m-auto" /></div>
+                                        </div>
+                                        <div class="mb-3">
+                                          <label class="form-label" for="order">Order</label>
+                                          <input class="form-control" type="number"
+                                            min="1" max="${dataFilteredCount}" id="order" name="order">
+                                        </div>
+                                        <div class="mb-3 form-check form-switch">
+                                          <label class="form-check-label" for="active">Active</label>
+                                          <input class="form-check-input" type="checkbox" id="active" name="active">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="description">Description</label>
+                                            <textarea class="form-control" id="description" name="description" rows="4"
+                                                placeholder="Content.."></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-outline-info w-100">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop fade show"></div>`;
+                $('#page-container').append(modal);
+                let modalServicesDetails = $('.modal-services-details');
+                $('.btn-close').add('.modal-services-details').on('click', function(e) {
+                    if (e.target != modalServicesDetails[0] && e.target != $('.btn-close')[0]) {
+                        return;
+                    }
+                    modalServicesDetails.remove();
+                    $('.modal-backdrop').remove();
+                });
+                modalServicesDetails.show();
+
+                $(document).off('submit', '#form-services').on('submit', '#form-services', function(e) {
+                    e.preventDefault();
+                    if (!confirm("Are you sure ?")) {
+                        return;
+                    }
+                    let _this = $(this);
+                    let data = _this.serializeArray();
+                    console.log(data);
+                    $.ajax({
+                        type: 'POST',
+                        url: '/api/services',
+                        data: data,
+                        success: function(response) {
+                            servicesDataTable.ajax.reload(null, false);
+                            get_alert_box({class: 'alert-info', message: response.message, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                        },
+                        error: function (jqXHR, textStatus, errorThrown){
+                            console.log(jqXHR, textStatus, errorThrown);
+                            get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.message, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                        }
+                    });
+                });
             });
         }
 
