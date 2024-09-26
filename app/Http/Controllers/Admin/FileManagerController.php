@@ -10,8 +10,7 @@ class FileManagerController extends Controller
 {
     public function index(Request $request)
     {
-        $data = new \stdClass();
-        $data->title = 'Media Manager | Admin Panel';
+        $data = adminPageSetup('Media Manager | Admin Panel');
         return view('admin.pages.file-manager', ['data' => $data]);
     }
 

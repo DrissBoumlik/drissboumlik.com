@@ -13,8 +13,6 @@ use Illuminate\Support\Str;
 class PortfolioController extends Controller
 {
 
-    // todo: implement image,uploading/compressing
-    // todo: check portfolio admin pages, page title
     private MediaService $mediaService;
 
     public function __construct(MediaService $mediaService)

@@ -9,71 +9,61 @@ class PageController extends Controller
 {
     public function messages(Request $request)
     {
-        $data = new \stdClass();
-        $data->title = 'Messages | Admin Panel';
+        $data = adminPageSetup('Messages | Admin Panel');
         return view('admin.pages.messages', ['data' => $data]);
     }
 
     public function subscriptions(Request $request)
     {
-        $data = new \stdClass();
-        $data->title = 'Subscriptions | Admin Panel';
+        $data = adminPageSetup('Subscriptions | Admin Panel');
         return view('admin.pages.subscriptions', ['data' => $data]);
     }
 
     public function testimonials(Request $request)
     {
-        $data = new \stdClass();
-        $data->title = 'Testimonials | Admin Panel';
+        $data = adminPageSetup('Testimonials | Admin Panel');
         return view('admin.pages.testimonials', ['data' => $data]);
     }
 
     public function projects(Request $request)
     {
-        $data = new \stdClass();
-        $data->title = 'Projects | Admin Panel';
+        $data = adminPageSetup('Projects | Admin Panel');
         return view('admin.pages.projects', ['data' => $data]);
     }
 
     public function services(Request $request)
     {
-        $data = new \stdClass();
-        $data->title = 'Services | Admin Panel';
+        $data = adminPageSetup('Services | Admin Panel');
         return view('admin.pages.services', ['data' => $data]);
     }
 
     public function menus(Request $request)
     {
-        $data = new \stdClass();
-        $data->title = 'Menus | Admin Panel';
+        $data = adminPageSetup('Menus | Admin Panel');
         return view('admin.pages.menus', ['data' => $data]);
     }
 
     public function menuTypes(Request $request)
     {
-        $data = new \stdClass();
-        $data->title = 'Menu Types | Admin Panel';
+        $data = adminPageSetup('Menu Types | Admin Panel');
         return view('admin.pages.menu-types', ['data' => $data]);
     }
 
     public function visitors(Request $request)
     {
-        $data = new \stdClass();
-        $data->title = 'Visitors | Admin Panel';
+        $data = adminPageSetup('Visitors | Admin Panel');
         return view('admin.pages.visitors', ['data' => $data]);
     }
 
     public function visitorsCharts(Request $request)
     {
-        $data = new \stdClass();
-        $data->title = 'Charts | Visitors | Admin Panel';
+        $data = adminPageSetup('Charts | Visitors | Admin Panel');
         return view('admin.pages.charts', ['data' => $data]);
     }
 
     public function sitemap(Request $request)
     {
-        $data = new \stdClass();
-        $data->title = 'Sitemaps | Admin Panel';
+        $data = adminPageSetup('Sitemaps | Admin Panel');
         return view('admin.pages.sitemaps', ['data' => $data]);
     }
 }

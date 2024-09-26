@@ -53,8 +53,7 @@ class ToolController extends Controller
 
     public function exportDbConfig(Request $request)
     {
-        $data = new \stdClass();
-        $data->title = 'Export DB | Admin Panel';
+        $data = adminPageSetup('Export DB | Admin Panel');
         $data->tables = \DB::table('information_schema.tables')
             ->select('table_name', 'table_rows')
             ->where('table_schema', \DB::getDatabaseName())

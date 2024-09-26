@@ -10,8 +10,7 @@ class ProfileController extends Controller
 {
     public function profile(Request $request)
     {
-        $data = new \stdClass;
-        $data->title = "Profile | Admin Panel";
+        $data = adminPageSetup('Profile | Admin Panel');
 
         $user = \Auth::user();
         return view('admin.pages.profile', ['data' => $data, 'user' => $user]);
