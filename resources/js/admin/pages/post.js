@@ -1,4 +1,4 @@
-import { initFlatpickr, initSelect2 } from "../../shared/helpers";
+import { initFlatpickr, initSelect2, setUpImagePreviewOnFileInput } from "../../shared/helpers";
 import {getCookie} from "@/shared/functions";
 import {string_to_slug} from "@/admin/functions";
 
@@ -21,18 +21,7 @@ $(function () {
             $('.input-slug').val(postSlug);
         });
 
-        let imageElement = document.getElementById('image')
-        if (imageElement) {
-            imageElement.onchange = (event) => {
-                if (event.target.files.length > 0) {
-                    let src = URL.createObjectURL(event.target.files[0]);
-                    let preview = document.getElementById("image-preview");
-                    preview.src = src;
-
-                    // initImageCropper();
-                }
-            };
-        }
+        setUpImagePreviewOnFileInput('image', 'image-preview');
 
         let viewPostAssetsBtn = $('.btn-view-post-assets')
         if (viewPostAssetsBtn.length) {
