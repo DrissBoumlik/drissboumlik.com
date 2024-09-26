@@ -35,7 +35,7 @@
         <!-- Dynamic Table Responsive -->
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <div class="block-content p-0 d-flex justify-content-between">
+                <div class="block-content p-0 d-flex justify-content-between gap-2">
                     @yield('buttons')
                 </div>
             </div>

@@ -20,8 +20,7 @@
 @endsection
 
 @section('buttons')
-    <button class="btn-refresh btn btn-outline-info">
-        <i class="fa fa-fw fa-refresh me-1"></i>Refresh</button>
+    <button class="btn-refresh btn btn-outline-info w-100"><i class="fa fa-fw fa-refresh me-1"></i>Refresh</button>
 @endsection
 
 @section('list')

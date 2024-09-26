@@ -21,10 +21,8 @@
 @endsection
 
 @section('buttons')
-    <button class="btn-refresh btn btn-outline-info">
-        <i class="fa fa-fw fa-refresh me-1"></i>Refresh</button>
-    <button class="btn btn-outline-warning btn-export">
-        <i class="fa-solid fa-download me-1"></i>Export</button>
+    <button class="btn-refresh btn btn-outline-info w-100"><i class="fa fa-fw fa-refresh me-1"></i>Refresh</button>
+    <button class="btn btn-outline-warning btn-export w-100"><i class="fa-solid fa-download me-1"></i>Export</button>
 @endsection
 
 @section('custom-dom')
