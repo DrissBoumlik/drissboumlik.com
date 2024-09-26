@@ -21,6 +21,7 @@
 
 @section('buttons')
     <button class="btn-refresh btn btn-outline-info"><i class="fa fa-fw fa-refresh me-1"></i>Refresh</button>
+    <a href="/testimonials?forget" target="_blank" class="btn btn-alt-info"><i class="fa fa-fw fa-external-link me-1"></i>View Page</a>
     <button class="btn-new btn btn-success"><i class="fa fa-fw fa-plus me-1"></i>New Testimonial</button>
 @endsection
 
