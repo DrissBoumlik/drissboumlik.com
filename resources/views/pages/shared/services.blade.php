@@ -7,8 +7,8 @@
                 <div class="service-box w-100">
                     <a href="/services#{{ $service->slug }}" >
                     <div class="service-img">
-                        <img src='{{ asset("/" . $service->image->compressed) }}'
-                             data-src='{{ asset("/" . $service->image->original) }}'
+                        <img src='{{ asset("/" . $service->image?->compressed) }}'
+                             data-src='{{ asset("/" . $service->image?->original) }}'
                             width="300" height="300" alt="{{ $service->title }}" class="img-fluid lazyload">
                     </div>
                     <div class="service-title">
