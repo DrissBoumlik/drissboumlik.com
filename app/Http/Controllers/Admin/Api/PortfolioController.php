@@ -6,23 +6,45 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\Service;
 use App\Models\Testimonial;
+use App\Services\MediaService;
 use Illuminate\Http\Request;
 
 class PortfolioController extends Controller
 {
 
+    // todo: implement image,uploading/compressing
+    // todo: check portfolio admin pages, page title
+    private MediaService $mediaService;
+
+    public function __construct(MediaService $mediaService)
+    {
+        $this->mediaService = $mediaService;
+    }
+
     public function storeService(Request $request)
     {
         try {
+            $slug = $request->get('slug');
+            $existingService = Service::where('slug', $slug)->first();
+            if ($existingService) {
+                throw new \Exception("Item with same slug already exists!");
+            }
+
             $order = $request->get('order');
-            $itemToChangeOrderWith = Service::where('order', $order)->first();
-            if ($itemToChangeOrderWith) {
+            $existingService = Service::where('order', $order)->first();
+            if ($existingService) {
                 throw new \Exception("Item with same order already exists!");
             }
 
-            $active = $request->has("active") && $request->get("active") === 'on';
-            $request->merge(["active" => $active]);
-            Service::create($request->only(['slug', 'title', 'icon', 'link', 'description', 'active', 'order']));
+            $data = $request->only(['slug', 'title', 'icon', 'link', 'description', 'active', 'order']);
+            $data['active'] = $request->has("active") && $request->get("active") === 'on';
+
+            $image_file = $request->file('service-image');
+            if ($image_file) {
+                $data['image'] = $this->mediaService->processAsset("portfolio/services/$request->slug", $request->slug, $image_file);
+            }
+
+            Service::create($data);
             return ['message' => "Stored Successfully !"];
         } catch (\Throwable $e) {
             return response()->json(['message' => $e->getMessage()], 404);
@@ -39,6 +61,12 @@ class PortfolioController extends Controller
                 $service->restore();
             }
 
+            $slug = $request->get('slug');
+            $existingService = Service::where('slug', $slug)->first();
+            if ($existingService) {
+                throw new \Exception("Item with same slug already exists!");
+            }
+
             $order = $request->get('order');
             if (is_numeric($order)) {
                 $itemToChangeOrderWith = Service::withTrashed()->where('order', $order)->first();
@@ -48,9 +76,15 @@ class PortfolioController extends Controller
                 }
             }
 
-            $active = $request->has("active") && $request->get("active") === 'on';
-            $request->merge(["active" => $active]);
-            $service->update($request->only(['slug', 'title', 'icon', 'link', 'description', 'active', 'order']));
+            $data = $request->only(['slug', 'title', 'icon', 'link', 'description', 'active', 'order']);
+            $data['active'] = $request->has("active") && $request->get("active") === 'on';
+
+            $image_file = $request->file('service-image');
+            if ($image_file) {
+                $data['image'] = $this->mediaService->processAsset("portfolio/services/$request->slug", $request->slug, $image_file);
+            }
+
+            $service->update($data);
             return ['message' => "Updated Successfully !"];
         } catch (\Throwable $e) {
             return response()->json(['message' => $e->getMessage()], 404);

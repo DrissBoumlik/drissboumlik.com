@@ -1,4 +1,5 @@
 import { get_alert_box } from "../../shared/functions";
+import { setUpImagePreviewOnFileInput } from "../../shared/helpers";
 import { configDT } from "../functions";
 
 $(function () {
@@ -576,7 +577,7 @@ $(function () {
                         <div class="container-fluid">
                             <form id="form-services" data-services-id="${data.id}">
                                 <div class="row">
-                                    <div class="col-12 col-md-8">
+                                    <div class="col-12 col-md-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="slug">Slug</label>
                                             <input type="text" class="form-control" id="slug" name="slug"
@@ -598,10 +599,16 @@ $(function () {
                                                 value="${data.icon || ''}">
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4">
+                                    <div class="col-12 col-md-6">
                                         <div class="mb-3">
-                                            <div class="img-container"><img class="img-fluid br-5px d-block m-auto"
-                                                src="/${data.image?.original}" /></div>
+                                            <label class="form-label" for="service-image">Image</label>
+                                            <input type="file" id="service-image" name="service-image" class="form-control" />
+                                            <div class="mt-2">
+                                                <img id="service-image-preview"
+                                                    class="image-preview img-fluid w-100 br-5px d-block m-auto"
+                                                    src="/${data.image?.original}"
+                                                    alt="photo" width="200" height="100" loading="lazy">
+                                            </div>
                                         </div>
                                         <div class="mb-3">
                                           <label class="form-label" for="order">Order</label>
@@ -616,8 +623,8 @@ $(function () {
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label class="form-label" for="description">Description</label>
-                                            <textarea class="form-control" id="description" name="description" rows="4"
-                                                placeholder="Textarea content..">${data.description || ''}</textarea>
+                                            <textarea class="form-control" id="description"
+                                                name="description" rows="4">${data.description || ''}</textarea>
                                         </div>
                                     </div>
                                     <div class="col-12 d-flex justify-content-between gap-2 flex-wrap flex-md-nowrap">
@@ -636,6 +643,7 @@ $(function () {
         </div>
         <div class="modal-backdrop fade show"></div>`;
                 $('#page-container').append(modal);
+                setUpImagePreviewOnFileInput('service-image', 'service-image-preview');
                 let modalServicesDetails = $('.modal-services-details');
                 $('.btn-close').add('.modal-services-details').on('click', function(e) {
                     if (e.target != modalServicesDetails[0] && e.target != $('.btn-close')[0]) {
@@ -652,13 +660,17 @@ $(function () {
                         return;
                     }
                     let _this = $(this);
-                    let data = _this.serializeArray();
                     let action = e.originalEvent.submitter.getAttribute("name");
-                    data.push({name: action, value: true});
+                    let data = new FormData(this);
+                    data.append('image', $('#service-image')[0].files[0]);
+                    data.append(action, true);
+                    data.append('_method', 'PUT');
                     $.ajax({
-                        type: 'PUT',
+                        type: 'POST',
                         url: `/api/services/${_this.data('services-id')}`,
                         data: data,
+                        contentType: false,
+                        processData: false,
                         success: function(response) {
                             servicesDataTable.ajax.reload(null, false);
                             get_alert_box({class: 'alert-info', message: response.message, icon: '<i class="fa-solid fa-check-circle"></i>'});
@@ -686,7 +698,7 @@ $(function () {
                         <div class="container-fluid">
                             <form id="form-services">
                                 <div class="row">
-                                    <div class="col-12 col-md-8">
+                                    <div class="col-12 col-md-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="slug">Slug</label>
                                             <input type="text" class="form-control" id="slug" name="slug">
@@ -704,9 +716,15 @@ $(function () {
                                             <input type="text" class="form-control" id="icon" name="icon">
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-4">
+                                    <div class="col-12 col-md-6">
                                         <div class="mb-3">
-                                            <div class="img-container"><img class="img-fluid br-5px d-block m-auto" /></div>
+                                            <label class="form-label" for="service-image">Image</label>
+                                            <input type="file" id="service-image" name="service-image" class="form-control" />
+                                            <div class="mt-2">
+                                                <img id="service-image-preview"
+                                                    class="image-preview img-fluid w-100 br-5px d-block m-auto"
+                                                    alt="photo" width="200" height="100" loading="lazy">
+                                            </div>
                                         </div>
                                         <div class="mb-3">
                                           <label class="form-label" for="order">Order</label>
@@ -737,6 +755,7 @@ $(function () {
         </div>
         <div class="modal-backdrop fade show"></div>`;
                 $('#page-container').append(modal);
+                setUpImagePreviewOnFileInput('service-image', 'service-image-preview');
                 let modalServicesDetails = $('.modal-services-details');
                 $('.btn-close').add('.modal-services-details').on('click', function(e) {
                     if (e.target != modalServicesDetails[0] && e.target != $('.btn-close')[0]) {
@@ -753,12 +772,13 @@ $(function () {
                         return;
                     }
                     let _this = $(this);
-                    let data = _this.serializeArray();
-                    console.log(data);
+                    let data = new FormData(this);
                     $.ajax({
                         type: 'POST',
                         url: '/api/services',
                         data: data,
+                        contentType: false,
+                        processData: false,
                         success: function(response) {
                             servicesDataTable.ajax.reload(null, false);
                             get_alert_box({class: 'alert-info', message: response.message, icon: '<i class="fa-solid fa-check-circle"></i>'});
