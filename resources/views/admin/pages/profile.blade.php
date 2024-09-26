@@ -6,7 +6,9 @@
 
 @section('content')
     <!-- Hero -->
-    <div class="bg-image" style="background-image: url('/template/assets/media/photos/photo10@2x.jpg');">
+    <div class="bg-image"
+            style="background-image: url({{ asset('/assets/img/site/homepage-sreenshot.webp') }});
+                    background-position: 0% 0%;">
         <div class="bg-primary-dark-op">
             <div class="content content-full text-center">
                 <div class="my-3">
