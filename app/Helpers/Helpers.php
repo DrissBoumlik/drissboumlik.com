@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\File;
+
 if (!function_exists('generateRandomColor')) {
     function generateRandomColor()
     {
@@ -106,8 +108,8 @@ if (!function_exists('handleGuestView')) {
 
 if (!function_exists('makeDirectory')) {
     function makeDirectory ($path) {
-        if (!\File::isDirectory($path)) {
-            \File::makeDirectory($path);
+        if (!File::isDirectory($path)) {
+            File::makeDirectory($path, recursive: true);
         }
     }
 }
