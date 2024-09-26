@@ -8,6 +8,7 @@ use App\Models\Service;
 use App\Models\Testimonial;
 use App\Services\MediaService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PortfolioController extends Controller
 {
@@ -146,10 +147,18 @@ class PortfolioController extends Controller
                 throw new \Exception("Item with same order already exists!");
             }
 
-            $active = $request->has("active") && $request->get("active") === 'on';
-            $featured = $request->has("featured") && $request->get("featured") === 'on';
-            $request->merge(["active" => $active, 'featured' => $featured]);
-            Project::create($request->only(["role", "title", "description", "featured", "links", "active", "order"]));
+
+            $data = $request->only(["role", "title", "description", "featured", "links", "active", "order"]);
+            $data['active'] = $request->has("active") && $request->get("active") === 'on';
+            $data['featured'] = $request->has("featured") && $request->get("featured") === 'on';
+
+            $slug = Str::slug($request->get('title'));
+            $image_file = $request->file('project-image');
+            if ($image_file) {
+                $data['image'] = $this->mediaService->processAsset("portfolio/projects/$slug", $slug, $image_file);
+            }
+
+            Project::create($data);
             return ['message' => "Stored Successfully !"];
         } catch (\Throwable $e) {
             return response()->json(['message' => $e->getMessage()], 404);
@@ -175,10 +184,17 @@ class PortfolioController extends Controller
                 }
             }
 
-            $active = $request->has("active") && $request->get("active") === 'on';
-            $featured = $request->has("featured") && $request->get("featured") === 'on';
-            $request->merge(["active" => $active, 'featured' => $featured]);
-            $project->update($request->only(["role", "title", "description", "featured", "links", "active", "order"]));
+            $data = $request->only(["role", "title", "description", "featured", "links", "active", "order"]);
+            $data['active'] = $request->has("active") && $request->get("active") === 'on';
+            $data['featured'] = $request->has("featured") && $request->get("featured") === 'on';
+
+            $image_file = $request->file('project-image');
+            if ($image_file) {
+                $slug = Str::slug($request->get('title'));
+                $data['image'] = $this->mediaService->processAsset("portfolio/projects/$slug", $slug, $image_file);
+            }
+
+            $project->update($data);
             return ['message' => "Updated Successfully !"];
         } catch (\Throwable $e) {
             return response()->json(['message' => $e->getMessage()], 404);
