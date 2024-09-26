@@ -209,7 +209,7 @@ $(function () {
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button type="submit" class="btn btn-outline-info w-100">Update</button>
+                                        <button type="submit" class="btn btn-outline-info w-100">Submit</button>
                                     </div>
                                 </div>
                             </form>
