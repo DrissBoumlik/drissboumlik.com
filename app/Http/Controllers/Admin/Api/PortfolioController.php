@@ -102,6 +102,11 @@ class PortfolioController extends Controller
                 $testimonial->restore();
             }
 
+            $author = $request->get('author');
+            if (Testimonial::where('author', $author)->where('id', '!=', $id)->exists()) {
+                throw new \Exception("A testimonial for same author already exists!");
+            }
+
             $order = $request->get('order');
             if (is_numeric($order)) {
                 $itemToChangeOrderWith = Testimonial::where('order', $order)->first();
@@ -111,9 +116,16 @@ class PortfolioController extends Controller
                 }
             }
 
-            $active = $request->has("active") && $request->get("active") === 'on';
-            $request->merge(["active" => $active]);
-            $testimonial->update($request->only(["content", "author", "position", "active", "order"]));
+            $data = $request->only(["content", "author", "position", "active", "order"]);
+            $data['active'] = $request->has("active") && $request->get("active") === 'on';
+
+            $image_file = $request->file('testimonial-image');
+            if ($image_file) {
+                $slug = Str::slug($request->get('author'));
+                $data['image'] = $this->mediaService->processAsset("portfolio/testimonials/$slug", $slug, $image_file);
+            }
+
+            $testimonial->update($data);
             return ['message' => "Updated Successfully !"];
         } catch (\Throwable $e) {
             return response()->json(['message' => $e->getMessage()], 404);
@@ -123,18 +135,29 @@ class PortfolioController extends Controller
     public function storeTestimonial(Request $request)
     {
         try {
-            $order = $request->get('order');
-            $itemToChangeOrderWith = Testimonial::where('order', $order)->first();
-            if ($itemToChangeOrderWith) {
-                throw new \Exception("Item with same order already exists!");
+            $author = $request->get('author');
+            if (Testimonial::where('author', $author)->exists()) {
+                throw new \Exception("A testimonial for same author already exists!");
             }
 
-            $active = $request->has("active") && $request->get("active") === 'on';
-            $request->merge(["active" => $active]);
-            Testimonial::create($request->only(["content", "author", "position", "active", "order"]));
+            $order = $request->get('order');
+            if (Testimonial::where('order', $order)->exists()) {
+                throw new \Exception("A testimonial with same order already exists!");
+            }
+
+            $data = $request->only(["content", "author", "position", "active", "order"]);
+            $data['active'] = $request->has("active") && $request->get("active") === 'on';
+
+            $image_file = $request->file('testimonial-image');
+            if ($image_file) {
+                $slug = Str::slug($request->get('author'));
+                $data['image'] = $this->mediaService->processAsset("portfolio/testimonials/$slug", $slug, $image_file);
+            }
+
+            Testimonial::create($data);
             return ['message' => "Stored Successfully !"];
         } catch (\Throwable $e) {
-            return response()->json(['message' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage(), "line" => $e->getLine()], 404);
         }
     }
 
@@ -146,7 +169,6 @@ class PortfolioController extends Controller
             if ($itemToChangeOrderWith) {
                 throw new \Exception("Item with same order already exists!");
             }
-
 
             $data = $request->only(["role", "title", "description", "featured", "links", "active", "order"]);
             $data['active'] = $request->has("active") && $request->get("active") === 'on';
