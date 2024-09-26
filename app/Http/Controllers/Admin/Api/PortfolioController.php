@@ -28,13 +28,13 @@ class PortfolioController extends Controller
             $slug = $request->get('slug');
             $existingService = Service::where('slug', $slug)->first();
             if ($existingService) {
-                throw new \Exception("Item with same slug already exists!");
+                throw new \Exception("A service with same slug already exists!");
             }
 
             $order = $request->get('order');
             $existingService = Service::where('order', $order)->first();
             if ($existingService) {
-                throw new \Exception("Item with same order already exists!");
+                throw new \Exception("A service with same order already exists!");
             }
 
             $data = $request->only(['slug', 'title', 'icon', 'link', 'description', 'active', 'order']);
@@ -65,7 +65,7 @@ class PortfolioController extends Controller
             $slug = $request->get('slug');
             $existingService = Service::where('slug', $slug)->first();
             if ($existingService) {
-                throw new \Exception("Item with same slug already exists!");
+                throw new \Exception("A service with same slug already exists!");
             }
 
             $order = $request->get('order');
@@ -164,10 +164,15 @@ class PortfolioController extends Controller
     public function storeProject(Request $request)
     {
         try {
+            $title = $request->get('title');
+            if (Project::where('title', $title)->exists()) {
+                throw new \Exception("A project with same title already exists!");
+            }
+
             $order = $request->get('order');
             $itemToChangeOrderWith = Project::where('order', $order)->first();
             if ($itemToChangeOrderWith) {
-                throw new \Exception("Item with same order already exists!");
+                throw new \Exception("A project with same order already exists!");
             }
 
             $data = $request->only(["role", "title", "description", "featured", "links", "active", "order"]);
@@ -195,6 +200,11 @@ class PortfolioController extends Controller
                 return $this->destroy($project, $request);
             } elseif ($request->has('restore')) {
                 $project->restore();
+            }
+
+            $title = $request->get('title');
+            if (Testimonial::where('title', $title)->where('id', '!=', $id)->exists()) {
+                throw new \Exception("A project with same title already exists!");
             }
 
             $order = $request->get('order');
