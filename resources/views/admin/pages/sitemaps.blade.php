@@ -46,24 +46,20 @@
         <div class="block block-rounded">
             <div class="block-header block-header-default">
                 <div class="block-content p-0 d-flex justify-content-between">
-                    <a onclick="location.reload(true);;" class="btn btn-outline-info">
+                    <a onclick="location.reload(true);;" class="btn btn-outline-info w-100">
                         <i class="fa fa-fw fa-redo me-1"></i>Reload</a>
                 </div>
             </div>
             <div class="block-content block-content-full">
                 <div class="container-fluid">
-                    <div class="row row-gap-2 sitemap">
-                        <div class="col-12 col-md-6">
-                            <div class="view-sitemaps-archive">
-                                <a class="btn btn-alt-secondary w-100 h-100px d-flex justify-content-center align-items-center" href="/admin/media-manager/storage/sitemap-archive">
-                                    <i class="fa fa-fw fa-eye me-2"></i>View sitemaps archive</a>
-                            </div>
+                    <div class="sitemap d-flex justify-content-center gap-4 flex-wrap flex-md-nowrap">
+                        <div class="view-sitemaps-archive w-100">
+                            <a class="btn btn-alt-secondary w-100 h-100px d-flex justify-content-center align-items-center" href="/admin/media-manager/storage/sitemap-archive">
+                                <i class="fa fa-fw fa-eye me-2"></i>View sitemaps archive</a>
                         </div>
-                        <div class="col-12 col-md-6">
-                            <div class="generate-sitemap">
-                                <a class="btn btn-alt-primary w-100 h-100px d-flex justify-content-center align-items-center" href="/admin/generate-sitemap"
-                                    target="_blank"><i class="fa fa-fw fa-sitemap me-2"></i>Generate Sitemap</a>
-                            </div>
+                        <div class="generate-sitemap w-100">
+                            <a class="btn btn-alt-primary w-100 h-100px d-flex justify-content-center align-items-center" href="/admin/generate-sitemap"
+                                target="_blank"><i class="fa fa-fw fa-sitemap me-2"></i>Generate Sitemap</a>
                         </div>
                     </div>
                 </div>

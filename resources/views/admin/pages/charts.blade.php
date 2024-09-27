@@ -49,28 +49,30 @@
         <div class="block block-rounded">
             <div class="block-content block-content-full p-md-3 py-2 px-1">
                 <div class="container-fluid charts">
-                    <div class="row chart-section py-3 px-1">
+                    <div class="chart-section row py-3 px-1">
                         <h3>Stats by Field</h3>
-                        <div class="column-selection col-6">
-                            <label class="form-label" for="columns-list">Select column</label>
-                            <select class="form-select" name="columns-list" id="columns-list"></select>
-                        </div>
-                        <div class="page-selection col-6">
-                            <label class="form-label" for="pages-list">Select Page</label>
-                            <select class="form-select" name="pages-list" id="pages-list"></select>
-                        </div>
-                        <div class="perpage-selection col-6 mt-3">
-                            <label class="form-label" for="perpage-list">Select Per Page</label>
-                            <select class="form-select" name="perpage-list" id="perpage-list">
-                                <option value="10">10</option>
-                                <option value="20" selected>20</option>
-                                <option value="30">30</option>
-                                <option value="40">40</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                                <option value="150">150</option>
-                                <option value="200">200</option>
-                            </select>
+                        <div class="chart-options">
+                            <div class="chart-option column-selection">
+                                <label class="form-label" for="columns-list">Select column</label>
+                                <select class="form-select" name="columns-list" id="columns-list"></select>
+                            </div>
+                            <div class="chart-option page-selection">
+                                <label class="form-label" for="pages-list">Select Page</label>
+                                <select class="form-select" name="pages-list" id="pages-list"></select>
+                            </div>
+                            <div class="chart-option perpage-selection">
+                                <label class="form-label" for="perpage-list">Select Per Page</label>
+                                <select class="form-select" name="perpage-list" id="perpage-list">
+                                    <option value="10">10</option>
+                                    <option value="20" selected>20</option>
+                                    <option value="30">30</option>
+                                    <option value="40">40</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                    <option value="150">150</option>
+                                    <option value="200">200</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-12 mt-4">
                             <div class="chart-container"><canvas id="myChart"></canvas></div>
@@ -78,34 +80,36 @@
                     </div>
                     <div class="row chart-section py-3 px-1">
                         <h3>Stats by Year</h3>
-                        <div class="column-selection col-6">
-                            <label class="form-label" for="columns-list2">Select column</label>
-                            <select class="form-select" name="columns-list2" id="columns-list2"></select>
-                        </div>
-                        <div class="year-selection col-6">
-                            <label class="form-label" for="years-list2">Select Year</label>
-                            <select class="form-select" name="years-list2" id="years-list2">
-                                @for($year = 2022; $year <= 2030; $year++)
-                                <option value="{{ $year }}" {{ now()->year === $year ? 'selected' : ''}}>{{ $year }}</option>
-                                @endfor
-                            </select>
-                        </div>
-                        <div class="page-selection col-6 mt-3">
-                            <label class="form-label" for="pages-list2">Select Page</label>
-                            <select class="form-select" name="pages-list2" id="pages-list2"></select>
-                        </div>
-                        <div class="perpage-selection col-6 mt-3">
-                            <label class="form-label" for="perpage-list2">Select Per Page</label>
-                            <select class="form-select" name="perpage-list2" id="perpage-list2">
-                                <option value="10">10</option>
-                                <option value="20" selected>20</option>
-                                <option value="30">30</option>
-                                <option value="40">40</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                                <option value="150">150</option>
-                                <option value="200">200</option>
-                            </select>
+                        <div class="chart-options">
+                            <div class="chart-option column-selection">
+                                <label class="form-label" for="columns-list2">Select column</label>
+                                <select class="form-select" name="columns-list2" id="columns-list2"></select>
+                            </div>
+                            <div class="chart-option year-selection">
+                                <label class="form-label" for="years-list2">Select Year</label>
+                                <select class="form-select" name="years-list2" id="years-list2">
+                                    @for($year = 2022; $year <= 2030; $year++)
+                                        <option value="{{ $year }}" {{ now()->year === $year ? 'selected' : ''}}>{{ $year }}</option>
+                                    @endfor
+                                </select>
+                            </div>
+                            <div class="chart-option page-selection">
+                                <label class="form-label" for="pages-list2">Select Page</label>
+                                <select class="form-select" name="pages-list2" id="pages-list2"></select>
+                            </div>
+                            <div class="chart-option perpage-selection">
+                                <label class="form-label" for="perpage-list2">Select Per Page</label>
+                                <select class="form-select" name="perpage-list2" id="perpage-list2">
+                                    <option value="10">10</option>
+                                    <option value="20" selected>20</option>
+                                    <option value="30">30</option>
+                                    <option value="40">40</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                    <option value="150">150</option>
+                                    <option value="200">200</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-12 mt-4">
                             <div class="chart-container"><canvas id="myChart2"></canvas></div>
