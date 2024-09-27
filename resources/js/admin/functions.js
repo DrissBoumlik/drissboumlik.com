@@ -207,8 +207,27 @@ function configDT(params) {
     $('.btn-refresh').on('click', function (e) {
         table.ajax.reload(null, false);
     });
+    $(document).on('click', '.btn-clear', function (e) {
+        clearDtSearchInput('search-row', table);
+    });
     return table;
 }
 
+function clearDtSearchInput(searchElementID, table) {
+    const searchRow = document.getElementById(searchElementID);
 
-export { initDarkMode, initAjaxEvents, shortenTextIfLongByLength, getDomClass, string_to_slug, configDT };
+    const inputs = searchRow.querySelectorAll('input');
+    const selects = searchRow.querySelectorAll('select');
+
+    inputs.forEach(input => {
+        input.value = '';
+    });
+
+    selects.forEach(select => {
+        select.selectedIndex = 0; // Resets to the first option
+    });
+
+    table.columns().search( '' ).draw();
+}
+
+export { initDarkMode, initAjaxEvents, shortenTextIfLongByLength, getDomClass, string_to_slug, configDT, clearDtSearchInput };
