@@ -24,6 +24,14 @@
     <button class="btn-new btn btn-success w-100"><i class="fa fa-fw fa-plus me-1"></i>New Menu Item</button>
 @endsection
 
+@section('custom-dom')
+    <div class="block-content block-content-full">
+        <label class="form-label" for="menu-types-items">Menu Types</label>
+        <select class="form-select" id="menu-types-items">
+        </select>
+    </div>
+@endsection
+
 @section('list')
     <table id="menus" class="menus table table-bordered table-striped table-vcenter js-dataTable-responsive"></table>
 @endsection

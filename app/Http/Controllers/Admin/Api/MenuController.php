@@ -12,7 +12,10 @@ class MenuController extends Controller
     {
         try {
             $order = $request->get('order');
-            $itemToChangeOrderWith = Menu::where('order', $order)->first();
+            $menu_type_id = $request->get('menu_type_id');
+            $itemToChangeOrderWith = Menu::where('order', $order)
+                                            ->where('menu_type_id', $menu_type_id)
+                                            ->exists();
             if ($itemToChangeOrderWith) {
                 throw new \Exception("Item with same order already exists!");
             }

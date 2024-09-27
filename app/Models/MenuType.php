@@ -15,7 +15,7 @@ class MenuType extends Model
 
     public function menus()
     {
-        return $this->hasMany(Menu::class);
+        return $this->hasMany(Menu::class)->withTrashed();
     }
 
 }

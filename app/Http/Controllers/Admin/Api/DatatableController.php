@@ -85,6 +85,12 @@ class DatatableController extends Controller
     {
         $menus = Menu::join('menu_types', 'menu_types.id', '=', 'menus.menu_type_id')
                     ->select('menus.*', 'menu_types.name as type_name');
+
+        $menu_type = $request->get('menu_type');
+        if ($menu_type) {
+            $menus = $menus->where('menu_type_id', $menu_type);
+        }
+
         $is_first_time = $request->has('first_time');
         if ($is_first_time) {
             $menus = $menus

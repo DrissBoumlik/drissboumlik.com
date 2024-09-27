@@ -64,6 +64,11 @@ function getDomClass(status) {
 }
 
 function configDT(params) {
+
+    if ( $.fn.DataTable.isDataTable(params.id) ) {
+        $(params.id).DataTable().destroy();
+    }
+
     let table = new DataTable(params.id, {
         pageLength: 50,
         lengthMenu: [5, 10, 25, 50, 75, 100, 200],
@@ -101,6 +106,11 @@ function configDT(params) {
             type: params.method,
             url: params.url,
             data: function(data) {
+                if ( params.data ) {
+                    for (const dataKey in params.data) {
+                        data[dataKey] = params.data[dataKey];
+                    }
+                }
                 data._token = $('meta[name="csrf-token"]').attr('content');
                 data.first_time = params.first_time;
             }
@@ -117,6 +127,7 @@ function configDT(params) {
             if (params.onComplete) {
                 params.onComplete(settings, json);
             }
+            $('#search-row').remove();
             this.find('thead').prepend('<tr id="search-row" class="search-row"></tr>');
             this.api().columns().every(function (index) {
                 let column = this;
@@ -154,13 +165,13 @@ function configDT(params) {
                     items.forEach(function(item) {
                         domSelectOptions += `<option value="${item[currentColumn.data]}">${item[currentColumn.optionTextField || currentColumn.data]}</option>`;
                     });
-                    let headerSearchItem = `<th><select id="${dataTitle}" title="${title}"
+                    let headerSearchItem = `<th><select id="${dataTitle}-dt-search" title="${title}"
                                                             placeholder="${title}" type="search"
                                                             style="min-width: 100px"
                                                             class="form-control form-control-sm text-center"
                                                             >${domSelectOptions}</select></th>`;
                     $('#search-row').append(headerSearchItem);
-                    let select = document.getElementById(dataTitle);
+                    let select = document.getElementById(`${dataTitle}-dt-search`);
                     // Event listener for user input
                     let start = undefined;
                     select.addEventListener('change', (e) => {
@@ -172,12 +183,12 @@ function configDT(params) {
                         }, 1000 );
                     });
                 } else {
-                    let headerSearchItem = `<th><input id="${dataTitle}" title="${title}"
+                    let headerSearchItem = `<th><input id="${dataTitle}-dt-search" title="${title}"
                                                             placeholder="${title}" type="search"
                                                             style="min-width: 100px"
                                                             class="form-control form-control-sm text-center"></th>`;
                     $('#search-row').append(headerSearchItem);
-                    let input = document.getElementById(dataTitle);
+                    let input = document.getElementById(`${dataTitle}-dt-search`);
 
                     // Event listener for user input
                     let start = undefined;
