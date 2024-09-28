@@ -80,7 +80,7 @@ $(function () {
                                             <div class="mt-2">
                                                 <img id="testimonial-image-preview"
                                                     class="image-preview img-fluid w-100 br-5px d-block m-auto"
-                                                    src="/${data.image?.original}"
+                                                    src="/${data.image?.original || 'assets/img/default/missing.webp'}"
                                                     alt="photo" width="200" height="100" loading="lazy">
                                             </div>
                                         </div>
@@ -187,6 +187,7 @@ $(function () {
                                             <input type="file" id="testimonial-image" name="testimonial-image" class="form-control" />
                                             <div class="mt-2">
                                                 <img id="testimonial-image-preview"
+                                                    src="/assets/img/default/landscape.webp"
                                                     class="image-preview img-fluid w-100 br-5px d-block m-auto"
                                                     alt="photo" width="200" height="100" loading="lazy">
                                             </div>
@@ -358,7 +359,7 @@ $(function () {
                                             <div class="mt-2">
                                                 <img id="project-image-preview"
                                                     class="image-preview img-fluid w-100 br-5px d-block m-auto"
-                                                    src="/${data.image?.original}"
+                                                    src="/${data.image?.original || 'assets/img/default/missing.webp'}"
                                                     alt="photo" width="200" height="100" loading="lazy">
                                             </div>
                                         </div>
@@ -477,6 +478,7 @@ $(function () {
                                             <input type="file" id="project-image" name="project-image" class="form-control" />
                                             <div class="mt-2">
                                                 <img id="project-image-preview"
+                                                    src="/assets/img/default/landscape.webp"
                                                     class="image-preview img-fluid w-100 br-5px d-block m-auto"
                                                     alt="photo" width="200" height="100" loading="lazy">
                                             </div>
@@ -644,7 +646,7 @@ $(function () {
                                             <div class="mt-2">
                                                 <img id="service-image-preview"
                                                     class="image-preview img-fluid w-100 br-5px d-block m-auto"
-                                                    src="/${data.image?.original}"
+                                                    src="/${data.image?.original || 'assets/img/default/missing.webp'}"
                                                     alt="photo" width="200" height="100" loading="lazy">
                                             </div>
                                         </div>
@@ -760,6 +762,7 @@ $(function () {
                                             <input type="file" id="service-image" name="service-image" class="form-control" />
                                             <div class="mt-2">
                                                 <img id="service-image-preview"
+                                                    src="/assets/img/default/landscape.webp"
                                                     class="image-preview img-fluid w-100 br-5px d-block m-auto"
                                                     alt="photo" width="200" height="100" loading="lazy">
                                             </div>
