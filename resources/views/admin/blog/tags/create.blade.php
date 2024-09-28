@@ -66,7 +66,9 @@
                                 <label class="form-label" for="image">Image</label>
                                 <input type="file" id="image" name="cover" class="form-control" />
                                 <div class="mt-2">
-                                    <img id="image-preview" class="img-fluid image-preview" src="{{ asset('/assets/img/blog/default-tag.webp') }}" alt="photo" width="200" height="100" loading="lazy">
+                                    <img id="image-preview" class="img-fluid image-preview w-100"
+                                         src="{{ asset('/assets/img/default/landscape.webp') }}"
+                                         alt="photo" width="200" height="100" loading="lazy">
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between">
