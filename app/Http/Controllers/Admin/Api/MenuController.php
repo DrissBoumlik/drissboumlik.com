@@ -11,18 +11,28 @@ class MenuController extends Controller
     public function storeMenu(Request $request)
     {
         try {
-            $order = $request->get('order');
-            $menu_type_id = $request->get('menu_type_id');
-            $itemToChangeOrderWith = Menu::where('order', $order)
-                                            ->where('menu_type_id', $menu_type_id)
-                                            ->exists();
-            if ($itemToChangeOrderWith) {
-                throw new \Exception("Item with same order already exists!");
-            }
+
+            $request->validate([
+                "menu_type_id"  => "required|integer|exists:menu_types,id",
+                "slug"          => "required|unique:services,slug",
+                "title"         => "required|string",
+                "text"          => "required|string",
+                "target"        => "required|string|in:_self,_blank",
+                "link"          => "required|string",
+                "icon"          => "required|string",
+                "order"         => ["required", "integer", "min:1",
+                    function ($attribute, $value, $fail) use ($request) {
+                        if (Menu::where($attribute, $value)
+                            ->where('menu_type_id', $request->get('menu_type_id'))
+                            ->exists()) {
+                            $fail('The order must be unique for the specified menu type.');
+                        }
+                    },
+                ],
+            ]);
 
             $active = $request->has("active") && $request->get("active") === 'on';
             $request->merge(["active" => $active]);
-            $request->merge(["menu_type_id" => $request->get('menu-type')]);
             Menu::create($request->only(['text', 'title', 'slug', 'target', 'link', 'icon', 'menu_type_id', 'active', 'order']));
             return ['message' => "Stored Successfully !"];
         } catch (\Throwable $e) {
@@ -41,11 +51,22 @@ class MenuController extends Controller
                 $menu->restore();
             }
 
+            $request->validate([
+                "menu_type_id"  => "nullable|integer|exists:menu_types,id",
+                "slug"          => "nullable|unique:services,slug",
+                "title"         => "nullable|string",
+                "text"          => "nullable|string",
+                "target"        => "nullable|string|in:_self,_blank",
+                "link"          => "nullable|string",
+                "icon"          => "nullable|string",
+                "order"         => "nullable|integer|min:1",
+            ]);
+
             $order = $request->get('order');
-            $menu_type_id = $request->get('menu_type');
-            if (is_numeric($order)) {
+            if ($order) {
+                $menu_type_id = $request->get('menu_type_id') ?? $menu->menu_type_id;
                 $itemToChangeOrderWith = Menu::withTrashed()->where('order', $order)
-                    ->where('menu_type_id', $menu_type_id)->first();
+                                                        ->where('menu_type_id', $menu_type_id)->first();
                 if ($itemToChangeOrderWith) {
                     $itemToChangeOrderWith->order = $menu->order;
                     $itemToChangeOrderWith->update();
@@ -54,7 +75,6 @@ class MenuController extends Controller
 
             $active = $request->has("active") && $request->get("active") === 'on';
             $request->merge(["active" => $active]);
-            $request->merge(["menu_type_id" => $request->get('menu-type')]);
             $menu->update($request->only(['text', 'title', 'slug', 'target', 'link', 'icon', 'menu_type_id', 'active', 'order']));
             return ['message' => "Updated Successfully !"];
         } catch (\Throwable $e) {

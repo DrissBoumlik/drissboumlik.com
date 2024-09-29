@@ -26,12 +26,12 @@ class PortfolioController extends Controller
         try {
 
             $request->validate([
-                "slug" => "required|unique:services,slug",
-                "title" => "required|string",
-                "link" => "required|string",
-                "icon" => "required|string",
-                "order" => "required|integer|min:1|unique:services,order",
-                "description" => "required|string",
+                "slug"          => "required|unique:services,slug",
+                "title"         => "required|string",
+                "link"          => "required|string",
+                "icon"          => "required|string",
+                "order"         => "required|integer|min:1|unique:services,order",
+                "description"   => "required|string",
             ]);
 
             $data = $request->only(['slug', 'title', 'icon', 'link', 'description', 'active', 'order']);
@@ -60,12 +60,12 @@ class PortfolioController extends Controller
             }
 
             $request->validate([
-                "slug" => ["nullable", "string", Rule::unique('services')->ignore($id)],
-                "title" => "nullable|string",
-                "link" => "nullable|string",
-                "icon" => "nullable|string",
-                "order" => "required|integer|min:1",
-                "description" => "nullable|string",
+                "slug"          => ["nullable", "string", Rule::unique('services')->ignore($id)],
+                "title"         => "nullable|string",
+                "link"          => "nullable|string",
+                "icon"          => "nullable|string",
+                "order"         => "required|integer|min:1",
+                "description"   => "nullable|string",
             ]);
 
             $order = $request->get('order');
@@ -102,10 +102,10 @@ class PortfolioController extends Controller
             }
 
             $request->validate([
-                "author" => ["nullable", "string", Rule::unique('testimonials')->ignore($id)],
-                "content" => "nullable|string",
-                "position" => "nullable|string",
-                "order" => "required|integer|min:1",
+                "author"    => ["nullable", "string", Rule::unique('testimonials')->ignore($id)],
+                "content"   => "nullable|string",
+                "position"  => "nullable|string",
+                "order"     => "required|integer|min:1",
             ]);
 
             $order = $request->get('order');
@@ -135,10 +135,10 @@ class PortfolioController extends Controller
     {
         try {
             $request->validate([
-                "author" => "required|string|unique:testimonials,author",
-                "content" => "required|string",
-                "position" => "required|string",
-                "order" => "required|integer|min:1|unique:testimonials,order",
+                "author"    => "required|string|unique:testimonials,author",
+                "content"   => "required|string",
+                "position"  => "required|string",
+                "order"     => "required|integer|min:1|unique:testimonials,order",
             ]);
 
             $data = $request->only(["content", "author", "position", "active", "order"]);
@@ -162,11 +162,11 @@ class PortfolioController extends Controller
         try {
 
             $request->validate([
-                "title" => "required|string|unique:projects,title",
-                "role" => "required|string",
-                "description" => "required|string",
-                "links" => "required|array",
-                "order" => "required|integer|min:1|unique:testimonials,order",
+                "title"         => "required|string|unique:projects,title",
+                "role"          => "required|string",
+                "description"   => "required|string",
+                "links"         => "required|array",
+                "order"         => "required|integer|min:1|unique:testimonials,order",
             ]);
 
             $data = $request->only(["role", "title", "description", "featured", "links", "active", "order"]);
@@ -197,11 +197,11 @@ class PortfolioController extends Controller
             }
 
             $request->validate([
-                "title" => ["nullable", "string", Rule::unique('projects')->ignore($id)],
-                "role" => "nullable|string",
-                "description" => "nullable|string",
-                "links" => "nullable|array",
-                "order" => "required|integer|min:1",
+                "title"         => ["nullable", "string", Rule::unique('projects')->ignore($id)],
+                "role"          => "nullable|string",
+                "description"   => "nullable|string",
+                "links"         => "nullable|array",
+                "order"         => "required|integer|min:1",
             ]);
 
             $order = $request->get('order');
