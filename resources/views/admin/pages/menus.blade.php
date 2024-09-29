@@ -30,6 +30,7 @@
         <label class="form-label" for="menu-types-items">Menu Types</label>
         <select class="form-select" id="menu-types-items">
         </select>
+        <button class="btn-refresh-menu-types-select btn btn-outline-info w-100 mt-2"><i class="fa fa-fw fa-refresh me-1"></i>Reload Menu Types</button>
     </div>
 @endsection
 
