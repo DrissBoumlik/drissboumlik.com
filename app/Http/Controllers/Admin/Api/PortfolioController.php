@@ -9,6 +9,7 @@ use App\Models\Testimonial;
 use App\Services\MediaService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class PortfolioController extends Controller
 {
@@ -23,17 +24,15 @@ class PortfolioController extends Controller
     public function storeService(Request $request)
     {
         try {
-            $slug = $request->get('slug');
-            $existingService = Service::where('slug', $slug)->first();
-            if ($existingService) {
-                throw new \Exception("A service with same slug already exists!");
-            }
 
-            $order = $request->get('order');
-            $existingService = Service::where('order', $order)->first();
-            if ($existingService) {
-                throw new \Exception("A service with same order already exists!");
-            }
+            $request->validate([
+                "slug" => "required|unique:services,slug",
+                "title" => "required|string",
+                "link" => "required|string",
+                "icon" => "required|string",
+                "order" => "required|integer|min:1|unique:services,order",
+                "description" => "required|string",
+            ]);
 
             $data = $request->only(['slug', 'title', 'icon', 'link', 'description', 'active', 'order']);
             $data['active'] = $request->has("active") && $request->get("active") === 'on';
@@ -60,19 +59,20 @@ class PortfolioController extends Controller
                 $service->restore();
             }
 
-            $slug = $request->get('slug');
-            $existingService = Service::where('slug', $slug)->first();
-            if ($existingService) {
-                throw new \Exception("A service with same slug already exists!");
-            }
+            $request->validate([
+                "slug" => ["nullable", "string", Rule::unique('services')->ignore($id)],
+                "title" => "nullable|string",
+                "link" => "nullable|string",
+                "icon" => "nullable|string",
+                "order" => "required|integer|min:1",
+                "description" => "nullable|string",
+            ]);
 
             $order = $request->get('order');
-            if (is_numeric($order)) {
-                $itemToChangeOrderWith = Service::withTrashed()->where('order', $order)->first();
-                if ($itemToChangeOrderWith) {
-                    $itemToChangeOrderWith->order = $service->order;
-                    $itemToChangeOrderWith->update();
-                }
+            $itemToChangeOrderWith = Service::withTrashed()->where('order', $order)->first();
+            if ($itemToChangeOrderWith) {
+                $itemToChangeOrderWith->order = $service->order;
+                $itemToChangeOrderWith->update();
             }
 
             $data = $request->only(['slug', 'title', 'icon', 'link', 'description', 'active', 'order']);
@@ -80,7 +80,8 @@ class PortfolioController extends Controller
 
             $image_file = $request->file('service-image');
             if ($image_file) {
-                $data['image'] = $this->mediaService->processAsset("portfolio/services/$request->slug", $request->slug, $image_file);
+                $slug = $request->get('slug') ?? $service->slug;
+                $data['image'] = $this->mediaService->processAsset("portfolio/services/$slug", $slug, $image_file);
             }
 
             $service->update($data);
@@ -100,18 +101,18 @@ class PortfolioController extends Controller
                 $testimonial->restore();
             }
 
-            $author = $request->get('author');
-            if (Testimonial::where('author', $author)->where('id', '!=', $id)->exists()) {
-                throw new \Exception("A testimonial for same author already exists!");
-            }
+            $request->validate([
+                "author" => ["nullable", "string", Rule::unique('testimonials')->ignore($id)],
+                "content" => "nullable|string",
+                "position" => "nullable|string",
+                "order" => "required|integer|min:1",
+            ]);
 
             $order = $request->get('order');
-            if (is_numeric($order)) {
-                $itemToChangeOrderWith = Testimonial::where('order', $order)->first();
-                if ($itemToChangeOrderWith) {
-                    $itemToChangeOrderWith->order = $testimonial->order;
-                    $itemToChangeOrderWith->update();
-                }
+            $itemToChangeOrderWith = Testimonial::where('order', $order)->first();
+            if ($itemToChangeOrderWith) {
+                $itemToChangeOrderWith->order = $testimonial->order;
+                $itemToChangeOrderWith->update();
             }
 
             $data = $request->only(["content", "author", "position", "active", "order"]);
@@ -119,7 +120,7 @@ class PortfolioController extends Controller
 
             $image_file = $request->file('testimonial-image');
             if ($image_file) {
-                $slug = Str::slug($request->get('author'));
+                $slug = Str::slug($request->get('author') ?? $testimonial->author);
                 $data['image'] = $this->mediaService->processAsset("portfolio/testimonials/$slug", $slug, $image_file);
             }
 
@@ -133,15 +134,12 @@ class PortfolioController extends Controller
     public function storeTestimonial(Request $request)
     {
         try {
-            $author = $request->get('author');
-            if (Testimonial::where('author', $author)->exists()) {
-                throw new \Exception("A testimonial for same author already exists!");
-            }
-
-            $order = $request->get('order');
-            if (Testimonial::where('order', $order)->exists()) {
-                throw new \Exception("A testimonial with same order already exists!");
-            }
+            $request->validate([
+                "author" => "required|string|unique:testimonials,author",
+                "content" => "required|string",
+                "position" => "required|string",
+                "order" => "required|integer|min:1|unique:testimonials,order",
+            ]);
 
             $data = $request->only(["content", "author", "position", "active", "order"]);
             $data['active'] = $request->has("active") && $request->get("active") === 'on';
@@ -162,24 +160,22 @@ class PortfolioController extends Controller
     public function storeProject(Request $request)
     {
         try {
-            $title = $request->get('title');
-            if (Project::where('title', $title)->exists()) {
-                throw new \Exception("A project with same title already exists!");
-            }
 
-            $order = $request->get('order');
-            $itemToChangeOrderWith = Project::where('order', $order)->first();
-            if ($itemToChangeOrderWith) {
-                throw new \Exception("A project with same order already exists!");
-            }
+            $request->validate([
+                "title" => "required|string|unique:projects,title",
+                "role" => "required|string",
+                "description" => "required|string",
+                "links" => "required|array",
+                "order" => "required|integer|min:1|unique:testimonials,order",
+            ]);
 
             $data = $request->only(["role", "title", "description", "featured", "links", "active", "order"]);
             $data['active'] = $request->has("active") && $request->get("active") === 'on';
             $data['featured'] = $request->has("featured") && $request->get("featured") === 'on';
 
-            $slug = Str::slug($request->get('title'));
             $image_file = $request->file('project-image');
             if ($image_file) {
+                $slug = Str::slug($request->get('title'));
                 $data['image'] = $this->mediaService->processAsset("portfolio/projects/$slug", $slug, $image_file);
             }
 
@@ -200,18 +196,19 @@ class PortfolioController extends Controller
                 $project->restore();
             }
 
-            $title = $request->get('title');
-            if (Testimonial::where('title', $title)->where('id', '!=', $id)->exists()) {
-                throw new \Exception("A project with same title already exists!");
-            }
+            $request->validate([
+                "title" => ["nullable", "string", Rule::unique('projects')->ignore($id)],
+                "role" => "nullable|string",
+                "description" => "nullable|string",
+                "links" => "nullable|array",
+                "order" => "required|integer|min:1",
+            ]);
 
             $order = $request->get('order');
-            if (is_numeric($order)) {
-                $itemToChangeOrderWith = Project::where('order', $order)->first();
-                if ($itemToChangeOrderWith) {
-                    $itemToChangeOrderWith->order = $project->order;
-                    $itemToChangeOrderWith->update();
-                }
+            $itemToChangeOrderWith = Project::where('order', $order)->first();
+            if ($itemToChangeOrderWith) {
+                $itemToChangeOrderWith->order = $project->order;
+                $itemToChangeOrderWith->update();
             }
 
             $data = $request->only(["role", "title", "description", "featured", "links", "active", "order"]);
@@ -220,7 +217,7 @@ class PortfolioController extends Controller
 
             $image_file = $request->file('project-image');
             if ($image_file) {
-                $slug = Str::slug($request->get('title'));
+                $slug = Str::slug($request->get('title') ?? $project->title);
                 $data['image'] = $this->mediaService->processAsset("portfolio/projects/$slug", $slug, $image_file);
             }
 
