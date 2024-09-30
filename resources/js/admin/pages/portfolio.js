@@ -30,15 +30,15 @@ $(function () {
                     { data: 'author', name: 'author', title: 'Author' },
                     { data: 'content', name: 'content', title: 'Content' ,
                         render: function(data, type, row) {
-                            var div = document.createElement('div');
-                            div.innerHTML = row.content.substring(0, 100) + "...";
+                            const div = document.createElement('div');
+                            div.innerHTML = (row.content ? row.content.substring(0, 100) : "") + "...";
                             return div.innerText;
                         }
                     },
                     { data: 'image', name: 'image', title: 'Image' ,
                         render: function (data, type, row) {
                             return `<div class="square-60 m-auto">
-                                        <img class="img-fluid" src="/${row.image?.original}" /></div>`;
+                                        <img class="img-fluid" src="/${row.image?.original}" alt="Author image" /></div>`;
                         }
                     },
                     { data: 'position', name: 'position', title: 'Position' },
@@ -281,7 +281,7 @@ $(function () {
                     { data: 'order', name: 'order', title: 'Order' },
                     { data: 'role', name: 'role', title: 'Role' ,
                         render: function (data, type, row) {
-                            var div = document.createElement('div');
+                            const div = document.createElement('div');
                             div.innerHTML = row.role;
                             return div.innerText;
                     }},
@@ -289,7 +289,8 @@ $(function () {
                     { data: 'description', name: 'description', title: 'Description' },
                     { data: 'image', name: 'image', title: 'Image' ,
                         render: function (data, type, row) {
-                            return `<div class="square-60 m-auto"><img class="img-fluid" src="/${row.image?.original}" /></div>`;
+                            return `<div class="square-60 m-auto">
+                                <img class="img-fluid" src="/${row.image?.original}" alt="Project image" /></div>`;
                         }
                     },
                     { data: 'links', name: 'links', title: 'Links', className: 'text-left',
@@ -297,11 +298,11 @@ $(function () {
                             let dom = '---';
                             if (row.links) {
                                 dom = '<div class="d-flex gap-2 flex-column">';
-                                if (row.links?.repository) {
-                                    dom += `<div><a href="${row.links?.repository}">Repository <i class="fa-solid fa-up-right-from-square"></i></a></div>`;
+                                if (row.links.repository) {
+                                    dom += `<div><a href="${row.links.repository}">Repository <i class="fa-solid fa-up-right-from-square"></i></a></div>`;
                                 }
-                                if (row.links?.website) {
-                                    dom += `<div><a href="${row.links?.website}">Website <i class="fa-solid fa-up-right-from-square"></i></a></div>`;
+                                if (row.links.website) {
+                                    dom += `<div><a href="${row.links.website}">Website <i class="fa-solid fa-up-right-from-square"></i></a></div>`;
                                 }
                                 dom += '</div>';
                             }
@@ -578,17 +579,18 @@ $(function () {
                     { data: 'title', name: 'title', title: 'Title' },
                     { data: 'description', name: 'description', title: 'Description' ,
                         render: function (data, type, row) {
-                            return data.substring(0, 30) + '...';
+                            return (data ? data.substring(0, 30) : "") + "...";
                         }
                     },
                     { data: 'image', name: 'image', title: 'Image' ,
                         render: function (data, type, row) {
-                            return `<div class="square-60 m-auto"><img class="img-fluid" src="/${row.image?.original}" /></div>`;
+                            return `<div class="square-60 m-auto">
+                                        <img class="img-fluid" src="/${row.image?.original}" alt="Service image" /></div>`;
                         }
                     },
                     { data: 'icon', name: 'icon', title: 'Icon' ,
                         render: function (data, type, row) {
-                            var div = document.createElement('div');
+                            const div = document.createElement('div');
                             div.innerHTML = row.icon;
                             return div.innerText;
                         }
