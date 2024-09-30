@@ -47,9 +47,9 @@ class TagController extends Controller
         try {
 
             $request->validate([
-                "name" => "required|string",
-                "slug" => "required|unique:tags,slug",
-                "description" => "nullable|string",
+                "name"          => "required|string",
+                "slug"          => "required|unique:tags,slug",
+                "description"   => "required|string",
             ]);
 
             $data = [
@@ -79,9 +79,9 @@ class TagController extends Controller
             }
 
             $request->validate([
-                "name" => "nullable|string",
-                "slug" => ["nullable" ,"string", Rule::unique('tags')->ignore($tag->id)],
-                "description" => "nullable|string",
+                "name"          => "required|string",
+                "slug"          => ["required" ,"string", Rule::unique('tags')->ignore($tag->id)],
+                "description"   => "required|string",
             ]);
 
             if ($request->has('destroy') || $request->has('delete')) {

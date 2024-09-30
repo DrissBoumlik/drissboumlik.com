@@ -60,12 +60,12 @@ class PortfolioController extends Controller
             }
 
             $request->validate([
-                "slug"          => ["nullable", "string", Rule::unique('services')->ignore($id)],
-                "title"         => "nullable|string",
-                "link"          => "nullable|string",
-                "icon"          => "nullable|string",
+                "slug"          => ["required", "string", Rule::unique('services')->ignore($id)],
+                "title"         => "required|string",
+                "link"          => "required|string",
+                "icon"          => "required|string",
                 "order"         => "required|integer|min:1",
-                "description"   => "nullable|string",
+                "description"   => "required|string",
             ]);
 
             $order = $request->get('order');
@@ -102,9 +102,9 @@ class PortfolioController extends Controller
             }
 
             $request->validate([
-                "author"    => ["nullable", "string", Rule::unique('testimonials')->ignore($id)],
-                "content"   => "nullable|string",
-                "position"  => "nullable|string",
+                "author"    => ["required", "string", Rule::unique('testimonials')->ignore($id)],
+                "content"   => "required|string",
+                "position"  => "required|string",
                 "order"     => "required|integer|min:1",
             ]);
 
@@ -197,10 +197,10 @@ class PortfolioController extends Controller
             }
 
             $request->validate([
-                "title"         => ["nullable", "string", Rule::unique('projects')->ignore($id)],
-                "role"          => "nullable|string",
-                "description"   => "nullable|string",
-                "links"         => "nullable|array",
+                "title"         => ["required", "string", Rule::unique('projects')->ignore($id)],
+                "role"          => "required|string",
+                "description"   => "required|string",
+                "links"         => "required|array",
                 "order"         => "required|integer|min:1",
             ]);
 

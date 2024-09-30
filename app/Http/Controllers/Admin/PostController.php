@@ -42,17 +42,17 @@ class PostController extends Controller
     {
         try {
             $request->validate([
-                "title" => "required|string",
-                "slug" => "required|unique:posts,slug",
-                "post_excerpt" => "nullable|string",
-                "description" => "nullable|string",
-                "tags.*" => [
+                "title"         => "required|string",
+                "slug"          => "required|unique:posts,slug",
+                "post_excerpt"  => "required|string",
+                "description"   => "required|string",
+                "tags.*"        => [
                     'integer',
                     'exists:tags,id',
                 ],
-                "views" => "nullable|integer|min:0",
-                "published_at" => "required|date",
-                "post_content" => "required|string",
+                "views" => "required|integer|min:0",
+                "published_at"  => "required|date",
+                "post_content"  => "required|string",
             ]);
 
             $data = [
@@ -132,17 +132,17 @@ class PostController extends Controller
             }
 
             $request->validate([
-                "title" => "nullable|string",
-                "slug" => ["nullable", "string", Rule::unique('posts')->ignore($post->id)],
-                "post_excerpt" => "nullable|string",
-                "description" => "nullable|string",
-                "tags.*" => [
+                "title"         => "required|string",
+                "slug"          => ["required", "string", Rule::unique('posts')->ignore($post->id)],
+                "post_excerpt"  => "required|string",
+                "description"   => "required|string",
+                "tags.*"        => [
                     'integer',
                     'exists:tags,id',
                 ],
-                "views" => "nullable|integer|min:0",
-                "published_at" => "nullable|date",
-                "post_content" => "nullable|string",
+                "views"         => "required|integer|min:0",
+                "published_at"  => "required|date",
+                "post_content"  => "required|string",
             ]);
 
             $data = [

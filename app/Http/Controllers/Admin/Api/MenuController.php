@@ -52,14 +52,14 @@ class MenuController extends Controller
             }
 
             $request->validate([
-                "menu_type_id"  => "nullable|integer|exists:menu_types,id",
-                "slug"          => "nullable|unique:services,slug",
-                "title"         => "nullable|string",
-                "text"          => "nullable|string",
-                "target"        => "nullable|string|in:_self,_blank",
-                "link"          => "nullable|string",
-                "icon"          => "nullable|string",
-                "order"         => "nullable|integer|min:1",
+                "menu_type_id"  => "required|integer|exists:menu_types,id",
+                "slug"          => "required|unique:services,slug",
+                "title"         => "required|string",
+                "text"          => "required|string",
+                "target"        => "required|string|in:_self,_blank",
+                "link"          => "required|string",
+                "icon"          => "required|string",
+                "order"         => "required|integer|min:1",
             ]);
 
             $order = $request->get('order');
