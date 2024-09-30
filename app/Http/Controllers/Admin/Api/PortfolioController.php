@@ -203,7 +203,8 @@ class PortfolioController extends Controller
                 "title"         => ["required", "string", Rule::unique('projects')->ignore($id)],
                 "role"          => "required|string",
                 "description"   => "required|string",
-                "links"         => "required|array",
+                "links"         => "nullable|array|min:1",
+                "links.*"       => "nullable|string|url",
                 "order"         => "required|integer|min:1",
             ]);
 

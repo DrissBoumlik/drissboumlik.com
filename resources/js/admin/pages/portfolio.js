@@ -65,12 +65,12 @@ $(function () {
                                         <div class="mb-3">
                                             <label class="form-label" for="author">Author</label>
                                             <input type="text" class="form-control" id="author" name="author"
-                                                value="${data.author}">
+                                                value="${data.author}" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="position">Position</label>
                                             <input type="text" class="form-control" id="position" name="position"
-                                                value="${data.position}">
+                                                value="${data.position}" required>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
@@ -87,18 +87,19 @@ $(function () {
                                         <div class="mb-3">
                                           <label class="form-label" for="order">Order</label>
                                           <input class="form-control" type="number" value="${ data.order }"
-                                            min="1" max="${dataFilteredCount}" id="order" name="order">
+                                            min="1" max="${dataFilteredCount}" id="order" name="order" required>
                                         </div>
                                         <div class="mb-3 form-check form-switch">
                                           <label class="form-check-label" for="active">Active</label>
-                                          <input class="form-check-input" type="checkbox" ${ data.active ? "checked" : "" } id="active" name="active">
+                                          <input class="form-check-input" id="active" name="active"
+                                                  type="checkbox" ${ data.active ? "checked" : "" }>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label class="form-label" for="content">Content</label>
                                             <textarea class="form-control" id="content" name="content" rows="7"
-                                                placeholder="Textarea content..">${data.content}</textarea>
+                                                    required>${data.content}</textarea>
                                         </div>
                                     </div>
                                     <div class="col-12 d-flex justify-content-between gap-2 flex-wrap flex-md-nowrap">
@@ -175,11 +176,11 @@ $(function () {
                                     <div class="col-12 col-md-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="author">Author</label>
-                                            <input type="text" class="form-control" id="author" name="author" >
+                                            <input type="text" class="form-control" id="author" name="author" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="position">Position</label>
-                                            <input type="text" class="form-control" id="position" name="position" >
+                                            <input type="text" class="form-control" id="position" name="position" required>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
@@ -196,7 +197,7 @@ $(function () {
                                         <div class="mb-3">
                                           <label class="form-label" for="order">Order</label>
                                           <input class="form-control" type="number"
-                                            min="1" max="${dataFilteredCount}" id="order" name="order">
+                                            min="1" max="${dataFilteredCount}" id="order" name="order" required>
                                         </div>
                                         <div class="mb-3 form-check form-switch">
                                           <label class="form-check-label" for="active">Active</label>
@@ -207,7 +208,7 @@ $(function () {
                                         <div class="mb-3">
                                             <label class="form-label" for="content">Content</label>
                                             <textarea class="form-control" id="content" name="content" rows="7"
-                                                placeholder="Content.."></textarea>
+                                                    required></textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -336,12 +337,12 @@ $(function () {
                                         <div class="mb-3">
                                             <label class="form-label" for="role">Role</label>
                                             <input type="text" class="form-control" id="role" name="role"
-                                                value="${data.role || ''}">
+                                                value="${data.role || ''}" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="title">Title</label>
                                             <input type="text" class="form-control" id="title" name="title"
-                                                value="${data.title || ''}">
+                                                value="${data.title || ''}" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="repository">Repository</label>
@@ -368,22 +369,24 @@ $(function () {
                                         <div class="mb-3">
                                           <label class="form-label" for="order">Order</label>
                                           <input class="form-control" type="number" value="${ data.order }"
-                                            min="1" max="${dataFilteredCount}" id="order" name="order">
+                                            min="1" max="${dataFilteredCount}" id="order" name="order" required>
                                         </div>
                                         <div class="mb-3 form-check form-switch">
                                           <label class="form-check-label" for="active">Active</label>
-                                          <input class="form-check-input" type="checkbox" ${ data.active ? "checked" : "" } id="active" name="active">
+                                          <input class="form-check-input" id="active" name="active"
+                                                type="checkbox" ${ data.active ? "checked" : "" }>
                                         </div>
                                         <div class="mb-3 form-check form-switch">
                                           <label class="form-check-label" for="featured">Featured</label>
-                                          <input class="form-check-input" type="checkbox" ${ data.featured ? "checked" : "" } id="featured" name="featured">
+                                          <input class="form-check-input" id="featured" name="featured"
+                                                type="checkbox" ${ data.featured ? "checked" : "" }>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label class="form-label" for="description">Description</label>
                                             <textarea class="form-control" id="description" name="description" rows="4"
-                                                placeholder="Textarea content..">${data.description || ''}</textarea>
+                                                required>${data.description || ''}</textarea>
                                         </div>
                                     </div>
                                     <div class="col-12 d-flex justify-content-between gap-2 flex-wrap flex-md-nowrap">
@@ -460,11 +463,11 @@ $(function () {
                                     <div class="col-12 col-md-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="role">Role</label>
-                                            <input type="text" class="form-control" id="role" name="role">
+                                            <input type="text" class="form-control" id="role" name="role" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="title">Title</label>
-                                            <input type="text" class="form-control" id="title" name="title">
+                                            <input type="text" class="form-control" id="title" name="title" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="repository">Repository</label>
@@ -489,7 +492,7 @@ $(function () {
                                         <div class="mb-3">
                                           <label class="form-label" for="order">Order</label>
                                           <input class="form-control" type="number"
-                                            min="1" max="${dataFilteredCount}" id="order" name="order">
+                                            min="1" max="${dataFilteredCount}" id="order" name="order" required>
                                         </div>
                                         <div class="mb-3 form-check form-switch">
                                           <label class="form-check-label" for="active">Active</label>
@@ -504,7 +507,7 @@ $(function () {
                                         <div class="mb-3">
                                             <label class="form-label" for="description">Description</label>
                                             <textarea class="form-control" id="description" name="description" rows="4"
-                                                placeholder="Textarea content.."></textarea>
+                                                    required></textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -625,22 +628,22 @@ $(function () {
                                         <div class="mb-3">
                                             <label class="form-label" for="slug">Slug</label>
                                             <input type="text" class="form-control" id="slug" name="slug"
-                                                value="${data.slug || ''}">
+                                                value="${data.slug || ''}" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="title">Title</label>
                                             <input type="text" class="form-control" id="title" name="title"
-                                                value="${data.title || ''}">
+                                                value="${data.title || ''}" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="link">Link</label>
                                             <input type="text" class="form-control" id="link" name="link"
-                                                value="${data.link || ''}">
+                                                value="${data.link || ''}" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="icon">Icon</label>
                                             <input type="text" class="form-control" id="icon" name="icon"
-                                                value="${data.icon || ''}">
+                                                value="${data.icon || ''}" required>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
@@ -657,18 +660,19 @@ $(function () {
                                         <div class="mb-3">
                                           <label class="form-label" for="order">Order</label>
                                           <input class="form-control" type="number" value="${ data.order }"
-                                            min="1" max="${dataFilteredCount}" id="order" name="order">
+                                            min="1" max="${dataFilteredCount}" id="order" name="order" required>
                                         </div>
                                         <div class="mb-3 form-check form-switch">
                                           <label class="form-check-label" for="active">Active</label>
-                                          <input class="form-check-input" type="checkbox" ${ data.active ? "checked" : "" } id="active" name="active">
+                                          <input class="form-check-input" id="active" name="active"
+                                                type="checkbox" ${ data.active ? "checked" : "" }>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label class="form-label" for="description">Description</label>
                                             <textarea class="form-control" id="description"
-                                                name="description" rows="4">${data.description || ''}</textarea>
+                                                name="description" rows="4" required>${data.description || ''}</textarea>
                                         </div>
                                     </div>
                                     <div class="col-12 d-flex justify-content-between gap-2 flex-wrap flex-md-nowrap">
@@ -746,19 +750,19 @@ $(function () {
                                     <div class="col-12 col-md-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="slug">Slug</label>
-                                            <input type="text" class="form-control" id="slug" name="slug">
+                                            <input type="text" class="form-control" id="slug" name="slug" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="title">Title</label>
-                                            <input type="text" class="form-control" id="title" name="title">
+                                            <input type="text" class="form-control" id="title" name="title" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="link">Link</label>
-                                            <input type="text" class="form-control" id="link" name="link">
+                                            <input type="text" class="form-control" id="link" name="link" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="icon">Icon</label>
-                                            <input type="text" class="form-control" id="icon" name="icon">
+                                            <input type="text" class="form-control" id="icon" name="icon" required>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
@@ -775,7 +779,7 @@ $(function () {
                                         <div class="mb-3">
                                           <label class="form-label" for="order">Order</label>
                                           <input class="form-control" type="number"
-                                            min="1" max="${dataFilteredCount}" id="order" name="order">
+                                            min="1" max="${dataFilteredCount}" id="order" name="order" required>
                                         </div>
                                         <div class="mb-3 form-check form-switch">
                                           <label class="form-check-label" for="active">Active</label>
@@ -786,7 +790,7 @@ $(function () {
                                         <div class="mb-3">
                                             <label class="form-label" for="description">Description</label>
                                             <textarea class="form-control" id="description" name="description" rows="4"
-                                                placeholder="Content.."></textarea>
+                                                required></textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
