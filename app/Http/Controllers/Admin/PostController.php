@@ -201,7 +201,7 @@ class PostController extends Controller
             }
             \DB::table('post_tag')->where('post_id', $post->id)->delete();
             $post->forceDelete();
-            return redirect("/admin/posts")->with(['response' => ['message' => 'Post deleted successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
+            return redirect("/admin/posts")->with(['response' => ['message' => 'Post deleted for good successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
         } catch (\Throwable $e) {
             return redirect("/admin/posts")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
        }

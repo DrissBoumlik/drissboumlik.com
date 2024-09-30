@@ -120,7 +120,7 @@ class TagController extends Controller
             }
             \DB::table('post_tag')->where('tag_id', $tag->id)->delete();
             $tag->forceDelete();
-            return redirect("/admin/tags")->with(['response' => ['message' => 'Tag deleted successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
+            return redirect("/admin/tags")->with(['response' => ['message' => 'Tag deleted for good successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
         } catch (\Throwable $e) {
             return redirect("/admin/tags")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
         }
