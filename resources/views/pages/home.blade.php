@@ -2,8 +2,7 @@
 
 @section('post-header-assets')
     <script async src="https://www.google.com/recaptcha/api.js"></script>
-    @vite(['resources/js/pages/code-animation.js', 'resources/js/pages/contact.js',
-            'resources/js/pages/carousel.js', 'resources/js/pages/tooltip.js'])
+    @vite(['resources/js/pages/code-animation.js', 'resources/js/pages/contact.js', 'resources/js/pages/carousel.js'])
 @endsection
 
 @section('content')
