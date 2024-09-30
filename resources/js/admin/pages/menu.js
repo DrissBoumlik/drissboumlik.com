@@ -50,7 +50,7 @@ $(function () {
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">${data.name}</h5>
+                        <h5 class="modal-title">${data.name || '??'}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -76,8 +76,8 @@ $(function () {
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label class="form-label" for="description">Description</label>
-                                            <textarea class="form-control" id="description" name="description" rows="4"
-                                                placeholder="Textarea content..">${data.description || ''}</textarea>
+                                            <textarea class="form-control" id="description"
+                                                    name="description" rows="4">${data.description || ''}</textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -183,43 +183,43 @@ function loadMenuTypes() {
                                     <div class="col-12 col-md-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="slug">Slug</label>
-                                            <input type="text" class="form-control" id="slug" name="slug" >
+                                            <input type="text" class="form-control" id="slug" name="slug" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="text">Text</label>
-                                            <input type="text" class="form-control" id="text" name="text" >
+                                            <input type="text" class="form-control" id="text" name="text" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="title">Title</label>
-                                            <input type="text" class="form-control" id="title" name="title" >
+                                            <input type="text" class="form-control" id="title" name="title" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="icon">Icon</label>
-                                            <input type="text" class="form-control" id="icon" name="icon" >
+                                            <input type="text" class="form-control" id="icon" name="icon" required>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="repository">Link</label>
-                                            <input type="text" class="form-control" id="link" name="link" >
+                                            <input type="text" class="form-control" id="link" name="link" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="target">Target</label>
-                                            <select id="target" name="target" class="form-control">
+                                            <select id="target" name="target" class="form-control" required>
                                                 <option value="_self">_self</option>
                                                 <option value="_blank">_blank</option>
                                             </select>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="menu-type">Type</label>
-                                            <select id="menu-type" name="menu_type_id" class="form-control">
+                                            <select id="menu-type" name="menu_type_id" class="form-control" required>
                                                 ${menuTypesOptions}
                                             </select>
                                         </div>
                                         <div class="mb-3">
                                           <label class="form-label" for="order">Order</label>
                                           <input class="form-control" type="number" value="${dataFilteredCount}"
-                                            min="1" max="${dataFilteredCount}" id="order" name="order">
+                                            min="1" max="${dataFilteredCount}" id="order" name="order" required>
                                         </div>
                                         <div class="mb-3 form-check form-switch">
                                           <label class="form-check-label" for="active">Active</label>
@@ -345,7 +345,7 @@ function setupDT(menuTypesItems, menuType = null) {
     $('#menus').off('click', '.display-menus-details').on('click', '.display-menus-details', function(e) {
         const $row = $(this).closest('tr');
         const data = MenusDataTable.row( $row ).data();
-        let dataFilteredCount = menuTypesItems.find((item) => item.id == data.menu_type_id).menus_count;
+        let dataFilteredCount = menuTypesItems.find((item) => item.id === data.menu_type_id).menus_count;
         let menuTypesOptions = '';
         menuTypesItems.forEach(function (item) {
             menuTypesOptions += `<option value="${item.id}" data-count="${item.menus_count}" ${data.menu_type_id === item.id ? "selected" : ""}>${item.name}</option>`;
@@ -355,7 +355,7 @@ function setupDT(menuTypesItems, menuType = null) {
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">${data.title}</h5>
+                        <h5 class="modal-title">${data.title || '??'}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -366,47 +366,47 @@ function setupDT(menuTypesItems, menuType = null) {
                                         <div class="mb-3">
                                             <label class="form-label" for="slug">Slug</label>
                                             <input type="text" class="form-control" id="slug" name="slug"
-                                                value="${data.slug || ''}">
+                                                value="${data.slug || ''}" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="text">Text</label>
                                             <input type="text" class="form-control" id="text" name="text"
-                                                value="${data.text || ''}">
+                                                value="${data.text || ''}" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="title">Title</label>
                                             <input type="text" class="form-control" id="title" name="title"
-                                                value="${data.title || ''}">
+                                                value="${data.title || ''}" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="icon">Icon</label>
                                             <input type="text" class="form-control" id="icon" name="icon"
-                                                value="${data.icon || ''}">
+                                                value="${data.icon || ''}" required>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="repository">Link</label>
                                             <input type="text" class="form-control" id="link" name="link"
-                                                value="${data.link || ''}">
+                                                value="${data.link || ''}" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="target">Target</label>
-                                            <select id="target" name="target" class="form-control">
-                                                <option value="_self" ${data.target == '_self' ? 'selected' : ''}>_self</option>
-                                                <option value="_blank" ${data.target == '_blank' ? 'selected' : ''}>_blank</option>
+                                            <select id="target" name="target" class="form-control" required>
+                                                <option value="_self" ${data.target === '_self' ? 'selected' : ''}>_self</option>
+                                                <option value="_blank" ${data.target === '_blank' ? 'selected' : ''}>_blank</option>
                                             </select>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="menu-type">Type</label>
-                                            <select id="menu-type" name="menu_type_id" class="form-control">
+                                            <select id="menu-type" name="menu_type_id" class="form-control" required>
                                                 ${menuTypesOptions}
                                             </select>
                                         </div>
                                         <div class="mb-3">
                                           <label class="form-label" for="order">Order</label>
                                           <input class="form-control" type="number" value="${ data.order }"
-                                            min="1" max="${dataFilteredCount}" id="order" name="order">
+                                            min="1" max="${dataFilteredCount}" id="order" name="order" required>
                                         </div>
                                         <div class="mb-3 form-check form-switch">
                                           <label class="form-check-label" for="active">Active</label>

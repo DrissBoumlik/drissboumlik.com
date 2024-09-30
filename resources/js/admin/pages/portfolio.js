@@ -54,7 +54,7 @@ $(function () {
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">${data.author}</h5>
+                        <h5 class="modal-title">${data.author || '??'}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -65,12 +65,12 @@ $(function () {
                                         <div class="mb-3">
                                             <label class="form-label" for="author">Author</label>
                                             <input type="text" class="form-control" id="author" name="author"
-                                                value="${data.author}" required>
+                                                value="${data.author || ''}" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="position">Position</label>
                                             <input type="text" class="form-control" id="position" name="position"
-                                                value="${data.position}" required>
+                                                value="${data.position || ''}" required>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
@@ -86,7 +86,7 @@ $(function () {
                                         </div>
                                         <div class="mb-3">
                                           <label class="form-label" for="order">Order</label>
-                                          <input class="form-control" type="number" value="${ data.order }"
+                                          <input class="form-control" type="number" value="${ data.order || '1' }"
                                             min="1" max="${dataFilteredCount}" id="order" name="order" required>
                                         </div>
                                         <div class="mb-3 form-check form-switch">
@@ -99,7 +99,7 @@ $(function () {
                                         <div class="mb-3">
                                             <label class="form-label" for="content">Content</label>
                                             <textarea class="form-control" id="content" name="content" rows="7"
-                                                    required>${data.content}</textarea>
+                                                    required>${data.content || ''}</textarea>
                                         </div>
                                     </div>
                                     <div class="col-12 d-flex justify-content-between gap-2 flex-wrap flex-md-nowrap">
@@ -326,7 +326,7 @@ $(function () {
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">${data.title || data.role}</h5>
+                        <h5 class="modal-title">${data.title || data.role || '??'}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -368,7 +368,7 @@ $(function () {
                                         </div>
                                         <div class="mb-3">
                                           <label class="form-label" for="order">Order</label>
-                                          <input class="form-control" type="number" value="${ data.order }"
+                                          <input class="form-control" type="number" value="${ data.order || '1' }"
                                             min="1" max="${dataFilteredCount}" id="order" name="order" required>
                                         </div>
                                         <div class="mb-3 form-check form-switch">
@@ -617,7 +617,7 @@ $(function () {
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">${data.title}</h5>
+                        <h5 class="modal-title">${data.title || '??'}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -659,7 +659,7 @@ $(function () {
                                         </div>
                                         <div class="mb-3">
                                           <label class="form-label" for="order">Order</label>
-                                          <input class="form-control" type="number" value="${ data.order }"
+                                          <input class="form-control" type="number" value="${ data.order || '1' }"
                                             min="1" max="${dataFilteredCount}" id="order" name="order" required>
                                         </div>
                                         <div class="mb-3 form-check form-switch">
