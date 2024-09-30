@@ -8,9 +8,9 @@
                             @foreach ($headerMenu as $link)
                                 <li class="header-menu-item menu-item list-group-item animated-underline
                                         {{ request()->is($link->slug) ? 'active' : '' }}">
-                                    <a href="{{ \URL::to($link->slug) }}" rel="noopener" target="{{ $link->target ?? '_self' }}"
-                                       aria-label="{{ $link->title }}" class="text-capitalize">
-                                        {!! $link->title !!}
+                                    <a href="{{ $link->link }}" rel="noopener" target="{{ $link->target ?? '_blank' }}"
+                                       aria-label="{{ $link->title }}" class="text-capitalize" title="{{ $link->title }}">
+                                        {!! $link->text !!}
                                     </a>
                                 </li>
                             @endforeach

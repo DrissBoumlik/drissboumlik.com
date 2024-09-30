@@ -5,9 +5,9 @@
                 @foreach ($footerMenu as $link)
                     <li class="footer-menu-item menu-item list-group-item
                         overflow-auto animated-underline">
-                        <a href="{{ $link->slug }}" rel="noopener" target="{{ $link->target ?? '_self' }}"
-                            aria-label="{{ $link->title }}" class="text-capitalize">
-                            {{ $link->title }}
+                            <a href="{{ $link->link }}" rel="noopener" target="{{ $link->target ?? '_blank' }}"
+                            aria-label="{{ $link->title }}" class="text-capitalize" title="{{ $link->title }}">
+                            {!! $link->text !!}
                         </a>
                     </li>
                 @endforeach
