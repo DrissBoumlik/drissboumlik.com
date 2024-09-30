@@ -45,9 +45,10 @@ class MenuController extends Controller
         try {
             $menu = Menu::withTrashed()->find($id);
 
-            if ($request->has('delete')) {
+            if ($request->has('delete') || $request->has('destroy')) {
                 return $this->destroy($menu, $request);
-            } elseif ($request->has('restore')) {
+            }
+            if ($request->has('restore')) {
                 $menu->restore();
             }
 
@@ -93,7 +94,8 @@ class MenuController extends Controller
                 $item->delete();
                 return response()->json(['message' => 'Item deleted successfully'], 200);
             }
-//            $item->forceDelete();
+            $item->forceDelete();
+            return response()->json(['message' => 'Item deleted for good successfully'], 200);
         } catch (\Throwable $e) {
             return response()->json(['message' => $e->getMessage()], 422);
         }
