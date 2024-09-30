@@ -53,9 +53,10 @@ class PortfolioController extends Controller
     {
         try {
             $service = Service::withTrashed()->find($id);
-            if ($request->has('delete')) {
+            if ($request->has('delete') || $request->has('destroy')) {
                 return $this->destroy($service, $request);
-            } elseif ($request->has('restore')) {
+            }
+            if ($request->has('restore')) {
                 $service->restore();
             }
 
@@ -95,9 +96,10 @@ class PortfolioController extends Controller
     {
         try {
             $testimonial = Testimonial::withTrashed()->find($id);
-            if ($request->has('delete')) {
+            if ($request->has('delete') || $request->has('destroy')) {
                 return $this->destroy($testimonial, $request);
-            } elseif ($request->has('restore')) {
+            }
+            if ($request->has('restore')) {
                 $testimonial->restore();
             }
 
@@ -190,9 +192,10 @@ class PortfolioController extends Controller
     {
         try {
             $project = Project::withTrashed()->find($id);
-            if ($request->has('delete')) {
+            if ($request->has('delete') || $request->has('destroy')) {
                 return $this->destroy($project, $request);
-            } elseif ($request->has('restore')) {
+            }
+            if ($request->has('restore')) {
                 $project->restore();
             }
 
@@ -239,7 +242,8 @@ class PortfolioController extends Controller
                 $item->delete();
                 return response()->json(['message' => 'Item deleted successfully'], 200);
             }
-//            $item->forceDelete();
+            $item->forceDelete();
+            return response()->json(['message' => 'Item deleted for good successfully'], 200);
         } catch (\Throwable $e) {
             return response()->json(['message' => $e->getMessage()], 422);
         }

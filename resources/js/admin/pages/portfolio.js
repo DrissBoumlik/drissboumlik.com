@@ -107,6 +107,7 @@ $(function () {
                                             '<button type="submit" class="btn btn-outline-secondary w-100" name="restore">Restore</button>'
                                             : '<button type="submit" class="btn btn-outline-warning w-100" name="delete">Delete</button>'
                                         }
+                                        <button type="submit" class="btn btn-danger w-100" name="destroy">Hard Delete</button>
                                     </div>
                                 </div>
                             </form>
@@ -391,6 +392,7 @@ $(function () {
                                             '<button type="submit" class="btn btn-outline-secondary w-100" name="restore">Restore</button>'
                                             : '<button type="submit" class="btn btn-outline-warning w-100" name="delete">Delete</button>'
                                         }
+                                        <button type="submit" class="btn btn-danger w-100" name="destroy">Hard Delete</button>
                                     </div>
                                 </div>
                             </form>
@@ -675,6 +677,7 @@ $(function () {
                                             '<button type="submit" class="btn btn-outline-secondary w-100" name="restore">Restore</button>'
                                             : '<button type="submit" class="btn btn-outline-warning w-100" name="delete">Delete</button>'
                                         }
+                                        <button type="submit" class="btn btn-danger w-100" name="destroy">Hard Delete</button>
                                     </div>
                                 </div>
                             </form>
