@@ -9,6 +9,7 @@ use App\Services\MediaService;
 use App\Services\PostService;
 use Illuminate\Http\Request;
 use App\Models\Tag;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
@@ -40,23 +41,31 @@ class PostController extends Controller
     public function store(Request $request)
     {
         try {
-            if ($request->slug && Post::where('slug', $request->slug)->exists()) {
-                return redirect("/admin/posts/create")->with(['response' => [
-                    'message' => 'A Post with same slug already exists !',
-                    'class' => 'alert-warning',
-                    'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
-            }
+            $request->validate([
+                "title" => "required|string",
+                "slug" => "required|unique:posts,slug",
+                "post_excerpt" => "nullable|string",
+                "description" => "nullable|string",
+                "tags.*" => [
+                    'integer',
+                    'exists:tags,id',
+                ],
+                "views" => "nullable|integer|min:0",
+                "published_at" => "required|date",
+                "post_content" => "required|string",
+            ]);
+
             $data = [
-                "title" => $request->title,
-                "slug" => $request->slug,
-                "content" => $request->post_content,
-                "excerpt" => $request->excerpt,
-                "description" => $request->description,
+                "title" => $request->get('title'),
+                "slug" => $request->get('slug'),
+                "content" => $request->get('post_content'),
+                "excerpt" => $request->get('excerpt'),
+                "description" => $request->get('description'),
                 "published" => $request->has('published'),
                 "featured" => $request->has('featured'),
                 "active" => $request->has('active'),
                 'author_id' => \Auth::user()->id,
-                'published_at' => ($request->has('published') ? ($request->published_at ?? now()) : null),
+                'published_at' => ($request->has('published') ? ($request->get('published_at') ?? now()) : null),
             ];
             $image_file = $request->file('cover');
             if ($image_file) {
@@ -67,9 +76,10 @@ class PostController extends Controller
                 $this->mediaService->processAssets($postAssets, "blog/posts/$request->slug/assets", "post_asset", false);
             }
             $post = Post::create($data);
-            if ($request->has('tags')) {
+            $tags = $request->get('tags');
+            if ($tags && is_array($tags)) {
                 $post_tag = [];
-                foreach ($request->tags as $tag_id) {
+                foreach ($tags as $tag_id) {
                     $post_tag[] = [
                         'tag_id' => $tag_id,
                         'post_id' => $post->id,
@@ -80,7 +90,7 @@ class PostController extends Controller
             }
             return redirect("/admin/posts/edit/$post->slug")->with(['response' => ['message' => 'Post stored successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
         } catch (\Throwable $e) {
-            return redirect("/admin/posts")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
+            return redirect("/admin/posts/create")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
         }
     }
 
@@ -121,33 +131,50 @@ class PostController extends Controller
                 $post->restore();
             }
 
+            $request->validate([
+                "title" => "nullable|string",
+                "slug" => ["nullable", "string", Rule::unique('posts')->ignore($post->id)],
+                "post_excerpt" => "nullable|string",
+                "description" => "nullable|string",
+                "tags.*" => [
+                    'integer',
+                    'exists:tags,id',
+                ],
+                "views" => "nullable|integer|min:0",
+                "published_at" => "nullable|date",
+                "post_content" => "nullable|string",
+            ]);
+
             $data = [
-                "title" => $request->title,
-                "slug" => $request->slug,
-                "content" => $request->post_content,
-                "excerpt" => $request->post_excerpt,
-                "description" => $request->description,
+                "title" => $request->get('title'),
+                "slug" => $request->get('slug'),
+                "content" => $request->get('post_content'),
+                "excerpt" => $request->get('post_excerpt'),
+                "description" => $request->get('description'),
                 "published" => $request->has('published'),
                 "featured" => $request->has('featured'),
                 'active' => $request->has('active'),
                 'author_id' => \Auth::user()->id,
-                'published_at' => ($request->has('published') ? ($request->published_at ?? now()) : null),
+                'published_at' => ($request->has('published') ? ($request->get('published_at') ?? now()) : null),
                 'views' => $request->views ?? $post->views
             ];
             $image_file = $request->file('cover');
             if ($image_file) {
-                $data['cover'] = $this->mediaService->processAsset("blog/posts/$request->slug", $request->slug ?? $post->slug, $image_file);
+                $data['cover'] = $this->mediaService->processAsset("blog/posts/$request->slug",
+                                                        $request->slug ?? $post->slug, $image_file);
             }
             $postAssets = $request->file('post-assets');
             if ($postAssets) {
-                $this->mediaService->processAssets($postAssets, "blog/posts/$request->slug/assets", "post_asset", $request->has('append-to-post-assets'));
+                $this->mediaService->processAssets($postAssets, "blog/posts/$request->slug/assets",
+                                "post_asset", $request->has('append-to-post-assets'));
             }
             $post->update($data);
 
             \DB::table('post_tag')->where('post_id', $post->id)->delete();
-            if ($request->has('tags')) {
+            $tags = $request->get('tags');
+            if ($tags && is_array($tags)) {
                 $post_tag = [];
-                foreach ($request->tags as $tag_id) {
+                foreach ($tags as $tag_id) {
                     $post_tag[] = [
                         'tag_id' => $tag_id,
                         'post_id' => $post->id,

@@ -8,6 +8,7 @@ use App\Http\Resources\Admin\TagResource;
 use App\Models\Tag;
 use App\Services\MediaService;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class TagController extends Controller
 {
@@ -44,12 +45,13 @@ class TagController extends Controller
     public function store(Request $request)
     {
         try {
-            if ($request->slug && Tag::where('slug', $request->slug)->exists()) {
-                return redirect("/admin/tags/create")->with(['response' => [
-                    'message' => 'A Tag with same slug already exists !',
-                    'class' => 'alert-warning',
-                    'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
-            }
+
+            $request->validate([
+                "name" => "required|string",
+                "slug" => "required|unique:tags,slug",
+                "description" => "nullable|string",
+            ]);
+
             $data = [
                 "name" => $request->name,
                 "slug" => $request->slug,
@@ -64,7 +66,7 @@ class TagController extends Controller
             $tag = Tag::create($data);
             return redirect("/admin/tags/edit/$tag->slug")->with(['response' => ['message' => 'Tag store successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
         } catch (\Throwable $e) {
-            return redirect("/admin/tags")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
+            return redirect("/admin/tags/create")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
         }
     }
 
@@ -75,6 +77,12 @@ class TagController extends Controller
             if ($tag === null) {
                 return redirect("/admin/tags")->with(['response' => ['message' => 'Tag not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
             }
+
+            $request->validate([
+                "name" => "nullable|string",
+                "slug" => ["nullable" ,"string", Rule::unique('tags')->ignore($tag->id)],
+                "description" => "nullable|string",
+            ]);
 
             if ($request->has('destroy') || $request->has('delete')) {
                 return $this->destroy($tag, $request);

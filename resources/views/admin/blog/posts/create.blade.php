@@ -135,7 +135,7 @@
                             </div>
                         </div>
                         <div class="col-12 d-flex justify-content-between">
-                            <button type="submit" class="btn btn-success me-1 mb-3 w-100">
+                            <button type="submit" class="btn btn-success btn-action me-1 mb-3 w-100">
                                 <i class="fa fa-fw fa-plus me-1"></i>Submit</button>
                         </div>
                     </div>
