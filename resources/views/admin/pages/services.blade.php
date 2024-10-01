@@ -22,7 +22,7 @@
 @section('buttons')
     <button class="btn-refresh btn btn-outline-info w-100"><i class="fa fa-fw fa-refresh me-1"></i>Refresh</button>
     <button class="btn-clear btn btn-outline-secondary w-100"><i class="fa fa-fw fa-eraser me-1"></i>Clear</button>
-    <a href="/services?forget" target="_blank" class="btn btn-alt-info w-100"><i class="fa fa-fw fa-external-link me-1"></i>View Page</a>
+    <a href="/services?forget" target="_blank" class="btn btn-outline-info w-100"><i class="fa fa-fw fa-external-link me-1"></i>View Page</a>
     <button class="btn-new btn btn-success w-100"><i class="fa fa-fw fa-plus me-1"></i>New Service</button>
 @endsection
 
