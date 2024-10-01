@@ -28,19 +28,6 @@ $(function () {
                     { data: 'id', name: 'id', title: 'ID' },
                     { data: 'order', name: 'order', title: 'Order' },
                     { data: 'author', name: 'author', title: 'Author' },
-                    { data: 'content', name: 'content', title: 'Content' ,
-                        render: function(data, type, row) {
-                            const div = document.createElement('div');
-                            div.innerHTML = (row.content ? row.content.substring(0, 100) : "") + "...";
-                            return div.innerText;
-                        }
-                    },
-                    { data: 'image', name: 'image', title: 'Image' ,
-                        render: function (data, type, row) {
-                            return `<div class="square-60 m-auto">
-                                        <img class="img-fluid" src="/${row.image?.original}" alt="Author image" /></div>`;
-                        }
-                    },
                     { data: 'position', name: 'position', title: 'Position' },
                 ]
             };
@@ -288,13 +275,6 @@ $(function () {
                             return div.innerText;
                     }},
                     { data: 'title', name: 'title', title: 'Title' },
-                    { data: 'description', name: 'description', title: 'Description' },
-                    { data: 'image', name: 'image', title: 'Image' ,
-                        render: function (data, type, row) {
-                            return `<div class="square-60 m-auto">
-                                <img class="img-fluid" src="/${row.image?.original}" alt="Project image" /></div>`;
-                        }
-                    },
                     { data: 'links', name: 'links', title: 'Links', className: 'text-left',
                         render: function (data, type, row) {
                             let dom = '---';
@@ -582,17 +562,6 @@ $(function () {
                     { data: 'order', name: 'order', title: 'Order' },
                     { data: 'slug', name: 'slug', title: 'Slug' },
                     { data: 'title', name: 'title', title: 'Title' },
-                    { data: 'description', name: 'description', title: 'Description' ,
-                        render: function (data, type, row) {
-                            return (data ? data.substring(0, 30) : "") + "...";
-                        }
-                    },
-                    { data: 'image', name: 'image', title: 'Image' ,
-                        render: function (data, type, row) {
-                            return `<div class="square-60 m-auto">
-                                        <img class="img-fluid" src="/${row.image?.original}" alt="Service image" /></div>`;
-                        }
-                    },
                     { data: 'icon', name: 'icon', title: 'Icon' ,
                         render: function (data, type, row) {
                             const div = document.createElement('div');
