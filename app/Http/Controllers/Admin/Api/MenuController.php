@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class MenuController extends Controller
 {
@@ -14,7 +15,7 @@ class MenuController extends Controller
 
             $request->validate([
                 "menu_type_id"  => "required|integer|exists:menu_types,id",
-                "slug"          => "required|unique:services,slug",
+                "slug"          => "required|unique:menus,slug",
                 "title"         => "required|string",
                 "text"          => "required|string",
                 "target"        => "required|string|in:_self,_blank",
@@ -45,6 +46,10 @@ class MenuController extends Controller
         try {
             $menu = Menu::withTrashed()->find($id);
 
+            if (! $menu) {
+                return response()->json(['message' => 'Menu not found'], 404);
+            }
+
             if ($request->has('delete') || $request->has('destroy')) {
                 return $this->destroy($menu, $request);
             }
@@ -54,7 +59,7 @@ class MenuController extends Controller
 
             $request->validate([
                 "menu_type_id"  => "required|integer|exists:menu_types,id",
-                "slug"          => "required|unique:services,slug",
+                "slug"          => ["required", "string", Rule::unique('menus')->ignore($id)],
                 "title"         => "required|string",
                 "text"          => "required|string",
                 "target"        => "required|string|in:_self,_blank",
@@ -86,9 +91,6 @@ class MenuController extends Controller
     private function destroy($item, $request)
     {
         try {
-            if ($item === null) {
-                return response()->json(['message' => 'Item not found'], 404);
-            }
             if ($request->has('delete')) {
                 $item->update(['active' => false]);
                 $item->delete();
