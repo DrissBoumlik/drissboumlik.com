@@ -227,7 +227,7 @@ function clearDtSearchInput(searchElementID, table) {
         select.selectedIndex = 0; // Resets to the first option
     });
 
-    table.columns().search( '' ).draw();
+    table.search( '' ).columns().search( '' ).draw();
 }
 
 export { initDarkMode, initAjaxEvents, shortenTextIfLongByLength, getDomClass, string_to_slug, configDT, clearDtSearchInput };
