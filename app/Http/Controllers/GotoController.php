@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ShortenedUrl;
 use Illuminate\Http\Request;
 
 class GotoController extends Controller
@@ -10,11 +11,11 @@ class GotoController extends Controller
 
     public function goto(Request $request, $link)
     {
-        $url = getLinkByKey($link);
+        $url = ShortenedUrl::where('slug', $link)->orWhere('shortened', $link)->first();
         if (!$url) {
             return redirect('/not-found');
         }
-        return redirect($url);
+        return redirect($url->redirects_to);
     }
 
     public function not_found(Request $request)

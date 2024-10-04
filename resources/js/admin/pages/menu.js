@@ -4,6 +4,135 @@ import { configDT } from "../functions";
 $(function () {
     try {
 
+        if ($('#shortened-urls').length) {
+            let params = {
+                first_time: true,
+                id: '#shortened-urls',
+                method: 'POST',
+                url: '/api/shortened-urls/list',
+                columns: [
+                    { data: 'id', name: 'id', title: 'Actions' ,
+                        render: function (data, type, row, params) {
+                            return `<div class="btn-group">
+                                        <button type="button" class="btn btn-sm js-bs-tooltip-enabled
+                                                                        display-shortened_url-details">
+                                            <i class="fa fs-3 fa-eye"></i>
+                                        </button>
+                                    </div>`;
+                        }
+                    },
+                    { data: 'active', name: 'active', title: 'Active', className: 'fs-sm', inputType: 'select',
+                        render: function (data, type, row) {
+                            return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
+                        }},
+                    { data: 'id', name: 'id', title: 'ID' },
+                    { data: 'title', name: 'title', title: 'Title' },
+                    { data: 'slug', name: 'slug', title: 'Slug' },
+                    { data: 'shortened', name: 'shortened', title: 'Shortened'},
+                    { data: 'redirects_to', name: 'redirects_to', title: 'Redirects to'},
+                    { data: 'note', name: 'note', title: 'Note' },
+                ]
+            };
+            let ShortenedUrlsDataTable = configDT(params);
+
+            $('#shortened-urls').on('click', '.display-shortened_url-details', function(e) {
+                const $row = $(this).closest('tr');
+                const data = ShortenedUrlsDataTable.row( $row ).data();
+                let modal = `
+        <div class="modal modal-shortenedUrl-details" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">${data.title || '??'}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <form id="form-shortenedUrls" data-shortened-url-id="${data.id}">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="title">Title</label>
+                                            <input type="text" class="form-control" id="title" name="title"
+                                                value="${data.title || ''}">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="slug">Slug</label>
+                                            <input type="text" class="form-control" id="slug" name="slug"
+                                                value="${data.slug || ''}">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="shortened">Shortened</label>
+                                            <input type="text" class="form-control" id="shortened" name="shortened"
+                                                value="${data.shortened || ''}">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="redirects_to">Redirects to</label>
+                                            <input type="text" class="form-control" id="redirects_to" name="redirects_to"
+                                                value="${data.redirects_to || ''}">
+                                        </div>
+                                        <div class="mb-3 form-check form-switch">
+                                          <label class="form-check-label" for="active">Active</label>
+                                          <input class="form-check-input" type="checkbox" ${ data.active ? "checked" : "" } id="active" name="active">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="note">Note</label>
+                                            <textarea class="form-control" id="note"
+                                                    name="note" rows="4">${data.note || ''}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-between gap-2 flex-wrap flex-md-nowrap">
+                                        <button type="submit" class="btn btn-outline-info w-100">Update</button>
+                                        ${data.deleted_at ?
+                                            '<button type="submit" class="btn btn-outline-secondary w-100" name="restore">Restore</button>'
+                                            : '<button type="submit" class="btn btn-outline-warning w-100" name="delete">Delete</button>'
+                                        }
+                                        <button type="submit" class="btn btn-danger w-100" name="destroy">Hard Delete</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop fade show"></div>`;
+                $('#page-container').append(modal);
+                let modalShortenedUrlDetails = $('.modal-shortenedUrl-details');
+                $('.btn-close').add('.modal-shortenedUrl-details').on('click', function(e) {
+                    if (e.target !== modalShortenedUrlDetails[0] && e.target !== $('.btn-close')[0]) {
+                        return;
+                    }
+                    modalShortenedUrlDetails.remove();
+                    $('.modal-backdrop').remove();
+                });
+                modalShortenedUrlDetails.show();
+
+                $(document).off('submit', '#form-shortenedUrls').on('submit', '#form-shortenedUrls', function(e) {
+                    e.preventDefault();
+                    if (!confirm("Are you sure ?")) {
+                        return;
+                    }
+                    let _this = $(this);
+                    let data = _this.serializeArray();
+                    $.ajax({
+                        type: 'PUT',
+                        url: `/api/shortened-urls/${_this.data('shortened-url-id')}`,
+                        data: data,
+                        success: function(response) {
+                            ShortenedUrlsDataTable.ajax.reload(null, false);
+                            get_alert_box({class: 'alert-info', message: response.message, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                        },
+                        error: function (jqXHR, textStatus, errorThrown){
+                            console.log(jqXHR, textStatus, errorThrown);
+                            get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.message, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                        }
+                    });
+                });
+
+            });
+        }
+
         if ($('#menus').length) {
 
             $(document).on('click', '.btn-refresh-menu-types-select', function (e) {

@@ -1,14 +1,9 @@
 <?php
 
-// use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GotoController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\TagController;
-use App\Http\Controllers\Admin\VisitorController;
-use App\Http\Controllers\Admin\MessageController;
-use App\Http\Controllers\Admin\SubscriberController as AdminSubscriberController;
-use App\Http\Controllers\Admin\SitemapController as AdminSitemapController;
 use App\Http\Controllers\Admin\PageController as AdminPageController ;
 use App\Http\Controllers\Admin\ToolController as AdminToolController;
 use App\Http\Controllers\Admin\FileManagerController;
@@ -19,21 +14,15 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\ToolController;
-//use App\Http\Controllers\SubscriberController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\Api\PostController as ApiPostController;
 use App\Http\Controllers\Admin\Api\TagController as ApiTagController;
-use App\Http\Controllers\Admin\Api\VisitorController as ApiVisitorController;
-use App\Http\Controllers\Admin\Api\MessageController as ApiMessageController;
 use App\Http\Controllers\Admin\Api\DatatableController as AdminDatatableController;
-use App\Http\Controllers\Admin\Api\SubscriberController as AdminApiSubscriberController;
 use App\Http\Controllers\Admin\Api\CRUDController as AdminCRUDController;
 use App\Http\Controllers\Admin\Api\PortfolioController as AdminApiPortfolioController;
 use App\Http\Controllers\Admin\Api\MenuController as AdminApiMenuController;
 use App\Http\Controllers\Api\ContactController;
-//use App\Http\Controllers\Api\SubscriberController as ApiSubscriberController;
-// use App\Http\Controllers\ToolController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +49,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::post('/projects', [AdminApiPortfolioController::class, 'storeProject']);
             Route::put('/services/{service}', [AdminApiPortfolioController::class, 'updateService']);
             Route::post('/services', [AdminApiPortfolioController::class, 'storeService']);
+            Route::put('/shortened-urls/{shortenedUrl}', [AdminCRUDController::class, 'updateShortenedUrl']);
             Route::put('/menus/{menu}', [AdminApiMenuController::class, 'updateMenu']);
             Route::post('/menus', [AdminApiMenuController::class, 'storeMenu']);
             Route::put('/menu-types/{menuType}', [AdminCRUDController::class, 'updateMenuType']);
@@ -69,6 +59,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::post('/projects/list', [AdminDatatableController::class, 'projects']);
             Route::post('/services/list', [AdminDatatableController::class, 'services']);
             Route::post('/menus/list', [AdminDatatableController::class, 'menus']);
+            Route::post('/shortened-urls/list', [AdminDatatableController::class, 'shortenedUrls']);
             Route::post('/menu-types', [AdminDatatableController::class, 'menuTypes']);
             Route::get('/posts/{slug}/assets', [ApiPostController::class, 'getPostAssets']);
             Route::get('/{table}/columns', [AdminToolController::class, 'getTableColumns']);
@@ -122,6 +113,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::get('/testimonials', [AdminPageController::class, 'testimonials']);
             Route::get('/projects', [AdminPageController::class, 'projects']);
             Route::get('/services', [AdminPageController::class, 'services']);
+            Route::get('/shortened-urls', [AdminPageController::class, 'shortenedUrls']);
             Route::get('/menus', [AdminPageController::class, 'menus']);
             Route::get('/menu-types', [AdminPageController::class, 'menuTypes']);
 

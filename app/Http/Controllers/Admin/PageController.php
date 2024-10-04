@@ -37,6 +37,12 @@ class PageController extends Controller
         return view('admin.pages.services', ['data' => $data]);
     }
 
+    public function shortenedUrls(Request $request)
+    {
+        $data = adminPageSetup('Shortened Urls | Admin Panel');
+        return view('admin.pages.shortened-urls', ['data' => $data]);
+    }
+
     public function menus(Request $request)
     {
         $data = adminPageSetup('Menus | Admin Panel');

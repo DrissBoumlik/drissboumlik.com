@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\ShortenedUrl;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,14 +16,16 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        $this->call([
-            TestSeeder::class,
-        ]);
+//        $this->call([
+//            TestSeeder::class,
+//        ]);
+//
+//        $this->seedMenus();
+//        $this->seedServices();
+//        $this->seedTestimonials();
+//        $this->seedProjects();
 
-        $this->seedMenus();
-        $this->seedServices();
-        $this->seedTestimonials();
-        $this->seedProjects();
+        $this->seedRedirectingLinks();
 
     }
 
@@ -130,5 +134,21 @@ class DatabaseSeeder extends Seeder
                 dd($item, $e->getLine(), $e->getMessage());
             }
         }
+    }
+
+    private function seedRedirectingLinks()
+    {
+        $links = getLinks();
+        $data = [];
+        foreach ($links as $key => $link) {
+            $data[] = [
+                'slug' => Str::slug($key),
+                'title' => Str::camel($key),
+                'shortened' => $key,
+                'redirects_to' => $link,
+                'active' => true,
+            ];
+        }
+        ShortenedUrl::insert($data);
     }
 }

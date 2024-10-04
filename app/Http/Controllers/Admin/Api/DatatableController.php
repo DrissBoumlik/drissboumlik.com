@@ -7,6 +7,7 @@ use App\Models\Menu;
 use App\Models\MenuType;
 use App\Models\Message;
 use App\Models\Service;
+use App\Models\ShortenedUrl;
 use App\Models\Subscriber;
 use App\Models\Testimonial;
 use App\Models\Visitor;
@@ -115,6 +116,16 @@ class DatatableController extends Controller
         return $this->toDatatable($menuTypes);
     }
     //endregion
+
+    public function shortenedUrls(Request $request)
+    {
+        $shortened_urls = ShortenedUrl::query();
+        $is_first_time = $request->has('first_time');
+        if ($is_first_time) {
+            $shortened_urls = $this->defaultOrderBy($shortened_urls);
+        }
+        return $this->toDatatable($shortened_urls);
+    }
 
     private function defaultOrderBy($data)
     {
