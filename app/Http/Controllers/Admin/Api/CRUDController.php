@@ -33,6 +33,32 @@ class CRUDController extends Controller
         }
     }
 
+    public function storeShortenedUrl(Request $request)
+    {
+        try {
+            $request->validate([
+                "slug" => "required|unique:shortened_urls,slug",
+                "title"         => "required|string",
+                'shortened'     => "required|string",
+                'redirects_to'  => ["required", function ($attribute, $value, $fail) {
+                                        if (!filter_var($value, FILTER_VALIDATE_URL) && !preg_match('/^mailto:.+@.+\..+$/', $value)) {
+                                            $fail('The redirects_to must be a valid URL or a mailto email address.');
+                                        }
+                                    },
+                                ],
+                'note'          => "nullable|string",
+            ]);
+
+            $data = $request->only([ 'slug', 'title', 'shortened', 'redirects_to', 'note' ]);
+            $data['active'] = $request->has("active") && $request->get("active") === 'on';
+
+            ShortenedUrl::create($data);
+            return ['message' => "Stored Successfully !"];
+        } catch (\Throwable $e) {
+            return response()->json(['message' => $e->getMessage()], 404);
+        }
+    }
+
     public function updateShortenedUrl(Request $request, $id)
     {
         try {
@@ -43,7 +69,7 @@ class CRUDController extends Controller
             }
 
             if ($request->has('delete') || $request->has('destroy')) {
-                return $this->destroy($menu, $request);
+                return $this->destroy($shortenedUrl, $request);
             }
             if ($request->has('restore')) {
                 $shortenedUrl->restore();

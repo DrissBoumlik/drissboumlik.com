@@ -50,6 +50,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::put('/services/{service}', [AdminApiPortfolioController::class, 'updateService']);
             Route::post('/services', [AdminApiPortfolioController::class, 'storeService']);
             Route::put('/shortened-urls/{shortenedUrl}', [AdminCRUDController::class, 'updateShortenedUrl']);
+            Route::post('/shortened-urls', [AdminCRUDController::class, 'storeShortenedUrl']);
             Route::put('/menus/{menu}', [AdminApiMenuController::class, 'updateMenu']);
             Route::post('/menus', [AdminApiMenuController::class, 'storeMenu']);
             Route::put('/menu-types/{menuType}', [AdminCRUDController::class, 'updateMenuType']);
