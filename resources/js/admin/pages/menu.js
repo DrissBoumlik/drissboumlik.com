@@ -313,7 +313,7 @@ $(function () {
                 $('#page-container').append(modal);
                 let modalMenuTypesDetails = $('.modal-menuTypes-details');
                 $('.btn-close').add('.modal-menuTypes-details').on('click', function(e) {
-                    if (e.target != modalMenuTypesDetails[0] && e.target != $('.btn-close')[0]) {
+                    if (e.target !== modalMenuTypesDetails[0] && e.target !== $('.btn-close')[0]) {
                         return;
                     }
                     modalMenuTypesDetails.remove();
@@ -460,7 +460,7 @@ function loadMenuTypes() {
                 onMenuTypeSelectChange('#menu-type');
                 let modalMenusDetails = $('.modal-menus-details');
                 $('.btn-close').add('.modal-menus-details').on('click', function(e) {
-                    if (e.target != modalMenusDetails[0] && e.target != $('.btn-close')[0]) {
+                    if (e.target !== modalMenusDetails[0] && e.target !== $('.btn-close')[0]) {
                         return;
                     }
                     modalMenusDetails.remove();
@@ -652,7 +652,7 @@ function setupDT(menuTypesItems, menuType = null) {
         onMenuTypeSelectChange('#menu-type');
         let modalMenusDetails = $('.modal-menus-details');
         $('.btn-close').add('.modal-menus-details').on('click', function(e) {
-            if (e.target != modalMenusDetails[0] && e.target != $('.btn-close')[0]) {
+            if (e.target !== modalMenusDetails[0] && e.target !== $('.btn-close')[0]) {
                 return;
             }
             modalMenusDetails.remove();

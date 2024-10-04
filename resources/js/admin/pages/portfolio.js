@@ -109,7 +109,7 @@ $(function () {
                 setUpImagePreviewOnFileInput('testimonial-image', 'testimonial-image-preview');
                 let modalTestimonialsDetails = $('.modal-testimonials-details');
                 $('.btn-close').add('.modal-testimonials-details').on('click', function(e) {
-                    if (e.target != modalTestimonialsDetails[0] && e.target != $('.btn-close')[0]) {
+                    if (e.target !== modalTestimonialsDetails[0] && e.target !== $('.btn-close')[0]) {
                         return;
                     }
                     modalTestimonialsDetails.remove();
@@ -213,7 +213,7 @@ $(function () {
                 setUpImagePreviewOnFileInput('testimonial-image', 'testimonial-image-preview');
                 let modalTestimonialsDetails = $('.modal-testimonials-details');
                 $('.btn-close').add('.modal-testimonials-details').on('click', function(e) {
-                    if (e.target != modalTestimonialsDetails[0] && e.target != $('.btn-close')[0]) {
+                    if (e.target !== modalTestimonialsDetails[0] && e.target !== $('.btn-close')[0]) {
                         return;
                     }
                     modalTestimonialsDetails.remove();
@@ -389,7 +389,7 @@ $(function () {
                 setUpImagePreviewOnFileInput('project-image', 'project-image-preview');
                 let modalProjectsDetails = $('.modal-projects-details');
                 $('.btn-close').add('.modal-projects-details').on('click', function(e) {
-                    if (e.target != modalProjectsDetails[0] && e.target != $('.btn-close')[0]) {
+                    if (e.target !== modalProjectsDetails[0] && e.target !== $('.btn-close')[0]) {
                         return;
                     }
                     modalProjectsDetails.remove();
@@ -404,7 +404,6 @@ $(function () {
                     let _this = $(this);
                     let action = e.originalEvent.submitter.getAttribute("name");
                     let data = new FormData(this);
-                    // data.append('image', $('#project-image')[0].files[0]);
                     data.append(action, true);
                     data.append('_method', 'PUT');
                     $.ajax({
@@ -505,7 +504,7 @@ $(function () {
                 setUpImagePreviewOnFileInput('project-image', 'project-image-preview');
                 let modalProjectsDetails = $('.modal-projects-details');
                 $('.btn-close').add('.modal-projects-details').on('click', function(e) {
-                    if (e.target != modalProjectsDetails[0] && e.target != $('.btn-close')[0]) {
+                    if (e.target !== modalProjectsDetails[0] && e.target !== $('.btn-close')[0]) {
                         return;
                     }
                     modalProjectsDetails.remove();
@@ -664,7 +663,7 @@ $(function () {
                 setUpImagePreviewOnFileInput('service-image', 'service-image-preview');
                 let modalServicesDetails = $('.modal-services-details');
                 $('.btn-close').add('.modal-services-details').on('click', function(e) {
-                    if (e.target != modalServicesDetails[0] && e.target != $('.btn-close')[0]) {
+                    if (e.target !== modalServicesDetails[0] && e.target !== $('.btn-close')[0]) {
                         return;
                     }
                     modalServicesDetails.remove();
@@ -680,7 +679,6 @@ $(function () {
                     let _this = $(this);
                     let action = e.originalEvent.submitter.getAttribute("name");
                     let data = new FormData(this);
-                    data.append('image', $('#service-image')[0].files[0]);
                     data.append(action, true);
                     data.append('_method', 'PUT');
                     $.ajax({
@@ -777,7 +775,7 @@ $(function () {
                 setUpImagePreviewOnFileInput('service-image', 'service-image-preview');
                 let modalServicesDetails = $('.modal-services-details');
                 $('.btn-close').add('.modal-services-details').on('click', function(e) {
-                    if (e.target != modalServicesDetails[0] && e.target != $('.btn-close')[0]) {
+                    if (e.target !== modalServicesDetails[0] && e.target !== $('.btn-close')[0]) {
                         return;
                     }
                     modalServicesDetails.remove();
