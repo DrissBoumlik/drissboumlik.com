@@ -121,13 +121,14 @@ class PostController extends Controller
     {
         try {
             $post = Post::withTrashed()->where('slug', $slug)->first();
-            if ($post === null) {
+            if (! $post) {
                 return redirect("/admin/posts")->with(['response' => ['message' => 'Post not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
             }
 
             if ($request->has('destroy') || $request->has('delete')) {
                 return $this->destroy($post, $request);
-            } elseif ($request->has('restore')) {
+            }
+            if ($request->has('restore')) {
                 $post->restore();
             }
 
@@ -192,9 +193,6 @@ class PostController extends Controller
     private function destroy($post, $request)
     {
         try {
-            if ($post === null) {
-                return redirect("/admin/posts")->with(['response' => ['message' => 'Post not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
-            }
             if ($request->has('delete')) {
                 $post->delete();
                 return redirect("/admin/posts/edit/$post->slug")->with(['response' => ['message' => 'Post deleted successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);

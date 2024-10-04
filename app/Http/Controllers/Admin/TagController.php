@@ -74,7 +74,7 @@ class TagController extends Controller
     {
         try {
             $tag = Tag::withTrashed()->where('slug', $slug)->first();
-            if ($tag === null) {
+            if (! $tag) {
                 return redirect("/admin/tags")->with(['response' => ['message' => 'Tag not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
             }
 
@@ -86,7 +86,8 @@ class TagController extends Controller
 
             if ($request->has('destroy') || $request->has('delete')) {
                 return $this->destroy($tag, $request);
-            } elseif ($request->has('restore')) {
+            }
+            if ($request->has('restore')) {
                 $tag->restore();
             }
 
@@ -111,9 +112,6 @@ class TagController extends Controller
     private function destroy($tag, $request)
     {
         try {
-            if ($tag === null) {
-                return redirect("/admin/tags")->with(['response' => ['message' => 'Tag not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
-            }
             if ($request->has('delete')) {
                 $tag->delete();
                 return redirect("/admin/tags/edit/$tag->slug")->with(['response' => ['message' => 'Tag deleted successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);

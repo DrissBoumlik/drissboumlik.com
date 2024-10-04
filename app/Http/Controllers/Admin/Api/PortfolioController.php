@@ -53,6 +53,11 @@ class PortfolioController extends Controller
     {
         try {
             $service = Service::withTrashed()->find($id);
+
+            if (! $service) {
+                return response()->json(['message' => 'Service not found'], 404);
+            }
+
             if ($request->has('delete') || $request->has('destroy')) {
                 return $this->destroy($service, $request);
             }
@@ -96,6 +101,11 @@ class PortfolioController extends Controller
     {
         try {
             $testimonial = Testimonial::withTrashed()->find($id);
+
+            if (! $testimonial) {
+                return response()->json(['message' => 'Testimonial not found'], 404);
+            }
+
             if ($request->has('delete') || $request->has('destroy')) {
                 return $this->destroy($testimonial, $request);
             }
@@ -192,6 +202,11 @@ class PortfolioController extends Controller
     {
         try {
             $project = Project::withTrashed()->find($id);
+
+            if (! $project) {
+                return response()->json(['message' => 'Project not found'], 404);
+            }
+
             if ($request->has('delete') || $request->has('destroy')) {
                 return $this->destroy($project, $request);
             }
@@ -235,9 +250,6 @@ class PortfolioController extends Controller
     private function destroy($item, $request)
     {
         try {
-            if ($item === null) {
-                return response()->json(['message' => 'Item not found'], 404);
-            }
             if ($request->has('delete')) {
                 $item->update(['active' => false]);
                 $item->delete();
