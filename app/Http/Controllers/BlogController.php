@@ -77,7 +77,7 @@ class BlogController extends Controller
                 ->orderBy('updated_at', 'desc')
                 ->select('title', \DB::Raw("concat('/blog/', slug) as link"), 'cover', \DB::Raw("'<i class=\"fa-solid fa-file-lines\"></i>' as type")); //->paginate($this->searchPerPage);
             $data->results = \DB::table('tags as t')->whereNull('t.deleted_at');
-            if (!\Auth::check()){
+            if ($this->guestView){
                 $data->results = $data->results
                             ->join('post_tag as pt', 't.id', '=', 'pt.tag_id')
                             ->join('posts as p', 'p.id', '=', 'pt.post_id')
@@ -85,9 +85,9 @@ class BlogController extends Controller
                             ->where('p.published', true);
             }
             $data->results = $data->results->where(function ($query) use ($term) {
-                $query->where('name', 'like', $term)
-                    ->orWhere('t.description', 'like', $term);
-            })
+                    $query->where('name', 'like', $term)
+                        ->orWhere('t.description', 'like', $term);
+                })
                 ->orderBy('t.updated_at', 'desc')
                 ->select('name as title', \DB::Raw("concat('/tags/', t.slug) as link"), 't.cover', \DB::Raw("'<i class=\"fa-solid fa-tag\"></i>' as type"))
                 ->distinct()
