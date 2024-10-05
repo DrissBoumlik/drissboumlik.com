@@ -42,7 +42,16 @@
                                     and other traffic data. <a href="https://www.cloudflare.com/privacypolicy/"
                                                                rel="noopener">Link to Cloudflare's Privacy Policy</a>.</p>
 
-                                <h4 class="block-title">Log Data</h4>
+								<h4 class="block-title">Data Sharing</h4>
+                                <p class="block-content">We do not share, sell, trade, or rent users' personal information to any third parties. The information collected through the contact form (name, email, and message) is solely used for communication purposes and is not disclosed or shared with any external entities unless required by law.</p>
+								
+								<h4 class="block-title">GDPR Compliance</h4>								
+								<p class="block-content">As the Data Controller, we collect and process the information you provide via the contact form (name, email, message) solely for communication purposes. We do not share this data with third parties. Users have the right to request correction, or deletion of their personal data at any time by contacting us.</p>
+								
+								<h4 class="block-title">Data Retention</h4>
+								<p class="block-content">We retain the personal information collected via the contact form (name, email, and message) only for as long as necessary to fulfill the purpose of communication or as required by law. Once your inquiry is resolved or if you request deletion, your personal data will be securely erased.</p>
+
+								<h4 class="block-title">Log Data</h4>
                                 <p class="block-content">Like many site operators, we collect information that your
                                     browser sends whenever you visit our Site ("Log Data").
                                     This Log Data may include information such as your computer's Internet
