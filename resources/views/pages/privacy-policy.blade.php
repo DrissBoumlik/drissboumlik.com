@@ -66,6 +66,9 @@
                                     You can instruct your browser to refuse all cookies or to indicate when a cookie
                                     is being sent. However, if you do not accept cookies,
                                     you may not be able to use some portions of our Site.</p>
+									
+								<h4 class="title-content">Social Media</h4>
+								<p class="block-content">Our Website may include social media features, such as sharing buttons or links to platforms like Facebook, Twitter, or LinkedIn. These features may collect your IP address and track which pages you visit on our Website. Interactions with these features are governed by the privacy policy of the respective social media platform.</p>
 
                                 <h4 class="block-title">Security</h4>
                                 <p class="block-content">The security of your Personal Information is important to us,
