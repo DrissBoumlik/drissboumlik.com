@@ -23,7 +23,11 @@ $(function () {
                     },
                     { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
                         render: function (data, type, row) {
-                            return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
+                            let element = `<span class="d-inline-block square-15 br-50p ${ row.active ? 'bg-success' : 'bg-danger' }"></span>`;
+                            if (row.deleted_at) {
+                                element += `<span class="">[ <i class="fa-solid fa-trash"></i> ]</span>`;
+                            }
+                            return `<div class="d-flex justify-content-center gap-3">${element}</div>`;
                     }},
                     { data: 'id', name: 'id', title: 'ID' },
                     { data: 'order', name: 'order', title: 'Order' },
@@ -264,7 +268,11 @@ $(function () {
                     },
                     { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
                         render: function (data, type, row) {
-                            return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
+                            let element = `<span class="d-inline-block square-15 br-50p ${ row.active ? 'bg-success' : 'bg-danger' }"></span>`;
+                            if (row.deleted_at) {
+                                element += `<span class="">[ <i class="fa-solid fa-trash"></i> ]</span>`;
+                            }
+                            return `<div class="d-flex justify-content-center gap-3">${element}</div>`;
                     }},
                     { data: 'id', name: 'id', title: 'ID' },
                     { data: 'order', name: 'order', title: 'Order' },
@@ -555,7 +563,11 @@ $(function () {
                     },
                     { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
                         render: function (data, type, row) {
-                            return `<div class="item item-tiny item-circle mx-auto mb-3 ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
+                            let element = `<span class="d-inline-block square-15 br-50p ${ row.active ? 'bg-success' : 'bg-danger' }"></span>`;
+                            if (row.deleted_at) {
+                                element += `<span class="">[ <i class="fa-solid fa-trash"></i> ]</span>`;
+                            }
+                            return `<div class="d-flex justify-content-center gap-3">${element}</div>`;
                     }},
                     { data: 'id', name: 'id', title: 'ID' },
                     { data: 'order', name: 'order', title: 'Order' },
