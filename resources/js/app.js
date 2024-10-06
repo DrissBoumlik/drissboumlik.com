@@ -1,8 +1,7 @@
 import { drawText, initParticlesJS, initDarkMode, initAjaxEvents } from "./functions";
-import $ from 'jquery';
 import 'lazysizes';
 
-$(function () {
+document.addEventListener('DOMContentLoaded', function () {
     try {
         drawText();
         initParticlesJS();

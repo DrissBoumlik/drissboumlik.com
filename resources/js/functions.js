@@ -1,5 +1,3 @@
-import $ from 'jquery';
-window.$ = window.jQuery = $;
 import { toggleDarkMode } from "./shared/functions";
 import particlesJson from '../plugins/particles/particles.min.json';
 
@@ -28,7 +26,7 @@ function drawText() {
 }
 
 function initParticlesJS() {
-    if ($('#particles-js').length) {
+    if (document.querySelector('#particles-js')) {
         // setTimeout(() => {
         //     $('.loader-wrapper').addClass('disappear');
         // }, 500);
@@ -38,13 +36,17 @@ function initParticlesJS() {
 
 
 function initDarkMode() {
-    $(document).on('click', '.toggle-dark-mode', function () {
-        let _this = $(this);
-        _this.addClass('pushed');
-        setTimeout(() => _this.removeClass('pushed'), 300);
-        toggleDarkMode($(document.body),
-            {darkmode: 'dark-mode', lightmode: 'light-mode'},
-            {name: 'mode', darkmodeValue: 'dark', lightmodeValue: 'light'});
+    document.querySelector('.toggle-dark-mode')
+        .addEventListener('click', function (event) {
+            const _this = event.target;
+            _this.classList.add('pushed');
+            setTimeout(() => _this.classList.remove('pushed'), 300);
+
+            toggleDarkMode(
+                document.body,
+                { darkmode: 'dark-mode', lightmode: 'light-mode' },
+                { name: 'mode', darkmodeValue: 'dark', lightmodeValue: 'light' }
+            );
     });
 }
 
@@ -56,8 +58,8 @@ function initAjaxEvents() {
 }
 
 function initBanner() {
-    $('.banner-close').on('click', function () {
-        $(this).closest('.banner').remove();
+    document.querySelector('.banner-close').addEventListener('click', function () {
+        this.closest('.banner').remove();
     });
 }
 

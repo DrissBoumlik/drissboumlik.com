@@ -2,14 +2,20 @@ import { initDarkMode, initAjaxEvents } from "./functions";
 import 'lazysizes';
 
 
-$(function () {
+document.addEventListener('DOMContentLoaded', function () {
     try {
         initDarkMode();
         initAjaxEvents();
-
-        $(document).on('click', '.toggle-header', function () {
-            $('.toggle-header').toggleClass('btn-alt-secondary tc-blue-dark-2-bg')
-            setTimeout(() => $('#page-container').toggleClass('page-header-fixed'), 1000);
+        const toggleHeaderButtons = document.querySelectorAll('.toggle-header')
+        toggleHeaderButtons.forEach(function (toggleHeader) {
+                toggleHeader.addEventListener('click', function (event) {
+                    toggleHeaderButtons.forEach(function (header) {
+                        header.classList.toggle('btn-alt-secondary');
+                        header.classList.toggle('tc-blue-dark-2-bg');
+                    });
+                    setTimeout(() => document.getElementById('page-container')
+                        .classList.toggle('page-header-fixed'), 1000);
+            })
         })
 
     } catch (error) {

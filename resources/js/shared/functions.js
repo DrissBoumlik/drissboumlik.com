@@ -13,39 +13,45 @@ function getCookie(name) {
     if (parts.length === 2) return parts.pop().split(';').shift();
 }
 function toggleDarkMode(element, classes, cookieData) {
-    if (element.hasClass(classes.lightmode)) {
-        element.addClass(classes.darkmode).removeClass(classes.lightmode);
+    if (element.classList.contains(classes.lightmode)) {
+        element.classList.add(...classes.darkmode.split(' '));
+        element.classList.remove(...classes.lightmode.split(' '));
         setCookie(cookieData.name, cookieData.darkmodeValue);
     } else {
-        element.removeClass(classes.darkmode).addClass(classes.lightmode);
+        element.classList.remove(...classes.darkmode.split(' '));
+        element.classList.add(...classes.lightmode.split(' '));
         setCookie(cookieData.name, cookieData.lightmodeValue);
     }
 }
 
 function get_loader() {
-    let loader = $('.spinner-global');
-    if (loader.length) {
+    let loader = document.querySelector('.spinner-global');
+    if (loader) {
         loader.remove();
     }
+
     loader = `<div class="spinner-global spinner-border" role="status"
                                 style="width: 3rem; height: 3rem; position: fixed; bottom: 1rem; right: 1rem;
-                                border-color: var(--tc-grey-dark) transparent var(--tc-grey-dark) var(--tc-grey-dark);" >
+                                border-color: var(--tc-grey-dark) transparent var(--tc-grey-dark) var(--tc-grey-dark);">
                             <span class="visually-hidden">Loading...</span>
                         </div>`;
-    $(document.body).append(loader)
+
+    document.body.insertAdjacentHTML('beforeend', loader);
 }
 function get_alert_box(params, removeLoader = true) {
     if (removeLoader) {
-        let loader = $('.spinner-border');
-        if (loader.length) {
+        let loader = document.querySelector('.spinner-border');
+        if (loader) {
             loader.remove();
         }
     }
-    let alertElement = $('.alert.alert-dismissible');
-    if (alertElement.length) {
+
+    let alertElement = document.querySelector('.alert.alert-dismissible');
+    if (alertElement) {
         alertElement.remove();
     }
-    let alert_element = `
+
+    let alertElementHTML = `
         <div data-notify="container" class="col-11 col-sm-4 alert ${params.class} alert-dismissible animated fadeIn" role="alert" data-notify-position="bottom-right"
             style="display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 1060; bottom: 20px; right: 20px; animation-iteration-count: 1;">
             <p class="mb-0">
@@ -58,8 +64,16 @@ function get_alert_box(params, removeLoader = true) {
             </a>
         </div>
     `;
-    $(document.body).append(alert_element);
-    $('.alert.alert-dismissible').on('click', function() { $(this).remove() });
+
+    document.body.insertAdjacentHTML('beforeend', alertElementHTML);
+
+    let dismissibleAlert = document.querySelector('.alert.alert-dismissible');
+    if (dismissibleAlert) {
+        dismissibleAlert.addEventListener('click', function() {
+            dismissibleAlert.remove();
+        });
+    }
+
 }
 
 

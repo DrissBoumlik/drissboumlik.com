@@ -25,10 +25,13 @@ function string_to_slug(str) {
 }
 
 function initDarkMode() {
-    $(document).on('click', '.toggle-dark-mode-admin', function () {
-        toggleDarkMode($('#page-container'),
-            {darkmode: 'page-header-dark dark-mode sidebar-dark', lightmode: 'light-mode'},
-            {name: 'theme', darkmodeValue: 'dark-mode', lightmodeValue: 'light-mode'});
+    document.querySelector('.toggle-dark-mode-admin')
+            .addEventListener('click', function (event) {
+        toggleDarkMode(
+            document.getElementById('page-container'),
+            { darkmode: 'page-header-dark dark-mode sidebar-dark', lightmode: 'light-mode' },
+            { name: 'theme', darkmodeValue: 'dark-mode', lightmodeValue: 'light-mode' }
+        );
 
         initPostEditor();
     });

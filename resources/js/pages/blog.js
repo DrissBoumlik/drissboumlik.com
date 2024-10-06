@@ -1,28 +1,38 @@
-import $ from 'jquery';
-
-$(function () {
+document.addEventListener('DOMContentLoaded', function () {
     try {
-        let search_blog_form_wrapper = $('.search-blog-form-wrapper');
-        if (search_blog_form_wrapper.length) {
-            $(window).keydown(function (event) {
+        let searchBlogFormWrapper = document.querySelector('.search-blog-form-wrapper');
+        let searchBlogInput = document.querySelector('.search-blog-input');
+        let displaySearchFormBtn = document.querySelector('.display-search-form');
+
+        if (searchBlogFormWrapper) {
+            window.addEventListener('keydown', function (event) {
                 if (event.ctrlKey && (event.key === 'k' || event.key === 'K')) {
                     event.preventDefault();
-                    search_blog_form_wrapper.removeClass('d-none').addClass('show');
-                    $('.search-blog-input').focus();
-                }
-            });
-            search_blog_form_wrapper.on('click', function (event) {
-                if (event.target === this) {
-                    search_blog_form_wrapper.addClass('d-none');
+                    searchBlogFormWrapper.classList.remove('d-none');
+                    searchBlogFormWrapper.classList.add('show');
+                    if (searchBlogInput) {
+                        searchBlogInput.focus();
+                    }
                 }
             });
 
-            $('.display-search-form').on('click', function() {
-                search_blog_form_wrapper.removeClass('d-none').addClass('show');
-                $('.search-blog-input').focus();
+            searchBlogFormWrapper.addEventListener('click', function (event) {
+                if (event.target === searchBlogFormWrapper) {
+                    searchBlogFormWrapper.classList.add('d-none');
+                }
             });
+
+            if (displaySearchFormBtn) {
+                displaySearchFormBtn.addEventListener('click', function () {
+                    searchBlogFormWrapper.classList.remove('d-none');
+                    searchBlogFormWrapper.classList.add('show');
+                    if (searchBlogInput) {
+                        searchBlogInput.focus();
+                    }
+                });
+            }
         }
     } catch (error) {
-        // console.log(error);
+        console.log(error);
     }
 });

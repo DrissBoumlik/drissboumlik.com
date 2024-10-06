@@ -1,6 +1,4 @@
-import $ from 'jquery';
-
-$(function () {
+document.addEventListener('DOMContentLoaded', function () {
     try {
         if (window.innerWidth <= 768) {
             return;
@@ -15,90 +13,119 @@ $(function () {
     }
 });
 
-
 function editor() {
-    let aboutCode = $('.about-code');
-    $('.ide-section').each(function (i, item){
+    let aboutCode = document.querySelector('.about-code');
+    let ideSections = document.querySelectorAll('.ide-section');
+    ideSections.forEach((item, i) => {
         setTimeout(() => {
-            $(item).css('transition', 'transform 0.5s ease').removeClass('hidden-small');
+            item.style.transition = 'transform 0.5s ease';
+            item.classList.remove('hidden-small');
         }, i * 250);
     });
-    let editorBody = aboutCode.find('.editor-wrapper .body-container');
-    editorBody.empty();
-    let colors = ['#48aca2','#BE8A28','#5A395A','#5E5EFB','#78C078'];
+
+    let editorBody = aboutCode.querySelector('.editor-wrapper .body-container');
+    editorBody.innerHTML = ''; // empty the editor body
+    let colors = ['#48aca2', '#BE8A28', '#5A395A', '#5E5EFB', '#78C078'];
     let limit = 10;
-    for(let i = 1; i <= limit; i++) {
-        let maxPadding = 5, minPadding = 1
-        let paddingLeft = (i != 1) ? Math.round(minPadding + Math.random() * (maxPadding -  minPadding)) : 0;
-        editorBody.append(`<div id="line-code-${i}" class="line-code line-code-${i}" style="padding-left: ${paddingLeft * 10}px"></div>`);
-        let lineCode = editorBody.find(`#line-code-${i}`);
+    for (let i = 1; i <= limit; i++) {
+        let maxPadding = 5, minPadding = 1;
+        let paddingLeft = (i !== 1) ? Math.round(minPadding + Math.random() * (maxPadding - minPadding)) : 0;
+        let lineDiv = document.createElement('div');
+        lineDiv.id = `line-code-${i}`;
+        lineDiv.classList.add('line-code', `line-code-${i}`);
+        lineDiv.style.paddingLeft = `${paddingLeft * 10}px`;
+        editorBody.appendChild(lineDiv);
+
         let maxCodeItem = 5, minCodeItem = 2;
         let j = Math.round(minCodeItem + Math.random() * (maxCodeItem - minCodeItem));
         let _colors = [...colors];
+
         for (let _i = 1; _i <= j; _i++) {
-            var color = _colors[Math.floor(Math.random()*_colors.length)];
+            var color = _colors[Math.floor(Math.random() * _colors.length)];
             let maxWidth = 70, minWidth = 15;
             let width = Math.round(minWidth + Math.random() * (maxWidth - minWidth));
-            lineCode.append(`<span id="line-code-${i}-item-${_i}" class="line-code-item line-code-${i}-item-${_i}" style="background-color:${color}; width:0px"></span>`);
-            let lineCodeItem = lineCode.find(`#line-code-${i}-item-${_i}`);
+            let span = document.createElement('span');
+            span.id = `line-code-${i}-item-${_i}`;
+            span.classList.add('line-code-item', `line-code-${i}-item-${_i}`);
+            span.style.backgroundColor = color;
+            span.style.width = '0px';
+            lineDiv.appendChild(span);
+
             setTimeout(() => {
-                lineCodeItem.css('width', `${width}px`);
+                span.style.width = `${width}px`;
             }, 100 * (i + _i));
+
             _colors = _colors.filter(c => c !== color);
         }
-
-        // setTimeout(() => {
-        //     lineCode.removeClass('opacity-0').addClass('animate__animated animate__slideInLeft');
-        // }, 100 * i);
     }
 }
 
-function reRun(btn = null){
-    $('.body-loading').removeClass('d-none');
-    $('.about-code .output-wrapper .body-container .lines').addClass('d-none');
+function reRun(btn = null) {
+    document.querySelector('.body-loading').classList.remove('d-none');
+    document.querySelector('.about-code .output-wrapper .body-container .lines').classList.add('d-none');
     setTimeout(() => {
-        if (btn) btn.attr('disabled', false);
-        $('.body-loading').addClass('d-none');
-        $('.about-code .output-wrapper .body-container .lines').removeClass('d-none');
+        if (btn) btn.disabled = false;
+        document.querySelector('.body-loading').classList.add('d-none');
+        document.querySelector('.about-code .output-wrapper .body-container .lines').classList.remove('d-none');
         output();
     }, 1000);
-    if (btn) btn.removeClass('pushed').attr('disabled', true);
+    if (btn) {
+        btn.classList.remove('pushed');
+        btn.disabled = true;
+    }
 }
 
-function initCodeEvent(){
-    $(document).on('click', '.btn-edit', function () {
-        let _this = $(this);
-        setTimeout(() => {
-            _this.attr('disabled', false);
-            editor();
-        }, 500);
-        _this.attr('disabled', true);
-    });
-    $(document).on('click', '.btn-run', function () {
-        reRun($(this));
+function initCodeEvent() {
+    document.addEventListener('click', function (event) {
+        if (event.target.classList.contains('btn-edit')) {
+            let _this = event.target;
+            setTimeout(() => {
+                _this.disabled = false;
+                editor();
+            }, 500);
+            _this.disabled = true;
+        }
+
+        if (event.target.classList.contains('btn-run')) {
+            reRun(event.target);
+        }
     });
 }
 
 function output() {
-    let outputBody = $('.about-code .output-wrapper .body-container .lines');
-    outputBody.empty();
+    let outputBody = document.querySelector('.about-code .output-wrapper .body-container .lines');
+    outputBody.innerHTML = ''; // empty the output body
     let limit = 5;
-    let _colors = [{color: '#C54242', iconClass: 'far fa-times-circle'},
-        {color: '#3F8854', iconClass: 'far fa-check-circle'},
-        // {color: '#F4C009', iconClass: 'fas fa-exclamation-triangle'},
-        {color: '#3F8854', iconClass: 'far fa-check-circle'},];
+    let _colors = [
+        { color: '#C54242', iconClass: 'far fa-times-circle' },
+        { color: '#3F8854', iconClass: 'far fa-check-circle' },
+        { color: '#3F8854', iconClass: 'far fa-check-circle' },
+    ];
+
     for (let i = 1; i <= limit; i++) {
         var item = _colors[Math.floor(Math.random() * _colors.length)];
-        let line = `<div id="line-output-${i}" class="line-output line-output-${i} opacity-0">
-                        <div class="line-icon">
-                            <i class="${item.iconClass}" style="color:${item.color}"></i>
-                        </div>
-                        <div class="line-text" style="background-color:${item.color}"></div>
-                    </div>`;
-        outputBody.append(line);
-        let lineOutput = outputBody.find(`#line-output-${i}`);
+        let line = document.createElement('div');
+        line.id = `line-output-${i}`;
+        line.classList.add('line-output', `line-output-${i}`, 'opacity-0');
+
+        let iconDiv = document.createElement('div');
+        iconDiv.classList.add('line-icon');
+        let icon = document.createElement('i');
+        icon.className = item.iconClass;
+        icon.style.color = item.color;
+        iconDiv.appendChild(icon);
+
+        let textDiv = document.createElement('div');
+        textDiv.classList.add('line-text');
+        textDiv.style.backgroundColor = item.color;
+
+        line.appendChild(iconDiv);
+        line.appendChild(textDiv);
+        outputBody.appendChild(line);
+
         setTimeout(() => {
-            lineOutput.addClass('animate__animated animate__zoomIn').removeClass('opacity-0');
+            line.classList.add('animate__animated', 'animate__zoomIn');
+            line.classList.remove('opacity-0');
         }, 100 * i);
     }
 }

@@ -1,8 +1,9 @@
 import $ from 'jquery';
-
-$(function () {
+window.$ = window.jQuery = $;
+document.addEventListener('DOMContentLoaded', function () {
     try {
-        if ($('.owl-carousel-wrapper').length !== 0) {
+        let owlCarouselWrapper = document.querySelector('.owl-carousel-wrapper');
+        if (owlCarouselWrapper) {
             import('owl.carousel')
                 .then(function () {
                     let params = {
@@ -29,11 +30,15 @@ $(function () {
                             },
                         }
                     };
-                    jQuery('.owl-carousel').owlCarousel(params);
+
+                let owlCarousels = document.querySelectorAll('.owl-carousel');
+                owlCarousels.forEach(function (carousel) {
+                    new window.jQuery(carousel).owlCarousel(params);
                 });
+            });
         }
     } catch (error) {
-        // console.log(error);
+        console.log(error);
     }
 });
 
