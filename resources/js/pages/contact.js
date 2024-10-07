@@ -51,6 +51,28 @@ $(function () {
                 });
             });
         }
+
+        let contact_form = document.getElementById("form-body");
+        if (contact_form) {
+            let previousText = "";
+            contact_form.addEventListener("input", function (event) {
+                let maxLength = 200;
+                let currentLength = this.value.length;
+                let textLengthDisplay = document.getElementById("current-text-length");
+                textLengthDisplay.innerText = `${currentLength}/${maxLength}`;
+                if (currentLength >= maxLength) {
+                    // this.value = previousText;
+                    this.value = previousText = this.value.substring(0, 200);
+                    textLengthDisplay.innerText = `${maxLength}/${maxLength}`;
+                    textLengthDisplay.classList.add("tc-red-light");
+                } else {
+                    previousText = this.value;
+                    textLengthDisplay.classList.remove("tc-red-light");
+                }
+            });
+        }
+
+
     } catch (error) {
         // console.log(error);
     }
