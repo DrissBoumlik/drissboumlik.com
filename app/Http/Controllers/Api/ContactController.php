@@ -13,10 +13,12 @@ class ContactController extends Controller
     public function getInTouch(Request $request)
     {
         $request->validate([
-            "name" => "required|max:100",
-            "email" => "required|email|max:255",
-            "body" => "required|max:1000",
-            "g-recaptcha-response" => "required",
+            "name"                  => "required|max:100",
+            "email"                 => "required|email|max:255",
+            "body"                  => "required|max:200",
+            "g-recaptcha-response"  => "required",
+        ], [
+            "body" => "The message must not be greater than 200 characters."
         ]);
         try {
             $this->checkCaptcha($request);

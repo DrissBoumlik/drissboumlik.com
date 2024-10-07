@@ -9,7 +9,7 @@
         <label for="form-email">Email address</label>
     </div>
     <div class="form-floating mb-3">
-        <textarea class="form-control" id="form-body" rows="3" name="body" placeholder="" required maxlength="200"></textarea>
+        <textarea class="form-control" id="form-body" rows="3" name="body" required maxlength="200"></textarea>
         <span id="current-text-length" class="current-text-length">0/200</span>
         <label for="form-body">Message</label>
     </div>
