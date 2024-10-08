@@ -15,7 +15,7 @@
                         <div class="row">
                             <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
                                 <h4 class="block-title-header mt-0 mb-4">Privacy Policy</h4>
-                                <p class="block-content">Last Updated: 11/20/2023</p>
+                                <p class="block-content">Last Updated: 10/07/2024</p>
 
                                 <p class="block-content">Thank you for visiting
                                     <a href="{{ \URL::to('/') }}">drissboumlik.com</a> (the "Website").
@@ -44,10 +44,10 @@
 
 								<h4 class="block-title">Data Sharing</h4>
                                 <p class="block-content">We do not share, sell, trade, or rent users' personal information to any third parties. The information collected through the contact form (name, email, and message) is solely used for communication purposes and is not disclosed or shared with any external entities unless required by law.</p>
-								
-								<h4 class="block-title">GDPR Compliance</h4>								
+
+								<h4 class="block-title">GDPR Compliance</h4>
 								<p class="block-content">As the Data Controller, we collect and process the information you provide via the contact form (name, email, message) solely for communication purposes. We do not share this data with third parties. Users have the right to request correction, or deletion of their personal data at any time by contacting us.</p>
-								
+
 								<h4 class="block-title">Data Retention</h4>
 								<p class="block-content">We retain the personal information collected via the contact form (name, email, and message) only for as long as necessary to fulfill the purpose of communication or as required by law. Once your inquiry is resolved or if you request deletion, your personal data will be securely erased.</p>
 
@@ -66,7 +66,7 @@
                                     You can instruct your browser to refuse all cookies or to indicate when a cookie
                                     is being sent. However, if you do not accept cookies,
                                     you may not be able to use some portions of our Site.</p>
-									
+
 								<h4 class="title-content">Social Media</h4>
 								<p class="block-content">Our Website may include social media features, such as sharing buttons or links to platforms like Facebook, Twitter, or LinkedIn. These features may collect your IP address and track which pages you visit on our Website. Interactions with these features are governed by the privacy policy of the respective social media platform.</p>
 
