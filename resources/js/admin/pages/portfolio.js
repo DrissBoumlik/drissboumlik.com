@@ -2,10 +2,10 @@ import { get_alert_box } from "../../shared/functions";
 import { setUpImagePreviewOnFileInput } from "../../shared/helpers";
 import { configDT } from "../functions";
 
-$(function () {
+document.addEventListener("DOMContentLoaded", function () {
     try {
 
-        if ($('#testimonials').length) {
+        if (document.querySelector('#testimonials')) {
             let params = {
                 first_time: true,
                 id: '#testimonials',
@@ -15,7 +15,7 @@ $(function () {
                     { data: 'id', name: 'id', title: 'Actions' ,
                         render: function (data, type, row, params) {
                             return `<div class="btn-group">
-                                        <button type="button" class="btn btn-sm js-bs-tooltip-enabled display-testimonials-details">
+                                        <button type="button" class="btn btn-sm display-testimonials-details" title="View Testimonial">
                                             <i class="fa fs-3 fa-eye"></i>
                                         </button>
                                     </div>`;
@@ -250,7 +250,7 @@ $(function () {
                 });
             });
         }
-        if ($('#projects').length) {
+        if (document.querySelector('#projects')) {
             let params = {
                 first_time: true,
                 id: '#projects',
@@ -260,7 +260,7 @@ $(function () {
                     { data: 'id', name: 'id', title: 'Actions' ,
                         render: function (data, type, row, params) {
                             return `<div class="btn-group">
-                                        <button type="button" class="btn btn-sm js-bs-tooltip-enabled display-projects-details">
+                                        <button type="button" class="btn btn-sm display-projects-details" title="View Project">
                                             <i class="fa fs-3 fa-eye"></i>
                                         </button>
                                     </div>`;
@@ -545,7 +545,7 @@ $(function () {
                 });
             });
         }
-        if ($('#services').length) {
+        if (document.querySelector('#services')) {
             let params = {
                 first_time: true,
                 id: '#services',
@@ -555,7 +555,7 @@ $(function () {
                     { data: 'id', name: 'id', title: 'Actions' ,
                         render: function (data, type, row, params) {
                             return `<div class="btn-group">
-                                        <button type="button" class="btn btn-sm js-bs-tooltip-enabled display-services-details">
+                                        <button type="button" class="btn btn-sm display-services-details" title="View Service">
                                             <i class="fa fs-3 fa-eye"></i>
                                         </button>
                                     </div>`;
