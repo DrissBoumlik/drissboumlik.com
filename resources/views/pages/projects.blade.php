@@ -19,9 +19,9 @@
                                         <div class="project-box box mb-4">
                                             <div class="project-image-cover">
                                                 <img
-                                                    src="{{ asset('/' . $projectItem->image->compressed) }}"
+                                                    src="{{ asset('/' . $projectItem->image?->compressed) }}"
                                                     alt="{{ $projectItem->title }}"
-                                                    data-src="{{ asset('/' . $projectItem->image->original) }}"
+                                                    data-src="{{ asset('/' . $projectItem->image?->original) }}"
                                                     class="img-fluid lazyload" width="300" height="250"/>
                                             </div>
                                             <div class="project-data">
