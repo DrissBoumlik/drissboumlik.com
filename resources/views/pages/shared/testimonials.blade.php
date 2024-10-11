@@ -2,8 +2,8 @@
     <div class="testimonials owl-carousel-wrapper">
         <div class="container">
             @include('components.headline', ['headline' => $testimonials->header])
-            <div class="row">
-                <div class="owl-carousel owl-theme">
+            <div class="row owl-carousel-row">
+                <div class="owl-carousel owl-theme owl-carousel-items invisible">
                     @foreach ($testimonials->data as $index => $testimonial)
                         <div class="owl-carousel-item item col-md-6 col-12">
                             <span class="testimonial-icon">
@@ -30,6 +30,7 @@
                         </div>
                     @endforeach
                 </div>
+                <div class="owl-carousel-loading"><i class="fa-solid fa-circle-notch  spinClockWise animation_infinite"></i></div>
             </div>
             <div class="row mt-5">
                 <div class="col-12">
