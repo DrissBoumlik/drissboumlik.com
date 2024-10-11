@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import $ from 'jquery/dist/jquery.slim.min.js';
 window.jQuery = $;
 document.addEventListener('DOMContentLoaded', function () {
     try {
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     let owlCarousels = document.querySelectorAll('.owl-carousel');
                     owlCarousels.forEach(function (carousel) {
                     new window.jQuery(carousel).owlCarousel(params);
-                    
+
                     document.querySelector('.owl-carousel-items').classList.remove('invisible');
                     document.querySelector('.owl-carousel-loading').remove();
                 });
