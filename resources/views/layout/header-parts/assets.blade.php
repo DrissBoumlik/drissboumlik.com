@@ -24,5 +24,5 @@
 
 @vite(['resources/sass/externals.sass'])
 @vite(['resources/sass/app.sass'])
-<script src="{{ asset('/plugins/particles/particles.min.js') }}"></script>
+<script async src="{{ asset('/plugins/particles/particles.min.js') }}"></script>
 @vite(['resources/js/app.js'])
