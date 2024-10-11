@@ -7,10 +7,9 @@
     <link href="{{ asset('/template/assets/js/plugins/flatpickr/flatpickr.min.css') }}" rel="stylesheet" />
 @endsection
 @section('js')
-{{--    <script src="/template/assets/js/plugins/cropperjs/cropper.min.js"></script>--}}
-    <script src="{{ asset('/template/assets/js/plugins/select2/js/select2.full.min.js') }}"></script>
-    <script src="{{ asset('/template/assets/js/plugins/flatpickr/flatpickr.min.js') }}"></script>
-    <script src="{{ asset('/plugins/tinymce/tinymce.min.js') }}"></script>
+    <script defer src="{{ asset('/template/assets/js/plugins/select2/js/select2.full.min.js') }}"></script>
+    <script defer src="{{ asset('/template/assets/js/plugins/flatpickr/flatpickr.min.js') }}"></script>
+    <script defer src="{{ asset('/plugins/tinymce/tinymce.min.js') }}"></script>
 @endsection
 
 @section('post-header-assets')

@@ -7,8 +7,8 @@
 
 @section('js')
     <!-- Page JS Plugins -->
-    <script src="{{ asset('/plugins/moment-js/moment.js') }}"></script>
-    <script src="{{ asset('/template/assets/js/plugins/select2/js/select2.full.min.js') }}"></script>
+    <script defer src="{{ asset('/plugins/moment-js/moment.js') }}"></script>
+    <script defer src="{{ asset('/template/assets/js/plugins/select2/js/select2.full.min.js') }}"></script>
 @endsection
 
 @section('post-header-assets')

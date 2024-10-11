@@ -24,7 +24,7 @@ Core libraries and functionality
 webpack is putting everything together at assets/_js/main/app.js
 -->
 @vite(['resources/template/assets/js/oneui.app.min.js'])
-<script defer src="{{ Vite::asset('node_modules/jquery/dist/jquery.min.js') }}"></script>
+<script defer src="{{ asset('/plugins/jquery/jquery.min.js') }}"></script>
 @yield('js')
 <script defer src="{{ asset('/template/assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
 @vite(['resources/js/admin/app.js'])
