@@ -1,7 +1,7 @@
 @extends('layout.page-content-wide')
 
 @section('post-header-assets')
-    <script async src="https://www.google.com/recaptcha/api.js"></script>
+    <script defer src="https://www.google.com/recaptcha/api.js"></script>
     @vite(['resources/js/pages/contact.js'])
 @endsection
 
