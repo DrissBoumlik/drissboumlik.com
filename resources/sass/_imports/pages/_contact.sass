@@ -1,6 +1,23 @@
 
 .get-in-touch
     position: relative
+    .form-control
+        background-color: $tc-grey-light
+        border-color: transparent transparent $tc-grey-light-3 transparent
+        border-radius: 0
+    textarea.form-control
+        height: 200px
+        min-height: 150px
+        max-height: 300px
+    .current-text-length
+        position: absolute
+        top: 5px
+        right: 5px
+        color: #bbb
+    .form-floating > .form-control:focus ~ label:after
+        background-color: transparent
+    .contact-form-response
+        margin-top: 1rem
     @media (max-width: 767px)
         .contact-form
             z-index: 1
@@ -12,8 +29,6 @@
             right: 0
             opacity: 0.2
 
-.current-text-length
-    position: absolute
-    top: 5px
-    right: 5px
-    color: #bbb
+body.dark-mode
+    .get-in-touch .form-control
+        border-color: transparent transparent $tc-blue transparent
