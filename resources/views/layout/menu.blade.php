@@ -7,7 +7,7 @@
                         <ul class="header-menu-container list-group list-group-horizontal">
                             @foreach ($headerMenu as $link)
                                 <li class="header-menu-item menu-item list-group-item animated-underline
-                                        {{ request()->is($link->link) ? 'active' : '' }}">
+                                        {{ request()->is($link->link, ltrim($link->link, '/')) ? 'active' : '' }}">
                                     <a href="{{ $link->link }}" rel="noopener" target="{{ $link->target ?? '_blank' }}"
                                        aria-label="{{ $link->title }}" class="text-capitalize" title="{{ $link->title }}">
                                         {!! $link->text !!}
