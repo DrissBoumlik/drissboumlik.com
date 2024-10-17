@@ -26,11 +26,13 @@ class ContactController extends Controller
             $request_data = $request->only('name', 'email', 'body');
             Message::create($request_data);
 
-            Mail::send('emails.contact', $request_data, static function ($message) use ($request_data) {
-                $message->to(env('MAIL_TO_ADDRESS'), 'DB')
-                    ->subject('DB Contact Form : Message from ' . $request_data['name'])
-                    ->from(env('MAIL_FROM_ADDRESS'), 'DB Contact Form');
-            });
+
+//            Mail::send('emails.contact', $request_data, static function ($message) use ($request_data) {
+//                $message->to(env('MAIL_TO_ADDRESS'), 'DB')
+//                    ->subject('DB Contact Form : Message from ' . $request_data['name'])
+//                    ->from(env('MAIL_FROM_ADDRESS'), 'DB Contact Form');
+//            });
+            \App\Jobs\SendContactMeEmailJob::dispatch($request_data)->afterResponse();
 
             return response()->json(['message' => 'Message sent successfully', 'class' => 'tc-alert-ok', 'icon' => '<i class="fa fa-fw fa-circle-check tc-blue"></i>'], 200);
         } catch (\Throwable $e) {
