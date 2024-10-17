@@ -9,16 +9,16 @@ $(function () {
                 let _this = this;
                 let formIsValid = true;
                 let data = $(this).serializeArray();
-                data.forEach(function (item, key) {
-                    $(`#error-${item.name}`).remove();
-                    if (item.value === '') {
-                        formIsValid = false;
-                        $(`#form-${item.name}`).after(`<div id="error-${item.name}" class="tc-alert tc-alert-error">This field is required.</div>`);
-                    }
-                });
-                if (!formIsValid) {
-                    return;
-                }
+                // data.forEach(function (item, key) {
+                //     $(`#error-${item.name}`).remove();
+                //     if (item.value === '') {
+                //         formIsValid = false;
+                //         $(`#form-${item.name}`).after(`<div id="error-${item.name}" class="tc-alert tc-alert-error">This field is required.</div>`);
+                //     }
+                // });
+                // if (!formIsValid) {
+                //     return;
+                // }
 
                 $('#contact-form-response').remove()
                 $(_this).after(`<div id="contact-form-response" class="contact-form-response tc-alert tc-alert-ok text-center"><i class="fa-solid fa-spinner spinClockWise"></i> Sending...</div>`);
