@@ -17,7 +17,11 @@
     .form-floating > .form-control:focus ~ label:after
         background-color: transparent
     .contact-form-response
-        margin-top: 1rem
+        margin-top: 0.7rem
+        &.tc-alert-nok *
+            color: $tc-red-light
+        &.tc-alert-ok *
+            color: $tc-blue
     @media (max-width: 767px)
         .contact-form
             z-index: 1
@@ -28,6 +32,25 @@
             top: 0
             right: 0
             opacity: 0.2
+
+    .btn-send
+        position: relative
+        &.spinner
+            color: transparent !important
+            &:before
+                content: ''
+                box-sizing: border-box
+                position: absolute
+                top: 50%
+                left: 50%
+                width: 20px
+                height: 20px
+                margin-top: -10px
+                margin-left: -10px
+                border-radius: 50%
+                border: 2px solid $tc-grey-light-2
+                border-top-color: $tc-blue-dark-5
+                animation: spinClockWise .6s linear infinite
 
 body.dark-mode
     .get-in-touch .form-control

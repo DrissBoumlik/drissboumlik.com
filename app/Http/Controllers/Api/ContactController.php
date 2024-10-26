@@ -34,9 +34,13 @@ class ContactController extends Controller
 //            });
             \App\Jobs\SendContactMeEmailJob::dispatch($request_data)->afterResponse();
 
-            return response()->json(['message' => 'Message sent successfully', 'class' => 'tc-alert-ok', 'icon' => '<i class="fa fa-fw fa-circle-check tc-blue"></i>'], 200);
+            return response()->json(['message' => 'Message sent successfully', 'class' => 'tc-alert-ok', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>'], 200);
         } catch (\Throwable $e) {
-            return response()->json(['message' => 'Something went wrong, Please try again!', 'class' => 'tc-orange-red', 'icon' => '<i class="fa fa-fw fa-times-circle tc-orange-red"></i>'], 400);
+            $message = "Something went wrong, Please try again!";
+            if ($e->getCode() == -1) {
+                $message = $e->getMessage();
+            }
+            return response()->json(['message' => $message, 'class' => 'tc-alert-nok', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>'], 400);
         }
     }
 
@@ -49,7 +53,7 @@ class ContactController extends Controller
         ]);
         $result = json_decode($response);
         if (!$response->successful() || !$result->success) {
-            throw new \Exception("Issue with captcha, Try again !");
+            throw new \Exception("Issue with captcha, Try again !", -1);
         }
     }
 }

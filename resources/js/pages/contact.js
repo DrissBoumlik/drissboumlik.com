@@ -21,22 +21,24 @@ $(function () {
                 }
 
                 $('#contact-form-response').remove()
-                $(_this).after(`<div id="contact-form-response" class="contact-form-response tc-alert tc-alert-ok text-center"><i class="fa-solid fa-spinner spinClockWise"></i> Sending...</div>`);
+                // $(_this).after(`<div id="contact-form-response" class="contact-form-response tc-alert tc-alert-ok text-center"><i class="fa-solid fa-spinner spinClockWise"></i> Sending...</div>`);
 
+                $('.btn-send').addClass('spinner');
                 $.ajax({
                     method: 'POST',
                     url: '/api/get-in-touch',
                     data: data,
                     success: function (response) {
                         $('#contact-form-response').remove()
-                        $(_this).after(`<div id="contact-form-response" class="contact-form-response tc-alert ${response.class} text-center"> ${response.icon} ${response.message}</div>`);
+                        $(_this).after(getAlertDom(response));
                         // setTimeout(() => $('#contact-form-response').remove(), 5000);
+                        $('.btn-send').removeClass('spinner');
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         let response = jqXHR.responseJSON;
                         $('#contact-form-response').remove()
                         if (response.class && response.icon) {
-                            $(_this).after(`<div id="contact-form-response" class="contact-form-response tc-alert ${response.class} text-center"> ${response.icon} ${response.message}</div>`);
+                            $(_this).after(getAlertDom(response));
                         }
                         let errors = response.errors;
                         data.forEach(function (item, key) {
@@ -47,6 +49,7 @@ $(function () {
                             $(`#error-${errorKey}`).remove();
                             $(`#form-${errorKey}`).after(`<div id="error-${errorKey}" class="tc-alert tc-alert-error">${messages || 'This field is required.'}</div>`);
                         }
+                        $('.btn-send').removeClass('spinner');
                     }
                 });
             });
@@ -71,9 +74,16 @@ $(function () {
                 }
             });
         }
-
-
     } catch (error) {
         // console.log(error);
     }
 });
+
+function getAlertDom(params) {
+    return `
+        <div id="contact-form-response"
+            class="contact-form-response tc-alert ${params.class} text-center">
+                ${params.icon} <span>${params.message}</span>
+        </div>
+    `;
+}
