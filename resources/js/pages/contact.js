@@ -23,7 +23,7 @@ $(function () {
                 $('#contact-form-response').remove()
                 // $(_this).after(`<div id="contact-form-response" class="contact-form-response tc-alert tc-alert-ok text-center"><i class="fa-solid fa-spinner spinClockWise"></i> Sending...</div>`);
 
-                $('.btn-send').addClass('spinner');
+                $('.btn-send').addClass('loading-spinner');
                 $.ajax({
                     method: 'POST',
                     url: '/api/get-in-touch',
@@ -32,7 +32,7 @@ $(function () {
                         $('#contact-form-response').remove()
                         $(_this).after(getAlertDom(response));
                         // setTimeout(() => $('#contact-form-response').remove(), 5000);
-                        $('.btn-send').removeClass('spinner');
+                        $('.btn-send').removeClass('loading-spinner');
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         let response = jqXHR.responseJSON;
@@ -49,7 +49,7 @@ $(function () {
                             $(`#error-${errorKey}`).remove();
                             $(`#form-${errorKey}`).after(`<div id="error-${errorKey}" class="tc-alert tc-alert-error">${messages || 'This field is required.'}</div>`);
                         }
-                        $('.btn-send').removeClass('spinner');
+                        $('.btn-send').removeClass('loading-spinner');
                     }
                 });
             });
