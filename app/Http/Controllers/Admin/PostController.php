@@ -122,7 +122,7 @@ class PostController extends Controller
         try {
             $post = Post::withTrashed()->where('slug', $slug)->first();
             if (! $post) {
-                return redirect("/admin/posts")->with(['response' => ['message' => 'Post not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
+                return response()->json(['message' => 'Post not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']);
             }
 
             if ($request->has('destroy') || $request->has('delete')) {

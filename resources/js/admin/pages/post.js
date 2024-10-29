@@ -40,7 +40,7 @@ $(function () {
 
         initFlatpickr();
 
-        $(document).on('click', '.btn-action', function (e) {
+        $(document).on('click', '.btn-action-post', function (e) {
             e.preventDefault();
 
             if (!confirm("Are you sure ?")) {
@@ -53,6 +53,34 @@ $(function () {
             let postContent = tinymce.get('post_body').getContent();
             postContent = postContent.replaceAll('<pre class="', '<pre class="loading-spinner ');
             data.set('post_content', postContent);
+            data.append('_method', 'PUT');
+            data.append(this.getAttribute("name"), true);
+            $.ajax({
+                type: 'POST',
+                url: form.attr('action'),
+                data: data,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    console.log(response);
+                    get_alert_box({class: response.class, message: response.message, icon: response.icon});
+                },
+                error: function (jqXHR, textStatus, errorThrown){
+                    console.log(jqXHR, textStatus, errorThrown);
+                    get_alert_box({class: jqXHR.responseJSON.class, message: jqXHR.responseJSON.message, icon: jqXHR.responseJSON.icon});
+                }
+            });
+        });
+
+        $(document).on('click', '.btn-action-tag', function (e) {
+            e.preventDefault();
+
+            if (!confirm("Are you sure ?")) {
+                return;
+            }
+
+            let form = $(this).closest('form');
+            let data = new FormData(form[0]);
             data.append('_method', 'PUT');
             data.append(this.getAttribute("name"), true);
             $.ajax({
