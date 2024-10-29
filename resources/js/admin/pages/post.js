@@ -1,5 +1,5 @@
 import { initFlatpickr, initSelect2, setUpImagePreviewOnFileInput } from "../../shared/helpers";
-import {getCookie} from "@/shared/functions";
+import {getCookie, get_alert_box} from "@/shared/functions";
 import {string_to_slug} from "@/admin/functions";
 
 $(function () {
@@ -47,7 +47,29 @@ $(function () {
                 return;
             }
 
-            $(this).closest('form').submit();
+            let form = $(this).closest('form');
+            let data = new FormData(form[0]);
+
+            let postContent = tinymce.get('post_body').getContent();
+            postContent = postContent.replaceAll('<pre class="', '<pre class="loading-spinner ');
+            data.set('post_content', postContent);
+            data.append('_method', 'PUT');
+            data.append(this.getAttribute("name"), true);
+            $.ajax({
+                type: 'POST',
+                url: form.attr('action'),
+                data: data,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    console.log(response);
+                    get_alert_box({class: response.class, message: response.message, icon: response.icon});
+                },
+                error: function (jqXHR, textStatus, errorThrown){
+                    console.log(jqXHR, textStatus, errorThrown);
+                    get_alert_box({class: jqXHR.responseJSON.class, message: jqXHR.responseJSON.message, icon: jqXHR.responseJSON.icon});
+                }
+            });
         });
 
     } catch (error) {

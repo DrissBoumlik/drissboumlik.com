@@ -166,7 +166,7 @@
                             <div class="d-flex justify-content-between gap-2 flex-wrap flex-md-nowrap">
                                 <button type="submit" class="btn-action btn btn-success w-100">
                                     <i class="fa fa-fw fa-edit me-1"></i>Update</button>
-                                <a href="/blog/{{ $post->slug }}" target="_blank" class="btn btn-dark w-100">
+                                <a href="/blog/{{ $post->slug }}?forget=1" target="_blank" class="btn btn-dark w-100">
                                     <i class="fa fa-fw fa-eye me-1"></i>View</a>
                                 @if($post->deleted)
                                     <button type="submit" class="btn-action btn btn-secondary w-100" name="restore">
