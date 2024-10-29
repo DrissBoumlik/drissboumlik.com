@@ -86,7 +86,7 @@
                             </div>
                             <div class="">
                                 <label class="form-label" for="storage">Storage path</label>
-                                <input type="text" class="form-control" id="storage" disabled value="/storage/blog/posts/SLUG/assets/post_asset_KEY--compressed.WEBP">
+                                <input type="text" class="form-control" id="storage" disabled value="/storage/blog/posts/SLUG/assets/compressed/post_asset_KEY.webp">
                             </div>
                         </div>
                         <div class="col-md-4">

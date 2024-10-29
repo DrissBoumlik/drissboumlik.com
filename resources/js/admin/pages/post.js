@@ -195,7 +195,7 @@ function fillPostAssetsModal(postAssets){
     $('body').append(modal);
     let modalPostAssets = $('.modal-post-assets');
     $('.btn-close').add('.modal-post-assets').on('click', function (e) {
-        if (e.target !== modalPostAssets[0] && e.target !== $('.btn-close')[0]) {
+        if (e.target !== this) {
             return;
         }
         modalPostAssets.remove();
