@@ -108,21 +108,25 @@
         background-attachment: fixed
     .toolbar .toolbar-item
         margin-right: .5rem
+    pre
+        border-radius: 10px
+        &:is([class*=language]) code
+            padding: 1rem
+            font-size: .9rem
+            display: block
     code
         padding: 0 5px
         border-radius: 5px
         font-size: 1rem
         display: inline-block
-        //font-family: Harmattan, serif
-        line-height: 1.5rem !important
-        &:not([class*=language])
-            color: $tc-black
-            background-color: $tc-grey-light-1
-    code[class*=language-], pre[class*=language-]
+        line-height: 1.7rem
         font-family: 'Fira Code', serif
-        font-size: 0.8rem
-    pre
-        border-radius: 10px
+        color: $tc-black
+        background-color: $tc-grey-light-4
+    code[class*=language-], pre[class*=language-] code
+        font-family: 'Fira Code', serif
+        font-size: 0.9rem
+        line-height: 1.9rem
     .btn-like-post
         transition: background-color .3s linear, border-color .1s linear
     .report-actions
@@ -139,9 +143,9 @@
         text-decoration: none
 body.dark-mode
     .post
-        code:not([class*=language])
+        code
             color: $tc-white
-            background-color: $tc-grey-fancy
+            background-color: $tc-black-almost
         .post-date, .highlight-box
             background-color: $tc-blue-dark-4
     .post-tags *
@@ -163,3 +167,45 @@ body.dark-mode
             //background-color: $tc-grey-dark
             a
                 color: $tc-white
+
+pre, code
+    position: relative
+    &.spinner
+        &:after
+            content: ''
+        &:before
+            content: ''
+            box-sizing: border-box
+            position: absolute
+            top: 50%
+            left: 50%
+            width: 20px
+            height: 20px
+            margin-top: -10px
+            margin-left: -10px
+            border-radius: 50%
+            border: 2px solid $tc-grey-light-2
+            border-top-color: $tc-blue-dark-5
+            animation: spinClockWise .6s linear infinite
+.code-data
+    position: absolute
+    top: 12px
+    right: 8px
+    *
+        color: $tc-white !important
+        font-size: .8rem
+    .btn-copy
+        cursor: pointer
+        border-radius: 10px
+        padding: 5px 8px
+        background-color: $tc-blue-dark-2
+        border: unset
+        &:hover
+            background-color: $tc-blue-dark-1
+
+    .code-language
+        margin-right: 5px
+        // color: $tc-black !important
+        padding: 5px 8px
+        border-radius: 10px
+        background-color: $tc-blue-dark-3

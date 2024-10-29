@@ -1,8 +1,6 @@
 @extends('layout.page-content-wide')
 
 @section('post-header-assets')
-    <link rel="stylesheet" type="text/css" href="{{ asset('/plugins/prismjs/prism-tomorrow-night.css') }}">
-    <script defer src="{{ asset('/plugins/prismjs/prism-tomorrow-night.js') }}"></script>
     @vite(['resources/js/pages/blog.js'])
 @endsection
 
