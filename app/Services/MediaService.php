@@ -71,9 +71,6 @@ class MediaService
     public function fetchAllAssets($assets_path, $onlyCompressed = true, $onlyOriginals = false)
     {
         $content_assets = [];
-        if (!$onlyCompressed && !$onlyOriginals) {
-            return $content_assets;
-        }
         if ($onlyOriginals) {
             $content_assets["original"] = $this->fetchAssets($assets_path);
         }
