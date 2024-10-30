@@ -62,12 +62,14 @@ $(function () {
                 contentType: false,
                 processData: false,
                 success: function(response) {
-                    console.log(response);
+                    $('#link-view-post').attr('href', `/blog/${ response.post.slug }?forget=1`);
+                    form.attr('action', `/admin/posts/${ response.post.slug }`);
                     get_alert_box({class: response.class, message: response.message, icon: response.icon});
                 },
                 error: function (jqXHR, textStatus, errorThrown){
                     console.log(jqXHR, textStatus, errorThrown);
-                    get_alert_box({class: jqXHR.responseJSON.class, message: jqXHR.responseJSON.message, icon: jqXHR.responseJSON.icon});
+                    const response = jqXHR.responseJSON;
+                    get_alert_box({ class: response.class, message: response.message, icon: response.icon });
                 }
             });
         });
@@ -91,11 +93,14 @@ $(function () {
                 processData: false,
                 success: function(response) {
                     console.log(response);
+                    $('#link-view-tag').attr('href', `/tags/${ response.tag.slug }?forget=1`);
+                    form.attr('action', `/admin/tags/${ response.tag.slug }`);
                     get_alert_box({class: response.class, message: response.message, icon: response.icon});
                 },
                 error: function (jqXHR, textStatus, errorThrown){
                     console.log(jqXHR, textStatus, errorThrown);
-                    get_alert_box({class: jqXHR.responseJSON.class, message: jqXHR.responseJSON.message, icon: jqXHR.responseJSON.icon});
+                    const response = jqXHR.responseJSON;
+                    get_alert_box({class: response.class, message: response.message, icon: response.icon});
                 }
             });
         });

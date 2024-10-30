@@ -81,7 +81,7 @@ class TagController extends Controller
             $request->validate([
                 "name"          => "required|string",
                 "slug"          => ["required" ,"string", Rule::unique('tags')->ignore($tag->id)],
-                "description"   => "required|string",
+                "description"   => "nullable|string",
             ]);
 
             if ($request->has('destroy') || $request->has('delete')) {
@@ -103,9 +103,18 @@ class TagController extends Controller
                 $data['cover'] = $this->mediaService->processAsset("blog/tags/$request->slug", $request->slug ?? $tag->slug, $image_file);
             }
             $tag->update($data);
-            return response()->json(['message' => 'Tag updated successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']);
+            return response()->json([
+                'tag' => $tag,
+                'message' => 'Tag updated successfully',
+                'class' => 'alert-info',
+                'icon' => '<i class="fa fa-fw fa-circle-check"></i>'
+            ]);
         } catch (\Throwable $e) {
-            return response()->json(['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']);
+            return response()->json([
+                'message' => $e->getMessage(),
+                'class' => 'alert-danger',
+                'icon' => '<i class="fa fa-fw fa-times-circle"></i>'
+            ], 422);
         }
     }
 

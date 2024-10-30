@@ -135,14 +135,14 @@ class PostController extends Controller
             $request->validate([
                 "title"         => "required|string",
                 "slug"          => ["required", "string", Rule::unique('posts')->ignore($post->id)],
-                "post_excerpt"  => "required|string",
-                "description"   => "required|string",
+                "post_excerpt"  => "nullable|string",
+                "description"   => "nullable|string",
                 "tags.*"        => [
                     'integer',
                     'exists:tags,id',
                 ],
-                "views"         => "required|integer|min:0",
-                "published_at"  => "required|date",
+                "views"         => "nullable|integer|min:0",
+                "published_at"  => "nullable|date",
                 "post_content"  => "required|string",
             ]);
 
@@ -184,9 +184,18 @@ class PostController extends Controller
                 }
                 \DB::table('post_tag')->insert($post_tag);
             }
-            return response()->json(['message' => 'Post updated successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']);
+            return response()->json([
+                'post' => $post,
+                'message' => 'Post updated successfully',
+                'class' => 'alert-info',
+                'icon' => '<i class="fa fa-fw fa-circle-check"></i>'
+            ]);
         } catch (\Throwable $e) {
-            return response()->json(['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']);
+            return response()->json([
+                'message' => $e->getMessage(),
+                'class' => 'alert-danger',
+                'icon' => '<i class="fa fa-fw fa-times-circle"></i>'
+            ], 422);
         }
     }
 

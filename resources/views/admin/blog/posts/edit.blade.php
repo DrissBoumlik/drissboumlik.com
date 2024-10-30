@@ -158,24 +158,28 @@
                                     </div>
                                 </div>
                                 <div class="block-content p-0">
-                                    <!-- SimpleMDE Container -->
-                                    {{-- <textarea class="js-simplemde" id="simplemde" name="post_body">{{ old('post_body') }}</textarea> --}}
                                     <textarea id="post_body" class="form-control" name="post_content" placeholder="Post content.." hidden>{!! $post->content !!}</textarea>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-between gap-2 flex-wrap flex-md-nowrap">
-                                <button type="submit" class="btn-action btn-action-post btn btn-success w-100">
+                            <div class="d-flex justify-content-between align-items-stretch gap-2 flex-wrap flex-md-nowrap">
+                                <button type="submit" class="btn-action btn-action-post btn btn-success
+                                                         d-flex justify-content-center align-items-center w-100">
                                     <i class="fa fa-fw fa-edit me-1"></i>Update</button>
-                                <a href="/blog/{{ $post->slug }}?forget=1" target="_blank" class="btn btn-dark w-100">
+                                <a href="/blog/{{ $post->slug }}?forget=1" target="_blank"
+                                   id="link-view-post" class="btn btn-dark
+                                                            d-flex justify-content-center align-items-center w-100">
                                     <i class="fa fa-fw fa-eye me-1"></i>View</a>
                                 @if($post->deleted)
-                                    <button type="submit" class="btn-action btn-action-post btn btn-secondary w-100" name="restore">
+                                    <button type="submit" class="btn-action btn-action-post btn btn-secondary
+                                                            d-flex justify-content-center align-items-center w-100" name="restore">
                                         <i class="fa fa-fw fa-rotate-left me-1"></i> Restore</button>
                                 @else
-                                    <button type="submit" class="btn-action btn-action-post btn btn-warning w-100" name="delete">
+                                    <button type="submit" class="btn-action btn-action-post btn btn-warning
+                                                            d-flex justify-content-center align-items-center w-100" name="delete">
                                         <i class="fa fa-fw fa-trash me-1"></i> Delete</button>
                                 @endif
-                                <button type="submit" class="btn-action btn-action-post btn btn-danger w-100" name="destroy">
+                                <button type="submit" class="btn-action btn-action-post btn btn-danger
+                                                        d-flex justify-content-center align-items-center w-100" name="destroy">
                                     <i class="fa fa-fw fa-trash me-1"></i>Hard Delete</button>
                             </div>
                         </div>
