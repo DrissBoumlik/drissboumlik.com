@@ -2,7 +2,7 @@
 
 @section('post-header-assets')
     <script defer src="https://www.google.com/recaptcha/api.js"></script>
-    @vite(['resources/js/pages/contact.js'])
+    @vite(['resources/js/pages/contact.js', 'resources/sass/_imports/pages/_contact.sass'])
 @endsection
 
 @section('headline')

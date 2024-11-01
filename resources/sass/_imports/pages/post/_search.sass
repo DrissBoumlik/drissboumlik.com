@@ -1,10 +1,10 @@
 body.dark-mode
     .search-results
         .search-result-link-text i
-            color: $tc-black-fancy
+            color: var(--tc-black-fancy)
     .search-blog-form-wrapper
         .input-group
-            background-color: $tc-blue-dark-4
+            background-color: var(--tc-blue-dark-4)
             //border-color: $tc-white
 
 .search-blog-form-wrapper
@@ -16,7 +16,7 @@ body.dark-mode
     display: flex
     justify-content: center
     align-items: start
-    background-color: rgba($tc-grey-fancy, 0.75)
+    background-color: rgba(from var(--tc-grey-fancy) r g b / 0.75)
     transform: scale(0.7)
     opacity: 0
     &.show
@@ -30,7 +30,7 @@ body.dark-mode
         display: flex
         justify-content: center
     .input-group
-        background-color: $tc-grey-light-2
+        background-color: var(--tc-grey-light-2)
         border-radius: 10px
         //border: 2px solid $tc-blue-dark-4
         overflow: hidden
@@ -47,7 +47,7 @@ body.dark-mode
 .search-results
     .search-result-item
         border-radius: 10px
-        background-color: $tc-grey-light-1
+        background-color: var(--tc-grey-light-1)
     .search-result-cover
         height: 200px
         overflow: hidden
@@ -58,9 +58,9 @@ body.dark-mode
             object-fit: cover
             object-position: center
     .search-result-text
-        border-top: 1px solid $tc-grey-light-2
+        border-top: 1px solid var(--tc-grey-light-2)
     .search-result-link-text
-        color: $tc-black-fancy
+        color: var(--tc-black-fancy)
 
 .display-search-form
     cursor: pointer

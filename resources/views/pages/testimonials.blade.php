@@ -1,5 +1,9 @@
 @extends('layout.page-content-wide')
 
+@section('post-header-assets')
+    @vite('resources/sass/_imports/custom/_owl.carousel.sass')
+@endsection
+
 @section('headline')
     <div class="d-flex flex-column align-items-center justify-content-center">
         <h1 class="header-txt">{!! $data->testimonials->header !!}</h1>

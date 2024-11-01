@@ -1,5 +1,9 @@
 @extends('layout.page-content')
 
+@section('post-header-assets')
+    @vite('resources/sass/_imports/pages/_404.sass')
+@endsection
+
 @section('page-content')
 
     <div class="container p-0">

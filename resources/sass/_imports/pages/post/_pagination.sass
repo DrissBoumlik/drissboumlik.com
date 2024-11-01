@@ -8,21 +8,42 @@
     .page-item
         &.active .page-link
             border: none
-            color: $tc-black
-            background-color: $tc-grey-light
+            color: var(--tc-black)
+            background-color: var(--tc-grey-light)
             &:hover
-                background-color: $tc-grey-light
+                background-color: var(--tc-grey-light)
         &.disabled .page-link
-            color: $tc-black
-            background-color: $tc-grey-light
+            color: var(--tc-black)
+            background-color: var(--tc-grey-light)
             &:hover
-                background-color: $tc-grey-light
+                background-color: var(--tc-grey-light)
         .page-link
             border: none
-            color: $tc-blue
-            background-color: $tc-grey-light
+            color: var(--tc-blue)
+            background-color: var(--tc-grey-light)
             &:hover
-                background-color: $tc-grey-light-1
+                background-color: var(--tc-grey-light-1)
         a
-            color: $tc-black
+            color: var(--tc-black)
+
+body.dark-mode
+    .pagination-wrapper
+        display: flex
+        .page-item
+            &.disabled .page-link
+                color: var(--tc-grey)
+                &:hover
+                    background-color: var(--tc-blue-dark-4)
+            &.active .page-link
+                color: var(--tc-white)
+                &:hover
+                    background-color: var(--tc-blue-dark-4)
+            // border-color: $tc-white
+            // background-color: $tc-blue
+            .page-link
+                background-color: var(--tc-blue-dark-4)
+                &:hover
+                    background-color: var(--tc-blue-dark-2)
+            &:not(.active) .page-link:hover
+                color: var(--tc-blue)
 

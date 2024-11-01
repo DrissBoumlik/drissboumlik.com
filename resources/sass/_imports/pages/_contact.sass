@@ -2,8 +2,8 @@
 .get-in-touch
     position: relative
     .form-control
-        background-color: $tc-grey-light
-        border-color: transparent transparent $tc-grey-light-3 transparent
+        background-color: var(--tc-grey-light)
+        border-color: transparent transparent var(--tc-grey-light-3) transparent
         border-radius: 0
     textarea.form-control
         height: 200px
@@ -19,9 +19,9 @@
     .contact-form-response
         margin-top: 0.7rem
         &.tc-alert-nok *
-            color: $tc-red-light
+            color: var(--tc-red-light)
         &.tc-alert-ok *
-            color: $tc-blue
+            color: var(--tc-blue)
     @media (max-width: 767px)
         .contact-form
             z-index: 1
@@ -37,5 +37,10 @@
         content: unset
 
 body.dark-mode
-    .get-in-touch .form-control
-        border-color: transparent transparent $tc-blue transparent
+    .get-in-touch
+        .form-control
+            border-color: transparent transparent var(--tc-blue) transparent
+        .form-floating > label
+            color: var(--tc-white)
+        .form-control, .form-control:focus
+            background-color: var(--tc-blue-dark-5)

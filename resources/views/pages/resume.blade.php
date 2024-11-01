@@ -1,7 +1,12 @@
 @extends('layout.page-content-wide', ['px_0' => 'px-0', 'py_0' => 'py-0'])
 
 @section('post-header-assets')
-    @vite(['resources/js/pages/carousel.js', 'resources/js/pages/tooltip.js'])
+    @vite([
+        'resources/sass/_imports/custom/_owl.carousel.sass',
+        'resources/sass/_imports/pages/resume/_resume-import.sass',
+        'resources/js/pages/carousel.js',
+        'resources/js/pages/tooltip.js',
+     ])
 @endsection
 
 @section('headline')

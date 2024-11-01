@@ -19,7 +19,7 @@
 
 .not-found-header
     height: 15px
-    background-color: #fff
+    background-color: var(--tc-grey)
 
 .not-found-body
     text-align: center
@@ -40,3 +40,10 @@
     font-size: 2rem
     text-transform: uppercase
     //font-family: "Harmattan",serif
+
+body.dark-mode
+    .not-found-container
+        .not-found-header
+            background-color: var(--tc-blue-dark-2)
+        .not-found-body
+            background-color: var(--tc-blue-dark-4)

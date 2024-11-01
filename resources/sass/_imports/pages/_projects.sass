@@ -37,20 +37,16 @@
         font-size: 2.5rem
         //width: 100%
         i
-            color: $tc-blue-dark-3
+            color: var(--tc-blue-dark-3)
 
-.see-more
-    display: flex
-    justify-content: center
-    align-items: center
 
 body.dark-mode
     .project-image-cover
-        box-shadow: 0 1px 2px rgba($tc-blue-dark-2, 0.5), 0 1px 2px rgba($tc-blue-dark-2, 0.5)
+        box-shadow: 0 1px 2px rgba(from var(--tc-blue-dark-2) r g b / 0.5), 0 1px 2px rgba(from var(--tc-blue-dark-2) r g b / 0.5)
         &:hover
-            box-shadow: 0 0.5rem 2.5rem $tc-blue-dark-2
+            box-shadow: 0 0.5rem 2.5rem var(--tc-blue-dark-2)
     .project-link i
-        color: $tc-white
+        color: var(--tc-white)
 
 .page-wide .projects-page
     .project-image-cover

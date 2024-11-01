@@ -1,7 +1,7 @@
 @extends('layout.page-content-wide')
 
 @section('post-header-assets')
-    @vite(['resources/js/pages/blog.js'])
+    @vite(['resources/js/pages/blog.js', 'resources/sass/_imports/pages/post/_post-import.sass'])
 @endsection
 
 @section('headline')

@@ -1,0 +1,208 @@
+
+
+.social-icons
+    .list-group
+        justify-content: start
+        .list-group-item
+            margin: 0
+
+
+.about-code
+    // margin-top: $navbar-height
+    flex: 1
+    display: flex
+    height: 100%
+    justify-content: center
+    z-index: 1000
+    // @media (max-width: 992px)
+    //     display: none
+    @media (max-width: 768px)
+        display: none
+
+.code-wrapper
+    position: absolute
+    // right: 5%
+    // bottom: 0
+    transform: translateY(-50%)
+    // z-index: 999
+    display: flex
+    perspective: 700px
+    // position: relative
+    // height: 100%
+    width: 400px
+    border-radius: 5px
+    padding: 2px
+    margin: 0 20px 0 0
+    // z-index: 1000
+    @media (max-width: 992px)
+        margin: 0
+        transform: translateY(-50%) scale(0.8)
+    @media (min-width: 768px)
+        margin: 0 1rem 0 0
+    // @media (max-width: 768px)
+    //     transform: translateY(-50%) scale(0.6)
+    .line-code
+        width: 100%
+        margin: 0 0 4px 0
+        height: 15px
+        white-space: nowrap
+        .line-code-item
+            transition: width .2s linear
+            position: relative
+            height: 10px
+            display: inline-block
+            border-radius: 4px
+            margin: 0 4px 0 0
+
+    .ide-wrapper
+        width: 500px
+        transform: rotate3d(0.5, -0.866, 0, 15deg)
+        // background: $tc-blue-dark-3
+        flex-direction: column
+        // width: 100%
+        padding: 5px
+        transition: transform 0.5s ease
+        .ide-section
+            border-radius: 5px
+            box-shadow: 0px 0px 40px -17.5px rgb(0 0 0 / 40%), 46.2px 57.5px 70px -7.5px rgb(0 0 0 / 50%)
+            background-color: var(--tc-grey-light) // $tc-blue-dark-4
+            padding: 5px
+            .header
+                display: flex
+                justify-content: space-between
+                margin-left: 5px
+                padding: 5px 2px
+                .btn-actions
+                    display: flex
+                    column-gap: 5px
+                    position: relative
+                    top: -1.5px
+                    .btn-action
+                        transform: translate(-2px, -2px)
+                        position: relative
+                        height: 100%
+                        color: var(--tc-white)
+                        padding: 0 15px
+                        display: flex
+                        align-items: center
+                        justify-content: center
+                        border: none
+                        border-radius: 3px
+                        box-shadow: 2px 2px var(--tc-blue-dark-4)
+                        &.pushed
+                            animation: pushed 0.7s linear infinite
+                        &:active
+                            transform: translate(0, 0)
+                            box-shadow: 0 0
+            .body .body-container
+                position: relative
+                padding: 10px
+                background-color: var(--tc-white) //$tc-blue-dark-3
+                overflow-y: auto
+                max-height: 170px
+                height: 200px
+                scrollbar-width: thin
+                scrollbar-color: var(--tc-grey) transparent
+                &::-webkit-scrollbar
+                    width: 6px
+                    height: 6px
+                &::-webkit-scrollbar-corner
+                    background-color: transparent
+                &::-webkit-scrollbar-thumb
+                    background: var(--tc-grey)
+                    border-radius: 3px
+                &::-webkit-scrollbar-track
+                    background-color: transparent
+
+        > div
+            flex-direction: column
+            // width: 100%
+            background-color: var(--tc-blue-dark-3)
+            padding: 5px
+            margin-bottom: 10px
+            &:last-child
+                margin-bottom: 0
+        .output-wrapper
+            .body-loading
+                display: flex
+                justify-content: center
+                align-items: center
+                height: 100%
+                .loader
+                    border-color: var(--tc-blue-dark-3) transparent
+                    height: 60px
+                    width: 60px
+                    border-width: 3px
+                    border-style: solid
+                    border-radius: 50%
+                    animation: spinClockWise 1s linear infinite
+                    flex: 0 0 auto
+            .line-output
+                background-color: var(--tc-grey-light)
+                margin: 0 0 15px 0
+                border-radius: 4px
+                box-shadow: 0 2px 4px rgb(50 50 93 / 10%)
+                padding: 7px 10px
+                display: flex
+                align-items: center
+                &:last-child
+                    margin-bottom: 0
+                .line-icon
+                    display: flex
+                    margin: 0 10px 0 0
+                    i
+                        font-size: 1rem
+                .line-text
+                    width: 60%
+                    height: 10px
+                    border-radius: 4px
+.about-header
+    flex: 1.5
+    //margin-top: $navbar-height
+    @media (max-width: 767px)
+        .brand-slogan, .welcome-message *
+            text-align: left!important
+        .welcome-message .btn-actions
+            justify-content: flex-start
+.brand-slogan
+    text-align: left //center
+    font-family: Untitled-Sans, serif
+    font-size: 2rem
+    font-weight: bold
+    color: var(--tc-black-almost)
+    @media (min-width: 768px)
+        font-size: 2.5rem
+    @media (min-width: 992px)
+        font-size: 3rem
+    // text-align: left
+    span
+        color: var(--tc-blue)
+.welcome-message
+    *
+        text-align: left
+    .welcome-message-wrapper
+        font-size: 1.1rem
+        line-height: 2rem
+    .btn-action .btn-join-us
+        font-size: 1rem
+        transition: transform .3s ease
+        &:hover
+            color: var(--tc-white)
+            transform: scale(1.05)
+
+
+body.dark-mode
+    .code-wrapper .ide-wrapper
+        .ide-section
+            background-color: var(--tc-blue-dark-4)
+            .body .body-container
+                background-color: var(--tc-blue-dark-3)
+                scrollbar-color: var(--tc-blue) transparent
+                &::-webkit-scrollbar-thumb
+                    background: var(--tc-blue)
+            .btn-actions .btn-action
+                box-shadow: 2px 2px var(--tc-grey-dark)
+        .output-wrapper .line-output
+            background-color: var(--tc-blue-dark-4)
+        .output-wrapper .body-loading .loader
+            border-color: var(--tc-white) transparent

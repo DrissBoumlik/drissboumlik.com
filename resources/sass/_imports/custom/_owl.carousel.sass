@@ -1,3 +1,5 @@
+@import "../setup/mixins"
+
 .no-slider .owl-carousel
     cursor: auto
     display: flex
@@ -42,8 +44,8 @@
             height: 60%
             left: 2px
             width: 2px
-            background-color: $tc-grey
-            border-left: 1px solid $tc-grey
+            background-color: var(--tc-grey)
+            border-left: 1px solid var(--tc-grey)
             @media(max-width: 576px)
                 content: none
         // &:not(:last-child)
@@ -52,7 +54,7 @@
         position: relative
         width: 100%
         .testimonial-icon
-            color: $tc-grey-light-3
+            color: var(--tc-grey-light-3)
             position: absolute
             right: -10px
             z-index: 1000
@@ -73,7 +75,7 @@
                 font-size: 0.9rem
 
             .owl-carousel-img img
-                border: 3px solid $tc-blue
+                border: 3px solid var(--tc-blue)
                 // margin-right: 0.5rem
             // .owl-carousel-txt
             //     text-align: center
@@ -95,8 +97,8 @@
                     //&:before
                     //    content: '\2014 \00A0'
                 .testimonial-content
-                    color: $tc-blue-dark-3
-                    background-color: $tc-grey-light-1
+                    color: var(--tc-blue-dark-3)
+                    background-color: var(--tc-grey-light-1)
                     z-index: -1
                     padding: 20px
                     border-radius: 10px
@@ -105,7 +107,7 @@
                         content: ""
                         height: 15px
                         width: 15px
-                        background-color: $tc-grey-light-1
+                        background-color: var(--tc-grey-light-1)
                         position: absolute
                         bottom: -7px
                         left: 17px
@@ -123,12 +125,12 @@
         justify-content: center
         align-items: center
         font-size: 3rem
-            
-                
-    
+
+
+
 body.dark-mode
     .owl-carousel .owl-carousel-item .owl-carousel-item-wrapper .owl-carousel-txt .testimonial-content
-        color: $tc-white
-        background-color: $tc-blue-dark-4
+        color: var(--tc-white)
+        background-color: var(--tc-blue-dark-4)
         &:before
-            background-color: $tc-blue-dark-4
+            background-color: var(--tc-blue-dark-4)

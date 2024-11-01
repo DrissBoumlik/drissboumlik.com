@@ -2,7 +2,15 @@
 
 @section('post-header-assets')
     <script defer src="https://www.google.com/recaptcha/api.js"></script>
-    @vite(['resources/js/pages/code-animation.js', 'resources/js/pages/contact.js', 'resources/js/pages/carousel.js'])
+    @vite([
+        'resources/sass/_imports/pages/_home.sass',
+        'resources/sass/_imports/pages/_contact.sass',
+        'resources/sass/_imports/layout/_about.sass',
+        'resources/sass/_imports/custom/_owl.carousel.sass',
+        'resources/js/pages/code-animation.js',
+        'resources/js/pages/contact.js',
+        'resources/js/pages/carousel.js',
+    ])
 @endsection
 
 @section('content')

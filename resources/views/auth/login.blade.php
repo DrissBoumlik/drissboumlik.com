@@ -1,7 +1,7 @@
 @extends('auth.app')
 
 @section('post-header-assets')
-    @vite(['resources/js/pages/auth.js'])
+    @vite(['resources/js/pages/auth.js', 'resources/sass/_imports/modules/_auth.sass'])
 @endsection
 
 @section('content')

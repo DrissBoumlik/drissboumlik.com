@@ -1,0 +1,33 @@
+.sections
+    > .section
+        position: relative
+        &:nth-child(odd)
+            background-color: var(--tc-grey-light)
+            .box-item
+                background-color: var(--tc-white)
+            .timeline .content
+                background-color: var(--tc-white)
+        &:nth-child(even)
+            background-color: var(--tc-white)
+            .box-item
+                background-color: var(--tc-grey-light)
+            .timeline .content
+                background-color: var(--tc-grey-light)
+
+body.dark-mode
+    .sections
+        > .section
+            .box-item
+                border-color: transparent
+            &:nth-child(odd)
+                background-color: var(--tc-blue-dark-3)
+                .box-item
+                    background-color: var(--tc-blue-dark-4)
+                .timeline .content
+                    background-color: var(--tc-blue-dark-4)
+            &:nth-child(even)
+                background-color: var(--tc-blue-dark-4)
+                .box-item
+                    background-color: var(--tc-blue-dark-3)
+                .timeline .content
+                    background-color: var(--tc-blue-dark-3)

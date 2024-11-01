@@ -3,7 +3,7 @@
     //background-color: $tc-white
     .post
         padding: 20px
-        background-color: $tc-grey-light
+        background-color: var(--tc-grey-light)
         //background-color: $tc-grey-light-2
         //border: 1px solid $tc-grey
         overflow: hidden
@@ -19,7 +19,7 @@
                 white-space: nowrap
                 overflow: hidden
             *
-                color: $tc-blue-dark-1
+                color: var(--tc-blue-dark-1)
                 font-size: 1.25rem
         .post-metadata
             font-family: IstokWeb, serif
@@ -27,7 +27,7 @@
         .post-image img
             // border: 5px solid $tc-blue-dark-1
             border-radius: 5px
-            filter: drop-shadow(2px 4px 6px $tc-blue-dark-3)
+            filter: drop-shadow(2px 4px 6px var(--tc-blue-dark-3))
         .post-cover
             height: 200px
             border-radius: 10px
@@ -44,15 +44,15 @@
             img
                 width: 100%
                 padding: 0
-                border: 2px inset $tc-blue-dark-1
+                border: 2px inset var(--tc-blue-dark-1)
             iframe
-                border: 2px dashed $tc-blue-dark-1
+                border: 2px dashed var(--tc-blue-dark-1)
             p, iframe
                 margin-bottom: 1rem
                 &:last-child
                     margin-bottom: 0
         .btn-read-more a
-            color: $tc-black
+            color: var(--tc-black)
 
 .post-title.header-txt
     text-transform: unset
@@ -74,15 +74,15 @@
         margin-bottom: 1rem
         line-height: 2.2rem
     a
-        color: $tc-blue
+        color: var(--tc-blue)
         text-decoration: underline
     li, li *
-        color: $tc-blue-dark-1
+        color: var(--tc-blue-dark-1)
         text-decoration: unset
     .post
         .post-title *
             font-size: 2.5rem
-            color: $tc-blue-dark-1
+            color: var(--tc-blue-dark-1)
             @media(max-width: 576px)
                 font-size: 1.5rem
         img
@@ -94,11 +94,11 @@
             box-shadow: 0 0 0 0 transparent
             transition: box-shadow .2s linear
             &:hover
-                box-shadow: 0 0 10px 1px $tc-grey-light-3
+                box-shadow: 0 0 10px 1px var(--tc-grey-light-3)
         //p
         //    margin-bottom: 1rem
     .post-date, .highlight-box
-        background-color: $tc-grey-light-1
+        background-color: var(--tc-grey-light-1)
         border-radius: 0.4rem
         padding: 0.5rem 1rem
     .post-cover
@@ -121,8 +121,8 @@
         display: inline-block
         line-height: 1.7rem
         font-family: 'Fira Code', serif
-        color: $tc-black
-        background-color: $tc-grey-light-4
+        color: var(--tc-black)
+        background-color: var(--tc-grey-light-4)
     code[class*=language-], pre[class*=language-] code
         font-family: 'Fira Code', serif
         font-size: 0.9rem
@@ -131,28 +131,16 @@
         transition: background-color .3s linear, border-color .1s linear
     .report-actions
         border-radius: 0
-        border-left: 4px solid $tc-blue-dark-1
+        border-left: 4px solid var(--tc-blue-dark-1)
         p
             font-size: 1rem
             line-height: 1.5rem
 
 .post-tags
     *
-        color: $tc-grey-fancy
+        color: var(--tc-grey-fancy)
     a
         text-decoration: none
-body.dark-mode
-    .post
-        code
-            color: $tc-white
-            background-color: $tc-black-almost
-        .post-date, .highlight-box
-            background-color: $tc-blue-dark-4
-    .post-tags *
-        color: $tc-grey-dark
-    .post-page
-        li, li *
-            color: $tc-blue-dark-1
 
 .post
     .post-tags
@@ -166,7 +154,7 @@ body.dark-mode
             //padding: 0 5px
             //background-color: $tc-grey-dark
             a
-                color: $tc-white
+                color: var(--tc-white)
 
 pre, code
     position: relative
@@ -184,28 +172,67 @@ pre, code
             margin-top: -10px
             margin-left: -10px
             border-radius: 50%
-            border: 2px solid $tc-grey-light-2
-            border-top-color: $tc-blue-dark-5
+            border: 2px solid var(--tc-grey-light-2)
+            border-top-color: var(--tc-blue-dark-5)
             animation: spinClockWise .6s linear infinite
 .code-data
     position: absolute
     top: 12px
     right: 8px
     *
-        color: $tc-white !important
+        color: var(--tc-white) !important
         font-size: .8rem
     .btn-copy
         cursor: pointer
         border-radius: 10px
         padding: 5px 8px
-        background-color: $tc-blue-dark-2
+        background-color: var(--tc-blue-dark-2)
         border: unset
         &:hover
-            background-color: $tc-blue-dark-1
+            background-color: var(--tc-blue-dark-1)
 
     .code-language
         margin-right: 5px
         // color: $tc-black !important
         padding: 5px 8px
         border-radius: 10px
-        background-color: $tc-blue-dark-3
+        background-color: var(--tc-blue-dark-3)
+
+
+
+body.dark-mode
+    .post
+        code
+            color: var(--tc-white)
+            background-color: var(--tc-black-almost)
+        .post-date, .highlight-box
+            background-color: var(--tc-blue-dark-4)
+    .post-tags *
+        color: var(--tc-grey-dark)
+    .post-page
+        li, li *
+            color: var(--tc-blue-dark-1)
+
+    .posts
+        .post
+            //border: 1px solid $tc-blue
+            box-shadow: 0 1px 2px rgba(from var(--tc-blue-dark-2) r g b / 0.5), 0 1px 2px rgba(from var(--tc-blue-dark-2) r g b / 0.5)
+            background-color: var(--tc-blue-dark-4)
+            .post-title *
+                color: var(--tc-blue)
+            //.post-data
+            //    background-color: $tc-blue-dark-4
+                //*
+                    //color: $tc-black
+            &:hover
+                box-shadow: 0 0.2rem 1rem var(--tc-blue-dark-2)
+            //.post-title h2,
+            .btn-read-more a
+                color: var(--tc-grey-light)
+        .post-form
+            background-color: var(--tc-blue-dark-3)
+            .post-body-wrapper
+                svg
+                    color: var(--tc-white)
+                *
+                    color: var(--tc-black-almost)

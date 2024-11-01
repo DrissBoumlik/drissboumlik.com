@@ -3,14 +3,14 @@
 .sections-menu
     padding: 5px 0
     border-radius: 20px
-    background-color: $tc-grey-light
+    background-color: var(--tc-grey-light)
     // box-shadow: -3px -3px 7px rgba($tc-grey-dark, 0.5), 3px 3px 7px rgba($tc-grey-dark, 0.5), -3px 3px 7px rgba($tc-grey-dark, 0.5), 3px -3px 7px rgba($tc-grey-dark, 0.5)
     position: fixed
     z-index: 1000
     transform: translateY(-50%)
     top: 50%
     right: 5px
-    border: 2px solid $tc-blue-dark-2
+    border: 2px solid var(--tc-blue-dark-2)
     opacity: 0.3
     transition: opacity 0.3s linear
     &:hover
@@ -22,7 +22,7 @@
             padding: 3px 5px
             display: inline-block
             i
-                color: $tc-blue-dark-2
+                color: var(--tc-blue-dark-2)
     // .sections-menu-icon
     //     height: 25px !important
     //     width: 25px !important
@@ -32,3 +32,9 @@
     //         width: 20px !important
 
 
+body.dark-mode
+    .sections-menu
+        background-color: var(--tc-blue-dark-2)
+        border-color: var(--tc-grey-light)
+        .sections-menu-items li a i
+            color: var(--tc-grey-light)

@@ -20,22 +20,33 @@ export default defineConfig({
         }),
         laravel({
             input: [
+
+                // GLOBAL CSS
                 'resources/sass/app.sass',
                 'resources/sass/externals.sass',
                 'resources/sass/admin/app.sass',
                 'resources/template/sass/main.scss',
-                'resources/js/admin/app.js',
-                'resources/js/admin/pages/chart.js',
-                'resources/js/admin/pages/post.js',
-                'resources/js/admin/pages/export-db.js',
-                'resources/js/admin/pages/media-manager.js',
 
-                'resources/js/admin/pages/menu.js',
-                'resources/js/admin/pages/portfolio.js',
-                'resources/js/admin/pages/user-interaction.js',
-                'resources/js/admin/pages/blog.js',
+                // LAYOUT CSS
+                'resources/sass/_imports/layout/_about.sass',
 
+                // LOCAL/PAGE CSS
+                'resources/sass/_imports/modules/_auth.sass',
+                'resources/sass/_imports/pages/_about.sass',
+                'resources/sass/_imports/pages/_home.sass',
+                'resources/sass/_imports/pages/_contact.sass',
+                'resources/sass/_imports/pages/_services.sass',
+                'resources/sass/_imports/pages/_projects.sass',
+                'resources/sass/_imports/pages/_404.sass',
+                'resources/sass/_imports/pages/post/_post-import.sass',
+                'resources/sass/_imports/pages/_privacy-policy.sass',
+                'resources/sass/_imports/pages/resume/_resume-import.sass',
+                'resources/sass/_imports/custom/_owl.carousel.sass',
+
+                // GLOBAL JS
                 'resources/js/app.js',
+
+                // LOCAL/PAGE JS
                 'resources/js/pages/code-animation.js',
                 'resources/js/pages/carousel.js',
                 'resources/js/pages/auth.js',
@@ -43,7 +54,20 @@ export default defineConfig({
                 // 'resources/js/pages/subscription.js',
                 'resources/js/pages/tooltip.js',
                 'resources/js/pages/contact.js',
+
+                // GLOBAL ADMIN JS
+                'resources/js/admin/app.js',
                 'resources/template/assets/js/oneui.app.min.js',
+
+                // LOCAL/PAGE JS
+                'resources/js/admin/pages/chart.js',
+                'resources/js/admin/pages/post.js',
+                'resources/js/admin/pages/export-db.js',
+                'resources/js/admin/pages/media-manager.js',
+                'resources/js/admin/pages/menu.js',
+                'resources/js/admin/pages/portfolio.js',
+                'resources/js/admin/pages/user-interaction.js',
+                'resources/js/admin/pages/blog.js',
             ],
             refresh: true,
         }),

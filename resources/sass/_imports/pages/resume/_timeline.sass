@@ -13,7 +13,7 @@
         content: ''
         position: absolute
         width: 6px
-        background-color: $tc-grey
+        background-color: var(--tc-grey)
         top: 0
         bottom: 1%
         border-radius: 5px
@@ -52,12 +52,12 @@
         &.community:after
             content: "\e533"
             font-family: "Font Awesome 5 Free"
-            background-color: $tc-blue
+            background-color: var(--tc-blue)
             font-weight: 900
         &.globe:after
             content: "\f0ac"
             font-family: "Font Awesome 5 Free"
-            background-color: $tc-blue-dark-2
+            background-color: var(--tc-blue-dark-2)
             font-weight: 900
         &.angular:after
             content: "\f420"
@@ -116,9 +116,9 @@
             // background-color: $tc-grey-light
             position: relative
             border-radius: 6px
-            border: 1px solid $tc-grey
+            border: 1px solid var(--tc-grey)
             .function
-                color: $tc-blue-dark-1
+                color: var(--tc-blue-dark-1)
             h2
                 //font-size: 1rem
                 margin-bottom: 5px
@@ -133,9 +133,6 @@
         .content, &:before
             opacity: 1
             transform: rotateY(0deg)
-            transition: transform 1s ease, opacity 2s ease
-        &:before
-            transition: transform .4s ease, opacity 2s ease
         &:after
             content: '\F19D'
             position: absolute
@@ -144,11 +141,11 @@
             right: -20px
             top: 13px
             // background-color: $tc-white
-            border: 4px solid $tc-grey
+            border: 4px solid var(--tc-grey)
             border-radius: 50%
             z-index: 1
             line-height: 32px
-            color: $tc-white
+            color: var(--tc-white)
             font-weight: bolder
             font-size: 1.2rem
             text-align: center
@@ -168,9 +165,9 @@
                 width: 0
                 z-index: 1
                 right: 20px
-                border: medium solid $tc-white
+                border-style: solid
                 border-width: 10px 0 10px 10px
-                border-color: transparent transparent transparent $tc-grey
+                border-color: transparent transparent transparent var(--tc-grey)
         &:nth-child(even)
             padding-left: 30px
             left: 50%
@@ -186,9 +183,9 @@
                 width: 0
                 z-index: 1
                 left: 20px
-                border: medium solid $tc-white
+                border-style: solid
                 border-width: 10px 10px 10px 0
-                border-color: transparent $tc-grey transparent transparent
+                border-color: transparent var(--tc-grey) transparent transparent
         ul
             padding: 0 0 0 20px
 
@@ -196,8 +193,8 @@
         font-size: 1.3rem
 
 .education .timeline .section:after
-        color: $tc-blue-dark-2
-        background-color: $tc-white
+        color: var(--tc-blue-dark-2)
+        background-color: var(--tc-white)
         font-weight: bolder
         font-family: "Font Awesome 5 Free"
 
@@ -255,12 +252,34 @@
                 transform: rotateZ(180deg)
             &:before
                 left: 50px
-                border: medium solid #fff
+                border-style: solid
                 border-width: 10px 10px 10px 0
                 border-color: transparent #fff transparent transparent
 
 
             .content
                 //border-right: 3px solid $tc-blue-dark-2
-                border-left: 1px solid $tc-grey!important
+                border-left: 1px solid var(--tc-grey) !important
                 transform-origin: center !important
+
+body.dark-mode
+    .timeline
+        &:after
+            background-color: var(--tc-blue)
+        > .section
+            &:nth-child(odd)
+                &:before
+                    border-color: transparent transparent transparent var(--tc-blue)
+            &:nth-child(even)
+                &:before
+                    border-color: transparent var(--tc-blue) transparent transparent
+            &:after
+                border-color: var(--tc-blue)
+            .content
+                border-color: var(--tc-blue)
+                .function
+                    color: var(--tc-blue-light-1)
+                @media screen and (max-width: 768px)
+                    border-top-color: var(--tc-blue)!important
+                    border-left-color: var(--tc-blue)!important
+                    border-bottom-color: var(--tc-blue)!important
