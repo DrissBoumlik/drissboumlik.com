@@ -35,22 +35,25 @@
                                                 </div>
                                                 @isset($projectItem->links)
                                                     <div class="project-links">
-                                                        @isset($projectItem->links->repository)
-                                                            <div class="project-link">
-                                                                <a href="{{ $projectItem->links->repository }}"
-                                                                   target="_blank" rel="noopener">
-                                                                    <i class="fa-brands fa-github"></i>
-                                                                </a>
-                                                            </div>
-                                                        @endisset
+                                                        <span>Links : </span>
+                                                        <div class="project-link-wrapper">
                                                         @isset($projectItem->links->website)
                                                             <div class="project-link">
                                                                 <a href="{{ $projectItem->links->website }}"
                                                                    target="_blank" rel="noopener">
-                                                                    <i class="fa-solid fa-globe"></i>
+                                                                    Link
                                                                 </a>
                                                             </div>
                                                         @endisset
+                                                        @isset($projectItem->links->repository)
+                                                            <div class="project-link">
+                                                                <a href="{{ $projectItem->links->repository }}"
+                                                                   target="_blank" rel="noopener">
+                                                                    Repository
+                                                                </a>
+                                                            </div>
+                                                        @endisset
+                                                        </div>
                                                     </div>
                                                 @endisset
                                             </div>

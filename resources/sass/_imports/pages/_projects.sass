@@ -1,18 +1,23 @@
 .project-box
     position: relative
-    &:hover
-        .project-image-cover
-            filter: blur(5px) opacity(0.3)
-        .project-links
-            opacity: 1
+    border: 1px solid var(--tc-grey-light-4)
+    border-radius: 5px
+    padding: 10px
+    overflow: hidden
+    //&:hover
+    //    .project-image-cover
+    //        filter: blur(5px) opacity(0.3)
+    //    .project-links
+    //        opacity: 1
 
 .project-image-cover
+    box-shadow: 0 1px 2px rgba(from var(--tc-grey-light-3) r g b / 0.5), 0 1px 2px rgba(from var(--tc-grey-light-3) r g b / 0.5)
     height: 250px
     //border: 2px solid $tc-grey-light-2
     border-radius: 5px
     overflow: hidden
-    filter: blur(0) opacity(1)
-    transition: filter 0.3s linear
+    //filter: blur(0) opacity(1)
+    //transition: filter 0.3s linear
     @media(max-width: 768px)
         height: 200px
     @media (max-width: 992px)
@@ -23,19 +28,41 @@
         object-fit: cover
         object-position: top center
 .project-links
-    opacity: 0
-    transition: opacity 0.3s linear
-    position: absolute
-    top: 0
-    height: 100%
+    margin-top: .5rem
+    //opacity: 0
+    //transition: opacity 0.3s linear
+    //position: absolute
+    //top: 0
+    //height: 100%
     width: 100%
     display: flex
     align-items: center
-    justify-content: space-evenly
+    justify-content: flex-start
+    gap: 5px
+    .project-link-wrapper
+        display: flex
+        align-items: center
+        justify-content: flex-start
+        //gap: 5px
     .project-link
-        text-align: center
-        font-size: 2.5rem
+        text-align: left
+        font-size: 1rem
         //width: 100%
+        display: flex
+        align-items: center
+        position: relative
+        &:not(:last-child)
+            padding-right: 15px
+        &:not(:last-child):after
+            content: "\f111"
+            font-size: 0.25rem
+            font-weight: 900
+            font-family: "Font Awesome 6 Free"
+            position: absolute
+            right: 5px
+
+        a
+            display: flex
         i
             color: var(--tc-blue-dark-3)
 
@@ -43,50 +70,55 @@
 body.dark-mode
     .project-image-cover
         box-shadow: 0 1px 2px rgba(from var(--tc-blue-dark-2) r g b / 0.5), 0 1px 2px rgba(from var(--tc-blue-dark-2) r g b / 0.5)
-        &:hover
-            box-shadow: 0 0.5rem 2.5rem var(--tc-blue-dark-2)
+        //&:hover
+        //    box-shadow: 0 0.5rem 2.5rem var(--tc-blue-dark-2)
     .project-link i
         color: var(--tc-white)
 
-.page-wide .projects-page
-    .project-image-cover
-        height: 300px
-        @media (max-width: 992px)
-            height: 250px
-    .project-box:hover
-        .project-data
-            opacity: 1
-    .project-data
-        padding: 20px
-        opacity: 0
-        transition: opacity 0.3s linear
-        position: absolute
-        top: 0
-        height: 100%
-        width: 100%
-        display: flex
-        flex-direction: column
-        align-items: center
-        justify-content: center
-    .project-txt
-        //font-family: Harmattan, serif
-        text-align: center
-        font-size: 1.1rem
-        line-height: 2rem
-        //margin-bottom: 1.2rem
-        //flex: 2
-        display: flex
-        flex-direction: column
-        justify-content: flex-end
-        @media (max-width: 992px)
-            font-size: 1rem
-        .project-name
-            text-decoration: underline
-        .project-name, .project-description
-            &:first-letter
-                text-transform: capitalize
-    .project-links
-        height: unset
-        position: relative
-        opacity: 1
-        //flex: 1
+    .project-box
+        border-color: var(--tc-blue)
+
+.project-image-cover
+    height: 300px
+    @media (max-width: 992px)
+        height: 250px
+//.project-box:hover
+//    .project-data
+//        opacity: 1
+.project-data
+    padding: 20px 10px 5px
+    //opacity: 0
+    //margin: 20px 0 5px
+    transition: opacity 0.3s linear
+    //position: absolute
+    //top: 0
+    height: 100%
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    justify-content: center
+.project-txt
+    //font-family: Harmattan, serif
+    text-align: left
+    font-size: 1.1rem
+    line-height: 1.7rem
+    //margin-bottom: 1.2rem
+    //flex: 2
+    display: flex
+    flex-direction: column
+    justify-content: flex-end
+    @media (max-width: 992px)
+        font-size: 1rem
+    .project-name
+        // text-decoration: underline 
+        font-size: 1.2rem
+        font-weight: bold
+    .project-name, .project-description
+        &:first-letter
+            text-transform: capitalize
+.project-links
+    height: unset
+    position: relative
+    opacity: 1
+    //flex: 1
