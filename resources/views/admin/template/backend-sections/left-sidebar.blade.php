@@ -32,7 +32,7 @@
         <div class="content-side">
             <ul class="nav-main">
                 <li class="nav-main-item{{ request()->is(['admin/posts', 'admin/posts/*',
-                                        'admin/tags', 'admin/tags/', 'admin/media-manager', 'admin/media-manager/*']) ? ' open' : '' }}">
+                                        'admin/tags', 'admin/tags/', 'admin/file-manager', 'admin/file-manager/*']) ? ' open' : '' }}">
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                         <i class="nav-main-link-icon fa fa-fw fa-cube"></i>
                         <span class="nav-main-link-name">Content Management</span>
@@ -51,9 +51,9 @@
                             </a>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link{{ request()->is('admin/media-manager') ? ' active' : '' }}" href="/admin/media-manager">
+                            <a class="nav-main-link{{ request()->is('admin/file-manager') ? ' active' : '' }}" href="/admin/file-manager">
                                 <i class="nav-main-link-icon fa fa-fw fa-images"></i>
-                                <span class="nav-main-link-name">Media Manager</span>
+                                <span class="nav-main-link-name">File Manager</span>
                             </a>
                         </li>
                         <li class="nav-main-item">

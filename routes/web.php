@@ -65,11 +65,11 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::get('/posts/{slug}/assets', [ApiPostController::class, 'getPostAssets']);
             Route::get('/{table}/columns', [AdminToolController::class, 'getTableColumns']);
             Route::post('/stats', [AdminToolController::class, 'getTableColumnStats']);
-            Route::post('/media', [FileManagerController::class, 'uploadMedia']);
-            Route::post('/media/copy', [FileManagerController::class, 'copyMedia']);
-            Route::post('/media/rename', [FileManagerController::class, 'renameMedia']);
-            Route::get('/medias/{path?}', [FileManagerController::class, 'getMedias'])->where('path', '.*');
-            Route::delete('/path/{path}/name/{name}', [FileManagerController::class, 'deleteMedia'])->where('path', '.*');
+            Route::post('/file', [FileManagerController::class, 'uploadFile']);
+            Route::post('/file/copy', [FileManagerController::class, 'copyFile']);
+            Route::post('/file/rename', [FileManagerController::class, 'renameFile']);
+            Route::get('/files/{path?}', [FileManagerController::class, 'getFiles'])->where('path', '.*');
+            Route::delete('/path/{path}/name/{name}', [FileManagerController::class, 'deleteFile'])->where('path', '.*');
             Route::post('/directories', [FileManagerController::class, 'createDirectories']);
             Route::delete('/directories/{path}', [FileManagerController::class, 'emptyDirectory'])->where('path', '.*');
         });
@@ -127,7 +127,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::get('/export-db/config', [AdminToolController::class , 'exportDbConfig']);
             Route::get('/export-db', [AdminToolController::class , 'export_db']);
 
-            Route::get('media-manager/{path?}', [FileManagerController::class, 'index'])->where('path', '.*');
+            Route::get('file-manager/{path?}', [FileManagerController::class, 'index'])->where('path', '.*');
         });
     });
 

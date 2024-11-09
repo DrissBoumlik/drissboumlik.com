@@ -6,31 +6,31 @@ $(function () {
         $(document).on('click', '.file-operation', function() {
 
             let operation = this.getAttribute('data-action');
-            let media_name = this.getAttribute('data-name');
-            let media_path = this.getAttribute('data-path').replace('\\', '/');
+            let file_name = this.getAttribute('data-name');
+            let file_path = this.getAttribute('data-path').replace('\\', '/');
 
             let modal = `
                 <div class="modal modal-operation-details" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title capitalize-first-letter">${operation} file : ${media_name}</h5>
+                                <h5 class="modal-title capitalize-first-letter">${operation} file : ${file_name}</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <form id="file-operation-form" class="file-operation-form">
-                                    <input type="hidden" name="media_name" value="${media_name}" />
+                                    <input type="hidden" name="file_name" value="${file_name}" />
                                     <div class="mb-3">
                                         <label for="src-path" class="form-label">Source :</label>
                                         <input type="text" class="form-control" id="src-path" name="src-path"
-                                                readonly value="${media_path}">
+                                                readonly value="${file_path}">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="dest-path" class="form-label">Dest :</label>
+                                        <label for="dest-path" class="form-label">Destination :</label>
                                         <div class="input-group mb-3">
                                           <span class="input-group-text" id="basic-addon3">storage/</span>
                                             <input type="text" class="form-control" id="dest-path" name="dest-path"
-                                                    aria-describedby="basic-addon3">
+                                                   placeholder="new/directory" aria-describedby="basic-addon3">
                                         </div>
                                     </div>
                                     <div class="mb-3 d-flex column-gap-2">
@@ -65,12 +65,12 @@ $(function () {
             console.log(data);
             $.ajax({
                 method: 'POST',
-                url: '/api/media/copy',
+                url: '/api/file/copy',
                 data: data,
                 success: function (response) {
                     console.log(response);
                     get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
-                    displayMedias();
+                    displayFiles();
                 },
                 error: function (jqXHR, textStatus, errorThrown){
                     console.log(jqXHR, textStatus, errorThrown);
@@ -92,7 +92,7 @@ $(function () {
                 success: function (response) {
                     console.log(response);
                     get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
-                    displayMedias();
+                    displayFiles();
                 },
                 error: function (jqXHR, textStatus, errorThrown){
                     console.log(jqXHR, textStatus, errorThrown);
@@ -113,7 +113,7 @@ $(function () {
             data.append('path', currentPath);
             $.ajax({
                 method: 'POST',
-                url: '/api/media',
+                url: '/api/file',
                 data: data,
                 contentType: false,
                 cache: false,
@@ -121,7 +121,7 @@ $(function () {
                 success: function (response) {
                     console.log(response);
                     get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
-                    displayMedias();
+                    displayFiles();
                 },
                 error: function (jqXHR, textStatus, errorThrown){
                     console.log(jqXHR, textStatus, errorThrown);
@@ -138,7 +138,7 @@ $(function () {
                 if (!confirm("Are you sure ?")) {
                     return;
                 }
-                const regex = new RegExp(`/admin/media-manager/\?`, 'g');
+                const regex = new RegExp(`/admin/file-manager/\?`, 'g');
                 let currentPath = window.location.pathname.replaceAll(regex, '');
                 if (currentPath === "") {
                     currentPath = "storage";
@@ -158,7 +158,7 @@ $(function () {
                     success: function (response) {
                         console.log(response);
                         get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
-                        displayMedias();
+                        displayFiles();
                     },
                     error: function (jqXHR, textStatus, errorThrown){
                         console.log(jqXHR, textStatus, errorThrown);
@@ -180,6 +180,7 @@ $(function () {
                     success: function (response) {
                         console.log(response);
                         get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                        displayFiles();
                     },
                     error: function (jqXHR, textStatus, errorThrown){
                         console.log(jqXHR, textStatus, errorThrown);
@@ -189,25 +190,25 @@ $(function () {
             });
         }
 
-        $(document).on('click', '.media-link', function(e) {
+        $(document).on('click', '.file-link', function(e) {
             e.preventDefault();
-            displayMedias(this.getAttribute('data-href'));
+            displayFiles(this.getAttribute('data-href'));
         });
 
-        $(document).on('mousedown', '.media-name', function(e) {
+        $(document).on('mousedown', '.file-name', function(e) {
             this.setAttribute('contenteditable', true)
         });
-        $(document).on('focusout', '.media-name', function(e) {
+        $(document).on('focusout', '.file-name', function(e) {
             this.setAttribute('contenteditable', false)
         });
-        $(document).on('keydown', '.media-name', function(e) {
+        $(document).on('keydown', '.file-name', function(e) {
                 if (e.key === 'Enter') {
                     if (!confirm("Are you sure ?")) {
                         return;
                     }
                     this.setAttribute('contenteditable', false)
                     let new_name = this.innerText.trim();
-                    let old_name = this.getAttribute('data-media-name').trim();
+                    let old_name = this.getAttribute('data-file-name').trim();
                     if (old_name === '' || new_name === '') {
                         get_alert_box({class: 'alert-danger', message: "Names should not be empty", icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
                         this.innerText = old_name;
@@ -221,12 +222,12 @@ $(function () {
 
                     $.ajax({
                         method: 'POST',
-                        url: '/api/media/rename',
+                        url: '/api/file/rename',
                         data: data,
                         success: function (response) {
                             console.log(response);
                             get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
-                            displayMedias();
+                            displayFiles();
                         },
                         error: function (jqXHR, textStatus, errorThrown){
                             console.log(jqXHR, textStatus, errorThrown);
@@ -236,19 +237,19 @@ $(function () {
                 }
             });
 
-        displayMedias();
+        displayFiles();
     } catch (error) {
         // console.log(error);
     }
 });
 
-function displayMedias(pathname = null) {
+function displayFiles(pathname = null) {
     if (!pathname) {
-        const regex = new RegExp(`/admin/media-manager/\?`, 'g');
+        const regex = new RegExp(`/admin/file-manager/\?`, 'g');
         pathname = window.location.pathname.replace(regex, '')
         if (pathname.startsWith('/')) pathname = pathname.replace('/', '')
     } else {
-        window.history.pushState(null,null, `/admin/media-manager/${pathname}`);
+        window.history.pushState(null,null, `/admin/file-manager/${pathname}`);
     }
     let spinner = `<div class="col-12 text-center p-5">
                     <div class="spinner-border" role="status"
@@ -262,11 +263,11 @@ function displayMedias(pathname = null) {
 
     $.ajax({
         type: 'GET',
-        url: `/api/medias/${pathname}`,
+        url: `/api/files/${pathname}`,
         success: function (response) {
             let data = response.data;
             $('#current-path').val(data.current_path);
-            $('#previous-path').attr('href', `/admin/media-manager/${data.previous_path || ''}`)
+            $('#previous-path').attr('href', `/admin/file-manager/${data.previous_path || ''}`)
                 .attr('data-href', data.previous_path);
             $('#breadcrumb').html(data.breadcrumb.breadcrumb);
 
@@ -274,14 +275,14 @@ function displayMedias(pathname = null) {
             if(data?.content?.directories && data?.content?.directories?.length) {
                 directoriesDOM = '';
                 data.content.directories.forEach(function(dir) {
-                    directoriesDOM += `<div class="col-6 col-sm-4 col-md-3 mb-4 media-item-wrapper">
-                                        <div class="directory media-item mb-2">
-                                            <a href="#" class="media-item-link media-link" data-href="${dir.path}" class="media-item-link">
+                    directoriesDOM += `<div class="col-6 col-sm-4 col-md-3 mb-4 file-item-wrapper">
+                                        <div class="directory file-item mb-2">
+                                            <a href="#" class="file-item-link file-link" data-href="${dir.path}" class="file-item-link">
                                                 <div class="directory-icon w-100 h-100"><i class="fa-solid fa-folder-open"></i></div>
                                             </a>
                                             <div class="directory-name w-100 h-100">
-                                                <span title="${dir.name}" class="media-name"
-                                                    data-media-name="${dir.name}">${dir.name}</span>
+                                                <span title="${dir.name}" class="file-name"
+                                                    data-file-name="${dir.name}">${dir.name}</span>
                                             </div>
                                         </div>
                                         <div class="action-btns">
@@ -299,9 +300,9 @@ function displayMedias(pathname = null) {
             if(data?.content?.files && data?.content?.files?.length) {
                 filesDOM = '';
                 data.content.files.forEach(function(file) {
-                    filesDOM += `<div class="col-6 col-sm-4 col-md-3 mb-4 media-item-wrapper">
-                                    <div class="file media-item mb-2">
-                                        <a href="/${file._pathname }" class="media-item-link" data-href="${file._pathname}" target="_blank" class="media-item-link">`;
+                    filesDOM += `<div class="col-6 col-sm-4 col-md-3 mb-4 file-item-wrapper">
+                                    <div class="file file-item mb-2">
+                                        <a href="/${file._pathname }" class="file-item-link" data-href="${file._pathname}" target="_blank" class="file-item-link">`;
                     if (file._mimeType.includes('image')) {
                         filesDOM += `<div class="file-image h-100">
                                         <img src="/${file._pathname}" class="img-fluid w-100 h-100" alt="${file._filename}"/>
@@ -310,8 +311,8 @@ function displayMedias(pathname = null) {
                         filesDOM+= `<div class="file-icon w-100 h-100"><i class="fa-solid fa-file"></i></div>`;
                     }
                     filesDOM += `</a><div class="file-name w-100">
-                                        <span title="${file._filename}" class="media-name"
-                                            data-media-name="${file._filename}">${file._filename}</span>
+                                        <span title="${file._filename}" class="file-name"
+                                            data-file-name="${file._filename}">${file._filename}</span>
                                     </div>`;
                     filesDOM += `</div><div class="action-btns">
                                         <button type="submit" class="btn btn-outline-info w-100 file-operation" title="Copy File"

@@ -8,13 +8,16 @@ use Illuminate\Support\Facades\File;
 
 class FileManagerController extends Controller
 {
+
+    const TRASH = 'storage/trash';
+
     public function index(Request $request)
     {
-        $data = adminPageSetup('Media Manager | Admin Panel');
+        $data = adminPageSetup('File Manager | Admin Panel');
         return view('admin.pages.file-manager', ['data' => $data]);
     }
 
-    public function getMedias(Request $request, $path = 'storage')
+    public function getFiles(Request $request, $path = 'storage')
     {
         $data = new \stdClass();
         $data->path = substr($path, strrpos($path, '/') + 1, strlen($path));
@@ -23,7 +26,7 @@ class FileManagerController extends Controller
         $data->breadcrumb = array_reduce(explode('/', $path), function($acc, $segment) {
             $acc['href'] .= "$segment/";
             $href = $acc['href'];
-            $acc['breadcrumb'] .= "<li class='breadcrumb-item capitalize-first-letter'><a href='#' class='media-link' data-href='$href'>$segment</a></li>";
+            $acc['breadcrumb'] .= "<li class='breadcrumb-item capitalize-first-letter'><a href='#' class='file-link' data-href='$href'>$segment</a></li>";
             return $acc;
         }, ['href' => '', 'breadcrumb' => '']);
         if (str_contains($path, '/')) {
@@ -46,13 +49,16 @@ class FileManagerController extends Controller
         return ['data' => $data];
     }
 
-    public function renameMedia(Request $request)
+    public function renameFile(Request $request)
     {
         try {
             $old_name = trim($request->get('old_name'));
             $new_name = trim($request->get('new_name'));
             if (!$new_name || !$old_name) {
                 throw new \Exception("Names should not be empty!!");
+            }
+            if (strtolower($old_name) === 'trash') {
+                throw new \Exception("You cannot rename the Trash !");
             }
             $path = trim($request->get('path'));
             File::move("$path/$old_name", "$path/$new_name");
@@ -62,18 +68,21 @@ class FileManagerController extends Controller
         }
     }
 
-    public function copyMedia(Request $request)
+    public function copyFile(Request $request)
     {
 
         try {
-            $operation = $request->get('operation');
-            $media_name = $request->get('media_name');
             $src_path = $request->get('src-path');
+            if ($src_path === self::TRASH) {
+                throw new \Exception("You cannot copy/move the Trash !");
+            }
+            $operation = $request->get('operation');
+            $file_name = $request->get('file_name');
             $dest_path = $request->get('dest-path');
             $dest_path = $dest_path ? "storage/$dest_path" : "storage";
             $msg = 'Not file or directory !!';
             File::ensureDirectoryExists($dest_path);
-            $dest_path = "$dest_path/$media_name";
+            $dest_path = "$dest_path/$file_name";
             if ($src_path === $dest_path) {
                 throw new \Exception("You copy/move to the same path !");
             }
@@ -119,12 +128,12 @@ class FileManagerController extends Controller
     }
 
 
-    public function uploadMedia(Request $request)
+    public function uploadFile(Request $request)
     {
         try {
             $path = $request->get('path');
-            if ($path === 'storage/trash') {
-                throw new \Exception("You're uploading to the Trash <i class='fa-solid fa-trash'></i>");
+            if ($path === self::TRASH) {
+                throw new \Exception("You're uploading to the Trash !");
             }
             $files = $request->file('files');
             $path = str_replace('storage', '', $path);
@@ -148,20 +157,19 @@ class FileManagerController extends Controller
             return response()->json(['msg' => $e->getMessage()], 404);
         }
     }
-    public function deleteMedia(Request $request, $path, $name)
+    public function deleteFile(Request $request, $path, $name)
     {
         try {
-            $trash = 'storage/trash';
-            if ($trash === $path) {
-                throw new \Exception("You can't delete the trash");
+            if (self::TRASH === $path) {
+                throw new \Exception("You can't delete the Trash !");
             }
-            File::ensureDirectoryExists("$trash/");
+            File::ensureDirectoryExists(self::TRASH . "/");
             if (File::isDirectory($path)) {
-                File::copyDirectory($path, "$trash/$name");
+                File::copyDirectory($path, self::TRASH . "/$name");
                 File::deleteDirectory($path);
                 $msg = 'Directory deleted successfully';
             } elseif (File::isFile($path)) {
-                File::copy($path, "$trash/$name");
+                File::copy($path, self::TRASH . "/$name");
                 File::delete($path);
                 $msg = 'File deleted successfully';
             }

@@ -54,7 +54,7 @@
                 <div class="container-fluid">
                     <div class="sitemap d-flex justify-content-center gap-4 flex-wrap flex-md-nowrap">
                         <div class="view-sitemaps-archive w-100">
-                            <a class="btn btn-alt-secondary w-100 h-100px d-flex justify-content-center align-items-center" href="/admin/media-manager/storage/sitemap-archive">
+                            <a class="btn btn-alt-secondary w-100 h-100px d-flex justify-content-center align-items-center" href="/admin/file-manager/storage/sitemap-archive">
                                 <i class="fa fa-fw fa-eye me-2"></i>View sitemaps archive</a>
                         </div>
                         <div class="generate-sitemap w-100">
