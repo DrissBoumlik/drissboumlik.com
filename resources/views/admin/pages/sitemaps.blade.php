@@ -1,20 +1,5 @@
 @extends('admin.template.backend')
 
-@section('css')
-    <!-- Page JS Plugins CSS -->
-    <link href="{{ asset('/template/assets/js/plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
-@endsection
-
-@section('js')
-    <!-- Page JS Plugins -->
-    <script defer src="{{ asset('/plugins/moment-js/moment.js') }}"></script>
-    <script defer src="{{ asset('/template/assets/js/plugins/select2/js/select2.full.min.js') }}"></script>
-@endsection
-
-@section('post-header-assets')
-    @vite(['resources/js/admin/pages/media-manager.js'])
-@endsection
-
 @section('content')
     <!-- Hero -->
     <div class="bg-body-light">
