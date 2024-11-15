@@ -1,4 +1,5 @@
 import $ from 'jquery/dist/jquery.min.js';
+import { initAjaxEvents } from "../functions";
 
 $(function () {
     try {
@@ -74,6 +75,9 @@ $(function () {
                 }
             });
         }
+
+        initAjaxEvents();
+
     } catch (error) {
         // console.log(error);
     }
