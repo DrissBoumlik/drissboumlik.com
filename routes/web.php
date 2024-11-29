@@ -144,7 +144,7 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
         Route::get('/sitemap', [SitemapController::class, 'sitemap']);
         Route::get('/', [PageController::class, 'home']);
         Route::get('about', [PageController::class, 'about']);
-        Route::get('resume', [PageController::class, 'resume']);
+        // Route::get('resume', [PageController::class, 'resume']);
         Route::get('testimonials', [PageController::class, 'testimonials']);
         Route::get('work', [PageController::class, 'projects']);
         Route::get('contact', [PageController::class, 'contact']);

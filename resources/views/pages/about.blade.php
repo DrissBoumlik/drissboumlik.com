@@ -39,7 +39,7 @@
                                     <a target="_blank" href="https://castbox.fm/cl/360626">podcasts</a> or read
                                     <a target="_blank" href="https://www.goodreads.com/review/list/170245827-driss?view=covers"
                                        rel="noopener">books</a>.</p>
-                                <p>Checkout my <a href="/resume">resume</a> and reach me through
+                                <p>Checkout my <a href="/cv">resume</a> and reach me through
                                     <span class="tc-blue">hi@drissboumlik.com</span></p>
                             </div>
                             <div class="col-lg-6 col-md-5 col-11">
