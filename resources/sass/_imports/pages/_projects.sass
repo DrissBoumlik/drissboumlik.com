@@ -1,6 +1,8 @@
 .project-box
     position: relative
-    border: 1px solid var(--tc-grey-light-4)
+    //border: 1px solid var(--tc-grey-light-4)
+    background-color: var(--tc-grey-light)
+    box-shadow: 0 1px 2px rgba(from var(--tc-grey-light-3) r g b / 0.5), 0 1px 2px rgba(from var(--tc-grey-light-3) r g b / 0.5)
     border-radius: 5px
     padding: 10px
     overflow: hidden
@@ -28,6 +30,7 @@
         object-fit: cover
         object-position: top center
 .project-links
+    text-transform: capitalize
     margin-top: .5rem
     //opacity: 0
     //transition: opacity 0.3s linear
@@ -76,7 +79,9 @@ body.dark-mode
         color: var(--tc-white)
 
     .project-box
-        border-color: var(--tc-blue)
+        //border-color: var(--tc-blue)
+        background-color: var(--tc-blue-dark-4)
+        box-shadow: 0 1px 2px rgba(from var(--tc-blue-dark-2) r g b / 0.5), 0 1px 2px rgba(from var(--tc-blue-dark-2) r g b / 0.5)
 
 .project-image-cover
     height: 300px
@@ -111,7 +116,7 @@ body.dark-mode
     @media (max-width: 992px)
         font-size: 1rem
     .project-name
-        // text-decoration: underline 
+        // text-decoration: underline
         font-size: 1.2rem
         font-weight: bold
     .project-name, .project-description

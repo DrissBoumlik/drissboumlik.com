@@ -35,13 +35,12 @@
                                                 </div>
                                                 @isset($projectItem->links)
                                                     <div class="project-links">
-                                                        <span>Links : </span>
                                                         <div class="project-link-wrapper">
                                                         @isset($projectItem->links->website)
                                                             <div class="project-link">
                                                                 <a href="{{ $projectItem->links->website }}"
                                                                    target="_blank" rel="noopener">
-                                                                    Link
+                                                                    website
                                                                 </a>
                                                             </div>
                                                         @endisset
@@ -49,7 +48,7 @@
                                                             <div class="project-link">
                                                                 <a href="{{ $projectItem->links->repository }}"
                                                                    target="_blank" rel="noopener">
-                                                                    Repository
+                                                                    repository
                                                                 </a>
                                                             </div>
                                                         @endisset
