@@ -34,7 +34,7 @@ class PortfolioController extends Controller
                 "description"   => "required|string",
             ]);
 
-            $data = $request->only(['slug', 'title', 'icon', 'link', 'description', 'active', 'order']);
+            $data = $request->only(['slug', 'title', 'icon', 'link', 'description', 'active', 'order', 'note']);
             $data['active'] = $request->has("active") && $request->get("active") === 'on';
 
             $image_file = $request->file('service-image');
@@ -81,7 +81,7 @@ class PortfolioController extends Controller
                 $itemToChangeOrderWith->update();
             }
 
-            $data = $request->only(['slug', 'title', 'icon', 'link', 'description', 'active', 'order']);
+            $data = $request->only(['slug', 'title', 'icon', 'link', 'description', 'active', 'order', 'note']);
             $data['active'] = $request->has("active") && $request->get("active") === 'on';
 
             $image_file = $request->file('service-image');
@@ -127,7 +127,7 @@ class PortfolioController extends Controller
                 $itemToChangeOrderWith->update();
             }
 
-            $data = $request->only(["content", "author", "position", "active", "order"]);
+            $data = $request->only(["content", "author", "position", "active", "order", "note"]);
             $data['active'] = $request->has("active") && $request->get("active") === 'on';
 
             $image_file = $request->file('testimonial-image');
@@ -153,7 +153,7 @@ class PortfolioController extends Controller
                 "order"     => "required|integer|min:1|unique:testimonials,order",
             ]);
 
-            $data = $request->only(["content", "author", "position", "active", "order"]);
+            $data = $request->only(["content", "author", "position", "active", "order", "note"]);
             $data['active'] = $request->has("active") && $request->get("active") === 'on';
 
             $image_file = $request->file('testimonial-image');
@@ -181,7 +181,7 @@ class PortfolioController extends Controller
                 "order"         => "required|integer|min:1|unique:testimonials,order",
             ]);
 
-            $data = $request->only(["role", "title", "description", "featured", "links", "active", "order"]);
+            $data = $request->only(["role", "title", "description", "featured", "links", "active", "order", "note"]);
             $data['active'] = $request->has("active") && $request->get("active") === 'on';
             $data['featured'] = $request->has("featured") && $request->get("featured") === 'on';
 
@@ -230,7 +230,7 @@ class PortfolioController extends Controller
                 $itemToChangeOrderWith->update();
             }
 
-            $data = $request->only(["role", "title", "description", "featured", "links", "active", "order"]);
+            $data = $request->only(["role", "title", "description", "featured", "links", "active", "order", "note"]);
             $data['active'] = $request->has("active") && $request->get("active") === 'on';
             $data['featured'] = $request->has("featured") && $request->get("featured") === 'on';
 

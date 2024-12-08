@@ -10,7 +10,7 @@ class Service extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = [ 'slug', 'title', 'icon', 'image', 'link', 'description', 'active', 'order' ];
+    protected $fillable = [ 'slug', 'title', 'icon', 'image', 'link', 'description', 'active', 'order', 'note' ];
 
     protected $casts = [ "image" => "object" ];
 }

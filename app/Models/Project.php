@@ -10,7 +10,7 @@ class Project extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = [ 'image', 'role', 'title', 'description', 'featured', 'links', 'active', 'order' ];
+    protected $fillable = [ 'image', 'role', 'title', 'description', 'featured', 'links', 'active', 'order', 'note' ];
 
     protected $casts = [ "links" => "object", "image" => "object" ];
 }

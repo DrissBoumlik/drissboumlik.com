@@ -92,6 +92,11 @@ document.addEventListener("DOMContentLoaded", function () {
                                             <textarea class="form-control" id="content" name="content" rows="7"
                                                     required>${data.content || ''}</textarea>
                                         </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="note">Note</label>
+                                            <textarea class="form-control" id="note"
+                                                name="note" rows="4">${data.note || ''}</textarea>
+                                        </div>
                                     </div>
                                     <div class="col-12 d-flex justify-content-between gap-2 flex-wrap flex-md-nowrap">
                                         <button type="submit" class="btn btn-outline-info w-100">Update</button>
@@ -200,6 +205,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                             <label class="form-label" for="content">Content</label>
                                             <textarea class="form-control" id="content" name="content" rows="7"
                                                     required></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="note">Note</label>
+                                            <textarea class="form-control" id="note" name="note" rows="4"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -376,6 +385,11 @@ document.addEventListener("DOMContentLoaded", function () {
                                             <textarea class="form-control" id="description" name="description" rows="4"
                                                 required>${data.description || ''}</textarea>
                                         </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="note">Note</label>
+                                            <textarea class="form-control" id="note"
+                                                name="note" rows="4">${data.note || ''}</textarea>
+                                        </div>
                                     </div>
                                     <div class="col-12 d-flex justify-content-between gap-2 flex-wrap flex-md-nowrap">
                                         <button type="submit" class="btn btn-outline-info w-100">Update</button>
@@ -495,6 +509,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                             <label class="form-label" for="description">Description</label>
                                             <textarea class="form-control" id="description" name="description" rows="4"
                                                     required></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="note">Note</label>
+                                            <textarea class="form-control" id="note" name="note" rows="4"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -654,6 +672,12 @@ document.addEventListener("DOMContentLoaded", function () {
                                             <textarea class="form-control" id="description"
                                                 name="description" rows="4" required>${data.description || ''}</textarea>
                                         </div>
+                                        
+                                        <div class="mb-3">
+                                            <label class="form-label" for="note">Note</label>
+                                            <textarea class="form-control" id="note"
+                                                name="note" rows="4">${data.note || ''}</textarea>
+                                        </div>
                                     </div>
                                     <div class="col-12 d-flex justify-content-between gap-2 flex-wrap flex-md-nowrap">
                                         <button type="submit" class="btn btn-outline-info w-100">Update</button>
@@ -770,6 +794,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                             <label class="form-label" for="description">Description</label>
                                             <textarea class="form-control" id="description" name="description" rows="4"
                                                 required></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="note">Note</label>
+                                            <textarea class="form-control" id="note" name="note" rows="4"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
