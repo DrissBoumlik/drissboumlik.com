@@ -1,4 +1,4 @@
-import { drawText, initParticlesJS, initDarkMode } from "./functions";
+import { drawText, initParticlesJS, initDarkMode, initBanner } from "./functions";
 import 'lazysizes';
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
         drawText();
         initParticlesJS();
         initDarkMode();
+        initBanner();
     } catch (error) {
         // console.log(error);
     }

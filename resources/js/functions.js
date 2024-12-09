@@ -104,4 +104,4 @@ function initLikePostBtn() {
 }
 
 
-export { drawText, initParticlesJS, initDarkMode, initAjaxEvents };
+export { drawText, initParticlesJS, initDarkMode, initAjaxEvents, initBanner };

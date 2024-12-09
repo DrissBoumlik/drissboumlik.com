@@ -17,3 +17,5 @@ yarn-error.log
 /public/mix-manifest.json
 /public/assets/img/work/original
 /database/dumps
+
+/public/assets/img/gallery

@@ -15,6 +15,22 @@
     </head>
     <body class="antialiased {{ $mode . '-mode' }}">
         {{-- @include('addons.google-tag-manager-body') --}}
+        <div class="banner tc-blue-bg">
+            <div class="container banner-container">
+                <div class="banner-wrapper">
+                    <div class="banner-text">
+                        <span class="title">
+                            <div>Pray for Palestine</div>
+                            <div class="separator">|</div>
+                            <div>لا تنسوا الدعاء لإخواننا في فلسطين</div>
+                        </span>
+                    </div>
+                </div>
+                <div class="banner-close">
+                    <i class="fa-solid fa-times"></i>
+                </div>
+            </div>
+        </div>
         <div class="wrapper">
             @yield('content')
         </div>
