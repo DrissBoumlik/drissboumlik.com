@@ -195,13 +195,13 @@ $(function () {
             displayFiles(this.getAttribute('data-href'));
         });
 
-        $(document).on('mousedown', '.file-name', function(e) {
+        $(document).on('mousedown', '.file-name-text', function(e) {
             this.setAttribute('contenteditable', true)
         });
-        $(document).on('focusout', '.file-name', function(e) {
+        $(document).on('focusout', '.file-name-text', function(e) {
             this.setAttribute('contenteditable', false)
         });
-        $(document).on('keydown', '.file-name', function(e) {
+        $(document).on('keydown', '.file-name-text', function(e) {
                 if (e.key === 'Enter') {
                     if (!confirm("Are you sure ?")) {
                         return;
@@ -281,7 +281,7 @@ function displayFiles(pathname = null) {
                                                 <div class="directory-icon w-100 h-100"><i class="fa-solid fa-folder-open"></i></div>
                                             </a>
                                             <div class="directory-name w-100 h-100">
-                                                <span title="${dir.name}" class="file-name"
+                                                <span title="${dir.name}" class="file-name-text"
                                                     data-file-name="${dir.name}">${dir.name}</span>
                                             </div>
                                         </div>
@@ -311,7 +311,7 @@ function displayFiles(pathname = null) {
                         filesDOM+= `<div class="file-icon w-100 h-100"><i class="fa-solid fa-file"></i></div>`;
                     }
                     filesDOM += `</a><div class="file-name w-100">
-                                        <span title="${file._filename}" class="file-name"
+                                        <span title="${file._filename}" class="file-name-text"
                                             data-file-name="${file._filename}">${file._filename}</span>
                                     </div>`;
                     filesDOM += `</div><div class="action-btns">
