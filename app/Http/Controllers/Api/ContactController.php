@@ -12,15 +12,15 @@ class ContactController extends Controller
 {
     public function getInTouch(Request $request)
     {
-        $request->validate([
-            "name"                  => "required|max:100",
-            "email"                 => "required|email|max:255",
-            "body"                  => "required|max:200",
-            "g-recaptcha-response"  => "required",
-        ], [
-            "body" => "The message must not be greater than 200 characters."
-        ]);
         try {
+            $request->validate([
+                "name"                  => "required|max:100",
+                "email"                 => "required|email|max:255",
+                "body"                  => "required|max:200",
+                "g-recaptcha-response"  => "required",
+            ], [
+                "body" => "The message must not be greater than 200 characters."
+            ]);
             $this->checkCaptcha($request);
 
             $request_data = $request->only('name', 'email', 'body');
@@ -36,8 +36,9 @@ class ContactController extends Controller
 
             return response()->json(['message' => 'Message sent successfully', 'class' => 'tc-alert-ok', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>'], 200);
         } catch (\Throwable $e) {
+            $error_code = $e->getCode();
             $message = "Something went wrong, Please try again!";
-            if ($e->getCode() == -1) {
+            if (-1 === $error_code || 0 === $error_code) {
                 $message = $e->getMessage();
             }
             return response()->json(['message' => $message, 'class' => 'tc-alert-nok', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>'], 400);
