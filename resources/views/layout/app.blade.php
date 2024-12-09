@@ -20,9 +20,9 @@
                 <div class="banner-wrapper">
                     <div class="banner-text">
                         <span class="title">
-                            <div>Pray for Palestine</div>
+                            <div>أدعوا لإخواننا في فلسطين</div>
                             <div class="separator">|</div>
-                            <div>لا تنسوا الدعاء لإخواننا في فلسطين</div>
+                            <div>Pray for our brothers in Palestine</div>
                         </span>
                     </div>
                 </div>
