@@ -3,12 +3,21 @@
     text-align: center
 .directory-name, .file-name
     padding: 10px
-    span
+    .file-name-text
         display: block
         text-align: center
         overflow: hidden
         text-overflow: ellipsis
         white-space: nowrap
+        &[contenteditable="false"]
+            overflow: hidden
+            text-overflow: ellipsis
+            white-space: nowrap
+        &[contenteditable="true"]
+            overflow: auto
+            text-overflow: ellipsis
+            white-space: normal
+
 
 .action-btns
     display: flex
@@ -26,7 +35,7 @@
 .file-item-wrapper
     height: 100%
     .file-item
-        height: 150px
+        //height: 150px
         overflow: hidden
         border: 2px solid var(--tc-grey-fancy)
         border-radius: 10px

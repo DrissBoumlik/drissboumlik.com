@@ -39,17 +39,13 @@
                                                         @isset($projectItem->links->website)
                                                             <div class="project-link">
                                                                 <a href="{{ $projectItem->links->website }}"
-                                                                   target="_blank" rel="noopener">
-                                                                    website
-                                                                </a>
+                                                                   target="_blank" rel="noopener">view</a>
                                                             </div>
                                                         @endisset
                                                         @isset($projectItem->links->repository)
                                                             <div class="project-link">
                                                                 <a href="{{ $projectItem->links->repository }}"
-                                                                   target="_blank" rel="noopener">
-                                                                    repository
-                                                                </a>
+                                                                   target="_blank" rel="noopener">repository</a>
                                                             </div>
                                                         @endisset
                                                         </div>

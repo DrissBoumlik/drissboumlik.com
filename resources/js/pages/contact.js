@@ -1,58 +1,94 @@
-import $ from 'jquery/dist/jquery.min.js';
-import { initAjaxEvents } from "../functions";
 
-$(function () {
+document.addEventListener('DOMContentLoaded', function () {
     try {
-        let contactForm = $('#contact-form');
-        if (contactForm.length) {
-            contactForm.on('submit', function (e) {
+        const contactForm = document.getElementById('contact-form');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (e) {
                 e.preventDefault();
-                let _this = this;
+
                 let formIsValid = true;
-                let data = $(this).serializeArray();
-                data.forEach(function (item, key) {
-                    $(`#error-${item.name}`).remove();
-                    if (item.value === '') {
+                const formData = new FormData(contactForm);
+                const data = {};
+
+                // Convert FormData to object
+                formData.forEach((value, key) => {
+                    data[key] = value;
+                });
+
+                // Clear previous errors
+                Object.keys(data).forEach((name) => {
+                    const errorElement = document.getElementById(`error-${name}`);
+                    if (errorElement) errorElement.remove();
+                });
+
+                // Validate fields
+                Object.keys(data).forEach((name) => {
+                    if (data[name].trim() === '') {
                         formIsValid = false;
-                        $(`#form-${item.name}`).after(`<div id="error-${item.name}" class="tc-alert tc-alert-error">This field is required.</div>`);
+                        const fieldElement = document.getElementById(`form-${name}`);
+                        if (fieldElement) {
+                            fieldElement.insertAdjacentHTML(
+                                'afterend',
+                                `<div id="error-${name}" class="tc-alert tc-alert-error">This field is required.</div>`
+                            );
+                        }
                     }
                 });
+
                 if (!formIsValid) {
                     return;
                 }
 
-                $('#contact-form-response').remove()
-                // $(_this).after(`<div id="contact-form-response" class="contact-form-response tc-alert tc-alert-ok text-center"><i class="fa-solid fa-spinner spinClockWise"></i> Sending...</div>`);
+                const responseContainer = document.getElementById('contact-form-response');
+                if (responseContainer) responseContainer.remove();
 
-                $('.btn-send').addClass('loading-spinner');
-                $.ajax({
+                const sendButton = document.querySelector('.btn-send');
+                if (sendButton) sendButton.classList.add('loading-spinner');
+
+                // Send AJAX request
+                fetch('/api/get-in-touch', {
                     method: 'POST',
-                    url: '/api/get-in-touch',
-                    data: data,
-                    success: function (response) {
-                        $('#contact-form-response').remove()
-                        $(_this).after(getAlertDom(response));
-                        // setTimeout(() => $('#contact-form-response').remove(), 5000);
-                        $('.btn-send').removeClass('loading-spinner');
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        let response = jqXHR.responseJSON;
-                        $('#contact-form-response').remove()
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                })
+                    .then(async (response) => {
+                        const result = await response.json();
+                        // Remove previous response
+                        if (responseContainer) responseContainer.remove();
+                        // Display success or error
+                        debugger
+                        contactForm.insertAdjacentHTML('afterend', getAlertDom(result));
+                        // Remove spinner
+                        if (sendButton) sendButton.classList.remove('loading-spinner');
+                    })
+                    .catch(async (error) => {
+                        const response = error.responseJSON || {};
+
+                        // Remove previous response
+                        if (responseContainer) responseContainer.remove();
+
                         if (response.class && response.icon) {
-                            $(_this).after(getAlertDom(response));
+                            contactForm.insertAdjacentHTML('afterend', getAlertDom(response));
                         }
-                        let errors = response.errors;
-                        data.forEach(function (item, key) {
-                            $(`#error-${item.name}`).remove();
+
+                        // Display errors
+                        const errors = response.errors || {};
+                        Object.keys(errors).forEach((errorKey) => {
+                            const messages = errors[errorKey] || ['This field is required.'];
+                            debugger
+                            const fieldElement = document.getElementById(`form-${errorKey}`);
+                            if (fieldElement) {
+                                fieldElement.insertAdjacentHTML(
+                                    'afterend',
+                                    `<div id="error-${errorKey}" class="tc-alert tc-alert-error">${messages.join('<br>')}</div>`
+                                );
+                            }
                         });
-                        for (let errorKey in errors) {
-                            let messages = errors[errorKey];
-                            $(`#error-${errorKey}`).remove();
-                            $(`#form-${errorKey}`).after(`<div id="error-${errorKey}" class="tc-alert tc-alert-error">${messages || 'This field is required.'}</div>`);
-                        }
-                        $('.btn-send').removeClass('loading-spinner');
-                    }
-                });
+
+                        // Remove spinner
+                        if (sendButton) sendButton.classList.remove('loading-spinner');
+                    });
             });
         }
 
@@ -75,8 +111,6 @@ $(function () {
                 }
             });
         }
-
-        initAjaxEvents();
 
     } catch (error) {
         // console.log(error);
