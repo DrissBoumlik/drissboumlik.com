@@ -184,6 +184,9 @@ class PortfolioController extends Controller
             $data = $request->only(["role", "title", "description", "featured", "links", "active", "order", "note"]);
             $data['active'] = $request->has("active") && $request->get("active") === 'on';
             $data['featured'] = $request->has("featured") && $request->get("featured") === 'on';
+            if (null === $data['links']['repository'] && null === $data['links']['website']) {
+                $data['links'] = null;
+            }
 
             $image_file = $request->file('project-image');
             if ($image_file) {
@@ -233,6 +236,9 @@ class PortfolioController extends Controller
             $data = $request->only(["role", "title", "description", "featured", "links", "active", "order", "note"]);
             $data['active'] = $request->has("active") && $request->get("active") === 'on';
             $data['featured'] = $request->has("featured") && $request->get("featured") === 'on';
+            if (null === $data['links']['repository'] && null === $data['links']['website']) {
+                $data['links'] = null;
+            }
 
             $image_file = $request->file('project-image');
             if ($image_file) {
