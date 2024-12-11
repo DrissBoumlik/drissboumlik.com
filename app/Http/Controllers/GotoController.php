@@ -11,7 +11,9 @@ class GotoController extends Controller
 
     public function goto(Request $request, $link)
     {
-        $url = ShortenedUrl::where('slug', $link)->orWhere('shortened', $link)->first();
+        $url = ShortenedUrl::where('slug', $link)
+                            ->where('active', true)
+                            ->first();
         if (!$url) {
             return redirect('/not-found');
         }
