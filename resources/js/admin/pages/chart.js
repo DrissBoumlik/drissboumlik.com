@@ -1,10 +1,10 @@
 
-$(function () {
+document.addEventListener('DOMContentLoaded', function () {
     try {
-        if ($('.charts').length === 0) {
+        if (document.querySelector('.charts') === null) {
             return;
         }
-        let defaultValue = 'countryName';
+        const defaultValue = 'countryName';
         initChartByField(defaultValue);
         initChartByYearEvents(defaultValue);
     } catch (error) {
@@ -17,57 +17,57 @@ function initChartByField(defaultValue = 'countryName') {
     if (ctx === null) {
         return;
     }
-    $.ajax({
-        type: 'GET',
-        url: '/api/visitors/columns',
-        success: function(response) {
+    fetch('/api/visitors/columns', { method: 'GET' })
+        .then((response) => response.json())
+        .then((response) => {
+            const columnsList = document.getElementById('columns-list');
+            const columnsList2 = document.getElementById('columns-list2');
+            const pagesList = document.getElementById('pages-list');
+            const perPageList = document.getElementById('perpage-list');
             let html = '';
             response.forEach(function(k,i) {
                 html += `<option value="${k}" ${k === defaultValue ? 'selected' : ''}>${k}</option>`;
             });
-            let columnsList = $('#columns-list')
-            let columnsList2 = $('#columns-list2')
-            let pagesList = $('#pages-list');
-            let perpageList = $('#perpage-list');
-            columnsList.html(html);
-            columnsList2.html(html);
-            let params = {columnSelected: defaultValue, pagesList, visitsChart: null, ctx, page: 1};
+            columnsList.innerHTML = html;
+            columnsList2.innerHTML = html;
+            const params = {columnSelected: defaultValue, pagesList, visitsChart: null, ctx, page: 1};
             getColumnStats(params);
-            columnsList.on('change', function() {
-                params.columnSelected = columnsList.val();
+            columnsList.addEventListener('change', function() {
+                params.columnSelected = columnsList.value;
                 params.page = 1;
                 getColumnStats(params);
             });
 
-            pagesList.on('change', function() {
-                params.columnSelected = columnsList.val();
-                params.page = pagesList.val();
+            pagesList.addEventListener('change', function() {
+                params.columnSelected = columnsList.value;
+                params.page = pagesList.value;
                 getColumnStats(params);
             });
 
-            perpageList.on('change', function() {
-                params.columnSelected = columnsList.val();
+            perPageList.addEventListener('change', function() {
+                params.columnSelected = columnsList.value;
                 params.page = 1;
-                params.perPage = perpageList.val();
+                params.perPage = perPageList.value;
                 getColumnStats(params);
             });
-        }
-    });
+        })
+        .catch((error) => console.error(error));
 }
 
 function getColumnStats(params) {
-    $.ajax({
-        type: 'POST',
-        url: `/api/stats?page=${params.page}`,
-        data: {table: 'visitors', column: params.columnSelected, perPage: params.perPage},
-        success: function(response) {
-
+    fetch(`/api/stats?page=${params.page}`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')},
+            body: JSON.stringify({ table: 'visitors', column: params.columnSelected, perPage: params.perPage}),
+        })
+        .then((response) => response.json())
+        .then((response) => {
             if (params.page === 1) {
                 let html = '';
                 for (let i = 1; i <= response.last_page; i++) {
                     html += `<option value="${i}">Page ${i}</option>`;
                 }
-                params.pagesList.html(html);
+                params.pagesList.innerHTML = html;
             }
 
             let responseData = response.data;
@@ -85,8 +85,8 @@ function getColumnStats(params) {
                     borderWidth: 1
                 }]
             });
-        }
-    });
+        })
+        .catch((error) => console.error('Error fetching stats:', error));
 }
 
 function initChartByYearEvents(defaultValue = 'countryName') {
@@ -94,11 +94,11 @@ function initChartByYearEvents(defaultValue = 'countryName') {
     if (ctx === null) {
         return;
     }
-    let columnsList2 = $('#columns-list2')
-    let pagesList2 = $('#pages-list2');
-    let yearsList = $('#years-list2');
-    let perpageList2 = $('#perpage-list2');
-    let params = {
+    const columnsList2 = document.getElementById('columns-list2');
+    const pagesList2 = document.getElementById('pages-list2');
+    const yearsList = document.getElementById('years-list2');
+    const perpageList2 = document.getElementById('perpage-list2');
+    const params = {
         columnSelected: defaultValue,
         pagesList: pagesList2,
         visitsChart: null,
@@ -107,45 +107,47 @@ function initChartByYearEvents(defaultValue = 'countryName') {
         yearSelected: moment().year()
     };
     initChartByYear(params);
-    columnsList2.on('change', function() {
-        params.columnSelected = columnsList2.val();
+    columnsList2.addEventListener('change', function() {
+        params.columnSelected = columnsList2.value;
         params.page = 1;
-        params.yearSelected = yearsList.val();
+        params.yearSelected = yearsList.value;
         initChartByYear(params);
     });
-    yearsList.on('change', function() {
-        params.columnSelected = columnsList2.val();
+    yearsList.addEventListener('change', function() {
+        params.columnSelected = columnsList2.value;
         params.page = 1;
-        params.yearSelected = yearsList.val();
+        params.yearSelected = yearsList.value;
         initChartByYear(params);
     });
-    pagesList2.on('change', function() {
-        params.columnSelected = columnsList2.val();
-        params.page = pagesList2.val();
-        params.yearSelected = yearsList.val();
+    pagesList2.addEventListener('change', function() {
+        params.columnSelected = columnsList2.value;
+        params.page = pagesList2.value;
+        params.yearSelected = yearsList.value;
         initChartByYear(params);
     });
-    perpageList2.on('change', function() {
-        params.columnSelected = columnsList2.val();
+    perpageList2.addEventListener('change', function() {
+        params.columnSelected = columnsList2.value;
         params.page = 1;
-        params.yearSelected = yearsList.val();
-        params.perPage = perpageList2.val();
+        params.yearSelected = yearsList.value;
+        params.perPage = perpageList2.value;
         initChartByYear(params);
     });
 }
 
 function initChartByYear(params) {
-    $.ajax({
-        type: 'POST',
-        url: `/api/stats?page=${params.page}`,
-        data: {table: 'visitors', column: params.columnSelected, year: params.yearSelected, perPage: params.perPage},
-        success: function(response) {
+    fetch(`/api/stats?page=${params.page}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') },
+            body: JSON.stringify({table: 'visitors', column: params.columnSelected, year: params.yearSelected, perPage: params.perPage,}),
+        })
+        .then((response) => response.json())
+        .then((response) => {
             if (params.page === 1) {
                 let html = '';
                 for (let i = 1; i <= response.last_page; i++) {
                     html += `<option value="${i}">Page ${i}</option>`;
                 }
-                params.pagesList.html(html);
+                params.pagesList.innerHTML = html;
             }
             let _datasets = [];
             if (response.data.length === 0) {
@@ -155,19 +157,14 @@ function initChartByYear(params) {
                     borderWidth: 1
                 });
             } else {
-                let monthsData = Object.groupBy(response.data, (item) => item[params.columnSelected]);
+                const monthsData = Object.groupBy(response.data, (item) => item[params.columnSelected]);
                 for (let key in monthsData) {
                     let dataTmp = monthsData[key];
                     if (dataTmp) {
-                        let _data = [];
-                        let labels_tmp = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                        let _data = new Array(12).fill(0); // Initialize with 0 for 12 months
                         monthsData[key].forEach(function (a) {
                             _data[a.month - 1] = a.visits;
-                            delete labels_tmp[a.month - 1];
                         });
-                        labels_tmp.forEach(function (k, i) {
-                            _data[i] = 0;
-                        })
                         _datasets.push({
                             label: key,
                             data: _data,
@@ -178,15 +175,15 @@ function initChartByYear(params) {
             }
 
             if (params.visitsChart) { params.visitsChart.destroy(); }
-            let _labels =["January","February","March","April","May","June","July", "August","September","October","November","December"];
+            const _labels =["January","February","March","April","May","June","July", "August","September","October","November","December"];
             params.visitsChart = makeChart({
                 ctx: params.ctx,
                 labels: _labels,
                 datasets: _datasets,
                 title: `Visits of ${params.yearSelected}`
             });
-        }
-    });
+        })
+        .catch((error) => console.error(error));
 }
 
 function makeChart(params) {
