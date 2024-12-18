@@ -2,107 +2,110 @@ import { initFlatpickr, initSelect2, setUpImagePreviewOnFileInput } from "../../
 import {getCookie, get_alert_box} from "@/shared/functions";
 import {string_to_slug} from "@/admin/functions";
 
-$(function () {
+document.addEventListener('DOMContentLoaded', function () {
     try {
         initPostEditor();
         try { initSelect2(); } catch (e) {}
 
-        $(document).on('focusout', '.input-to-slugify', function () {
-            let postTitle = $(this).val();
-            let postSlug = string_to_slug(postTitle)
-            // let postSlug = slugify(postTitle, {
-            //     // replacement: '-',  // replace spaces with replacement character, defaults to `-`
-            //     // remove: undefined, // remove characters that match regex, defaults to `undefined`
-            //     lower: true,      // convert to lower case, defaults to `false`
-            //     strict: true,     // strip special characters except replacement, defaults to `false`
-            //     // locale: 'vi',      // language code of the locale to use
-            //     trim: true         // trim leading and trailing replacement chars, defaults to `true`
-            // });
-            $('.input-slug').val(postSlug);
+        document.addEventListener('focusout', function (event) {
+            if (event.target.classList.contains('input-to-slugify')) {
+                let postTitle = event.target.value;
+                let postSlug = string_to_slug(postTitle);
+                // let postSlug = slugify(postTitle, {
+                //     // replacement: '-',  // replace spaces with replacement character, defaults to `-`
+                //     // remove: undefined, // remove characters that match regex, defaults to `undefined`
+                //     lower: true,      // convert to lower case, defaults to `false`
+                //     strict: true,     // strip special characters except replacement, defaults to `false`
+                //     // locale: 'vi',      // language code of the locale to use
+                //     trim: true         // trim leading and trailing replacement chars, defaults to `true`
+                // });
+                document.querySelectorAll('.input-slug').forEach(input => {
+                    input.value = postSlug;
+                });
+            }
         });
 
         setUpImagePreviewOnFileInput('image', 'image-preview');
 
-        let viewPostAssetsBtn = $('.btn-view-post-assets')
+        let viewPostAssetsBtn = document.querySelectorAll('.btn-view-post-assets');
         if (viewPostAssetsBtn.length) {
-            viewPostAssetsBtn.on('click', function () {
-                let post_slug = $('#post-slug').val();
-                $.ajax({
-                    type: 'GET',
-                    url: `/api/posts/${post_slug}/assets`,
-                    success: function (response) {
-                        let postAssets = response.post_assets;
-                        fillPostAssetsModal(postAssets);
-                    }
+            viewPostAssetsBtn.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    let postSlug = document.getElementById('post-slug').value;
+                    fetch(`/api/posts/${postSlug}/assets`)
+                        .then(response => response.json())
+                        .then(data => {
+                            let postAssets = data.post_assets;
+                            fillPostAssetsModal(postAssets);
+                        });
                 });
             });
         }
 
         initFlatpickr();
 
-        $(document).on('click', '.btn-action-post', function (e) {
-            e.preventDefault();
+        document.addEventListener('click', function (e) {
+            if (e.target.classList.contains('btn-action-post')) {
+                e.preventDefault();
 
-            if (!confirm("Are you sure ?")) {
-                return;
+                if (!confirm("Are you sure ?")) {
+                    return;
+                }
+
+                let form = e.target.closest('form');
+                let data = new FormData(form);
+
+                let postContent = tinymce.get('post_body').getContent();
+                postContent = postContent.replaceAll('<pre class="', '<pre class="loading-spinner ');
+                data.set('post_content', postContent);
+                data.append('_method', 'PUT');
+                data.append(e.target.getAttribute("name"), true);
+
+                console.log(data);
+                fetch(form.getAttribute('action'), {
+                        method: 'POST',
+                        body: data
+                    }).then(response => response.json())
+                    .then(response => {
+                        document.getElementById('link-view-post').setAttribute('href', `/blog/${response.post.slug}?forget=1`);
+                        form.setAttribute('action', `/admin/posts/${response.post.slug}`);
+                        get_alert_box({ class: response.class, message: response.message, icon: response.icon });
+                    }).catch(async (error) => {
+                        const response = await error.json();
+                        console.log(error, response);
+                        get_alert_box({ class: response.class, message: response.message, icon: response.icon });
+                    });
             }
 
-            let form = $(this).closest('form');
-            let data = new FormData(form[0]);
+            if (e.target.classList.contains('btn-action-tag')) {
+                e.preventDefault();
 
-            let postContent = tinymce.get('post_body').getContent();
-            postContent = postContent.replaceAll('<pre class="', '<pre class="loading-spinner ');
-            data.set('post_content', postContent);
-            data.append('_method', 'PUT');
-            data.append(this.getAttribute("name"), true);
-            $.ajax({
-                type: 'POST',
-                url: form.attr('action'),
-                data: data,
-                contentType: false,
-                processData: false,
-                success: function(response) {
-                    $('#link-view-post').attr('href', `/blog/${ response.post.slug }?forget=1`);
-                    form.attr('action', `/admin/posts/${ response.post.slug }`);
-                    get_alert_box({class: response.class, message: response.message, icon: response.icon});
-                },
-                error: function (jqXHR, textStatus, errorThrown){
-                    console.log(jqXHR, textStatus, errorThrown);
-                    const response = jqXHR.responseJSON;
-                    get_alert_box({ class: response.class, message: response.message, icon: response.icon });
+                if (!confirm("Are you sure ?")) {
+                    return;
                 }
-            });
-        });
 
-        $(document).on('click', '.btn-action-tag', function (e) {
-            e.preventDefault();
+                let form = e.target.closest('form');
+                let data = new FormData(form);
+                data.append('_method', 'PUT');
+                data.append(e.target.getAttribute("name"), true);
 
-            if (!confirm("Are you sure ?")) {
-                return;
+                console.log(data);
+                fetch(form.getAttribute('action'), {
+                    method: 'POST',
+                    body: data
+                }).then(response => response.json())
+                    .then(response => {
+                        console.log(response);
+                        document.getElementById('link-view-tag').setAttribute('href', `/tags/${response.tag.slug}?forget=1`);
+                        form.setAttribute('action', `/admin/tags/${response.tag.slug}`);
+                        get_alert_box({ class: response.class, message: response.message, icon: response.icon });
+                    })
+                    .catch(async (error) => {
+                        const response = await error.json();
+                        console.log(error, response);
+                        get_alert_box({ class: response.class, message: response.message, icon: response.icon });
+                    });
             }
-
-            let form = $(this).closest('form');
-            let data = new FormData(form[0]);
-            data.append('_method', 'PUT');
-            data.append(this.getAttribute("name"), true);
-            $.ajax({
-                type: 'POST',
-                url: form.attr('action'),
-                data: data,
-                contentType: false,
-                processData: false,
-                success: function(response) {
-                    console.log(response);
-                    $('#link-view-tag').attr('href', `/tags/${ response.tag.slug }?forget=1`);
-                    form.attr('action', `/admin/tags/${ response.tag.slug }`);
-                    get_alert_box({class: response.class, message: response.message, icon: response.icon});
-                },
-                error: function (jqXHR, textStatus, errorThrown){
-                    console.log(jqXHR, textStatus, errorThrown);
-                    const response = jqXHR.responseJSON;
-                    get_alert_box({class: response.class, message: response.message, icon: response.icon});
-                }
-            });
         });
 
     } catch (error) {
@@ -111,7 +114,7 @@ $(function () {
 });
 
 function initPostEditor() {
-    if ($('#post_body').length == 0) return;
+    if (! document.getElementById('post_body')) return;
     let options = {
         selector: 'textarea#post_body',
         plugins: `searchreplace autolink visualblocks visualchars media charmap nonbreaking anchor insertdatetime
@@ -197,16 +200,24 @@ function fillPostAssetsModal(postAssets){
                         </div>
                     </div>
                     <div class="modal-backdrop fade show"></div>`;
-    $('body').append(modal);
-    let modalPostAssets = $('.modal-post-assets');
-    $('.btn-close').add('.modal-post-assets').on('click', function (e) {
-        if (e.target !== this) {
-            return;
-        }
-        modalPostAssets.remove();
-        $('.modal-backdrop').remove();
+
+    document.body.insertAdjacentHTML('beforeend', modal);
+
+    let modalPostAssets = document.querySelector('.modal-post-assets');
+    let closeButtons = document.querySelectorAll('.btn-close, .modal-post-assets');
+
+    closeButtons.forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+            if (e.target !== this) {
+                return;
+            }
+            modalPostAssets.remove();
+            let modalBackdrop = document.querySelector('.modal-backdrop');
+            if (modalBackdrop) modalBackdrop.remove();
+        });
     });
-    modalPostAssets.show();
+
+    modalPostAssets.style.display = 'block';
 }
 
 export { initPostEditor }
