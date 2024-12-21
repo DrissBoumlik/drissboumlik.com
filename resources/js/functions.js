@@ -38,7 +38,7 @@ function initParticlesJS() {
 function initDarkMode() {
     document.querySelector('.toggle-dark-mode')
         .addEventListener('click', function (event) {
-            const _this = event.target;
+            const _this = event.target.closest('.toggle-dark-mode');
             _this.classList.add('pushed');
             setTimeout(() => _this.classList.remove('pushed'), 300);
 
