@@ -25,16 +25,18 @@ function string_to_slug(str) {
 }
 
 function initDarkMode() {
-    document.querySelector('.toggle-dark-mode-admin')
-            .addEventListener('click', function (event) {
-        toggleDarkMode(
-            document.getElementById('page-container'),
-            { darkmode: 'page-header-dark dark-mode sidebar-dark', lightmode: 'light-mode' },
-            { name: 'theme', darkmodeValue: 'dark-mode', lightmodeValue: 'light-mode' }
-        );
+    document.querySelectorAll('.toggle-dark-mode-admin')
+        .forEach(function(darkModeBtn) {
+            darkModeBtn.addEventListener('click', function (event) {
+                toggleDarkMode(
+                    document.getElementById('page-container'),
+                    { darkmode: 'page-header-dark dark-mode sidebar-dark', lightmode: 'light-mode' },
+                    { name: 'theme', darkmodeValue: 'dark-mode', lightmodeValue: 'light-mode' }
+                );
 
-        initPostEditor();
-    });
+                initPostEditor();
+            });
+        });
 }
 
 function initAjaxEvents() {
