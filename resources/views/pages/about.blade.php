@@ -18,28 +18,24 @@
                     <div class="container">
                         <div class="row align-items-center justify-content-center">
                             <div class="col-lg-6 col-md-7 col-12 about-me-txt">
-                                <p>I'm <span class="fw-bold tc-blue">Driss Boumlik</span>, from Morocco,
-                                    I <a href="/github" target="_blank" rel="noopener">code</a>,
-                                    <a href="/blog">blog</a>,
-                                    <a href="https://www.youtube.com/watch?v=nvW3WST6p3M"
-                                       target="_blank" rel="noopener">speak</a>,
-                                    <a href="https://www.apprentus.com/in/drissboumlik" rel="noopener"
-                                       target="_blank" rel="noopener">teach</a>,
-                                    <a href="https://www.codementor.io/@drissboumlik" rel="noopener"
-                                       target="_blank">mentor</a> ...
+                                <p>I'm <span class="fw-bold tc-blue">Driss Boumlik</span>, a developer from Morocco,
+                                    I enjoy creating and sharing things that add value and make a positive impact,
+                                    whether through <a href="/github" target="_blank" rel="noopener">code</a>,
+                                    <a href="/blog">blog</a>, or <a href="https://www.codementor.io/@drissboumlik" rel="noopener"
+                                    target="_blank">mentoring</a> others...
                                     and other stuff usually not in the same order.</p>
-                                <p>I like to build & share things that add value or make positive impact.</p>
-                                <p>If am not in front of my laptop, I play soccer once
-                                    a week in reality, and everyday
+                                <p>
+                                    When am not in front of my laptop, you’ll probably find me playing soccer once
+                                    a week in reality, and sometimes
                                     <a target="_blank" href="https://rawg.io/@cartouche/games" rel="noopener">virtually</a>,
-                                    otherwise I watch <a target="_blank" href="https://anilist.co/user/cartouche/animelist"
-                                                         rel="noopener">anime</a>
-                                    and <a target="_blank" href="https://trakt.tv/users/cartouche01/progress"
-                                           rel="noopener">tv shows</a>, listen to
-                                    <a target="_blank" href="https://castbox.fm/cl/360626">podcasts</a> or read
+                                    watching <a target="_blank" href="https://anilist.co/user/cartouche/animelist" rel="noopener">anime</a>
+                                    or <a target="_blank" href="https://trakt.tv/users/cartouche01/progress"
+                                           rel="noopener">tv shows</a>, listening to
+                                    <a target="_blank" href="https://castbox.fm/cl/360626">podcasts</a> or reading
                                     <a target="_blank" href="https://www.goodreads.com/review/list/170245827-driss?view=covers"
-                                       rel="noopener">books</a>.</p>
-                                <p>Checkout my <a href="/cv" target="_blank" rel="noopener">resume</a> and reach me through
+                                       rel="noopener">books</a>.
+                                </p>
+                                <p>You can checkout my <a href="/cv" target="_blank">resume</a> and reach out to me through
                                     <span class="tc-blue">hi@drissboumlik.com</span></p>
                             </div>
                             <div class="col-lg-6 col-md-5 col-11">
