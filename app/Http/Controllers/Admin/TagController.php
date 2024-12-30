@@ -71,7 +71,11 @@ class TagController extends Controller
                 'icon' => '<i class="fa fa-fw fa-circle-check"></i>'
             ]);
         } catch (\Throwable $e) {
-            return redirect("/admin/tags/create")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
+            return response()->json([
+                'message' => $e->getMessage(),
+                'class' => 'alert-danger',
+                'icon' => '<i class="fa fa-fw fa-times-circle"></i>'
+            ], 422);
         }
     }
 
@@ -145,12 +149,12 @@ class TagController extends Controller
             $tag->forceDelete();
             return response()->json([
                 'tag' => $tag,
-                'message' => 'Tag deleted for good successfully',
+                'message' => 'Tag deleted for good successfully | <a href="/admin/tags">Go back</a>',
                 'class' => 'alert-info',
                 'icon' => '<i class="fa fa-fw fa-circle-check"></i>'
             ]);
         } catch (\Throwable $e) {
-            return redirect("/admin/tags")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
+            return response()->json(['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']);
         }
     }
 }

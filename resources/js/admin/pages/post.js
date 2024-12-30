@@ -69,6 +69,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     .then(response => {
                         document.getElementById('link-view-post').setAttribute('href', `/blog/${response.post.slug}?forget=1`);
                         form.setAttribute('action', `/admin/posts/${response.post.slug}`);
+                        if (response.post.deleted_at) {
+                            $('.btn-action-post[name="delete"]').replaceWith('<button type="submit" class="btn-action btn-action-post btn btn-secondary d-flex justify-content-center align-items-center w-100" name="restore"><i class="fa fa-fw fa-rotate-left me-1"></i> Restore</button>');
+                        } else {
+                            $('.btn-action-post[name="restore"]').replaceWith('<button type="submit" class="btn-action btn-action-post btn btn-warning d-flex justify-content-center align-items-center w-100" name="delete"><i class="fa fa-fw fa-trash me-1"></i> Delete</button>');
+                        }
                         get_alert_box({ class: response.class, message: response.message, icon: response.icon });
                     }).catch(async (error) => {
                         const response = await error.json();
@@ -77,7 +82,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     });
             }
 
-            if (e.target.classList.contains('btn-action-tag')) {
+        });
+
+
+        document.addEventListener('submit', function(e) {
+            if (e.target.classList.contains('btn-action') || e.target.closest('.btn-action') || e.target.closest('#create-post')) {
                 e.preventDefault();
 
                 if (!confirm("Are you sure ?")) {
@@ -86,18 +95,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 let form = e.target.closest('form');
                 let data = new FormData(form);
-                data.append('_method', 'PUT');
-                data.append(e.target.getAttribute("name"), true);
+                data.append(e.submitter.getAttribute("name"), true);
+                data.append("_token", document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
 
-                console.log(data);
                 fetch(form.getAttribute('action'), {
                     method: 'POST',
                     body: data
                 }).then(response => response.json())
                     .then(response => {
                         console.log(response);
-                        document.getElementById('link-view-tag').setAttribute('href', `/tags/${response.tag.slug}?forget=1`);
-                        form.setAttribute('action', `/admin/tags/${response.tag.slug}`);
                         get_alert_box({ class: response.class, message: response.message, icon: response.icon });
                     })
                     .catch(async (error) => {
