@@ -50,8 +50,8 @@ class PostController extends Controller
                     'integer',
                     'exists:tags,id',
                 ],
-                "views" => "required|integer|min:0",
-                "published_at"  => "required|date",
+                "views" => "nullable|integer|min:0",
+                "published_at"  => "nullable|date",
                 "post_content"  => "required|string",
             ]);
 
