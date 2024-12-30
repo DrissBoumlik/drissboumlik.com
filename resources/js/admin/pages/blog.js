@@ -1,4 +1,4 @@
-import {getDomClass, shortenTextIfLongByLength, configDT, string_to_slug} from "../functions";
+import {getDomClass, shortenTextIfLongByLength, configDT, string_to_slug} from "@/admin/functions";
 import {setUpImagePreviewOnFileInput} from "@/shared/helpers";
 import {get_alert_box} from "@/shared/functions";
 

@@ -1,4 +1,4 @@
-import { toggleDarkMode } from "./shared/functions";
+import { toggleDarkMode } from "@/shared/functions";
 import particlesJson from '../plugins/particles/particles.min.json';
 
 

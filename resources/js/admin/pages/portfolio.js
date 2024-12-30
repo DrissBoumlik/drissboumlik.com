@@ -1,6 +1,6 @@
-import { get_alert_box } from "../../shared/functions";
-import { setUpImagePreviewOnFileInput } from "../../shared/helpers";
-import { configDT } from "../functions";
+import { get_alert_box } from "@/shared/functions";
+import { setUpImagePreviewOnFileInput } from "@/shared/helpers";
+import { configDT } from "@/admin/functions";
 
 document.addEventListener("DOMContentLoaded", function () {
     try {

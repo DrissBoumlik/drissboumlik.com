@@ -1,4 +1,4 @@
-import { initDarkMode, initAjaxEvents } from "./functions";
+import { initDarkMode, initAjaxEvents } from "@/admin/functions";
 import 'lazysizes';
 
 
