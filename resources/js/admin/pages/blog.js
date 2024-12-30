@@ -1,7 +1,18 @@
-import {getDomClass, shortenTextIfLongByLength, configDT} from "../functions";
+import {getDomClass, shortenTextIfLongByLength, configDT, string_to_slug} from "../functions";
+import {setUpImagePreviewOnFileInput} from "@/shared/helpers";
+import {get_alert_box} from "@/shared/functions";
 
 document.addEventListener("DOMContentLoaded", function () {
     try {
+        document.addEventListener('focusout', function (event) {
+            if (event.target.classList.contains('input-to-slugify')) {
+                let postTitle = event.target.value;
+                let postSlug = string_to_slug(postTitle);
+                document.querySelectorAll('.input-slug').forEach(input => {
+                    input.value = postSlug;
+                });
+            }
+        });
 
         if (document.querySelector('#posts')) {
             let params = {
@@ -86,8 +97,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 <i class="fa fa-fw fa-eye"></i>
                                             </a>
                                         </button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit Tag">
-                                            <a href="/admin/tags/edit/${row.slug}" target="_blank" class="link-dark">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary display-tags-details" title="Edit Tag">
+                                            <a class="link-dark">
                                                 <i class="fa fa-fw fa-pencil-alt"></i>
                                             </a>
                                         </button>
@@ -95,8 +106,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     }},
                     { data: 'active', name: 'active', title: 'Active', className: 'fs-sm',
                         render: function (data, type, row, params) {
-                            return `<div class="item item-tiny item-circle mx-auto mb-3
-                                                ${ row.active ? 'bg-success' : 'bg-danger' }"></div>`;
+                            let element = `<span class="d-inline-block square-15 br-50p ${ row.active ? 'bg-success' : 'bg-danger' }"></span>`;
+                            if (row.deleted_at) {
+                                element += `<span class="">[ <i class="fa-solid fa-trash"></i> ]</span>`;
+                            }
+                            return `<div class="d-flex justify-content-center gap-3">${element}</div>`;
                     }},
                     { data: 'id', name: 'id', title: 'ID' },
                     { data: 'name', name: 'name', title: 'Name', className: 'fw-semibold fs-sm' },
@@ -115,7 +129,241 @@ document.addEventListener("DOMContentLoaded", function () {
                     }},
                 ]
             };
-            configDT(params);
+            let tagsDataTable = configDT(params);
+            $('#tags').on('click', '.display-tags-details', function(e) {
+                const $row = $(this).closest('tr');
+                const data = tagsDataTable.row( $row ).data();
+                let modal = `
+        <div class="modal modal-tags-details" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">${data.name || '??'}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <form id="form-tags" action="/admin/tags/${data.slug}">
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <div class="mb-4">
+                                            <label class="form-label" for="example-static-input-plain">Posts tagged : ${data.posts_count}</label>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="form-label" for="tag-name">Name</label>
+                                            <input type="text" class="form-control input-to-slugify" id="tag-name" name="name"
+                                                placeholder="Tag Name" value="${data.name}" required>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="form-label" for="tag-slug">Slug</label>
+                                            <input type="text" class="form-control input-slug" id="tag-slug" name="slug"
+                                                placeholder="Tag slug" value="${data.slug}" required>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="form-check form-switch form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="active" name="active" ${data.active ? 'checked' : ''} >
+                                                <label class="form-check-label" for="active">Active</label>
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="form-label" for="description">Description</label>
+                                            <textarea class="form-control" id="description" name="description" rows="4" placeholder="Tag description..">${data.description}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="mb-4">
+                                            <label class="form-label" for="tag-color">Color</label>
+                                            <input type="color" class="form-control" id="tag-color" name="color"
+                                                   placeholder="Tag color" value="${data.color}">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="form-label" for="image">Image</label>
+                                            <input type="file" id="image" name="cover" class="form-control" />
+                                            <div class="mt-4">
+                                                <img id="image-preview" class="image-preview img-fluid w-100 lazyload"
+                                                     src="/${data?.cover?.compressed || 'assets/img/default/missing.webp'}"
+                                                     data-src="/${data?.cover?.original || 'assets/img/default/missing.webp'}"
+                                                     alt="photo" width="200" height="100" loading="lazy">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-between align-items-stretch gap-2 flex-wrap flex-md-nowrap">
+                                        <button type="submit" class="btn-action btn-action-tag btn btn-success
+                                                                d-flex justify-content-center align-items-center w-100">
+                                            <i class="fa fa-fw fa-edit me-1"></i>Update</button>
+                                        <a href="/tags/${data.slug}?forget=1" target="_blank"
+                                           id="link-view-tag" class="btn btn-dark
+                                                                    d-flex justify-content-center align-items-center w-100">
+                                            <i class="fa fa-fw fa-eye me-1"></i>View</a>
+                                        ${data.deleted_at ?
+                                            '<button type="submit" class="btn-action btn-action-tag btn btn-secondary d-flex justify-content-center align-items-center w-100" name="restore"><i class="fa fa-fw fa-rotate-left me-1"></i> Restore</button>'
+                                            : '<button type="submit" class="btn-action btn-action-tag btn btn-warning d-flex justify-content-center align-items-center w-100" name="delete"><i class="fa fa-fw fa-trash me-1"></i> Delete</button>'}
+                                        <button type="submit" class="btn-action btn-action-tag btn btn-danger
+                                                                    d-flex justify-content-center align-items-center w-100" name="destroy">
+                                            <i class="fa fa-fw fa-trash me-1"></i>Hard Delete</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop fade show"></div>`;
+                $('#page-container').append(modal);
+                setUpImagePreviewOnFileInput('image', 'image-preview');
+                let modalTagsDetails = $('.modal-tags-details');
+                $('.btn-close').add('.modal-tags-details').on('click', function(e) {
+                    if (e.target !== modalTagsDetails[0] && e.target !== $('.btn-close')[0]) {
+                        return;
+                    }
+                    modalTagsDetails.remove();
+                    $('.modal-backdrop').remove();
+                });
+                modalTagsDetails.show()
+
+
+                function eventHandler(e) {
+                    if (e.target.classList.contains('btn-action-tag') || e.target.closest('.btn-action-tag') || e.target.closest('#form-tags')) {
+                        e.preventDefault();
+
+                        if (!confirm("Are you sure ?")) {
+                            return;
+                        }
+
+                        let form = e.target.closest('form');
+                        let data = new FormData(form);
+                        data.append('_method', 'PUT');
+                        data.append(e.submitter.getAttribute("name"), true);
+                        data.append("_token", document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+
+                        fetch(form.getAttribute('action'), {
+                            method: 'POST',
+                            body: data
+                        }).then(response => response.json())
+                            .then(response => {
+                                console.log(response);
+                                tagsDataTable.ajax.reload(null, false);
+                                document.getElementById('link-view-tag').setAttribute('href', `/tags/${response.tag.slug}?forget=1`);
+                                if (response.tag.deleted_at) {
+                                    $('.btn-action-tag[name="delete"]').replaceWith('<button type="submit" class="btn-action btn-action-tag btn btn-secondary d-flex justify-content-center align-items-center w-100" name="restore"><i class="fa fa-fw fa-rotate-left me-1"></i> Restore</button>');
+                                } else {
+                                    $('.btn-action-tag[name="restore"]').replaceWith('<button type="submit" class="btn-action btn-action-tag btn btn-warning d-flex justify-content-center align-items-center w-100" name="delete"><i class="fa fa-fw fa-trash me-1"></i> Delete</button>');
+                                }
+                                get_alert_box({ class: response.class, message: response.message, icon: response.icon });
+                            })
+                            .catch(async (error) => {
+                                const response = await error.json();
+                                console.log(error, response);
+                                get_alert_box({ class: response.class, message: response.message, icon: response.icon });
+                            });
+                    }
+                }
+
+                document.removeEventListener('submit', eventHandler);
+                document.addEventListener('submit', eventHandler);
+
+            });
+
+            $(document).on('click', '.btn-new', function(e) {
+                let modal = `
+        <div class="modal modal-tags-details" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">New Tag</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <form id="form-tags">
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <div class="mb-4">
+                                            <label class="form-label" for="tag-name">Name</label>
+                                            <input type="text" class="form-control input-to-slugify" id="tag-name" name="name"
+                                                placeholder="Tag Name" required>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="form-label" for="tag-slug">Slug</label>
+                                            <input type="text" class="form-control input-slug" id="tag-slug" name="slug"
+                                                placeholder="Tag slug" required>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="form-check form-switch form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="active" name="active" >
+                                                <label class="form-check-label" for="active">Active</label>
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="form-label" for="description">Description</label>
+                                            <textarea class="form-control" id="description" name="description" rows="4" placeholder="Tag description.."></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="mb-4">
+                                            <label class="form-label" for="tag-color">Color</label>
+                                            <input type="color" class="form-control" id="tag-color" name="color"
+                                                   placeholder="Tag color">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="form-label" for="image">Image</label>
+                                            <input type="file" id="image" name="cover" class="form-control" />
+                                            <div class="mt-2">
+                                                <img id="image-preview" class="img-fluid image-preview w-100"
+                                                     src="/assets/img/default/landscape.webp"
+                                                     alt="photo" width="200" height="100" loading="lazy">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-success btn-action me-1 mb-3 w-100">
+                                                <i class="fa fa-fw fa-plus me-1"></i>Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop fade show"></div>`;
+                $('#page-container').append(modal);
+                setUpImagePreviewOnFileInput('image', 'image-preview');
+                let modalTagsDetails = $('.modal-tags-details');
+                $('.btn-close').add('.modal-tags-details').on('click', function(e) {
+                    if (e.target !== modalTagsDetails[0] && e.target !== $('.btn-close')[0]) {
+                        return;
+                    }
+                    modalTagsDetails.remove();
+                    $('.modal-backdrop').remove();
+                });
+                modalTagsDetails.show();
+                $(document).off('submit', '#form-tags').on('submit', '#form-tags', function(e) {
+                    e.preventDefault();
+                    if (!confirm("Are you sure ?")) {
+                        return;
+                    }
+                    let _this = $(this);
+                    let data = new FormData(this);
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/admin/tags',
+                        data: data,
+                        contentType: false,
+                        processData: false,
+                        success: function(response) {
+                            console.log(response);
+                            get_alert_box({class: 'alert-info', message: response.message, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                        },
+                        error: function (jqXHR, textStatus, errorThrown){
+                            console.log(jqXHR, textStatus, errorThrown);
+                            get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.message, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                        }
+                    });
+                });
+            });
         }
     } catch (error) {
         console.log(error);
