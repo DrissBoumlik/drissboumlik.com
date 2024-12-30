@@ -2,8 +2,14 @@ import { defineConfig } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 import laravel from 'laravel-vite-plugin';
 import purge from '@erbelion/vite-plugin-laravel-purgecss'
+import * as path from "node:path";
 
 export default defineConfig({
+    resolve:{
+        alias: {
+            "@": path.resolve(__dirname, 'resources/js')
+        }
+    },
     css: {
         devSourcemap: true
     },
