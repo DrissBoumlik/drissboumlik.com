@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             </a>
                                         </button>
                                         <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit Post">
-                                            <a href="/admin/posts/edit/${row.slug}" target="_blank" class="link-dark">
+                                            <a href="/admin/posts/edit/${row.slug}" class="link-dark">
                                                 <i class="fa fa-fw fa-pencil-alt"></i>
                                             </a>
                                         </button>
@@ -234,7 +234,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         let form = e.target.closest('form');
                         let data = new FormData(form);
                         data.append('_method', 'PUT');
-                        data.append(e.submitter.getAttribute("name"), true);
+                        const operationName = e.submitter.getAttribute("name");
+                        data.append(operationName, true);
                         data.append("_token", document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
 
                         fetch(form.getAttribute('action'), {
@@ -245,22 +246,24 @@ document.addEventListener("DOMContentLoaded", function () {
                                 console.log(response);
                                 tagsDataTable.ajax.reload(null, false);
                                 document.getElementById('link-view-tag').setAttribute('href', `/tags/${response.tag.slug}?forget=1`);
-                                if (response.tag.deleted_at) {
-                                    const deleteButton = document.querySelector('.btn-action-tag[name="delete"]');
-                                    const restoreButton = document.createElement('button');
-                                    restoreButton.type = 'submit';
-                                    restoreButton.className = 'btn-action btn-action-tag btn btn-secondary d-flex justify-content-center align-items-center w-100';
-                                    restoreButton.name = 'restore';
-                                    restoreButton.innerHTML = '<i class="fa fa-fw fa-rotate-left me-1"></i> Restore';
-                                    deleteButton.replaceWith(restoreButton);
-                                } else {
-                                    const restoreButton = document.querySelector('.btn-action-tag[name="restore"]');
-                                    const deleteButton = document.createElement('button');
-                                    deleteButton.type = 'submit';
-                                    deleteButton.className = 'btn-action btn-action-tag btn btn-warning d-flex justify-content-center align-items-center w-100';
-                                    deleteButton.name = 'delete';
-                                    deleteButton.innerHTML = '<i class="fa fa-fw fa-trash me-1"></i> Delete';
-                                    restoreButton.replaceWith(deleteButton);
+                                if (operationName) {
+                                    if (response.tag.deleted_at) {
+                                        const restoreButton = document.createElement('button');
+                                        restoreButton.type = 'submit';
+                                        restoreButton.className = 'btn-action btn-action-tag btn btn-secondary d-flex justify-content-center align-items-center w-100';
+                                        restoreButton.name = 'restore';
+                                        restoreButton.innerHTML = '<i class="fa fa-fw fa-rotate-left me-1"></i> Restore';
+                                        const deleteButton = document.querySelector('.btn-action-tag[name="delete"]');
+                                        if (deleteButton) deleteButton.replaceWith(restoreButton);
+                                    } else {
+                                        const deleteButton = document.createElement('button');
+                                        deleteButton.type = 'submit';
+                                        deleteButton.className = 'btn-action btn-action-tag btn btn-warning d-flex justify-content-center align-items-center w-100';
+                                        deleteButton.name = 'delete';
+                                        deleteButton.innerHTML = '<i class="fa fa-fw fa-trash me-1"></i> Delete';
+                                        const restoreButton = document.querySelector('.btn-action-tag[name="restore"]');
+                                        if (restoreButton) restoreButton.replaceWith(deleteButton);
+                                    }
                                 }
                                 get_alert_box({ class: response.class, message: response.message, icon: response.icon });
                             })

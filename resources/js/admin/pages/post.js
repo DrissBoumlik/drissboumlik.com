@@ -51,9 +51,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 postContent = postContent.replaceAll('<pre class="', '<pre class="loading-spinner ');
                 data.set('post_content', postContent);
                 data.append('_method', 'PUT');
-                data.append(e.submitter.getAttribute("name"), true);
+                const operationName = e.submitter.getAttribute("name");
+                data.append(operationName, true);
 
-                console.log(data);
                 fetch(form.getAttribute('action'), {
                         method: 'POST',
                         body: data
@@ -62,22 +62,24 @@ document.addEventListener('DOMContentLoaded', function () {
                         window.history.pushState(null,null, `/admin/posts/edit/${response.post.slug}`);
                         document.getElementById('link-view-post').setAttribute('href', `/blog/${response.post.slug}?forget=1`);
                         form.setAttribute('action', `/admin/posts/${response.post.slug}`);
-                        if (response.post.deleted_at) {
-                            const restoreButton = document.createElement('button');
-                            restoreButton.type = 'submit';
-                            restoreButton.className = 'btn-action btn-action-post btn btn-secondary d-flex justify-content-center align-items-center w-100';
-                            restoreButton.name = 'restore';
-                            restoreButton.innerHTML = '<i class="fa fa-fw fa-rotate-left me-1"></i> Restore';
-                            const deleteButton = document.querySelector('.btn-action-post[name="delete"]');
-                            deleteButton.replaceWith(restoreButton);
-                        } else {
-                            const deleteButton = document.createElement('button');
-                            deleteButton.type = 'submit';
-                            deleteButton.className = 'btn-action btn-action-post btn btn-warning d-flex justify-content-center align-items-center w-100';
-                            deleteButton.name = 'restore';
-                            deleteButton.innerHTML = '<i class="fa fa-fw fa-trash me-1"></i> Delete';
-                            const restoreButton = document.querySelector('.btn-action-post[name="restore"]');
-                            restoreButton.replaceWith(deleteButton);
+                        if (operationName) {
+                            if (response.post.deleted_at) {
+                                const restoreButton = document.createElement('button');
+                                restoreButton.type = 'submit';
+                                restoreButton.className = 'btn-action btn-action-post btn btn-secondary d-flex justify-content-center align-items-center w-100';
+                                restoreButton.name = 'restore';
+                                restoreButton.innerHTML = '<i class="fa fa-fw fa-rotate-left me-1"></i> Restore';
+                                const deleteButton = document.querySelector('.btn-action-post[name="delete"]');
+                                if (deleteButton) deleteButton.replaceWith(restoreButton);
+                            } else {
+                                const deleteButton = document.createElement('button');
+                                deleteButton.type = 'submit';
+                                deleteButton.className = 'btn-action btn-action-post btn btn-warning d-flex justify-content-center align-items-center w-100';
+                                deleteButton.name = 'restore';
+                                deleteButton.innerHTML = '<i class="fa fa-fw fa-trash me-1"></i> Delete';
+                                const restoreButton = document.querySelector('.btn-action-post[name="restore"]');
+                                if (restoreButton) restoreButton.replaceWith(deleteButton);
+                            }
                         }
                         get_alert_box({ class: response.class, message: response.message, icon: response.icon });
                     }).catch(async (error) => {
