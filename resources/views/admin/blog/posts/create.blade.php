@@ -60,8 +60,8 @@
                                     placeholder="Post slug" required>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="excerpt">Excerpt</label>
-                                <textarea class="form-control" id="excerpt" name="excerpt" rows="4" placeholder="Post excerpt.."></textarea>
+                                <label class="form-label" for="post_excerpt">Excerpt</label>
+                                <textarea id="post_excerpt" class="form-control" name="post_excerpt" rows="4" placeholder="Post excerpt.."></textarea>
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="description">Description</label>
