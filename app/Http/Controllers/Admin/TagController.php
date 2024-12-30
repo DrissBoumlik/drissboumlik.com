@@ -64,7 +64,12 @@ class TagController extends Controller
                 $data['cover'] = $this->mediaService->processAsset("blog/tags/$request->slug", $request->slug, $image_file);
             }
             $tag = Tag::create($data);
-            return redirect("/admin/tags/edit/$tag->slug")->with(['response' => ['message' => 'Tag store successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
+            return response()->json([
+                'tag' => $tag,
+                'message' => 'Tag store successfully !',
+                'class' => 'alert-info',
+                'icon' => '<i class="fa fa-fw fa-circle-check"></i>'
+            ]);
         } catch (\Throwable $e) {
             return redirect("/admin/tags/create")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
         }
@@ -89,6 +94,12 @@ class TagController extends Controller
             }
             if ($request->has('restore')) {
                 $tag->restore();
+                return response()->json([
+                    'tag' => $tag,
+                    'message' => 'Tag restored successfully',
+                    'class' => 'alert-info',
+                    'icon' => '<i class="fa fa-fw fa-circle-check"></i>'
+                ]);
             }
 
             $data = [
@@ -123,11 +134,21 @@ class TagController extends Controller
         try {
             if ($request->has('delete')) {
                 $tag->delete();
-                return redirect("/admin/tags/edit/$tag->slug")->with(['response' => ['message' => 'Tag deleted successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
+                return response()->json([
+                    'tag' => $tag,
+                    'message' => 'Tag deleted successfully',
+                    'class' => 'alert-info',
+                    'icon' => '<i class="fa fa-fw fa-circle-check"></i>'
+                ]);
             }
             \DB::table('post_tag')->where('tag_id', $tag->id)->delete();
             $tag->forceDelete();
-            return redirect("/admin/tags")->with(['response' => ['message' => 'Tag deleted for good successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
+            return response()->json([
+                'tag' => $tag,
+                'message' => 'Tag deleted for good successfully',
+                'class' => 'alert-info',
+                'icon' => '<i class="fa fa-fw fa-circle-check"></i>'
+            ]);
         } catch (\Throwable $e) {
             return redirect("/admin/tags")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
         }
