@@ -1,34 +1,35 @@
-import {get_alert_box} from "../../shared/functions";
+import {get_alert_box} from "@/shared/functions";
 
-$(function () {
+document.addEventListener('DOMContentLoaded', function () {
     try {
 
-        $(document).on('click', '.file-operation', function() {
+        document.addEventListener('click', function (e) {
+            if (e.target.classList.contains('file-operation') || e.target.closest('.file-operation')) {
+                const target = e.target.closest('.file-operation');
+                const operation = target.getAttribute('data-action');
+                const fileName = target.getAttribute('data-name');
+                const filePath = target.getAttribute('data-path').replace('\\', '/');
 
-            let operation = this.getAttribute('data-action');
-            let file_name = this.getAttribute('data-name');
-            let file_path = this.getAttribute('data-path').replace('\\', '/');
-
-            let modal = `
+                const modal = `
                 <div class="modal modal-operation-details" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title capitalize-first-letter">${operation} file : ${file_name}</h5>
+                                <h5 class="modal-title capitalize-first-letter">${operation} file : ${fileName}</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <form id="file-operation-form" class="file-operation-form">
-                                    <input type="hidden" name="file_name" value="${file_name}" />
+                                    <input type="hidden" name="file_name" value="${fileName}" />
                                     <div class="mb-3">
                                         <label for="src-path" class="form-label">Source :</label>
                                         <input type="text" class="form-control" id="src-path" name="src-path"
-                                                readonly value="${file_path}">
+                                                readonly value="${filePath}">
                                     </div>
                                     <div class="mb-3">
                                         <label for="dest-path" class="form-label">Destination :</label>
                                         <div class="input-group mb-3">
-                                          <span class="input-group-text" id="basic-addon3">storage/</span>
+                                            <span class="input-group-text" id="basic-addon3">storage/</span>
                                             <input type="text" class="form-control" id="dest-path" name="dest-path"
                                                    placeholder="new/directory" aria-describedby="basic-addon3">
                                         </div>
@@ -43,205 +44,313 @@ $(function () {
                     </div>
                 </div>
                 <div class="modal-backdrop fade show"></div>`;
-            $('body').append(modal);
-            let modalOperationDetails = $('.modal-operation-details');
-            $('.btn-close').add('.modal-operation-details').on('click', function(e) {
-                if (e.target != modalOperationDetails[0] && e.target != $('.btn-close')[0]) {
+
+                document.body.insertAdjacentHTML('beforeend', modal);
+
+                const modalOperationDetails = document.querySelector('.modal-operation-details');
+                const closeModal = () => {
+                    modalOperationDetails.remove();
+                    const backdrop = document.querySelector('.modal-backdrop');
+                    if (backdrop) backdrop.remove();
+                };
+
+                modalOperationDetails.style.display = 'block';
+
+                // Close modal on button click or clicking outside the modal
+                modalOperationDetails.addEventListener('click', function (event) {
+                    if (event.target === modalOperationDetails || event.target.classList.contains('btn-close')) {
+                        closeModal();
+                    }
+                });
+            }
+
+            if (e.target.classList.contains('delete-file') || e.target.closest('.delete-file')) {
+                if (!confirm("Are you sure ?")) {
                     return;
                 }
-                modalOperationDetails.remove();
-                $('.modal-backdrop').remove();
-            });
-            modalOperationDetails.show()
-        });
 
-        $(document).on('submit', '.file-operation-form', function(e) {
-            e.preventDefault();
-            if (!confirm("Are you sure ?")) {
-                return;
+                const target = e.target.closest('.delete-file');
+                const path = target.getAttribute('data-path');
+                const name = target.getAttribute('data-name');
+
+                fetch(`/api/path/${path}/name/${name}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        get_alert_box({ class: 'alert-info', message: data.msg, icon: '<i class="fa-solid fa-check-circle"></i>' });
+                        displayFiles();
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        get_alert_box({ class: 'alert-danger', message: error.message, icon: '<i class="fa-solid fa-triangle-exclamation"></i>' });
+                    });
             }
-            let data = $(this).serializeArray();
-            data.push({name: 'operation', value: e.originalEvent.submitter.value});
-            console.log(data);
-            $.ajax({
-                method: 'POST',
-                url: '/api/file/copy',
-                data: data,
-                success: function (response) {
-                    console.log(response);
-                    get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
-                    displayFiles();
-                },
-                error: function (jqXHR, textStatus, errorThrown){
-                    console.log(jqXHR, textStatus, errorThrown);
-                    get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
-                }
-            });
-        });
 
-        $(document).on('click', '.delete-file', function() {
-            if (!confirm("Are you sure ?")) {
-                return;
+            if (e.target.classList.contains('file-link') || e.target.closest('.file-link')) {
+                e.preventDefault();
+                displayFiles(e.target.closest('.file-link').getAttribute('data-href'));
             }
-            let _this = $(this);
-            let path = _this.data('path');
-            let name = _this.data('name');
-            $.ajax({
-                type: 'DELETE',
-                url: `/api/path/${path}/name/${name}`,
-                success: function (response) {
-                    console.log(response);
-                    get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
-                    displayFiles();
-                },
-                error: function (jqXHR, textStatus, errorThrown){
-                    console.log(jqXHR, textStatus, errorThrown);
-                    get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
-                }
-            });
-        });
 
-        let formUploadFiles = $('#form-upload-files');
-        formUploadFiles.on('submit', function(e) {
-            e.preventDefault();
-            if (!confirm("Are you sure ?")) {
-                return;
+            if (e.target.classList.contains('submit-new-file-name') || e.target.closest('.submit-new-file-name')) {
+                renameItem(e.target.closest('.submit-new-file-name').nextElementSibling);
             }
-            let form = document.getElementById('form-upload-files');
-            let data = new FormData(form);
-            let currentPath = $('#current-path').val();
-            data.append('path', currentPath);
-            $.ajax({
-                method: 'POST',
-                url: '/api/file',
-                data: data,
-                contentType: false,
-                cache: false,
-                processData: false,
-                success: function (response) {
-                    console.log(response);
-                    get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
-                    displayFiles();
-                },
-                error: function (jqXHR, textStatus, errorThrown){
-                    console.log(jqXHR, textStatus, errorThrown);
-                    get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
-                }
-            });
         });
 
 
-        let formCreateDirectories = $('#form-create-directories');
-        if (formCreateDirectories.length) {
-            formCreateDirectories.on('submit', function(e) {
+        document.addEventListener('submit', function (e) {
+            if (e.target.classList.contains('file-operation-form')) {
                 e.preventDefault();
                 if (!confirm("Are you sure ?")) {
                     return;
                 }
-                const regex = new RegExp(`/admin/file-manager/\?`, 'g');
-                let currentPath = window.location.pathname.replaceAll(regex, '');
-                if (currentPath === "") {
-                    currentPath = "storage";
-                }
-                let directoriesNames = $('#directories-names').val().trim();
-                if (directoriesNames === "") {
-                    get_alert_box({class: 'alert-warning', message: "Empty inputs !!", icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
-                    return;
-                }
-                directoriesNames = directoriesNames.split(';').map(function(dirName){
-                    return dirName.trim().replaceAll(/ +/gi, ' ');
-                });
-                $.ajax({
-                    method: 'POST',
-                    url: '/api/directories',
-                    data: {directoriesNames, currentPath},
-                    success: function (response) {
-                        console.log(response);
-                        get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
-                        displayFiles();
-                    },
-                    error: function (jqXHR, textStatus, errorThrown){
-                        console.log(jqXHR, textStatus, errorThrown);
-                        get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
-                    }
-                });
-            });
-        }
 
-        let emptyTrashBtn = $('.btn-empty-trash');
-        if (emptyTrashBtn.length) {
-            emptyTrashBtn.on('click', function() {
+                const formData = new FormData(e.target);
+                formData.append('operation', e.submitter.value);
+
+                fetch('/api/file/copy', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        get_alert_box({ class: 'alert-info', message: data.msg, icon: '<i class="fa-solid fa-check-circle"></i>' });
+                        displayFiles();
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        get_alert_box({ class: 'alert-danger', message: error.message, icon: '<i class="fa-solid fa-triangle-exclamation"></i>' });
+                    });
+            }
+        });
+
+
+
+
+        const formUploadFiles = document.getElementById('form-upload-files');
+        formUploadFiles.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (!confirm("Are you sure ?")) {
+                return;
+            }
+            const formData = new FormData(formUploadFiles);
+            const currentPath = document.getElementById('current-path').value;
+            formData.append('path', currentPath);
+
+            fetch('/api/file', {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => response.json())
+                .then(response => {
+                    console.log(response);
+                    get_alert_box({
+                        class: 'alert-info',
+                        message: response.msg,
+                        icon: '<i class="fa-solid fa-check-circle"></i>'
+                    });
+                    displayFiles();
+                })
+                .catch(error => {
+                    console.error(error);
+                    get_alert_box({
+                        class: 'alert-danger',
+                        message: error.responseJSON?.msg || 'An error occurred',
+                        icon: '<i class="fa-solid fa-triangle-exclamation"></i>'
+                    });
+                });
+        });
+
+
+        const formCreateDirectories = document.querySelector('#form-create-directories');
+        if (formCreateDirectories) {
+            formCreateDirectories.addEventListener('submit', function (e) {
+                e.preventDefault();
                 if (!confirm("Are you sure ?")) {
                     return;
                 }
-                $.ajax({
-                    type: 'DELETE',
-                    url: `/api/directories/storage/trash`,
-                    success: function (response) {
-                        console.log(response);
-                        get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
-                        displayFiles();
+                const regex = new RegExp(`/admin/file-manager/\\?`, 'g');
+                let currentPath = window.location.pathname.replace(regex, '');
+                if (currentPath === "") {
+                    currentPath = "storage";
+                }
+                const directoriesInput = document.querySelector('#directories-names');
+                let directoriesNames = directoriesInput.value.trim();
+                if (directoriesNames === "") {
+                    get_alert_box({
+                        class: 'alert-warning',
+                        message: "Empty inputs !!",
+                        icon: '<i class="fa-solid fa-triangle-exclamation"></i>'
+                    });
+                    return;
+                }
+                directoriesNames = directoriesNames.split(';').map(dirName =>
+                    dirName.trim().replace(/ +/g, ' ')
+                );
+
+                fetch('/api/directories', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                     },
-                    error: function (jqXHR, textStatus, errorThrown){
-                        console.log(jqXHR, textStatus, errorThrown);
-                        get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
-                    }
-                });
+                    body: JSON.stringify({ directoriesNames, currentPath })
+                })
+                    .then(response => response.json())
+                    .then(response => {
+                        console.log(response);
+                        get_alert_box({
+                            class: 'alert-info',
+                            message: response.msg,
+                            icon: '<i class="fa-solid fa-check-circle"></i>'
+                        });
+                        displayFiles();
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        get_alert_box({
+                            class: 'alert-danger',
+                            message: error.responseJSON?.msg || 'An error occurred',
+                            icon: '<i class="fa-solid fa-triangle-exclamation"></i>'
+                        });
+                    });
             });
         }
 
-        $(document).on('click', '.file-link', function(e) {
-            e.preventDefault();
-            displayFiles(this.getAttribute('data-href'));
-        });
 
-        $(document).on('mousedown', '.file-name-text', function(e) {
-            this.setAttribute('contenteditable', true)
-        });
-        $(document).on('focusout', '.file-name-text', function(e) {
-            this.setAttribute('contenteditable', false)
-        });
-        $(document).on('keydown', '.file-name-text', function(e) {
-                if (e.key === 'Enter') {
-                    if (!confirm("Are you sure ?")) {
-                        return;
-                    }
-                    this.setAttribute('contenteditable', false)
-                    let new_name = this.innerText.trim();
-                    let old_name = this.getAttribute('data-file-name').trim();
-                    if (old_name === '' || new_name === '') {
-                        get_alert_box({class: 'alert-danger', message: "Names should not be empty", icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
-                        this.innerText = old_name;
-                        return;
-                    }
-                    let data = {
-                        new_name: new_name,
-                        old_name: old_name,
-                        path: $('#current-path').val(),
-                    }
-
-                    $.ajax({
-                        method: 'POST',
-                        url: '/api/file/rename',
-                        data: data,
-                        success: function (response) {
-                            console.log(response);
-                            get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
-                            displayFiles();
-                        },
-                        error: function (jqXHR, textStatus, errorThrown){
-                            console.log(jqXHR, textStatus, errorThrown);
-                            get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.msg, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
-                        }
-                    });
+        const emptyTrashBtn = document.querySelector('.btn-empty-trash');
+        if (emptyTrashBtn) {
+            emptyTrashBtn.addEventListener('click', function () {
+                if (!confirm("Are you sure ?")) {
+                    return;
                 }
+                fetch(`/api/directories/storage/trash`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                })
+                    .then(response => response.json())
+                    .then(response => {
+                        console.log(response);
+                        get_alert_box({
+                            class: 'alert-info',
+                            message: response.msg,
+                            icon: '<i class="fa-solid fa-check-circle"></i>'
+                        });
+                        displayFiles();
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        get_alert_box({
+                            class: 'alert-danger',
+                            message: error.responseJSON?.msg || 'An error occurred',
+                            icon: '<i class="fa-solid fa-triangle-exclamation"></i>'
+                        });
+                    });
             });
+        }
+
+
+
+
+        document.addEventListener('mousedown', function (e) {
+            if (e.target.classList.contains('file-name-text')) {
+                e.target.setAttribute('contenteditable', true);
+
+                let btn = document.querySelector('.submit-new-file-name');
+                if (btn) {
+                    btn.remove();
+                }
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.classList.add('submit-new-file-name', 'p-0', 'btn', 'rounded-pill', 'btn-success', 'me-1');
+                const icon = document.createElement('i');
+                icon.classList.add('fa', 'fa-fw', 'fa-pencil-alt');
+                button.appendChild(icon);
+
+                e.target.parentNode.insertBefore(button, e.target);
+            }
+        });
+
+        document.addEventListener('focusout', function (e) {
+            if (e.target.classList.contains('file-name-text')) {
+                e.target.setAttribute('contenteditable', false);
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.target.classList.contains('file-name-text') && e.key === 'Enter') {
+                renameItem(e.target);
+            }
+        });
+
 
         displayFiles();
     } catch (error) {
         // console.log(error);
     }
 });
+
+function renameItem(target) {
+    if (!confirm("Are you sure ?")) {
+        return;
+    }
+    target.setAttribute('contenteditable', false);
+    const newName = target.innerText.trim();
+    const oldName = target.getAttribute('data-file-name').trim();
+
+    if (oldName === '' || newName === '') {
+        get_alert_box({ class: 'alert-danger', message: "Names should not be empty", icon: '<i class="fa-solid fa-triangle-exclamation"></i>' });
+        target.innerText = oldName;
+        return;
+    }
+
+    let btn = document.querySelector('.submit-new-file-name');
+    if (btn) {
+        btn.remove();
+    }
+
+    fetch('/api/file/rename', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify({
+            new_name: newName,
+            old_name: oldName,
+            path: document.querySelector('#current-path').value
+        })
+    })
+        .then(response => response.json())
+        .then(response => {
+            console.log(response);
+            target.setAttribute('data-file-name', newName)
+            get_alert_box({ class: 'alert-info',message: response.msg,icon: '<i class="fa-solid fa-check-circle"></i>' });
+            // displayFiles();
+        })
+        .catch(error => {
+            console.error(error);
+            target.innerText = oldName;
+            get_alert_box({
+                class: 'alert-danger',
+                message: error.responseJSON?.msg || 'An error occurred',
+                icon: '<i class="fa-solid fa-triangle-exclamation"></i>'
+            });
+        });
+}
 
 function displayFiles(pathname = null) {
     if (!pathname) {
@@ -251,78 +360,84 @@ function displayFiles(pathname = null) {
     } else {
         window.history.pushState(null,null, `/admin/file-manager/${pathname}`);
     }
-    let spinner = `<div class="col-12 text-center p-5">
+    const spinner = `<div class="col-12 text-center p-5">
                     <div class="spinner-border" role="status"
                          style="width: 3rem; height: 3rem;
-                         border-color: var(--tc-grey-dark) transparent var(--tc-grey-dark) var(--tc-grey-dark);" >
+                         border-color: var(--tc-grey-dark) transparent var(--tc-grey-dark) var(--tc-grey-dark);">
                         <span class="visually-hidden">Loading...</span>
                     </div>
                 </div>`;
-    $('#files').html(spinner);
-    $('#directories').html(spinner)
+    document.getElementById('files').innerHTML = spinner;
+    document.getElementById('directories').innerHTML = spinner;
 
-    $.ajax({
-        type: 'GET',
-        url: `/api/files/${pathname}`,
-        success: function (response) {
-            let data = response.data;
-            $('#current-path').val(data.current_path);
-            $('#previous-path').attr('href', `/admin/file-manager/${data.previous_path || ''}`)
-                .attr('data-href', data.previous_path);
-            $('#breadcrumb').html(data.breadcrumb.breadcrumb);
+    fetch(`/api/files/${pathname}`)
+        .then(response => response.json())
+        .then(response => {
+            const data = response.data;
+            document.getElementById('current-path').value = data.current_path;
+            const prevPathLink = document.getElementById('previous-path');
+            prevPathLink.setAttribute('href', `/admin/file-manager/${data.previous_path || ''}`);
+            prevPathLink.setAttribute('data-href', data.previous_path);
+            document.getElementById('breadcrumb').innerHTML = data.breadcrumb.breadcrumb;
 
             let directoriesDOM = '<div class="col-12"><div class="text-center p-5">No directories found</div></div>';
-            if(data?.content?.directories && data?.content?.directories?.length) {
-                directoriesDOM = '';
-                data.content.directories.forEach(function(dir) {
-                    directoriesDOM += `<div class="col-6 col-sm-4 col-md-3 mb-4 file-item-wrapper">
-                                        <div class="directory file-item mb-2">
-                                            <a href="#" class="file-item-link file-link" data-href="${dir.path}" class="file-item-link">
-                                                <div class="directory-icon w-100 h-100"><i class="fa-solid fa-folder-open"></i></div>
-                                            </a>
-                                            <div class="directory-name w-100 h-100">
-                                                <span title="${dir.name}" class="file-name-text"
-                                                    data-file-name="${dir.name}">${dir.name}</span>
-                                            </div>
-                                        </div>
-                                        <div class="action-btns">
-                                            <button type="submit" class="btn btn-outline-info w-100 file-operation" title="Copy File"
-                                                    data-name="${dir.name}" data-action="copy" data-path="${dir.path}"><i class="fa-solid fa-file"></i></button>
-                                            <button type="submit" class="btn btn-outline-danger w-100 delete-file" title="Delete File"
-                                                    data-name="${dir.name}" data-path="${dir.path}"><i class="fa-solid fa-trash"></i></button>
-                                        </div>
-                                    </div>`;
-                });
+            if(data?.content?.directories?.length) {
+                directoriesDOM = data.content.directories.map(dir => `
+                    <div class="col-6 col-sm-4 col-md-3 mb-4 file-item-wrapper">
+                        <div class="directory file-item mb-2">
+                            <a href="#" class="file-item-link file-link" data-href="${dir.path}">
+                                <div class="directory-icon w-100 h-100"><i class="fa-solid fa-folder-open"></i></div>
+                            </a>
+                            <div class="directory-name d-flex gap-1 w-100 h-100">
+                                <span title="${dir.name}" class="file-name-text w-100" data-file-name="${dir.name}">${dir.name}</span>
+                            </div>
+                        </div>
+                        <div class="action-btns">
+                            <button type="submit" class="btn btn-outline-info w-100 file-operation" title="Copy File"
+                                    data-name="${dir.name}" data-action="copy" data-path="${dir.path}">
+                                <i class="fa-solid fa-file"></i>
+                            </button>
+                            <button type="submit" class="btn btn-outline-danger w-100 delete-file" title="Delete File"
+                                    data-name="${dir.name}" data-path="${dir.path}">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
             }
-            $('#directories').html(directoriesDOM)
+            document.getElementById('directories').innerHTML = directoriesDOM;
 
             let filesDOM = '<div class="col-12"><div class="text-center p-5">No files found</div></div>';
-            if(data?.content?.files && data?.content?.files?.length) {
-                filesDOM = '';
-                data.content.files.forEach(function(file) {
-                    filesDOM += `<div class="col-6 col-sm-4 col-md-3 mb-4 file-item-wrapper">
-                                    <div class="file file-item mb-2">
-                                        <a href="/${file._pathname }" class="file-item-link" data-href="${file._pathname}" target="_blank" class="file-item-link">`;
-                    if (file._mimeType.includes('image')) {
-                        filesDOM += `<div class="file-image h-100">
+            if(data?.content?.files?.length) {
+                filesDOM = data.content.files.map(file => `
+                    <div class="col-6 col-sm-4 col-md-3 mb-4 file-item-wrapper">
+                        <div class="file file-item mb-2">
+                            <a href="/${file._pathname}" class="file-item-link" data-href="${file._pathname}" target="_blank">
+                                ${file._mimeType.includes('image') ? `
+                                    <div class="file-image h-100">
                                         <img src="/${file._pathname}" class="img-fluid w-100 h-100" alt="${file._filename}"/>
-                                    </div>`;
-                    } else {
-                        filesDOM+= `<div class="file-icon w-100 h-100"><i class="fa-solid fa-file"></i></div>`;
-                    }
-                    filesDOM += `</a><div class="file-name w-100">
-                                        <span title="${file._filename}" class="file-name-text"
-                                            data-file-name="${file._filename}">${file._filename}</span>
-                                    </div>`;
-                    filesDOM += `</div><div class="action-btns">
-                                        <button type="submit" class="btn btn-outline-info w-100 file-operation" title="Copy File"
-                                                data-name="${file._filename}" data-action="copy" data-path="${file._pathname}"><i class="fa-solid fa-file"></i></button>
-                                        <button type="submit" class="btn btn-outline-danger w-100 delete-file" title="Delete File"
-                                                data-name="${file._filename}" data-path="${file._pathname}"><i class="fa-solid fa-trash"></i></button>
-                                    </div></div>`;
-                });
+                                    </div>
+                                ` : `
+                                    <div class="file-icon w-100 h-100"><i class="fa-solid fa-file"></i></div>
+                                `}
+                            </a>
+                            <div class="file-name w-100">
+                                <span title="${file._filename}" class="file-name-text" data-file-name="${file._filename}">${file._filename}</span>
+                            </div>
+                        </div>
+                        <div class="action-btns">
+                            <button type="submit" class="btn btn-outline-info w-100 file-operation" title="Copy File"
+                                    data-name="${file._filename}" data-action="copy" data-path="${file._pathname}">
+                                <i class="fa-solid fa-file"></i>
+                            </button>
+                            <button type="submit" class="btn btn-outline-danger w-100 delete-file" title="Delete File"
+                                    data-name="${file._filename}" data-path="${file._pathname}">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
             }
-            $('#files').html(filesDOM);
-        }
-    });
+            document.getElementById('files').innerHTML = filesDOM;
+        });
 }
