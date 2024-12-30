@@ -70,9 +70,21 @@ document.addEventListener('DOMContentLoaded', function () {
                         document.getElementById('link-view-post').setAttribute('href', `/blog/${response.post.slug}?forget=1`);
                         form.setAttribute('action', `/admin/posts/${response.post.slug}`);
                         if (response.post.deleted_at) {
-                            $('.btn-action-post[name="delete"]').replaceWith('<button type="submit" class="btn-action btn-action-post btn btn-secondary d-flex justify-content-center align-items-center w-100" name="restore"><i class="fa fa-fw fa-rotate-left me-1"></i> Restore</button>');
+                            const restoreButton = document.createElement('button');
+                            restoreButton.type = 'submit';
+                            restoreButton.className = 'btn-action btn-action-post btn btn-secondary d-flex justify-content-center align-items-center w-100';
+                            restoreButton.name = 'restore';
+                            restoreButton.innerHTML = '<i class="fa fa-fw fa-rotate-left me-1"></i> Restore';
+                            const deleteButton = document.querySelector('.btn-action-post[name="delete"]');
+                            deleteButton.replaceWith(restoreButton);
                         } else {
-                            $('.btn-action-post[name="restore"]').replaceWith('<button type="submit" class="btn-action btn-action-post btn btn-warning d-flex justify-content-center align-items-center w-100" name="delete"><i class="fa fa-fw fa-trash me-1"></i> Delete</button>');
+                            const deleteButton = document.createElement('button');
+                            deleteButton.type = 'submit';
+                            deleteButton.className = 'btn-action btn-action-post btn btn-warning d-flex justify-content-center align-items-center w-100';
+                            deleteButton.name = 'restore';
+                            deleteButton.innerHTML = '<i class="fa fa-fw fa-trash me-1"></i> Delete';
+                            const restoreButton = document.querySelector('.btn-action-post[name="restore"]');
+                            restoreButton.replaceWith(deleteButton);
                         }
                         get_alert_box({ class: response.class, message: response.message, icon: response.icon });
                     }).catch(async (error) => {

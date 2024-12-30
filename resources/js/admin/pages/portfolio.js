@@ -672,7 +672,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                             <textarea class="form-control" id="description"
                                                 name="description" rows="4" required>${data.description || ''}</textarea>
                                         </div>
-                                        
                                         <div class="mb-3">
                                             <label class="form-label" for="note">Note</label>
                                             <textarea class="form-control" id="note"

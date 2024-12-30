@@ -246,9 +246,21 @@ document.addEventListener("DOMContentLoaded", function () {
                                 tagsDataTable.ajax.reload(null, false);
                                 document.getElementById('link-view-tag').setAttribute('href', `/tags/${response.tag.slug}?forget=1`);
                                 if (response.tag.deleted_at) {
-                                    $('.btn-action-tag[name="delete"]').replaceWith('<button type="submit" class="btn-action btn-action-tag btn btn-secondary d-flex justify-content-center align-items-center w-100" name="restore"><i class="fa fa-fw fa-rotate-left me-1"></i> Restore</button>');
+                                    const deleteButton = document.querySelector('.btn-action-tag[name="delete"]');
+                                    const restoreButton = document.createElement('button');
+                                    restoreButton.type = 'submit';
+                                    restoreButton.className = 'btn-action btn-action-tag btn btn-secondary d-flex justify-content-center align-items-center w-100';
+                                    restoreButton.name = 'restore';
+                                    restoreButton.innerHTML = '<i class="fa fa-fw fa-rotate-left me-1"></i> Restore';
+                                    deleteButton.replaceWith(restoreButton);
                                 } else {
-                                    $('.btn-action-tag[name="restore"]').replaceWith('<button type="submit" class="btn-action btn-action-tag btn btn-warning d-flex justify-content-center align-items-center w-100" name="delete"><i class="fa fa-fw fa-trash me-1"></i> Delete</button>');
+                                    const restoreButton = document.querySelector('.btn-action-tag[name="restore"]');
+                                    const deleteButton = document.createElement('button');
+                                    deleteButton.type = 'submit';
+                                    deleteButton.className = 'btn-action btn-action-tag btn btn-warning d-flex justify-content-center align-items-center w-100';
+                                    deleteButton.name = 'delete';
+                                    deleteButton.innerHTML = '<i class="fa fa-fw fa-trash me-1"></i> Delete';
+                                    restoreButton.replaceWith(deleteButton);
                                 }
                                 get_alert_box({ class: response.class, message: response.message, icon: response.icon });
                             })
@@ -265,9 +277,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             });
 
-            $(document).on('click', '.btn-new', function(e) {
-                let modal = `
-        <div class="modal modal-tags-details" tabindex="-1">
+            document.addEventListener('click', function (e) {
+                if (e.target.classList.contains('btn-new')) {
+                    let modal = `
+        <div class="modal modal-tags-details" tabindex="-1" style="display: block;">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -328,42 +341,48 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         </div>
         <div class="modal-backdrop fade show"></div>`;
-                $('#page-container').append(modal);
-                setUpImagePreviewOnFileInput('image', 'image-preview');
-                let modalTagsDetails = $('.modal-tags-details');
-                $('.btn-close').add('.modal-tags-details').on('click', function(e) {
-                    if (e.target !== modalTagsDetails[0] && e.target !== $('.btn-close')[0]) {
-                        return;
-                    }
-                    modalTagsDetails.remove();
-                    $('.modal-backdrop').remove();
-                });
-                modalTagsDetails.show();
-                $(document).off('submit', '#form-tags').on('submit', '#form-tags', function(e) {
-                    e.preventDefault();
-                    if (!confirm("Are you sure ?")) {
-                        return;
-                    }
-                    let _this = $(this);
-                    let data = new FormData(this);
+                    document.getElementById('page-container').insertAdjacentHTML('beforeend', modal);
+                    setUpImagePreviewOnFileInput('image', 'image-preview');
 
-                    $.ajax({
-                        type: 'POST',
-                        url: '/admin/tags',
-                        data: data,
-                        contentType: false,
-                        processData: false,
-                        success: function(response) {
-                            console.log(response);
-                            get_alert_box({class: 'alert-info', message: response.message, icon: '<i class="fa-solid fa-check-circle"></i>'});
-                        },
-                        error: function (jqXHR, textStatus, errorThrown){
-                            console.log(jqXHR, textStatus, errorThrown);
-                            get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.message, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
+                    const modalTagsDetails = document.querySelector('.modal-tags-details');
+                    const closeButton = modalTagsDetails.querySelector('.btn-close');
+                    const modalBackdrop = document.querySelector('.modal-backdrop');
+                    modalTagsDetails.addEventListener('click', function (e) {
+                        if (e.target === modalTagsDetails || e.target === closeButton) {
+                            modalTagsDetails.remove();
+                            modalBackdrop.remove();
                         }
                     });
-                });
+
+                    const formTags = document.getElementById('form-tags');
+                    formTags.addEventListener('submit', function (e) {
+                        e.preventDefault();
+
+                        if (!confirm("Are you sure?")) {
+                            return;
+                        }
+
+                        const data = new FormData(formTags);
+                        data.append("_token", document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+
+                        fetch('/admin/tags', {
+                            method: 'POST',
+                            body: data
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log(data);
+                                tagsDataTable.ajax.reload(null, false);
+                                get_alert_box({ class: 'alert-info', message: data.message, icon: '<i class="fa-solid fa-check-circle"></i>' });
+                            })
+                            .catch(err => {
+                                console.error(err);
+                                get_alert_box({ class: 'alert-danger', message: err.message || 'An error occurred', icon: '<i class="fa-solid fa-triangle-exclamation"></i>' });
+                            });
+                    });
+                }
             });
+
         }
     } catch (error) {
         console.log(error);
