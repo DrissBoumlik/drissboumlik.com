@@ -22,7 +22,7 @@
 @section('buttons')
     <button class="btn-refresh btn btn-outline-info w-100"><i class="fa fa-fw fa-refresh me-1"></i>Refresh</button>
     <button class="btn-clear btn btn-outline-secondary w-100"><i class="fa fa-fw fa-eraser me-1"></i>Clear</button>
-    <a href="/admin/tags/create" class="btn btn-success w-100"><i class="fa fa-fw fa-plus me-1"></i>New Tag</a>
+    <button class="btn-new btn btn-success w-100"><i class="fa fa-fw fa-plus me-1"></i>New Tag</button>
 @endsection
 
 @section('list')

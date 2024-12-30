@@ -1,6 +1,5 @@
 // import 'bootstrap';
-import {get_alert_box, get_loader, toggleDarkMode} from "../shared/functions";
-import { initPostEditor } from "../admin/pages/post";
+import {get_alert_box, get_loader, toggleDarkMode, initPostEditor} from "../shared/functions";
 
 function string_to_slug(str) {
     str = str.replace(/^\s+|\s+$/g, ''); // trim

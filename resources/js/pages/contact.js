@@ -57,7 +57,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         // Remove previous response
                         if (responseContainer) responseContainer.remove();
                         // Display success or error
-                        debugger
                         contactForm.insertAdjacentHTML('afterend', getAlertDom(result));
                         // Remove spinner
                         if (sendButton) sendButton.classList.remove('loading-spinner');

@@ -1,5 +1,5 @@
 import { initFlatpickr, initSelect2, setUpImagePreviewOnFileInput } from "../../shared/helpers";
-import {getCookie, get_alert_box} from "@/shared/functions";
+import {getCookie, get_alert_box, initPostEditor} from "@/shared/functions";
 import {string_to_slug} from "@/admin/functions";
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -69,6 +69,23 @@ document.addEventListener('DOMContentLoaded', function () {
                     .then(response => {
                         document.getElementById('link-view-post').setAttribute('href', `/blog/${response.post.slug}?forget=1`);
                         form.setAttribute('action', `/admin/posts/${response.post.slug}`);
+                        if (response.post.deleted_at) {
+                            const restoreButton = document.createElement('button');
+                            restoreButton.type = 'submit';
+                            restoreButton.className = 'btn-action btn-action-post btn btn-secondary d-flex justify-content-center align-items-center w-100';
+                            restoreButton.name = 'restore';
+                            restoreButton.innerHTML = '<i class="fa fa-fw fa-rotate-left me-1"></i> Restore';
+                            const deleteButton = document.querySelector('.btn-action-post[name="delete"]');
+                            deleteButton.replaceWith(restoreButton);
+                        } else {
+                            const deleteButton = document.createElement('button');
+                            deleteButton.type = 'submit';
+                            deleteButton.className = 'btn-action btn-action-post btn btn-warning d-flex justify-content-center align-items-center w-100';
+                            deleteButton.name = 'restore';
+                            deleteButton.innerHTML = '<i class="fa fa-fw fa-trash me-1"></i> Delete';
+                            const restoreButton = document.querySelector('.btn-action-post[name="restore"]');
+                            restoreButton.replaceWith(deleteButton);
+                        }
                         get_alert_box({ class: response.class, message: response.message, icon: response.icon });
                     }).catch(async (error) => {
                         const response = await error.json();
@@ -77,7 +94,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     });
             }
 
-            if (e.target.classList.contains('btn-action-tag')) {
+        });
+
+
+        document.addEventListener('submit', function(e) {
+            if (e.target.classList.contains('btn-action') || e.target.closest('.btn-action') || e.target.closest('#create-post')) {
                 e.preventDefault();
 
                 if (!confirm("Are you sure ?")) {
@@ -86,18 +107,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 let form = e.target.closest('form');
                 let data = new FormData(form);
-                data.append('_method', 'PUT');
-                data.append(e.target.getAttribute("name"), true);
+                data.append(e.submitter.getAttribute("name"), true);
+                data.append("_token", document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
 
-                console.log(data);
                 fetch(form.getAttribute('action'), {
                     method: 'POST',
                     body: data
                 }).then(response => response.json())
                     .then(response => {
                         console.log(response);
-                        document.getElementById('link-view-tag').setAttribute('href', `/tags/${response.tag.slug}?forget=1`);
-                        form.setAttribute('action', `/admin/tags/${response.tag.slug}`);
                         get_alert_box({ class: response.class, message: response.message, icon: response.icon });
                     })
                     .catch(async (error) => {
@@ -113,54 +131,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-function initPostEditor() {
-    if (! document.getElementById('post_body')) return;
-    let options = {
-        selector: 'textarea#post_body',
-        plugins: `searchreplace autolink visualblocks visualchars media charmap nonbreaking anchor insertdatetime
-                lists advlist wordcount help emoticons autosave code link table codesample image preview pagebreak
-                accordion`,
-        toolbar: `code codesample emoticons link image pagebreak | undo redo restoredraft | bold italic underline
-                | alignleft aligncenter alignright alignjustify lineheight indent outdent | bullist numlist
-                | accordion visualblocks visualchars searchreplace`,
-        pagebreak_separator: '<hr/>',
-        height: 700,
-        fixed_toolbar_container: '.tox-editor-header',
-        codesample_languages: [
-            { text: 'Bash', value: 'bash' },
-            { text: 'Typscript', value: 'typscript' },
-            { text: 'Markdown', value: 'markdown' },
-            { text: 'Pug', value: 'pug' },
-            { text: 'Sass', value: 'sass' },
-            { text: 'Yaml', value: 'yaml' },
-            { text: 'SQL', value: 'sql' },
-            { text: 'Powershell', value: 'powershell' },
-            { text: 'DOS', value: 'dos' },
-            { text: 'Batch', value: 'batch' },
-            { text: 'HTML/XML', value: 'markup' },
-            { text: 'CSS', value: 'css' },
-            { text: 'JavaScript', value: 'javascript' },
-            { text: 'PHP', value: 'php' },
-            { text: 'Ruby', value: 'ruby' },
-            { text: 'Python', value: 'python' },
-            { text: 'Java', value: 'java' },
-            { text: 'C', value: 'c' },
-            { text: 'C#', value: 'csharp' },
-            { text: 'C++', value: 'cpp' }
-        ],
-    };
-    let theme = getCookie('theme');
-    if (theme === 'dark-mode') {
-        options = {...options,  skin: 'oxide-dark', content_css: 'dark'};
-    }
-    let tinymceDOM = tinymce.get('post_body');
-    if(tinymceDOM != null) {
-        let _content = tinymceDOM.getContent();
-        tinymceDOM.destroy();
-        tinymceDOM.setContent(_content);
-    }
-    tinymce.init(options);
-}
 
 function fillPostAssetsModal(postAssets){
     let gallery = `<div class="col-12"><div class="text-center p-5">No assets found</div></div>`;
@@ -219,5 +189,3 @@ function fillPostAssetsModal(postAssets){
 
     modalPostAssets.style.display = 'block';
 }
-
-export { initPostEditor }

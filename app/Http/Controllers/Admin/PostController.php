@@ -88,9 +88,20 @@ class PostController extends Controller
                 }
                 \DB::table('post_tag')->insert($post_tag);
             }
-            return redirect("/admin/posts/edit/$post->slug")->with(['response' => ['message' => 'Post stored successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
+
+            $redirect_link = "/admin/posts/edit/$post->slug";
+
+            return response()->json([
+                'post' => $post,
+                'message' => "Post stored successfully | <a href='$redirect_link'><i class='fa fa-fw fa-external-link'></i> Edit</a>",
+                'class' => 'alert-info',
+                'icon' => '<i class="fa fa-fw fa-circle-check"></i>']);
         } catch (\Throwable $e) {
-            return redirect("/admin/posts/create")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
+            return response()->json([
+                'message' => $e->getMessage(),
+                'class' => 'alert-danger',
+                'icon' => '<i class="fa fa-fw fa-times-circle"></i>'
+            ], 422);
         }
     }
 
@@ -130,6 +141,12 @@ class PostController extends Controller
             }
             if ($request->has('restore')) {
                 $post->restore();
+                return response()->json([
+                    'post' => $post,
+                    'message' => 'Post restored successfully',
+                    'class' => 'alert-info',
+                    'icon' => '<i class="fa fa-fw fa-circle-check"></i>'
+                ]);
             }
 
             $request->validate([
@@ -204,13 +221,23 @@ class PostController extends Controller
         try {
             if ($request->has('delete')) {
                 $post->delete();
-                return redirect("/admin/posts/edit/$post->slug")->with(['response' => ['message' => 'Post deleted successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
+                return response()->json([
+                    'post' => $post,
+                    'message' => 'Post deleted successfully',
+                    'class' => 'alert-info',
+                    'icon' => '<i class="fa fa-fw fa-circle-check"></i>'
+                ]);
             }
             \DB::table('post_tag')->where('post_id', $post->id)->delete();
             $post->forceDelete();
-            return redirect("/admin/posts")->with(['response' => ['message' => 'Post deleted for good successfully', 'class' => 'alert-info', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>']]);
+            return response()->json([
+                'post' => $post,
+                'message' => 'Post deleted for good successfully | <a href="/admin/posts">Go back</a>',
+                'class' => 'alert-info',
+                'icon' => '<i class="fa fa-fw fa-circle-check"></i>'
+            ]);
         } catch (\Throwable $e) {
-            return redirect("/admin/posts")->with(['response' => ['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']]);
+            return response()->json(['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']);
        }
     }
 
