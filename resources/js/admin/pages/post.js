@@ -1,4 +1,4 @@
-import { initFlatpickr, initSelect2, setUpImagePreviewOnFileInput } from "../../shared/helpers";
+import { initFlatpickr, initSelect2, setUpImagePreviewOnFileInput } from "@/shared/helpers";
 import {getCookie, get_alert_box, initPostEditor} from "@/shared/functions";
 import {string_to_slug} from "@/admin/functions";
 
@@ -11,14 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
             if (event.target.classList.contains('input-to-slugify')) {
                 let postTitle = event.target.value;
                 let postSlug = string_to_slug(postTitle);
-                // let postSlug = slugify(postTitle, {
-                //     // replacement: '-',  // replace spaces with replacement character, defaults to `-`
-                //     // remove: undefined, // remove characters that match regex, defaults to `undefined`
-                //     lower: true,      // convert to lower case, defaults to `false`
-                //     strict: true,     // strip special characters except replacement, defaults to `false`
-                //     // locale: 'vi',      // language code of the locale to use
-                //     trim: true         // trim leading and trailing replacement chars, defaults to `true`
-                // });
                 document.querySelectorAll('.input-slug').forEach(input => {
                     input.value = postSlug;
                 });
@@ -44,8 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         initFlatpickr();
 
-        document.addEventListener('click', function (e) {
-            if (e.target.classList.contains('btn-action-post')) {
+        document.addEventListener('submit', function (e) {
+            if (e.target.classList.contains('btn-action-post') || e.target.closest('.btn-action-post') || e.target.closest('#edit-post')) {
                 e.preventDefault();
 
                 if (!confirm("Are you sure ?")) {
@@ -59,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 postContent = postContent.replaceAll('<pre class="', '<pre class="loading-spinner ');
                 data.set('post_content', postContent);
                 data.append('_method', 'PUT');
-                data.append(e.target.getAttribute("name"), true);
+                data.append(e.submitter.getAttribute("name"), true);
 
                 console.log(data);
                 fetch(form.getAttribute('action'), {
@@ -67,6 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         body: data
                     }).then(response => response.json())
                     .then(response => {
+                        window.history.pushState(null,null, `/admin/posts/edit/${response.post.slug}`);
                         document.getElementById('link-view-post').setAttribute('href', `/blog/${response.post.slug}?forget=1`);
                         form.setAttribute('action', `/admin/posts/${response.post.slug}`);
                         if (response.post.deleted_at) {
