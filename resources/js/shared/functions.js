@@ -24,13 +24,17 @@ function toggleDarkMode(element, classes, cookieData) {
     }
 }
 
-function get_loader() {
-    let loader = document.querySelector('.spinner-global');
+function remove_loader() {
+    const loader = document.querySelector('.spinner-global');
     if (loader) {
         loader.remove();
     }
+}
 
-    loader = `<div class="spinner-global spinner-border" role="status"
+function get_loader() {
+    remove_loader();
+
+    const loader = `<div class="spinner-global spinner-border" role="status"
                                 style="width: 3rem; height: 3rem; position: fixed; bottom: 1rem; right: 1rem;
                                 border-color: var(--tc-grey-dark) transparent var(--tc-grey-dark) var(--tc-grey-dark);">
                             <span class="visually-hidden">Loading...</span>
@@ -121,4 +125,4 @@ function initPostEditor() {
     tinymce.init(options);
 }
 
-export { toggleDarkMode, get_alert_box, getCookie, get_loader, initPostEditor };
+export { toggleDarkMode, get_alert_box, getCookie, get_loader, remove_loader, initPostEditor };

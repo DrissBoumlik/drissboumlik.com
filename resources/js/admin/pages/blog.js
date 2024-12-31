@@ -1,10 +1,10 @@
 import {getDomClass, shortenTextIfLongByLength, configDT, string_to_slug} from "@/admin/functions";
 import {setUpImagePreviewOnFileInput} from "@/shared/helpers";
-import {get_alert_box} from "@/shared/functions";
+import {get_alert_box, get_loader, remove_loader} from "@/shared/functions";
 
 document.addEventListener("DOMContentLoaded", function () {
     try {
-        document.addEventListener('focusout', function (event) {
+        document.addEventListener('input', function (event) {
             if (event.target.classList.contains('input-to-slugify')) {
                 let postTitle = event.target.value;
                 let postSlug = string_to_slug(postTitle);
@@ -368,19 +368,22 @@ document.addEventListener("DOMContentLoaded", function () {
                         const data = new FormData(formTags);
                         data.append("_token", document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
 
+                        get_loader();
                         fetch('/admin/tags', {
                             method: 'POST',
                             body: data
                         })
                             .then(response => response.json())
                             .then(data => {
+                                remove_loader();
                                 console.log(data);
                                 tagsDataTable.ajax.reload(null, false);
-                                get_alert_box({ class: 'alert-info', message: data.message, icon: '<i class="fa-solid fa-check-circle"></i>' });
+                                get_alert_box({ class: data.class || 'alert-info', message: data.message, icon: data.icon || '<i class="fa-solid fa-check-circle"></i>' });
                             })
                             .catch(err => {
+                                remove_loader();
                                 console.error(err);
-                                get_alert_box({ class: 'alert-danger', message: err.message || 'An error occurred', icon: '<i class="fa-solid fa-triangle-exclamation"></i>' });
+                                get_alert_box({ class: err.class || 'alert-danger', message: err.message || 'An error occurred', icon: err.icon || '<i class="fa-solid fa-triangle-exclamation"></i>' });
                             });
                     });
                 }

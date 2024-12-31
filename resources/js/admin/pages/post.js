@@ -1,5 +1,5 @@
 import { initFlatpickr, initSelect2, setUpImagePreviewOnFileInput } from "@/shared/helpers";
-import {getCookie, get_alert_box, initPostEditor} from "@/shared/functions";
+import {getCookie, get_alert_box, initPostEditor, get_loader, remove_loader} from "@/shared/functions";
 import {string_to_slug} from "@/admin/functions";
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -24,9 +24,11 @@ document.addEventListener('DOMContentLoaded', function () {
             viewPostAssetsBtn.forEach(btn => {
                 btn.addEventListener('click', function () {
                     let postSlug = document.getElementById('post-slug').value;
+                    get_loader();
                     fetch(`/api/posts/${postSlug}/assets`)
                         .then(response => response.json())
                         .then(data => {
+                            remove_loader();
                             let postAssets = data.post_assets;
                             fillPostAssetsModal(postAssets);
                         });
@@ -54,11 +56,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 const operationName = e.submitter.getAttribute("name");
                 data.append(operationName, true);
 
+                get_loader();
                 fetch(form.getAttribute('action'), {
                         method: 'POST',
                         body: data
                     }).then(response => response.json())
                     .then(response => {
+                        remove_loader();
                         window.history.pushState(null,null, `/admin/posts/edit/${response.post.slug}`);
                         document.getElementById('link-view-post').setAttribute('href', `/blog/${response.post.slug}?forget=1`);
                         form.setAttribute('action', `/admin/posts/${response.post.slug}`);
@@ -83,16 +87,13 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                         get_alert_box({ class: response.class, message: response.message, icon: response.icon });
                     }).catch(async (error) => {
+                    remove_loader();
                         const response = await error.json();
                         console.log(error, response);
                         get_alert_box({ class: response.class, message: response.message, icon: response.icon });
                     });
             }
 
-        });
-
-
-        document.addEventListener('submit', function(e) {
             if (e.target.classList.contains('btn-action') || e.target.closest('.btn-action') || e.target.closest('#create-post')) {
                 e.preventDefault();
 
@@ -105,15 +106,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 data.append(e.submitter.getAttribute("name"), true);
                 data.append("_token", document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
 
+                get_loader();
                 fetch(form.getAttribute('action'), {
                     method: 'POST',
                     body: data
                 }).then(response => response.json())
                     .then(response => {
+                        remove_loader();
                         console.log(response);
                         get_alert_box({ class: response.class, message: response.message, icon: response.icon });
                     })
                     .catch(async (error) => {
+                        remove_loader();
                         const response = await error.json();
                         console.log(error, response);
                         get_alert_box({ class: response.class, message: response.message, icon: response.icon });
