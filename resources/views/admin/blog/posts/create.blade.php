@@ -13,7 +13,7 @@
 @endsection
 
 @section('post-header-assets')
-    @vite(['resources/js/admin/pages/post.js'])
+    @vite(['resources/js/admin/pages/blog/post.js'])
 @endsection
 
 @section('content')

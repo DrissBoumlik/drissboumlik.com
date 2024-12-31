@@ -1,6 +1,5 @@
-import {getDomClass, shortenTextIfLongByLength, configDT, string_to_slug} from "@/admin/functions";
-import {setUpImagePreviewOnFileInput} from "@/shared/helpers";
-import {get_alert_box, get_loader, remove_loader} from "@/shared/functions";
+import { setUpImagePreviewOnFileInput, getDomClass, configDT, get_alert_box, get_loader, remove_loader } from "@/admin/tools";
+import { shortenTextIfLongByLength, string_to_slug } from "@/admin/utilitiy";
 
 document.addEventListener("DOMContentLoaded", function () {
     try {

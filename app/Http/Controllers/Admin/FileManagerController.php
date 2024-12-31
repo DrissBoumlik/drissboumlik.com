@@ -62,15 +62,14 @@ class FileManagerController extends Controller
             }
             $path = trim($request->get('path'));
             File::move("$path/$old_name", "$path/$new_name");
-            return ['msg' => 'Renamed successfully !'];
+            return ['message' => 'Renamed successfully !'];
         } catch (\Throwable $e) {
-            return response()->json(['msg' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage()], 404);
         }
     }
 
     public function copyFile(Request $request)
     {
-
         try {
             $src_path = $request->get('src-path');
             if ($src_path === self::TRASH) {
@@ -103,9 +102,9 @@ class FileManagerController extends Controller
                 }
                 $msg .= ' successfully';
             }
-            return ['msg' => $msg];
+            return ['message' => $msg];
         } catch (\Throwable $e) {
-            return response()->json(['msg' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage()], 404);
         }
     }
 
@@ -116,14 +115,23 @@ class FileManagerController extends Controller
             if (!$currentPath) {
                 $currentPath = "storage";
             }
-            if ($directoriesNames && is_array($directoriesNames) && $count = count($directoriesNames)) {
+            $count = count($directoriesNames);
+            if ($directoriesNames && is_array($directoriesNames) && $count) {
                 foreach ($directoriesNames as $directoryName) {
                     File::makeDirectory("$currentPath/$directoryName");
                 }
-                return ['msg' => "Directories created : $count"];
             }
+            return [
+                'message' => "Directories created : $count",
+                'class' => 'alert-info',
+                'icon' => '<i class="fa fa-fw fa-circle-check"></i>'
+            ];
         } catch (\Throwable $e) {
-            return response()->json(['msg' => $e->getMessage()], 404);
+            return response()->json([
+                'message' => $e->getMessage(),
+                'class' => 'alert-danger',
+                'icon' => '<i class="fa fa-fw fa-times-circle"></i>'
+            ], 404);
         }
     }
 
@@ -141,20 +149,20 @@ class FileManagerController extends Controller
                 $filename = $file->getClientOriginalName();
                 $file->storeAs($path, $filename, 'public');
             }
-            return ['msg' => 'Uploaded successfully'];
+            return ['message' => 'Uploaded successfully'];
         } catch (\Throwable $e) {
-            return response()->json(['msg' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage()], 404);
         }
     }
     public function emptyDirectory(Request $request, $path)
     {
         try {
             if (File::cleanDirectory($path)) {
-                return ['msg' => 'Trash Emptied successfully'];
+                return ['message' => 'Trash Emptied successfully'];
             }
-            return response()->json(['msg' => 'Issue with the process or Directory not found'], 404);
+            return response()->json(['message' => 'Issue with the process or Directory not found'], 404);
         } catch (\Throwable $e) {
-            return response()->json(['msg' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage()], 404);
         }
     }
     public function deleteFile(Request $request, $path, $name)
@@ -173,9 +181,9 @@ class FileManagerController extends Controller
                 File::delete($path);
                 $msg = 'File deleted successfully';
             }
-            return ['msg' => $msg];
+            return ['message' => $msg];
         } catch (\Throwable $e) {
-            return response()->json(['msg' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage()], 404);
         }
     }
 }

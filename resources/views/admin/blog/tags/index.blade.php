@@ -1,7 +1,7 @@
 @extends('admin.template.datatable')
 
 @section('post-header-assets')
-    @vite(['resources/js/admin/pages/blog.js'])
+    @vite(['resources/js/admin/pages/blog/blog.js'])
 @endsection
 
 @section('list-title')

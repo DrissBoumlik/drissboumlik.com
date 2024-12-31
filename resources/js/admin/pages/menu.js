@@ -1,5 +1,4 @@
-import { get_alert_box } from "@/shared/functions";
-import { configDT } from "@/admin/functions";
+import { get_alert_box, configDT } from "@/admin/tools";
 
 $(function () {
     try {

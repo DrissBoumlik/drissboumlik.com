@@ -1,13 +1,15 @@
-import { initFlatpickr, initSelect2, setUpImagePreviewOnFileInput } from "@/shared/helpers";
-import {getCookie, get_alert_box, initPostEditor, get_loader, remove_loader} from "@/shared/functions";
-import {string_to_slug} from "@/admin/functions";
+import { setUpImagePreviewOnFileInput, get_alert_box, get_loader, remove_loader } from "@/admin/tools";
+import { initFlatpickr, initSelect2 } from "@/admin/plugins-use";
+import { getCookie } from "@/shared/functions";
+import { string_to_slug } from "@/admin/utilitiy";
+import { initPostEditor } from "@/admin/pages/blog/helpers";
 
 document.addEventListener('DOMContentLoaded', function () {
     try {
         initPostEditor();
         try { initSelect2(); } catch (e) {}
 
-        document.addEventListener('focusout', function (event) {
+        document.addEventListener('input', function (event) {
             if (event.target.classList.contains('input-to-slugify')) {
                 let postTitle = event.target.value;
                 let postSlug = string_to_slug(postTitle);
