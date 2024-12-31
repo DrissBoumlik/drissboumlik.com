@@ -1,5 +1,5 @@
 // import 'bootstrap';
-import {get_alert_box, get_loader, toggleDarkMode, initPostEditor} from "@/shared/functions";
+import {get_alert_box, get_loader, remove_loader, toggleDarkMode, initPostEditor} from "@/shared/functions";
 
 function string_to_slug(str) {
     str = str.replace(/^\s+|\s+$/g, ''); // trim
@@ -48,10 +48,7 @@ function initAjaxEvents() {
         }
     });
     $( document ).on( "ajaxComplete", function(event, jqxhr, settings) {
-        let loader = $('.spinner-global');
-        if (loader.length) {
-            loader.remove();
-        }
+        remove_loader();
     });
 }
 
