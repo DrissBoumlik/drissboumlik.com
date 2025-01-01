@@ -1,3 +1,4 @@
+import { getToken } from "@/admin/tools";
 
 document.addEventListener('DOMContentLoaded', function () {
     try {
@@ -57,7 +58,7 @@ function initChartByField(defaultValue = 'countryName') {
 function getColumnStats(params) {
     fetch(`/api/stats?page=${params.page}`, {
             method: 'POST',
-            headers: {'Content-Type': 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')},
+            headers: {'Content-Type': 'application/json', 'X-CSRF-TOKEN': getToken() },
             body: JSON.stringify({ table: 'visitors', column: params.columnSelected, perPage: params.perPage}),
         })
         .then((response) => response.json())
@@ -137,7 +138,7 @@ function initChartByYearEvents(defaultValue = 'countryName') {
 function initChartByYear(params) {
     fetch(`/api/stats?page=${params.page}`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') },
+            headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': getToken() },
             body: JSON.stringify({table: 'visitors', column: params.columnSelected, year: params.yearSelected, perPage: params.perPage,}),
         })
         .then((response) => response.json())

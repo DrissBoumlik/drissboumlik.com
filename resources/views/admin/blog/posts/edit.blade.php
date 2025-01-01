@@ -13,7 +13,7 @@
 @endsection
 
 @section('post-header-assets')
-    @vite(['resources/js/admin/pages/post.js'])
+    @vite(['resources/js/admin/pages/blog/post.js'])
 @endsection
 
 @section('content')
@@ -45,7 +45,7 @@
     <div class="content">
         <div class="row items-push">
             <div class="block-content">
-                <form action="/admin/posts/{{ $post->slug }}" method="POST" enctype="multipart/form-data"
+                <form action="/api/posts/{{ $post->slug }}" method="POST" enctype="multipart/form-data"
                       id="edit-post" class="edit-form">
                     @method('put')
                     @csrf
@@ -62,21 +62,23 @@
                                     placeholder="Post slug" value="{{ $post->slug }}">
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="post_excerpt">Excerpt</label>
-                                <textarea id="post_excerpt" class="form-control" name="post_excerpt" placeholder="Post excerpt.." rows="4" >{{ $post->excerpt }}</textarea>
+                                <label class="form-label" for="post-excerpt">Excerpt</label>
+                                <textarea id="post-excerpt" class="form-control" name="excerpt" placeholder="Post excerpt.." rows="4" >{{ $post->excerpt }}</textarea>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="description">Description</label>
-                                <textarea class="form-control" id="description" name="description" placeholder="Post description.." rows="4" >{{ $post->description }}</textarea>
+                                <label class="form-label" for="post-description">Description</label>
+                                <textarea class="form-control" id="post-description" name="description" placeholder="Post description.." rows="4" >{{ $post->description }}</textarea>
                             </div>
                             <div class="timestamps d-flex align-items-center column-gap-2">
                                 <div class="mb-4 w-100">
-                                    <label class="form-label" for="updated_at">Updated at</label>
-                                    <input type="text" class="form-control" id="updated_at" disabled name="updated_at" value="{{ $post->updated_at }}" data-enable-time="true" data-time_24hr="true">
+                                    <label class="form-label" for="post-updated_at">Updated at</label>
+                                    <input type="text" class="form-control" id="post-updated_at" disabled name="updated_at"
+                                           value="{{ $post->updated_at }}" data-enable-time="true" data-time_24hr="true">
                                 </div>
                                 <div class="mb-4 w-100">
-                                    <label class="form-label" for="created_at">Created at</label>
-                                    <input type="text" class="form-control" id="created_at" disabled name="created_at" value="{{ $post->created_at }}" data-enable-time="true" data-time_24hr="true">
+                                    <label class="form-label" for="post-created_at">Created at</label>
+                                    <input type="text" class="form-control" id="created_at" disabled name="post-created_at"
+                                           value="{{ $post->created_at }}" data-enable-time="true" data-time_24hr="true">
                                 </div>
                             </div>
                             <div class="mb-4">
@@ -108,30 +110,31 @@
                                        placeholder="Post views" value="{{ $post->views }}">
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="published_at">Published at</label>
-                                <input type="text" class="js-flatpickr form-control" id="published_at" name="published_at" value="{{ $post->published_at }}" data-enable-time="true" data-time_24hr="true">
+                                <label class="form-label" for="post-published_at">Published at</label>
+                                <input type="text" class="js-flatpickr form-control" id="post-published_at" name="published_at"
+                                       value="{{ $post->published_at }}" data-enable-time="true" data-time_24hr="true">
                             </div>
                             <div class="mb-4">
                                 <div class="form-check form-switch form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="published" name="published" {{ $post->published == 0 ? '' : 'checked' }} >
-                                    <label class="form-check-label" for="published">Published</label>
+                                    <input class="form-check-input" type="checkbox" id="post-published" name="published" {{ $post->published == 0 ? '' : 'checked' }} >
+                                    <label class="form-check-label" for="post-published">Published</label>
                                 </div>
                             </div>
                             <div class="mb-4">
                                 <div class="form-check form-switch form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="featured" name="featured" {{ $post->featured == 0 ? '' : 'checked' }} >
-                                    <label class="form-check-label" for="featured">Featured</label>
+                                    <input class="form-check-input" type="checkbox" id="post-featured" name="featured" {{ $post->featured == 0 ? '' : 'checked' }} >
+                                    <label class="form-check-label" for="post-featured">Featured</label>
                                 </div>
                             </div>
                             <div class="mb-4">
                                 <div class="form-check form-switch form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="active" name="active" {{ $post->active ? 'checked' : '' }} >
-                                    <label class="form-check-label" for="active">Active</label>
+                                    <input class="form-check-input" type="checkbox" id="post-active" name="active" {{ $post->active ? 'checked' : '' }} >
+                                    <label class="form-check-label" for="post-active">Active</label>
                                 </div>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="image">Cover</label>
-                                <input type="file" id="image" name="cover" class="form-control" />
+                                <label class="form-label" for="post-image">Cover</label>
+                                <input type="file" id="post-image" name="cover" class="form-control" />
                                 <div class="mt-2">
                                     <img id="image-preview" class="image-preview img-fluid w-100 lazyload"
                                          src="{{ $post->cover ? "/" . $post->cover->compressed : asset('/assets/img/default/missing.webp') }}"
@@ -141,24 +144,24 @@
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="post-assets">Post assets</label>
-                                <input type="file" id="post-assets" name="post-assets[]" multiple class="form-control" />
+                                <input type="file" id="post-assets" name="assets[]" multiple class="form-control" />
                             </div>
                             <div class="form-check form-switch form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="append-to-post-assets" name="append-to-post-assets" checked>
+                                <input class="form-check-input" type="checkbox" id="append-to-post-assets" name="append-to-assets" checked>
                                 <label class="form-check-label" for="append-to-post-assets">Append to post assets</label>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="block block-rounded block-bordered block-mode-hidden">
                                 <div class="block-header block-header-default">
-                                    <h3 class="block-title"><label class="form-label" for="post_body">Content</label></h3>
+                                    <h3 class="block-title"><label class="form-label" for="post-content">Content</label></h3>
                                     <div class="block-options">
                                         <button type="button" class="btn-block-option" data-toggle="block-option" data-action="fullscreen_toggle"><i class="si si-size-fullscreen"></i></button>
                                         <button type="button" class="btn-block-option" data-toggle="block-option" data-action="content_toggle"><i class="si si-arrow-up"></i></button>
                                     </div>
                                 </div>
                                 <div class="block-content p-0">
-                                    <textarea id="post_body" class="form-control" name="post_content" placeholder="Post content.." hidden>{!! $post->content !!}</textarea>
+                                    <textarea id="post-content" class="form-control" name="post-content" placeholder="Post content.." hidden>{!! $post->content !!}</textarea>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between align-items-stretch gap-2 flex-wrap flex-md-nowrap">

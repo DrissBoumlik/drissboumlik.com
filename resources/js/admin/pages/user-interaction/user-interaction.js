@@ -1,5 +1,4 @@
-import { configDT } from "@/admin/functions";
-import { get_alert_box } from "@/shared/functions";
+import { configDT, get_alert_box } from "@/admin/tools";
 
 $(function () {
     try {
@@ -154,7 +153,7 @@ $(function () {
                         data: data,
                         success: function(response) {
                             visitorsDataTable.ajax.reload(null, false);
-                            get_alert_box({class: 'alert-info', message: response.msg, icon: '<i class="fa-solid fa-check-circle"></i>'});
+                            get_alert_box({class: 'alert-info', message: response.message, icon: '<i class="fa-solid fa-check-circle"></i>'});
                         },
                         error: function (jqXHR, textStatus, errorThrown){
                             console.log(jqXHR, textStatus, errorThrown);

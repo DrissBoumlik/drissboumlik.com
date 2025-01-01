@@ -1,21 +1,14 @@
-import { initFlatpickr, initSelect2, setUpImagePreviewOnFileInput } from "@/shared/helpers";
-import {getCookie, get_alert_box, initPostEditor, get_loader, remove_loader} from "@/shared/functions";
-import {string_to_slug} from "@/admin/functions";
+import { setUpImagePreviewOnFileInput, get_alert_box, get_loader, remove_loader, getToken } from "@/admin/tools";
+import { initFlatpickr, initSelect2 } from "@/admin/plugins-use";
+import { getCookie } from "@/shared/functions";
+import { initPostEditor, initCommonFormInputEvents } from "@/admin/pages/blog/helpers";
 
 document.addEventListener('DOMContentLoaded', function () {
     try {
         initPostEditor();
         try { initSelect2(); } catch (e) {}
 
-        document.addEventListener('focusout', function (event) {
-            if (event.target.classList.contains('input-to-slugify')) {
-                let postTitle = event.target.value;
-                let postSlug = string_to_slug(postTitle);
-                document.querySelectorAll('.input-slug').forEach(input => {
-                    input.value = postSlug;
-                });
-            }
-        });
+        initCommonFormInputEvents();
 
         setUpImagePreviewOnFileInput('image', 'image-preview');
 
@@ -49,9 +42,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 let form = e.target.closest('form');
                 let data = new FormData(form);
 
-                let postContent = tinymce.get('post_body').getContent();
+                let postContent = tinymce.get('post-content').getContent();
                 postContent = postContent.replaceAll('<pre class="', '<pre class="loading-spinner ');
-                data.set('post_content', postContent);
+                data.set('content', postContent);
                 data.append('_method', 'PUT');
                 const operationName = e.submitter.getAttribute("name");
                 data.append(operationName, true);
@@ -63,26 +56,31 @@ document.addEventListener('DOMContentLoaded', function () {
                     }).then(response => response.json())
                     .then(response => {
                         remove_loader();
-                        window.history.pushState(null,null, `/admin/posts/edit/${response.post.slug}`);
-                        document.getElementById('link-view-post').setAttribute('href', `/blog/${response.post.slug}?forget=1`);
-                        form.setAttribute('action', `/admin/posts/${response.post.slug}`);
                         if (operationName) {
-                            if (response.post.deleted_at) {
-                                const restoreButton = document.createElement('button');
-                                restoreButton.type = 'submit';
-                                restoreButton.className = 'btn-action btn-action-post btn btn-secondary d-flex justify-content-center align-items-center w-100';
-                                restoreButton.name = 'restore';
-                                restoreButton.innerHTML = '<i class="fa fa-fw fa-rotate-left me-1"></i> Restore';
-                                const deleteButton = document.querySelector('.btn-action-post[name="delete"]');
-                                if (deleteButton) deleteButton.replaceWith(restoreButton);
-                            } else {
-                                const deleteButton = document.createElement('button');
-                                deleteButton.type = 'submit';
-                                deleteButton.className = 'btn-action btn-action-post btn btn-warning d-flex justify-content-center align-items-center w-100';
-                                deleteButton.name = 'restore';
-                                deleteButton.innerHTML = '<i class="fa fa-fw fa-trash me-1"></i> Delete';
-                                const restoreButton = document.querySelector('.btn-action-post[name="restore"]');
-                                if (restoreButton) restoreButton.replaceWith(deleteButton);
+                            if (operationName !== "destroy") {
+                                if (response.post.deleted_at) {
+                                    const restoreButton = document.createElement('button');
+                                    restoreButton.type = 'submit';
+                                    restoreButton.className = 'btn-action btn-action-post btn btn-secondary d-flex justify-content-center align-items-center w-100';
+                                    restoreButton.name = 'restore';
+                                    restoreButton.innerHTML = '<i class="fa fa-fw fa-rotate-left me-1"></i> Restore';
+                                    const deleteButton = document.querySelector('.btn-action-post[name="delete"]');
+                                    if (deleteButton) deleteButton.replaceWith(restoreButton);
+                                } else {
+                                    const deleteButton = document.createElement('button');
+                                    deleteButton.type = 'submit';
+                                    deleteButton.className = 'btn-action btn-action-post btn btn-warning d-flex justify-content-center align-items-center w-100';
+                                    deleteButton.name = 'restore';
+                                    deleteButton.innerHTML = '<i class="fa fa-fw fa-trash me-1"></i> Delete';
+                                    const restoreButton = document.querySelector('.btn-action-post[name="restore"]');
+                                    if (restoreButton) restoreButton.replaceWith(deleteButton);
+                                }
+                            }
+                        } else {
+                            if (response.post?.slug) {
+                                window.history.pushState(null,null, `/admin/posts/edit/${response.post.slug}`);
+                                document.getElementById('link-view-post').setAttribute('href', `/blog/${response.post.slug}?forget=1`);
+                                form.setAttribute('action', `/api/posts/${response.post.slug}`);
                             }
                         }
                         get_alert_box({ class: response.class, message: response.message, icon: response.icon });
@@ -104,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 let form = e.target.closest('form');
                 let data = new FormData(form);
                 data.append(e.submitter.getAttribute("name"), true);
-                data.append("_token", document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+                data.append("_token", getToken());
 
                 get_loader();
                 fetch(form.getAttribute('action'), {

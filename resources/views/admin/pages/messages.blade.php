@@ -1,7 +1,7 @@
 @extends('admin.template.datatable')
 
 @section('post-header-assets')
-    @vite(['resources/js/admin/pages/user-interaction.js'])
+    @vite(['resources/js/admin/pages/user-interaction/user-interaction.js'])
 @endsection
 
 @section('list-title')

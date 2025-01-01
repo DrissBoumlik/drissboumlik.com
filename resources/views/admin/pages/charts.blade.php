@@ -15,7 +15,7 @@
 @endsection
 
 @section('post-header-assets')
-    @vite(['resources/js/admin/pages/chart.js'])
+    @vite(['resources/js/admin/pages/user-interaction/chart.js'])
 @endsection
 
 @section('content')

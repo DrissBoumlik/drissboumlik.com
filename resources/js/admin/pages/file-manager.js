@@ -1,4 +1,4 @@
-import {get_alert_box} from "@/shared/functions";
+import { get_alert_box, getToken } from "@/admin/tools";
 
 document.addEventListener('DOMContentLoaded', function () {
     try {
@@ -77,13 +77,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                        'X-CSRF-TOKEN': getToken()
                     },
                 })
                     .then(response => response.json())
                     .then(data => {
                         console.log(data);
-                        get_alert_box({ class: 'alert-info', message: data.msg, icon: '<i class="fa-solid fa-check-circle"></i>' });
+                        get_alert_box({ class: 'alert-info', message: data.message, icon: '<i class="fa-solid fa-check-circle"></i>' });
                         displayFiles();
                     })
                     .catch(error => {
@@ -112,19 +112,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const formData = new FormData(e.target);
                 formData.append('operation', e.submitter.value);
+                formData.append('_token', getToken());
 
                 fetch('/api/file/copy', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                    },
                     body: formData
                 })
                     .then(response => response.json())
                     .then(data => {
                         console.log(data);
-                        get_alert_box({ class: 'alert-info', message: data.msg, icon: '<i class="fa-solid fa-check-circle"></i>' });
+                        get_alert_box({ class: 'alert-info', message: data.message, icon: '<i class="fa-solid fa-check-circle"></i>' });
                         displayFiles();
                     })
                     .catch(error => {
@@ -146,6 +143,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const formData = new FormData(formUploadFiles);
             const currentPath = document.getElementById('current-path').value;
             formData.append('path', currentPath);
+            formData.append('_token', getToken());
 
             fetch('/api/file', {
                 method: 'POST',
@@ -156,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.log(response);
                     get_alert_box({
                         class: 'alert-info',
-                        message: response.msg,
+                        message: response.message,
                         icon: '<i class="fa-solid fa-check-circle"></i>'
                     });
                     displayFiles();
@@ -165,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.error(error);
                     get_alert_box({
                         class: 'alert-danger',
-                        message: error.responseJSON?.msg || 'An error occurred',
+                        message: error.message || 'An error occurred',
                         icon: '<i class="fa-solid fa-triangle-exclamation"></i>'
                     });
                 });
@@ -198,30 +196,32 @@ document.addEventListener('DOMContentLoaded', function () {
                     dirName.trim().replace(/ +/g, ' ')
                 );
 
+                let data = { directoriesNames, currentPath };
+
                 fetch('/api/directories', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                        'X-CSRF-TOKEN': getToken()
                     },
-                    body: JSON.stringify({ directoriesNames, currentPath })
+                    body: JSON.stringify(data)
                 })
                     .then(response => response.json())
                     .then(response => {
                         console.log(response);
                         get_alert_box({
-                            class: 'alert-info',
-                            message: response.msg,
-                            icon: '<i class="fa-solid fa-check-circle"></i>'
+                            class: response.class || 'alert-info',
+                            message: response.message,
+                            icon: response.icon || '<i class="fa-solid fa-check-circle"></i>'
                         });
                         displayFiles();
                     })
                     .catch(error => {
                         console.error(error);
                         get_alert_box({
-                            class: 'alert-danger',
-                            message: error.responseJSON?.msg || 'An error occurred',
-                            icon: '<i class="fa-solid fa-triangle-exclamation"></i>'
+                            class: error.class || 'alert-danger',
+                            message: error.message || 'An error occurred',
+                            icon: error.icon || '<i class="fa-solid fa-triangle-exclamation"></i>'
                         });
                     });
             });
@@ -238,25 +238,25 @@ document.addEventListener('DOMContentLoaded', function () {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                        'X-CSRF-TOKEN': getToken()
                     },
                 })
                     .then(response => response.json())
                     .then(response => {
                         console.log(response);
                         get_alert_box({
-                            class: 'alert-info',
-                            message: response.msg,
-                            icon: '<i class="fa-solid fa-check-circle"></i>'
+                            class: response.class || 'alert-info',
+                            message: response.message,
+                            icon: response.icon || '<i class="fa-solid fa-check-circle"></i>'
                         });
                         displayFiles();
                     })
                     .catch(error => {
                         console.error(error);
                         get_alert_box({
-                            class: 'alert-danger',
-                            message: error.responseJSON?.msg || 'An error occurred',
-                            icon: '<i class="fa-solid fa-triangle-exclamation"></i>'
+                            class: error.class || 'alert-danger',
+                            message: error.message || 'An error occurred',
+                            icon: error.icon || '<i class="fa-solid fa-triangle-exclamation"></i>'
                         });
                     });
             });
@@ -326,7 +326,7 @@ function renameItem(target) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            'X-CSRF-TOKEN': getToken()
         },
         body: JSON.stringify({
             new_name: newName,
@@ -338,16 +338,16 @@ function renameItem(target) {
         .then(response => {
             console.log(response);
             target.setAttribute('data-file-name', newName)
-            get_alert_box({ class: 'alert-info',message: response.msg,icon: '<i class="fa-solid fa-check-circle"></i>' });
+            get_alert_box({ class: response.class || 'alert-info',message: response.message,icon: response.icon || '<i class="fa-solid fa-check-circle"></i>' });
             // displayFiles();
         })
         .catch(error => {
             console.error(error);
             target.innerText = oldName;
             get_alert_box({
-                class: 'alert-danger',
-                message: error.responseJSON?.msg || 'An error occurred',
-                icon: '<i class="fa-solid fa-triangle-exclamation"></i>'
+                class: error.class || 'alert-danger',
+                message: error.message || 'An error occurred',
+                icon: error.icon || '<i class="fa-solid fa-triangle-exclamation"></i>'
             });
         });
 }
@@ -377,7 +377,7 @@ function displayFiles(pathname = null) {
             document.getElementById('current-path').value = data.current_path;
             const prevPathLink = document.getElementById('previous-path');
             prevPathLink.setAttribute('href', `/admin/file-manager/${data.previous_path || ''}`);
-            prevPathLink.setAttribute('data-href', data.previous_path);
+            prevPathLink.setAttribute('data-href', data.previous_path || '');
             document.getElementById('breadcrumb').innerHTML = data.breadcrumb.breadcrumb;
 
             let directoriesDOM = '<div class="col-12"><div class="text-center p-5">No directories found</div></div>';
