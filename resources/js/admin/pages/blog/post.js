@@ -56,29 +56,29 @@ document.addEventListener('DOMContentLoaded', function () {
                     }).then(response => response.json())
                     .then(response => {
                         remove_loader();
-                        if (operationName) {
-                            if (operationName !== "destroy") {
-                                if (response.post.deleted_at) {
-                                    const restoreButton = document.createElement('button');
-                                    restoreButton.type = 'submit';
-                                    restoreButton.className = 'btn-action btn-action-post btn btn-secondary d-flex justify-content-center align-items-center w-100';
-                                    restoreButton.name = 'restore';
-                                    restoreButton.innerHTML = '<i class="fa fa-fw fa-rotate-left me-1"></i> Restore';
-                                    const deleteButton = document.querySelector('.btn-action-post[name="delete"]');
-                                    if (deleteButton) deleteButton.replaceWith(restoreButton);
-                                } else {
-                                    const deleteButton = document.createElement('button');
-                                    deleteButton.type = 'submit';
-                                    deleteButton.className = 'btn-action btn-action-post btn btn-warning d-flex justify-content-center align-items-center w-100';
-                                    deleteButton.name = 'delete';
-                                    deleteButton.innerHTML = '<i class="fa fa-fw fa-trash me-1"></i> Delete';
-                                    const restoreButton = document.querySelector('.btn-action-post[name="restore"]');
-                                    if (restoreButton) restoreButton.replaceWith(deleteButton);
+                        if (response?.post) {
+                            if (operationName) {
+                                if (operationName !== "destroy") {
+                                    if (response.post.deleted_at) {
+                                        const restoreButton = document.createElement('button');
+                                        restoreButton.type = 'submit';
+                                        restoreButton.className = 'btn-action btn-action-post btn btn-secondary d-flex justify-content-center align-items-center w-100';
+                                        restoreButton.name = 'restore';
+                                        restoreButton.innerHTML = '<i class="fa fa-fw fa-rotate-left me-1"></i> Restore';
+                                        const deleteButton = document.querySelector('.btn-action-post[name="delete"]');
+                                        if (deleteButton) deleteButton.replaceWith(restoreButton);
+                                    } else {
+                                        const deleteButton = document.createElement('button');
+                                        deleteButton.type = 'submit';
+                                        deleteButton.className = 'btn-action btn-action-post btn btn-warning d-flex justify-content-center align-items-center w-100';
+                                        deleteButton.name = 'delete';
+                                        deleteButton.innerHTML = '<i class="fa fa-fw fa-trash me-1"></i> Delete';
+                                        const restoreButton = document.querySelector('.btn-action-post[name="restore"]');
+                                        if (restoreButton) restoreButton.replaceWith(deleteButton);
+                                    }
                                 }
-                            }
-                        } else {
-                            if (response.post?.slug) {
-                                window.history.pushState(null,null, `/admin/posts/edit/${response.post.slug}`);
+                            } else if (response.post?.slug) {
+                                window.history.pushState(null, null, `/admin/posts/edit/${response.post.slug}`);
                                 document.getElementById('link-view-post').setAttribute('href', `/blog/${response.post.slug}?forget=1`);
                                 form.setAttribute('action', `/api/posts/${response.post.slug}`);
                             }

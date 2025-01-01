@@ -239,30 +239,30 @@ document.addEventListener("DOMContentLoaded", function () {
                             .then(response => {
                                 console.log(response);
                                 tagsDataTable.ajax.reload(null, false);
-                                if (operationName) {
-                                    if (operationName === "destroy") {
-                                        modalTagsDetailsWrapper.remove();
-                                    } else {
-                                        if (response.tag.deleted_at) {
-                                            const restoreButton = document.createElement('button');
-                                            restoreButton.type = 'submit';
-                                            restoreButton.className = 'btn-action btn-action-tag btn btn-secondary d-flex justify-content-center align-items-center w-100';
-                                            restoreButton.name = 'restore';
-                                            restoreButton.innerHTML = '<i class="fa fa-fw fa-rotate-left me-1"></i> Restore';
-                                            const deleteButton = document.querySelector('.btn-action-tag[name="delete"]');
-                                            if (deleteButton) deleteButton.replaceWith(restoreButton);
+                                if (response?.tag) {
+                                    if (operationName) {
+                                        if (operationName === "destroy") {
+                                            modalTagsDetailsWrapper.remove();
                                         } else {
-                                            const deleteButton = document.createElement('button');
-                                            deleteButton.type = 'submit';
-                                            deleteButton.className = 'btn-action btn-action-tag btn btn-warning d-flex justify-content-center align-items-center w-100';
-                                            deleteButton.name = 'delete';
-                                            deleteButton.innerHTML = '<i class="fa fa-fw fa-trash me-1"></i> Delete';
-                                            const restoreButton = document.querySelector('.btn-action-tag[name="restore"]');
-                                            if (restoreButton) restoreButton.replaceWith(deleteButton);
+                                            if (response.tag.deleted_at) {
+                                                const restoreButton = document.createElement('button');
+                                                restoreButton.type = 'submit';
+                                                restoreButton.className = 'btn-action btn-action-tag btn btn-secondary d-flex justify-content-center align-items-center w-100';
+                                                restoreButton.name = 'restore';
+                                                restoreButton.innerHTML = '<i class="fa fa-fw fa-rotate-left me-1"></i> Restore';
+                                                const deleteButton = document.querySelector('.btn-action-tag[name="delete"]');
+                                                if (deleteButton) deleteButton.replaceWith(restoreButton);
+                                            } else {
+                                                const deleteButton = document.createElement('button');
+                                                deleteButton.type = 'submit';
+                                                deleteButton.className = 'btn-action btn-action-tag btn btn-warning d-flex justify-content-center align-items-center w-100';
+                                                deleteButton.name = 'delete';
+                                                deleteButton.innerHTML = '<i class="fa fa-fw fa-trash me-1"></i> Delete';
+                                                const restoreButton = document.querySelector('.btn-action-tag[name="restore"]');
+                                                if (restoreButton) restoreButton.replaceWith(deleteButton);
+                                            }
                                         }
-                                    }
-                                } else {
-                                    if (response.tag?.slug) {
+                                    } else if (response.tag?.slug) {
                                         form.setAttribute('action', `/api/tags/${response.tag.slug}`);
                                         document.getElementById('link-view-tag').setAttribute('href', `/tags/${response.tag.slug}?forget=1`);
                                     }
