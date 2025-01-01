@@ -45,7 +45,7 @@
     <div class="content">
         <div class="row items-push">
             <div class="block-content">
-                <form action="/admin/posts" method="POST" class="" enctype="multipart/form-data" id="create-post">
+                <form action="/api/posts" method="POST" class="" enctype="multipart/form-data" id="create-post">
                     @csrf
                     <div class="row items-push">
                         <div class="col-md-8">
@@ -60,12 +60,12 @@
                                     placeholder="Post slug" required>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="post_excerpt">Excerpt</label>
-                                <textarea id="post_excerpt" class="form-control" name="post_excerpt" rows="4" placeholder="Post excerpt.."></textarea>
+                                <label class="form-label" for="post-excerpt">Excerpt</label>
+                                <textarea id="post-excerpt" class="form-control" name="excerpt" rows="4" placeholder="Post excerpt.."></textarea>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="description">Description</label>
-                                <textarea class="form-control" id="description" name="description" rows="4" placeholder="Post description.."></textarea>
+                                <label class="form-label" for="post-description">Description</label>
+                                <textarea class="form-control" id="post-description" name="description" rows="4" placeholder="Post description.."></textarea>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -82,30 +82,31 @@
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="published_at">Published at</label>
-                                <input type="text" class="js-flatpickr form-control" id="published_at" name="published_at" value="{{ now() }}" data-enable-time="true" data-time_24hr="true">
+                                <label class="form-label" for="post-published_at">Published at</label>
+                                <input type="text" class="js-flatpickr form-control" id="post-published_at"
+                                       name="published_at" value="{{ now() }}" data-enable-time="true" data-time_24hr="true">
                             </div>
                             <div class="mb-4">
                                 <div class="form-check form-switch form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="published" name="published">
-                                    <label class="form-check-label" for="published">Published</label>
+                                    <input class="form-check-input" type="checkbox" id="post-published" name="published">
+                                    <label class="form-check-label" for="post-published">Published</label>
                                 </div>
                             </div>
                             <div class="mb-4">
                                 <div class="form-check form-switch form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="featured" name="featured">
-                                    <label class="form-check-label" for="featured">Featured</label>
+                                    <input class="form-check-input" type="checkbox" id="post-featured" name="featured">
+                                    <label class="form-check-label" for="post-featured">Featured</label>
                                 </div>
                             </div>
                             <div class="mb-4">
                                 <div class="form-check form-switch form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="active" name="active" >
-                                    <label class="form-check-label" for="active">Active</label>
+                                    <input class="form-check-input" type="checkbox" id="post-active" name="active" >
+                                    <label class="form-check-label" for="post-active">Active</label>
                                 </div>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="image">Cover</label>
-                                <input type="file" id="image" name="cover" class="form-control" />
+                                <label class="form-label" for="post-image">Cover</label>
+                                <input type="file" id="post-image" name="cover" class="form-control" />
                                 <div class="mt-2">
                                     <img id="image-preview" class="image-preview img-fluid w-100"
                                          src="{{ asset('/assets/img/default/landscape.webp') }}"
@@ -114,22 +115,20 @@
                             </div>
                             <div class="">
                                 <label class="form-label" for="post-assets">Post assets</label>
-                                <input type="file" id="post-assets" name="post-assets[]" multiple class="form-control" />
+                                <input type="file" id="post-assets" name="assets[]" multiple class="form-control" />
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="block block-rounded block-bordered block-mode-hidden">
                                 <div class="block-header block-header-default">
-                                    <h3 class="block-title"><label class="form-label" for="post_body">Content</label></h3>
+                                    <h3 class="block-title"><label class="form-label" for="post-content">Content</label></h3>
                                     <div class="block-options">
                                         <button type="button" class="btn-block-option" data-toggle="block-option" data-action="fullscreen_toggle"><i class="si si-size-fullscreen"></i></button>
                                         <button type="button" class="btn-block-option" data-toggle="block-option" data-action="content_toggle"><i class="si si-arrow-up"></i></button>
                                     </div>
                                 </div>
                                 <div class="block-content p-0">
-                                    <!-- SimpleMDE Container -->
-                                    {{-- <textarea class="js-simplemde" id="simplemde" name="post_body">{{ old('post_body') }}</textarea> --}}
-                                    <textarea id="post_body" class="form-control" name="post_content" placeholder="Post content.." hidden>Post content..</textarea>
+                                    <textarea id="post-content" class="form-control" name="content" placeholder="Post content.." hidden>Post content..</textarea>
                                 </div>
                             </div>
                         </div>

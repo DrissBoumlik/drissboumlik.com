@@ -1,4 +1,4 @@
-import { get_alert_box } from "@/admin/tools";
+import { get_alert_box, getToken } from "@/admin/tools";
 
 document.addEventListener('DOMContentLoaded', function () {
     try {
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                        'X-CSRF-TOKEN': getToken()
                     },
                 })
                     .then(response => response.json())
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const formData = new FormData(e.target);
                 formData.append('operation', e.submitter.value);
-                formData.append('_token', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+                formData.append('_token', getToken());
 
                 fetch('/api/file/copy', {
                     method: 'POST',
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const formData = new FormData(formUploadFiles);
             const currentPath = document.getElementById('current-path').value;
             formData.append('path', currentPath);
-            formData.append('_token', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+            formData.append('_token', getToken());
 
             fetch('/api/file', {
                 method: 'POST',
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                        'X-CSRF-TOKEN': getToken()
                     },
                     body: JSON.stringify(data)
                 })
@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                        'X-CSRF-TOKEN': getToken()
                     },
                 })
                     .then(response => response.json())
@@ -326,7 +326,7 @@ function renameItem(target) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            'X-CSRF-TOKEN': getToken()
         },
         body: JSON.stringify({
             new_name: newName,

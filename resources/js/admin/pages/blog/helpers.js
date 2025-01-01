@@ -1,9 +1,10 @@
 import { getCookie } from "@/shared/functions";
+import { string_to_slug } from "@/admin/utilitiy";
 
 function initPostEditor() {
-    if (! document.getElementById('post_body')) return;
+    if (! document.getElementById('post-content')) return;
     let options = {
-        selector: 'textarea#post_body',
+        selector: 'textarea#post-content',
         plugins: `searchreplace autolink visualblocks visualchars media charmap nonbreaking anchor insertdatetime
                 lists advlist wordcount help emoticons autosave code link table codesample image preview pagebreak
                 accordion`,
@@ -40,7 +41,7 @@ function initPostEditor() {
     if (theme === 'dark-mode') {
         options = {...options,  skin: 'oxide-dark', content_css: 'dark'};
     }
-    let tinymceDOM = tinymce.get('post_body');
+    let tinymceDOM = tinymce.get('post-content');
     if(tinymceDOM != null) {
         let _content = tinymceDOM.getContent();
         tinymceDOM.destroy();
@@ -49,4 +50,18 @@ function initPostEditor() {
     tinymce.init(options);
 }
 
-export { initPostEditor };
+function initCommonFormInputEvents() {
+    ['input', 'focusout'].forEach((eventName) => {
+        document.addEventListener(eventName, function (event) {
+            if (event.target.classList.contains('input-to-slugify')) {
+                let postTitle = event.target.value;
+                let postSlug = string_to_slug(postTitle);
+                document.querySelectorAll('.input-slug').forEach(input => {
+                    input.value = postSlug;
+                });
+            }
+        });
+    });
+}
+
+export { initPostEditor, initCommonFormInputEvents };

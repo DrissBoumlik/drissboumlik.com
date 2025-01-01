@@ -1,6 +1,7 @@
 // import 'bootstrap';
 import { toggleDarkMode } from "@/shared/functions";
 import { get_loader, remove_loader } from "@/admin/tools";
+import { initPostEditor } from "@/admin/pages/blog/helpers";
 
 function initDarkMode() {
     document.querySelectorAll('.toggle-dark-mode-admin')

@@ -39,8 +39,12 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
 
     Route::group(['prefix' => 'api'], function () {
         Route::middleware('auth')->group(function () {
-            Route::post('/posts', [ApiPostController::class, 'index']);
-            Route::post('/tags', [ApiTagController::class, 'index']);
+            Route::post('/posts/list', [ApiPostController::class, 'index']);
+            Route::post('/posts', [ApiPostController::class, 'store']);
+            Route::put('/posts/{slug}', [ApiPostController::class, 'update']);
+            Route::post('/tags/list', [ApiTagController::class, 'index']);
+            Route::post('/tags', [ApiTagController::class, 'store']);
+            Route::put('/tags/{slug}', [ApiTagController::class, 'update']);
             Route::post('/visitors', [AdminDatatableController::class, 'visitors']);
             Route::put('/visitors/{visitor}', [AdminCRUDController::class, 'updateVisitor']);
             Route::put('/testimonials/{testimonial}', [AdminApiPortfolioController::class, 'updateTestimonial']);
@@ -100,14 +104,8 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             // Blog
             Route::get('/posts', [PostController::class, 'index']);
             Route::get('/posts/create', [PostController::class, 'create']);
-            Route::post('/posts', [ApiPostController::class, 'store']);
             Route::get('/posts/edit/{slug}', [PostController::class, 'edit']);
-            Route::put('/posts/{slug}', [ApiPostController::class, 'update']);
             Route::get('/tags', [TagController::class, 'index']);
-            Route::get('/tags/create', [TagController::class, 'create']);
-            Route::get('/tags/edit/{slug}', [TagController::class, 'edit']);
-            Route::put('/tags/{slug}', [ApiTagController::class, 'update']);
-            Route::post('/tags', [ApiTagController::class, 'store']);
 
             Route::get('/messages', [AdminPageController::class, 'messages']);
             Route::get('/subscriptions', [AdminPageController::class, 'subscriptions']);

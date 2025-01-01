@@ -51,7 +51,7 @@ class TagController extends Controller
             $tag = Tag::create($data);
             return response()->json([
                 'tag' => $tag,
-                'message' => 'Tag store successfully !',
+                'message' => 'Tag stored successfully !',
                 'class' => 'alert-info',
                 'icon' => '<i class="fa fa-fw fa-circle-check"></i>'
             ]);
@@ -134,7 +134,7 @@ class TagController extends Controller
             $tag->forceDelete();
             return response()->json([
                 'tag' => $tag,
-                'message' => 'Tag deleted for good successfully | <a href="/admin/tags">Go back</a>',
+                'message' => 'Tag deleted permanently',
                 'class' => 'alert-info',
                 'icon' => '<i class="fa fa-fw fa-circle-check"></i>'
             ]);

@@ -241,4 +241,8 @@ function get_alert_box(params, removeLoader = true) {
 
 }
 
-export { setUpImagePreviewOnFileInput, getDomClass, configDT, get_alert_box, get_loader, remove_loader };
+function getToken() {
+    return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+}
+
+export { setUpImagePreviewOnFileInput, getDomClass, configDT, get_alert_box, get_loader, remove_loader, getToken };
