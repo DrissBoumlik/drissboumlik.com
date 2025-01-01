@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     const deleteButton = document.createElement('button');
                                     deleteButton.type = 'submit';
                                     deleteButton.className = 'btn-action btn-action-post btn btn-warning d-flex justify-content-center align-items-center w-100';
-                                    deleteButton.name = 'restore';
+                                    deleteButton.name = 'delete';
                                     deleteButton.innerHTML = '<i class="fa fa-fw fa-trash me-1"></i> Delete';
                                     const restoreButton = document.querySelector('.btn-action-post[name="restore"]');
                                     if (restoreButton) restoreButton.replaceWith(deleteButton);
