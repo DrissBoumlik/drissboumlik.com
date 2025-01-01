@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         initCommonFormInputEvents();
 
-        setUpImagePreviewOnFileInput('image', 'image-preview');
+        setUpImagePreviewOnFileInput('post-image', 'post-image-preview');
 
         let viewPostAssetsBtn = document.querySelectorAll('.btn-view-post-assets');
         if (viewPostAssetsBtn.length) {

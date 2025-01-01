@@ -129,92 +129,92 @@ document.addEventListener("DOMContentLoaded", function () {
                 let modal = `
                     <div class="modal-tags-details-wrapper">
                         <div class="modal modal-tags-details d-block" tabindex="-1">
-                <div class="modal-dialog modal-lg modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">${data.name || '??'}</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="container-fluid">
-                                <form id="form-tags" action="/api/tags/${data.slug}">
-                                    <div class="row">
-                                        <div class="col-12 col-md-6">
-                                            <div class="mb-4">
-                                                <label class="form-label" for="example-static-input-plain">Posts tagged : ${data.posts_count}</label>
-                                            </div>
-                                            <div class="mb-4">
-                                                <label class="form-label" for="tag-name">Name</label>
-                                                <input type="text" class="form-control input-to-slugify" id="tag-name" name="name"
-                                                    placeholder="Tag Name" value="${data.name}" required>
-                                            </div>
-                                            <div class="mb-4">
-                                                <label class="form-label" for="tag-slug">Slug</label>
-                                                <input type="text" class="form-control input-slug" id="tag-slug" name="slug"
-                                                    placeholder="Tag slug" value="${data.slug}" required>
-                                            </div>
-                                            <div class="mb-4">
-                                                <div class="form-check form-switch form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="active" name="active" ${data.active ? 'checked' : ''} >
-                                                    <label class="form-check-label" for="active">Active</label>
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">${data.name || '??'}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            <form id="form-tags" action="/api/tags/${data.slug}">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-6">
+                                                        <div class="mb-4">
+                                                            <label class="form-label" for="example-static-input-plain">Posts tagged : ${data.posts_count}</label>
+                                                        </div>
+                                                        <div class="mb-4">
+                                                            <label class="form-label" for="tag-name">Name</label>
+                                                            <input type="text" class="form-control input-to-slugify" id="tag-name" name="name"
+                                                                placeholder="Tag Name" value="${data.name}" required>
+                                                        </div>
+                                                        <div class="mb-4">
+                                                            <label class="form-label" for="tag-slug">Slug</label>
+                                                            <input type="text" class="form-control input-slug" id="tag-slug" name="slug"
+                                                                placeholder="Tag slug" value="${data.slug}" required>
+                                                        </div>
+                                                        <div class="mb-4">
+                                                            <div class="form-check form-switch form-check-inline">
+                                                                <input class="form-check-input" type="checkbox" id="tag-active" name="active" ${data.active ? 'checked' : ''} >
+                                                                <label class="form-check-label" for="tag-active">Active</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-4">
+                                                            <label class="form-label" for="tag-description">Description</label>
+                                                            <textarea class="form-control" id="tag-description" name="description" rows="4" placeholder="Tag description..">${data.description}</textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-md-6">
+                                                        <div class="mb-4">
+                                                            <label class="form-label" for="tag-color">Color</label>
+                                                            <input type="color" class="form-control" id="tag-color" name="color"
+                                                                   placeholder="Tag color" value="${data.color}">
+                                                        </div>
+                                                        <div class="mb-4">
+                                                            <label class="form-label" for="tag-image">Image</label>
+                                                            <input type="file" id="tag-image" name="cover" class="form-control" />
+                                                            <div class="mt-4">
+                                                                <img id="tag-image-preview" class="image-preview img-fluid w-100 lazyload"
+                                                                     src="/${data?.cover?.compressed || 'assets/img/default/missing.webp'}"
+                                                                     data-src="/${data?.cover?.original || 'assets/img/default/missing.webp'}"
+                                                                     alt="photo" width="200" height="100" loading="lazy">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 d-flex justify-content-between align-items-stretch gap-2 flex-wrap flex-md-nowrap">
+                                                        <button type="submit" class="btn-action btn-action-tag btn btn-success
+                                                                                d-flex justify-content-center align-items-center w-100">
+                                                            <i class="fa fa-fw fa-edit me-1"></i>Update</button>
+                                                        <a href="/tags/${data.slug}?forget=1" target="_blank"
+                                                           id="link-view-tag" class="btn btn-dark
+                                                                                    d-flex justify-content-center align-items-center w-100">
+                                                            <i class="fa fa-fw fa-eye me-1"></i>View</a>
+                                                        ${data.deleted_at ?
+                                    '<button type="submit" class="btn-action btn-action-tag btn btn-secondary d-flex justify-content-center align-items-center w-100" name="restore"><i class="fa fa-fw fa-rotate-left me-1"></i> Restore</button>'
+                                    : '<button type="submit" class="btn-action btn-action-tag btn btn-warning d-flex justify-content-center align-items-center w-100" name="delete"><i class="fa fa-fw fa-trash me-1"></i> Delete</button>'}
+                                                        <button type="submit" class="btn-action btn-action-tag btn btn-danger
+                                                                                    d-flex justify-content-center align-items-center w-100" name="destroy">
+                                                            <i class="fa fa-fw fa-trash me-1"></i>Hard Delete</button>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="mb-4">
-                                                <label class="form-label" for="description">Description</label>
-                                                <textarea class="form-control" id="description" name="description" rows="4" placeholder="Tag description..">${data.description}</textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="mb-4">
-                                                <label class="form-label" for="tag-color">Color</label>
-                                                <input type="color" class="form-control" id="tag-color" name="color"
-                                                       placeholder="Tag color" value="${data.color}">
-                                            </div>
-                                            <div class="mb-4">
-                                                <label class="form-label" for="image">Image</label>
-                                                <input type="file" id="image" name="cover" class="form-control" />
-                                                <div class="mt-4">
-                                                    <img id="image-preview" class="image-preview img-fluid w-100 lazyload"
-                                                         src="/${data?.cover?.compressed || 'assets/img/default/missing.webp'}"
-                                                         data-src="/${data?.cover?.original || 'assets/img/default/missing.webp'}"
-                                                         alt="photo" width="200" height="100" loading="lazy">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 d-flex justify-content-between align-items-stretch gap-2 flex-wrap flex-md-nowrap">
-                                            <button type="submit" class="btn-action btn-action-tag btn btn-success
-                                                                    d-flex justify-content-center align-items-center w-100">
-                                                <i class="fa fa-fw fa-edit me-1"></i>Update</button>
-                                            <a href="/tags/${data.slug}?forget=1" target="_blank"
-                                               id="link-view-tag" class="btn btn-dark
-                                                                        d-flex justify-content-center align-items-center w-100">
-                                                <i class="fa fa-fw fa-eye me-1"></i>View</a>
-                                            ${data.deleted_at ?
-                        '<button type="submit" class="btn-action btn-action-tag btn btn-secondary d-flex justify-content-center align-items-center w-100" name="restore"><i class="fa fa-fw fa-rotate-left me-1"></i> Restore</button>'
-                        : '<button type="submit" class="btn-action btn-action-tag btn btn-warning d-flex justify-content-center align-items-center w-100" name="delete"><i class="fa fa-fw fa-trash me-1"></i> Delete</button>'}
-                                            <button type="submit" class="btn-action btn-action-tag btn btn-danger
-                                                                        d-flex justify-content-center align-items-center w-100" name="destroy">
-                                                <i class="fa fa-fw fa-trash me-1"></i>Hard Delete</button>
+                                            </form>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
                         <div class="modal-backdrop fade show"></div>
                     </div>`;
                 $('#page-container').append(modal);
-                setUpImagePreviewOnFileInput('image', 'image-preview');
-                let modalTagsDetails = $('.modal-tags-details-wrapper');
-                $('.btn-close').add('.modal-tags-details-wrapper').on('click', function(e) {
-                    if (e.target !== modalTagsDetails[0] && e.target !== $('.btn-close')[0]) {
-                        return;
+                setUpImagePreviewOnFileInput('tag-image', 'tag-image-preview');
+                const modalTagsDetailsWrapper = document.querySelector('.modal-tags-details-wrapper');
+                const modalTagsDetails = document.querySelector('.modal-tags-details');
+                const closeButton = modalTagsDetailsWrapper.querySelector('.btn-close');
+                modalTagsDetails.addEventListener('click', function (e) {
+                    if (e.target === modalTagsDetails || e.target === closeButton) {
+                        modalTagsDetailsWrapper.remove();
                     }
-                    modalTagsDetails.remove();
                 });
-                modalTagsDetails.show()
 
 
                 function eventHandler(e) {
@@ -241,7 +241,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 tagsDataTable.ajax.reload(null, false);
                                 if (operationName) {
                                     if (operationName === "destroy") {
-                                        modalTagsDetails.remove();
+                                        modalTagsDetailsWrapper.remove();
                                     } else {
                                         if (response.tag.deleted_at) {
                                             const restoreButton = document.createElement('button');
@@ -310,13 +310,13 @@ document.addEventListener("DOMContentLoaded", function () {
                                                             </div>
                                                             <div class="mb-4">
                                                                 <div class="form-check form-switch form-check-inline">
-                                                                    <input class="form-check-input" type="checkbox" id="active" name="active" >
-                                                                    <label class="form-check-label" for="active">Active</label>
+                                                                    <input class="form-check-input" type="checkbox" id="tag-active" name="active" >
+                                                                    <label class="form-check-label" for="tag-active">Active</label>
                                                                 </div>
                                                             </div>
                                                             <div class="mb-4">
-                                                                <label class="form-label" for="description">Description</label>
-                                                                <textarea class="form-control" id="description" name="description" rows="4" placeholder="Tag description.."></textarea>
+                                                                <label class="form-label" for="tag-description">Description</label>
+                                                                <textarea class="form-control" id="tag-description" name="description" rows="4" placeholder="Tag description.."></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="col-12 col-md-6">
@@ -326,10 +326,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                                                        placeholder="Tag color">
                                                             </div>
                                                             <div class="mb-4">
-                                                                <label class="form-label" for="image">Image</label>
-                                                                <input type="file" id="image" name="cover" class="form-control" />
+                                                                <label class="form-label" for="tag-image">Image</label>
+                                                                <input type="file" id="tag-image" name="cover" class="form-control" />
                                                                 <div class="mt-2">
-                                                                    <img id="image-preview" class="img-fluid image-preview w-100"
+                                                                    <img id="tag-image-preview" class="img-fluid image-preview w-100"
                                                                          src="/assets/img/default/landscape.webp"
                                                                          alt="photo" width="200" height="100" loading="lazy">
                                                                 </div>
@@ -349,13 +349,14 @@ document.addEventListener("DOMContentLoaded", function () {
                             <div class="modal-backdrop fade show"></div>
                         </div>`;
                     document.getElementById('page-container').insertAdjacentHTML('beforeend', modal);
-                    setUpImagePreviewOnFileInput('image', 'image-preview');
+                    setUpImagePreviewOnFileInput('tag-image', 'tag-image-preview');
 
-                    const modalTagsDetails = document.querySelector('.modal-tags-details-wrapper');
-                    const closeButton = modalTagsDetails.querySelector('.btn-close');
+                    const modalTagsDetailsWrapper = document.querySelector('.modal-tags-details-wrapper');
+                    const modalTagsDetails = document.querySelector('.modal-tags-details');
+                    const closeButton = modalTagsDetailsWrapper.querySelector('.btn-close');
                     modalTagsDetails.addEventListener('click', function (e) {
                         if (e.target === modalTagsDetails || e.target === closeButton) {
-                            modalTagsDetails.remove();
+                            modalTagsDetailsWrapper.remove();
                         }
                     });
 

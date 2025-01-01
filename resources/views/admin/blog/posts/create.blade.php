@@ -108,7 +108,7 @@
                                 <label class="form-label" for="post-image">Cover</label>
                                 <input type="file" id="post-image" name="cover" class="form-control" />
                                 <div class="mt-2">
-                                    <img id="image-preview" class="image-preview img-fluid w-100"
+                                    <img id="post-image-preview" class="image-preview img-fluid w-100"
                                          src="{{ asset('/assets/img/default/landscape.webp') }}"
                                          alt="photo" width="200" height="100" loading="lazy">
                                 </div>
