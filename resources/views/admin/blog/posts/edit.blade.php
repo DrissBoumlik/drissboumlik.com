@@ -161,7 +161,7 @@
                                     </div>
                                 </div>
                                 <div class="block-content p-0">
-                                    <textarea id="post-content" class="form-control" name="post-content" placeholder="Post content.." hidden>{!! $post->content !!}</textarea>
+                                    <textarea id="post-content" class="form-control" name="post-content" placeholder="Post content.." hidden>{{ $post->content }}</textarea>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between align-items-stretch gap-2 flex-wrap flex-md-nowrap">
