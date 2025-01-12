@@ -44,7 +44,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (responseContainer) responseContainer.remove();
 
                 const sendButton = document.querySelector('.btn-send');
-                if (sendButton) sendButton.classList.add('loading-spinner');
+                if (sendButton) {
+                    sendButton.setAttribute('disabled', true);
+                    sendButton.classList.add('loading-spinner');
+                }
 
                 // Send AJAX request
                 fetch('/api/get-in-touch', {
@@ -53,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     body: JSON.stringify(data),
                 })
                     .then(async (response) => {
+                        sendButton.removeAttribute('disabled');
                         const result = await response.json();
                         // Remove previous response
                         if (responseContainer) responseContainer.remove();
@@ -62,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         if (sendButton) sendButton.classList.remove('loading-spinner');
                     })
                     .catch(async (error) => {
+                        sendButton.removeAttribute('disabled');
                         const response = error.responseJSON || {};
 
                         // Remove previous response
@@ -73,17 +78,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         // Display errors
                         const errors = response.errors || {};
-                        Object.keys(errors).forEach((errorKey) => {
-                            const messages = errors[errorKey] || ['This field is required.'];
-                            debugger
-                            const fieldElement = document.getElementById(`form-${errorKey}`);
-                            if (fieldElement) {
-                                fieldElement.insertAdjacentHTML(
-                                    'afterend',
-                                    `<div id="error-${errorKey}" class="tc-alert tc-alert-error">${messages.join('<br>')}</div>`
-                                );
-                            }
-                        });
+                        const errorsKeys = Object.keys(errors);
+                        if (errorsKeys && Array.isArray(errorsKeys) && errorsKeys.length) {
+                            errorsKeys.forEach((errorKey) => {
+                                const messages = errors[errorKey] || ['This field is required.'];
+                                debugger
+                                const fieldElement = document.getElementById(`form-${errorKey}`);
+                                if (fieldElement) {
+                                    fieldElement.insertAdjacentHTML(
+                                        'afterend',
+                                        `<div id="error-${errorKey}" class="tc-alert tc-alert-error">${messages.join('<br>')}</div>`
+                                    );
+                                }
+                            });
+                        } else {
+                            const params = {
+                                'message': 'Try again later!',
+                                'class': 'tc-alert-nok',
+                                'icon': '<i class="fa fa-fw fa-times-circle"></i>'
+                            };
+                            contactForm.insertAdjacentHTML('afterend', getAlertDom(params));
+                        }
 
                         // Remove spinner
                         if (sendButton) sendButton.classList.remove('loading-spinner');
