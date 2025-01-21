@@ -13,16 +13,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Ensure "base" Directory Exists and Is Usable
-        run: |
-          if [ ! -d "base" ] || [ -z "$(ls -A base 2>/dev/null)" ]; then
-            mkdir -p base
-          fi
-
-      - name: Copy Project Files to "base" (Excluding "base" Directory)
-        run: |
-          rsync -av --progress ./ base/ --exclude base
-
       - name: Install all dependencies
         run: npm install
 
@@ -36,7 +26,7 @@ jobs:
 
       - name: Move Built Files to Parent Directory
         run: |
-          mv base/public/* ../
+          mv public/* ../
 
       - name: Run Laravel Optimization Commands
         run: |
