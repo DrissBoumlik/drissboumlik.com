@@ -3,7 +3,7 @@ name: Build and Deploy Workflow
 on:
   push:
     branches:
-      - testprod
+      - main
 
 jobs:
   build-and-deploy:
@@ -19,9 +19,9 @@ jobs:
             mkdir -p base
           fi
 
-      - name: Copy Project Files to "base"
+      - name: Copy Project Files to "base" (Excluding "base" Directory)
         run: |
-          cp -r * base/
+          rsync -av --progress ./ base/ --exclude base
 
       - name: Navigate to "base" and Build Project
         working-directory: base
