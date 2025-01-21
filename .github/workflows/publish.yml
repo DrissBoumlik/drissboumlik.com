@@ -23,6 +23,9 @@ jobs:
         run: |
           rsync -av --progress ./ base/ --exclude base
 
+      - name: Install all dependencies
+        run: npm install
+
       - name: Navigate to "base" and Build Project
         working-directory: base
         run: npm run build
