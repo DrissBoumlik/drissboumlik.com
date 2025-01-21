@@ -13,7 +13,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Install all dependencies
+      - name: Install npm dependencies
         run: npm install
 
       - name: Navigate to "base" and Build Project
@@ -26,6 +26,13 @@ jobs:
       - name: Move Built Files to Parent Directory
         run: |
           mv public/* ../
+      - name: Install composer dependencies
+        run: composer2 install
+
+      - name: Prepage Laravel
+        run: |
+          cp .env.example .env
+          php artisan key:generate
 
       - name: Run Laravel Optimization Commands
         run: |
