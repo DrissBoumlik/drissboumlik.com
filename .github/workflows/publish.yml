@@ -3,7 +3,7 @@ name: Build and Deploy Workflow
 on:
   push:
     branches:
-      - main
+      - testprod
 
 jobs:
   build-and-deploy:
