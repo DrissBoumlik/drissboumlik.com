@@ -27,7 +27,7 @@ jobs:
         run: |
           mv public/* ../
       - name: Install composer dependencies
-        run: composer2 install
+        run: composer install
 
       - name: Prepare Laravel
         run: |
