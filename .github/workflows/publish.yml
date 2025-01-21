@@ -1,0 +1,45 @@
+name: Build and Deploy Workflow
+
+on:
+  push:
+    branches:
+      - testprod
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Ensure "base" Directory Exists and Is Usable
+        run: |
+          if [ ! -d "base" ] || [ -z "$(ls -A base 2>/dev/null)" ]; then
+            mkdir -p base
+          fi
+
+      - name: Copy Project Files to "base"
+        run: |
+          cp -r * base/
+
+      - name: Navigate to "base" and Build Project
+        working-directory: base
+        run: npm run build
+
+      - name: Remove "../build" Directory
+        run: |
+          rm -rf ../build
+
+      - name: Move Built Files to Parent Directory
+        run: |
+          mv base/public/* ../
+
+      - name: Run Laravel Optimization Commands
+        run: |
+          php artisan optimize
+          php artisan route:clear
+          php artisan config:cache
+          php artisan cache:clear
+          php artisan config:clear
+          php artisan view:clear
