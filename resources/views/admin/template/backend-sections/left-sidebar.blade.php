@@ -167,6 +167,26 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-main-item">
+                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                        <i class="nav-main-link-icon fa fa-fw fa-stethoscope"></i>
+                        <span class="nav-main-link-name">Monitoring</span>
+                    </a>
+                    <ul class="nav-main-submenu">
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="/telescope">
+                                <i class="nav-main-link-icon fa fa-fw fa-microscope"></i>
+                                <span class="nav-main-link-name">Telescope</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="/pulse">
+                                <i class="nav-main-link-icon fa fa-fw fa-heart-pulse"></i>
+                                <span class="nav-main-link-name">Pulse</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <!-- END Side Navigation -->
