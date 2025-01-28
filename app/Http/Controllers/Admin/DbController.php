@@ -7,23 +7,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-use Spatie\DBDumper\Databases\MySql;
+use Spatie\DbDumper\Databases\MySql;
 use Illuminate\Support\Facades\Response;
 use Spatie\Sitemap\SitemapGenerator;
 
-class ToolController extends Controller
+class DbController extends Controller
 {
-
-    public function generateSitemap(Request $request)
-    {
-        $now = date("Y-m-d_h-i");
-        $sitemap_archive_path = Storage::disk('public')->path('sitemap-archive');
-        File::ensureDirectoryExists($sitemap_archive_path);
-        $current_file = Storage::disk('public')->path('sitemap.xml');
-        SitemapGenerator::create('https://drissboumlik.com')->getSitemap()->writeToFile($current_file);
-        File::copy($current_file, $sitemap_archive_path . "/sitemap_$now.xml");
-        return redirect('/sitemap');
-    }
 
     public function export_db(Request $request, MySql $dumpDB)
     {

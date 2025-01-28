@@ -5,7 +5,8 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\PageController as AdminPageController ;
-use App\Http\Controllers\Admin\ToolController as AdminToolController;
+use App\Http\Controllers\Admin\SitemapController as AdminSitemapController;
+use App\Http\Controllers\Admin\DbController as AdminDbController;
 use App\Http\Controllers\Admin\FileManagerController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
@@ -67,8 +68,8 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
             Route::post('/shortened-urls/list', [AdminDatatableController::class, 'shortenedUrls']);
             Route::post('/menu-types', [AdminDatatableController::class, 'menuTypes']);
             Route::get('/posts/{slug}/assets', [ApiPostController::class, 'getPostAssets']);
-            Route::get('/{table}/columns', [AdminToolController::class, 'getTableColumns']);
-            Route::post('/stats', [AdminToolController::class, 'getTableColumnStats']);
+            Route::get('/{table}/columns', [AdminDbController::class, 'getTableColumns']);
+            Route::post('/stats', [AdminDbController::class, 'getTableColumnStats']);
             Route::post('/file', [FileManagerController::class, 'uploadFile']);
             Route::post('/file/copy', [FileManagerController::class, 'copyFile']);
             Route::post('/file/rename', [FileManagerController::class, 'renameFile']);
@@ -119,9 +120,9 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
 
             // Tools
             Route::get('/sitemap', [AdminPageController::class, 'sitemap']);
-            Route::get('/generate-sitemap', [AdminToolController::class, 'generateSitemap']);
-            Route::get('/export-db/config', [AdminToolController::class , 'exportDbConfig']);
-            Route::get('/export-db', [AdminToolController::class , 'export_db']);
+            Route::get('/generate-sitemap', [AdminSitemapController::class, 'generateSitemap']);
+            Route::get('/export-db/config', [AdminDbController::class , 'exportDbConfig']);
+            Route::get('/export-db', [AdminDbController::class , 'export_db']);
 
             Route::get('file-manager/{path?}', [FileManagerController::class, 'index'])->where('path', '.*');
         });

@@ -5,14 +5,13 @@ namespace Tests\Feature\Admin;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Mockery;
 use Spatie\DbDumper\Databases\MySql;
 use Tests\TestCase;
 
-class ToolTest extends TestCase
+class ExportDBTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -25,15 +24,6 @@ class ToolTest extends TestCase
         $this->actingAs($user);
 
         Storage::fake('public');
-    }
-
-    public function test_generate_sitemap_creates_sitemap_file()
-    {
-        $response = $this->get('/admin/generate-sitemap');
-
-        $response->assertRedirect('/sitemap');
-        Storage::disk('public')->assertExists('sitemap.xml');
-        Storage::disk('public')->assertExists('sitemap-archive/sitemap_' . date("Y-m-d_h-i") . '.xml');
     }
 
     public function test_export_db_config_page_loads_successfully()
@@ -117,44 +107,4 @@ class ToolTest extends TestCase
         ]);
     }
 
-    public function test_get_table_columns_returns_columns()
-    {
-        $table = 'users';
-
-        $response = $this->get("/api/{$table}/columns");
-
-        $response->assertStatus(200)
-            ->assertJsonStructure([]);
-    }
-
-    public function test_get_table_column_stats_without_year()
-    {
-        $response = $this->post('/api/stats', [
-                'table' => 'users',
-                'column' => 'id'
-            ]);
-
-        $response->assertStatus(200)
-            ->assertJsonStructure([
-                'data' => [],
-                'current_page',
-                'last_page'
-            ]);
-    }
-
-    public function test_get_table_column_stats_with_year()
-    {
-        $response = $this->post('/api/stats', [
-                'table' => 'users',
-                'column' => 'id',
-                'year' => date('Y')
-            ]);
-
-        $response->assertStatus(200)
-            ->assertJsonStructure([
-                'data' => [],
-                'current_page',
-                'last_page'
-            ]);
-    }
 }
