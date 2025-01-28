@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
 
     }
 
-    private function seedMenus()
+    public function seedMenus()
     {
         $configFiles = [ 'header-menu', 'footer-menu', 'social-links', 'community-links' ];
 
@@ -66,7 +66,7 @@ class DatabaseSeeder extends Seeder
         }
     }
 
-    private function seedServices()
+    public function seedServices()
     {
         $data = config("data.components.services")->data;
 
@@ -90,7 +90,7 @@ class DatabaseSeeder extends Seeder
         }
     }
 
-    private function seedTestimonials()
+    public function seedTestimonials()
     {
         $data = config("data.resume.testimonials")->data;
 
@@ -112,7 +112,7 @@ class DatabaseSeeder extends Seeder
         }
     }
 
-    private function seedProjects()
+    public function seedProjects()
     {
         $data = config("data.resume.work")->data;
 
@@ -136,7 +136,7 @@ class DatabaseSeeder extends Seeder
         }
     }
 
-    private function seedRedirectingLinks()
+    public function seedRedirectingLinks()
     {
         $links = getLinks();
         $data = [];
