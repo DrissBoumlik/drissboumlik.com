@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class GotoController extends Controller
 {
-    private $home = '/';
 
     public function goto(Request $request, $link)
     {

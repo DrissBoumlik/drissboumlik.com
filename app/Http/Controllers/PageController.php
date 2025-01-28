@@ -16,15 +16,13 @@ class PageController extends Controller
     }
 
 
-    public function home(Request $request, $var = null)
+    public function home(Request $request)
     {
         $baseUrl = $request->getBaseUrl();
         if (strpos($baseUrl, 'public') != false || strpos($baseUrl, 'base') != false) {
             return redirect('/not-found');
         }
-        if ($var) {
-            return redirect('/not-found');
-        }
+
         $this->guestView = isGuest(handleGuestView($request));
         $key = $this->cacheService->getCachedFullKey("home-data", '-with-non-active', $this->guestView);
         $data = $this->cacheService->cache_data($key, function() {
