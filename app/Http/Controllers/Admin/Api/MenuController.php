@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Symfony\Component\HttpFoundation\Response;
 
 class MenuController extends Controller
 {
@@ -37,7 +38,7 @@ class MenuController extends Controller
             Menu::create($request->only(['text', 'title', 'slug', 'target', 'link', 'icon', 'menu_type_id', 'active', 'order']));
             return ['message' => "Stored Successfully !"];
         } catch (\Throwable $e) {
-            return response()->json(['message' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage()], Response::HTTP_NOT_FOUND);
         }
     }
 
@@ -47,7 +48,7 @@ class MenuController extends Controller
             $menu = Menu::withTrashed()->find($id);
 
             if (! $menu) {
-                return response()->json(['message' => 'Menu not found'], 404);
+                return response()->json(['message' => 'Menu not found'], Response::HTTP_NOT_FOUND);
             }
 
             if ($request->has('delete') || $request->has('destroy')) {
@@ -55,6 +56,7 @@ class MenuController extends Controller
             }
             if ($request->has('restore')) {
                 $menu->restore();
+                return response()->json(['message' => 'Item restored successfully'], Response::HTTP_OK);
             }
 
             $request->validate([
@@ -84,22 +86,18 @@ class MenuController extends Controller
             $menu->update($request->only(['text', 'title', 'slug', 'target', 'link', 'icon', 'menu_type_id', 'active', 'order']));
             return ['message' => "Updated Successfully !"];
         } catch (\Throwable $e) {
-            return response()->json(['message' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage()], Response::HTTP_NOT_FOUND);
         }
     }
 
     private function destroy($item, $request)
     {
-        try {
-            if ($request->has('delete')) {
-                $item->update(['active' => false]);
-                $item->delete();
-                return response()->json(['message' => 'Item deleted successfully'], 200);
-            }
-            $item->forceDelete();
-            return response()->json(['message' => 'Item deleted for good successfully'], 200);
-        } catch (\Throwable $e) {
-            return response()->json(['message' => $e->getMessage()], 422);
+        if ($request->has('delete')) {
+            $item->update(['active' => false]);
+            $item->delete();
+            return response()->json(['message' => 'Item deleted successfully'], Response::HTTP_OK);
         }
+        $item->forceDelete();
+        return response()->json(['message' => 'Item deleted for good successfully'], Response::HTTP_OK);
     }
 }

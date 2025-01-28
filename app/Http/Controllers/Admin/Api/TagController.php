@@ -7,6 +7,7 @@ use App\Models\Tag;
 use App\Services\MediaService;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 
 class TagController extends Controller
@@ -54,13 +55,13 @@ class TagController extends Controller
                 'message' => 'Tag stored successfully !',
                 'class' => 'alert-info',
                 'icon' => '<i class="fa fa-fw fa-circle-check"></i>'
-            ]);
+            ], Response::HTTP_OK);
         } catch (\Throwable $e) {
             return response()->json([
                 'message' => $e->getMessage(),
                 'class' => 'alert-danger',
                 'icon' => '<i class="fa fa-fw fa-times-circle"></i>'
-            ], 422);
+            ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
     }
 
@@ -69,14 +70,8 @@ class TagController extends Controller
         try {
             $tag = Tag::withTrashed()->where('slug', $slug)->first();
             if (! $tag) {
-                return response()->json(['message' => 'Tag not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']);
+                return response()->json(['message' => 'Tag not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>'], Response::HTTP_NOT_FOUND);
             }
-
-            $request->validate([
-                "name"          => "required|string",
-                "slug"          => ["required" ,"string", Rule::unique('tags')->ignore($tag->id)],
-                "description"   => "nullable|string",
-            ]);
 
             if ($request->has('destroy') || $request->has('delete')) {
                 return $this->destroy($tag, $request);
@@ -88,8 +83,14 @@ class TagController extends Controller
                     'message' => 'Tag restored successfully',
                     'class' => 'alert-info',
                     'icon' => '<i class="fa fa-fw fa-circle-check"></i>'
-                ]);
+                ], Response::HTTP_OK);
             }
+
+            $request->validate([
+                "name"          => "required|string",
+                "slug"          => ["required" ,"string", Rule::unique('tags')->ignore($tag->id)],
+                "description"   => "nullable|string",
+            ]);
 
             $data = [
                 "name" => $request->name,
@@ -108,38 +109,34 @@ class TagController extends Controller
                 'message' => 'Tag updated successfully',
                 'class' => 'alert-info',
                 'icon' => '<i class="fa fa-fw fa-circle-check"></i>'
-            ]);
+            ], Response::HTTP_OK);
         } catch (\Throwable $e) {
             return response()->json([
                 'message' => $e->getMessage(),
                 'class' => 'alert-danger',
                 'icon' => '<i class="fa fa-fw fa-times-circle"></i>'
-            ], 422);
+            ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
     }
 
     private function destroy($tag, $request)
     {
-        try {
-            if ($request->has('delete')) {
-                $tag->delete();
-                return response()->json([
-                    'tag' => $tag,
-                    'message' => 'Tag deleted successfully',
-                    'class' => 'alert-info',
-                    'icon' => '<i class="fa fa-fw fa-circle-check"></i>'
-                ]);
-            }
-            \DB::table('post_tag')->where('tag_id', $tag->id)->delete();
-            $tag->forceDelete();
+        if ($request->has('delete')) {
+            $tag->delete();
             return response()->json([
+                'tag' => $tag,
+                'message' => 'Tag deleted successfully',
+                'class' => 'alert-info',
+                'icon' => '<i class="fa fa-fw fa-circle-check"></i>'
+            ], Response::HTTP_OK);
+        }
+        \DB::table('post_tag')->where('tag_id', $tag->id)->delete();
+        $tag->forceDelete();
+        return response()->json([
                 'tag' => $tag,
                 'message' => 'Tag deleted permanently',
                 'class' => 'alert-info',
                 'icon' => '<i class="fa fa-fw fa-circle-check"></i>'
-            ]);
-        } catch (\Throwable $e) {
-            return response()->json(['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']);
-        }
+            ], Response::HTTP_OK);
     }
 }

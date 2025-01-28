@@ -7,6 +7,7 @@ use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Symfony\Component\HttpFoundation\IpUtils;
+use Symfony\Component\HttpFoundation\Response;
 
 class ContactController extends Controller
 {
@@ -34,14 +35,14 @@ class ContactController extends Controller
 //            });
             \App\Jobs\SendContactMeEmailJob::dispatch($request_data)->afterResponse();
 
-            return response()->json(['message' => 'Message sent successfully', 'class' => 'tc-alert-ok', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>'], 200);
+            return response()->json(['message' => 'Message sent successfully', 'class' => 'tc-alert-ok', 'icon' => '<i class="fa fa-fw fa-circle-check"></i>'], Response::HTTP_OK);
         } catch (\Throwable $e) {
             $error_code = $e->getCode();
             $message = "Something went wrong, Please try again!";
             if (-1 === $error_code || 0 === $error_code) {
                 $message = $e->getMessage();
             }
-            return response()->json(['message' => $message, 'class' => 'tc-alert-nok', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>'], 400);
+            return response()->json(['message' => $message, 'class' => 'tc-alert-nok', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>'], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
     }
 

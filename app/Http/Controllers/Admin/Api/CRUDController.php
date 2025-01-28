@@ -8,6 +8,7 @@ use App\Models\ShortenedUrl;
 use App\Models\Visitor;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Symfony\Component\HttpFoundation\Response;
 
 class CRUDController extends Controller
 {
@@ -17,7 +18,7 @@ class CRUDController extends Controller
             $visitor->update($request->only(["countryName", "countryCode", "regionName", "cityName"]));
             return ['message' => "Updated Successfully !"];
         } catch (\Throwable $e) {
-            return response()->json(['message' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage()], Response::HTTP_NOT_FOUND);
         }
     }
 
@@ -29,7 +30,7 @@ class CRUDController extends Controller
             $menuType->update($request->only(['name', 'slug', 'description', 'active']));
             return ['message' => "Updated Successfully !"];
         } catch (\Throwable $e) {
-            return response()->json(['message' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage()], Response::HTTP_NOT_FOUND);
         }
     }
 
@@ -55,7 +56,7 @@ class CRUDController extends Controller
             ShortenedUrl::create($data);
             return ['message' => "Stored Successfully !"];
         } catch (\Throwable $e) {
-            return response()->json(['message' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage()], Response::HTTP_NOT_FOUND);
         }
     }
 
@@ -65,7 +66,7 @@ class CRUDController extends Controller
             $shortenedUrl = ShortenedUrl::withTrashed()->find($id);
 
             if (! $shortenedUrl) {
-                return response()->json(['message' => 'Shortened url not found'], 404);
+                return response()->json(['message' => 'Shortened url not found'], Response::HTTP_NOT_FOUND);
             }
 
             if ($request->has('delete') || $request->has('destroy')) {
@@ -73,6 +74,7 @@ class CRUDController extends Controller
             }
             if ($request->has('restore')) {
                 $shortenedUrl->restore();
+                return response()->json(['message' => 'Item restored successfully'], Response::HTTP_OK);
             }
 
             $request->validate([
@@ -94,23 +96,19 @@ class CRUDController extends Controller
             $shortenedUrl->update($data);
             return ['message' => "Updated Successfully !"];
         } catch (\Throwable $e) {
-            return response()->json(['message' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage()], Response::HTTP_NOT_FOUND);
         }
     }
 
     private function destroy($item, $request)
     {
-        try {
-            if ($request->has('delete')) {
-                $item->update(['active' => false]);
-                $item->delete();
-                return response()->json(['message' => 'Item deleted successfully'], 200);
-            }
-            $item->forceDelete();
-            return response()->json(['message' => 'Item deleted for good successfully'], 200);
-        } catch (\Throwable $e) {
-            return response()->json(['message' => $e->getMessage()], 422);
+        if ($request->has('delete')) {
+            $item->update(['active' => false]);
+            $item->delete();
+            return response()->json(['message' => 'Item deleted successfully'], Response::HTTP_OK);
         }
+        $item->forceDelete();
+        return response()->json(['message' => 'Item deleted for good successfully'], Response::HTTP_OK);
     }
 
 }

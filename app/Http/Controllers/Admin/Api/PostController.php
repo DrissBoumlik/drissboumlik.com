@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Services\MediaService;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 
 class PostController extends Controller
@@ -85,13 +86,13 @@ class PostController extends Controller
                 'post'      => $post,
                 'message'   => "Post stored successfully | <a href='$redirect_link'><i class='fa fa-fw fa-external-link'></i> Edit</a>",
                 'class'     => 'alert-info',
-                'icon'      => '<i class="fa fa-fw fa-circle-check"></i>']);
+                'icon'      => '<i class="fa fa-fw fa-circle-check"></i>'], Response::HTTP_OK);
         } catch (\Throwable $e) {
             return response()->json([
                 'message'   => $e->getMessage(),
                 'class'     => 'alert-danger',
                 'icon'      => '<i class="fa fa-fw fa-times-circle"></i>'
-            ], 422);
+            ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
     }
     public function update(Request $request, $slug)
@@ -99,7 +100,7 @@ class PostController extends Controller
         try {
             $post = Post::withTrashed()->where('slug', $slug)->first();
             if (! $post) {
-                return response()->json(['message' => 'Post not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']);
+                return response()->json(['message' => 'Post not found', 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>'], Response::HTTP_NOT_FOUND);
             }
 
             if ($request->has('destroy') || $request->has('delete')) {
@@ -112,7 +113,7 @@ class PostController extends Controller
                     'message'   => 'Post restored successfully',
                     'class'     => 'alert-info',
                     'icon'      => '<i class="fa fa-fw fa-circle-check"></i>'
-                ]);
+                ], Response::HTTP_OK);
             }
 
             $request->validate([
@@ -172,39 +173,35 @@ class PostController extends Controller
                 'message'   => 'Post updated successfully',
                 'class'     => 'alert-info',
                 'icon'      => '<i class="fa fa-fw fa-circle-check"></i>'
-            ]);
+            ], Response::HTTP_OK);
         } catch (\Throwable $e) {
             return response()->json([
                 'message'   => $e->getMessage(),
                 'class'     => 'alert-danger',
                 'icon'      => '<i class="fa fa-fw fa-times-circle"></i>'
-            ], 422);
+            ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
     }
 
     private function destroy($post, $request)
     {
-        try {
-            if ($request->has('delete')) {
-                $post->delete();
-                return response()->json([
-                    'post'      => $post,
-                    'message'   => 'Post deleted successfully',
-                    'class'     => 'alert-info',
-                    'icon'      => '<i class="fa fa-fw fa-circle-check"></i>'
-                ]);
-            }
-            \DB::table('post_tag')->where('post_id', $post->id)->delete();
-            $post->forceDelete();
+        if ($request->has('delete')) {
+            $post->delete();
             return response()->json([
+                'post'      => $post,
+                'message'   => 'Post deleted successfully',
+                'class'     => 'alert-info',
+                'icon'      => '<i class="fa fa-fw fa-circle-check"></i>'
+            ], Response::HTTP_OK);
+        }
+        \DB::table('post_tag')->where('post_id', $post->id)->delete();
+        $post->forceDelete();
+        return response()->json([
                 'post'      => $post,
                 'message'   => 'Post deleted permanently | <a href="/admin/posts">Go back</a>',
                 'class'     => 'alert-info',
                 'icon'      => '<i class="fa fa-fw fa-circle-check"></i>'
-            ]);
-        } catch (\Throwable $e) {
-            return response()->json(['message' => $e->getMessage(), 'class' => 'alert-danger', 'icon' => '<i class="fa fa-fw fa-times-circle"></i>']);
-        }
+            ], Response::HTTP_OK);
     }
 
     public function getPostAssets(Request $request, $slug)

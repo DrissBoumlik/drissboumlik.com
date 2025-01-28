@@ -10,6 +10,7 @@ use App\Services\MediaService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Symfony\Component\HttpFoundation\Response;
 
 class PortfolioController extends Controller
 {
@@ -45,7 +46,7 @@ class PortfolioController extends Controller
             Service::create($data);
             return ['message' => "Stored Successfully !"];
         } catch (\Throwable $e) {
-            return response()->json(['message' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage()], Response::HTTP_NOT_FOUND);
         }
     }
 
@@ -55,7 +56,7 @@ class PortfolioController extends Controller
             $service = Service::withTrashed()->find($id);
 
             if (! $service) {
-                return response()->json(['message' => 'Service not found'], 404);
+                return response()->json(['message' => 'Service not found'], Response::HTTP_NOT_FOUND);
             }
 
             if ($request->has('delete') || $request->has('destroy')) {
@@ -63,6 +64,7 @@ class PortfolioController extends Controller
             }
             if ($request->has('restore')) {
                 $service->restore();
+                return response()->json(['message' => 'Item restored successfully'], Response::HTTP_OK);
             }
 
             $request->validate([
@@ -93,7 +95,7 @@ class PortfolioController extends Controller
             $service->update($data);
             return ['message' => "Updated Successfully !"];
         } catch (\Throwable $e) {
-            return response()->json(['message' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage()], Response::HTTP_NOT_FOUND);
         }
     }
 
@@ -103,7 +105,7 @@ class PortfolioController extends Controller
             $testimonial = Testimonial::withTrashed()->find($id);
 
             if (! $testimonial) {
-                return response()->json(['message' => 'Testimonial not found'], 404);
+                return response()->json(['message' => 'Testimonial not found'], Response::HTTP_NOT_FOUND);
             }
 
             if ($request->has('delete') || $request->has('destroy')) {
@@ -111,6 +113,7 @@ class PortfolioController extends Controller
             }
             if ($request->has('restore')) {
                 $testimonial->restore();
+                return response()->json(['message' => 'Item restored successfully'], Response::HTTP_OK);
             }
 
             $request->validate([
@@ -139,7 +142,7 @@ class PortfolioController extends Controller
             $testimonial->update($data);
             return ['message' => "Updated Successfully !"];
         } catch (\Throwable $e) {
-            return response()->json(['message' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage()], Response::HTTP_NOT_FOUND);
         }
     }
 
@@ -165,7 +168,7 @@ class PortfolioController extends Controller
             Testimonial::create($data);
             return ['message' => "Stored Successfully !"];
         } catch (\Throwable $e) {
-            return response()->json(['message' => $e->getMessage(), "line" => $e->getLine()], 404);
+            return response()->json(['message' => $e->getMessage(), "line" => $e->getLine()], Response::HTTP_NOT_FOUND);
         }
     }
 
@@ -197,7 +200,7 @@ class PortfolioController extends Controller
             Project::create($data);
             return ['message' => "Stored Successfully !"];
         } catch (\Throwable $e) {
-            return response()->json(['message' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage()], Response::HTTP_NOT_FOUND);
         }
     }
 
@@ -207,7 +210,7 @@ class PortfolioController extends Controller
             $project = Project::withTrashed()->find($id);
 
             if (! $project) {
-                return response()->json(['message' => 'Project not found'], 404);
+                return response()->json(['message' => 'Project not found'], Response::HTTP_NOT_FOUND);
             }
 
             if ($request->has('delete') || $request->has('destroy')) {
@@ -215,6 +218,7 @@ class PortfolioController extends Controller
             }
             if ($request->has('restore')) {
                 $project->restore();
+                return response()->json(['message' => 'Item restored successfully'], Response::HTTP_OK);
             }
 
             $request->validate([
@@ -249,23 +253,19 @@ class PortfolioController extends Controller
             $project->update($data);
             return ['message' => "Updated Successfully !"];
         } catch (\Throwable $e) {
-            return response()->json(['message' => $e->getMessage()], 404);
+            return response()->json(['message' => $e->getMessage()], Response::HTTP_NOT_FOUND);
         }
     }
 
     private function destroy($item, $request)
     {
-        try {
-            if ($request->has('delete')) {
-                $item->update(['active' => false]);
-                $item->delete();
-                return response()->json(['message' => 'Item deleted successfully'], 200);
-            }
-            $item->forceDelete();
-            return response()->json(['message' => 'Item deleted for good successfully'], 200);
-        } catch (\Throwable $e) {
-            return response()->json(['message' => $e->getMessage()], 422);
+        if ($request->has('delete')) {
+            $item->update(['active' => false]);
+            $item->delete();
+            return response()->json(['message' => 'Item deleted successfully'], Response::HTTP_OK);
         }
+        $item->forceDelete();
+        return response()->json(['message' => 'Item deleted for good successfully'], Response::HTTP_OK);
     }
 
 }
