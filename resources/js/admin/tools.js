@@ -27,6 +27,8 @@ function configDT(params) {
         $(params.id).DataTable().destroy();
     }
 
+    params.userSorting = null;
+
     let table = new DataTable(params.id, {
         pageLength: 50,
         lengthMenu: [5, 10, 25, 50, 75, 100, 200],
@@ -70,7 +72,7 @@ function configDT(params) {
                     }
                 }
                 data._token = $('meta[name="csrf-token"]').attr('content');
-                data.first_time = params.first_time;
+                data['user-sorting'] = params.userSorting;
             }
             , error: function (jqXHR, textStatus, errorThrown) {
                 get_alert_box({class: 'alert-danger', message: jqXHR.responseJSON.message, icon: '<i class="fa-solid fa-triangle-exclamation"></i>'});
@@ -81,94 +83,108 @@ function configDT(params) {
         },
         columns: params.columns,
         initComplete: function (settings, json) {
-            delete params.first_time;
+            params.userSorting = null;
             if (params.onComplete) {
                 params.onComplete(settings, json);
             }
-            $('#search-row').remove();
-            this.find('thead').prepend('<tr id="search-row" class="search-row"></tr>');
-            this.api().columns().every(function (index) {
-                let column = this;
-                let dataTitle = column.dataSrc();
-                let currentColumn = params.columns[index];
-                let title = currentColumn.title;
-                if (title.toLowerCase() === "actions") {
-                    $('#search-row').append('<th></th>');
-                    return;
-                }
-                // Create input element
-                if (currentColumn.domElement === "select" || currentColumn.data === 'active') {
-                    let items = json.data.map( function (item) {
-                        let _item = {};
-                        if (currentColumn.data === 'active') {
-                            _item.active = item.active;
-                        } else {
-                            _item[currentColumn.data] = item[currentColumn.data] ;
-                        }
-                        if (currentColumn.optionTextField) {
-                            _item[currentColumn.optionTextField] = item[currentColumn.optionTextField];
-                        }
-                        return _item;
-                    }).reduce((acc, current) => {
-                        let exists = acc.find(item => {
-                            return item[currentColumn.data] === current[currentColumn.data]
-                        });
-                        if (!exists) {
-                            acc.push(current);
-                        }
-                        return acc;
-                    }, []);
-                    let domSelectOptions = `<option value="">${title}</option>`;
 
-                    items.forEach(function(item) {
-                        domSelectOptions += `<option value="${item[currentColumn.data]}">${item[currentColumn.optionTextField || currentColumn.data]}</option>`;
-                    });
-                    let headerSearchItem = `<th><select id="${dataTitle}-dt-search" title="${title}"
-                                                            placeholder="${title}" type="search"
-                                                            style="min-width: 100px"
-                                                            class="form-control form-control-sm text-center"
-                                                            >${domSelectOptions}</select></th>`;
-                    $('#search-row').append(headerSearchItem);
-                    let select = document.getElementById(`${dataTitle}-dt-search`);
-                    // Event listener for user input
-                    let start = undefined;
-                    select.addEventListener('change', (e) => {
-                        clearTimeout(start);
-                        start = setTimeout(function () {
-                            if (column.search() !== this.value) {
-                                column.search(select.value).draw();
-                            }
-                        }, 1000 );
-                    });
-                } else {
-                    let headerSearchItem = `<th><input id="${dataTitle}-dt-search" title="${title}"
-                                                            placeholder="${title}" type="search"
-                                                            style="min-width: 100px"
-                                                            class="form-control form-control-sm text-center"></th>`;
-                    $('#search-row').append(headerSearchItem);
-                    let input = document.getElementById(`${dataTitle}-dt-search`);
-
-                    // Event listener for user input
-                    let start = undefined;
-                    input.addEventListener('input', (e) => {
-                        clearTimeout(start);
-                        start = setTimeout(function () {
-                            if (column.search() !== this.value) {
-                                column.search(input.value).draw();
-                            }
-                        }, 1000 );
-                    });
-                }
-            });
+            buildSearchInputs(this, params, json)
         }
     });
+
+    table.on('click', 'th', function(e, settings, data) {
+        params.userSorting = null;
+        if (e.target === this) {
+            params.userSorting = true;
+        }
+    });
+
     $('.btn-refresh').on('click', function (e) {
         table.ajax.reload(null, false);
     });
     $(document).on('click', '.btn-clear', function (e) {
+        params.userSorting = null;
         clearDtSearchInput('search-row', table);
     });
     return table;
+}
+
+function buildSearchInputs(table, params, json) {
+    $('#search-row').remove();
+    table.find('thead').prepend('<tr id="search-row" class="search-row"></tr>');
+    table.api().columns().every(function (index) {
+        let column = this;
+        let dataTitle = column.dataSrc();
+        let currentColumn = params.columns[index];
+        let title = currentColumn.title;
+        if (title.toLowerCase() === "actions") {
+            $('#search-row').append('<th></th>');
+            return;
+        }
+        // Create input element
+        if (currentColumn.domElement === "select" || currentColumn.data === 'active') {
+            let items = json.data.map( function (item) {
+                let _item = {};
+                if (currentColumn.data === 'active') {
+                    _item.active = item.active;
+                } else {
+                    _item[currentColumn.data] = item[currentColumn.data] ;
+                }
+                if (currentColumn.optionTextField) {
+                    _item[currentColumn.optionTextField] = item[currentColumn.optionTextField];
+                }
+                return _item;
+            }).reduce((acc, current) => {
+                let exists = acc.find(item => {
+                    return item[currentColumn.data] === current[currentColumn.data]
+                });
+                if (!exists) {
+                    acc.push(current);
+                }
+                return acc;
+            }, []);
+            let domSelectOptions = `<option value="">${title}</option>`;
+
+            items.forEach(function(item) {
+                domSelectOptions += `<option value="${item[currentColumn.data]}">${item[currentColumn.optionTextField || currentColumn.data]}</option>`;
+            });
+            let headerSearchItem = `<th><select id="${dataTitle}-dt-search" title="${title}"
+                                                            placeholder="${title}" type="search"
+                                                            style="min-width: 100px"
+                                                            class="form-control form-control-sm text-center"
+                                                            >${domSelectOptions}</select></th>`;
+            $('#search-row').append(headerSearchItem);
+            let select = document.getElementById(`${dataTitle}-dt-search`);
+            // Event listener for user input
+            let start = undefined;
+            select.addEventListener('change', (e) => {
+                clearTimeout(start);
+                start = setTimeout(function () {
+                    if (column.search() !== this.value) {
+                        column.search(select.value).draw();
+                    }
+                }, 1000 );
+            });
+        } else {
+            let headerSearchItem = `<th><input id="${dataTitle}-dt-search" title="${title}"
+                                                            placeholder="${title}" type="search"
+                                                            style="min-width: 100px"
+                                                            class="form-control form-control-sm text-center"></th>`;
+            $('#search-row').append(headerSearchItem);
+            let input = document.getElementById(`${dataTitle}-dt-search`);
+
+            // Event listener for user input
+            let start = undefined;
+            input.addEventListener('input', (e) => {
+                clearTimeout(start);
+                start = setTimeout(function () {
+                    if (column.search() !== this.value) {
+                        column.search(input.value).draw();
+                    }
+                }, 1000 );
+            });
+        }
+    });
 }
 
 function clearDtSearchInput(searchElementID, table) {

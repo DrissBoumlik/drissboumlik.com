@@ -9,8 +9,6 @@ use App\Models\User;
 use App\Models\Visitor;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\DB;
-use Mockery;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 

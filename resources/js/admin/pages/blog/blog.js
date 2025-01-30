@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (document.querySelector('#posts')) {
             let params = {
-                first_time: true,
                 id: '#posts',
                 method: 'POST',
                 url: '/api/posts/list',
@@ -77,7 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (document.querySelector('#tags')) {
             let params = {
-                first_time: true,
                 id: '#tags',
                 method: 'POST',
                 url: '/api/tags/list',

@@ -30,7 +30,7 @@ class ApiPostTest extends TestCase
     {
         Post::factory()->count(5)->create();
 
-        $response = $this->postJson('/api/posts/list', [ 'first_time' => true ]);
+        $response = $this->postJson('/api/posts/list');
 
         $response->assertStatus(200)
             ->assertJsonStructure([

@@ -35,7 +35,7 @@ class DatatableTest extends TestCase
     {
         Message::factory()->count(5)->create();
 
-        $response = $this->postJson("api/messages", ['first_time' => true]);
+        $response = $this->postJson("api/messages");
 
         $response->assertStatus(200)
             ->assertJsonStructure([
@@ -50,7 +50,7 @@ class DatatableTest extends TestCase
     {
         Subscriber::factory()->count(5)->create();
 
-        $response = $this->postJson("api/subscriptions", ['first_time' => true]);
+        $response = $this->postJson("api/subscriptions");
 
         $response->assertStatus(200)
             ->assertJsonStructure([
@@ -65,7 +65,7 @@ class DatatableTest extends TestCase
     {
         Visitor::factory()->count(4)->create();
 
-        $response = $this->postJson("/api/visitors", ['first_time' => true]);
+        $response = $this->postJson("/api/visitors");
 
         $response->assertStatus(200)
             ->assertJsonStructure([
@@ -84,7 +84,7 @@ class DatatableTest extends TestCase
     {
         Testimonial::factory()->count(3)->create();
 
-        $response = $this->postJson("/api/testimonials/list", ['first_time' => true]);
+        $response = $this->postJson("/api/testimonials/list");
 
         $response->assertStatus(200)
             ->assertJsonStructure([
@@ -99,7 +99,7 @@ class DatatableTest extends TestCase
     {
         Project::factory()->count(3)->create();
 
-        $response = $this->postJson("/api/projects/list", ['first_time' => true]);
+        $response = $this->postJson("/api/projects/list");
 
         $response->assertStatus(200)
             ->assertJsonStructure([
@@ -114,7 +114,7 @@ class DatatableTest extends TestCase
     {
         Service::factory()->count(3)->create();
 
-        $response = $this->postJson("/api/services/list", ['first_time' => true]);
+        $response = $this->postJson("/api/services/list");
 
         $response->assertStatus(200)
             ->assertJsonStructure([
@@ -134,7 +134,7 @@ class DatatableTest extends TestCase
         $menuType = MenuType::factory()->create();
         Menu::factory()->count(3)->create(['menu_type_id' => $menuType->id]);
 
-        $response = $this->postJson("/api/menus/list", [ 'first_time' => true, 'menu_type' => $menuType->id ]);
+        $response = $this->postJson("/api/menus/list", [ 'menu_type' => $menuType->id ]);
 
         $response->assertStatus(200)
             ->assertJsonStructure([
@@ -149,7 +149,7 @@ class DatatableTest extends TestCase
     {
         MenuType::factory()->count(3)->create();
 
-        $response = $this->postJson("/api/menu-types", ['first_time' => true]);
+        $response = $this->postJson("/api/menu-types");
 
         $response->assertStatus(200)
             ->assertJsonStructure([
@@ -164,7 +164,7 @@ class DatatableTest extends TestCase
     {
         MenuType::factory()->count(3)->create();
 
-        $response = $this->postJson("/api/menu-types", ['first_time' => true, 'api' => true]);
+        $response = $this->postJson("/api/menu-types", ['api' => true]);
 
         $response->assertStatus(200)
             ->assertJsonStructure([
@@ -179,7 +179,7 @@ class DatatableTest extends TestCase
     {
         ShortenedUrl::factory()->count(4)->create();
 
-        $response = $this->postJson("/api/shortened-urls/list", ['first_time' => true]);
+        $response = $this->postJson("/api/shortened-urls/list");
 
         $response->assertStatus(200)
             ->assertJsonStructure([

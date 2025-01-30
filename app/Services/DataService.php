@@ -113,4 +113,17 @@ class DataService
         }
         return $techs;
     }
+
+    public function userOrderBy($data, $userSorting = false, $sortings = [])
+    {
+        if (! $userSorting) {
+            $data = $data->orderBy('id', 'desc');
+            if ($sortings && is_array($sortings)) {
+                foreach ($sortings as $col => $direction) {
+                    $data = $data->orderBy($col, $direction);
+                }
+            }
+        }
+        return $data;
+    }
 }

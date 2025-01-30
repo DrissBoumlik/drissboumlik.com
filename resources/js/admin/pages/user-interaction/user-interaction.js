@@ -5,7 +5,6 @@ $(function () {
 
         if ($('#visitors').length) {
             let params = {
-                first_time: true,
                 id: '#visitors',
                 method: 'POST',
                 url: '/api/visitors',
@@ -164,9 +163,9 @@ $(function () {
 
             });
         }
+
         if ($('#messages').length) {
             let params = {
-                first_time: true,
                 id: '#messages',
                 method: 'POST',
                 url: '/api/messages',
@@ -244,9 +243,9 @@ $(function () {
                 modalEmailDetails.show()
             });
         }
+
         if ($('#subscriptions').length) {
             let params = {
-                first_time: true,
                 id: '#subscriptions',
                 method: 'POST',
                 url: '/api/subscriptions',

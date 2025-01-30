@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (document.querySelector('#testimonials')) {
             let params = {
-                first_time: true,
                 id: '#testimonials',
                 method: 'POST',
                 url: '/api/testimonials/list',
@@ -259,7 +258,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         if (document.querySelector('#projects')) {
             let params = {
-                first_time: true,
                 id: '#projects',
                 method: 'POST',
                 url: '/api/projects/list',
@@ -563,7 +561,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         if (document.querySelector('#services')) {
             let params = {
-                first_time: true,
                 id: '#services',
                 method: 'POST',
                 url: '/api/services/list',

@@ -5,7 +5,6 @@ $(function () {
 
         if ($('#shortened-urls').length) {
             let params = {
-                first_time: true,
                 id: '#shortened-urls',
                 method: 'POST',
                 url: '/api/shortened-urls/list',
@@ -237,7 +236,6 @@ $(function () {
 
         if ($('#menu-types').length) {
             let params = {
-                first_time: true,
                 id: '#menu-types',
                 method: 'POST',
                 url: '/api/menu-types',
@@ -504,7 +502,6 @@ function loadMenuTypes() {
 
 function setupDT(menuTypesItems, menuType = null) {
     let params = {
-        first_time: true,
         id: '#menus',
         method: 'POST',
         url: '/api/menus/list',

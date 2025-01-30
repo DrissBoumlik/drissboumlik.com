@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tag;
+use App\Services\DataService;
 use App\Services\MediaService;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -12,19 +13,16 @@ use Yajra\DataTables\Facades\DataTables;
 
 class TagController extends Controller
 {
-    private MediaService $mediaService;
 
-    public function __construct(MediaService $mediaService)
+    public function __construct(private MediaService $mediaService, private DataService $dataService)
     {
-        $this->mediaService = $mediaService;
+
     }
     public function index(Request $request)
     {
+        $userSorting = $request->get('user-sorting');
         $tags = Tag::withTrashed()->withCount('posts');
-        $is_first_time = $request->has('first_time');
-        if ($is_first_time) {
-            $tags = $tags->orderBy('id', 'desc');
-        }
+        $tags = $this->dataService->userOrderBy($tags, $userSorting);
         return DataTables::eloquent($tags)->make(true);
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Services\DataService;
 use App\Services\MediaService;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -12,20 +13,17 @@ use Yajra\DataTables\Facades\DataTables;
 
 class PostController extends Controller
 {
-    private MediaService $mediaService;
 
-    public function __construct(MediaService $mediaService)
+    public function __construct(private MediaService $mediaService, private DataService $dataService)
     {
-        $this->mediaService = $mediaService;
+
     }
 
     public function index(Request $request)
     {
         $posts = Post::withTrashed()->withCount('tags');
-        $is_first_time = $request->has('first_time');
-        if ($is_first_time) {
-            $posts = $posts->orderBy('id', 'desc');
-        }
+        $userSorting = $request->get('user-sorting');
+        $posts = $this->dataService->userOrderBy($posts, $userSorting);
         return DataTables::eloquent($posts)->make(true);
     }
 

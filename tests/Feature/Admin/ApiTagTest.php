@@ -29,7 +29,7 @@ class ApiTagTest extends TestCase
     {
         Tag::factory()->count(5)->create();
 
-        $response = $this->postJson('/api/tags/list', [ 'first_time' => true ]);
+        $response = $this->postJson('/api/tags/list');
 
         $response->assertStatus(200)
             ->assertJsonStructure([
