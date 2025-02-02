@@ -97,6 +97,8 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
         Route::middleware('auth')->group(function () {
             // Auth
             Route::post('/logout', [LoginController::class , 'logout'])->name('logout');
+            // Resume
+            Route::get('resume', [PageController::class, 'resume']);
             // Profile
             Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
             Route::post('profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
@@ -139,12 +141,10 @@ Route::middleware(['cache.headers:public;max_age=15811200;etag'])->group(functio
         Route::get('/sitemap', [SitemapController::class, 'sitemap']);
         Route::get('/', [PageController::class, 'home']);
         Route::get('about', [PageController::class, 'about']);
-        // Route::get('resume', [PageController::class, 'resume']);
         Route::get('testimonials', [PageController::class, 'testimonials']);
         Route::get('work', [PageController::class, 'projects']);
         Route::get('contact', [PageController::class, 'contact']);
         Route::get('services', [PageController::class, 'services']);
-        Route::get('resume', [PageController::class, 'resume']);
         Route::get('privacy-policy', [PageController::class, 'privacyPolicy']);
 
         Route::get('pixel', [ToolController::class, 'getPixel']);
