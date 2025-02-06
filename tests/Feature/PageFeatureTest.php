@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use Database\Seeders\TestingsSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -93,7 +94,10 @@ class PageFeatureTest extends TestCase
 
     public function test_resume_page_is_accessible(): void
     {
-        $response = $this->get('/resume');
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $response = $this->get('/admin/resume');
 
         $response->assertStatus(Response::HTTP_OK);
         $response->assertViewIs('pages.resume');
