@@ -11,7 +11,7 @@
                         <a target="_blank" href="http://community.drissboumlik.com/p/contributors#contributors"
                            rel="noopener">contributors</a>.</p>
                     <p>If you like to be part of it checkout
-                        <a target="_blank" href="http://community.drissboumlik.com/github" rel="noopener">Github</a>
+                        <a target="_blank" href="http://github.com/teacodema" rel="noopener">Github</a>
                         and <a target="_blank" href="http://community.drissboumlik.com/join"
                                rel="noopener">Discord</a>.</p>
                 </div>

@@ -20,7 +20,7 @@
                             <div class="col-lg-6 col-md-7 col-12 about-me-txt">
                                 <p>I'm <span class="fw-bold tc-blue">Driss Boumlik</span>, a developer from Morocco,
                                     I enjoy creating and sharing things that add value and make a positive impact,
-                                    whether through <a href="/github" target="_blank" rel="noopener">code</a>,
+                                    whether through <a href="http://github.com/drissboumlik" target="_blank" rel="noopener">code</a>,
                                     <a href="/blog">blog</a>, or <a href="https://www.codementor.io/@drissboumlik" rel="noopener"
                                     target="_blank">mentoring</a> others...
                                     and other stuff usually not in the same order.</p>
